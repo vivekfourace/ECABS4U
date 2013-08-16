@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="css/site.css" />
+        <script type="text/javascript" src="js/registerOperator.js"></script>        
+        <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
+        <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    </head>
+    
+    <body>
+        <div class="header-temp">
+            <span>Operator Register</span>
+        </div>
+        <div id="container" align="center">
+            <input type="text" id="txt1" placeholder="name"/>
+            <input type="text" id="txt2" placeholder="email"/>
+            <input type="text" id="txt3" placeholder="contact number" onkeypress="checkNo(e);"/>
+            <input type="text" id="txt4" placeholder="password"/>
+            <input type="text" id="txt5" placeholder="address1"/>
+            <input type="text" id="txt6" placeholder="address2"/>
+            <input type="text" id="txt7" placeholder="postcode"/>
+        <div align="center">
+            <input type="button" class="btn-tmp" value="Submit" onclick="Registeroperator();"/>
+        </div>
+        </div>        
+    </body>
+</html>
