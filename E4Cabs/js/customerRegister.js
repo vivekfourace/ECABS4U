@@ -1,5 +1,5 @@
 
-function Registeroperator()
+function Registercustomer()
 {
     var txt1 =$('#txt1').val();
     var txt2 =$('#txt2').val();
@@ -9,33 +9,26 @@ function Registeroperator()
     var txt6 =$('#txt6').val();
     var txt7 =$('#txt7').val();
     var txt8 =$('#txt8').val();
-     var atpos=txt2.indexOf("@");
-    var dotpos=txt2.lastIndexOf(".");
+    var atpos=txt4.indexOf("@");
+    var dotpos=txt4.lastIndexOf(".");
     var phoneno =/^\d{12}$/;
     
-                if(!txt1)
+               if(!txt1)
                  {
-                     $('#lblName').text("*please enter the Name");
+                     $('#lblFirstName').text("*please enter the First Name");
                     return false;
                  }
-    
-                if(!txt2)
+               if(!txt2)
                  {
-                     $('#lblEmail').text("*please enter the Email Address");
+                     $('#lblLastName').text("*please enter the Last Name");
                     return false;
                  }
-                 if (atpos<1 || dotpos<atpos+2 || dotpos+2>=txt2.length)
-                      {
-                         $('#lblEmailVerification').text("Not a valid e-mail address");
-                         return false;
-                       }
-    
-               if(!txt3)
+             if(!txt3)
                  {
                      $('#lblPhoneNo').text("*please enter the Phone Number");
                     return false;
                  }
-                 if(phoneno.test(txt3))
+               if(phoneno.test(txt3))
                 {
                  
                 }
@@ -44,40 +37,45 @@ function Registeroperator()
                     $('#lblphoneVerification').text("***Not a valid Mobile No.***");
                     return false; 
                 }
-                   if(!txt4)
+                if(!txt4)
                  {
-                     $('#lblAddress1').text("*please enter the Address1");
+                     $('#lblEmail').text("*please enter the Email Address");
                     return false;
                  }
-                   if(!txt5)
+                 if (atpos<1 || dotpos<atpos+2 || dotpos+2>=txt4.length)
+                      {
+                         $('#lblEmailVerification').text("Not a valid e-mail address");
+                         return false;
+                       }
+            if(!txt5)
                  {
-                     $('#lblAddress2').text("*please enter the Address2");
+                     $('#lblUserID').text("*please enter the User ID");
                     return false;
                  }
-                if(!txt6)
+          if(!txt6)
                  {
                      $('#lblPostcode').text("*please enter the Postcode");
                     return false;
                  }
-                if(!txt7)
+           if(!txt7)
                  {
                      $('#lblPassword').text("*please enter the Password");
                     return false;
                  }
-                 if(!txt8)
+            if(!txt8)
                  {
                      $('#lblConfirmPassword').text("*please enter the ConfirmPassword");
                     return false;
                  }
-                if(txt7!=txt8)
+    
+    if(txt7!=txt8)
                  {
-                    $('#lblPasswordVerification').text("*Your Password Is Not Matching!");
+                    $('#lblVerification').text("*Your Password Is Not Matching!");
                       return false;
                  }
-    
 
 $.ajax({
-    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RegisterOperator",
+    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RegisterCustomer",
     type: "POST",
     dataType: "json",
     data: "{ 'name': '" + txt1 + "','email': '" + txt2 + "','contactNumber': '" + txt3 + "','password': '" + txt4 + "','address1': '" + txt5 + "','address2': '" + txt6 + "','postcode': '" + txt7 + "'}",
