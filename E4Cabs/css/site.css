@@ -1,4 +1,11 @@
- .header-temp{
+body{
+    background-color:#F0F3A9;
+}
+.cursor{
+ cursor:pointer;   
+}
+
+.header-temp{
      width:100%;
      height:50px;
      background-color:#569A73;
@@ -13,10 +20,29 @@
  border-radius:10px;
  text-align:center;
  font-size:20px;
- color:#980500;
- border:2px solid #639ECD;
+ color:White;
  margin:5px 0 5px 0;
+   background-image: linear-gradient(bottom, #A8A86D 32%, #F3FF05 94%);
+background-image: -o-linear-gradient(bottom, #A8A86D 32%, #F3FF05 94%);
+background-image: -moz-linear-gradient(bottom, #A8A86D 32%, #F3FF05 94%);
+background-image: -webkit-linear-gradient(bottom, #A8A86D 32%, #F3FF05 94%);
+background-image: -ms-linear-gradient(bottom, #A8A86D 32%, #F3FF05 94%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.32, #A8A86D),
+	color-stop(0.94, #F3FF05)
+);
  }
+
+.img-tmp{
+    width:120px;
+    height:50px;
+    position:fixed;
+    z-index:1;
+}
  input[type="text"]{
       width:80%;               
       height:45px;
@@ -25,10 +51,23 @@
       text-align:left;
       font-size:20px;
       color:Black;
-      border:2px solid #639ECD;
+      border:1px solid #639ECD;
       margin:5px 0 5px 0;
       border-collapse:collapse;
   }
+
+input[type="password"]{
+        width:80%;               
+      height:45px;
+      background-color:white;
+      border-radius:10px;
+      text-align:left;
+      font-size:20px;
+      color:Black;
+      border:1px solid #639ECD;
+      margin:5px 0 5px 0;
+      border-collapse:collapse;    
+}
      ::-webkit-input-placeholder {
         text-align:center;
      }
@@ -53,18 +92,18 @@
     width:80%;
     height:5%;
     border-radius:5px;
-    background-image: linear-gradient(bottom, #4E807E 32%, #68E6D1 62%);
-    background-image: -o-linear-gradient(bottom, #4E807E 32%, #68E6D1 62%);
-    background-image: -moz-linear-gradient(bottom, #4E807E 32%, #68E6D1 62%);
-    background-image: -webkit-linear-gradient(bottom, #4E807E 32%, #68E6D1 62%);
-    background-image: -ms-linear-gradient(bottom, #4E807E 32%, #68E6D1 62%);
+    background-image: linear-gradient(bottom, #A6A621 32%, #F3FF05 94%);
+background-image: -o-linear-gradient(bottom, #A6A621 32%, #F3FF05 94%);
+background-image: -moz-linear-gradient(bottom, #A6A621 32%, #F3FF05 94%);
+background-image: -webkit-linear-gradient(bottom, #A6A621 32%, #F3FF05 94%);
+background-image: -ms-linear-gradient(bottom, #A6A621 32%, #F3FF05 94%);
 
-    background-image: -webkit-gradient(
+background-image: -webkit-gradient(
 	linear,
 	left bottom,
 	left top,
-	color-stop(0.32, #4E807E),
-	color-stop(0.62, #68E6D1)  
+	color-stop(0.32, #A6A621),
+	color-stop(0.94, #F3FF05)
 );
     margin:4px 4px 4px 4px;
     color:Black;
