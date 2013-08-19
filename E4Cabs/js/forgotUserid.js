@@ -2,12 +2,17 @@ function userid()
 {
     var user=document.getElementById('userid').value;
     
-    if(!user)
+   
+    if(user.length>0)
     {
-        $('#lblUserID').text("*Please Fill the User Id.");
-                     return false;
-        
+     $('#lblUserID').text("");  
     }
+    else if(user.length==0)
+    {
+        $('#lblUserID').text("please enter the User ID");
+        return false;
+    }
+    
     
     $.ajax({
                     url:"",

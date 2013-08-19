@@ -11,12 +11,23 @@ function Registercustomer()
     var regExpEmail = "^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$";
     var phoneno =/^\d{12}$/;
     
-               if(!txt1)
+              
+    
+            if(txt1.length > 0)
+                    {
+                        $('#lblFirstName').text(" ");
+                    }
+                else if(txt1.length == 0)
                  {
                      $('#lblFirstName').text("*please enter the first name");
                     return false;
                  }
-               if(!txt2)
+               
+               if(txt2.length > 0)
+                    {
+                        $('#lblLastName').text(" ");
+                    }
+                else if(txt2.length == 0)
                  {
                      $('#lblLastName').text("*please enter the last name");
                     return false;
@@ -57,7 +68,21 @@ function Registercustomer()
                     $('#lblEmail').text("*please enter the Email Address");
                     return false;
                 }
-              if(txt5.length > 0)
+              
+    
+          
+    if(txt6.length > 0)
+                    {
+                        $('#lblPostcode').text(" ");
+                    }
+                else if(txt6.length == 0)
+                 {
+                     $('#lblPostcode').text("*please enter the Postcode");
+                    return false;
+                 }
+    
+    
+    if(txt5.length > 0)
                     {
                         $('#lblUserID').text(" ");
                     }
@@ -66,13 +91,6 @@ function Registercustomer()
                      $('#lblUserID').text("*please enter the User ID");
                     return false;
                  }
-    
-          if(!txt6)
-                 {
-                     $('#lblPostcode').text("*please enter the Postcode");
-                    return false;
-                 }
-    
                 if(txt7.length > 0)
                     {
                         $('#lblPassword').text(" ");
