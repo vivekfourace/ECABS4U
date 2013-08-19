@@ -1,5 +1,4 @@
-         
-            function call()
+ function login()
             {
                var name=document.getElementById('txtUserID1').value;
                 var Password=document.getElementById('txtPassword').value;
@@ -36,4 +35,3 @@
                
                  });
                 }
-           

@@ -1,4 +1,4 @@
- function forgotPassword()
+function forgotPassword()
             {
                 var pass=document.getElementById('txtEmail').value;
                 
@@ -30,4 +30,3 @@
                    
                 });
              }
-       

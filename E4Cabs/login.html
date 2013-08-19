@@ -9,47 +9,40 @@
         <link rel="stylesheet" type="text/css" href="css/site.css"/>
     </head>
     <body>
-        <div class="header-temp"></div>
-       <table style="width:100%">
+        <div class="header-temp">
+            <div align="center">
+                <img class="img-tmp" src="img/site-logo.png"/>
+            </div>
+        </div>
+       <table style="width:100%;padding-top:10%">
            <tr>
-               <td>
-                  <img src="#"/> 
-               </td>
-           </tr>
-            <tr>
-                <td>
-                    <label for="txtUserID1">Username:</label>                    
-                </td>
-                <td>
+                <td align="center">
                     <input type="text" id="txtUserID1" placeholder="Username"/>                    
                 </td>
             </tr>
             <tr>
-                <td>
+                <td align="center">
                      <label id="lblName" style="color:red;font-size:10px"></label>
                 </td>
             </tr>
             <tr>
-                <td>
-                    <label for="txtPassword">Password:</label>
-                </td>
-                <td>
+                <td align="center">
                     <input type="password" id="txtPassword" placeholder="Password"/>
                 </td>
             </tr>
             <tr>
-                <td>
+                <td align="center">
                      <label id="lblPassword" style="color:red;font-size:10px"></label>
                 </td>
             </tr>
             <tr>
-                <td>
+                <td align="center">
                      <label id="lblvarification" style="color:red;font-size:10px"></label>
                 </td>
             </tr>
-            <tr align="center">
-                <td colspan="2">
-                   <input type="button" class="btn-tmp" value="Sign In" onclick="call()" />
+            <tr>
+                <td align="center">
+                   <input type="button" class="btn-tmp" value="Sign In" onclick="login()" />
                 </td>                
             </tr> 
             <tr>
@@ -58,17 +51,16 @@
                 </td>
             </tr>
             <tr>
-                <td></td>
-                <td>
+                <td align="center">
                     <a href="forgotPassword.html">Forgot password</a>
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <a href="resetPassword.html">Reset Password</a>
-                </td>
-            </tr>
+                    
+                    </td>
+                </tr>
+           <tr>
+               <td align="center">
+                   <a href="forgotUserId.html">Forgot UserID</a>
+               </td>
+           </tr>
         </table>            
     </body>
 </html>
