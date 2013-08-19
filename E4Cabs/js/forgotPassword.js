@@ -26,7 +26,10 @@ function forgotPassword()
                      {
                          alert("WELCOME!");
                          $('#txtEmail').val('');
-                     }
+                     },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+        alert(errorThrown);
+           }
                    
                 });
              }
