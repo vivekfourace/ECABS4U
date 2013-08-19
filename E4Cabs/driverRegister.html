@@ -3,202 +3,49 @@
 <html>
     <head>
         <title></title>
-        <script type="text/javascript" src="Scripts/jquery-1.8.2.min.js"></script>
-            <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
-            <script type="text/javascript" src="js/driverRegister.js"></script>
-        <link rel="stylesheet" type="text/css" href="css/site.css"/>
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="css/site.css" />
+        <script type="text/javascript" src="js/driverRegister.js"></script>        
+        <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
+        <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
     </head>
     <body>
-        <div style="background-color:#E8E8E8;height:80px;">
-              
-             <table align="right" style="width:100%">
-                 <tr>
-                     <td style="float:left"><img src=""/></td>
-                     <td style="float:right"><a href="index.html">Login</a>/<a href="DriverRegister.html">Register</a>
-                   </td>
-                 </tr>
-                 <tr>
-                     <td colspan="2" style="float:right"><span style="font-size:15px;float:right">24x7 Call us (123)1234567</span></td>
-                 </tr>
-             </table>
+       <div class="header-temp">
+            <span>Driver Register</span>
         </div>
-        <br/>
         
-        <center>
-        <div><span style="font-size:20px">Driver Registration</span></div>
-            </center>
-        <br/>
-        <center>
-        <table>
-        
-            <tr>
-                <td>
-                   <label for="txtName2" style="font-size:13px">Name:</label>
-                </td>
-                 <td>
-                     <input type="text" id="txtName2" placeholder="Name"/>
-                 </td>
-            </tr>
-            <tr>
-                <td>
-                </td>
-                <td>
-                     <label id="lblName" style="color:red;font-size:10px"></label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                   <label for="txtAddress1" style="font-size:13px">Address1:</label> 
-                </td>
-                <td>
-                   <input type="text" id="txtAddress1" placeholder="Address1"/>  
-                </td>
-            </tr>
-            <tr>
-                <td>
-                </td>
-                <td>
-                     <label id="lblAddress1" style="color:red;font-size:10px"></label>
-                </td>
-            </tr>
+        <div id="container" align="center">
+            <input type="text" id="txt1" placeholder="Name"/><br/>
+            <label id="lblName" style="color:red;font-size:10px"></label>
             
-            <tr>
-                <td>
-                    <label for="txtAddress2" style="font-size:13px">Address2:</label>
-                </td>
-                <td>
-                    <input type="text" id="txtAddress2" placeholder="Address2"/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                </td>
-                <td>
-                     <label id="lblAddress2" style="color:red;font-size:10px"></label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="txtPostcode" style="font-size:13px">Postcode:</label>
-                </td>
-                <td>
-                  <input type="text" id="txtPostcode" placeholder="Postcode" maxlength="9"/>  
-                </td>
-            </tr>
-            <tr>
-                <td>
-                </td>
-                <td>
-                     <label id="lblPostcode" style="color:red;font-size:10px"></label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                </td>
-                <td>
-                     <label id="lblPostcodeVerification" style="color:red;font-size:10px"></label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="txtMno2" style="font-size:13px">MobileNo:</label>
-                </td>
-                <td>
-                   <input type="text" id="txtMno2" placeholder="12 Digit Mobile No" maxlength="12"/>   
-                </td>
-            </tr>
-            <tr>
-                <td>
-                </td>
-                <td>
-                     <label id="lblMobileNo" style="color:red;font-size:10px"></label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                </td>
-                <td>
-                     <label id="lblMobileVeification" style="color:red;font-size:10px"></label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                   <label for="txtEmail2" style="font-size:13px">Email Id:</label> 
-                </td>
-                <td>
-                   <input type="text" id="txtEmail2" placeholder="Email Id"/>   
-                </td>
-            </tr>
-            <tr>
-                <td>
-                </td>
-                <td>
-                     <label id="lblEmail" style="color:red;font-size:10px"></label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                </td>
-                <td>
-                     <label id="lblEmailidVerification" style="color:red;font-size:10px"></label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                     <label for="txtpassword" style="font-size:13px">Password:</label> 
-                </td>
-                <td>
-                    <input type="password" id="txtpassword" placeholder="Password"/> 
-                </td>
-            </tr>
-            <tr>
-                <td>
-                </td>
-                <td>
-                     <label id="lblPassword" style="color:red;font-size:10px"></label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                  <label for="txtCpassword" style="font-size:13px">Confirm Password:</label>  
-                </td>
-                <td>
-                    <input type="password" id="txtCpassword" placeholder="Confirm Password"/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                </td>
-                <td>
-                     <label id="lblCpassword" style="color:red;font-size:10px"></label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                </td>
-                <td>
-                     <label id="lblPasswordVerification" style="color:red;font-size:10px"></label>
-                </td>
-            </tr>
-            <tr>
-                <td><label for="" style="font-size:13px">Image:</label></td>
-               
-             <td>
-               <input type="file" name="raghu" size="100"/>
-                 
-             </td>
-                
-                                
-            </tr>
-            <tr>
-                <td></td>
-                <td><input type="button" value="Register" onclick="create1()"/></td>
-            </tr>
+            <input type="text" id="txt4" placeholder="Address1"/><br/>
+             <label id="lblAddress1" style="color:red;font-size:10px"></label>
             
-        </table>
-            </center>
-        
-        
+            <input type="text" id="txt5" placeholder="Address2"/><br/>
+             <label id="lblAddress2" style="color:red;font-size:10px"></label>
+            
+            <input type="text" id="txt2" placeholder="Email"/><br/>
+           <label id="lblEmail" style="color:red;font-size:10px"></label><br/>
+            <label id="lblEmailVerification" style="color:red;font-size:10px"></label>
+            
+            <input type="text" id="txt3" placeholder="Contact number" maxlength="12"/><br/>
+             <label id="lblPhoneNo" style="color:red;font-size:10px"></label><br/>
+            <label id="lblphoneVerification" style="color:red;font-size:10px"></label>
+            
+           
+            <input type="text" id="txt6" placeholder="Postcode"/><br/>
+             <label id="lblPostcode" style="color:red;font-size:10px"></label>
+            
+            <input type="password" id="txt7" placeholder="Password"/><br/>
+             <label id="lblPassword" style="color:red;font-size:10px"></label>
+            
+            <input type="password" id="txt8" placeholder="Confirm password"/><br/>
+             <label id="lblConfirmPassword" style="color:red;font-size:10px"></label><br/>
+             <label id="lblPasswordVerification" style="color:red;font-size:10px"></label>
+        <div align="center">
+            <input type="button" class="btn-tmp" value="Submit" onclick="RegisterDriver();"/>
+        </div>
+        </div>  
         
     </body>
 </html>

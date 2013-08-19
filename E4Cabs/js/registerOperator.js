@@ -19,6 +19,17 @@ function Registeroperator()
                     return false;
                  }
     
+                if(!txt4)
+                 {
+                     $('#lblAddress1').text("*please enter the Address1");
+                    return false;
+                 }
+    
+                   if(!txt5)
+                 {
+                     $('#lblAddress2').text("*please enter the Address2");
+                    return false;
+                 }
                 if(!txt2)
                  {
                      $('#lblEmail').text("*please enter the Email Address");
@@ -30,9 +41,10 @@ function Registeroperator()
                          return false;
                        }
     
+    
                if(!txt3)
                  {
-                     $('#lblPhoneNo').text("*please enter the Phone Number");
+                     $('#lblPhoneNo').text("*please enter the Contact Number");
                     return false;
                  }
                  if(phoneno.test(txt3))
@@ -41,19 +53,12 @@ function Registeroperator()
                 }
                 else
                 {
-                    $('#lblphoneVerification').text("***Not a valid Mobile No.***");
+                    $('#lblphoneVerification').text("***Not a valid Contact No.***");
                     return false; 
                 }
-                   if(!txt4)
-                 {
-                     $('#lblAddress1').text("*please enter the Address1");
-                    return false;
-                 }
-                   if(!txt5)
-                 {
-                     $('#lblAddress2').text("*please enter the Address2");
-                    return false;
-                 }
+    
+                  
+    
                 if(!txt6)
                  {
                      $('#lblPostcode').text("*please enter the Postcode");
@@ -64,11 +69,13 @@ function Registeroperator()
                      $('#lblPassword').text("*please enter the Password");
                     return false;
                  }
+    
                  if(!txt8)
                  {
                      $('#lblConfirmPassword').text("*please enter the ConfirmPassword");
                     return false;
                  }
+    
                 if(txt7!=txt8)
                  {
                     $('#lblPasswordVerification').text("*Your Password Is Not Matching!");
@@ -84,10 +91,19 @@ $.ajax({
     contentType: "application/json; charset=utf-8",
     success: function (data) {
         alert('Registration successfull');
+        $('#txt1').val('');
+        $('#txt2').val('');
+        $('#txt3').val('');
+        $('#txt4').val('');
+        $('#txt5').val('');
+        $('#txt6').val('');
+        $('#txt7').val('');
+        $('#txt8').val('');
        
     },
     
-    error: function (XMLHttpRequest, textStatus, errorThrown) {
+    error: function (XMLHttpRequest, textStatus, errorThrown) 
+    {
         alert(errorThrown);
            }
        });    
