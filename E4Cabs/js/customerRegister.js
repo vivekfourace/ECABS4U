@@ -57,7 +57,6 @@ function Registercustomer()
                     $('#lblEmail').text("*please enter the Email Address");
                     return false;
                 }
-    
               if(txt5.length > 0)
                     {
                         $('#lblUserID').text(" ");

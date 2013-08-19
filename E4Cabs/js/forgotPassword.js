@@ -2,18 +2,25 @@ function forgotPassword()
             {
                 var pass=document.getElementById('txtEmail').value;
                 
-                var atpos=pass.indexOf("@");
-                var dotpos=pass.lastIndexOf(".");
-               if(!pass)
-                 {
-                    $('#lblEmailid').text("*Please Fill the EmailID.");
-                     return false;
-                 }
-                if (atpos<1 || dotpos<atpos+2 || dotpos+2>=pass.length)
-          {
-           $('#lblVerification').text("Not a valid e-mail address");
-           return false;
-          }
+                var regExpEmail = "^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$";
+              //Email Verification
+                
+                if(pass.length > 0)
+                    {
+                        if(pass.match(regExpEmail))
+                        {
+                            $('#lblEmailid').text(" ");
+                        }
+                        else{
+                            $('#lblEmailid').text("*please enter a valid Email address");
+                            return false;
+                        }
+                    }
+                else if(pass.length == 0)
+                {
+                    $('#lblEmailid').text("*please enter the Email Address");
+                    return false;
+                }
                 
               
                 $.ajax({
@@ -26,7 +33,10 @@ function forgotPassword()
                      {
                          alert("WELCOME!");
                          $('#txtEmail').val('');
-                     }
+                     },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+        alert(errorThrown);
+           }
                    
                 });
              }

@@ -9,78 +9,133 @@ function Registeroperator()
     var txt6 =$('#txt6').val();
     var txt7 =$('#txt7').val();
     var txt8 =$('#txt8').val();
-     var atpos=txt2.indexOf("@");
-    var dotpos=txt2.lastIndexOf(".");
+    var regExpEmail = "^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$";
     var phoneno =/^\d{12}$/;
     
-                if(!txt1)
+               
+                if(txt1.length > 0)
+                    {
+                        $('#lblName').text(" ");
+                    }
+                else if(txt1.length == 0)
                  {
                      $('#lblName').text("*please enter the Name");
                     return false;
                  }
     
-                if(!txt4)
+                
+              if(txt4.length > 0)
+                    {
+                        $('#lblAddress1').text(" ");
+                    }
+                else if(txt4.length == 0)
                  {
                      $('#lblAddress1').text("*please enter the Address1");
                     return false;
                  }
     
-                   if(!txt5)
+    
+                   
+    
+                if(txt5.length > 0)
+                    {
+                        $('#lblAddress2').text(" ");
+                    }
+                else if(txt5.length == 0)
                  {
                      $('#lblAddress2').text("*please enter the Address2");
                     return false;
                  }
-                if(!txt2)
-                 {
-                     $('#lblEmail').text("*please enter the Email Address");
-                    return false;
-                 }
-                 if (atpos<1 || dotpos<atpos+2 || dotpos+2>=txt2.length)
-                      {
-                         $('#lblEmailVerification').text("Not a valid e-mail address");
-                         return false;
-                       }
     
     
-               if(!txt3)
-                 {
-                     $('#lblPhoneNo').text("*please enter the Contact Number");
-                    return false;
-                 }
-                 if(phoneno.test(txt3))
+    
+               
+        if(txt2.length > 0)
+                    {
+                        if(txt2.match(regExpEmail))
+                        {
+                            $('#lblEmail').text(" ");
+                        }
+                        else
+                        {
+                            $('#lblEmail').text("*please enter a valid Email address");
+                             return false;
+                        }
+                    }
+                else if(txt2.length == 0)
                 {
+                    $('#lblEmail').text("*please enter the Email Address");
+                    return false;
+                }
+    
+    
+    
+    
+    
+     //validate Phone number.
+               if(txt3.length > 0)
+                    {
+                        if(phoneno.test(txt3))
+                        {
+                            $('#lblPhoneNo').text(" ");
+                        }
+                        else
+                        {
+                             $('#lblPhoneNo').text("*Please enter valid phone number");
+                            return false;
+                        }
+                    }
+                else if(txt3.length == 0)
+                {
+                     $('#lblPhoneNo').text("*please enter the phone number");
+                    return false;
+                }
                  
-                }
-                else
-                {
-                    $('#lblphoneVerification').text("***Not a valid Contact No.***");
-                    return false; 
-                }
-    
                   
     
-                if(!txt6)
+                 if(txt6.length > 0)
+                    {
+                        $('#lblPostcode').text(" ");
+                    }
+                else if(txt6.length == 0)
                  {
-                     $('#lblPostcode').text("*please enter the Postcode");
-                    return false;
-                 }
-                if(!txt7)
-                 {
-                     $('#lblPassword').text("*please enter the Password");
-                    return false;
-                 }
-    
-                 if(!txt8)
-                 {
-                     $('#lblConfirmPassword').text("*please enter the ConfirmPassword");
+                     $('#lblPostcode').text("*Please Fill the Postcode");
                     return false;
                  }
     
-                if(txt7!=txt8)
+    
+    
+               
+                 if(txt7.length > 0)
+                    {
+                        $('#lblPassword').text(" ");
+                    }
+                else if(txt7.length == 0)
                  {
-                    $('#lblPasswordVerification').text("*Your Password Is Not Matching!");
-                      return false;
+                     $('#lblPassword').text("*please enter password");
+                    return false;
                  }
+                
+ 
+                    if(txt8.length > 0)
+                    {
+                        if(txt7 == txt8)
+                        {
+                            $('#lblConfirmPassword').text(" ");
+                        }
+                        else
+                        {
+                            $('#lblConfirmPassword').text("Password mismatch!");
+                            return false;
+                        }
+                    }
+                else if(txt8.length == 0)
+                    {
+                        $('#lblConfirmPassword').text("*please enter the ConfirmPassword");
+                        return false;
+                    }
+    
+                
     
 
 $.ajax({

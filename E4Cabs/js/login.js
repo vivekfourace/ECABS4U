@@ -3,18 +3,26 @@
                var name=document.getElementById('txtUserID1').value;
                 var Password=document.getElementById('txtPassword').value;
               
-               if(!name)
-                 {
-                    $('#lblName').text("*Please Fill the Username.");
+               
+                if(name.length>0)
+                {
+                    $('#lblName').text("");
+                }
+                else if(name.length==0)
+                {
+                $('#lblName').text("Please Fill the Username.");
+                 return false;
+                }
+              if(Password.length>0)
+                {
+                    $('#lblPassword').text("");
+                    
+                }
+                 else if(Password.length==0) 
+                {
+                    $('#lblPassword').text("Please Fill the Password.");
                      return false;
-                 }
-                if(!Password)
-                 {
-                    $('#lblPassword').text("*Please Fill the Password.");
-                     return false;
-                 }
-              
-                  
+                }
          
                 $.ajax({                      
                     url :"http://115.115.159.126/ECabs/ECabs4U.asmx/UserLogin",
@@ -27,7 +35,7 @@
                      {
                          $('#txtPassword').val('');
                          $('#txtUserID1').val('');
-                        window.location="OperatorRegister.html";
+                        window.location="customerRegister.html";
                      },
                    error: function (XMLHttpRequest, textStatus, errorThrown) {
                     alert(errorThrown);
