@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="css/site.css" />
+        <link rel="stylesheet" type="text/css" href="css/datepickr.css" />
+        <script type="text/javascript" src="Scripts/datepickr.js"></script>
+        <title></title>
+        <script type="text/javascript">
+            new datepickr('datepick');
+            </script>
+    </head>
+    <body>
+        <div class="header-temp">
+            <div align="center">
+                <img class="img-tmp" src="img/site-logo.png"/>
+            </div>
+        </div>
+        <div style="margin:10px 0 5px 0;" align="center">
+            <span class="font-style">Book & Go >>></span>
+        </div>
+        <div style="margin-left:07px;">
+        <table width="100%" class="font-style">
+            <tr>
+                <td width="20%">Location:</td>          
+                <td width="70%"><select name="mydropdown">
+                    <option value="0">-select-</option>   
+                    <option value="1">hsr layout</option>
+                    <option value="2">marthahalli</option>
+                    <option value="3">kalamandir</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td width="20%">2nd Location:</td>
+                <td width="70%"><select name="mydropdown">
+                     <option value="0">-select-</option>   
+                    <option value="1">hsr layout</option>
+                    <option value="2">marthahalli</option>
+                    <option value="3">kalamandir</option>
+                    </select>               
+                     <input type="button" style="background-color:#FEEF00; color:black;" id="btnlocation" value="+Location" />
+                </td>
+            </tr>
+            <tr>
+                <td>Pick up Date:</td>
+                <td> <input type="date" name="fromDate" />
+                </td>
+            </tr>
+            <tr>
+                <td>Pick up Time:</td>
+                <td>
+                    <input type="text" id="txttimepicker">
+                </td>
+            </tr>
+            <tr>
+             <td>Passengers:</td>
+                <td>
+             <select name="mydropdown">
+                 <option value="1">1</option>
+                 <option value="2">2</option>
+                 <option value="3">3</option>
+                 <option value="4">4</option>
+                 <option value="5">5</option>
+                 <option value="6">6</option>
+            </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Large Case:</td>
+                <td><select name="mydropdown">
+                <option value="0">0</option>
+                 <option value="1">1</option>
+                 <option value="2">2</option>
+                 <option value="3">3</option>
+                 <option value="4">4</option>
+                 <option value="5">5</option>
+                 <option value="6">6</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Small Case:</td>
+                <td><select name="mydropdown">
+            <option value="0">0</option>
+             <option value="1">1</option>
+             <option value="2">2</option>
+             <option value="3">3</option>
+             <option value="4">4</option>
+             <option value="5">5</option>
+             <option value="6">6</option>
+        </select> 
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                     <input type="button" id="btnspecial" style="background-color:#FEEF00; color:black;" value="Special Requirement" onclick="redirects();"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                     Pay: 
+                    <input type="radio" id="radCash" name="paymentmode" value="cash">Cash
+                    <input type="radio" id="radCard" name="paymentmode" value="card">Card
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    </td>
+                <td>
+                    <input type="button" id="btnsearch" style="background-color:#FEEF00; color:black;" value="Search" onclick="redirect();"/>
+                    <input type="button" id="btncancel" style="background-color:#FEEF00; color:black;" value="Cancel" onclick="reset();"/>
+                </td>
+               
+            </tr>
+            
+        </table>
+            </div>
+        </body>
+</html>

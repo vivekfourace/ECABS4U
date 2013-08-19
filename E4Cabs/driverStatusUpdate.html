@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/site.css" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <script type="text/javascript" src="js/driverStatusUpdate.js"></script>        
+        <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
+        <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        <title></title>
+    </head>
+    <body>
+        <div class="header-temp">
+            <div align="center">
+                <img class="img-tmp" src="img/site-logo.png"/>
+            </div>
+        </div>
+        <div style="margin:10px 0 5px 0;" align="center">
+            <span class="font-style">Update status</span>
+        </div>
+        <center>           
+        <div align="left" class="font-style" style="padding-left:10%;margin-bottom:40px">
+            <h3>Current Status :</h3>
+            <label class="font-style" style="color:blue;text-decoration:none" id="lblCurrentStatus" />
+         </div>
+            
+            <input type="button" class="btn-tmp cursor" value="Engaged" onclick="engage();"/>
+            <input type="button" class="btn-tmp cursor" value="Available" onclick="available();"/>
+            <input type="button" class="btn-tmp cursor" value="On the way" onclick="onTheWay();"/>
+            <input type="button" class="btn-tmp cursor" value="Rejected" onclick="rejected();"/>
+         </center>
+    </body>
+</html>
