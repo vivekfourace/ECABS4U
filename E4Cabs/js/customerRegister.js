@@ -68,7 +68,7 @@ function Registercustomer()
                     return false;
                  }
     
-    if(txt7!=txt8)
+           if(txt7!=txt8)
                  {
                     $('#lblVerification').text("*Your Password Is Not Matching!");
                       return false;
@@ -82,6 +82,15 @@ $.ajax({
     contentType: "application/json; charset=utf-8",
     success: function (data) {
         alert('Registration successfull');
+        $('#txt1').val('');
+        $('#txt2').val('');
+        $('#txt3').val('');
+        $('#txt4').val('');
+        $('#txt5').val('');
+        $('#txt6').val('');
+        $('#txt7').val('');
+        $('#txt8').val('');
+       
        
     },
     
