@@ -1,4 +1,3 @@
-
 function Registercustomer()
 {
     var txt1 =$('#txt1').val();
@@ -9,8 +8,6 @@ function Registercustomer()
     var txt6 =$('#txt6').val();
     var txt7 =$('#txt7').val();
     var txt8 =$('#txt8').val();
-    //var atpos=txt4.indexOf("@");
-    //var dotpos=txt4.lastIndexOf(".");
     var regExpEmail = "^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$";
     var phoneno =/^\d{12}$/;
     
@@ -60,33 +57,50 @@ function Registercustomer()
                     $('#lblEmail').text("*please enter the Email Address");
                     return false;
                 }
-              
-            if(!txt5)
+              if(txt5.length > 0)
+                    {
+                        $('#lblUserID').text(" ");
+                    }
+                else if(txt5.length == 0)
                  {
                      $('#lblUserID').text("*please enter the User ID");
                     return false;
                  }
+    
           if(!txt6)
                  {
                      $('#lblPostcode').text("*please enter the Postcode");
                     return false;
                  }
-           if(!txt7)
+    
+                if(txt7.length > 0)
+                    {
+                        $('#lblPassword').text(" ");
+                    }
+                else if(txt7.length == 0)
                  {
-                     $('#lblPassword').text("*please enter the Password");
-                    return false;
-                 }
-            if(!txt8)
-                 {
-                     $('#lblConfirmPassword').text("*please enter the ConfirmPassword");
+                     $('#lblPassword').text("*please enter password");
                     return false;
                  }
     
-           if(txt7!=txt8)
-                 {
-                    $('#lblVerification').text("*Your Password Is Not Matching!");
-                      return false;
-                 }
+                if(txt8.length > 0)
+                    {
+                        if(txt7 == txt8)
+                        {
+                            $('#lblConfirmPassword').text(" ");
+                        }
+                        else
+                        {
+                            $('#lblConfirmPassword').text("Password mismatch!");
+                            return false;
+                        }
+                    }
+                else if(txt8.length == 0)
+                    {
+                        $('#lblConfirmPassword').text("*please enter the ConfirmPassword");
+                        return false;
+                    }
+    
 
 $.ajax({
     url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RegisterCustomer",
