@@ -118,8 +118,6 @@ $.ajax({
         $('#txt6').val('');
         $('#txt7').val('');
         $('#txt8').val('');
-       
-       
     },
     
     error: function (XMLHttpRequest, textStatus, errorThrown) {

@@ -10,6 +10,9 @@
         <title></title>
         <script type="text/javascript">
             new datepickr('datepick');
+            function redirects(){
+                window.location ="specialRequirement.html";
+            }
             </script>
     </head>
     <body>
@@ -25,21 +28,15 @@
         <table width="100%" class="font-style">
             <tr>
                 <td width="20%">Location:</td>          
-                <td width="70%"><select name="mydropdown">
+                <td width="70%"><select id="ddl2">
                     <option value="0">-select-</option>   
-                    <option value="1">hsr layout</option>
-                    <option value="2">marthahalli</option>
-                    <option value="3">kalamandir</option>
                     </select>
                 </td>
             </tr>
             <tr>
                 <td width="20%">2nd Location:</td>
-                <td width="70%"><select name="mydropdown">
-                     <option value="0">-select-</option>   
-                    <option value="1">hsr layout</option>
-                    <option value="2">marthahalli</option>
-                    <option value="3">kalamandir</option>
+                <td width="70%"><select id="ddl1">
+                    <option value="0">--Select--</option>
                     </select>               
                      <input type="button" style="background-color:#FEEF00; color:black;" id="btnlocation" value="+Location" />
                 </td>
