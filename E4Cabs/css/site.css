@@ -120,6 +120,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#959595', end
     margin:4px 4px 4px 4px;
     color:Black;
     text-align:center;
+    font-size:15px;
     padding-top:30px;
     cursor:pointer;
     text-decoration:none;

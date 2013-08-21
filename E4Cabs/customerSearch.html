@@ -5,14 +5,20 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <link rel="stylesheet" type="text/css" href="css/site.css" />
-        <link rel="stylesheet" type="text/css" href="css/datepickr.css" />
-        <script type="text/javascript" src="Scripts/datepickr.js"></script>
+       <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+       <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+       <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <title></title>
-        <script type="text/javascript">
-            new datepickr('datepick');
-            </script>
+        <script>
+  $(function() {
+    $( "#datepicker" ).datepicker({
+      numberOfMonths: 1,
+      showButtonPanel: true
+    });
+  });
+  </script>
     </head>
-    <body>
+    <body> 
         <div class="header-temp">
             <div align="center">
                 <img class="img-tmp" src="img/site-logo.png"/>
@@ -25,7 +31,8 @@
         <table width="100%" class="font-style">
             <tr>
                 <td width="20%">Location:</td>          
-                <td width="70%"><select name="mydropdown">
+                <td width="70%">
+                    <select name="mydropdown">
                     <option value="0">-select-</option>   
                     <option value="1">hsr layout</option>
                     <option value="2">marthahalli</option>
@@ -46,7 +53,7 @@
             </tr>
             <tr>
                 <td>Pick up Date:</td>
-                <td> <input type="date" name="fromDate" />
+                <td> <input type="text" id="datepicker" />
                 </td>
             </tr>
             <tr>
@@ -102,7 +109,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                     Pay: 
+                    <label id="lblPay">Pay:</label>
                     <input type="radio" id="radCash" name="paymentmode" value="cash">Cash
                     <input type="radio" id="radCard" name="paymentmode" value="card">Card
                 </td>
@@ -114,9 +121,7 @@
                     <input type="button" id="btnsearch" style="background-color:#FEEF00; color:black;" value="Search" onclick="redirect();"/>
                     <input type="button" id="btncancel" style="background-color:#FEEF00; color:black;" value="Cancel" onclick="reset();"/>
                 </td>
-               
             </tr>
-            
         </table>
             </div>
         </body>
