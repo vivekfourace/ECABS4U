@@ -1,22 +1,33 @@
 function Registercustomer()
 {
-    var txt1 =$('#txt1').val();
-    var txt2 =$('#txt2').val();
+    var N1 =$('#txt1').val();
+    var N2 =$('#txt2').val();
     var txt3 =$('#txt3').val();
     var txt4 =$('#txt4').val();
     var txt5 =$('#txt5').val();
-    var txt6 =$('#txt6').val();
+    var PO =$('#txt6').val();
     var txt7 =$('#txt7').val();
     var txt8 =$('#txt8').val();
-    var regExpEmail = "^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$";
-    var phoneno =/^\d{12}$/;
+    //var regExpEmail = "^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,4})$";
+     var  regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
+   var phoneno =/^\d{12}$/;
     
-               if(!txt1)
+               
+               if(N1.length > 0)
+                    {
+                        $('#lblFirstName').text(" ");
+                    }
+                else if(N1.length == 0)
                  {
                      $('#lblFirstName').text("*please enter the first name");
                     return false;
                  }
-               if(!txt2)
+              
+                if(N2.length > 0)
+                    {
+                        $('#lblLastName').text(" ");
+                    }
+                else if(N2.length == 0)
                  {
                      $('#lblLastName').text("*please enter the last name");
                     return false;
@@ -57,19 +68,25 @@ function Registercustomer()
                     $('#lblEmail').text("*please enter the Email Address");
                     return false;
                 }
-              if(txt5.length > 0)
+              
+          
+               if(PO.length > 0)
+                    {
+                        $('#lblPostcode').text(" ");
+                    }
+                else if(PO.length == 0)
+                 {
+                     $('#lblPostcode').text("*please enter the Postcode");
+                    return false;
+                 }
+    
+                if(txt5.length > 0)
                     {
                         $('#lblUserID').text(" ");
                     }
                 else if(txt5.length == 0)
                  {
                      $('#lblUserID').text("*please enter the User ID");
-                    return false;
-                 }
-    
-          if(!txt6)
-                 {
-                     $('#lblPostcode').text("*please enter the Postcode");
                     return false;
                  }
     
@@ -106,7 +123,7 @@ $.ajax({
     url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RegisterCustomer",
     type: "POST",
     dataType: "json",
-    data: "{ 'name': '" + txt1 + "','email': '" + txt2 + "','contactNumber': '" + txt3 + "','password': '" + txt4 + "','address1': '" + txt5 + "','address2': '" + txt6 + "','postcode': '" + txt7 + "'}",
+    data: "{ 'name': '" + N1 + "','email': '" + N2 + "','contactNumber': '" + txt3 + "','password': '" + txt4 + "','address1': '" + txt5 + "','address2': '" + PO + "','postcode': '" + txt7 + "'}",
     contentType: "application/json; charset=utf-8",
     success: function (data) {
         alert('Registration successfull');

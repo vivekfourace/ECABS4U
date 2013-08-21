@@ -1,29 +1,49 @@
 function Reset()
              {
-                 var old=document.getElementById('txtOld').value;
+               // var old=document.getElementById('txtOld').value;
                   var new1=document.getElementById('txtNew').value;
                 var confirm=document.getElementById('txtConform').value;
                  
-                 if(!old)
+                 
+                 //if(old.length > 0)
+                    //{
+                       // $('#lblOPass').text(" ");
+                   // }
+                //else if(old.length == 0)
+                 //{
+                    // $('#lblOPass').text("*please enter the Old Password.");
+                   // return false;
+                 //
+    
+              
+                 
+                 if(new1.length > 0)
+                    {
+                        $('#lblPassword').text(" ");
+                    }
+                else if(new1.length == 0)
                  {
-                    $('#lblOPass').text("*Please Fill the Old Password.");
-                     return false;
+                     $('#lblPassword').text("*please enter the  Password.");
+                    return false;
                  }
-                  if(!new1)
-                 {
-                    $('#lblPassword').text("*Please Fill the Password.");
-                     return false;
-                 }
-                  if(!confirm)
-                 {
-                    $('#lblConfirm').text("*Please Fill the Confirm Password.");
-                     return false;
-                 }
-               if(new1!=confirm)
-                 {
-                     $('#lblverification').text("Your Password Is Not Matching!");
-                      return false;
-                 }
+                  
+                 if(confirm.length > 0)
+                    {
+                        if(new1 == confirm)
+                        {
+                            $('#lblConfirmPassword').text(" ");
+                        }
+                        else
+                        {
+                            $('#lblConfirmPassword').text("Password mismatch!");
+                            return false;
+                        }
+                    }
+                else if(confirm.length == 0)
+                    {
+                        $('#lblConfirmPassword').text("*please enter the ConfirmPassword");
+                        return false;
+                    }
                  
                  $.ajax({
                      url:"",

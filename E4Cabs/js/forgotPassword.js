@@ -2,7 +2,8 @@ function forgotPassword()
             {
                 var pass=document.getElementById('txtEmail').value;
                 
-                var regExpEmail = "^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$";
+                //var regExpEmail = "^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$";
+                 var  regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
               //Email Verification
                 
                 if(pass.length > 0)
@@ -27,14 +28,15 @@ function forgotPassword()
                     url:"",
                     datatype:"json",
                     type:"POST",
-                    data:"",
+                    data:"{'emaiID':'"+pass+"'}",
                    contentType: "application/json; charset=utf-8", 
                     success: function(data)
                      {
                          alert("WELCOME!");
                          $('#txtEmail').val('');
                      },
-                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    error: function (XMLHttpRequest, textStatus, errorThrown) 
+                    {
         alert(errorThrown);
            }
                    
