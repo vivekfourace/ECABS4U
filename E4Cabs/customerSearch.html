@@ -10,13 +10,21 @@
        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <title></title>
         <script>
-  $(function() {
-    $( "#datepicker" ).datepicker({
-      numberOfMonths: 1,
-      showButtonPanel: true
-    });
-  });
-  </script>
+          $(function() {
+            $( "#datepicker" ).datepicker({
+              numberOfMonths: 1,
+              showButtonPanel: true,
+              dateFormat: 'dd/mm/yy'
+            });
+              var time = new Date();
+              var hrs = time.getHours();
+              var min = time.getMinustes();
+              var secnd = time.getSeconds();
+              if(time.getHours() > 12)
+                  hrs = hrs + 
+              $('#txttimepicker').val(time.getHours() + ":" + time.getMinutes());
+          });
+       </script>
     </head>
     <body> 
         <div class="header-temp">
