@@ -149,7 +149,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#959595', end
 }
 
 .font-style{
-    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;;
-    size:12px;
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size:16px;
     font-weight:bold;
 }
