@@ -3,20 +3,20 @@
 
 function engage()
 {
-    alert('engage');
+    $('#lblCurrentStatus').text("Engage");
 }
 
 function available()
 {
-    alert('available');    
+    $('#lblCurrentStatus').text("Available");
 }
 
 function onTheWay()
 {
-    alert('ontheway');    
+    $('#lblCurrentStatus').text("On the way");
 }
 
 function rejected()
 {
-          alert('rejected');  
+    $('#lblCurrentStatus').text("Rejected");
 }

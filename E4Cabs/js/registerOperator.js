@@ -1,4 +1,3 @@
-
 function Registeroperator()
 {
     var txt1 =$('#txt1').val();

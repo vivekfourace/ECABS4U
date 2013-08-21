@@ -48,15 +48,13 @@ function Reset()
                      url:"http://115.115.159.126/ECabs/ECabs4U.asmx/ChangePassword",
                      datatype:"POST",
                      type:"json",
-                     data:"{'userid':'"+UserID+"','newpassword':'"+new1+"'}",
+                     data:"{'userid':'"+UserID+"','currentPswd':'"+currentpwd+"','newpassword':'"+newPass+"'}",
                      contentType: "application/json; charset=utf-8",
                      
                      success: function(data)
                      {
                          
-                         alert("WELCOME!");
-                         $('#txtNew').val('');
-                         $('#txtConform').val('');
+                         alert("password changed successfully.");
                      }
                  });
                  
