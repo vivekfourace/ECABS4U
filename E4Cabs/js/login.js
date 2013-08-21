@@ -1,7 +1,6 @@
  function login()
             {
-               
-                var name=document.getElementById('txtUserName').value;
+                var name=document.getElementById('txtUserID1').value;
                 var Password=document.getElementById('txtPassword').value;
                 if(name.length > 0)
                 {
