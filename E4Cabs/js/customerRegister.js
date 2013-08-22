@@ -8,7 +8,6 @@ function Registercustomer()
     var PO =$('#txt6').val();
     var txt7 =$('#txt7').val();
     var txt8 =$('#txt8').val();
-    //var regExpEmail = "^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,4})$";
      var  regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
    var phoneno =/^\d{12}$/;
     
@@ -70,15 +69,15 @@ function Registercustomer()
                 }
               
           
-               if(PO.length > 0)
-                    {
-                        $('#lblPostcode').text(" ");
-                    }
-                else if(PO.length == 0)
-                 {
-                     $('#lblPostcode').text("*please enter the Postcode");
-                    return false;
-                 }
+               //if(PO.length > 0)
+                  //  {
+                      //  $('#lblPostcode').text(" ");
+                    //}
+               // else if(PO.length == 0)
+                // {
+                   //  $('#lblPostcode').text("*please enter the Postcode");
+                    //return false;
+                // }
     
                 if(txt5.length > 0)
                     {
@@ -123,24 +122,45 @@ $.ajax({
     url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RegisterCustomer",
     type: "POST",
     dataType: "json",
-    data: "{ 'name': '" + N1 + "','email': '" + N2 + "','contactNumber': '" + txt3 + "','password': '" + txt4 + "','address1': '" + txt5 + "','address2': '" + PO + "','postcode': '" + txt7 + "'}",
+    data: "{ 'fname': '" + N1 + "','lname': '" + N2 + "','email':'"+txt4+"','userID':'"+txt5+"','password':'"+txt7+"','contactNumber': '" + txt3 + "'}",
     contentType: "application/json; charset=utf-8",
-    success: function (data) {
-        alert('Registration successfull');
-        $('#txt1').val('');
-        $('#txt2').val('');
-        $('#txt3').val('');
-        $('#txt4').val('');
-        $('#txt5').val('');
-        $('#txt6').val('');
-        $('#txt7').val('');
-        $('#txt8').val('');
+    success: OnValidate,
        
+        
+       // $('#txt1').val('');
+       // $('#txt2').val('');
+       // $('#txt3').val('');
+       // $('#txt4').val('');
+       // $('#txt5').val('');
+       // $('#txt6').val('');
+       // $('#txt7').val('');
+       // $('#txt8').val('');
+       // if(lblsuccess!=0)
+       // {
+       //     $("#link2").show();
+       //      $("#link1").show();
+       // }
+       //
        
-    },
-    
     error: function (XMLHttpRequest, textStatus, errorThrown) {
         alert(errorThrown);
            }
        });    
+}
+
+function OnValidate(data)
+{
+    if(data.d =="false")
+    {
+        $("#link2").show();
+        $('#lblMessage').text("Username already exist, enter another name!");
+        $('#lblMessage').css("color","red");
+    }
+    else
+    {
+        $("#link2").show();
+        $('#lblMessage').text("Registration successful,");
+        $('#lblMessage').css("color","green");
+        $("#link1").show();
+    }
 }
