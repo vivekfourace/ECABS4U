@@ -9,7 +9,7 @@ function userid()
     }
     else if(user.length==0)
     {
-        $('#lblUserID').text("please enter the User ID");
+        $('#lblUserID').text("*Please enter the User ID");
         return false;
     }
     
