@@ -15,10 +15,11 @@
                 <img class="img-tmp" src="img/site-logo.png"/>
             </div>
         </div>
-        <div style="margin:10px 0 5px 0;" align="center">
-            <span class="font-style">Login</span>
+        <div style="margin:20px 0 5px 0;" align="center">
+            <span class="font-style"><h2>Login</h2></span>
         </div>
-       <table style="width:100%;padding-top:10%">
+       <table style="width:100%;">
+           
            <tr>
                 <td align="center">
                     <input type="text" id="txtUserID1" placeholder="Username"/>                    
@@ -26,7 +27,7 @@
             </tr>
             <tr>
                 <td align="center">
-                     <label id="lblName" style="color:red;font-size:10px"></label>
+                     <label id="lblName" style="color:#D70007;font-size:12px"></label>
                 </td>
             </tr>
             <tr>
@@ -36,7 +37,7 @@
             </tr>
             <tr>
                 <td align="center">
-                     <label id="lblPassword" style="color:red;font-size:10px"></label>
+                     <label id="lblPassword" style="color:#D70007;font-size:12px"></label>
                 </td>
             </tr>
             
@@ -50,6 +51,9 @@
                     <label id="lblmsg" />
                 </td>
             </tr>
+           <tr id="lblDisplay" style="display:none">
+               <td align="center"><label id="lblMsg" value=""></label></td>
+           </tr>
             <tr>
                 <td align="center">
                     <a href="forgotPassword.html">Forgot password</a>
