@@ -9,19 +9,20 @@ function forgotPassword()
                     {
                         if(pass.match(regExpEmail))
                         {
-                            $('#lblEmailid').text(" ");
+                            $('#lblMsg').text(" ");
                         }
                         else{
-                            $('#lblEmailid').text("*please enter a valid Email address");
+                            $('#lblMsg').text("Please enter a valid email address!");
+                            $('#lblMsg').css("color","#D70007");
                             return false;
                         }
                     }
                 else if(pass.length == 0)
                 {
-                    $('#lblEmailid').text("*please enter the Email Address");
+                    $('#lblMsg').text("Please enter email address!");
+                    $('#lblMsg').css("color","#D70007");                    
                     return false;
                 }
-                
               
                 $.ajax({
                     url:"",
@@ -29,14 +30,21 @@ function forgotPassword()
                     type:"POST",
                     data:"",
                    contentType: "application/json; charset=utf-8", 
-                    success: function(data)
-                     {
-                         alert("WELCOME!");
-                         $('#txtEmail').val('');
-                     },
+                    success: CheckMsg,
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
-        alert(errorThrown);
-           }
-                   
-                });
-             }
+                    alert(errorThrown);
+                       }
+                      });
+                    }
+
+function CheckMsg(data){
+    if(data.d[0] == "false")
+    {
+        $('#lblMsg').text("Incorrect Email id");
+        $('#lblMsg').css("color","#D70007");
+        $('#lblMsg').css("font-size","13");
+    }
+    else{
+        //diplay user after fetching from db.
+            }
+ }

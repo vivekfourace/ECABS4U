@@ -4,20 +4,20 @@
                 var password=document.getElementById('txtPassword').value;
                 if(name.length > 0)
                 {
-                    $('#lblName').text("");
+                    $('#lblMsg').text("");
                 }
                 else if(name.length==0)
                 {
-                $('#lblName').text("Please enter username.");
+                $('#lblMsg').text("Please enter username.");
                  return false;
                 }
               if(password.length>0)
                 {
-                    $('#lblPassword').text("");
+                    $('#lblMsg').text("");
                 }
                  else if(password.length == 0) 
                 {
-                    $('#lblPassword').text("Please enter password.");
+                    $('#lblMsg').text("Please enter password.");
                      return false;
                 }
                 
@@ -45,7 +45,7 @@ function CheckMsg(data)
         $('#lblMsg').css("font-size","13");
     }
     else{
-       // var userID = data.d[0];
+           var userID = data.d[0];
         var roleID = parseInt(data.d[1]);
         alert(data.d[1]);
        var relatedID = parseInt(data.d[2]);
@@ -68,14 +68,12 @@ function CheckMsg(data)
             
             //Role 3 --> Driver
             case 3:
-            window.location = "driverStatusUpdate.html";
+            window.location= "driverStatusUpdate.html";
             break;
             
             //Role 4 --> Customer
             case 4:
-            window.location.href = "customerSearch.html";
-            break;
-            default:
+            window.location = "customerSearch.html";
             break;
         }
     }

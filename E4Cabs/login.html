@@ -10,61 +10,22 @@
             <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
     </head>
     <body>
-        <div class="header-temp">
-            <div style="margin-left:15px;float:left">
-                <img class="img-tmp" src="img/site-logo.png" style="width:100px"/>
-            </div>
-        </div>
-        <div style="margin:20px 0 5px 0;" align="center">
-            <span class="font-style"><h2>Login</h2></span>
-        </div>
-       <table style="width:100%;">
-           
-           <tr>
-                <td align="center">
-                    <input type="text" id="txtUserName" placeholder="Username"/>                    
-                </td>
-            </tr>
-            <tr>
-                <td align="center">
-                     <label id="lblName" style="color:#D70007;font-size:12px"></label>
-                </td>
-            </tr>
-            <tr>
-                <td align="center">
-                    <input type="password" id="txtPassword" placeholder="Password"/>
-                </td>
-            </tr>
-            <tr>
-                <td align="center">
-                     <label id="lblPassword" style="color:#D70007;font-size:12px"></label>
-                </td>
-            </tr>
+        <center>
+        <div class="header-temp"><span>Login</span></div>             
+        <div style="height:100px;width:100%;margin-top:20px;margin-bottom:30px">
+            <div><img src="img/site-logo.png" class="logo"/></div>
+            <span style="color:#0C9516" class="slogan">'Save Money - Save Time - Save The Planet'</span>
+        </div>            
+        <div style="margin-bottom:5px;"><label id="lblMsg" style="color:#D70007;font-size:12px"></label></div>
             
-            <tr>
-                <td align="center">
-                   <input type="button" class="btn-tmp cursor" value="Sign In" onclick="login()" />
-                </td>                
-            </tr> 
-            <tr>
-                <td>
-                    <label id="lblmsg" />
-                </td>
-            </tr>
-           <tr id="lblDisplay" style="display:none">
-               <td align="center"><label id="lblMsg" value=""></label></td>
-           </tr>
-            <tr>
-                <td align="center">
-                    <a href="forgotPassword.html">Forgot password</a>
-                    
-                    </td>
-                </tr>
-           <tr>
-               <td align="center">
-                   <a href="forgotUserId.html">Forgot UserID</a>
-               </td>
-           </tr>
-        </table> 
+        <div><input type="text" id="txtUserName" placeholder="Username"/></div>
+        <div><input type="password" id="txtPassword" placeholder="Password"/></div>
+        <div style="margin-top:10px;"><input type="button" class="btn-tmp cursor" value="Sign In" onclick="login()" /></div>
+            
+        <div style="margin-top:50px">
+            <a href="forgotPassword.html">Forgot password</a>
+            <a href="forgotUserId.html">Forgot UserID</a>
+        </div>
+         </center>       
     </body>
 </html>
