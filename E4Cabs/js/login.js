@@ -14,9 +14,8 @@
               if(password.length>0)
                 {
                     $('#lblPassword').text("");
-                    
                 }
-                 else if(password.length==0) 
+                 else if(password.length == 0) 
                 {
                     $('#lblPassword').text("Please enter password.");
                      return false;
@@ -29,6 +28,7 @@
                      data:"{'username':'" +name+ "','userpassword':'" +password+ "'}",
                      contentType: "application/json; charset=utf-8",                     
                      success: CheckMsg,
+                    
                      error: function (XMLHttpRequest, textStatus, errorThrown) {
                      alert(errorThrown);
                 }
@@ -45,12 +45,14 @@ function CheckMsg(data)
         $('#lblMsg').css("font-size","13");
     }
     else{
-        // var userID = data.d[0];
+       // var userID = data.d[0];
         var roleID = parseInt(data.d[1]);
-        //var relatedID = data.d[2];
-        // Session["UserID"] = userID;
-        //Session["RoleID"] = roleID;
-        //Session["RelatedID"] = relatedID;
+        alert(data.d[1]);
+       var relatedID = parseInt(data.d[2]);
+        
+       // Session["UserID"] = userID;
+      //  Session["RoleID"] = roleID;
+       // Session["RelatedID"] = relatedID;
         
         switch(roleID)
         {
@@ -61,7 +63,7 @@ function CheckMsg(data)
             //Role 2 --> Operator
             case 2: alert('operator dash');
             
-            //window.location = "";
+            window.location = "OperatorProfile.html";
             break;
             
             //Role 3 --> Driver
