@@ -88,21 +88,21 @@ background-image: -webkit-gradient(
 
 input[type="text"]:focus{
     border-radius:8px;
-    background-color:White;
+    background-color:#E0E0E0;
     border:1px solid blue;
     border-collapse:collapse;
-    border:1px solid #16C5C5;
-    box-shadow: 0 0 12px #8EE9E9;
+    border:1px solid #E95045;
+    box-shadow: 0 0 12px #E95045;
     outline:none;
 }
 
 input[type="password"]:focus{
     border-radius:8px;
-    background-color:White;
+    background-color:#E0E0E0;
     border:1px solid blue;
     border-collapse:collapse;
-    border:1px solid #16C5C5;
-    box-shadow: 0 0 12px #8EE9E9;
+    border:1px solid #E95045;
+    box-shadow: 0 0 12px #E95045;
     outline:none;  
 }
      ::-webkit-input-placeholder {
@@ -150,6 +150,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#959595', end
 
 .font-style{
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;;
-    size:12px;
     font-weight:bold;
+    color:Black;
 }

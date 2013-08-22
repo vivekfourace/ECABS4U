@@ -39,7 +39,10 @@ function CheckMsg(data)
 {
     if(data.d[0] == "false")
     {
-        alert("Incorrect username or password");
+        $('#lblDisplay').show();
+        $('#lblMsg').text("Incorrect usename or password!");
+        $('#lblMsg').css("color","#D70007");
+        $('#lblMsg').css("font-size","13");
     }
     else{
         // var userID = data.d[0];
@@ -56,13 +59,14 @@ function CheckMsg(data)
             
             break;
             //Role 2 --> Operator
-            case "2": alert('operator dash');
+            case 2: alert('operator dash');
+            
             //window.location = "";
             break;
             
             //Role 3 --> Driver
-            case "3":
-            window.location.href = "driverStatusUpdate.html";
+            case 3:
+            window.location = "driverStatusUpdate.html";
             break;
             
             //Role 4 --> Customer
