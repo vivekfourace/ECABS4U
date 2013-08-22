@@ -5,7 +5,7 @@
                 if(name.length > 0)
                 {
                     $('#lblName').text("");
-                    return true;
+                    
                 }
                 else if(name.length==0)
                 {
@@ -15,7 +15,7 @@
               if(password.length>0)
                 {
                     $('#lblPassword').text("");
-                    return true;
+                   
                     
                 }
                  else if(password.length==0) 
@@ -28,16 +28,19 @@
                 $.ajax(url,{                      
                      type:"POST",
                      datatype:"json",
-                     data:"{'username':'"+name+"','userpassword':'"+Password+"'}",
+                     data:"{'username':'"+name+"','userpassword':'"+password+"'}",
                      contentType: "application/json; charset=utf-8",                     
                      success: function(data)
                      {
-                         alert(data);
-                        window.location="customerRegister.html";
+                         alert("vikas");
+                         //need to take the id of that user which has loged in....
+                        window.location="OperatorProfile.html";
+                         
                      },
                    error: function (XMLHttpRequest, textStatus, errorThrown) {
                     alert(errorThrown);
                 }
                
                  });
+               
                 }

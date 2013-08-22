@@ -5,6 +5,7 @@
         <link rel="stylesheet" type="text/css" href="css/site.css" />
         <script type="text/javascript" src="js/registerOperator.js"></script>        
         <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
+        <script type="text/javascript" src="js/OperatorProfile.js"></script>
         <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
     </head>
     
@@ -19,30 +20,30 @@
         </div>
         
         <div id="container" align="center">
-            <input type="text" id="txt1" placeholder="Name"/><br/>
+            <input type="text" id="txtName" placeholder="Name"/><br/>
             <center><label id="lblName" style="color:red;font-size:10px"></label></center>
             
-            <input type="text" id="txt4" placeholder="Address1"/><br/>
-             <center><label id="lblAddress1" style="color:red;font-size:10px"></label></center>
-            
-            <input type="text" id="txt5" placeholder="Address2"/><br/>
-             <center><label id="lblAddress2" style="color:red;font-size:10px"></label></center>
-            
-            <input type="text" id="txt2" placeholder="Email"/><br/>
+             <input type="text" id="txtEmail" placeholder="Email"/><br/>
            <center><label id="lblEmail" style="color:red;font-size:10px"></label></center>
             
-            <input type="text" id="txt3" placeholder="Contact number" maxlength="12"/><br/>
+             <input type="text" id="txtUserID" placeholder="UserID"/><br/>
+           <center><label id="lblUserID" style="color:red;font-size:10px"></label></center>
+        
+            <input type="password" id="txtPassword" placeholder="Password"/><br/>
+            <center><label id="lblPassword" style="color:red;font-size:10px"></label></center>
+            
+             <input type="password" id="txtConfirmPass" placeholder="Confirm password"/><br/>
+             <center><label id="lblConfirmPassword" style="color:red;font-size:10px"></label></center>
+            
+             <input type="text" id="txtContact" placeholder="Contact number" maxlength="12"/><br/>
              <center><label id="lblPhoneNo" style="color:red;font-size:10px"></label></center>
             
+            <input type="text" id="txtAddress1" placeholder="Address1"/><br/>
+             <center><label id="lblAddress1" style="color:red;font-size:10px"></label></center>
+            
+            <input type="text" id="txtAddress2" placeholder="Address2"/><br/>
+             <center><label id="lblAddress2" style="color:red;font-size:10px"></label></center>
            
-            <input type="text" id="txt6" placeholder="Postcode"/><br/>
-             <center><label id="lblPostcode" style="color:red;font-size:10px"></label></center>
-            
-            <input type="password" id="txt7" placeholder="Password"/><br/>
-             <center><label id="lblPassword" style="color:red;font-size:10px"></label></center>
-            
-            <input type="password" id="txt8" placeholder="Confirm password"/><br/>
-             <center><label id="lblConfirmPassword" style="color:red;font-size:10px"></label></center>
         <div align="center">
             
             <input type="button" class="btn-tmp cursor" value="Register" onclick="Registeroperator();"/>
