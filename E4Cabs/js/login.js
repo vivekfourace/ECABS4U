@@ -5,7 +5,6 @@
                 if(name.length > 0)
                 {
                     $('#lblName').text("");
-                    
                 }
                 else if(name.length==0)
                 {
@@ -15,7 +14,6 @@
               if(password.length>0)
                 {
                     $('#lblPassword').text("");
-                   
                     
                 }
                  else if(password.length==0) 
@@ -28,19 +26,55 @@
                 $.ajax(url,{                      
                      type:"POST",
                      datatype:"json",
-                     data:"{'username':'"+name+"','userpassword':'"+password+"'}",
+                     data:"{'username':'" +name+ "','userpassword':'" +password+ "'}",
                      contentType: "application/json; charset=utf-8",                     
-                     success: function(data)
-                     {
-                         alert("vikas");
-                         //need to take the id of that user which has loged in....
-                        window.location="OperatorProfile.html";
-                         
-                     },
-                   error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    alert(errorThrown);
+                     success: CheckMsg,
+                     error: function (XMLHttpRequest, textStatus, errorThrown) {
+                     alert(errorThrown);
                 }
-               
-                 });
-               
-                }
+             });
+           }
+
+function CheckMsg(data)
+{
+    if(data.d[0] == "false")
+    {
+        $('#lblDisplay').show();
+        $('#lblMsg').text("Incorrect usename or password!");
+        $('#lblMsg').css("color","#D70007");
+        $('#lblMsg').css("font-size","13");
+    }
+    else{
+        // var userID = data.d[0];
+        var roleID = parseInt(data.d[1]);
+        //var relatedID = data.d[2];
+        // Session["UserID"] = userID;
+        //Session["RoleID"] = roleID;
+        //Session["RelatedID"] = relatedID;
+        
+        switch(roleID)
+        {
+            //Role 1 --> Admin
+            case 1: alert('admin dash');
+            
+            break;
+            //Role 2 --> Operator
+            case 2: alert('operator dash');
+            
+            //window.location = "";
+            break;
+            
+            //Role 3 --> Driver
+            case 3:
+            window.location = "driverStatusUpdate.html";
+            break;
+            
+            //Role 4 --> Customer
+            case 4:
+            window.location.href = "customerSearch.html";
+            break;
+            default:
+            break;
+        }
+    }
+}
