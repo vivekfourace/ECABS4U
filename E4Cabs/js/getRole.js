@@ -6,16 +6,28 @@
                     contentType: "application/json; charset=utf-8",
                     success: function (data) {
                         var len = data.d.length;
+                        
+                        $('#msg').append('<table style="">')
                         for(var i=0; i<len; i++)
                         {
-                        //    $('#msg').append('<input type="text" id="' + data.d[i]["ID"] + '" value="' + data.d[i]["ID"] + '"/>' + '<input type="text" class="textbox" value="' + data.d[i]["RoleName"] + '"/> ' + '<input type="button" id="' + data.d[i]["ID"] + '" title="' + data.d[i]["ID"] + '" onclick="delete(data.d[i]["ID"]);" value="Delete"></input><br/>');
-                        $('#msg').append("<table><tr><td>" + data.d[i]["ID"] + "</td><td>" + data.d[i]["RoleName"] +"</td></tr></table>");
+                            var id = data.d[i]["ID"];
+                            $('#msg').append('<tr>')
+                            $('#msg').append("<td>" + data.d[i]["ID"] + "</td>")
+                            .append("<td>" + data.d[i]["RoleName"]+"</td>")
+                            .append("<td>" + '<input type="button" value="delete" id= "'+ data.d[i]["ID"] +'" onclick = "deleteFunc('+id+'); return false;" title= "'+data.d[i]["ID"]+'" />' + "</td>")
+                            .append('</tr>');
                         }
+                        $('#msg').append('</tr></table>')
+                        $('#role-temp').css("color","red")
+                        
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         alert(errorThrown);
                     }
                 });
                 
-                alert(result);
             }
+function deleteFunc(id)
+{
+    alert(id);
+}
