@@ -56,8 +56,9 @@ function CheckMsg(data)
             case 1: alert('admin dash');
             
             break;
-            case 2:
+            
             //Role 2 --> Operator
+            case 2:            
             window.location = 'OperatorProfile.html?id='+userID+'&rid='+roleID+'&rrid='+relatedID;
             break;
             
