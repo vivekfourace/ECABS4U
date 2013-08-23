@@ -1,24 +1,23 @@
  function login()
             {
-                var name=document.getElementById('txtUserID1').value;
+                var name=document.getElementById('txtUserName').value;
                 var password=document.getElementById('txtPassword').value;
                 if(name.length > 0)
                 {
-                    $('#lblName').text("");
+                    $('#lblMsg').text("");
                 }
                 else if(name.length==0)
                 {
-                $('#lblName').text("Please enter username.");
+                $('#lblMsg').text("Please enter username.");
                  return false;
                 }
               if(password.length>0)
                 {
-                    $('#lblName').text("");
-                    
+                    $('#lblMsg').text("");
                 }
-                 else if(password.length==0) 
+                 else if(password.length == 0) 
                 {
-                    $('#lblName').text("Please enter password.");
+                    $('#lblMsg').text("Please enter password.");
                      return false;
                 }
                 
@@ -29,6 +28,7 @@
                      data:"{'username':'" +name+ "','userpassword':'" +password+ "'}",
                      contentType: "application/json; charset=utf-8",                     
                      success: CheckMsg,
+                    
                      error: function (XMLHttpRequest, textStatus, errorThrown) {
                      alert(errorThrown);
                 }
@@ -40,17 +40,16 @@ function CheckMsg(data)
     if(data.d[0] == "false")
     {
         $('#lblDisplay').show();
-        $('#lblName').text("Incorrect usename or password!");
-        $('#lblName').css("color","#D70007");
-        $('#lblName').css("font-size","13");
+        $('#lblMsg').text("Incorrect usename or password!");
+        $('#lblMsg').css("color","#D70007");
+        $('#lblMsg').css("font-size","13");
     }
     else{
         var userID = data.d[0];
         var roleID = parseInt(data.d[1]);
-        var relatedID = data.d[2];
-        // Session["UserID"] = userID;
-        //Session["RoleID"] = roleID;
-        //Session["RelatedID"] = relatedID;
+        var relatedID = parseInt(data.d[2]);
+        
+      
         
         switch(roleID)
         {
@@ -59,21 +58,19 @@ function CheckMsg(data)
             
             break;
             //Role 2 --> Operator
-            case 2: 
+            case 2: alert('operator dash');
+            
             window.location = 'OperatorProfile.html?id='+userID+'&rid='+roleID+'&rrid='+relatedID;
-            alert(d.relatedID);
             break;
             
             //Role 3 --> Driver
             case 3:
-            window.location = "driverStatusUpdate.html";
+            window.location= "driverStatusUpdate.html";
             break;
             
             //Role 4 --> Customer
             case 4:
-            window.location.href = "customerSearch.html";
-            break;
-            default:
+            window.location = "customerSearch.html";
             break;
         }
     }

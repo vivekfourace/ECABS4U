@@ -5,34 +5,32 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <link rel="stylesheet" type="text/css" href="css/site.css" />
-        <link rel="stylesheet" type="text/css" href="css/datepickr.css" />
-        <script type="text/javascript" src="Scripts/datepickr.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
-</script>
+       <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+       <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+       <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <title></title>
-        <script type="text/javascript">
-            new datepickr('datepick');
-            
-             function add()
-                  {
-                        $("#2nd-loc").show();
-                      
-                      $("#locadd").css("display","none");
-                  }
-            function add2()
-            {
-               $("#3nd-loc").show();
-                
-                $("#locadd2").css("display","none");
-                $("#locadd2").css("width","160");
-            }
-          </script>
+        <script>
+          $(function() {
+            $( "#datepicker" ).datepicker({
+              numberOfMonths: 1,
+              showButtonPanel: true,
+              dateFormat: 'dd/mm/yy'
+            });
+              var time = new Date();
+              var hrs = time.getHours();
+              var min = time.getMinustes();
+              var secnd = time.getSeconds();
+              if(time.getHours() > 12)
+                  hrs = hrs + 
+              $('#txttimepicker').val(time.getHours() + ":" + time.getMinutes());
+          });
+       </script>
     </head>
-    <body>
-        <div class="header-temp">
-            <div align="center">
-                <img class="img-tmp" src="img/site-logo.png"/>
-            </div>
+    <body> 
+        <div class="header-temp"><span>Search</span></div>             
+        <div style="height:80px;width:100%;margin-bottom:30px">
+            <div style="padding-top:25px"><img src="img/site-logo.png" class="logo"/></div>
+            <span style="color:#0C9516" class="slogan">'Save Money - Save Time - Save The Planet'</span>
         </div>
         <div style="margin:10px 0 5px 0;" align="center">
             <span class="font-style">Book & Go >>></span>
@@ -40,8 +38,9 @@
         <div style="margin-left:07px;">
         <table width="100%" class="font-style">
             <tr>
-                <td width="20%">From:</td>          
-                <td width="70%"><select name="mydropdown">
+                <td width="20%">Location:</td>          
+                <td width="70%">
+                    <select name="mydropdown">
                     <option value="0">-select-</option>   
                     <option value="1">hsr layout</option>
                     <option value="2">marthahalli</option>
@@ -50,46 +49,19 @@
                 </td>
             </tr>
             <tr>
-                <td width="20%">To:</td>
+                <td width="20%">2nd Location:</td>
                 <td width="70%"><select name="mydropdown">
                      <option value="0">-select-</option>   
                     <option value="1">hsr layout</option>
                     <option value="2">marthahalli</option>
                     <option value="3">kalamandir</option>
-                    </select>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;               
-                    <button onclick="add();" id="locadd" style="background-color:#FEEF00; color:black;width:70px;">+Location</button>
+                    </select>               
+                     <input type="button" style="background-color:#FEEF00; color:black;" id="btnlocation" value="+Location" />
                 </td>
             </tr>
-            <tr>
-                    <td colspan="2" id="2nd-loc" width="100%" style="display:none">
-                        <table width="100%">
-                            <tr>
-                                <td width="20%">2nd Location:</td>
-                            <td style="padding-left:15px"><input type="text" id="loc2" placeholder="--Enter--" style="width:130px"/>&nbsp;&nbsp;<button onclick="add2();" id="locadd2" style="background-color:#FEEF00; color:black;width:70px;">+Location</button>
-                                
-                                </td>
-                                
-                            </tr>
-                        </table>
-                    
-                        
-                    <td>
-            </tr>
-            
-            <tr>
-                <td colspan="2" id="3nd-loc" width="100%" style="display:none">
-                    <table  width="100%">
-                        <tr>
-                            <td>3nd Location:</td>
-                            <td><input type="text" id="loc3" placeholder="--Enter--"/></td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            
             <tr>
                 <td>Pick up Date:</td>
-                <td> <input type="date" name="fromDate" />
+                <td> <input type="text" id="datepicker" />
                 </td>
             </tr>
             <tr>
@@ -145,7 +117,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                     Pay: 
+                    <label id="lblPay">Pay:</label>
                     <input type="radio" id="radCash" name="paymentmode" value="cash">Cash
                     <input type="radio" id="radCard" name="paymentmode" value="card">Card
                 </td>
@@ -157,12 +129,8 @@
                     <input type="button" id="btnsearch" style="background-color:#FEEF00; color:black;" value="Search" onclick="redirect();"/>
                     <input type="button" id="btncancel" style="background-color:#FEEF00; color:black;" value="Cancel" onclick="reset();"/>
                 </td>
-               
             </tr>
-            
         </table>
             </div>
-        
-        
         </body>
 </html>
