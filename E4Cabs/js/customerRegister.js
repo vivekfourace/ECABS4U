@@ -13,12 +13,12 @@ function Registercustomer()
     
                if(!txt1)
                  {
-                     $('#lblFirstName').text("*please enter the first name");
+                     $('#lblWarning').text("*Please enter the first name");
                     return false;
                  }
                if(!txt2)
                  {
-                     $('#lblLastName').text("*please enter the last name");
+                     $('#lblWarning').text("*Please enter the last name");
                     return false;
                  }
                 //validate Phone number.
@@ -26,17 +26,17 @@ function Registercustomer()
                     {
                         if(phoneno.test(txt3))
                         {
-                            $('#lblPhoneNo').text(" ");
+                            $('#lblWarning').text(" ");
                         }
                         else
                         {
-                             $('#lblPhoneNo').text("*Please enter valid phone number");
+                             $('#lblWarning').text("*Please enter valid phone number");
                             return false;
                         }
                     }
                 else if(txt3.length == 0)
                 {
-                     $('#lblPhoneNo').text("*please enter the phone number");
+                     $('#lblWarning').text("*Please enter the phone number");
                     return false;
                 }
     
@@ -45,41 +45,41 @@ function Registercustomer()
                     {
                         if(txt4.match(regExpEmail))
                         {
-                            $('#lblEmail').text(" ");
+                            $('#lblWarning').text(" ");
                         }
                         else{
-                            $('#lblEmail').text("*please enter a valid Email address");
+                            $('#lblWarning').text("*Please enter a valid Email address");
                             return false;
                         }
                     }
                 else if(txt4.length == 0)
                 {
-                    $('#lblEmail').text("*please enter the Email Address");
+                    $('#lblWarning').text("*Please enter the Email Address");
                     return false;
                 }
               if(txt5.length > 0)
                     {
-                        $('#lblUserID').text(" ");
+                        $('#lblWarning').text(" ");
                     }
                 else if(txt5.length == 0)
                  {
-                     $('#lblUserID').text("*please enter the User ID");
+                     $('#lblWarning').text("*Please enter the User ID");
                     return false;
                  }
     
           if(!txt6)
                  {
-                     $('#lblPostcode').text("*please enter the Postcode");
+                     $('#lblWarning').text("*Please enter the Postcode");
                     return false;
                  }
     
                 if(txt7.length > 0)
                     {
-                        $('#lblPassword').text(" ");
+                        $('#lblWarning').text(" ");
                     }
                 else if(txt7.length == 0)
                  {
-                     $('#lblPassword').text("*please enter password");
+                     $('#lblWarning').text("*Please enter password");
                     return false;
                  }
     
@@ -87,17 +87,17 @@ function Registercustomer()
                     {
                         if(txt7 == txt8)
                         {
-                            $('#lblConfirmPassword').text(" ");
+                            $('#lblWarning').text(" ");
                         }
                         else
                         {
-                            $('#lblConfirmPassword').text("Password mismatch!");
+                            $('#lblWarning').text("Password mismatch!");
                             return false;
                         }
                     }
                 else if(txt8.length == 0)
                     {
-                        $('#lblConfirmPassword').text("*please enter the ConfirmPassword");
+                        $('#lblWarning').text("*Please enter the confirmpassword");
                         return false;
                     }
     

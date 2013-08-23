@@ -45,11 +45,9 @@ function CheckMsg(data)
         $('#lblMsg').css("font-size","13");
     }
     else{
-       // var userID = data.d[0];
+        var userID = data.d[0];
         var roleID = parseInt(data.d[1]);
-        alert(data.d[1]);
-       var relatedID = parseInt(data.d[2]);
-        
+        var relatedID = parseInt(data.d[2]);
        // Session["UserID"] = userID;
       //  Session["RoleID"] = roleID;
        // Session["RelatedID"] = relatedID;
@@ -61,9 +59,9 @@ function CheckMsg(data)
             
             break;
             //Role 2 --> Operator
-            case 2: alert('operator dash');
+            case 2: alert('operator dash');             
             
-            window.location = "OperatorProfile.html";
+            window.location = 'OperatorProfile.html?id=' + userID +'&rid=' +roleID + '&rrid='+relatedID;             
             break;
             
             //Role 3 --> Driver
