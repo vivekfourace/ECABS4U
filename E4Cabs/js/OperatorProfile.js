@@ -13,10 +13,9 @@
                 $.ajax(url,{                      
                      type:"POST",
                      datatype:"json",
-                     data:"{'userID':'" +UID+ "'}",
+                     data:"{'userID':'" +relID+ "'}",
                      contentType: "application/json; charset=utf-8",                     
-                     success: Welcome(data),
-                    
+                     success: Welcome,                    
                      error: function (XMLHttpRequest, textStatus, errorThrown) {
                      alert(errorThrown);
                 }
@@ -24,9 +23,6 @@
 
 function Welcome(data)
 {
-    for(var i=0;i<data.d.length;i++)
-    {
-   document.getElementById("txtName").innerHTML =  data.d[i].OperatorName;    
-    }
-    
+    alert(data.d[0]["OperatorName"]);
+    $('#txtName').text(data.d[0]["OperatorName"]);
 }
