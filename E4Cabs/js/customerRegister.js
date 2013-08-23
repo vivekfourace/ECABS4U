@@ -162,5 +162,14 @@ function OnValidate(data)
         $('#lblMessage').text("Registration successful,");
         $('#lblMessage').css("color","green");
         $("#link1").show();
+        
+        $('#txt1').val('');
+      $('#txt2').val('');
+       $('#txt3').val('');
+      $('#txt4').val('');
+     $('#txt5').val('');
+       $('#txt6').val('');
+        $('#txt7').val('');
+        $('#txt8').val('');
     }
 }

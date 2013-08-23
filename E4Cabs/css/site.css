@@ -1,7 +1,9 @@
 .cursor{
  cursor:pointer;   
 }
-
+.hide{
+    display:none;
+}
 .header-temp{
      width:100%;
      height:50px;

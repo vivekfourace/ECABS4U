@@ -13,12 +13,12 @@
                 }
               if(password.length>0)
                 {
-                    $('#lblPassword').text("");
+                    $('#lblName').text("");
                     
                 }
                  else if(password.length==0) 
                 {
-                    $('#lblPassword').text("Please enter password.");
+                    $('#lblName').text("Please enter password.");
                      return false;
                 }
                 
@@ -40,14 +40,14 @@ function CheckMsg(data)
     if(data.d[0] == "false")
     {
         $('#lblDisplay').show();
-        $('#lblMsg').text("Incorrect usename or password!");
-        $('#lblMsg').css("color","#D70007");
-        $('#lblMsg').css("font-size","13");
+        $('#lblName').text("Incorrect usename or password!");
+        $('#lblName').css("color","#D70007");
+        $('#lblName').css("font-size","13");
     }
     else{
-        // var userID = data.d[0];
+        var userID = data.d[0];
         var roleID = parseInt(data.d[1]);
-        //var relatedID = data.d[2];
+        var relatedID = data.d[2];
         // Session["UserID"] = userID;
         //Session["RoleID"] = roleID;
         //Session["RelatedID"] = relatedID;
@@ -60,9 +60,8 @@ function CheckMsg(data)
             break;
             //Role 2 --> Operator
             case 2: 
-            //alert('operator dash');
-            
-            window.location = "";
+            window.location = 'OperatorProfile.html?id='+userID+'&rid='+roleID+'&rrid='+relatedID;
+            alert(d.relatedID);
             break;
             
             //Role 3 --> Driver

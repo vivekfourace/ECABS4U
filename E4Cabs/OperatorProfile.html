@@ -4,9 +4,12 @@
     <head>
         <link rel="stylesheet" type="text/css" href="css/site.css" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
+        <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
         <script type="text/javascript" src="js/OperatorProfile.js"></script>
     </head>
     <body>
+        <center>
         <div class="header-temp">
             <div style="margin-left:15px;float:left">
                 <img class="img-tmp" src="img/site-logo.png" style="width:100px"/>
@@ -16,39 +19,69 @@
         <label for="operator" style="font-size:18px;color:White;float:left;margin-top:10px;width:100%"><b>Operator Profile</b></label>
             </center>
        <hr>
-        <table style="margin-left:10%" cellspacing="20">
+        <div id="divShow">
+        <table style="margin-left:10%" cellspacing="10">
             <tr>
                 <td>
-                    <label id="lblName" class="font-style"><b>Name  :</b></label> 
+                    <label id="lname" class="font-style"><b>Name  :</b></label> 
+                   
                 </td>
                 <td>
-                    <label id="txtName" class="font-style"></label>
+                    <label id="lblname" class="font-style"></label>
+                      <input type="text" id="txtname" class="font-style" style="display:none"/>
                 </td>
+                 
             </tr>
              <tr>
                 <td>
-                    <label id="lblLocation" class="font-style"><b>Location  :</b></label> 
+                    <label id="lLocation" class="font-style"><b>Address1  :</b></label> 
                 </td>
                 <td>
-                    <label id="txtLocation" class="font-style"></label>
+                    <label id="lblLocation" class="font-style"></label>
+                       <input type="text" id="txtLocation" class="font-style" style="display:none"/>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <label id="lLocation2" class="font-style"><b>Address2  :</b></label> 
+                </td>
+                <td>
+                    <label id="lblLocation2" class="font-style"></label>
+                       <input type="text" id="txtLocation2" class="font-style" style="display:none"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label id="lblMobileNo" class="font-style"><b>Mobile No.  :</b></label> 
+                    <label id="lMobileNo" class="font-style"><b>Mobile No.  :</b></label> 
                 </td>
                 <td>
-                    <label id="txtMobileno" class="font-style"></label>
+                    <label id="lblMobileNo" class="font-style"></label>
+                       <input type="text" id="txtMobileno" class="font-style" style="display:none"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label id="lblEmailID" class="font-style"><b>Email ID  :</b></label> 
+                    <label id="lEmailID" class="font-style"><b>Email ID  :</b></label> 
                 </td>
                 <td>
-                    <label id="txtEmailID" class="font-style"></label>
+                    <label id="lblEmailID" class="font-style"></label>
+                       <input type="text" id="txtEmailID" class="font-style" style="display:none"/>
                 </td>
+            </tr>
+            <tr align="center">
+               
+                <td> 
+            
+                   
+        </td>
             </tr>
         </table>
-    </body>
+        </div>
+        <input id="btnEdit" type="button" class="btn-tmp cursor" value="Edit" onclick="EditProfile();"/>
+        <input id="btnUpdate" type="button" class="btn-tmp cursor" style="display:none" value="Update" onclick="UpdateProfile();"/>
+        <input id="btnCancel" type="button" class="btn-tmp cursor" style="display:none" value="Cancel" onclick="CancelProfile();"/>
+     
+        </center>
+     </body>
 </html>

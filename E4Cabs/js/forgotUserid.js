@@ -5,11 +5,11 @@ function userid()
    
     if(user.length>0)
     {
-     $('#lblUserID').text("");  
+     $('#lblVerificatin').text("");  
     }
     else if(user.length==0)
     {
-        $('#lblUserID').text("*Please enter the User ID");
+        $('#lblVerificatin').text("*Please enter the User ID");
         return false;
     }
     
@@ -22,7 +22,6 @@ function userid()
                    contentType: "application/json; charset=utf-8", 
                     success: function(data)
                      {
-                         alert("WELCOME!");
                          $('#userid').val('');
                      },
         

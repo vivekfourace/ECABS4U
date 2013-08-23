@@ -10,16 +10,16 @@ function forgotPassword()
                     {
                         if(pass.match(regExpEmail))
                         {
-                            $('#lblEmailid').text(" ");
+                            $('#lblVerification').text(" ");
                         }
                         else{
-                            $('#lblEmailid').text("*please enter a valid Email address");
+                            $('#lblVerification').text("*please enter a valid Email address");
                             return false;
                         }
                     }
                 else if(pass.length == 0)
                 {
-                    $('#lblEmailid').text("*please enter the Email Address");
+                    $('#lblVerification').text("*please enter the Email Address");
                     return false;
                 }
                 
