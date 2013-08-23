@@ -45,7 +45,6 @@ function CheckMsg(data)
     }
     else
     {
-        alert(data.d[1]);
         var userID = data.d[0];
         var roleID = parseInt(data.d[1]);
         var relatedID = data.d[2];      
@@ -53,7 +52,7 @@ function CheckMsg(data)
         switch(roleID)
         {
             //Role 1 --> Admin
-            case 1: alert('admin dash');
+            case 1: 
             
             break;
             

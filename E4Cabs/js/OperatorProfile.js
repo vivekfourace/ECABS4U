@@ -86,8 +86,8 @@ function UpdateProfile()
       var name = $('#txtname').val();
       var address1 = $('#txtLocation').val();
       var address2 = $('#txtLocation2').val();
-      var email = $('#txtMobileno').val();
-      var phoneno = $('#txtEmailID').val();
+      var email = $('#txtEmailID').val();
+      var phoneno = $('#txtMobileno').val();
       
       var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateOperatorDetails";
         $.ajax(url,{
