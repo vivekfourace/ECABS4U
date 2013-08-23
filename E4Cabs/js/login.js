@@ -39,7 +39,6 @@ function CheckMsg(data)
 {
     if(data.d[0] == "false")
     {
-        $('#lblDisplay').show();
         $('#lblMsg').text("Incorrect usename or password!");
         $('#lblMsg').css("color","#D70007");
         $('#lblMsg').css("font-size","13");
@@ -48,8 +47,6 @@ function CheckMsg(data)
         var userID = data.d[0];
         var roleID = parseInt(data.d[1]);
         var relatedID = parseInt(data.d[2]);
-        
-      
         
         switch(roleID)
         {
