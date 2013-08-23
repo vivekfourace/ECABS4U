@@ -4,20 +4,20 @@
                 var password=document.getElementById('txtPassword').value;
                 if(name.length > 0)
                 {
-                    $('#lblName').text("");
+                    $('#lblMsg').text("");
                 }
                 else if(name.length==0)
                 {
-                $('#lblName').text("Please enter username.");
+                $('#lblMsg').text("Please enter username.");
                  return false;
                 }
               if(password.length>0)
                 {
-                    $('#lblPassword').text("");
+                    $('#lblMsg').text("");
                 }
                  else if(password.length == 0) 
                 {
-                    $('#lblPassword').text("Please enter password.");
+                    $('#lblMsg').text("Please enter password.");
                      return false;
                 }
                 
@@ -48,9 +48,8 @@ function CheckMsg(data)
         var userID = data.d[0];
         var roleID = parseInt(data.d[1]);
         var relatedID = parseInt(data.d[2]);
-       // Session["UserID"] = userID;
-      //  Session["RoleID"] = roleID;
-       // Session["RelatedID"] = relatedID;
+        
+      
         
         switch(roleID)
         {
@@ -59,19 +58,17 @@ function CheckMsg(data)
             
             break;
             //Role 2 --> Operator
-            window.location = 'OperatorProfile.html?id=' + userID +'&rid=' +roleID + '&rrid='+relatedID;             
+            window.location = 'OperatorProfile.html?id='+userID+'&rid='+roleID+'&rrid='+relatedID;
             break;
             
             //Role 3 --> Driver
             case 3:
-            window.location = "driverStatusUpdate.html";
+            window.location= "driverStatusUpdate.html";
             break;
             
             //Role 4 --> Customer
             case 4:
-            window.location.href = "customerSearch.html";
-            break;
-            default:
+            window.location = "customerSearch.html";
             break;
         }
     }

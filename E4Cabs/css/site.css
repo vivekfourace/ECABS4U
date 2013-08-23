@@ -2,108 +2,145 @@
  cursor:pointer;   
 }
 
+.hide{
+    display:none;
+}
+
 .header-temp{
      width:100%;
-     height:50px;
-     background-color:#569A73;
+     height:20px;
      text-align:center;
-     font-size:16px;
-     color:#414548;
-    background-image: linear-gradient(bottom, rgb(10,7,10) 42%, rgb(13,12,13) 44%, rgb(74,70,74) 86%);
-    background-image: -o-linear-gradient(bottom, rgb(10,7,10) 42%, rgb(13,12,13) 44%, rgb(74,70,74) 86%);
-    background-image: -moz-linear-gradient(bottom, rgb(10,7,10) 42%, rgb(13,12,13) 44%, rgb(74,70,74) 86%);
-    background-image: -webkit-linear-gradient(bottom, rgb(10,7,10) 42%, rgb(13,12,13) 44%, rgb(74,70,74) 86%);
-    background-image: -ms-linear-gradient(bottom, rgb(10,7,10) 42%, rgb(13,12,13) 44%, rgb(74,70,74) 86%);
+     font-size:13px;
+     color:White;
+     background-color:#29291F;
+     position:fixed;
+ }
+
+.empty-div{
+    margin-bottom:30px;
+}
+ .btn-tmp{
+     border-radius:3px;
+     outline:none;
+     width:80%;               
+     height:35px;
+     text-align:center;
+     font-size:17px;
+     color:#FFFFFF;
+     font-weight:bold;
+     font-style: normal;
+     margin:5px 0 5px 0;
+     font-family:sans-serif;
+     border:1px solid #0A210A;
+     background-image: linear-gradient(bottom, #0A210A 36%, #2A332A 53%, #5D615D 84%);
+    background-image: -o-linear-gradient(bottom, #0A210A 36%, #2A332A 53%, #5D615D 84%);
+    background-image: -moz-linear-gradient(bottom, #0A210A 36%, #2A332A 53%, #5D615D 84%);
+    background-image: -webkit-linear-gradient(bottom, #0A210A 36%, #2A332A 53%, #5D615D 84%);
+    background-image: -ms-linear-gradient(bottom, #0A210A 36%, #2A332A 53%, #5D615D 84%);
 
 background-image: -webkit-gradient(
 	linear,
 	left bottom,
 	left top,
-	color-stop(0.42, rgb(10,7,10)),
-	color-stop(0.44, rgb(13,12,13)),
-	color-stop(0.86, rgb(74,70,74))
-);
- }
- .btn-tmp{
-     outline:none;
- width:80%;               
- height:40px;
- border-radius:8px;
- text-align:center;
- font-size:15px;
- color:White;
- font:bold;
- margin:5px 0 5px 0;
- border:none;
- box-shadow:2px 2px 2px #C5EFED;
- text-shadow:1px 1px #767980;
- border-collapse:collapse;
-background-image: linear-gradient(bottom, rgb(31,153,147) 44%, rgb(59,199,187) 72%);
-background-image: -o-linear-gradient(bottom, rgb(31,153,147) 44%, rgb(59,199,187) 72%);
-background-image: -moz-linear-gradient(bottom, rgb(31,153,147) 44%, rgb(59,199,187) 72%);
-background-image: -webkit-linear-gradient(bottom, rgb(31,153,147) 44%, rgb(59,199,187) 72%);
-background-image: -ms-linear-gradient(bottom, rgb(31,153,147) 44%, rgb(59,199,187) 72%);
-
-background-image: -webkit-gradient(
-	color-stop(0.44, rgb(31,153,147)),
-	color-stop(0.72, rgb(59,199,187))
+	color-stop(0.36, #0A210A),
+	color-stop(0.53, #2A332A),
+	color-stop(0.84, #5D615D)
 );
      }
 
-.btn-tmp:hover{
-    outline:none;
-background-image: linear-gradient(bottom, rgb(0,196,186) 44%, rgb(4,222,204) 72%);
-background-image: -o-linear-gradient(bottom, rgb(0,196,186) 44%, rgb(4,222,204) 72%);
-background-image: -moz-linear-gradient(bottom, rgb(0,196,186) 44%, rgb(4,222,204) 72%);
-background-image: -webkit-linear-gradient(bottom, rgb(0,196,186) 44%, rgb(4,222,204) 72%);
-background-image: -ms-linear-gradient(bottom, rgb(0,196,186) 44%, rgb(4,222,204) 72%);
-
-background-image: -webkit-gradient(
-	linear,
-	left bottom,
-	left top,
-	color-stop(0.44, rgb(0,196,186)),
-	color-stop(0.72, rgb(4,222,204))
-);
-}
 .img-tmp{
     width:40%;
     height:50px;
     position:static;
     z-index:1;
 }
- input[type="text"], input[type="password"]{
-      width:80%;               
-      height:35px;
-      background-color:white;
-      border-radius:8px;
-      text-align:left;
-      font-size:20px;
-      color:Black;
-      border:1px solid #639ECD;
-      margin:5px 0 5px 0;
-      border-collapse:collapse;
+
+.start-btn{
+     border-radius:3px;
      outline:none;
+     width:75%;               
+     height:39px;
+     text-align:center;
+     font-size:17px;
+     color:#FFFFFF;
+     font-style: normal;
+     margin:5px 0 5px 0;
+     font-family:sans-serif;
+     border:1px solid #448247;
+     background-image: linear-gradient(bottom, #0D8C13 36%, #0C9918 53%, #0AC90A 84%);
+background-image: -o-linear-gradient(bottom, #0D8C13 36%, #0C9918 53%, #0AC90A 84%);
+background-image: -moz-linear-gradient(bottom, #0D8C13 36%, #0C9918 53%, #0AC90A 84%);
+background-image: -webkit-linear-gradient(bottom, #0D8C13 36%, #0C9918 53%, #0AC90A 84%);
+background-image: -ms-linear-gradient(bottom, #0D8C13 36%, #0C9918 53%, #0AC90A 84%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.36, #0D8C13),
+	color-stop(0.53, #0C9918),
+	color-stop(0.84, #0AC90A)
+);
+}
+
+.sign-inbtn{
+     border-radius:3px;
+     outline:none;
+     width:75%;               
+     height:39px;
+     text-align:center;
+     font-size:17px;
+     color:#FFFFFF;
+     font-style: normal;
+     margin:5px 0 5px 0;
+     font-family:sans-serif;
+     border:1px solid #0A210A;
+    background-image: linear-gradient(bottom, #0A210A 36%, #2A332A 53%, #5D615D 84%);
+    background-image: -o-linear-gradient(bottom, #0A210A 36%, #2A332A 53%, #5D615D 84%);
+    background-image: -moz-linear-gradient(bottom, #0A210A 36%, #2A332A 53%, #5D615D 84%);
+    background-image: -webkit-linear-gradient(bottom, #0A210A 36%, #2A332A 53%, #5D615D 84%);
+    background-image: -ms-linear-gradient(bottom, #0A210A 36%, #2A332A 53%, #5D615D 84%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.36, #0A210A),
+	color-stop(0.53, #2A332A),
+	color-stop(0.84, #5D615D)
+);
+}
+
+.logo{
+    width:110px;
+    height:60px;
+}
+ input[type="text"], input[type="password"]{
+      width:80%;
+      border-radius:3px;
+      height:28px;
+      text-align:left;
+      font-size:15px;
+      color:#6E6E6E;
+      margin:2px 0 4px 0;
+      font-weight:bold;
+      border:1px solid #A6A6A6;
   }
 
 input[type="text"]:focus{
-    border-radius:8px;
-    background-color:#E0E0E0;
-    border:1px solid blue;
     border-collapse:collapse;
-    border:1px solid #E95045;
-    box-shadow: 0 0 12px #E95045;
     outline:none;
+    border:1px solid #95999E;
+    box-shadow: 0 0 8px #95999E;
+    background-color:#F2F5A9;
 }
 
 input[type="password"]:focus{
-    border-radius:8px;
-    background-color:#E0E0E0;
-    border:1px solid blue;
     border-collapse:collapse;
-    border:1px solid #E95045;
-    box-shadow: 0 0 12px #E95045;
-    outline:none;  
+    outline:none; 
+    border:1px solid #95999E;
+    box-shadow: 0 0 8px #95999E;
+    background-color:#F2F5A9;
 }
      ::-webkit-input-placeholder {
         text-align:center;
@@ -153,3 +190,21 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#959595', end
     font-weight:bold;
     color:Black;
 }
+.div-grid{
+    width:100%;
+}
+.table{
+    width:100%;
+    border:1px solid black;
+}
+.td{
+    width:25%;
+}
+
+.slogan{
+    font-weight:bold;
+    font-family:cursive;
+    font-size:13px;
+}
+
+                   

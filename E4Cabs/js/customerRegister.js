@@ -1,24 +1,24 @@
 function Registercustomer()
 {
-    var txt1 =$('#txt1').val();
-    var txt2 =$('#txt2').val();
-    var txt3 =$('#txt3').val();
-    var txt4 =$('#txt4').val();
-    var txt5 =$('#txt5').val();
-    var txt6 =$('#txt6').val();
-    var txt7 =$('#txt7').val();
-    var txt8 =$('#txt8').val();
+    var txt1 =$('#txtFirstName').val();
+    var txt2 =$('#txtLastName').val();
+    var txt3 =$('#txtPhone').val();
+    var txt4 =$('#txtEmail').val();
+    //var txt5 =$('#txtPost').val();
+    var txt6 =$('#txtUserName').val();
+    var txt7 =$('#txtPassword').val();
+    var txt8 =$('#txtConfirmPassword').val();
     var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
     var phoneno =/^\d{12}$/;
     
                if(!txt1)
                  {
-                     $('#lblWarning').text("*Please enter the first name");
+                     $('#lblMsg').text("Please enter first name!");
                     return false;
                  }
                if(!txt2)
                  {
-                     $('#lblWarning').text("*Please enter the last name");
+                     $('#lblMsg').text("Please enter last name!");
                     return false;
                  }
                 //validate Phone number.
@@ -26,17 +26,17 @@ function Registercustomer()
                     {
                         if(phoneno.test(txt3))
                         {
-                            $('#lblWarning').text(" ");
+                            $('#lblMsg').text(" ");
                         }
                         else
                         {
-                             $('#lblWarning').text("*Please enter valid phone number");
+                             $('#lblMsg').text("Please enter valid phone number!");
                             return false;
                         }
                     }
                 else if(txt3.length == 0)
                 {
-                     $('#lblWarning').text("*Please enter the phone number");
+                     $('#lblMsg').text("Please enter phone number!");
                     return false;
                 }
     
@@ -45,41 +45,32 @@ function Registercustomer()
                     {
                         if(txt4.match(regExpEmail))
                         {
-                            $('#lblWarning').text(" ");
+                            $('#lblMsg').text(" ");
                         }
                         else{
-                            $('#lblWarning').text("*Please enter a valid Email address");
+                            $('#lblMsg').text("Please enter valid email address!");
                             return false;
                         }
                     }
                 else if(txt4.length == 0)
                 {
-                    $('#lblWarning').text("*Please enter the Email Address");
+                    $('#lblMsg').text("Please enter email address!");
                     return false;
                 }
-              if(txt5.length > 0)
-                    {
-                        $('#lblWarning').text(" ");
-                    }
-                else if(txt5.length == 0)
-                 {
-                     $('#lblWarning').text("*Please enter the User ID");
-                    return false;
-                 }
     
           if(!txt6)
                  {
-                     $('#lblWarning').text("*Please enter the Postcode");
+                     $('#lblMsg').text("Please enter postcode!");
                     return false;
                  }
     
                 if(txt7.length > 0)
                     {
-                        $('#lblWarning').text(" ");
+                        $('#lblPassword').text(" ");
                     }
                 else if(txt7.length == 0)
                  {
-                     $('#lblWarning').text("*Please enter password");
+                     $('#lblMsg').text("Please enter password!");
                     return false;
                  }
     
@@ -87,17 +78,17 @@ function Registercustomer()
                     {
                         if(txt7 == txt8)
                         {
-                            $('#lblWarning').text(" ");
+                            $('#lblMsg').text(" ");
                         }
                         else
                         {
-                            $('#lblWarning').text("Password mismatch!");
+                            $('#lblMsg').text("Password mismatch!");
                             return false;
                         }
                     }
                 else if(txt8.length == 0)
                     {
-                        $('#lblWarning').text("*Please enter the confirmpassword");
+                        $('#lblMsg').text("Please enter confirm password!");
                         return false;
                     }
     
@@ -106,22 +97,31 @@ $.ajax({
     url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RegisterCustomer",
     type: "POST",
     dataType: "json",
-    data: "{ 'name': '" + txt1 + "','email': '" + txt2 + "','contactNumber': '" + txt3 + "','password': '" + txt4 + "','address1': '" + txt5 + "','address2': '" + txt6 + "','postcode': '" + txt7 + "'}",
+    data: "{ 'fname': '" + txt1 + "','lname': '" + txt2 + "','email': '" + txt4 + "','userID': '" + txt6 + "','password': '" + txt7 + "','contactNumber': '" + txt3 + "'}",
     contentType: "application/json; charset=utf-8",
-    success: function (data) {
-        alert('Registration successfull');
-        $('#txt1').val('');
-        $('#txt2').val('');
-        $('#txt3').val('');
-        $('#txt4').val('');
-        $('#txt5').val('');
-        $('#txt6').val('');
-        $('#txt7').val('');
-        $('#txt8').val('');
-    },
-    
+    success: CheckData,
     error: function (XMLHttpRequest, textStatus, errorThrown) {
         alert(errorThrown);
            }
        });    
+}
+
+function CheckData(data){
+    if(data.d == "false")
+    {
+        $('#lblMsg').text("Username already exist!");
+        $('#lblMsg').css("color","#D70007");
+        $('#lblMsg').css("font-size","13");
+    }
+    else if(data.d =="true"){
+        $('#lblMsg').text("Registration success, wait 5s for login screen...")
+        $('#lblMsg').css("color","green");  
+        $('#lblMsg').css("font","bold");  
+        
+        setTimeout(function() {
+            $('#lblMsg').fadeOut(3000);
+            window.location = "login.html";
+            }, 5000);
+        
+    }    
 }
