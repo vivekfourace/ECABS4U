@@ -3,7 +3,10 @@ var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
+window.onload = getProfile();
 
+function getProfile()
+{
 var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetOperatorDetails";
 $.ajax(url,{
     type:"POST",
@@ -16,7 +19,7 @@ $.ajax(url,{
     alert(errorThrown);
         }
  });
-
+}
 function ShowData(data)
 { 
    $('#lblname').text(data.d[0]["OperatorName"]);
@@ -97,4 +100,9 @@ function UpdateProfile()
             alert(errorThrown);
         }
  });
+}
+
+function CancelProfile()
+{
+    getProfile();
 }
