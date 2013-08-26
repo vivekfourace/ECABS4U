@@ -93,7 +93,7 @@ function rejected()
         //}
  //});
 }
-function backtoadmin()
+function backadmin()
 {
     window.location="Admin.html";
 }
