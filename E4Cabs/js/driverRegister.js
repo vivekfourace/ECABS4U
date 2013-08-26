@@ -1,14 +1,14 @@
-function UpladImage(e)
+function UpladImage()
 {
     
-   var input = document.getElementById('txtfile');
-   var fullPath = $('#txtfile').val();
-   var filename = fullPath.replace(/^.*[\\\/]/, '');    
-   var dot_pos = filename.lastIndexOf(".");
-   if(dot_pos == -1)
-      return "";
-   var fileExt = filename.substr(dot_pos+1).toLowerCase();
-   var fileKb = Math.ceil(input.files[0].size/1024);
+   //var input = document.getElementById('txtfile');
+   //var fullPath = $('#txtfile').val();
+   //var filename = fullPath.replace(/^.*[\\\/]/, '');    
+   //var dot_pos = filename.lastIndexOf(".");
+   //if(dot_pos == -1)
+   //   return "";
+   //var fileExt = filename.substr(dot_pos+1).toLowerCase();
+   //var fileKb = Math.ceil(input.files[0].size/1024);
     
           //e.preventDefault();
           //var InsDocDet = {};
