@@ -191,3 +191,7 @@ function OnValidate(data)
        
     }
 }
+function backtoadmin()
+{
+    window.location="Admin.html";
+}

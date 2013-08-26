@@ -10,14 +10,12 @@
     </head>
     
     <body>
-        <div class="header-temp">
-            <div style="margin-left:15px;float:left">
-                <img class="img-tmp" src="img/site-logo.png"  style="width:100px"/>
-            </div>
-        </div>
-        <div style="margin:10px 0 5px 0;" align="center">
-            <span class="font-style" style="font-size:20px"><b>Operator Registration</b></span>
-        </div>
+        <center>
+        <div class="header-temp"><span>Operator Register</span></div>            
+        <div style="height:100px;width:100%;margin-bottom:40px">
+            <div style="padding-top:35px"><img src="img/site-logo.png" class="logo"/></div>
+            <span style="color:#0C9516" class="slogan">'Save Money - Save Time - Save The Planet'</span>
+        </div> 
         <center>
             <div id="link2" width="100%" style="display:none">
             <label id="lblMessage" style="font-size:13px"></label></div></center>
@@ -29,51 +27,25 @@
         <div id="container" align="center">
            
     
-             <div width="100%"style="height:40px;">
-                 <div  style="float:left;width:50px;height:40px;padding-left:20px"><img src="img/User.png" height="35" width="65" style="padding-top:5px"/></div>
-                 <div  style="float:left;height:40px;width:220px;"> <input type="text" id="txtName" placeholder="Name" style="float:left;width:200px"/></div>
+             
+            <input type="text" id="txtName" placeholder="Name"/>
                
-             </div>
+          
             
-            <div width="100%"style="height:40px;">
-                 <div  style="float:left;width:50px;height:40px;padding-left:20px;"><img src="img/LogoEmail.png" height="35" width="53" style="padding-top:5px"/></div>
-                 <div  style="float:left;width:220px;height:40px;"> <input type="text" id="txtEmail" placeholder="Email" style="float:left;width:200px"/></div>
+             <input type="text" id="txtEmail" placeholder="Email" />
                
-             </div>
-             <div width="100%"style="height:40px;">
-                 <div  style="float:left;width:50px;height:40px;padding-left:20px;"><img src="img/UserID.png" height="35" width="53" style="padding-top:5px"/></div>
-                 <div  style="float:left;width:220px;height:40px;"> <input type="text" id="txtUserID" placeholder="UserID" style="float:left;width:200px"/></div>
+             <input type="text" id="txtUserID" placeholder="UserID"/>
                
-             </div>
-             
-        <div width="100%"style="height:40px;">
-                 <div  style="float:left;width:50px;height:40px;padding-left:20px;"><img src="img/Password.png" height="35" width="53" style="padding-top:5px"/></div>
-                 <div  style="float:left;width:220px;height:40px;">  <input type="password" id="txtPassword" placeholder="Password" style="float:left;width:200px"/></div>
+              <input type="password" id="txtPassword" placeholder="Password"/>
                
-             </div>
-           
-             <div width="100%"style="height:40px;">
-                 <div  style="float:left;width:50px;height:40px;padding-left:20px;"><img src="img/confirmPassword.png" height="35" width="53" style="padding-top:5px"/></div>
-                 <div  style="float:left;width:220px;height:40px;"> <input type="password" id="txtConfirmPass" placeholder="Confirm password" style="float:left;width:200px"/></div>
+            <input type="password" id="txtConfirmPass" placeholder="Confirm password" />
                
-             </div>
-             
-            <div width="100%"style="height:40px;">
-                 <div  style="float:left;width:50px;height:40px;padding-left:20px;"><img src="img/PhoneNo.png" height="35" width="60" style="padding-top:5px"/></div>
-                 <div  style="float:left;width:220px;height:40px;"> <input type="text" id="txtContact" placeholder="Contact number" maxlength="12" style="float:left;width:200px"/></div>
+              <input type="text" id="txtContact" placeholder="Contact number" maxlength="12" />
                
-             </div>
-             <div width="100%"style="height:40px;">
-                 <div  style="float:left;width:50px;height:40px;padding-left:20px;"><img src="img/Address.png" height="45" width="60" style="padding-top:0px"/></div>
-                 <div  style="float:left;width:220px;height:40px;">  <input type="text" id="txtAddress1" placeholder="Address1" style="float:left;width:200px"/></div>
+              <input type="text" id="txtAddress1" placeholder="Address1" />
                
-             </div>
-             
-             <div width="100%"style="height:40px;">
-                 <div  style="float:left;width:50px;height:40px;padding-left:20px;"><img src="img/Address.png" height="45" width="60" style="padding-top:0px"/></div>
-                 <div  style="float:left;width:220px;height:40px;">  <input type="text" id="txtAddress2" placeholder="Address2" style="float:left;width:200px"/></div>
+              <input type="text" id="txtAddress2" placeholder="Address2" />
                
-             </div>
            
             
            
@@ -81,6 +53,11 @@
             
             <input type="button" class="btn-tmp cursor" value="Register" onclick="Registeroperator();"/>
         </div>
+            <div align="center">
+            
+            <input type="button" class="btn-tmp cursor" value="Cancel" onclick="backtoadmin();"/>
         </div>
+        </div>
+            </center>
     </body>
 </html>

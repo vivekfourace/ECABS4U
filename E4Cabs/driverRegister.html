@@ -5,9 +5,10 @@
         <title></title>
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <link rel="stylesheet" type="text/css" href="css/site.css" />
-        <script type="text/javascript" src="js/driverRegister.js"></script>        
         <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
         <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        <script type="text/javascript" src="js/driverRegister.js"></script>        
+        
     </head>
     <body>
         <center>
@@ -29,32 +30,39 @@
         
         
         <div id="container" align="center">
-            <input type="text" id="txt1" placeholder="First Name"/>
+            <input type="text" id="txtname" placeholder="First Name"/>
             
              <input type="text" id="txt9" placeholder="Last Name"/>
             
             
-             <input type="text" id="txt2" placeholder="Email"/>
+             <input type="text" id="txtemail" placeholder="Email"/>
             
-            <input type="text" id="txt10" placeholder="User Id"/>
+            <input type="text" id="txtusername" placeholder="User Id"/>
             
-            <input type="password" id="txt7" placeholder="Password"/>
+            <input type="password" id="txtpassword" placeholder="Password"/>
             
-            <input type="password" id="txt8" placeholder="Confirm password"/>
+            <input type="password" id="txtCpass" placeholder="Confirm password"/>
             
-            <input type="text" id="txt3" placeholder="Contact number" maxlength="12"/>
+            <input type="text" id="txtmobile" placeholder="Contact number" maxlength="12"/>
             
-            <input type="text" id="txt4" placeholder="Address1"/>
+            <input type="text" id="txtaddress1" placeholder="Address1"/>
             
-            <input type="text" id="txt5" placeholder="Address2"/>
+            <input type="text" id="txtaddress2" placeholder="Address2"/>
             
           
-            <input type="text" id="txt6" placeholder="Postcode"/>
+            <input type="text" id="txtpostcode" placeholder="Postcode"/>
             
-            <input type="file" id="raghu"  text="Browse" size="100"/>
+            <div >
+                
+            <input type="file" id="raghu"  text="Browse" size="40"  />
+                <input type="button" onclick="UploadImage()" value="Upload"/>
+                </div>
             
         <div align="center">
-            <input type="button" class="btn-tmp cursor" value="Submit" onclick="RegisterDriver();"/>
+            <input type="button" class="btn-tmp cursor" value="Register" onclick="RegisterDriver();"/>
+        </div>
+            <div align="center">
+            <input type="button" class="btn-tmp cursor" value="Cancel" onclick="Backtoadmin();"/>
         </div>
         </div>  
             </center>
