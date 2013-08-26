@@ -5,63 +5,44 @@
         <title></title>
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <link rel="stylesheet" type="text/css" href="css/site.css" />
-        <script type="text/javascript" src="js/driverRegister.js"></script>        
         <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
         <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        <script type="text/javascript" src="js/driverRegister.js"></script>        
     </head>
     <body>
-        <div class="header-temp">
-            <table width="100%">
-                <tr>
-                    <td width="80%" align="left"><img class="img-tmp" src="img/site-logo.png"/></td>
-                    <td width="20%" ><a href="login.html" style="color:white;text-decoration:none fon">Login</a></td>
-                </tr>
-            </table>
-            
-        </div>
-        <div style="margin:10px 0 5px 0;" align="center">
-            <span class="font-style">Driver Registration</span>
-        </div>
-        
         <center>
-            <div id="link2" width="100%" style="display:none">
-            <label id="lblMessage" style="font-size:13px"></label></div></center>
-         <center>
-           <div id="link1" width="100%" style="display:none">
-               <a href="login.html">click</a><span style="font-size:13px;color:green;"> here to login.</span></div></center>
-      
-           <center><label id="lblRequiredField" style="color:red;font-size:10px"></label></center>
-        
-        
-        
-        <div id="container" align="center">
-            <input type="text" id="txt1" placeholder="First Name"/>
+        <div class="header-temp"><span>Register Driver</span></div>
+        <div style="height:100px;width:100%;margin-bottom:20px">
+            <div style="padding-top:30px"><img src="img/site-logo.png" class="logo"/></div>
+            <span style="color:#0C9516" class="slogan">'Save Money - Save Time - Save The Planet'</span>
+        </div>
+        <label id="lblRequiredField" style="color:red;font-size:10px"></label>
+        <div id="container">
+            <input type="text" id="txtname" placeholder="Name"/>
             
-             <input type="text" id="txt9" placeholder="Last Name"/>
+             <input type="text" id="txtemail" placeholder="Email"/>
             
+            <input type="text" id="txtusername" placeholder="Username"/>
             
-             <input type="text" id="txt2" placeholder="Email"/>
+            <input type="password" id="txtpassword" placeholder="Password"/>
             
-            <input type="text" id="txt10" placeholder="User Id"/>
+            <input type="password" id="txtCpass" placeholder="Confirm password"/>
             
-            <input type="password" id="txt7" placeholder="Password"/>
+            <input type="text" id="txtmobile" placeholder="Mobile number" maxlength="12"/>
             
-            <input type="password" id="txt8" placeholder="Confirm password"/>
+            <input type="text" id="txtaddress1" placeholder="Address line1"/>
             
-            <input type="text" id="txt3" placeholder="Contact number" maxlength="12"/>
-            
-            <input type="text" id="txt4" placeholder="Address1"/>
-            
-            <input type="text" id="txt5" placeholder="Address2"/>
-            
+            <input type="text" id="txtaddress2" placeholder="Address line2"/>            
           
-            <input type="text" id="txt6" placeholder="Postcode"/>
+            <input type="text" id="txtpostcode" placeholder="Postcode"/>
             
-            <input type="file" id="raghu"  text="Browse" size="100"/>
+            <input type='file' id='txtfile'>
+            <input type='button' id='btnLoad' value='Load' onclick='UpladImage();'>
             
         <div align="center">
             <input type="button" class="btn-tmp cursor" value="Submit" onclick="RegisterDriver();"/>
         </div>
         </div>  
+       </center>
     </body>
 </html>

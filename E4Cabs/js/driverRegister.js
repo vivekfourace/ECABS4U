@@ -1,17 +1,61 @@
- function RegisterDriver()
+function UpladImage(e)
 {
-    var name =$('#txt1').val();
-    var name2 =$('#txt9').val();
-    var email =$('#txt2').val();
-    var mobNo =$('#txt3').val();
-    var Add1 =$('#txt4').val();
-    var Add2 =$('#txt5').val();
-    var post =$('#txt6').val();
-    var password =$('#txt7').val();
-    var Cpassword =$('#txt8').val();
-    var User =$('#txt10').val();
-    var img2 =$('#raghu').val();
-    raghu
+    
+   var input = document.getElementById('txtfile');
+   var fullPath = $('#txtfile').val();
+   var filename = fullPath.replace(/^.*[\\\/]/, '');    
+   var dot_pos = filename.lastIndexOf(".");
+   if(dot_pos == -1)
+      return "";
+   var fileExt = filename.substr(dot_pos+1).toLowerCase();
+   var fileKb = Math.ceil(input.files[0].size/1024);
+    
+          //e.preventDefault();
+          //var InsDocDet = {};
+          //InsDocDet.docname=$("#DocName").val();
+
+          //InsDocDet.ownerUser=1;
+          //InsDocDet.catid=$("#drp_cat").val();
+          //InsDocDet.createDatetime=new Date();
+          //InsDocDet.description_d=$("#Desc").val();
+          //InsDocDet.comments_=$("#cmnts").val();
+          //InsDocDet.deptid_=1;
+          //InsDocDet.con_type=1;
+          //InsDocDet.size_=1;
+          //InsDocDet.Doc_status="up";
+          //var fullPath =$("#doc_upload").val(); //document.getElementById('doc_upload').value;
+          //if (fullPath) {
+          //var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+          //var filename = fullPath.substring(startIndex);
+          //if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+          //filename = filename.substring(1);
+          //InsDocDet.file_name=filename;
+          //$.ajax({
+          //    type: "POST",
+          //  // <!-- url: "http://localhost/EMRDMSService/Service.asmx/User_Login",-->
+          //   url: "http://localhost/EMRDMSService/Service.asmx/srv_Insert_Document",
+          //    data: "{ins_Doc:" + JSON.stringify(InsDocDet) + "}",
+          //    contentType: "application/json; charset=utf-8",
+          //    dataType: "json",
+          //    success: function (r) {                     
+          //                    console.log(r.d.STAT);
+          //    }
+          //});
+      //});
+    
+}
+function RegisterDriver()
+{
+    var name =$('#txtname').val();
+    //var name2 =$('#txt9').val();
+    var email =$('#txtemail').val();
+    var mobNo =$('#txtmobile').val();
+    var Add1 =$('#txtaddress1').val();
+    var Add2 =$('#txtaddress2').val();
+    var post =$('#txtpostcode').val();
+    var password =$('#txtpassword').val();
+    var Cpassword =$('#txtCpass').val();
+    var User =$('#txtusername').val();
      var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
     var phoneno =/^\d{12}$/;
                   
@@ -134,10 +178,6 @@
                      $('#lblRequiredField').text("*Please enter the Address2");
                     return false;
                  }
-    
-                
-    
-               
             
      //Validate Postcode
                
@@ -150,9 +190,6 @@
                      $('#lblRequiredField').text("*Please Fill the Postcode");
                     return false;
                  }
-                 
-    
-                 
     
                  
                  $.ajax({
