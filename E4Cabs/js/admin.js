@@ -5,7 +5,7 @@ function DriverPage()
 
 function OperatorPage()
 {
-    window.location="";
+    window.location="registerOperator.html";
 }
 
 function RegisterDriver()
