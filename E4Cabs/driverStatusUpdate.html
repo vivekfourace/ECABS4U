@@ -1,24 +1,22 @@
 <!DOCTYPE html>
-
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="css/site.css" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <script type="text/javascript" src="js/driverStatusUpdate.js"></script>        
         <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
         <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        <script type="text/javascript" src="js/driverStatusUpdate.js"></script>        
+        
         <title></title>
     </head>
     <body>
+        <center>
         <div class="header-temp"><span>Status Update</span></div>             
         <div style="height:80px;width:100%;margin-bottom:30px">
             <div style="padding-top:25px"><img src="img/site-logo.png" class="logo"/></div>
             <span style="color:#0C9516" class="slogan">'Save Money - Save Time - Save The Planet'</span>
         </div>
-        <div style="margin:10px 0 5px 0;" align="center">
-            <span class="font-style">Update status</span>
-        </div>
-        <center>           
+       
         <div align="center" class="font-style" style="padding-left:10%;margin-bottom:20px">
             <div width="100%">
                 <span style="float:left">Current Status : &nbsp;</span>
@@ -29,7 +27,8 @@
             <input type="button" class="btn-tmp cursor" value="Engaged" onclick="engage();"/>
             <input type="button" class="btn-tmp cursor" value="Available" onclick="available();"/>
             <input type="button" class="btn-tmp cursor" value="On the way" onclick="onTheWay();"/>
-            <input type="button" class="btn-tmp cursor" value="Rejected" onclick="rejected();"/>
-         </center>
-    </body>
+            <input type="button" class="btn-tmp cursor" value="Rejected" onclick="rejected();"/><br/>
+             <input type="button"  value="Back" class="back" onclick="backtoadmin();"/>
+            </center>
+            </body>
 </html>

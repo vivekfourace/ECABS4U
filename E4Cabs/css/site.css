@@ -206,5 +206,34 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#959595', end
     font-family:cursive;
     font-size:13px;
 }
+.back
+{
+    border-radius:3px;
+     outline:none;
+     width:40%;               
+     height:30px;
+     text-align:center;
+     font-size:17px;
+     color:#FFFFFF;
+     font-weight:bold;
+     font-style: normal;
+     margin:5px 0 5px 0;
+     font-family:sans-serif;
+     border:1px solid #0A210A;
+     background-image: linear-gradient(bottom, #0A210A 36%, #2A332A 53%, #5D615D 84%);
+    background-image: -o-linear-gradient(bottom, #0A210A 36%, #2A332A 53%, #5D615D 84%);
+    background-image: -moz-linear-gradient(bottom, #0A210A 36%, #2A332A 53%, #5D615D 84%);
+    background-image: -webkit-linear-gradient(bottom, #0A210A 36%, #2A332A 53%, #5D615D 84%);
+    background-image: -ms-linear-gradient(bottom, #0A210A 36%, #2A332A 53%, #5D615D 84%);
 
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.36, #0A210A),
+	color-stop(0.53, #2A332A),
+	color-stop(0.84, #5D615D)
+);
+    
+}
                    
