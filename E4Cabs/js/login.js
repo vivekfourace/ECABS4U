@@ -53,6 +53,7 @@ function CheckMsg(data)
         {
             //Role 1 --> Admin
             case 1: 
+            window.location= "Admin.html";
             
             break;
             
