@@ -95,5 +95,5 @@ function rejected()
 }
 function backadmin()
 {
-    window.location="Admin.html";
+    window.location="driverAfterlogin.html";
 }

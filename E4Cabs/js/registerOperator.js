@@ -10,6 +10,7 @@ function Registeroperator()
     var Address2 =$('#txtAddress2').val();
     var  regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
     var phoneno =/^\d{12}$/;
+    
                
                 if(Name.length > 0)
                     {
@@ -17,11 +18,11 @@ function Registeroperator()
                     }
                 else if(Name.length == 0)
                  {
-                     $('#lblRequiredField').text("Please enter name");
+                     $('#lblRequiredField').text("*Please enter the Name");
                     return false;
                  }
     
-                if(Email.length > 0)
+    if(Email.length > 0)
                     {
                         if(Email.match(regExpEmail))
                         {
@@ -29,13 +30,13 @@ function Registeroperator()
                         }
                         else
                         {
-                            $('#lblRequiredField').text("Please enter a valid email address");
+                            $('#lblRequiredField').text("*Please enter a valid Email address");
                              return false;
                         }
                     }
                 else if(Email.length == 0)
                 {
-                    $('#lblRequiredField').text("Please enter email address");
+                    $('#lblRequiredField').text("*Please enter the Email Address");
                     return false;
                 }
     
@@ -45,7 +46,7 @@ function Registeroperator()
     }
     else if(UserID == 0)
     {
-          $('#lblRequiredField').text("Please enter Username");
+          $('#lblRequiredField').text("*Please enter the User Id");
                     return false;
     }
     if(Password.length > 0)
@@ -54,9 +55,10 @@ function Registeroperator()
                     }
                 else if(Password.length == 0)
                  {
-                     $('#lblRequiredField').text("Please enter password");
+                     $('#lblRequiredField').text("*Please enter password");
                     return false;
                  }
+                
  
                     if(Confirm.length > 0)
                     {
@@ -72,9 +74,11 @@ function Registeroperator()
                     }
                 else if(Confirm.length == 0)
                     {
-                        $('#lblConfirmPassword').text("Please enter confirm password");
+                        $('#lblConfirmPassword').text("*please enter the ConfirmPassword");
                         return false;
                     }
+    
+    
     
     if(Contact.length > 0)
                     {
@@ -84,15 +88,17 @@ function Registeroperator()
                         }
                         else
                         {
-                             $('#lblRequiredField').text("Please enter valid phone number");
+                             $('#lblRequiredField').text("*Please enter valid phone number");
                             return false;
                         }
                     }
                 else if(Contact.length == 0)
                 {
-                     $('#lblRequiredField').text("Please enter phone number");
+                     $('#lblRequiredField').text("*Please enter the phone number");
                     return false;
                 }
+                
+    
     
               if(Address1.length > 0)
                     {
@@ -100,9 +106,12 @@ function Registeroperator()
                     }
                 else if(Address1.length == 0)
                  {
-                     $('#lblRequiredField').text("Please enter address line1");
+                     $('#lblRequiredField').text("*Please enter the Address1");
                     return false;
                  }
+    
+    
+                   
     
                 if(Address2.length > 0)
                     {
@@ -110,11 +119,24 @@ function Registeroperator()
                     }
                 else if(Address2.length == 0)
                  {
-                     $('#lblRequiredField').text("Please enter address line2");
+                     $('#lblRequiredField').text("*Please enter the Address2");
                     return false;
                  }
     
+    
+    
+               
+        
+    
+    
+    
+    
      //validate Phone number.
+                              
+                 
+    
+                
+    
 
 $.ajax({
     url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RegisterOperator",
@@ -124,6 +146,17 @@ $.ajax({
     contentType: "application/json; charset=utf-8",
     
         success: OnValidate,
+        
+       // $('#Name').val('');
+      //  $('#Email').val('');
+       // $('#UserID').val('');
+      //  $('#Password').val('');
+       // $('#Confirm').val('');
+       // $('#Contact').val('');
+       // $('#Address1').val('');
+       // $('#Address2').val('');
+       
+    //},
     
     error: function (XMLHttpRequest, textStatus, errorThrown) 
     {
@@ -141,18 +174,25 @@ function OnValidate(data)
     }
     else
     {
-       $('#txtName').val('');
-       $('#txtEmail').val('');
-       $('#txtPassword').val('');
-       $('#txtUserID').val('');
-       $('#txtConfirmPass').val('');
-       $('#txtContact').val('');
-       $('#txtAddress1').val('');
-       $('#txtAddress2').val('');
+         $('#txtName').val('');
+         $('#txtEmail').val('');
+         $('#txtPassword').val('');
+         $('#txtUserID').val('');
+         $('#txtConfirmPass').val('');
+         $('#txtContact').val('');
+         $('#txtAddress1').val('');
+         $('#txtAddress2').val('');
+        
+        $("#link2").show();
         $('#lblMessage').text("Registration successful,");
         $('#lblMessage').css("color","green");
+        $("#link1").show();
+        
+       
     }
 }
+
+
 function backtoadmin()
 {
     window.location="Admin.html";
