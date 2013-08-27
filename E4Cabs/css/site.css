@@ -29,6 +29,7 @@
     color:#FFF200;
     font-size:16px;
 }
+
 .empty-div{
     margin-bottom:30px;
 }
@@ -125,14 +126,14 @@ background-image: -webkit-gradient(
 }
 
 .logo{
-    width:110px;
-    height:60px;
+    width:100px;
+    height:50px;
 }
  input[type="text"], input[type="password"]{
       width:80%;
       border-radius:3px;
       height:28px;
-      text-align:left;
+      text-align:center;
       font-size:15px;
       color:#6E6E6E;
       margin:2px 0 4px 0;

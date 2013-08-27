@@ -129,7 +129,7 @@ function CancelProfile()
 //Cab Now Button
 function cabnow()
 {
-    window.location=""; 
+    window.location="customerSearch.html"; 
 }
 
 
