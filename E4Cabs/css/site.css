@@ -16,6 +16,20 @@
      position:fixed;
  }
 
+.header{
+     width:100%;
+     height:48px;
+     background-color:#29291F;
+     position:fixed;
+    
+}
+.header-font{
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;;
+    font-weight:bold;
+    color:#FFF200;
+    font-size:16px;
+}
+
 .empty-div{
     margin-bottom:30px;
 }
@@ -112,8 +126,8 @@ background-image: -webkit-gradient(
 }
 
 .logo{
-    width:110px;
-    height:60px;
+    width:100px;
+    height:50px;
 }
  input[type="text"], input[type="password"]{
       width:80%;
@@ -189,6 +203,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#959595', end
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;;
     font-weight:bold;
     color:Black;
+    font-size:medium;
 }
 .div-grid{
     width:100%;
@@ -263,5 +278,117 @@ background-image: -webkit-gradient(
 	color-stop(0.36, #0A210A),
 	color-stop(0.53, #2A332A),
 	color-stop(0.84, #5D615D)
+);
+}
+
+.btn-tmp-engage{
+    border-radius:3px;
+     outline:none;
+     width:75%;               
+     height:39px;
+     text-align:center;
+     font-size:17px;
+     color:#FFFFFF;
+     font-style: normal;
+     margin:5px 0 5px 0;
+     font-family:sans-serif;
+     border:1px solid #902623;
+    background-image: linear-gradient(bottom, #8A1D1D 3%, #A64939 52%, #C95353 76%);
+background-image: -o-linear-gradient(bottom, #8A1D1D 3%, #A64939 52%, #C95353 76%);
+background-image: -moz-linear-gradient(bottom, #8A1D1D 3%, #A64939 52%, #C95353 76%);
+background-image: -webkit-linear-gradient(bottom, #8A1D1D 3%, #A64939 52%, #C95353 76%);
+background-image: -ms-linear-gradient(bottom, #8A1D1D 3%, #A64939 52%, #C95353 76%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.03, #8A1D1D),
+	color-stop(0.52, #A64939),
+	color-stop(0.76, #C95353)
+);
+}
+
+.btn-tmp-avail{
+    border-radius:3px;
+     outline:none;
+     width:75%;               
+     height:39px;
+     text-align:center;
+     font-size:17px;
+     color:#FFFFFF;
+     font-style: normal;
+     margin:5px 0 5px 0;
+     font-family:sans-serif;
+     border:1px solid #269023;
+    background-image: linear-gradient(bottom, #1D8A1D 3%, #48A63A 52%, #54C754 76%);
+background-image: -o-linear-gradient(bottom, #1D8A1D 3%, #48A63A 52%, #54C754 76%);
+background-image: -moz-linear-gradient(bottom, #1D8A1D 3%, #48A63A 52%, #54C754 76%);
+background-image: -webkit-linear-gradient(bottom, #1D8A1D 3%, #48A63A 52%, #54C754 76%);
+background-image: -ms-linear-gradient(bottom, #1D8A1D 3%, #48A63A 52%, #54C754 76%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.03, #1D8A1D),
+	color-stop(0.52, #48A63A),
+	color-stop(0.76, #54C754)
+);
+}
+
+.btn-tmp-onway{
+    border-radius:3px;
+     outline:none;
+     width:75%;               
+     height:39px;
+     text-align:center;
+     font-size:17px;
+     color:#FFFFFF;
+     font-style: normal;
+     margin:5px 0 5px 0;
+     font-family:sans-serif;
+     border:1px solid #8D8F25;
+    background-image: linear-gradient(bottom, #868A1E 3%, #A6A13A 52%, #C3C756 76%);
+background-image: -o-linear-gradient(bottom, #868A1E 3%, #A6A13A 52%, #C3C756 76%);
+background-image: -moz-linear-gradient(bottom, #868A1E 3%, #A6A13A 52%, #C3C756 76%);
+background-image: -webkit-linear-gradient(bottom, #868A1E 3%, #A6A13A 52%, #C3C756 76%);
+background-image: -ms-linear-gradient(bottom, #868A1E 3%, #A6A13A 52%, #C3C756 76%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.03, #868A1E),
+	color-stop(0.52, #A6A13A),
+	color-stop(0.76, #C3C756)
+);
+}
+
+.btn-tmp-rejec{
+    border-radius:3px;
+     outline:none;
+     width:75%;               
+     height:39px;
+     text-align:center;
+     font-size:17px;
+     color:#FFFFFF;
+     font-style: normal;
+     margin:5px 0 5px 0;
+     font-family:sans-serif;
+     border:1px solid #DD2809;
+    background-image: linear-gradient(bottom, #DB2504 3%, #F25348 52%, #F7613B 76%);
+background-image: -o-linear-gradient(bottom, #DB2504 3%, #F25348 52%, #F7613B 76%);
+background-image: -moz-linear-gradient(bottom, #DB2504 3%, #F25348 52%, #F7613B 76%);
+background-image: -webkit-linear-gradient(bottom, #DB2504 3%, #F25348 52%, #F7613B 76%);
+background-image: -ms-linear-gradient(bottom, #DB2504 3%, #F25348 52%, #F7613B 76%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.03, #DB2504),
+	color-stop(0.52, #F25348),
+	color-stop(0.76, #F7613B)
 );
 }
