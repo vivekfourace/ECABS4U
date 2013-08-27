@@ -59,7 +59,7 @@ function CheckMsg(data)
             
             //Role 2 --> Operator
             case 2:            
-            window.location = 'OperatorProfile.html?id='+userID+'&rid='+roleID+'&rrid='+relatedID;
+           window.location = 'OperatorProfile.html?id='+userID+'&rid='+roleID+'&rrid='+relatedID;
             break;
             
             //Role 3 --> Driver
@@ -69,7 +69,7 @@ function CheckMsg(data)
             
             //Role 4 --> Customer
             case 4:
-            window.location = "customerSearch.html";
+            window.location = 'customerHome.html?id='+userID+'&rid='+roleID+'&rrid='+relatedID;
             break;
         }
     }
