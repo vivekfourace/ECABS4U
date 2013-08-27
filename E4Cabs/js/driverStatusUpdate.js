@@ -31,7 +31,8 @@ $('#lblCurrentStatus').text();
 
 function engage()
 {
-    $('#lblCurrentStatus').text("Engage");
+    $('#lblCurrentStatus').text("Engaged");
+    $('#lblCurrentStatus').css("color","#97312A");
 
 //var url = "";
         //$.ajax(url,{
@@ -49,6 +50,8 @@ function engage()
 function available()
 {
     $('#lblCurrentStatus').text("Available");
+    $('#lblCurrentStatus').css("color","#33982C");
+    
 //var url = "";
       //  $.ajax(url,{
           //  type:"POST",
@@ -64,7 +67,8 @@ function available()
 
 function onTheWay()
 {
-   $('#lblCurrentStatus').text("On the way");
+    $('#lblCurrentStatus').text("On the way");
+    $('#lblCurrentStatus').css("color","#98972E");
 //var url = "";
      //   $.ajax(url,{
           //  type:"POST",
@@ -81,6 +85,8 @@ function onTheWay()
 function rejected()
 {
     $('#lblCurrentStatus').text("Rejected");
+    $('#lblCurrentStatus').css("color","#E13015");
+    
 //var url = "";
       //  $.ajax(url,{
           //  type:"POST",
@@ -95,5 +101,5 @@ function rejected()
 }
 function backadmin()
 {
-    window.location="driverAfterlogin.html";
+    window.location="driverHome.html";
 }

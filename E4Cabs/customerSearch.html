@@ -2,135 +2,96 @@
 
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta charset="utf-8" />
+        <title></title>
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <link rel="stylesheet" type="text/css" href="css/site.css" />
-       <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-       <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-       <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-        <title></title>
-        <script>
-          $(function() {
-            $( "#datepicker" ).datepicker({
-              numberOfMonths: 1,
-              showButtonPanel: true,
-              dateFormat: 'dd/mm/yy'
-            });
-              var time = new Date();
-              var hrs = time.getHours();
-              var min = time.getMinustes();
-              var secnd = time.getSeconds();
-              if(time.getHours() > 12)
-                  hrs = hrs + 
-              $('#txttimepicker').val(time.getHours() + ":" + time.getMinutes());
-          });
-       </script>
+        <link rel="stylesheet" type="text/css" href="jquery-mobile/styles/jquery.ui.theme.css" />
+        <link rel="stylesheet" type="text/css" href="jquery-mobile/styles/jquery-ui.css" />
+        <script type="text/javascript" src="jquery-mobile/js/jquery-1.9.1.min.js"></script>
+        
+        
+        
+        <script type="text/javascript" src="jquery-mobile/js/jquery.ui.core.min.js"></script>
+        <script type="text/javascript" src="jquery-mobile/js/jquery.ui.widget.min.js"></script>
+        <script type="text/javascript" src="jquery-mobile/js/jquery.ui.tabs.min.js"></script>
+         <script type="text/javascript" src="jquery-mobile/js/jquery.ui.position.min.js"></script>
+        <script type="text/javascript" src="jquery-mobile/js/jquery.ui.timepicker.js"></script>
+        
+        <script type="text/javascript" src="js/customerSearch.js"></script>
+        <script type="text/javascript" src="jquery-mobile/js/jquery-ui.js"></script>
+        
     </head>
-    <body> 
-        <div class="header-temp"><span>Search</span></div>             
-        <div style="height:80px;width:100%;margin-bottom:30px">
-            <div style="padding-top:25px"><img src="img/site-logo.png" class="logo"/></div>
-            <span style="color:#0C9516" class="slogan">'Save Money - Save Time - Save The Planet'</span>
-        </div>
-        <div style="margin:10px 0 5px 0;" align="center">
-            <span class="font-style">Book & Go >>></span>
-        </div>
-        <div style="margin-left:07px;">
-        <table width="100%" class="font-style">
-            <tr>
-                <td width="20%">Location:</td>          
-                <td width="70%">
-                    <select name="mydropdown">
-                    <option value="0">-select-</option>   
-                    <option value="1">hsr layout</option>
-                    <option value="2">marthahalli</option>
-                    <option value="3">kalamandir</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td width="20%">2nd Location:</td>
-                <td width="70%"><select name="mydropdown">
-                     <option value="0">-select-</option>   
-                    <option value="1">hsr layout</option>
-                    <option value="2">marthahalli</option>
-                    <option value="3">kalamandir</option>
-                    </select>               
-                     <input type="button" style="background-color:#FEEF00; color:black;" id="btnlocation" value="+Location" />
-                </td>
-            </tr>
-            <tr>
-                <td>Pick up Date:</td>
-                <td> <input type="text" id="datepicker" />
-                </td>
-            </tr>
-            <tr>
-                <td>Pick up Time:</td>
-                <td>
-                    <input type="text" id="txttimepicker">
-                </td>
-            </tr>
-            <tr>
-             <td>Passengers:</td>
-                <td>
-             <select name="mydropdown">
-                 <option value="1">1</option>
-                 <option value="2">2</option>
-                 <option value="3">3</option>
-                 <option value="4">4</option>
-                 <option value="5">5</option>
-                 <option value="6">6</option>
-            </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Large Case:</td>
-                <td><select name="mydropdown">
-                <option value="0">0</option>
-                 <option value="1">1</option>
-                 <option value="2">2</option>
-                 <option value="3">3</option>
-                 <option value="4">4</option>
-                 <option value="5">5</option>
-                 <option value="6">6</option>
-                </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Small Case:</td>
-                <td><select name="mydropdown">
-            <option value="0">0</option>
-             <option value="1">1</option>
-             <option value="2">2</option>
-             <option value="3">3</option>
-             <option value="4">4</option>
-             <option value="5">5</option>
-             <option value="6">6</option>
-        </select> 
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                     <input type="button" id="btnspecial" style="background-color:#FEEF00; color:black;" value="Special Requirement" onclick="redirects();"/>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <label id="lblPay">Pay:</label>
-                    <input type="radio" id="radCash" name="paymentmode" value="cash">Cash
-                    <input type="radio" id="radCard" name="paymentmode" value="card">Card
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    </td>
-                <td>
-                    <input type="button" id="btnsearch" style="background-color:#FEEF00; color:black;" value="Search" onclick="redirect();"/>
-                    <input type="button" id="btncancel" style="background-color:#FEEF00; color:black;" value="Cancel" onclick="reset();"/>
-                </td>
-            </tr>
-        </table>
+    <script type="text/javascript">
+        function loadDateTime(){    
+            //Code For current Time
+            	var currentTime = new Date()
+            	var hours = currentTime.getHours()
+            	var minutes = currentTime.getMinutes()
+            	if (minutes < 10)
+            	minutes = "0" + minutes
+            	var suffix = "AM";
+            	if (hours >= 12) {
+            	suffix = "PM";
+            	hours = hours - 12;
+            	}
+            	if (hours == 0) {
+            	hours = 12;
+            	}
+                $('#timepicker').val(hours+":"+minutes+":"+suffix);
+                document.getElementById('timepicker').text = hours+":"+minutes+":"+suffix;
+                $('#timepicker').text(hours+":"+minutes+":"+suffix);
+            
+            //Code For current Date
+            	var currentDate = new Date()
+            	var day = currentDate.getDate()
+            	var month = currentDate.getMonth() + 1
+            	var year = currentDate.getFullYear()
+                $('#datepicker').val(day+"/"+month+"/"+year);
+            }
+    </script>
+    
+    <body onload="loadDateTime()">
+        <center>
+        <div class="header">
+            <div style="float:left;height:48px;width:100px">
+                <img src="img/site-logo.png" class="logo"/>
             </div>
-        </body>
+            <div style="width:200px; height:50px;text-align:center">
+                <div style="padding-top:13px;">
+                <i class="header-font">Book & GO >></i>
+                </div>
+            </div>
+        </div>
+            
+        <div style="padding-top:60px">
+            <div style="margin-bottom:3px">
+               <select class="select-choice">
+                  <option value="0">From</option>
+                  <option value="bangalore">Bangalore</option>
+                  <option value="chennai">Chennai</option>
+                  <option value="delhi">Delhi</option>
+               </select>
+            </div>
+            <div style="margin-bottom:3px">
+            <select class="select-choice">
+                  <option value="0">To</option>
+                  <option value="bangalore">Bangalore</option>
+                  <option value="chennai">Chennai</option>
+                  <option value="delhi">Delhi</option>
+            </select>
+            </div>
+                <input type="text" id="datepicker"/>
+                <input type="text" id="timepicker"/>
+            <div style="margin-bottom:8px">
+            <select class="select-choice">
+                  <option value="1" selected="true">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+            </select>
+             </div>
+            <input type="button" id="#" value="Search" class="btn-tmp"/>
+          </div>
+      </center>
+    </body>
 </html>

@@ -1,10 +1,9 @@
 function forgotPassword()
             {
-                var pass=document.getElementById('txtEmail').value;
+                var pass=$('#txtEmail').val();
                 
                 var regExpEmail = "^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$";
               //Email Verification
-                
                 if(pass.length > 0)
                     {
                         if(pass.match(regExpEmail))

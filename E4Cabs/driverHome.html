@@ -11,13 +11,21 @@
     </head>
     <body>
         <center>
-       <div class="header-temp"><span>Register</span></div>             
-        <div style="height:80px;width:100%;margin-bottom:70px">
-            <div style="padding-top:25px"><img src="img/site-logo.png" class="logo"/></div>
-            <span style="color:#0C9516" class="slogan">'Save Money - Save Time - Save The Planet'</span>
+       <div class="header">
+            <div style="float:left;height:48px;width:100px">
+                <img src="img/site-logo.png" class="logo"/>
+            </div>
+            <div style="width:200px; height:50px;text-align:center">
+                <div style="padding-top:13px;">
+                <i class="header-font">Home</i>
+                </div>
+            </div>
         </div> 
+            <div style="padding-top:65px;">
             <input type="button" class="btn-tmp cursor" value="Your current status" onclick="DriverStatus()"/>
             <input type="button" class="btn-tmp cursor" value="Profile" onclick="DriverProfile()"/>
+            <input type="button" class="btn-tmp cursor" value="My Jobs" onclick="Jobs();"/>
+         </div>       
        </center>
     </body>
 </html>
