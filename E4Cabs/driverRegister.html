@@ -5,64 +5,43 @@
         <title></title>
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <link rel="stylesheet" type="text/css" href="css/site.css" />
+        <script type="text/javascript" src="js/driverRegister.js"></script>        
         <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
         <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
-        <script type="text/javascript" src="js/driverRegister.js"></script>        
-        
     </head>
     <body>
         <center>
         <div class="header-temp"><span>Driver Register</span></div>            
-        <div style="height:100px;width:100%;margin-bottom:40px">
+        <div style="height:100px;width:100%;margin-bottom:30px">
             <div style="padding-top:35px"><img src="img/site-logo.png" class="logo"/></div>
             <span style="color:#0C9516" class="slogan">'Save Money - Save Time - Save The Planet'</span>
         </div> 
         
-        <center>
-            <div id="link2" width="100%" style="display:none">
-            <label id="lblMessage" style="font-size:13px"></label></div></center>
-         <center>
-           <div id="link1" width="100%" style="display:none">
-               <a href="login.html">click</a><span style="font-size:13px;color:green;"> here to login.</span></div></center>
-      
-           <center><label id="lblRequiredField" style="color:red;font-size:10px"></label></center>
-        
-        
-        
-        <div id="container" align="center">
-            <input type="text" id="txtname" placeholder="First Name"/>
+        <div id="container">
+            <input type="text" id="txt1" placeholder="First Name"/>
             
-             <input type="text" id="txt9" placeholder="Last Name"/>
+             <input type="text" id="txt9" placeholder="Last Name"/>            
             
+             <input type="text" id="txt2" placeholder="Email"/>
             
-             <input type="text" id="txtemail" placeholder="Email"/>
+            <input type="text" id="txt10" placeholder="User Id"/>
             
-            <input type="text" id="txtusername" placeholder="User Id"/>
+            <input type="password" id="txt7" placeholder="Password"/>
             
-            <input type="password" id="txtpassword" placeholder="Password"/>
+            <input type="password" id="txt8" placeholder="Confirm password"/>
             
-            <input type="password" id="txtCpass" placeholder="Confirm password"/>
+            <input type="text" id="txt3" placeholder="Contact number" maxlength="12"/>
             
-            <input type="text" id="txtmobile" placeholder="Contact number" maxlength="12"/>
+            <input type="text" id="txt4" placeholder="Address1"/>
             
-            <input type="text" id="txtaddress1" placeholder="Address1"/>
-            
-            <input type="text" id="txtaddress2" placeholder="Address2"/>
-            
+            <input type="text" id="txt5" placeholder="Address2"/>            
           
-            <input type="text" id="txtpostcode" placeholder="Postcode"/>
-            
-            <div >
-                
-            <input type="file" id="raghu"  text="Browse" size="40"  />
-                <input type="button" onclick="UploadImage()" value="Upload"/>
-                </div>
+            <input type="text" id="txt6" placeholder="Postcode"/>
+            <input type="file" id="txtfile"  text="Browse"/>
+            <input type="button" value="Upload" />
             
         <div align="center">
-            <input type="button" class="btn-tmp cursor" value="Register" onclick="RegisterDriver();"/>
-        </div>
-            <div align="center">
-            <input type="button" class="btn-tmp cursor" value="Cancel" onclick="Backtoadmin();"/>
+            <input type="button" class="btn-tmp cursor" value="Submit" onclick="RegisterDriver();"/>
         </div>
         </div>  
             </center>
