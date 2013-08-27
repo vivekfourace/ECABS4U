@@ -9,6 +9,7 @@
                 else if(name.length==0)
                 {
                 $('#lblMsg').text("Please enter username.");
+                $('#txtUserName').focus();
                  return false;
                 }
               if(password.length>0)
@@ -18,6 +19,8 @@
                  else if(password.length == 0) 
                 {
                     $('#lblMsg').text("Please enter password.");
+                    $('#txtPassword').focus();
+                    
                      return false;
                 }
                 
