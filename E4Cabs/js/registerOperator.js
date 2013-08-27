@@ -175,13 +175,13 @@ function OnValidate(data)
     else
     {
          $('#txtName').val('');
-       $('#txtEmail').val('');
-       $('#txtPassword').val('');
-       $('#txtUserID').val('');
-       $('#txtConfirmPass').val('');
-       $('#txtContact').val('');
-        $('#txtAddress1').val('');
-       $('#txtAddress2').val('');
+         $('#txtEmail').val('');
+         $('#txtPassword').val('');
+         $('#txtUserID').val('');
+         $('#txtConfirmPass').val('');
+         $('#txtContact').val('');
+         $('#txtAddress1').val('');
+         $('#txtAddress2').val('');
         
         $("#link2").show();
         $('#lblMessage').text("Registration successful,");
@@ -191,6 +191,8 @@ function OnValidate(data)
        
     }
 }
+
+
 function backtoadmin()
 {
     window.location="Admin.html";
