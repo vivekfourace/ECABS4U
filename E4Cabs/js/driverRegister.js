@@ -1,48 +1,12 @@
 function UpladImage()
 {
-    
-   //var input = document.getElementById('txtfile');
-   //var fullPath = $('#txtfile').val();
-   //var filename = fullPath.replace(/^.*[\\\/]/, '');    
-   //var dot_pos = filename.lastIndexOf(".");
-   //if(dot_pos == -1)
-   //   return "";
-   //var fileExt = filename.substr(dot_pos+1).toLowerCase();
-   //var fileKb = Math.ceil(input.files[0].size/1024);
-    
-          //e.preventDefault();
-          //var InsDocDet = {};
-          //InsDocDet.docname=$("#DocName").val();
-
-          //InsDocDet.ownerUser=1;
-          //InsDocDet.catid=$("#drp_cat").val();
-          //InsDocDet.createDatetime=new Date();
-          //InsDocDet.description_d=$("#Desc").val();
-          //InsDocDet.comments_=$("#cmnts").val();
-          //InsDocDet.deptid_=1;
-          //InsDocDet.con_type=1;
-          //InsDocDet.size_=1;
-          //InsDocDet.Doc_status="up";
-          //var fullPath =$("#doc_upload").val(); //document.getElementById('doc_upload').value;
-          //if (fullPath) {
-          //var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
-          //var filename = fullPath.substring(startIndex);
-          //if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
-          //filename = filename.substring(1);
-          //InsDocDet.file_name=filename;
-          //$.ajax({
-          //    type: "POST",
-          //  // <!-- url: "http://localhost/EMRDMSService/Service.asmx/User_Login",-->
-          //   url: "http://localhost/EMRDMSService/Service.asmx/srv_Insert_Document",
-          //    data: "{ins_Doc:" + JSON.stringify(InsDocDet) + "}",
-          //    contentType: "application/json; charset=utf-8",
-          //    dataType: "json",
-          //    success: function (r) {                     
-          //                    console.log(r.d.STAT);
-          //    }
-          //});
-      //});
-    
+    var filesSelected = document.getElementById('txtfile');
+    var NameImg=filesSelected.value;
+    var filename = NameImg.replace(/^.*[\\\/]/, '');
+    alert(filename);
+    var image = document.getElementById("txtfile");
+   var picsize= Math.ceil(image.files[0].size/1024);
+    alert("Image Size is : "+ picsize + ' KB');
 }
 function RegisterDriver()
 {
@@ -237,14 +201,14 @@ function OnValidate(data)
         $('#lblMessage').text("Registration successful,");
         $('#lblMessage').css("color","green");
         $("#link1").show();
-                       $('#txt1').val('');
+                          $('#txt1').val('');
                           $('#txt2').val('');
                           $('#txt3').val('');
-                         $('#txt4').val('');
+                          $('#txt4').val('');
                           $('#txt5').val('');
-                         $('#txt6').val('');
-                           $('#txt7').val('');
-                           $('#txt8').val('');
+                          $('#txt6').val('');
+                          $('#txt7').val('');
+                          $('#txt8').val('');
                            $('#txt10').val('');
                             $('#txt9').val('');
     }
