@@ -27,11 +27,11 @@ $(document).ready(function() {
 	if (hours == 0) {
 	hours = 12;
 	}
-    $('#timepicker').val(hours+":"+minutes+":"+suffix);
+    $('#timepicker').val("Current time: "+hours+":"+minutes+":"+suffix);
 
 //Code For current Date
 	var currentDate = new Date()
 	var day = currentDate.getDate()
 	var month = currentDate.getMonth() + 1
 	var year = currentDate.getFullYear()
-    $('#datepicker').val(day+"/"+month+"/"+year);
+    $('#datepicker').val("Today date: "+day+"/"+month+"/"+year);
