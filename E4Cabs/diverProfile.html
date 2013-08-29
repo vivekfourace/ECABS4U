@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/site.css" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
+        <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        <script type="text/javascript" src="js/driverProfile.js"></script>
+    </head>
+    <body>
+         <center>
+        <div class="header-temp"><span>Driver Profile</span></div>            
+        <div style="height:100px;width:100%;margin-bottom:5px">
+            <div style="padding-top:30px"><img src="img/site-logo.png" class="logo"/></div>
+           
+        </div>
+             <div id="DriverImg" align="center">
+                 <img src="img/vikas.jpg" id="DImage" width="150px" height="100px" align="center" />
+             </div>
+             <table align="center">
+                 <tr>
+                     <td>
+                         <input type="file" id="SelectedImg" value="Browse" style="width:30px">
+                        <input type="button" value="Upload" onclick="BtnUploadDImg()"> 
+                     </td>
+                 </tr>
+             </table>
+        <table width="80%" align="left">
+            <tr>
+                <td width="35%">
+                    <img class="font-style" src="img/1377197235_man-24.png" width="20px" height="20px"  align="right"/>
+                   <!-- <label id="lname" class="font-style"><b>Name:</b></label>--> 
+                   
+                </td>
+                <td width="65%">
+                    <label id="lblname" class="font-style" style="text-align:left">Vikash Srivastava</label>
+                    <input type="text" id="txtname" class="font-style" style="display:none;width:100%" />
+                </td>
+               <!-- <td>
+                    <img id="Edit0" class="font-style" src="img/EditImage.png" width="10px" height="10px"/>
+                </td>-->
+                 
+            </tr>
+             <tr>
+                <td width="35%">
+                    <img class="font-style" src="img/1377279422_home.png" width="20px" height="20px"  align="right"/>
+                    <!--<label id="lLocation" class="font-style"><b>Address1:</b></label>--> 
+                </td>
+                <td width="65%">
+                    <label id="lblLocation" class="font-style" style="text-align:left">Dhanbad</label>
+                       <input type="text" id="txtLocation" class="font-style" style="display:none;width:100%"/>
+                </td>
+                 <!--<td>
+                    <img id="Edit1" class="font-style" src="img/EditImage.png" width="10px" height="10px"/>
+                </td>-->
+            </tr>
+            
+            <tr>
+                <td width="35%">
+                    <img class="font-style" src="img/1377279422_home.png" width="20px" height="20px" align="right"/>
+                    <!--<label id="lLocation2" class="font-style"><b>Address2  :</b></label>--> 
+                </td>
+                <td width="65%">
+                    <label id="lblLocation2" class="font-style" style="text-align:left">Jharkhand</label>
+                       <input type="text" id="txtLocation2" class="font-style" style="display:none;width:100%"/>
+                </td>
+                <!--<td>
+                    <img id="Edit2" class="font-style" src="img/EditImage.png" width="10px" height="10px"/>
+                </td>-->
+            </tr>
+            <tr>
+                <td width="35%">
+                    <img class="font-style" src="img/phone.png" width="20px" height="20px"  align="right" />
+                   <!-- <label id="lMobileNo" class="font-style"><b>Mobile No:</b></label> -->
+                </td>
+                <td width="65%">
+                    <label id="lblMobileNo" class="font-style"style="text-align:left">9986719372</label>
+                       <input type="text" id="txtMobileno" class="font-style" style="display:none;width:100%"/>
+                </td>
+                <!--<td>
+                    <img id="Edit3" class="font-style" src="img/EditImage.png" width="10px" height="10px"/>
+                </td>-->
+            </tr>
+            <tr>
+                <td width="35%">
+                    <img class="font-style" src="img/LogoEmail.png" width="20px" height="20px"  align="right"/>
+                    <!--<label id="lEmailID" class="font-style"><b>Email:</b></label>--> 
+                </td>
+                <td width="65%">
+                    <label id="lblEmailID" class="font-style"style="text-align:left">srivastava.ait@gmail.com</label>
+                       <input type="text" id="txtEmailID" class="font-style" style="display:none;width:100%"/>
+                </td>
+                <!--<td>
+                    <img id="Edit4" class="font-style" src="img/EditImage.png" width="10px" height="10px"/>
+                </td>-->
+            </tr>
+        </table>
+        <input id="btnEdit" type="button" class="btn-Edit cursor" value="Edit" onclick="EditProfile();"/>
+        <input id="btnBack" type="button" class="btn-Edit cursor" value="Back" onclick="BackToProfile()"/>
+        <input id="btnUpdate" type="button" class="btn-Edit cursor" style="display:none" value="Update" onclick="UpdateProfile();"/>
+        <input id="btnCancel" type="button" class="btn-Edit cursor" style="display:none" value="Cancel" onclick="CancelProfile();"/>
+        </center>
+    </body>
+</html>
+     

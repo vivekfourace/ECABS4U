@@ -12,27 +12,15 @@
     <body>
         <center>
         <div class="header-temp"><span>Driver Register</span></div>            
-        <div style="height:100px;width:100%;margin-bottom:40px">
+        <div style="height:100px;width:100%;margin-bottom:30px">
             <div style="padding-top:35px"><img src="img/site-logo.png" class="logo"/></div>
             <span style="color:#0C9516" class="slogan">'Save Money - Save Time - Save The Planet'</span>
         </div> 
         
-        <center>
-            <div id="link2" width="100%" style="display:none">
-            <label id="lblMessage" style="font-size:13px"></label></div></center>
-         <center>
-           <div id="link1" width="100%" style="display:none">
-               <a href="login.html">click</a><span style="font-size:13px;color:green;"> here to login.</span></div></center>
-      
-           <center><label id="lblRequiredField" style="color:red;font-size:10px"></label></center>
-        
-        
-        
-        <div id="container" align="center">
+        <div id="container">
             <input type="text" id="txt1" placeholder="First Name"/>
             
-             <input type="text" id="txt9" placeholder="Last Name"/>
-            
+             <input type="text" id="txt9" placeholder="Last Name"/>            
             
              <input type="text" id="txt2" placeholder="Email"/>
             
@@ -46,16 +34,12 @@
             
             <input type="text" id="txt4" placeholder="Address1"/>
             
-            <input type="text" id="txt5" placeholder="Address2"/>
-            
+            <input type="text" id="txt5" placeholder="Address2"/>            
           
             <input type="text" id="txt6" placeholder="Postcode"/>
+            <input type="file" id="txtfile"  text="Browse"/>
+            <input type="button" value="Upload" />
             
-            <div>
-            <input type="file" id="txtfile"  value="Browse" />
-                
-            <input type="button" id="btnUpload" onclick="UpladImage()" value="upload"/>
-            </div>
         <div align="center">
             <input type="button" class="btn-tmp cursor" value="Submit" onclick="RegisterDriver();"/>
         </div>
