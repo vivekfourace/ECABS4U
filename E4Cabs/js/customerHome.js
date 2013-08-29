@@ -6,7 +6,9 @@ var relatedId = QString.split("=")[3].split("&")[0];
 
 window.onload = getProfile();
 
-
+function Location(){
+    window.location = "Location.html";
+}
 
 
 //get profile
