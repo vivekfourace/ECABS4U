@@ -72,7 +72,8 @@ function CheckMsg(data)
             
             //Role 3 --> Driver
             case 3:
-            window.location= "driverHome.html";
+            
+            window.location= 'driverHome.html?id='+userID+'&rid='+roleID+'&rrid='+relatedID;
             break;
             
             //Role 4 --> Customer

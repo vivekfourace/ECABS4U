@@ -46,7 +46,7 @@
      margin:5px 0 5px 0;
      font-family:sans-serif;
      border:1px solid #0A210A;
-     background-image: linear-gradient(bottom, #0A210A 36%, #2A332A 53%, #5D615D 84%);
+    background-image: linear-gradient(bottom, #0A210A 36%, #2A332A 53%, #5D615D 84%);
     background-image: -o-linear-gradient(bottom, #0A210A 36%, #2A332A 53%, #5D615D 84%);
     background-image: -moz-linear-gradient(bottom, #0A210A 36%, #2A332A 53%, #5D615D 84%);
     background-image: -webkit-linear-gradient(bottom, #0A210A 36%, #2A332A 53%, #5D615D 84%);
@@ -60,6 +60,36 @@ background-image: -webkit-gradient(
 	color-stop(0.53, #2A332A),
 	color-stop(0.84, #5D615D)
 );
+
+     }
+
+.btn-Edit{
+     border-radius:3px;
+     outline:none;
+     width:80%;               
+     height:35px;
+     text-align:center;
+     font-size:17px;
+     color:#FFFFFF;
+     font-weight:bold;
+     font-style: normal;
+     margin:5px 0 5px 0;
+     font-family:sans-serif;
+     border:1px solid #0A210A;
+    background-image: linear-gradient(bottom, rgb(1,5,10) 55%, rgb(0,16,28) 19%);
+background-image: -o-linear-gradient(bottom, rgb(1,5,10) 55%, rgb(0,16,28) 19%);
+background-image: -moz-linear-gradient(bottom, rgb(1,5,10) 55%, rgb(0,16,28) 19%);
+background-image: -webkit-linear-gradient(bottom, rgb(1,5,10) 55%, rgb(0,16,28) 19%);
+background-image: -ms-linear-gradient(bottom, rgb(1,5,10) 55%, rgb(0,16,28) 19%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.55, rgb(1,5,10)),
+	color-stop(0.19, rgb(0,16,28))
+);
+
      }
 
 .img-tmp{

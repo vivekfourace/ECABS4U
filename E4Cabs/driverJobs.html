@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/site.css" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
+        <script type="text/javascript" src="js/driverProfile.js"></script>
+        <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        <title></title>
+    </head>
+    <body>
+       <center>
+       <div class="header">
+            <div style="float:left;height:48px;width:100px">
+                <img src="img/site-logo.png" class="logo"/>
+            </div>
+            <div style="width:200px; height:50px;text-align:center">
+                <div style="padding-top:13px;">
+                <i class="header-font">My latest job</i>
+                </div>
+            </div>
+        </div>
+        <div style="padding-top:60px;">
+        <table align="center" width="80%" cellspacing="10">
+            <tr>
+                <td>
+                    <label type="text" style="font-size:15px"><b>Pickup Point:</b></label>
+                </td>
+                <td>
+                    <label id="lblFrom" width="60%" height="30px" text-align="center"></label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                      <label type="text" style="font-size:15px"><b>Drop Point:</b></label>
+                </td>
+                <td>
+                     <label id="lblTo" width="60%" height="30px" text-align="center"></label>
+                </td>
+            </tr>
+            <tr>
+               <td><label type="text" style="font-size:15px"><b>Date of Journey:</b></label></td>
+                <td><label id="lblDOJ" width="60%" height="20px" text-align="center"></label></td>
+            </tr>
+            <tr>
+                <td><label type="text" style="font-size:15px"><b>Pick Up Time:</b></label></td>
+                <td><label id="lblPickTime" width="60%" height="30px" text-align="center"></label></td>
+            </tr>
+            <tr>
+                <td><label type="text" style="font-size:15px"><b>Distance:</b></label></td>
+                <td><label id="lblDistance" width="60%" height="30px" text-align="center"></label></td>
+            </tr>
+        </table>
+        <div align="center">
+            <input id="btnBack" type="button" class="btn-tmp cursor" value="Back" onclick="BackToProfile()"/>
+        </div>
+       </div>
+        </center>   
+    </body>
+</html>
