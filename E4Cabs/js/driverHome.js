@@ -23,6 +23,6 @@ function DriverProfile()
 
 function Jobs()
 {
-    window.location = 'Myjobs.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    window.location = 'driverJobs.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
     
 }

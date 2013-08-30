@@ -11,11 +11,17 @@
     </head>
     <body>
          <center>
-        <div class="header-temp"><span>Driver Profile</span></div>            
-        <div style="height:100px;width:100%;margin-bottom:5px">
-            <div style="padding-top:30px"><img src="img/site-logo.png" class="logo"/></div>
-           
+        <div class="header">
+            <div style="float:left;height:48px;width:100px">
+                <img src="img/site-logo.png" class="logo"/>
+            </div>
+            <div style="width:200px; height:50px;text-align:center">
+                <div style="padding-top:13px;">
+                <i class="header-font">Profile</i>
+                </div>
+            </div>
         </div>
+            <div style="padding-top:60px;">
              <table align="center"  style="border-style:solid;border-radius:0.1" bgcolor="#ffffff">
                  <tr>
                      <td colspan="2" align="center">
@@ -119,11 +125,12 @@
                 </td>-->
             </tr>
         </table>
-        <input id="btnEdit" type="button" class="btn-Edit cursor" value="Edit" onclick="EditProfile();"/>
-        <input id="btnBack" type="button" class="btn-Edit cursor" value="Back" onclick="BackToProfile()"/>
-        <input id="btnUpdate" type="button" class="btn-Edit cursor" style="display:none" value="Update" onclick="UpdateProfile();"/>
-        <input id="btnCancel" type="button" class="btn-Edit cursor" style="display:none" value="Cancel" onclick="CancelProfile();"/>
-        </center>
+        <input id="btnEdit" type="button" class="btn-tmp cursor" value="Edit" onclick="EditProfile();"/>
+        <input id="btnBack" type="button" class="btn-tmp cursor" value="Back" onclick="BackToProfile()"/>
+        <input id="btnUpdate" type="button" class="btn-tmp cursor" style="display:none" value="Update" onclick="UpdateProfile();"/>
+        <input id="btnCancel" type="button" class="btn-tmp cursor" style="display:none" value="Cancel" onclick="CancelProfile();"/>
+       </div> 
+      </center>
     </body>
 </html>
      
