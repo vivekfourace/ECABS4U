@@ -30,18 +30,18 @@ function gethistory()
                     success: function (data) {
                         //var len = data.d.length;
                      
-                        $('#msg').append('<table>')
+                        $('#msg').append('<table style="border:1px solid black">')
                        
-                         $('#msg').append('<tr >')
+                         $('#msg').append('<tr>')
                             
-                            .append("<th width='35%' align='center'>" +"Date"+"</th>")
+                            .append("<th width='35%' align='center' >" +"Date"+"</th>")
                             .append("<th width='25%' align='center'>" +"From"+"</th>")
                              .append("<th width='25%' align='center'>" +"To"+"</th>")
                             .append('</tr>');
                        
                             //var id = data.d[i]["ID"];
                            
-                            $('#msg').append('<tr>')
+                            $('#msg').append('<tr >')
                             
                             .append("<td width='35%' align='center'>" + data.d[0]+"</td>")
                             .append("<td width='25%' align='center'>" + data.d[1]+"</td>")
