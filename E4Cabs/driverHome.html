@@ -12,25 +12,29 @@
     </head>
     <body>
         <center>
-        <div class="header-temp"><span><b>Home</b></span></div>             
-        <div style="height:80px;width:100%;margin-bottom:30px">
-            <div style="padding-top:25px"><img src="img/site-logo.png" class="logo"/></div>
-           
+        <div class="header">
+            <div style="float:left;height:48px;width:100px">
+                <img src="img/site-logo.png" class="logo"/>
+            </div>
+            <div style="width:200px; height:50px;text-align:center">
+                <div style="padding-top:13px;">
+                <i class="header-font">Home</i>
+                </div>
+            </div>
         </div>
-            <div id="driverMarquee" style="width:80%;height:25px;background-color:#9F0066;border-radius:5px">
-            <marquee behaviour="alternate" slide="left">
-                <span style="font-size:15px;color:#ffffff">
-                   <b>*Your Current Status is:<label id="DriverCurrentStatus" font-size="15px"/>   
-                   </b>
-                </span>
-            </marquee></div>
+         <div style="padding-top:70px;">
+          <div style="width:80%;height:30px;background-color:#9F0066;border-radius:3px;">
+            <marquee slide="left" style="font-size:15px;color:#ffffff;padding-top:5px;">
+               <i>Your Current Status is: &nbsp;<label id="driverStatusupdate"/></i>
+            </marquee>
+          </div>
   
-           <div style="padding-top:100px;">
+           <div style="padding-top:40px;">
             <input type="button" class="btn-tmp cursor" value="Your current status" onclick="DriverStatus()"/>
             <input type="button" class="btn-tmp cursor" value="Profile" onclick="DriverProfile()"/>
             <input type="button" class="btn-tmp cursor" value="My Jobs" onclick="Jobs();"/>
          </div>   
-          
+         </div>    
          </center>
     </body>
 </html>
