@@ -16,7 +16,7 @@
         
         var mapOptions = {
           center: new google.maps.LatLng(12.971599, 77.594563),
-          zoom: 8,
+          zoom: 11,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
@@ -41,8 +41,11 @@
     </script>
   </head>
   <body>
-            <div class="header-temp"><span>Location</span></div>
-      <div style="padding-bottom:20px"></div>
+          <div class="header-temp">
+                <a style="float:left" href="customerHome.html">Back</a>
+                <span>Current location</span>
+            </div>
+          <div style="padding-bottom:20px"></div>
             <div id="map-canvas"></div>
   </body>
 </html>

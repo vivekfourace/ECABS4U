@@ -11,24 +11,51 @@
     </head>
     <body>
         <center>
-        <div class="header-temp"><span><b>Status Update</b></span></div>             
-        <div style="height:80px;width:100%;margin-bottom:30px">
-            <div style="padding-top:25px"><img src="img/site-logo.png" class="logo"/></div>
-           
+        <div class="header">
+            <div style="float:left;height:48px;width:100px">
+                <img src="img/site-logo.png" class="logo"/>
+            </div>
+            <div style="width:200px; height:50px;text-align:center">
+                <div style="padding-top:13px;">
+                <i class="header-font">Status update</i>
+                </div>
+            </div>
         </div>
                  
-        <div style="padding-left:10%;height:40px">
+        <div style="padding-left:10%;padding-top:55px;height:40px">
             <div align="center" style="padding-top:15px">
                 <span style="float:left" class="font-style"><b>Current Status : &nbsp;</b></span>
                 <label class="font-style" style="color:blue;text-decoration:none;float:left" id="lblCurrentStatus" />
             </div>
          </div>
-            
-            <input type="button" class="btn-tmp cursor" value="Engaged" onclick="engage();"/>
-            <input type="button" class="btn-tmp cursor" value="Available" onclick="available();"/>
-            <input type="button" class="btn-tmp cursor" value="On the way" onclick="onTheWay();"/>
-            <input type="button" class="btn-tmp cursor" value="Rejected" onclick="rejected();"/>
-            <input type="button" class="backbtn" value="Back" onclick="backadmin();"/>
+            <table width="100%">
+                <tr>
+                    <td align="center">
+                        <input type="button" class="btn-tmp-engage cursor" value="Engaged" onclick="engage();"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <input type="button" class="btn-tmp-avail cursor" value="Available" onclick="available();"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <input type="button" class="btn-tmp-onway cursor" value="On the way" onclick="onTheWay();"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <input type="button" class="btn-tmp-rejec cursor" value="Rejected" onclick="rejected();"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" colspan="2" >
+                        <input type="button" class="sign-inbtn cursor" value="OK" onclick="Okay();"style="margin-top:50px"/>
+                        <input type="button" class="sign-inbtn cursor" value="Back" onclick="backadmin();"/>
+                    </td>
+                </tr>
+            </table>
          </center>
     </body>
 </html>

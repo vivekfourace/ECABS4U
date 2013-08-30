@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/site.css" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
+        <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        <script type="text/javascript" src="js/bookedhistory.js"></script>
+        <title></title>
+        
+        <style type="text/css">
+table.hovertable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #999999;
+	border-collapse: collapse;
+}
+table.hovertable th {
+	background-color:#c3dde0;
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+table.hovertable tr {
+	background-color:#d4e3e5;
+}
+table.hovertable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+
+        
+        
+</style>
+    </head>
+    <body>
+        <center>
+        
+        <div class="header">
+            <div style="float:left;height:48px;width:100px">
+                <img src="img/site-logo.png" class="logo"/>
+            </div>
+            <div style="width:200px; height:50px;text-align:center">
+                <div style="padding-top:13px;">
+                <i class="header-font">Booked history</i>
+                </div>
+            </div>
+        </div>
+            <span style="font-size:17px"><b>History</b></span>
+       
+          
+            
+            <div style="padding-top:60px">
+
+<!-- Table goes in the document BODY -->
+<table class="hovertable" width="100%">
+<tr>
+	<th>Tripno</th><th>From</th><th>To</th><th>Date</th>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+	<td>1</td><td>Bangalore</td><td>Mumbai</td><td>02/07/2013</td>
+</tr>
+
+</table>
+ <input id="btnback" type="button" class="btnbackcustomerhome"  value="Back" onclick="backtoCustomerhome();"/>
+            
+            
+        </div>
+            </center>
+    </body>
+             
+</html>

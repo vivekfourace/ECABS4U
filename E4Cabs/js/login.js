@@ -9,6 +9,7 @@
                 else if(name.length==0)
                 {
                 $('#lblMsg').text("Please enter username.");
+                $('#txtUserName').focus();
                  return false;
                 }
               if(password.length>0)
@@ -18,6 +19,8 @@
                  else if(password.length == 0) 
                 {
                     $('#lblMsg').text("Please enter password.");
+                    $('#txtPassword').focus();
+                    
                      return false;
                 }
                 
@@ -59,17 +62,18 @@ function CheckMsg(data)
             
             //Role 2 --> Operator
             case 2:            
-            window.location = 'OperatorProfile.html?id='+userID+'&rid='+roleID+'&rrid='+relatedID;
+           window.location = 'OperatorProfile.html?id='+userID+'&rid='+roleID+'&rrid='+relatedID;
             break;
             
             //Role 3 --> Driver
             case 3:
-            window.location= "driverAfterlogin.html";
+            
+            window.location= 'driverHome.html?id='+userID+'&rid='+roleID+'&rrid='+relatedID;
             break;
             
             //Role 4 --> Customer
             case 4:
-            window.location = "customerSearch.html";
+            window.location = 'customerHome.html?id='+userID+'&rid='+roleID+'&rrid='+relatedID;
             break;
         }
     }
