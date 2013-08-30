@@ -3,6 +3,9 @@
   <head>
       <link rel="stylesheet" type="text/css" href="css/site.css" />
       <link rel="stylesheet" type="text/css" href="css/index.css" />
+      <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
+        <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        <script type="text/javascript" src="js/location.js"></script>
     <style type="text/css">
       html { height: 100% }
       body { height: 100%; margin: 0; padding: 0 }
@@ -42,7 +45,8 @@
   </head>
   <body>
           <div class="header-temp">
-                <a style="float:left" href="customerHome.html">Back</a>
+                
+              <input type="button" value="Back" id="btnback" onclick="backtohome();"style="float:left;background-color:black;color:white"/>
                 <span>Current location</span>
             </div>
           <div style="padding-bottom:20px"></div>

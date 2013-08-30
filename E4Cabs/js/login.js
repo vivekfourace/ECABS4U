@@ -1,5 +1,10 @@
- function login()
+//window.onload = login(); {
+ // document.getElementById("txtUserName").focus();
+//}
+
+function login()
             {
+                //document.getElementById("txtUserName").focus();
                 var name=document.getElementById('txtUserName').value;
                 var password=document.getElementById('txtPassword').value;
                 if(name.length > 0)
