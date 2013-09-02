@@ -30,9 +30,9 @@ function gethistory()
                     success: function (data) {
                         //var len = data.d.length;
                      
-                        $('#msg').append('<table style="border:1px solid black">')
+                        $('#msg').append("<table>")
                        
-                         $('#msg').append('<tr>')
+                         $('#msg').append("<tr>")
                             
                             .append("<th width='35%' align='center' >" +"Date"+"</th>")
                             .append("<th width='25%' align='center'>" +"From"+"</th>")
@@ -41,14 +41,14 @@ function gethistory()
                        
                             //var id = data.d[i]["ID"];
                            
-                            $('#msg').append('<tr >')
+                            $('#msg').append('<tr>')
                             
                             .append("<td width='35%' align='center'>" + data.d[0]+"</td>")
                             .append("<td width='25%' align='center'>" + data.d[1]+"</td>")
                              .append("<td width='25%' align='center'>" + data.d[2]+"</td>")
-                            .append('</tr>');
+                            .append("</tr>");
                       
-                        $('#msg').append('</table>')
+                        $('#msg').append("</table>")
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         alert(errorThrown);
