@@ -240,7 +240,7 @@ function logout()
 //Cab Now Button
 function cabNow()
 { 
-    //alert(relatedId);
+   //alert(relatedId);
    window.location ='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
