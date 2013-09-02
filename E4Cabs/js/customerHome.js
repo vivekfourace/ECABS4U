@@ -2,10 +2,10 @@ var QString = window.location.search.substring(1);
 var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
- 
 
 
 window.onload = getProfile();
+
 
 
 
@@ -44,10 +44,20 @@ function ShowData(data)
     $('#txtLocation2').hide();    
     $('#txtMobileno').hide();    
     $('#txtEmailID').hide();
-    $('#btnUpdate').hide();
-    $('#btnCancel').hide();
-    $('#btnchangepassword').hide();
-      $('#btnhistory').show();
+    
+     document.getElementById("trBtnUpdate").style.display = 'none';
+     document.getElementById("trCancel").style.display = 'none';
+     document.getElementById("tredit").style.display = 'table-row';
+  //   $('#btnUpdate').hide();
+  // $('#btnCancel').hide();
+    
+   // {
+       // $("#btnCancel").button("disable")
+        
+//}
+    
+   //$('#btnUpdate').hide();
+      //$('#btnhistory').show();
     
     $('#lblname').show();
      $('#lbllastname').show();
@@ -56,7 +66,10 @@ function ShowData(data)
     $('#lblMobileNo').show();
     $('#lblEmailID').show();
     $('#btnEdit').show();
+    
  }
+
+
 
 
 
@@ -69,10 +82,13 @@ function EditProfile()
     $('#txtMobileno').show();    
     $('#txtEmailID').show();
     $('#txtlastname').show(); 
-     $('#btnUpdate').show();
-    $('#btnCancel').show();
+   //  $('#btnUpdate').show();
+   // $('#btnCancel').show();
     
-    $('#btnchangepassword').show();
+    document.getElementById("trBtnUpdate").style.display = 'table-row';
+     document.getElementById("trCancel").style.display = 'table-row';
+     document.getElementById("tredit").style.display = 'none';
+    //$('#btnchangepassword').show();
     
     $('#lblname').hide();
     $('#lbllastname').hide();
@@ -82,7 +98,7 @@ function EditProfile()
     $('#lblEmailID').hide();
   $('#btnhistory').hide();
   
-    $('#btnEdit').hide();
+   // $("#btnEdit").hide();
    
     
     
@@ -107,6 +123,8 @@ function EditProfile()
         }
  });
 }
+
+
 
 
 //upadate customer Profile
@@ -166,9 +184,12 @@ function UpdateProfile()
 }
 
 
+
+
 //Cancel update
 function CancelProfile()
 {
+    
     getProfile();
 }
 
@@ -176,30 +197,8 @@ function CancelProfile()
 
 
 
-//Cab Now Button
-function cabnow()
-{
-    window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId; 
-}
-
-
-//Pre Book Button
-function prebook()
-{
-  window.location="";  
-}
-
-
-
-
-
 //Booked history Button
-
- //var userID = data.d[0];
-       // var roleID = parseInt(data.d[1]);
-      //var relatedID = data.d[2]; 
-
-function History()
+function bookedHistory()
 {
   //alert(relatedId);
  
@@ -208,14 +207,63 @@ function History()
 }
 
 
-//location Button
-function Location(){
-    window.location = 'Location.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+
+
+
+//My Profile Button
+ function myProfile()
+            {
+                window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+            }
+
+
+
+//Location Button
+//function Location()
+//{
+   // window.location = "Location.html";
+//}
+
+
+
+
+//Logout Button
+function logout()
+    {
+                
+       window.location="login.html";
+    }
+
+
+
+
+//Cab Now Button
+function cabNow()
+{ 
+    //alert(relatedId);
+   window.location ='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
-function Changepassword()
+
+
+
+//Logout button
+
+function logout()
 {
-    window.location='changePassword.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    window.location="login.html";
+}
+function preCab()
+{
+    window.location="#";
 }
 
-
+//Pre Book Button
+//function prebook()
+//{
+ // window.location="";  
+//}
+//function getAllMenu()
+//{
+  //  window.location="AllMenu.html";
+//}
