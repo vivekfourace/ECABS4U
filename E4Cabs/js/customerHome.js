@@ -129,21 +129,26 @@ function CancelProfile()
 
 
 //Cab Now Button
-function cabnow()
-{
-    window.location="customerSearch.html"; 
-}
+//function cabnow()
+//{
+ //   window.location="customerSearch.html"; 
+//}
 
 
 //Pre Book Button
-function prebook()
-{
-  window.location="";  
-}
+//function prebook()
+//{
+ // window.location="";  
+//}
 
 
 //Booked history Button
-function History()
-{
-  window.location="bookedhistory.html";  
-}
+//function History()
+//{
+ // window.location="bookedhistory.html";  
+//}
+
+//function getAllMenu()
+//{
+  //  window.location="AllMenu.html";
+//}

@@ -1,12 +1,60 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
         <link rel="stylesheet" type="text/css" href="css/site.css" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
          <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
         <script type="text/javascript" src="js/customerHome.js"></script>
+        
+        <link rel="stylesheet" href="css/slider/jquery.mobile-1.3.1.min.css" />
+        <script type="text/javascript" src="Scripts/slider/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="Scripts/slider/jquery.mobile-1.3.1.min.js"></script>
         <title></title>
+        <style>
+            /*this block should go in the styles.css file*/
+        .ui-panel-inner {
+            padding:0px; /*make the buttons flush edge to edge*/
+        }
+        .ui-controlgroup {
+            margin:0; /*make the buttons flush to the top*/
+        }
+        #header {
+            height:54px;
+        }
+        #bars-button {
+            margin:7px;
+        }
+    </style>
+        <script type="text/javascript">
+            function myProfile()
+            {
+                window.location="customerHome.html"
+            }
+            
+            function cabNow()
+            {
+                window.location="customerSearch.html";
+            }
+            
+            function preCab()
+            {
+                window.location="#";
+            }
+             function bookedHistory()
+            {
+                window.location="#";
+            }
+             function logout()
+            {
+                
+                window.location="login.html";
+            }
+           
+            
+        </script>
+       
     </head>
     <body>
         <center>
@@ -22,21 +70,7 @@
             </div>
         </div>            
    <div style="padding-top:55px">            
-        
-            <table width="80%" style="border-collapse:collapse">
-               <tr>
-                   <td><input id="btncabnow" type="button" class="btnsize" value="CabNow" onclick="cabnow();"/>
-                   
-                   <input id="btnprebook" type="button" class="btnsize" value="PreBook" onclick="prebook();"/>
-                   <input id="location" type="button" class="btnsize" value="Location" onclick="Location();"/>
-                       
-                   </td>
-               </tr> 
-            </table>
-        <br/>   
-            
-          
-    <table  width="41%" align="left" style="border:1px solid black;margin-left:20px;background-color:#DADADA">
+      <table  width="41%" align="left" style="border:1px solid black;margin-left:20px;background-color:#DADADA">
 <tr>
 	<td colspan="2" ><img style="width:70px;height:80px" src="img/cordova.png"/></td>
 </tr>
@@ -47,15 +81,26 @@
 
 </table>
         
- <table width="80%">
+  <table width="80%">
             <tr>
                 <td width="35%">
-                    <label id="lname" class="font-style"><b style="font-size:15px">Name:</b></label> 
+                    <label id="lname" class="font-style"><b style="font-size:15px">First name:</b></label> 
                    
                 </td>
                 <td width="65%">
                     <label id="lblname" class="font-style"></label>
                     <input type="text" id="txtname" class="font-style" style="display:none;width:100%"/>
+                </td>
+                 
+            </tr>
+      <tr>
+                <td width="35%">
+                    <label id="lname" class="font-style"><b style="font-size:15px">Last name:</b></label> 
+                   
+                </td>
+                <td width="65%">
+                    <label id="lbllastname" class="font-style"></label>
+                    <input type="text" id="txtlastname" class="font-style" style="display:none;width:100%"/>
                 </td>
                  
             </tr>
@@ -84,7 +129,7 @@
                 </td>
                 <td width="65%">
                     <label id="lblMobileNo" class="font-style"></label>
-                       <input type="text" id="txtMobileno" class="font-style" style="display:none;width:100%"/>
+                       <input type="text" id="txtMobileno" class="font-style" maxlength="12" style="display:none;width:100%"/>
                 </td>
             </tr>
             <tr>
@@ -97,24 +142,31 @@
                 </td>
             </tr>
         </table>
-            
+           <label id="lblMsg" style="color:red;font-size:10px"></label> 
         <br/>
             
         <input id="btnEdit" type="button" class="btn-tmp cursor" value="Edit" onclick="EditProfile();"/>
         <input id="btnUpdate" type="button" class="btn-tmp cursor" style="display:none" value="Update" onclick="UpdateProfile();"/>
-        <input id="btnCancel" type="button" class="btn-tmp cursor" style="display:none" value="Cancel" onclick="CancelProfile();"/>
+        <input id="btnCancel" type="button" class="btn-tmp cursor" style="display:none" value="Cancel" onclick="CancelProfile();"/>          
+         <div >
             
-          <table width="90%" style="border-collapse:collapse">
-              <tr>
-              
-              <td></td> 
-              
-          </tr>  
-              <tr align="center">
-                  <td><input id="btnprebook" type="button" class="btnsize2" value="Booked history" onclick="History();"/></td>
-              </tr>
-          </table>
-       </div>
+             <a id="bars-button" data-icon="bars"   style="margin-top:10px;text-align:center;" href="#navpanel"><img src="img/menudown.png"/></a>
+        </div>
+            <div  data-role="panel" id="navpanel" data-theme="a" data-display="overlay" data-position="left" >
+                <div data-role="controlgroup" data-corners="true">
+                    <a id="bars-button" data-icon="bars"   style="margin-top:10px;text-align:center;" href="#navpanel"><img src="img/menutop.png"/></a>
+                   
+                    <a onclick="myProfile()"  data-role="button">My Profile</a>
+                    <a onclick="cabNow()" data-role="button">Cab Now</a>
+                    <a onclick="preCab()" data-role="button">Pre Cab</a>
+                    <a onclick="bookedHistory()"  data-role="button">Booked History</a>
+                    <a onclick="feedBack()" data-role="button">FeedBack</a>
+                    <a onclick="logout()" data-role="button">Logout</a>
+			
+                </div>
+            </div>
+     </div>
+            
         </center>
     </body>
 </html>
