@@ -57,7 +57,7 @@
 .ui-overlay-a
 {
     background-image: none;
-    border-width: 0 border-width:0;
+    border-width: 0;
 }
 
 .ui-body-a, .ui-body-a input, .ui-body-a select, .ui-body-a textarea, .ui-body-a button
@@ -424,7 +424,6 @@
     background: #eee;
     font-weight: 700;
     color: #222;
-    width:85%;
     text-shadow: 0 1px 0 #fff;
     background-image: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#f1f1f1));
     background-image: -webkit-linear-gradient(#fff,#f1f1f1);
@@ -445,7 +444,6 @@
     background: #dfdfdf;
     font-weight: 700;
     color: #222;
-    width:85%;
     text-shadow: 0 1px 0 #fff;
     background-image: -webkit-gradient(linear,left top,left bottom,from(#f6f6f6),to(#e0e0e0));
     background-image: -webkit-linear-gradient(#f6f6f6,#e0e0e0);
@@ -1248,8 +1246,9 @@ a.ui-link-inherit
     -webkit-box-shadow: inset 0 0 3px #387bbe,0 0 9px #387bbe;
     box-shadow: inset 0 0 3px #387bbe,0 0 9px #387bbe;
 }
+/*ui-input-text*/
 
-.ui-input-text.ui-focus, .ui-input-search.ui-focus
+.ui-focus, .ui-input-search.ui-focus
 {
     -moz-box-shadow: 0 0 12px #387bbe;
     -webkit-box-shadow: 0 0 12px #387bbe;
@@ -1551,7 +1550,7 @@ body.ui-mobile-viewport, div.ui-mobile-viewport
     left: -9999px;
 }
 
-.ui-hide-label label.ui-input-text, .ui-hide-label label.ui-select, .ui-hide-label label.ui-slider, .ui-hide-label label.ui-submit, .ui-hide-label .ui-controlgroup-label, .ui-hidden-accessible
+.ui-hide-label label /*.ui-input-text,*/ .ui-hide-label label.ui-select, .ui-hide-label label.ui-slider, .ui-hide-label label.ui-submit, .ui-hide-label .ui-controlgroup-label, .ui-hidden-accessible
 {
     position: absolute!important;
     left: -9999px;
@@ -4190,7 +4189,7 @@ label.ui-submit
 
 @media all and (min-width:28em)
 {
-    .ui-popup .ui-field-contain label.ui-submit, .ui-popup .ui-field-contain .ui-controlgroup-label, .ui-popup .ui-field-contain label.ui-select, .ui-popup .ui-field-contain label.ui-input-text
+    .ui-popup .ui-field-contain label.ui-submit, .ui-popup .ui-field-contain .ui-controlgroup-label, .ui-popup .ui-field-contain label.ui-select, .ui-popup .ui-field-contain label /*.ui-input-text*/
     {
         font-size: 16px;
         line-height: 1.4;
@@ -4199,7 +4198,7 @@ label.ui-submit
         margin: 0 0 .3em;
     }
 
-    .ui-popup .ui-field-contain .ui-btn.ui-submit, .ui-popup .ui-field-contain .ui-controlgroup-controls, .ui-popup .ui-field-contain .ui-select, .ui-popup .ui-field-contain input.ui-input-text, .ui-popup .ui-field-contain textarea.ui-input-text, .ui-popup .ui-field-contain .ui-input-search
+    .ui-popup .ui-field-contain .ui-btn.ui-submit, .ui-popup .ui-field-contain .ui-controlgroup-controls, .ui-popup .ui-field-contain .ui-select, .ui-popup .ui-field-contain input /*.ui-input-text*/, .ui-popup .ui-field-contain textarea /*.ui-input-text*/, .ui-popup .ui-field-contain .ui-input-search
     {
         width: 100%;
         display: block;
@@ -4605,7 +4604,7 @@ label.ui-select
     visibility: hidden;
 }
 
-label.ui-input-text
+label /*.ui-input-text*/
 {
     font-size: 16px;
     line-height: 1.4;
@@ -4613,8 +4612,8 @@ label.ui-input-text
     font-weight: 400;
     margin: 0 0 .3em;
 }
+/*input.ui-input-text,textarea.ui-input-text*/
 
-input.ui-input-text, textarea.ui-input-text
 {
     background-image: none;
     padding: .4em;
@@ -4631,14 +4630,14 @@ input.ui-mini, .ui-mini input, textarea.ui-mini
 {
     font-size: 14px;
 }
+/*div.ui-input-text input.ui-input-text,div.ui-input-text textarea.ui-input-text*/
 
-div.ui-input-text input.ui-input-text, div.ui-input-text textarea.ui-input-text, .ui-input-search input.ui-input-text
+, .ui-input-search input /*.ui-input-text*/
 {
     border: 0;
     width: 100%;
     padding: .4em 0;
-    z-index: 0;
-    margin: -4px;
+    margin: 0;
     display: block;
     background: transparent none;
     outline: 0!important;
@@ -4655,8 +4654,8 @@ div.ui-input-text input.ui-input-text, div.ui-input-text textarea.ui-input-text,
 {
     padding: 0 30px;
 }
+/*div.ui-input-text*/
 
-div.ui-input-text
 {
     padding: 0 .4em;
 }
@@ -4665,18 +4664,19 @@ div.ui-input-has-clear
 {
     padding: 0 30px 0 .4em;
 }
+/*input.ui-input-text*/
 
-input.ui-input-text.ui-mini, textarea.ui-input-text.ui-mini, .ui-input-search.ui-mini, div.ui-input-text.ui-mini
+.ui-mini, /*textarea.ui-input-text*/ .ui-mini, .ui-input-search.ui-mini, /*div.ui-input-text*/ .ui-mini
 {
     margin: .25em 0;
 }
 
-.ui-field-contain input.ui-input-text, .ui-field-contain textarea.ui-input-text, .ui-field-contain .ui-input-search, .ui-field-contain div.ui-input-text
+.ui-field-contain input /*.ui-input-text*/, .ui-field-contain textarea /*.ui-input-text*/, .ui-field-contain .ui-input-search, .ui-field-contain div /*.ui-input-text*/
 {
     margin: 0;
 }
 
-textarea.ui-input-text
+textarea /*.ui-input-text*/
 {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -4684,21 +4684,12 @@ textarea.ui-input-text
     box-sizing: border-box;
 }
 
-input.ui-input-text
+input /*.ui-input-text*/
 {
     -webkit-appearance: none;
 }
 
-textarea.ui-input-text
-{
-    height: 50px;
-    -webkit-transition: height 200ms linear;
-    -moz-transition: height 200ms linear;
-    -o-transition: height 200ms linear;
-    transition: height 200ms linear;
-}
-
-textarea.ui-mini
+textarea /*.ui-input-text{height:50px;-webkit-transition:height 200ms linear;-moz-transition:height 200ms linear;-o-transition:height 200ms linear;transition:height 200ms linear}*/ textarea.ui-mini
 {
     height: 45px;
 }
@@ -4715,7 +4706,7 @@ textarea.ui-mini
     opacity: .5;
 }
 
-.ui-input-search .ui-input-clear, .ui-input-text .ui-input-clear
+.ui-input-search .ui-input-clear, /*.ui-input-text*/ .ui-input-clear
 {
     position: absolute;
     right: 0;
@@ -4728,7 +4719,7 @@ textarea.ui-mini
     right: -3px;
 }
 
-.ui-input-search .ui-input-clear-hidden, .ui-input-text .ui-input-clear-hidden
+.ui-input-search .ui-input-clear-hidden, /*.ui-input-text*/ .ui-input-clear-hidden
 {
     display: none;
 }
@@ -4745,7 +4736,7 @@ input[type=number]::-webkit-outer-spin-button
 
 @media all and (min-width:28em)
 {
-    .ui-field-contain label.ui-input-text
+    .ui-field-contain label /*.ui-input-text*/
     {
         vertical-align: top;
         display: inline-block;
@@ -4753,13 +4744,13 @@ input[type=number]::-webkit-outer-spin-button
         margin: 0 2% 0 0;
     }
 
-    .ui-field-contain input.ui-input-text, .ui-field-contain textarea.ui-input-text, .ui-field-contain .ui-input-search, .ui-field-contain div.ui-input-text
+    .ui-field-contain input /*.ui-input-text*/, .ui-field-contain textarea /*.ui-input-text*/, .ui-field-contain .ui-input-search, .ui-field-contain div.ui-input-text
     {
         width: 78%;
         display: inline-block;
     }
 
-    .ui-field-contain .ui-input-search, .ui-field-contain div.ui-input-text
+    .ui-field-contain .ui-input-search, .ui-field-contain div /*.ui-input-text*/
     {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
@@ -4767,7 +4758,7 @@ input[type=number]::-webkit-outer-spin-button
         box-sizing: border-box;
     }
 
-    .ui-hide-label input.ui-input-text, .ui-hide-label textarea.ui-input-text, .ui-hide-label .ui-input-search, .ui-hide-label div.ui-input-text, .ui-input-search input.ui-input-text, div.ui-input-text input.ui-input-text
+    .ui-hide-label input /*.ui-input-text*/, .ui-hide-label textarea /*.ui-input-text*/, .ui-hide-label .ui-input-search, .ui-hide-label div /*.ui-input-text*/, .ui-input-search input /*.ui-input-text,div.ui-input-text input.ui-input-text*/
     {
         width: 100%;
     }
@@ -4790,7 +4781,7 @@ input[type=number]::-webkit-outer-spin-button
         clear: both;
     }
 
-    .ui-rangeslider input.ui-input-text.ui-slider-input
+    .ui-rangeslider input /*.ui-input-text*/ .ui-slider-input
     {
         margin: .57143em 0;
     }
@@ -5361,7 +5352,7 @@ div.ui-slider:after
     clear: both;
 }
 
-input.ui-input-text.ui-slider-input
+input /*.ui-input-text*/ .ui-slider-input
 {
     display: block;
     float: left;

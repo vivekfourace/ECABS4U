@@ -24,10 +24,10 @@ function forgotPassword()
                 }
               
                 $.ajax({
-                    url:"",
+                    url:"http://115.115.159.126/ECabs/ECabs4U.asmx/forgotMyPwd",
                     datatype:"json",
                     type:"POST",
-                    data:"",
+                    data:"{'emailid':'" +pass+"'}",
                    contentType: "application/json; charset=utf-8", 
                     success: CheckMsg,
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -43,7 +43,10 @@ function CheckMsg(data){
         $('#lblMsg').css("color","#D70007");
         $('#lblMsg').css("font-size","13");
     }
-    else{
-        //diplay user after fetching from db.
-            }
+   if(data.d[0] == "true"){
+        
+        $('#lblMsg').text("Password send to your email id !");
+        $('#lblMsg').css("color","#D70007");
+        $('#lblMsg').css("font-size","13");
+    }
  }
