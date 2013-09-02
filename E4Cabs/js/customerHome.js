@@ -2,19 +2,19 @@ var QString = window.location.search.substring(1);
 var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
- 
 
 
 window.onload = getProfile();
 
+function Location(){
+    window.location = "Location.html";
+}
 
 
-
-//get customer profile
+//get profile
 function getProfile()
 {
-   
-var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetCustomerrDetails";
+//var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetOperatorDetails";
 $.ajax(url,{
     type:"POST",
     dataType: "Json",
@@ -31,26 +31,21 @@ $.ajax(url,{
 
 function ShowData(data)
 { 
-   $('#lblname').text(data.d[0]["CustomerName"]);
-    $('#lbllastname').text(data.d[0]["CustomerLastName"]);
-   $('#lblLocation').text(data.d[0]["Address1"]);
-   $('#lblLocation2').text(data.d[0]["Address2"]);
-   $('#lblMobileNo').text(data.d[0]["MobileNumber"]);
+   $('#lblname').text(data.d[0]["OperatorName"]);
+   $('#lblLocation').text(data.d[0]["Address2"]);
+   $('#lblLocation2').text(data.d[0]["Address"]);
+   $('#lblMobileNo').text(data.d[0]["ContactNumber"]);
    $('#lblEmailID').text(data.d[0]["Email"]);
     
-    $('#txtname').hide();
-    $('#txtlastname').hide();    
+    $('#txtname').hide();    
     $('#txtLocation').hide();    
     $('#txtLocation2').hide();    
     $('#txtMobileno').hide();    
     $('#txtEmailID').hide();
     $('#btnUpdate').hide();
     $('#btnCancel').hide();
-    $('#btnchangepassword').hide();
-      $('#btnhistory').show();
     
     $('#lblname').show();
-     $('#lbllastname').show();
     $('#lblLocation').show();
     $('#lblLocation2').show();
     $('#lblMobileNo').show();
@@ -60,7 +55,7 @@ function ShowData(data)
 
 
 
-//Edit Customer Profile
+//Edit 
 function EditProfile()
 {
     $('#txtname').show();    
@@ -68,37 +63,27 @@ function EditProfile()
     $('#txtLocation2').show();    
     $('#txtMobileno').show();    
     $('#txtEmailID').show();
-    $('#txtlastname').show(); 
-     $('#btnUpdate').show();
-    $('#btnCancel').show();
-    
-    $('#btnchangepassword').show();
     
     $('#lblname').hide();
-    $('#lbllastname').hide();
     $('#lblLocation').hide();
     $('#lblLocation2').hide();
     $('#lblMobileNo').hide();
     $('#lblEmailID').hide();
-  $('#btnhistory').hide();
-  
+    $('#btnUpdate').show();
+    $('#btnCancel').show();
     $('#btnEdit').hide();
-   
     
-    
-    
-   var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetCustomerrDetails";
+   //var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetOperatorDetails";
     $.ajax(url,{
         type:"POST",
         dataType: "Json",
         data:"{'userID':'" +relatedId+"'}",
         contentType: "application/json; charset=utf-8",                     
         success: function(data){
-            $('#txtname').val(data.d[0]["CustomerName"]); 
-              $('#txtlastname').val(data.d[0]["CustomerLastName"]);
-            $('#txtLocation').val(data.d[0]["Address1"])
-            $('#txtLocation2').val(data.d[0]["Address2"])
-            $('#txtMobileno').val(data.d[0]["MobileNumber"]);    
+            $('#txtname').val(data.d[0]["OperatorName"]);    
+            $('#txtLocation').val(data.d[0]["Address2"])
+            $('#txtLocation2').val(data.d[0]["Address"])
+            $('#txtMobileno').val(data.d[0]["ContactNumber"]);    
             $('#txtEmailID').val(data.d[0]["Email"]);
             
             },
@@ -109,54 +94,21 @@ function EditProfile()
 }
 
 
-//upadate customer Profile
+//upadate profile
 
 function UpdateProfile()
 {
       var name = $('#txtname').val();
-     var lastname = $('#txtlastname').val();
       var address1 = $('#txtLocation').val();
       var address2 = $('#txtLocation2').val();
       var email = $('#txtEmailID').val();
       var phoneno = $('#txtMobileno').val();
-     var phoneno2 =/^\d{12}$/;
-     var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
-    
-     //validate Email address
-                if(email.length > 0)
-                    {
-                        if(email.match(regExpEmail))
-                        {
-                            $('#lblMsg').text(" ");
-                        }
-                        else{
-                            $('#lblMsg').text("Please enter valid email address!");
-                            $('#txtEmail').focus();
-                            return false;
-                        }
-                    }
-    
-    
-    //validation of Phone No
-    if(phoneno.length > 0)
-                    {
-                        if(phoneno2.test(phoneno))
-                        {
-                            $('#lblMsg').text(" ");
-                        }
-                        else
-                        {
-                             $('#lblMsg').text("Please enter valid phone number!");
-                            $('#txtPhone').focus();
-                            return false;
-                        }
-                    }
       
-     var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateCustomerDetails";
+      //var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateOperatorDetails";
         $.ajax(url,{
             type:"POST",
             dataType: "Json",
-            data:"{'userID':'" +relatedId+"','name':'" +name+"','lname':'"+lastname+"','address1':'" +address1+"','address2':'" +address2+"','contactNumber':'" +phoneno+"','emailID':'" +email+"'}",
+            data:"{'userID':'" +relatedId+"','name':'" +name+"','address1':'" +address1+"','address2':'" +address2+"','contactNumber':'" +phoneno+"','emailID':'" +email+"'}",
             contentType: "application/json; charset=utf-8",                     
             success: ShowData,            
             error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -177,45 +129,26 @@ function CancelProfile()
 
 
 //Cab Now Button
-function cabnow()
-{
-    window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId; 
-}
+//function cabnow()
+//{
+ //   window.location="customerSearch.html"; 
+//}
 
 
 //Pre Book Button
-function prebook()
-{
-  window.location="";  
-}
-
-
-
+//function prebook()
+//{
+ // window.location="";  
+//}
 
 
 //Booked history Button
+//function History()
+//{
+ // window.location="bookedhistory.html";  
+//}
 
- //var userID = data.d[0];
-       // var roleID = parseInt(data.d[1]);
-      //var relatedID = data.d[2]; 
-
-function History()
-{
-  //alert(relatedId);
- 
-  window.location='bookedhistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-   
-}
-
-
-//location Button
-function Location(){
-    window.location = 'Location.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-}
-
-function Changepassword()
-{
-    window.location='changePassword.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-}
-
-
+//function getAllMenu()
+//{
+  //  window.location="AllMenu.html";
+//}
