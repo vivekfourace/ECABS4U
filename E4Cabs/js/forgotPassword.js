@@ -22,28 +22,47 @@ function forgotPassword()
                     $('#lblMsg').css("color","#D70007");                    
                     return false;
                 }
+                
+                $('#imgLoader').bind('ajaxStart', function(){
+                    $(this).show();
+                 }).bind('ajaxStop', function(){
+                    $(this).hide();
+                });
               
                 $.ajax({
-                    url:"",
+                    url:"http://115.115.159.126/ECabs/ECabs4U.asmx/forgotMyPwd",
                     datatype:"json",
                     type:"POST",
-                    data:"",
+                    data:"{'emailid':'"+pass+"'}",
                    contentType: "application/json; charset=utf-8", 
                     success: CheckMsg,
+                    complete: function(){
+                            $('#imgLoader').hide();
+                              },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    alert(errorThrown);
+                            alert(errorThrown);
                        }
                       });
                     }
 
-function CheckMsg(data){
-    if(data.d[0] == "false")
-    {
-        $('#lblMsg').text("Incorrect Email id");
-        $('#lblMsg').css("color","#D70007");
-        $('#lblMsg').css("font-size","13");
-    }
-    else{
-        //diplay user after fetching from db.
+        function CheckMsg(data){
+            if(data.d == "false")
+            {
+                $('#lblMsg').text("Incorrect Email id");
+                $('#lblMsg').css("color","#D70007");
+                $('#lblMsg').css("font-size","13");
+                
+            }
+            else if (data.d == "false2") {
+                $('#lblMsg').text("Oops!! error occurs, please try again.");
+                $('#lblMsg').css("color", "#D70007");
+                $('#lblMsg').css("font-size", "13");
+                $('#txtEmail').val("");
+            }
+            else {
+                $('#lblMsg').text("Password changed, please check your mail.");
+                $('#lblMsg').css("color", "#237F0C");
+                $('#lblMsg').css("font-size", "13");
+                $('#txtEmail').val("");
             }
  }

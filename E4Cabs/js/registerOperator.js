@@ -145,8 +145,7 @@ $.ajax({
     data: "{ 'name': '" + Name + "','email': '" + Email + "','userID': '" + UserID + "','password': '" + Password + "','address1': '" + Address1 + "','address2': '" + Address2 + "','contactNumber': '" + Contact + "'}",
     contentType: "application/json; charset=utf-8",
     
-        success: OnValidate,
-        
+        success: OnValidate,        
        // $('#Name').val('');
       //  $('#Email').val('');
        // $('#UserID').val('');
