@@ -1,5 +1,10 @@
- function login()
+//window.onload = login(); {
+ // document.getElementById("txtUserName").focus();
+//}
+
+function login()
             {
+                //document.getElementById("txtUserName").focus();
                 var name=document.getElementById('txtUserName').value;
                 var password=document.getElementById('txtPassword').value;
                 if(name.length > 0)
@@ -67,7 +72,8 @@ function CheckMsg(data)
             
             //Role 3 --> Driver
             case 3:
-            window.location= "driverHome.html";
+            
+            window.location= 'driverHome.html?id='+userID+'&rid='+roleID+'&rrid='+relatedID;
             break;
             
             //Role 4 --> Customer

@@ -7,9 +7,11 @@
                     success: function (data) {
                         var len = data.d.length;
                        $('#msg').append('<table>')
+                        
                         for(var i=0; i<len; i++)
                         {
                             var id = data.d[i]["ID"];
+                            
                             $('#msg').append('<tr>')
                             .append("<td width='25%' align='center'>" + data.d[i]["ID"] + "</td>")
                             .append("<td width='25%' align='left'>" + data.d[i]["RoleName"]+"</td>")

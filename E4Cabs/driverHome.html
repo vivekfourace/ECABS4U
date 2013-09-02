@@ -2,16 +2,17 @@
 
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <link rel="stylesheet" type="text/css" href="css/site.css" />
-        <script type="text/javascript" src="js/driverHome.js"></script>        
-        <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
-        <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
         <title></title>
+        <link rel="stylesheet" type="text/css" href="css/site.css" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+         <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
+        <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        <script type="text/javascript" src="js/driverHome.js"></script>        
+       
     </head>
     <body>
         <center>
-       <div class="header">
+        <div class="header">
             <div style="float:left;height:48px;width:100px">
                 <img src="img/site-logo.png" class="logo"/>
             </div>
@@ -20,12 +21,20 @@
                 <i class="header-font">Home</i>
                 </div>
             </div>
-        </div> 
-            <div style="padding-top:150px;">
+        </div>
+         <div style="padding-top:70px;">
+          <div style="width:80%;height:30px;background-color:#9F0066;border-radius:3px;">
+            <marquee slide="left" style="font-size:15px;color:#ffffff;padding-top:5px;">
+               <i>Your Current Status is: &nbsp;<label id="driverStatusupdate"/></i>
+            </marquee>
+          </div>
+  
+           <div style="padding-top:40px;">
             <input type="button" class="btn-tmp cursor" value="Your current status" onclick="DriverStatus()"/>
             <input type="button" class="btn-tmp cursor" value="Profile" onclick="DriverProfile()"/>
             <input type="button" class="btn-tmp cursor" value="My Jobs" onclick="Jobs();"/>
-         </div>       
-       </center>
+         </div>   
+         </div>    
+         </center>
     </body>
 </html>
