@@ -25,11 +25,29 @@ function login()
                 {
                     $('#lblMsg').text("Please enter password.");
                     $('#txtPassword').focus();
-                    
                      return false;
                 }
                 
-                 var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UserLogin";
+                $('#imgLoader').bind('ajaxStart', function(){
+                    $(this).show();
+                    showDisableLayer();
+                 }).bind('ajaxStop', function(){
+                    $(this).hide();
+                     hideDisableLayer();
+                });
+                
+                  showDisableLayer = function() {
+                  $('<div id="loading" style="position:fixed; z-index: 2147483647; top:0; left:0; background-color: #7B7F86; opacity:0.4;filter:alpha(opacity=0);"></div>').appendTo(document.body);
+                  $("#loading").height($(document).height());
+                  $("#loading").width($(document).width());
+                };
+
+                    hideDisableLayer = function() {
+                    $("#loading").remove();
+                };
+                
+                
+                var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UserLogin";
                 $.ajax(url,{                      
                      type:"POST",
                      datatype:"json",

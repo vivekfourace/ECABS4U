@@ -29,6 +29,7 @@ center
 .header{
      width:100%;
      height:48px;
+    z-index:100;
      background-color:#ffffff;
     border-bottom:1px solid #C5C4C4;
      position:fixed;
@@ -241,7 +242,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#959595', end
     color:Black;
 }
 .div-grid{
-    width:100%;
+    width:100%
 }
 .table{
     width:100%;

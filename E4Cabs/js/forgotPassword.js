@@ -23,6 +23,7 @@ function forgotPassword()
                     return false;
                 }
                 
+                //Ajax loader--start
                 $('#imgLoader').bind('ajaxStart', function(){
                     $(this).show();
                     showDisableLayer();
@@ -40,7 +41,7 @@ function forgotPassword()
                     hideDisableLayer = function() {
                     $("#loading").remove();
                 };
-              
+              //Ajax loader--ends
                 $.ajax({
                     url:"http://115.115.159.126/ECabs/ECabs4U.asmx/forgotMyPwd",
                     datatype:"json",
@@ -70,7 +71,7 @@ function forgotPassword()
                 $('#txtEmail').val("");
             }
             else {
-                $('#lblMsg').text("Password changed, please check your mail.");
+                $('#lblMsg').text("Password recovered, please check your mail.");
                 $('#lblMsg').css("color", "#237F0C");
                 $('#lblMsg').css("font-size", "13");
                 $('#txtEmail').val("");
