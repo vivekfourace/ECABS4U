@@ -6144,8 +6144,8 @@ div.ui-slider-switch
 /* panel */
 .ui-panel
 {
-    width: 100%;
-    min-height: 92%;
+    width: 80%;
+    min-height: 60%;
     max-height: none;
     border-width: 0;
     position: absolute;
