@@ -28,6 +28,7 @@ function login()
                      return false;
                 }
                 
+                 //Ajax loader--start
                 $('#imgLoader').bind('ajaxStart', function(){
                     $(this).show();
                     showDisableLayer();
@@ -45,6 +46,7 @@ function login()
                     hideDisableLayer = function() {
                     $("#loading").remove();
                 };
+              //Ajax loader--ends
                 
                 
                 var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UserLogin";

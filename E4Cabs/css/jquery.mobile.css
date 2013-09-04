@@ -1293,8 +1293,8 @@ a.ui-link-inherit
 -----------------------------------------------------------------------------------------------------------*/
 .ui-btn-corner-all
 {
-    -webkit-border-radius: 1em /*{global-radii-buttons}*/;
-    border-radius: 1em /*{global-radii-buttons}*/;
+    -webkit-border-radius: 3px /*{global-radii-buttons}*/;
+    border-radius: 3px /*{global-radii-buttons}*/;
 }
 /* radius clip workaround for cleaning up corner trapping */
 .ui-corner-all,
@@ -1324,9 +1324,7 @@ a.ui-link-inherit
 
 .ui-shadow
 {
-    -moz-box-shadow: 0 1px 3px /*{global-box-shadow-size}*/ rgba(0,0,0,.2) /*{global-box-shadow-color}*/;
-    -webkit-box-shadow: 0 1px 3px /*{global-box-shadow-size}*/ rgba(0,0,0,.2) /*{global-box-shadow-color}*/;
-    box-shadow: 0 1px 3px /*{global-box-shadow-size}*/ rgba(0,0,0,.2); /*{global-box-shadow-color}*/
+    
 }
 
 .ui-bar-a .ui-shadow,
@@ -3775,7 +3773,7 @@ div.ui-btn-text
 /*hiding native button,inputs */
 .ui-btn-hidden
 {
-    position: absolute;
+    position: absolute;                    
     top: 0;
     left: 0;
     width: 100%;
@@ -5683,6 +5681,7 @@ input.ui-input-text.ui-slider-input
     -moz-box-sizing: content-box;
     -ms-box-sizing: content-box;
     box-sizing: content-box;
+   
 }
 
 .ui-slider-input::-webkit-outer-spin-button,
