@@ -457,9 +457,9 @@
             color: #2489ce /*{c-body-link-hover}*/;
         }
 
-        .ui-body-c .ui-link:active
+        .ui-body-c .ui-link:focus
         {
-            color: #2489ce /*{c-body-link-active}*/;
+            background-color:#F2F5A9;
         }
 
 .ui-btn-up-c
@@ -939,8 +939,8 @@ a.ui-link-inherit
 -----------------------------------------------------------------------------------------------------------*/
 .ui-corner-all
 {
-    -webkit-border-radius: .6em /*{global-radii-blocks}*/;
-    border-radius: .6em /*{global-radii-blocks}*/;
+    -webkit-border-radius: 3px /*{global-radii-blocks}*/;
+    border-radius: 3px /*{global-radii-blocks}*/;
 }
 /* Form field separator
 -----------------------------------------------------------------------------------------------------------*/
@@ -1338,9 +1338,9 @@ a.ui-link-inherit
 
 .ui-shadow-inset
 {
-    -moz-box-shadow: inset 0 1px 4px rgba(0,0,0,.2);
-    -webkit-box-shadow: inset 0 1px 4px rgba(0,0,0,.2);
-    box-shadow: inset 0 1px 4px rgba(0,0,0,.2);
+   /* -moz-box-shadow:  0 0 1px; 
+    -webkit-box-shadow:  0 0 1px ;
+    box-shadow:  0 0 1px */
 }
 
 .ui-icon-shadow
@@ -1364,6 +1364,11 @@ a.ui-link-inherit
 .ui-focus,
 .ui-btn:focus
 {
+    border-collapse:collapse;
+    outline:none;
+    border:1px solid #95999E;
+    box-shadow: 0 0 8px #95999E;
+    background-color:#F2F5A9;
     -moz-box-shadow: inset 0 0 3px #387bbe /*{global-active-background-color}*/, 0 0 9px #387bbe /*{global-active-background-color}*/;
     -webkit-box-shadow: inset 0 0 3px #387bbe /*{global-active-background-color}*/, 0 0 9px #387bbe /*{global-active-background-color}*/;
     box-shadow: inset 0 0 3px #387bbe /*{global-active-background-color}*/, 0 0 9px #387bbe /*{global-active-background-color}*/;
@@ -1372,9 +1377,12 @@ a.ui-link-inherit
 .ui-input-text.ui-focus,
 .ui-input-search.ui-focus
 {
-    -moz-box-shadow: 0 0 12px #387bbe /*{global-active-background-color}*/;
-    -webkit-box-shadow: 0 0 12px #387bbe /*{global-active-background-color}*/;
-    box-shadow: 0 0 12px #387bbe /*{global-active-background-color}*/;
+    border-collapse:collapse;
+    outline:none;
+    border:0.5px solid #95999E;
+    box-shadow: 0 0 8px #95999E;
+    background-color:#F2F5A9;
+    
 }
 /* unset box shadow in browsers that don't do it right
 -----------------------------------------------------------------------------------------------------------*/
@@ -1382,7 +1390,7 @@ a.ui-link-inherit
 {
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
-    box-shadow: none !important;
+    box-shadow: 0 0 8px #95999E !important;
 }
 /* ...and bring back focus */
 .ui-mobile-nosupport-boxshadow .ui-focus,
@@ -4451,11 +4459,8 @@ label.ui-submit
     .ui-popup .ui-field-contain label.ui-select,
     .ui-popup .ui-field-contain label.ui-input-text
     {
-        font-size: 16px;
-        line-height: 1.4;
-        display: block;
+        font-size: 13px;
         font-weight: normal;
-        margin: 0 0 .3em;
     }
 
     .ui-popup .ui-field-contain .ui-btn.ui-submit,
@@ -4466,7 +4471,6 @@ label.ui-submit
     .ui-popup .ui-field-contain .ui-input-search
     {
         width: 100%;
-        display: block;
     }
 }
 
@@ -4877,21 +4881,14 @@ label.ui-select
 
 label.ui-input-text
 {
-    font-size: 16px;
-    line-height: 1.4;
-    display: block;
+    font-size: 13px;
     font-weight: normal;
-    margin: 0 0 .3em;
 }
 
 input.ui-input-text, textarea.ui-input-text
 {
     background-image: none;
-    padding: .4em;
-    margin: .5em 0;
-    min-height: 1.4em;
-    line-height: 1.4em;
-    font-size: 16px;
+    font-size: 14px;
     display: block;
     width: 100%;
     outline: 0;
@@ -4905,18 +4902,17 @@ input.ui-mini, .ui-mini input, textarea.ui-mini
 div.ui-input-text input.ui-input-text, div.ui-input-text textarea.ui-input-text,
 .ui-input-search input.ui-input-text
 {
-    border: none;
+    
     width: 100%;
-    padding: .4em 0;
     margin: 0;
-    display: block;
     background: transparent none;
     outline: 0 !important;
 }
 
 .ui-input-search, div.ui-input-text
 {
-    margin: .5em 0;
+    
+    margin: .3em 0;
     background-image: none;
     position: relative;
 }
@@ -4928,7 +4924,7 @@ div.ui-input-text input.ui-input-text, div.ui-input-text textarea.ui-input-text,
 
 div.ui-input-text
 {
-    padding: 0 .4em;
+    padding: 0 0;
 }
 
 div.ui-input-has-clear
@@ -5668,7 +5664,7 @@ input.ui-input-text.ui-slider-input
     margin: 0;
     padding: 4px;
     width: 40px;
-    height: 22px;
+    height: 30px;
     line-height: 22px;
     font-size: 14px;
     border-width: 0;

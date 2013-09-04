@@ -31,8 +31,8 @@ $.ajax(url,{
 
 function ShowData(data)
 { 
-   $('#lblname').text(data.d[0]["CustomerName"]);
-    $('#lbllastname').text(data.d[0]["CustomerLastName"]);
+   $('#lblname').text(data.d[0]["CustomerName"] +"  "+ data.d[0]["CustomerLastName"]);
+   // $('#lbllastname').text(data.d[0]["CustomerLastName"]);
    $('#lblLocation').text(data.d[0]["Address1"]);
    $('#lblLocation2').text(data.d[0]["Address2"]);
    $('#lblMobileNo').text(data.d[0]["MobileNumber"]);
@@ -76,12 +76,13 @@ function ShowData(data)
 //Edit Customer Profile
 function EditProfile()
 {
-    $('#txtname').show();    
+    $('#txtname' ).show(); 
+     //$('#txtlastname').show();
     $('#txtLocation').show();    
     $('#txtLocation2').show();    
     $('#txtMobileno').show();    
     $('#txtEmailID').show();
-    $('#txtlastname').show(); 
+    
    //  $('#btnUpdate').show();
    // $('#btnCancel').show();
     
@@ -110,8 +111,8 @@ function EditProfile()
         data:"{'userID':'" +relatedId+"'}",
         contentType: "application/json; charset=utf-8",                     
         success: function(data){
-            $('#txtname').val(data.d[0]["CustomerName"]); 
-              $('#txtlastname').val(data.d[0]["CustomerLastName"]);
+            $('#txtname').val(data.d[0]["CustomerName"] +"  "+ data.d[0]["CustomerLastName"]); 
+          //$('#txtlastname').val(data.d[0]["CustomerLastName"]);
             $('#txtLocation').val(data.d[0]["Address1"])
             $('#txtLocation2').val(data.d[0]["Address2"])
             $('#txtMobileno').val(data.d[0]["MobileNumber"]);    
@@ -256,6 +257,15 @@ function logout()
 function preCab()
 {
     window.location="#";
+}
+
+
+function backtoCustomerhome()
+{
+    
+       
+    window.location =  'customerAfterlogin.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+ // window.location="customerHome.html";
 }
 
 //Pre Book Button

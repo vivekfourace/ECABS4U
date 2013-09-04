@@ -9,52 +9,23 @@
         
         <script type="text/javascript" src="js/customerHome.js"></script>
         
-    <link rel="stylesheet" type="text/css" href="css/jquery.mobile.css" />
+ <link rel="stylesheet" type="text/css" href="css/jquery.mobile.css" />
         
     <!-- <link rel="stylesheet" href="css/slider/jquery.mobile-1.3.1.min.css" />-->
         <script type="text/javascript" src="Scripts/slider/jquery-1.9.1.min.js"></script>
         <script type="text/javascript" src="Scripts/slider/jquery.mobile-1.3.1.min.js"></script>
-        
-        <script type="text/javascript" src="Scripts/jquery.ui.widget.js"></script>
-        <script type="text/javascript" src="Scripts/jquery.iframe-transport.js"></script>
-        <script type="text/javascript" src="Scripts/jquery.fileupload.js"></script>
-        <script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
-        
-        
         <title></title>
-        <script>
-            
-/*jslint unparam: true */
-/*global window, $ */
-$(function () {
-    'use strict';
-    // Change this to the location of your server-side upload handler:
-    var url = window.location.hostname === 'blueimp.github.io' ?
-                '//jquery-file-upload.appspot.com/' : 'server/php/';
-    $('#fileupload').fileupload({
-        url: url,
-        dataType: 'json',
-        done: function (e, data) {
-            $.each(data.result.files, function (index, file) {
-                $('<p/>').text(file.name).appendTo('#files');
-            });
-        },
-        progressall: function (e, data) {
-            var progress = parseInt(data.loaded / data.total * 100, 10);
-            $('#progress .progress-bar').css(
-                'width',
-                progress + '%'
-            );
-        }
-    }).prop('disabled', !$.support.fileInput)
-        .parent().addClass($.support.fileInput ? undefined : 'disabled');
-});
-
-        </script>
-     
+       <script>
+      //     var id = document.getElementById('bars-button');
+      //     var winHeight = window.innerHeight;
+      //     $('#link-bar').css("padding-top",winHeight);
+      </script>
     </head>
     <body>
         <center>
+        <div id="link-bar" style="margin-left:40%;padding-top:445px;position:fixed; z-index: 2147483647;background-repeat:no-repeat;background-color: transparent;text-align: center;background-position: center;">
+             <a id="bars-button" data-icon="bars"   style="text-align:center;" href="#navpanel"><img src="img/menubtn.png"/></a>
+        </div>
         <div class="header">
             <div style="float:left;height:48px;width:100px">
                 <img src="img/site-logo.png" class="logo"/>
@@ -65,116 +36,88 @@ $(function () {
                 </div>
             </div>
             <div style="float:right;height:50px;width:50px; margin-top:-55px;">
-                <img src="img/back1.png" width="42px" height="48px"/>
+                <img src="img/back1.png" width="42px" height="48px" style=" cursor:pointer;" onclick="backtoCustomerhome();"/>
             </div>
         </div>            
-   <div style="padding-top:65px">            
-      <div style="width:75%;float:left">
-          <table width="100%">
-                      <tr>
-                          <td width="30%">
-                              <label id="lname" class="font-style"><b style="font-size:12px;width:120px">First name:</b></label> 
-                          </td>
-                          <td width="70%">
-                              <label id="lblname" class="font-style"></label>
-                              <input type="text" id="txtname" class="font-style" style="display:none;width:150px"/>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td width="30%">
-                              <label id="lname" class="font-style"><b style="font-size:12px">Last name:</b></label>
-                          </td>
-                          <td width="70%">
-                              <label id="lbllastname" class="font-style"></label>
-                              <input type="text" id="txtlastname" class="font-style" style="display:none;width:100%"/>
-                          </td>
-                      </tr>
-                      <tr>
-                <td width="30%">
-                    <label id="lLocation" class="font-style"><b style="font-size:12px" style="font-size:15px">Address1:</b></label> 
-                </td>
-                <td width="70%">
+   <div style="padding-top:65px">  
+       <div width="100%">
+          <table style="width:25%;float:left;">
+              <tr>
+                 <td><img style="100px;height:100px;" src="img/brown-man-icon.png"/></td>
+              </tr>
+          </table> 
+           <table style="width:65%;float:right;">
+               <tr>
+                   <td>
+                    <label id="lblname" class="font-style" style="font-size:20px;font-weight:bold"></label>
+                    <input type="text" id="txtname" class="font-style" style="display:none;width:100%"/>
+                    <label id="lbllastname" class="font-style"></label>
+                    <input type="text" id="txtlastname" class="font-style" style="display:none;width:100%"/>
+                   </td>
+               </tr>
+               <tr>
+                <td>
                     <label id="lblLocation" class="font-style"></label>
-                    <input type="text" id="txtLocation" class="font-style" style="display:none;width:100%"/>
+                       <input type="text" id="txtLocation" class="font-style" style="display:none;width:100%"/>
                 </td>
-            </tr>
-            
-            <tr>
-                <td width="30%">
-                    <label id="lLocation2" class="font-style"><b style="font-size:12px"> Address2  :</b></label> 
-                </td>
-                <td width="70%">
+              </tr>
+               <tr>
+                
+                <td >
                     <label id="lblLocation2" class="font-style"></label>
-                       <input type="text" id="txtLocation2" class="font-style" style="display:none;width:100%"/>
+                       <input type="text" id="txtLocation2" style="display:none;"/>
                 </td>
             </tr>
-            <tr>
-                <td width="30%">
-                    <label id="lMobileNo" class="font-style"><b style="font-size:12px">Mobile No:</b></label> 
-                </td>
-                <td width="70%">
+               
+               <tr>
+           
+                <td>
                     <label id="lblMobileNo" class="font-style"></label>
                        <input type="text" id="txtMobileno" class="font-style" maxlength="12" style="display:none;width:100%"/>
                 </td>
             </tr>
-            <tr>
-                <td width="30%">
-                    <label id="lEmailID" class="font-style"><b style="font-size:12px">Email:</b></label> 
-                </td>
-                <td width="70%">
-                    <label id="lblEmailID" class="font-style"></label>
+               <tr>
+               
+                <td>
+                    <i><label id="lblEmailID" class="font-style" style="color:#639ECD"></label></i>
                        <input type="text" id="txtEmailID" class="font-style" style="display:none;width:100%"/>
                 </td>
-             </tr>
-              </table>
-      </div>
-      <div style="width:25%;float:left">
-          <div style="width:100%;">
-               <img style="width:100px;height:100px" src="img/LoganCar.png"/>
-              <div>
-                  <span class="btn btn-success fileinput-button">
-                      <i class="glyphicon glyphicon-plus"></i>
-                      <span>Add files</span>
-                         <input id="fileupload" type="file" id="txtfile"  name="files[]" multiple/>
-                  </span>
-                  <input type="button" value="Upload" onclick="uploadimage()" />
-              </div>
-          </div>
-      </div> 
-           <label id="lblMsg" style="color:red;font-size:10px"></label> 
-        <br/>
-       
-           <table width="80%">
+            </tr>
+           </table>
+       </div>
+       <div style="padding-top:300px;padding-bottom:35px">
+           <table width="76%">
                <tr id="tredit">
-                   <td width="100%">
-                       <input id="btnEdit" type="button" class="btn-tmp cursor" value="Edit" onclick="EditProfile();" />
+                   
+                   <td  width="100%">
+                       <input id="btnEdit" type="button" class="ui-input-text cursor" value="Edit" onclick="EditProfile();" />
                    </td>
                </tr>
                <tr id="trBtnUpdate" style="display:none;" >
-                   <td width="100%"> 
+                   <td colsapn="2" width="100%"> 
                        <input id="btnUpdate" type="button" class="btn-tmp cursor"   value="Update" onclick="UpdateProfile();"/>
                    </td>
                </tr>
                <tr id="trCancel" style="display:none;">
-                   <td width="100%">
-                       <input id="btnCancel" type="button" class="btn-tmp cursor"   value="Cancel" onclick="CancelProfile();"/>
+                   <td colsapn="2" width="100%">
+                       <input id="btnCancel" type="button" class="btn-tmp cursor"  value="Cancel" onclick="CancelProfile();"/>
                    </td>
                </tr>
+               
            </table> 
        </div>
-                 
-        <div>
-             <a id="bars-button" data-icon="bars"   style="margin-bottom:0px;text-align:center;" href="#navpanel"><img src="img/menubtn.png"/></a>
-        </div>
+     </div>
+        
             <div  data-role="panel" id="navpanel" data-theme="a" data-display="overlay" data-position="left" >
                 <div data-role="controlgroup" data-corners="true">
-                    <a id="bars-button" data-icon="bars"   style="margin-top:10px;text-align:center;" href="#navpanel"><img src="img/menubtnup.png"/></a>
+                    <a   data-role="button" style="text-align:center; font-family:cursive;" >Menu</a>
                     <a onclick="myProfile()"  data-role="button" style="text-align:left; font-family:cursive;" ><img src="img/profile.png" width="22px;" style="float:left;"/><span style="margin-left:10px;" >My Profile</span></a>
                     <a onclick="cabNow()" data-role="button" style="text-align:left;font-family:cursive;"><img src="img/car.png" width="22px;" style="float:left;"/><span style="margin-left:10px;" >Cab Now</span></a>
                     <a onclick="preCab()" data-role="button" style="text-align:left;font-family:cursive;"><img src="img/car.png" width="22px;"style="float:left;"/><span style="margin-left:10px;" >Pre Cab</span></a>
                     <a onclick="bookedHistory()"  data-role="button" style="text-align:left;font-family:cursive;"><img src="img/history.png" width="22px;" style="float:left;"/><span style="margin-left:10px;" >Booked History</span></a>
                     <a onclick="feedBack()" data-role="button" style="text-align:left;font-family:cursive;"><img src="img/feedback.png" width="24px;" style="float:left;"/><span style="margin-left:10px;" >FeedBack</span></a>
                     <a onclick="logout()" data-role="button" style="text-align:left;font-family:cursive;"><img src="img/logout.png" width="24px;" style="float:left;"/><span style="margin-left:10px;" >Logout</span></a>
+			
                 </div>
             </div>
         </center>
