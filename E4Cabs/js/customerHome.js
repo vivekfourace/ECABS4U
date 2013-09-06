@@ -264,7 +264,7 @@ function backtoCustomerhome()
 {
     
        
-    window.location =  'customerAfterlogin.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    window.location =  'customerAfterLogin.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
  // window.location="customerHome.html";
 }
 
