@@ -5,36 +5,54 @@
         <title></title>
         <link rel="stylesheet" type="text/css" href="css/site.css" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-         <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
+        <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
         <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
-        <script type="text/javascript" src="js/driverHome.js"></script>        
-       
+        <script type="text/javascript" src="js/driverHome.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.css" />
+        <!--<link rel="stylesheet" href="css/slider/jquery.mobile-1.3.1.min.css" />-->
+        <script type="text/javascript" src="Scripts/slider/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="Scripts/slider/jquery.mobile-1.3.1.min.js"></script>
+        
     </head>
     <body>
         <center>
-        <div class="header">
+             <div id="link-bar" style="margin-left:40%;padding-top:445px;position:fixed; z-index: 2147483647;background-repeat:no-repeat;background-color: transparent;text-align: center;background-position: center;">
+             <a id="bars-button" data-icon="bars"   style="text-align:center;" href="#navpanel"><img src="img/menubtn.png"/></a>
+        </div>
+            <div class="header">
             <div style="float:left;height:48px;width:100px">
                 <img src="img/site-logo.png" class="logo"/>
             </div>
             <div style="width:200px; height:50px;text-align:center">
                 <div style="padding-top:13px;">
-                <i class="header-font">Home</i>
+                    <i class="header-font">Home</i>
+                    
                 </div>
             </div>
+            
         </div>
          <div style="padding-top:70px;">
-          <div style="width:80%;height:30px;background-color:#9F0066;border-radius:3px;">
+          <div style="width:80%;height:30px;background-color:#777B81;border-radius:3px;">
             <marquee slide="left" style="font-size:15px;color:#ffffff;padding-top:5px;">
                <i>Your Current Status is: &nbsp;<label id="driverStatusupdate"/></i>
             </marquee>
           </div>
-  
-           <div style="padding-top:40px;">
-            <input type="button" class="btn-tmp cursor" value="Your current status" onclick="DriverStatus()"/>
-            <input type="button" class="btn-tmp cursor" value="Profile" onclick="DriverProfile()"/>
-            <input type="button" class="btn-tmp cursor" value="My Jobs" onclick="Jobs();"/>
-         </div>   
-         </div>    
+             <div style="padding-top:80%;width:80%;padding-bottom:20%">
+            <input type="button"  value="Your current status"  onclick="DriverStatus()"/>
+           <!-- <input type="button" class="btn-tmp cursor" value="Profile" onclick="DriverProfile()"/>-->
+            <!--<input type="button"  value="My Jobs" onclick="Jobs();"/>-->
+         </div> 
+         </div>
+            <div  data-role="panel" id="navpanel" data-theme="a" data-display="overlay" data-position="left"  >
+                <div data-role="controlgroup" data-corners="true">
+                    <a><label style="text-align:center; font-size:16px;color:black;">Menu</label></a>
+                    <a onclick="myProfile()"  data-role="button" style="text-align:left; font-family:cursive;" ><img src="img/profile.png" width="22px;" style="float:left;"/><span style="margin-left:10px;" >My Profile</span></a>
+                    <a onclick="myStatus()"  data-role="button" style="text-align:left; font-family:cursive;" ><img src="img/status_away.png" width="22px;" style="float:left;"/><span style="margin-left:10px;" >My Status</span></a>
+                    <a onclick="MyBookings()" data-role="button" style="text-align:left;font-family:cursive;"><img src="img/car.png" width="22px;" style="float:left;"/><span style="margin-left:10px;" >My Bookings</span></a>
+                    <a onclick="feedBack()" data-role="button" style="text-align:left;font-family:cursive;"><img src="img/feedback.png" width="24px;" style="float:left;"/><span style="margin-left:10px;" >FeedBack</span></a>
+                    <a onclick="logout()" data-role="button" style="text-align:left;font-family:cursive;"><img src="img/logout.png" width="24px;" style="float:left;"/><span style="margin-left:10px;" >Logout</span></a>
+                </div>
+            </div>
          </center>
     </body>
 </html>
