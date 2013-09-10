@@ -26,3 +26,15 @@ function Jobs()
     window.location = 'driverJobs.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
     
 }
+function myProfile(){
+    window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
+function MyBookings(){
+    window.location='driverJobs.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
+function logout(){
+    window.location="index.html";
+}
+function myStatus(){
+    window.location='driverStatusUpdate.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}

@@ -7,6 +7,13 @@
         <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
         <script type="text/javascript" src="js/driverProfile.js"></script>
         <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        <script type="text/javascript">
+            function BackProfile()
+            {
+                window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+            
+            }
+        </script>
         <title></title>
     </head>
     <body>
@@ -21,7 +28,7 @@
                 </div>
             </div>
            <div style="float:right;height:50px;width:50px; margin-top:-55px;">
-                <img src="img/back1.png" width="42px" height="48px"/>
+                <img src="img/back1.png" width="42px" height="48px" onclick="BackProfile()"/>
             </div>
         </div>
            
@@ -56,9 +63,6 @@
                 <td><label id="lblDistance" width="60%" height="30px" text-align="center"></label></td>
             </tr>
         </table>
-        <div align="center">
-            <input id="btnBack" type="button" class="btn-tmp cursor" value="Back" onclick="BackToProfile()"/>
-        </div>
        </div>
         </center>   
     </body>
