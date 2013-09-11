@@ -279,9 +279,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#959595', end
 }
 
 .font-style{
-    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;;
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-weight:bold;
     color:Black;
+}
+#datepickers{
+    background-image:url('/images/datebox.png');
+    z-index:100;
 }
 .font-Name{
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;;
@@ -474,6 +478,8 @@ background-image: -webkit-gradient(
 	color-stop(0.79, rgb(255,0,0))
 );
 }
+
+
 .select-choice{
       width:80%;
       border-radius:3px;

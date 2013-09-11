@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="css/site.css" />
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/customerAfterLogin.js"></script>
+       <script type="text/javascript">
+          // app.initialize();
+      </script>
+        
+        
+       <link rel="stylesheet" type="text/css" href="css/jquery.mobile.css" />
+        
+     <!-- <link rel="stylesheet" href="css/slider/jquery.mobile-1.3.1.min.css" />-->
+        <script type="text/javascript" src="Scripts/slider/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="Scripts/slider/jquery.mobile-1.3.1.min.js"></script>
+        <title></title>
+        <style>
+            
+            /*this block should go in the styles.css file*/
+        .ui-panel-inner {
+            padding:0px; /*make the buttons flush edge to edge*/
+        }
+        .ui-controlgroup {
+            margin:0; /*make the buttons flush to the top*/
+        }
+        #header {
+            height:54px;
+        }
+        #bars-button {
+            margin:7px;
+        }
+    </style>
+    </head>
+    <body>
+        <center>
+         <div class="header">
+            <div style="float:left;height:48px;width:122px">
+                <img src="img/site-logo.png" class="logo"/>
+            </div>
+              <div style="width:200px; height:50px;text-align:center">
+                <div style="padding-top:13px;">
+                <i class="header-font">Home</i>
+                </div>
+            </div>
+            <div style="width:200px; height:50px;text-align:center">
+                <div style="padding-top:13px;">
+                <i class="header-font"></i>
+                </div>
+                  
+            </div>
+                     
+            </div> 
+        <div style="height:100px;width:100%;padding-top:25px;">
+            
+            
+        </div>
+        <div style="margin-bottom:76px;padding-top:5px;">
+            <img src="img/LoganCar.png" width="60%" height="25%"/>
+        </div>
+        
+       
+            <div style="margin-top:10px;width:220px" >
+                    <input type="button" class="btn-tmp cursor" value="Cab Now" onclick="cabNow()"/><br />
+            </div>
+       
+            <div style="margin-top:10px;width:220px;margin-bottom:24px">
+                  <input type="button" class="btn-tmp cursor" value="Pre Cab" onclick="PreCab()" /></div>
+            
+             <div >
+            
+             <a id="bars-button" data-icon="bars"   style="margin-bottom:0px;text-align:center;" href="#navpanel"><img src="img/menubtn.png"/></a>
+        </div>
+            <div  data-role="panel" id="navpanel" data-theme="a" data-display="overlay" data-position="left" >
+                <div data-role="controlgroup" data-corners="true">
+                    <a id="bars-button" data-icon="bars"   style="margin-top:10px;text-align:center;" href="#navpanel"><img src="img/menubtnup.png"/></a><br/>
+                   <!-- <a   data-role="button" style="text-align:center; font-family:cursive;" >Menu</a>-->
+                    <a><label style="text-align:center; font-size:16px;font-family:Helvetica, Arial, sans-serif;color:black">Menu</label></a>
+                    <a onclick="myProfile()"  data-role="button" style="text-align:left; font-family:cursive;font-size:14px;" ><img src="img/profile.png" width="22px;" style="float:left;"/><span style="margin-left:10px;" >My Profile</span></a>
+                    <a onclick="cabNow()" data-role="button" style="text-align:left;font-family:cursive;font-size:14px;"><img src="img/car.png" width="22px;" style="float:left;"/><span style="margin-left:10px;" >Cab Now</span></a>
+                    <a onclick="preCab()" data-role="button" style="text-align:left;font-family:cursive;font-size:14px;"><img src="img/car.png" width="22px;"style="float:left;"/><span style="margin-left:10px;" >Pre Cab</span></a>
+                    <a onclick="bookedHistory()"  data-role="button" style="text-align:left;font-family:cursive;font-size:14px;"><img src="img/history.png" width="22px;" style="float:left;"/><span style="margin-left:10px;" >Booked History</span></a>
+                    <a onclick="feedBack()" data-role="button" style="text-align:left;font-family:cursive;font-size:14px;"><img src="img/feedback.png" width="24px;" style="float:left;"/><span style="margin-left:10px;" >FeedBack</span></a>
+                    <a onclick="logout()" data-role="button" style="text-align:left;font-family:cursive;font-size:14px;"><img src="img/logout.png" width="24px;" style="float:left;"/><span style="margin-left:10px;" >Logout</span></a>
+			
+                </div>
+            </div>
+        
+      </center>
+    </body>
+</html>

@@ -98,8 +98,14 @@ function CheckMsg(data)
             
             //Role 4 --> Customer
             case 4:
-            window.location = 'customerHome.html?id='+userID+'&rid='+roleID+'&rrid='+relatedID;
+            //alert(relatedID);
+            window.location = 'customerAfterLogin.html?id='+userID+'&rid='+roleID+'&rrid='+relatedID;
             break;
         }
     }
+}
+
+function backtostartpage()
+{
+     window.location= "index.html";
 }

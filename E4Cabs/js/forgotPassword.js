@@ -77,3 +77,8 @@ function forgotPassword()
                 $('#txtEmail').val("");
             }
  }
+
+function backtologin()
+{
+  window.location="login.html";  
+} 
