@@ -16,9 +16,7 @@
     </head>
     <body>
         <center>
-             <div id="link-bar" style="margin-left:40%;padding-top:445px;position:fixed; z-index: 2147483647;background-repeat:no-repeat;background-color: transparent;text-align: center;background-position: center;">
-             <a id="bars-button" data-icon="bars"   style="text-align:center;" href="#navpanel"><img src="img/menubtn.png"/></a>
-        </div>
+             
             <div class="header">
             <div style="float:left;height:48px;width:100px">
                 <img src="img/site-logo.png" class="logo"/>
@@ -37,20 +35,25 @@
          <div style="padding-top:10px;">
           <div style="width:80%;height:30px;background-color:#777B81;border-radius:3px;">
             <marquee slide="left" style="font-size:15px;color:#ffffff;padding-top:5px;">
-               <i>Your Current Status is: &nbsp;<label id="driverStatusupdate"/></i>
+               <i>Your Current Status is: &nbsp;<label id="driverStatusupdate" style="color:blue"/>Available</i>
             </marquee>
           </div>
              <div style="padding-top:10%;width:80%">
-            <input type="button"  value="Your current status" onclick="DriverStatus()"/>
+            <input type="button"  value="Change Current Status" onclick="DriverStatus()"/>
            <!-- <input type="button" class="btn-tmp cursor" value="Profile" onclick="DriverProfile()"/>-->
             
          </div> 
-             <div style="padding-top:2%;width:80%;padding-bottom:39%">
+             <div style="padding-top:2%;width:80%;padding-bottom:27%">
                  <input type="button"  value="My Jobs" onclick="Jobs();" style="margin-top:5px;"/>
              </div>
-         </div>
+        </div>
+           <div style="padding-top:0px">
+            
+             <a id="bars-button" data-icon="bars"   style="margin-bottom:0px;text-align:center;" href="#navpanel"><img src="img/menubtn.png"/></a>
+        </div>
             <div  data-role="panel" id="navpanel" data-theme="a" data-display="overlay" data-position="left" >
                 <div data-role="controlgroup" data-corners="true">
+                     <a id="bars-button" data-icon="bars"   style="margin-top:10px;text-align:center;" href="#navpanel"><img src="img/menubtnup.png"/></a><br/>
                     <a><label style="text-align:center; font-size:16px;color:black;">Menu</label></a>
                     <a onclick="myProfile()"  data-role="button" style="text-align:left; font-family:cursive;font-size:14px;" ><img src="img/profile.png" width="22px;" style="float:left;"/><span style="margin-left:10px;" >My Profile</span></a>
                     <a onclick="myStatus()"  data-role="button" style="text-align:left; font-family:cursive;font-size:14px;" ><img src="img/status_away.png" width="22px;" style="float:left;"/><span style="margin-left:10px;" >My Status</span></a>

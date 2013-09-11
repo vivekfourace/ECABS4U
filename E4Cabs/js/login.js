@@ -82,19 +82,21 @@ function CheckMsg(data)
             //Role 1 --> Admin
             case 1: 
             window.location= "Admin.html";
-            
             break;
+            
             
             //Role 2 --> Operator
             case 2:            
            window.location = 'OperatorProfile.html?id='+userID+'&rid='+roleID+'&rrid='+relatedID;
             break;
             
+            
             //Role 3 --> Driver
             case 3:
-            
+
             window.location= 'driverHome.html?id='+userID+'&rid='+roleID+'&rrid='+relatedID;
             break;
+            
             
             //Role 4 --> Customer
             case 4:

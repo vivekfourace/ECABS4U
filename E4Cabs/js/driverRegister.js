@@ -28,7 +28,8 @@ function RegisterDriver()
     var User =$('#txtusername').val();
      var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
     var phoneno =/^\d{12}$/;
-      var img2=document.getElementById('raghu').value; 
+    var img2="a";
+      //var img2=document.getElementById('raghu').value; 
     //var validate=document.getElementById('MAX_FILE_SIZE').value;
     
                  
@@ -200,14 +201,14 @@ function OnValidate(data)
     if(data.d =="false")
     {
         $("#link2").show();
-        $('#lblMessage').text("Username already exist, enter another name!");
-        $('#lblMessage').css("color","red");
+        $('#lblRequiredField').text("Username already exist, enter another name!");
+        $('#lblRequiredField').css("color","red");
     }
     else
     {
         $("#link2").show();
-        $('#lblMessage').text("Registration successful,");
-        $('#lblMessage').css("color","green");
+        $('#lblRequiredField').text("Registration successful,");
+        $('#lblRequiredField').css("color","green");
         $("#link1").show();
                        $('#txtname').val('');
                           $('#txt9').val('');
@@ -221,8 +222,8 @@ function OnValidate(data)
                             $('#txtusername').val('');
     }
 }
-function Backtoadmin()
+function backToIndex()
 {
-    window.location="Admin.html";
+    window.location="index.html";
 }
     

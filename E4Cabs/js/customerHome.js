@@ -256,16 +256,24 @@ function logout()
 }
 function preCab()
 {
-    window.location="#";
+    window.location='customerPreBook.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
-
+//Back to customer Afterlogin
 function backtoCustomerhome()
 {
     
        
     window.location =  'customerAfterLogin.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
  // window.location="customerHome.html";
+}
+
+
+
+//Customer Feedback 
+function feedBack()
+{
+    window.location='customerFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
 //Pre Book Button
