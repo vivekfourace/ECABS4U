@@ -2,67 +2,44 @@
 
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="css/site.css" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
-        <script type="text/javascript" src="js/driverJobs.js"></script>
-        <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/site.css" />
         
-        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.css" />
+        <script type="text/javascript" src="js/driverFeedback.js"></script>
+        <title></title>
+         <link rel="stylesheet" type="text/css" href="css/jquery.mobile.css" />
         <!--<link rel="stylesheet" href="css/slider/jquery.mobile-1.3.1.min.css" />-->
         <script type="text/javascript" src="Scripts/slider/jquery-1.9.1.min.js"></script>
         <script type="text/javascript" src="Scripts/slider/jquery.mobile-1.3.1.min.js"></script>
-        <title></title>
     </head>
     <body>
-       <center>
-       <div class="header">
-            <div style="float:left;height:48px;width:100px">
+      <center>
+                  
+            
+        
+            <div class="header">
+            <div style="float:left;height:48px;width:122px">
                 <img src="img/site-logo.png" class="logo"/>
             </div>
             <div style="width:200px; height:50px;text-align:center">
                 <div style="padding-top:13px;">
-                <i class="header-font">My latest job</i>
+                <i class="header-font">FeedBack</i>
                 </div>
+                  
             </div>
-           <div style="float:right;height:50px;width:50px; margin-top:-55px;">
-                <img src="img/back1.png" width="42px" height="48px" onclick="BackProfile()"/>
-            </div>
+                   <div style="float:right;height:50px;width:50px; margin-top:-55px;">
+                <img src="img/back1.png" width="42px" height="48px" style=" cursor:pointer;" onclick="backtoDriverhome();"/>
+            </div>   
+            </div> 
+       
+        <div style="padding-top:75px;">
+            <img src="img/LoganCar.png" width="60%" height="25%"/>
         </div>
-           
-        <div style="padding-top:60px;">
-        <table align="center" width="80%" cellspacing="10">
-            <tr>
-                <td>
-                    <label type="text" style="font-size:15px"><b>Pickup Point:</b></label>
-                </td>
-                <td>
-                    <label id="lblFrom" width="60%" height="30px" text-align="center"></label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                      <label type="text" style="font-size:15px"><b>Drop Point:</b></label>
-                </td>
-                <td>
-                     <label id="lblTo" width="60%" height="30px" text-align="center"></label>
-                </td>
-            </tr>
-            <tr>
-               <td><label type="text" style="font-size:15px"><b>Date of Journey:</b></label></td>
-                <td><label id="lblDOJ" width="60%" height="20px" text-align="center"></label></td>
-            </tr>
-            <tr>
-                <td><label type="text" style="font-size:15px"><b>Pick Up Time:</b></label></td>
-                <td><label id="lblPickTime" width="60%" height="30px" text-align="center"></label></td>
-            </tr>
-            <tr>
-                <td><label type="text" style="font-size:15px"><b>Distance:</b></label></td>
-                <td><label id="lblDistance" width="60%" height="30px" text-align="center"></label></td>
-            </tr>
-        </table>
-       </div>
-           <div style="padding-top:210px">
+          
+           <div style="padding-top:250px">
             
              <a id="bars-button" data-icon="bars"   style="margin-bottom:0px;text-align:center;" href="#navpanel"><img src="img/menubtn.png"/></a>
         </div>
@@ -77,6 +54,6 @@
                     <a onclick="logout()" data-role="button" style="text-align:left; font-family:cursive;font-size:14px;"><img src="img/logout.png" width="24px;" style="float:left;"/><span style="margin-left:10px;" >Logout</span></a>
                 </div>
             </div>
-        </center>   
+        </center>
     </body>
 </html>

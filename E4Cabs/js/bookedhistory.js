@@ -59,7 +59,62 @@ function gethistory()
                 });
                 
             }
+
+
+
+//cab Now
+function cabNow()
+{
+  window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    
+}
+
+
+
+//Pre Cab
+function preCab()
+{
+   window.location='customerPreBook.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
+
+
+
+
+//Booked History
+function bookedHistory()
+{
+ //alert(relatedId);
+ 
+  window.location='bookedhistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+   
+}
+
+
+
+
+//My Profile Button
+ function myProfile()
+            {
+                window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+            }
   
+
+
+//Logout
+function logout()
+    {
+                
+       window.location="login.html";
+    }
+
+
+
+
+//Customer Feedback 
+function feedBack()
+{
+    window.location='customerFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
 
     
     

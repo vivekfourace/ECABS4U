@@ -393,6 +393,23 @@ background-image: -webkit-gradient(
 );*/
 }
 
+
+.btn-tmp-check{
+    border-radius:3px;
+     outline:none;
+     width:75%;               
+     height:39px;
+     text-align:center;
+     font-size:17px;
+     color:#FFFFFF;
+     font-style: normal;
+     margin:5px 0 5px 0;
+     font-family:sans-serif;
+     border:1px solid #902623;
+    background-color:#336699;
+   
+}
+
 .btn-tmp-avail{
     border-radius:3px;
      outline:none;

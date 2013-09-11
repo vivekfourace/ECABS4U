@@ -49,6 +49,7 @@ function engage()
 
 function available()
 {
+    
     $('#lblCurrentStatus').text("Available");
     $('#lblCurrentStatus').css("color","#33982C");
     
@@ -99,11 +100,36 @@ function rejected()
         //}
  //});
 }
-function backadmin()
+
+
+
+
+//Claer soon
+function soonToclear()
 {
-    window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    //alert("hi");
+     $('#lblCurrentStatus').text("Soon To Clear");
+    $('#lblCurrentStatus').css("color","#336699");
+    
+//var url = "";
+      //  $.ajax(url,{
+          //  type:"POST",
+          //  dataType: "Json",
+           // data:"{}",
+           // contentType: "application/json; charset=utf-8",                     
+           // success: ShowData,            
+           // error: function (XMLHttpRequest, textStatus, errorThrown) {
+            //alert(errorThrown);
+        //}
+ //});
 }
+
+
+//function backadmin()
+//{
+   // window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+//}
 function BacktoHome()
 {
-    window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }

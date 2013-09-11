@@ -157,3 +157,11 @@ function CheckData(data){
         
     }    
 }
+
+
+
+
+function backToIndex()
+{
+    window.location="index.html";
+}
