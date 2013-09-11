@@ -10,10 +10,15 @@ function CabNow()
   window.location="customerSearch.html";
     
 }
+//from Menu
+function preCab()
+{
+   window.location="customerPreBook.html"; 
+}
 
 function PreCab()
 {
-   window.location=""; 
+   window.location="customerPreBook.html"; 
 }
 
 //Booked History
@@ -49,4 +54,9 @@ function cabNow()
 { 
   
    window.location ='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
+//Customer Feedback 
+function feedBack()
+{
+    window.location='customerFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }

@@ -7,6 +7,13 @@
         <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
         <script type="text/javascript" src="js/driverProfile.js"></script>
         <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        <script type="text/javascript">
+            function BackProfile()
+            {
+                window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+            
+            }
+        </script>
         <title></title>
     </head>
     <body>
@@ -21,13 +28,11 @@
                 </div>
             </div>
            <div style="float:right;height:50px;width:50px; margin-top:-55px;">
-                <img src="img/back1.png" width="42px" height="48px" onclick="BacktoHome()"/>
+                <img src="img/back1.png" width="42px" height="48px" onclick="BackProfile()"/>
             </div>
         </div>
            
         <div style="padding-top:60px;">
-            <div align="top" style="width:100%;height:1px;background-color:#FFCC00;position:fixed"></div>
-            <div align="right" style="width:2px;height:100%;background-color:#FFCC00;position:absolute"></div>
         <table align="center" width="80%" cellspacing="10">
             <tr>
                 <td>
