@@ -110,6 +110,19 @@ function soonToclear()
     //alert("hi");
      $('#lblCurrentStatus').text("Soon To Clear");
     $('#lblCurrentStatus').css("color","#336699");
+     var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/clearStatus";
+                $.ajax(url,{                      
+                     type:"POST",
+                     datatype:"json",
+                     data:"{'userID':'" +userId+ "'}",
+                     contentType: "application/json; charset=utf-8",                     
+                     success:{},
+                    
+                     error: function (XMLHttpRequest, textStatus, errorThrown) {
+                     alert(errorThrown);
+                }
+             });
+    
     
 //var url = "";
       //  $.ajax(url,{

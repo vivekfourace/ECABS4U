@@ -107,7 +107,15 @@ function CheckMsg(data)
     }
 }
 
+
+//Back button
 function backtostartpage()
 {
      window.location= "index.html";
 }
+
+function backtostart()
+{
+    window.location="index.html";
+}
+

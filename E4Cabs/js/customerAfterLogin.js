@@ -60,3 +60,10 @@ function feedBack()
 {
     window.location='customerFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
+
+
+//Home
+function backtostartpage()
+{
+  window.location="index.html";  
+}

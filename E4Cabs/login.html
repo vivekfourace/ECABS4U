@@ -13,33 +13,34 @@
     </head>
     <body>
         <center>
+            <div>
             <div id="imgLoader" style="display:none;padding-top:140px;position:fixed; z-index: 2147483647;width:100%;height:100%;background-color: transparent;text-align: center;background-position: center;background-repeat: no-repeat;">
                 <img src="jquery-mobile/styles/images/ajax-loader.gif" width="270" height="200"/>
             </div>
-        <div class="header">
-            <div style="float:left;height:48px;width:100px">
-                <img src="img/site-logo.png" class="logo" />
+        <div class="header" style="background-color:#242424;height:10%">
+            <div style="float:left;height:100%;width:15%;margin-top:3%;">
+                <img src="img/backk.png" onclick="backtostartpage();"/>
             </div>
-            <div style="width:200px; height:50px;text-align:center">
-                <div style="padding-top:13px;">
-                <i class="header-font">Login</i>
+            <div style="width:10%; height:90%;text-align:center;">
+                <div style="padding-top:21%;">
+                <b class="header-font" style="color:white;font-size:16px">Login</b>
                 </div>
             </div>
-             <div style="float:right;height:50px;width:50px; margin-top:-55px;">
-                <img src="img/back1.png" width="42px" height="48px" onclick="backtostartpage();"/>
+             <div style="float:right;height:90%;width:15%; margin-top:-10%; margin-right:30px">
+                <img src="img/homee.png"  onclick="backtostart();"/>
             </div>
         </div> 
-          <div style="margin-bottom:30px;padding-top:75px;">
+          <div style="margin-bottom:21%;padding-top:31%;">
             <img src="img/LoganCar.png" width="60%" height="25%"/>
         </div>
         
-        <div style="padding-top:10px">
-        <label id="lblMsg" style="color:#D70007;font-size:12px"></label>            
+        <div style="padding-top:3%">
+        <center><label id="lblMsg" style="color:#D70007;font-size:12px"></label></center>            
         <input type="text" id="txtUserName" style=" font-family:Trebuchet MS;" placeholder="Username" autofocus="autofocus"/>
         <input type="password" id="txtPassword" style="font-family:Trebuchet MS; " placeholder="Password"/>
-        <div style="margin-top:10px;"><input type="button" class="btn-tmp cursor" value="Sign In" onclick="login()" /></div>
+        <div style="margin-top:3%;"><input type="button" class="btn-tmp cursor" value="Sign In" onclick="login()" /></div>
             
-        <div style="margin-top:15px;margin-left:35px;text-align:left">
+        <div style="margin-top:5%;margin-left:35px;text-align:left">
             <img src="img/key_icon.png" alt="forgotpassword" style="width:12px; height:12px"/>
             <a href="forgotPassword.html" style="color:#568bbe">Forgot password</a>
           <!-- <a href="driverHome.html" style="color:#568bbe">click</a>-->
@@ -48,6 +49,7 @@
             <a href="forgotUserId.html" style="color:#568bbe">Forgot UserID</a>-->
         </div>
           </div>
-         </center>       
+</div>
+                </center>       
     </body>
 </html>
