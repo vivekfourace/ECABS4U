@@ -200,6 +200,6 @@ function MyBookings(){
 function logout(){
     window.location="index.html";
 }
-function myStatus(){
-    window.location='driverStatusUpdate.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+function MyProfilePage(){
+    window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
