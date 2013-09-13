@@ -32,27 +32,40 @@
                 
             </div>
             <div style="padding-top:35%;">
-                <div style="width:80%;height:30px;background-color:#777B81;border-radius:3px;">
+                <div style="width:67%;height:30px;background-color:#777B81;border-radius:3px;">
                     <marquee slide="left" style="font-size:15px;color:#ffffff;padding-top:5px;">
                         <i>Current Status: &nbsp;<label id="driverStatusupdate" style="color:blue"/>Available</i>
                         
                     </marquee>
                     
                 </div>
-                <div style="padding-top:35%;width:80%">
-                    <input type="button"  value="Change Current Status" class="btn-common cursor" onclick="DriverStatus()"/>
-                    <!-- <input type="button" class="btn-tmp cursor" value="Profile" onclick="DriverProfile()"/>-->
-                    
-                </div>
-                <div style="padding-top:2%;width:80%;padding-bottom:27%">
-                    <input type="button"  value="My Jobs" class="btn-common cursor" onclick="Jobs();" style="margin-top:5px;"/>
-                    
-                </div>
+                <div style="padding-top:90px;">
+              <div style="padding-left:13%;height:40px">
+                  <div align="center" style="padding-top:15px">
+                      <span style="float:left;padding-left:17px" class="font-style"><b>Current Status : &nbsp;</b></span>
+                      <label class="font-Label" style="color:blue;text-decoration:none;float:left" id="lblCurrentStatus"/>
+                      
+                  </div>
+                  
+              </div>
+              
+            <table width="80%">
+                <tr>
+                    <td align="center">
+                        <input type="button" class="btn-common cursor" value="Soon To Clear" onclick="soonToclear();"/>
+                    </td>
+                </tr>
                 
+            </table>
             </div>
+                  
+              </div>
+                <div style="padding-top:2%;width:80%;padding-bottom:27%">
+                    <input type="button"  value="Available" class="btn-common cursor" onclick="Available();" style="margin-top:5px;"/>
+                    
+                </div>
             
-      
-         </center>
+        </center>
         <footer>
          <div style="width:100%;position:fixed;bottom:8px;height:20px;">
             <table style="width:100%;">

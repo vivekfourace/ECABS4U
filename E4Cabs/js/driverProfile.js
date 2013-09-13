@@ -189,10 +189,10 @@ function CancelProfile()
 
 function BacktoHome()
 {
-    window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+   // window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-function myProfile(){
-    window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+function HomePage(){
+    window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 function MyBookings(){
     window.location='driverJobs.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
