@@ -252,11 +252,11 @@ function cabNow()
 
 function logout()
 {
-    window.location="login.html";
+    window.location="index.html";
 }
 function preCab()
 {
-    window.location='customerPreBook.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
 //Back to customer Afterlogin

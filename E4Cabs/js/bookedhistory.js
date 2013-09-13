@@ -74,7 +74,7 @@ function cabNow()
 //Pre Cab
 function preCab()
 {
-   window.location='customerPreBook.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+   window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
 
@@ -104,7 +104,7 @@ function bookedHistory()
 function logout()
     {
                 
-       window.location="login.html";
+       window.location="index.html";
     }
 
 
