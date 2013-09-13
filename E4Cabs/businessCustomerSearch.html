@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="css/site.css" />
+        <link rel="stylesheet" type="text/css" href="jquery-mobile/styles/jquery.ui.theme.css" />
+        <link rel="stylesheet" type="text/css" href="jquery-mobile/styles/jquery-ui.css" />
+        
+      <link rel="stylesheet" type="text/css" href="css/jquery.mobile.css" />
+	  <link type="text/css" href="css/jqm-datebox.min.css" rel="stylesheet" /> 
+	  <link type="text/css" href="css/jquery.mobile.simpled.min.css" rel="stylesheet" /> 
+	  <link type="text/css" href="css/demos.css" rel="stylesheet" /> 
+        
+      
+     <!-- <link rel="stylesheet" href="css/slider/jquery.mobile-1.3.1.min.css" />-->
+        
+     <!-- <link rel="stylesheet" type="text/css" href="css/mobipick.css" />
+        
+        <script type="text/javascript" src="Scripts/mobipick.js"/>
+         <script type="text/javascript" src="Scripts/modernizr-2.6.2.js"/>
+        <script type="text/javascript" src="Scripts/xdate.js"/>
+         <script type="text/javascript" src="Scripts/xdate.i18n.js"/>-->
+        
+        <script type="text/javascript" src="Scripts/jquery-1.7.1.js"></script> 
+	    <script type="text/javascript" src="Scripts/jquery.mobile.js"></script>
+	    <script type="text/javascript" src="Scripts/jquery.mousewheel.min.js"></script>
+	    <script type="text/javascript" src="Scripts/jqm-datebox.core.min.js"></script>
+        <script type="text/javascript" src="Scripts/datebox.mode.datebox.min.js"></script>
+        <script type="text/javascript" src="Scripts/jquery.mobile.datebox.i18n.js"></script>
+		<script type="text/javascript" src="Scripts/jquery.mobile.simpled.min.js"></script>
+        
+        
+        <script type="text/javascript" src="jquery-mobile/js/jquery.ui.core.min.js"></script>
+        <script type="text/javascript" src="jquery-mobile/js/jquery.ui.widget.min.js"></script>
+        <script type="text/javascript" src="jquery-mobile/js/jquery.ui.tabs.min.js"></script>
+         <script type="text/javascript" src="jquery-mobile/js/jquery.ui.position.min.js"></script>
+        <script type="text/javascript" src="jquery-mobile/js/jquery.ui.timepicker.js"></script>
+        
+        <script type="text/javascript" src="js/businessCustomerSearch.js"></script>
+        <script type="text/javascript" src="jquery-mobile/js/jquery-ui.js"></script>
+         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    </head>
+    
+
+    <script type="text/javascript">
+        function loadDateTime(){    
+            //Code For current Time
+            	var currentTime = new Date()
+            	var hours = currentTime.getHours()
+            	var minutes = currentTime.getMinutes()
+            	if (minutes < 10)
+            	minutes = "0" + minutes
+            	var suffix = "AM";
+            	if (hours >= 12) {
+            	suffix = "PM";
+            	hours = hours - 12;
+            	}
+            	if (hours == 0) {
+            	hours = 12;
+            	}
+                $('#timepicker').val("Current time: "+hours+":"+minutes+":"+suffix);
+            
+            //Code For current Date
+            	var currentDate = new Date()
+            	var day = currentDate.getDate()
+            	var month = currentDate.getMonth() + 1
+            	var year = currentDate.getFullYear()
+                $('#datepicker').val("Today date: "+day+"/"+month+"/"+year);
+            }
+        var directionDisplay;
+        var directionsService = new google.maps.DirectionsService();
+        var map;
+
+         function initialize() {
+            directionsDisplay = new google.maps.DirectionsRenderer();
+
+        }
+        function calcRoute() {
+            var start = document.getElementById("txtFrom").value;
+            var end = document.getElementById("txtTo").value;
+            var distanceInput = document.getElementById("txtDistance");
+
+            var request = {
+                origin: start,
+                destination: end,
+                travelMode: google.maps.DirectionsTravelMode.DRIVING
+            };
+
+            directionsService.route(request, function (response, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                    distanceInput.value = (response.routes[0].legs[0].distance.value /1609.34).toFixed(2);
+                }
+            });
+        }
+        function bookReturn() 
+        {
+         
+             $('#txtReturFrom').show();
+             $('#txtReturTo').show();
+            $('#cancelreturn').show();
+            $('#bookreturn').hide();
+            
+             
+            document.getElementById("trfrom").style.display = 'table-row';
+            document.getElementById("trto").style.display = 'table-row';
+             document.getElementById("trDate").style.display = 'table-row';
+             document.getElementById("trTime").style.display = 'table-row';
+             var to=document.getElementById("txtTo").value;
+             var from =document.getElementById("txtFrom").value;
+             document.getElementById("txtReturFrom").value=to;
+             document.getElementById("txtReturTo").value=from;
+        }
+        
+        
+        
+        //Cancel Book Return
+        function cancelBookReturn()
+        {
+            document.getElementById("txtReturFrom").value="";
+             document.getElementById("txtReturTo").value="";
+             document.getElementById("datepickers").value="";
+             document.getElementById("timepickers").value="";
+            document.getElementById("trfrom").style.display = 'none';
+            document.getElementById("trto").style.display = 'none';
+             document.getElementById("trDate").style.display = 'none';
+             document.getElementById("trTime").style.display = 'none';
+            $('#txtReturFrom').hide();
+             $('#txtReturTo').hide();
+            $('#cancelreturn').hide();
+            $('#bookreturn').show();
+        }
+        
+        function showReq()
+        {  $('#specialreq').hide();
+             $('#cancelreq').show();
+           document.getElementById("trboundChair").style.display = 'table-row';
+           document.getElementById("trchildSeats").style.display = 'table-row';
+           document.getElementById("trChildBooster").style.display = 'table-row';
+        }
+        function cancelReq()
+        {
+            
+          $('#specialreq').show();
+             $('#cancelreq').hide();
+           
+            document.getElementById("trboundChair").style.display = 'none';
+           document.getElementById("trchildSeats").style.display = 'none';
+           document.getElementById("trChildBooster").style.display = 'none';
+        }
+       function btnBack()
+        {
+            window.location="customerHome.html";
+        }
+        
+    </script>
+    
+    <body onload="loadDateTime(),initialize()" >
+        <center>
+            
+        <div class="header" style="background-color:#242424 ;" >
+            <div style="float:left;height:48px;width:100px">
+                <img src="img/site-logo.png" class="logo" style="width:80px;float:left"/>
+            </div>
+            <div style="width:200px; height:50px;text-align:center">
+                <div style="padding-top:13px;">
+                <b class="header-font" style="color:white; font-size:16px">Book & GO >></b>
+                </div>
+            </div>
+           <!-- <div style="float:right;height:30px;width:65px; margin-top:-45px;">
+                <img src="img/backk.png" width="62px" height="38px" style=" cursor:pointer;float:left" onclick="backtoCustomerhome();"/>
+            </div>-->
+        </div>
+            
+       <div style="padding-top:53px">
+           <table width="90%">
+               <tr>
+                <td width="40%">
+                    <label for="txtFrom" class="font-style"><b style="font-size:12px">From Location</b></label> 
+                   
+                </td>
+                <td width="60%">
+                    
+                    <input type="text" id="txtFrom" class="font-style" autofocus="autofocus" style="width:100%;float:right;"/>
+                   
+                </td>
+                 
+            </tr>
+                <tr>
+                <td width="25%">
+                    <label for="txtTo" class="font-style"><b style="font-size:12px">To Location</b></label> 
+                   
+                </td>
+                <td width="75%">
+                    
+                    <input type="text" id="txtTo" class="font-style" style="width:100%;float:right;"/>
+                   
+                </td>
+                 
+            </tr>
+               <tr>
+                <td width="25%">
+                    <label for="txtDistance" class="font-style"><b style="font-size:12px">Distance(In Miles)</b></label> 
+                   
+                </td>
+                <td width="75%">
+                    
+                    <input type="text" id="txtDistance" class="font-style" style="width:100%;float:right;" readonly="true" onclick="calcRoute()"/>
+                   
+                </td>
+                 
+            </tr>
+                <tr>
+                <td width="25%">
+                    <label for="mode2" class="font-style"><b style="font-size:12px">Pick Date</b></label> 
+                   
+                </td>
+                <td width="75%">
+                    
+                   
+                    <input type="text" id="mode2"  style="width:100%;float:right;" data-role="datebox" data-options='{"mode":"datebox","useNewStyle":true}'/>                   
+                </td>
+                 
+            </tr>
+               <tr>
+                <td width="25%">
+                    <label for="mode6" class="font-style"><b style="font-size:12px">Pick Time</b></label> 
+                   
+                </td>
+                <td width="75%">
+                    
+                   <input type="text" id="mode6" class="font-style" style="width:100%;float:right;" data-role="datebox" data-options='{"mode":"timebox","useNewStyle":true}'/>
+                   
+                </td>
+                 
+            </tr>
+              
+               
+               <tr>
+                <td width="25%">
+                    <label for="#" class="font-style"><b style="font-size:12px">Passenger</b></label> 
+                   
+                </td>
+                <td width="75%">
+                    
+                    <select class="select-choice" class="font-style" style="width:100%;float:right;">
+                          <option value="1" selected="true">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                    </select>
+                   
+                </td>
+                 
+            </tr>
+                <tr>
+                <td width="25%">
+                    <label for="#" class="font-style"><b style="font-size:12px">Large case</b></label> 
+                   
+                </td>
+                <td width="75%; height:10px!important">
+                   <div style="width:100%;">
+                    <select class="select-choice" class="font-style" style="width:100%;float:right;">
+                          <option value="1" selected="true">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                    </select>
+                   </div> 
+                </td>
+                 
+            </tr>
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               <tr>
+                   <td></td>
+                   <td>
+                       <a href="#" id="specialreq" onclick="showReq()" style="width:100%;float:right;" >Special Requirement</a>
+                       <a href="#" id="cancelreq" onclick="cancelReq()" style="width:100%;float:right;display:none" >Cancel </a>
+                   </td>
+               </tr>
+               <tr id="trboundChair" style="display: none;">
+                   <td>
+                       <label for="#" class="font-style"><b style="font-size:12px">Wheelchair bound</b></label>
+                   </td>
+                   <td>
+                        <select class="select-choice" data-shadow="false" class="font-style" style="width:100%;float:right;">
+                          <option value="1" selected="true">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                    </select>
+                   </td>
+               </tr>
+               <tr id="trchildSeats" style="display: none;">
+                   <td><label for="#" class="font-style"><b style="font-size:12px">Child seats</b></label></td>
+                   <td>
+                       <select class="select-choice" class="font-style" style="width:100%;float:right;">
+                          <option value="1" selected="true">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                    </select>
+                   </td>
+               </tr>
+               <tr id="trChildBooster" style="display: none;">
+                   <td><label for="#" class="font-style"><b style="font-size:12px">Child booster</b></label></td>
+                   <td>
+                       <select class="select-choice" class="font-style" style="width:100%;float:right;">
+                          <option value="1" selected="true">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                    </select>
+                   </td>
+               </tr>
+               <tr>
+                   <td>
+                       
+                   </td>
+                   <td>
+                      <a href="#" id="bookreturn" onclick="bookReturn()" style="width:100%;float:right;" >Book Return</a>
+                       <a href="#" id="cancelreturn" onclick="cancelBookReturn()" style="width:100%;margin-left:45px;display:none;float:right" >Cancel Return</a>
+                   </td>
+               </tr>
+               <tr id="trfrom" style="display: none;">
+                  <td width="25%"><label for="txtFrom" id="lblreturnfrom" class="font-style"><b style="font-size:12px;">Return From</b></label> </td>
+                  <td width="75%">
+                       <input type="text" id="txtReturFrom" class="font-style" style="width:100%;"/>
+                  </td>
+              </tr>
+               <tr id="trto" style="display: none;">
+                  <td width="25%">
+                      <label for="txtFrom" id="lblreturnfrom" class="font-style"><b style="font-size:12px;">Return To</b></label>
+                      
+                  </td>
+                  <td width="75%">
+                       <input type="text" id="txtReturTo" class="font-style" style="width:100%;display:none;"/>
+                  </td>
+              </tr>
+                <tr id="trDate" style="display: none;">
+                <td width="25%">
+                    <label for="datepickers" class="font-style"><b style="font-size:12px">Return Date</b></label> 
+                   
+                </td>
+                <td width="75%">
+                    
+                    <input type="text" id="datepickers" class="font-style" style="width:100%;float:right;" data-role="datebox" data-options='{"mode":"datebox","useNewStyle":true}'/>
+                   
+                </td>
+                 
+            </tr>
+               <tr id="trTime" style="display: none;">
+                <td width="25%">
+                    <label for="timepickers" class="font-style"><b style="font-size:12px">Return Time</b></label> 
+                   
+                </td>
+                <td width="75%">
+                    
+                <input type="text" id="timepickers" class="font-style" style="width:100%;float:right;" data-role="datebox" data-options='{"mode":"timebox", "useNewStyle":true}'/>
+                     
+                   
+                </td>
+                 
+            </tr>
+               <tr>
+                   <td width="25%" >
+                       
+                   </td>
+                   <td width="75%">
+                       <input type="button" id="#" value="Search" class="btn-tmp" style="width:100%;" onclick="availabledriver()"/>
+                   </td>
+               </tr>
+           </table>
+             <!-- <div style="margin-bottom:3px">
+             <select class="select-choice">
+                  <option value="0">From</option>
+                  <option value="bangalore">Bangalore</option>
+                  <option value="chennai">Chennai</option>
+                  <option value="delhi">Delhi</option>
+               </select>
+               
+            </div>-->
+            <!--<div style="margin-bottom:3px">
+           <select class="select-choice">
+                  <option value="0">To</option>
+                  <option value="bangalore">Bangalore</option>
+                  <option value="chennai">Chennai</option>
+                  <option value="delhi">Delhi</option>
+            </select>
+            </div>-->
+                <!--<input type="text" id="datepicker"/>-->
+                <!--<input type="text" id="timepicker"/>-->
+          <!--  <div style="margin-bottom:8px">
+            <select class="select-choice">
+                  <option value="1" selected="true">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+            </select>
+            </div>-->
+        
+            
+          
+               
+           
+         </div>
+        
+      </center>
+         <div style="width:100%;position:fixed;bottom:0px;height::5%">
+            <table style="width:100%;">
+                <tr>
+                    <td style="width:20%;">
+                        <div>
+                            <img src="img/images.jpg" width="22px;" style="float:left;cursor:pointer" title="Home" onclick="Home()"/>
+                        </div>
+                    </td>
+                    <td style="width:20%;">
+                        <div>
+                            <img src="img/profile.png" width="22px;" style="float:left; cursor:pointer" title="Profile" onclick="myProfile()"/>
+                        </div>
+                    </td>
+                    <td style="width:20%;">
+                        <div>
+                            <img src="img/car.png" width="22px;" style="float:left;cursor:pointer" title="CabNow" onclick="cabNow()"/>
+                        </div>
+                    </td>
+                    
+                    <td style="width:20%;">
+                        <div>
+                            <img src="img/history.png" width="22px;" style="float:left;cursor:pointer" title="History" onclick="bookedHistory()"/>
+                        </div>
+                    </td>
+                    <td style="width:20%;">
+                        <div>
+                            <img src="img/feedback.png" width="24px;" style="float:left;cursor:pointer" title="Feedback" onclick="feedBack()"/>
+                        </div>
+                    </td>
+                    <td style="width:20%;">
+                        <div>
+                            <img src="img/logout.png" width="24px;" style="float:left;cursor:pointer" title="Logout" onclick="logout()"/>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
