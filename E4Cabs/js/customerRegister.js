@@ -152,7 +152,7 @@ function CheckData(data){
         
         setTimeout(function() {
             $('#lblMsg').fadeOut(3000);
-            window.location = "login.html";
+            window.location = "index.html";
             }, 5000);
         
     }    

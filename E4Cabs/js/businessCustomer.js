@@ -126,7 +126,7 @@ function businessRegistercustomer()
     
 
 $.ajax({
-    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RegisterCustomer",
+    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RegisterBusinessCustomer",
     type: "POST",
     dataType: "json",
     data: "{ 'fname': '" + txt1 + "','lname': '" + txt2 + "','email': '" + txt4 + "','userID': '" + txt6 + "','password': '" + txt7 + "','contactNumber': '" + txt3 + "'}",
@@ -152,7 +152,7 @@ function CheckData(data){
         
         setTimeout(function() {
             $('#lblMsg').fadeOut(3000);
-            window.location = "login.html";
+            window.location = "index.html";
             }, 5000);
         
     }    

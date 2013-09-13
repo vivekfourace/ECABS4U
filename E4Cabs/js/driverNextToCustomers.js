@@ -7,5 +7,5 @@ var relatedId = QString.split("=")[3].split("&")[0];
 
 function backtosearch()
 {
-    window.location = 'customerAfterLogin.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    window.location = 'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
