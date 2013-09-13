@@ -6,48 +6,63 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <link rel="stylesheet" type="text/css" href="css/site.css" />
-        <title>Hello World</title>
-    </head>
-    <body>
-        <center>
-                  
-            
-        <script type="text/javascript" src="cordova.js"></script>
+       <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="Scripts/jquery-1.8.2.min.js"></script>
+            <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
         <script type="text/javascript">
             app.initialize();
         </script>
-            <div class="header">
+       
+    </head>
+    <body>
+        <center>
+        
+            <div class="header" style="background-color:#242424;height:10%">
             <div style="float:left;height:48px;width:122px">
                 <img src="img/site-logo.png" class="logo"/>
             </div>
             <div style="width:200px; height:50px;text-align:center">
-                <div style="padding-top:13px;">
-                <i class="header-font"></i>
+                <div style="padding-top:1px;">
+                    <ul id="nav" style="float:right; margin-left:4px">
+                        <li>
+                            <i class="header-font" style="color:white;font-size:16px">
+                                        <a href="#" id="register">Register</a></i>
+                                        <ul class="sf-menu" style="width:170px !important; margin-left:-55px; z-index:100 !important;">
+                                           <li> <a  href="customerRegister.html" >Customer</a></li>
+                                            <li><a href="driverRegister.html">Taxi/Private Hire Operator </a></li>
+                                            <li><a href="businessCustomer.html">Business Customer</a></li>
+                                        </ul>
+                                      </li>
+                        
+                    </ul>  
+                
                 </div>
                   
             </div>
                      
             </div> 
-        <div style="height:100px;width:100%;padding-top:15%;">
+        <div style="height:10%;width:100%;padding-top:15%;">
             
-            <span style="color:#0C9516" class="slogan">‘Save Money – Save Time – Save The Planet’</span>
+            <span style="color:#0C9516" class="slogan">Save Money Save Time Save The Planete</span>
         </div>
-        <div style="margin-bottom:10%;padding-top:5px;">
+        <div style="margin-bottom:10%;padding-top:5%;">
             <img src="img/LoganCar.png" width="60%" height="25%"/>
         </div>
         
-        <div>
-            <a href="getstaredHome.html">
-                <input type="button" class="start-btn" value="Get Started"/>
-            </a>
+       <div style="padding-top:3%">
+        <center><label id="lblMsg" style="color:#D70007;font-size:12px"></label></center>            
+        <input type="text" id="txtUserName" style=" font-family:Trebuchet MS;" placeholder="Username" autofocus="autofocus"/>
+        <input type="password" id="txtPassword" style="font-family:Trebuchet MS; " placeholder="Password"/>
+        <div style="margin-top:3%;"><input type="button" class="btn-tmp cursor" value="Sign In" onclick="login()" /></div>
+            
+        <div style="margin-top:5%;margin-left:35px;text-align:left">
+            <img src="img/key_icon.png" alt="forgotpassword" style="width:12px; height:12px"/>
+            <a href="forgotPassword.html" style="color:#568bbe">Forgot password</a>
+         
         </div>
-        <div style="margin-top:10px;">
-            <a href="login.html">
-               <input type="button" class="sign-inbtn" value="Sign In"/>
-                
-            </a>
-        </div>
+          </div>
+
       </center>
     </body>
 </html>

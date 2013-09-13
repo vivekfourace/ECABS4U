@@ -54,7 +54,7 @@ function DriverProfile()
 //Driver Jobs
 function Jobs()
 {
-    window.location = 'pop.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    //window.location = 'pop.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
     
 }
 

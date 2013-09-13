@@ -5,7 +5,7 @@ html
 }
 center
 {
-    font-family:Trebuchet MS;
+    
     background-color:#ffffff;
 }
 .cursor{
@@ -39,11 +39,11 @@ center
     
 }
 .header-font{
-    font-family: Trebuchet MS;
+   
     font-weight:bold;
     color:#252261;
     font-size:14px;
-    float:right;
+    
 }
 
 .empty-div{

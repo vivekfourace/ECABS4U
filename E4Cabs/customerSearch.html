@@ -159,23 +159,24 @@
         
     </script>
     
-    <body onload="loadDateTime(),initialize()">
+    <body onload="loadDateTime(),initialize()" >
         <center>
-        <div class="header">
+            
+        <div class="header" style="background-color:#1C60A7 ;" >
             <div style="float:left;height:48px;width:100px">
-                <img src="img/site-logo.png" class="logo"/>
+                <img src="img/site-logo.png" class="logo" style="width:80px;float:left"/>
             </div>
             <div style="width:200px; height:50px;text-align:center">
                 <div style="padding-top:13px;">
-                <i class="header-font">Book & GO >></i>
+                <b class="header-font" style="color:white; font-size:16px">Book & GO >></b>
                 </div>
             </div>
-            <div style="float:right;height:50px;width:50px; margin-top:-55px;">
-                <img src="img/back1.png" width="42px" height="48px" style=" cursor:pointer;" onclick="backtoCustomerhome();"/>
+            <div style="float:right;height:30px;width:65px; margin-top:-45px;">
+                <img src="img/backk.png" width="62px" height="38px" style=" cursor:pointer;float:left" onclick="backtoCustomerhome();"/>
             </div>
         </div>
             
-       <div style="padding-top:60px">
+       <div style="padding-top:53px">
            <table width="90%">
                <tr>
                 <td width="40%">
@@ -237,55 +238,7 @@
                 </td>
                  
             </tr>
-              <tr>
-                   <td>
-                       
-                   </td>
-                   <td>
-                      <a href="#" id="bookreturn" onclick="bookReturn()" style="width:100%;float:right;" >Book Return</a>
-                       <a href="#" id="cancelreturn" onclick="cancelBookReturn()" style="width:100%;margin-left:45px;display:none;float:right" >Cancel Return</a>
-                   </td>
-               </tr>
-               <tr id="trfrom" style="display: none;">
-                  <td width="25%"><label for="txtFrom" id="lblreturnfrom" class="font-style"><b style="font-size:12px;">Return From</b></label> </td>
-                  <td width="75%">
-                       <input type="text" id="txtReturFrom" class="font-style" style="width:100%;"/>
-                  </td>
-              </tr>
-               <tr id="trto" style="display: none;">
-                  <td width="25%">
-                      <label for="txtFrom" id="lblreturnfrom" class="font-style"><b style="font-size:12px;">Return To</b></label>
-                      
-                  </td>
-                  <td width="75%">
-                       <input type="text" id="txtReturTo" class="font-style" style="width:100%;display:none;"/>
-                  </td>
-              </tr>
-                <tr id="trDate" style="display: none;">
-                <td width="25%">
-                    <label for="datepickers" class="font-style"><b style="font-size:12px">Return Date</b></label> 
-                   
-                </td>
-                <td width="75%">
-                    
-                    <input type="text" id="datepickers" class="font-style" style="width:100%;float:right;" data-role="datebox" data-options='{"mode":"datebox","useNewStyle":true}'/>
-                   
-                </td>
-                 
-            </tr>
-               <tr id="trTime" style="display: none;">
-                <td width="25%">
-                    <label for="timepickers" class="font-style"><b style="font-size:12px">Return Time</b></label> 
-                   
-                </td>
-                <td width="75%">
-                    
-                <input type="text" id="timepickers" class="font-style" style="width:100%;float:right;" data-role="datebox" data-options='{"mode":"timebox", "useNewStyle":true}'/>
-                     
-                   
-                </td>
-                 
-            </tr>
+              
                
                <tr>
                 <td width="25%">
@@ -325,6 +278,20 @@
                 </td>
                  
             </tr>
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
                <tr>
                    <td></td>
                    <td>
@@ -374,6 +341,55 @@
                    </td>
                </tr>
                <tr>
+                   <td>
+                       
+                   </td>
+                   <td>
+                      <a href="#" id="bookreturn" onclick="bookReturn()" style="width:100%;float:right;" >Book Return</a>
+                       <a href="#" id="cancelreturn" onclick="cancelBookReturn()" style="width:100%;margin-left:45px;display:none;float:right" >Cancel Return</a>
+                   </td>
+               </tr>
+               <tr id="trfrom" style="display: none;">
+                  <td width="25%"><label for="txtFrom" id="lblreturnfrom" class="font-style"><b style="font-size:12px;">Return From</b></label> </td>
+                  <td width="75%">
+                       <input type="text" id="txtReturFrom" class="font-style" style="width:100%;"/>
+                  </td>
+              </tr>
+               <tr id="trto" style="display: none;">
+                  <td width="25%">
+                      <label for="txtFrom" id="lblreturnfrom" class="font-style"><b style="font-size:12px;">Return To</b></label>
+                      
+                  </td>
+                  <td width="75%">
+                       <input type="text" id="txtReturTo" class="font-style" style="width:100%;display:none;"/>
+                  </td>
+              </tr>
+                <tr id="trDate" style="display: none;">
+                <td width="25%">
+                    <label for="datepickers" class="font-style"><b style="font-size:12px">Return Date</b></label> 
+                   
+                </td>
+                <td width="75%">
+                    
+                    <input type="text" id="datepickers" class="font-style" style="width:100%;float:right;" data-role="datebox" data-options='{"mode":"datebox","useNewStyle":true}'/>
+                   
+                </td>
+                 
+            </tr>
+               <tr id="trTime" style="display: none;">
+                <td width="25%">
+                    <label for="timepickers" class="font-style"><b style="font-size:12px">Return Time</b></label> 
+                   
+                </td>
+                <td width="75%">
+                    
+                <input type="text" id="timepickers" class="font-style" style="width:100%;float:right;" data-role="datebox" data-options='{"mode":"timebox", "useNewStyle":true}'/>
+                     
+                   
+                </td>
+                 
+            </tr>
+               <tr>
                    <td width="25%" >
                        
                    </td>
@@ -408,16 +424,49 @@
                   <option value="3">3</option>
             </select>
             </div>-->
-         <div style="margin-left:40%;">
-               
-            
-           </div>
+        
             
           
                
            
          </div>
-           
+        
       </center>
+         <div style="width:100%;position:fixed;bottom:0px;height::5%">
+            <table style="width:100%;">
+                <tr>
+                    <td style="width:20%;">
+                        <div>
+                            <img src="img/profile.png" width="22px;" style="float:left; cursor:pointer" title="Profile" onclick="myProfile()"/>
+                        </div>
+                    </td>
+                    <td style="width:20%;">
+                        <div>
+                            <img src="img/car.png" width="22px;" style="float:left;cursor:pointer" title="CabNow" onclick="cabNow()"/>
+                        </div>
+                    </td>
+                    <td style="width:20%;">
+                        <div>
+                            <img src="img/images.jpg" width="22px;" style="float:left;cursor:pointer" title="PreCab" onclick="preCab()"/>
+                        </div>
+                    </td>
+                    <td style="width:20%;">
+                        <div>
+                            <img src="img/history.png" width="22px;" style="float:left;cursor:pointer" title="History" onclick="bookedHistory()"/>
+                        </div>
+                    </td>
+                    <td style="width:20%;">
+                        <div>
+                            <img src="img/feedback.png" width="24px;" style="float:left;cursor:pointer" title="Feedback" onclick="feedBack()"/>
+                        </div>
+                    </td>
+                    <td style="width:20%;">
+                        <div>
+                            <img src="img/logout.png" width="24px;" style="float:left;cursor:pointer" title="Logout" onclick="logout()"/>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </body>
 </html>

@@ -144,5 +144,5 @@ function soonToclear()
 //}
 function BacktoHome()
 {
-    window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }

@@ -101,7 +101,7 @@ function CheckMsg(data)
             //Role 4 --> Customer
             case 4:
             //alert(relatedID);
-            window.location = 'customerAfterLogin.html?id='+userID+'&rid='+roleID+'&rrid='+relatedID;
+            window.location = 'customerSearch.html?id='+userID+'&rid='+roleID+'&rrid='+relatedID;
             break;
         }
     }
