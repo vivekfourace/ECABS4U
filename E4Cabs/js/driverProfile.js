@@ -51,7 +51,7 @@ function ShowData(data)
      document.getElementById("trCancel").style.display = 'none';
      document.getElementById("tredit").style.display = 'table-row';
     
-    
+    $('#divMarquee').show();
     $('#lblname').show();
     $('#lblLastname').show();
     $('#lblLocation').show();
@@ -78,6 +78,7 @@ function EditProfile()
     $('#lblLocation2').hide();
     $('#lblMobileNo').hide();
     $('#lblEmailID').hide();
+    $('#divMarquee').hide();
     document.getElementById("trBtnUpdate").style.display = 'table-row';
      document.getElementById("trCancel").style.display = 'table-row';
      document.getElementById("tredit").style.display = 'none';

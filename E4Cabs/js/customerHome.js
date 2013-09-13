@@ -285,3 +285,12 @@ function feedBack()
 //{
   //  window.location="AllMenu.html";
 //}
+
+
+
+
+//Home
+function backtostart()
+{
+    window.location="index.html";
+}

@@ -116,6 +116,12 @@ function feedBack()
     window.location='customerFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
+
+function backtostart()
+{
+    window.location="index.html";
+}
+
     
     
     

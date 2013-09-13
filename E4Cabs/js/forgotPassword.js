@@ -82,3 +82,10 @@ function backtologin()
 {
   window.location="login.html";  
 } 
+
+
+function backtostart()
+{
+    window.location="index.html";
+}
+
