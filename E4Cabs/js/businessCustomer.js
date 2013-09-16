@@ -8,6 +8,11 @@ function businessRegistercustomer()
     var txt6 =$('#txtUserName').val();
     var txt7 =$('#txtPassword').val();
     var txt8 =$('#txtConfirmPassword').val();
+    var business=$('#txtBusinessName').val();
+    var address1=$('#txtAddress1').val();
+    var address2=$('#txtAddress2').val();
+    var postcode=$('#txtPostalCode').val();
+    
     var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
     var phoneno =/^\d{12}$/;
     
@@ -103,6 +108,38 @@ function businessRegistercustomer()
                         $('#txtConfirmPassword').focus();
                         return false;
                     }
+    //Business customer
+     if(!business)
+                 {
+                     $('#lblMsg').text("Please enter Business type!");
+                     $('#txtBusinessName').focus();                        
+                     return false;
+                 }
+    
+    
+    //Address 1
+    
+    if(!address1)
+                 {
+                     $('#lblMsg').text("Please enter Address1!");
+                     $('#txtAddress1').focus();                        
+                     return false;
+                 }
+    //Address 2
+     if(!address2)
+                 {
+                     $('#lblMsg').text("Please enter Address2!");
+                     $('#txtAddress2').focus();                        
+                     return false;
+                 }
+    //Postcode
+     if(!postcode)
+                 {
+                     $('#lblMsg').text("Please enter Postcode!");
+                     $('#txtPostalCode').focus();                        
+                     return false;
+                 }
+    
     
     //Ajax loader--start
                 $('#imgLoader').bind('ajaxStart', function(){
