@@ -1,3 +1,8 @@
+function backToLogin()
+{
+    window.location = "index.html";
+}
+
 function forgotPassword()
             {
                 var pass=$('#txtEmail').val();
