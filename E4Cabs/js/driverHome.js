@@ -1,4 +1,3 @@
-
 var QString = window.location.search.substring(1);
 var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
@@ -36,11 +35,6 @@ $(document).ready(function(){
    window.location = 'driverStatusUpdate.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
-//var userID = data.d[0];
-//var roleID = parseInt(data.d[1]);
-//var relatedID = data.d[2];
-
-
 //diver Profile
 function DriverProfile()
 {
@@ -48,8 +42,6 @@ function DriverProfile()
     window.location = 'driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
     
 }
-
-
 
 //Driver Jobs
 function Jobs()
@@ -97,7 +89,7 @@ function soonToclear()
     //alert("hi");
      $('#lblCurrentStatus').text("Soon To Clear");
     $('#driverStatusupdate').text("Soon To Clear");
-    $('#lblCurrentStatus').css("color","#336699");
+    $('#lblCurrentStatus').css("color","#639ECD");
      var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/clearStatus";
                 $.ajax(url,{                      
                      type:"POST",
