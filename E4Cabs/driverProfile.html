@@ -1,139 +1,208 @@
 <!DOCTYPE html>
-
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
         <link rel="stylesheet" type="text/css" href="css/site.css" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
-        <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+         <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        <script type="text/javascript" src="js/watermark.js"></script>
         <script type="text/javascript" src="js/driverProfile.js"></script>
-         <script type="text/javascript" src="js/driverHome.js"></script>
+        <script type="text/javascript" src="js/driverHome.js"></script>
+        
+
+         <script type="text/javascript">
+             
+            jQuery(function($)
+             {
+                $("#txtname").Watermark("First name");
+                $("#txtLastname").Watermark("Last name");
+                $("#txtLocation").Watermark("Location 1");
+                $("#txtLocation2").Watermark("Location 2");
+                $("#txtMobileno").Watermark("Mobile number");
+                $("#txtEmailID").Watermark("Email address");
+            });
+            
+            function UseData(){
+                $.Watermark.HideAll();
+                $.Watermark.ShowAll();
+            }
+        </script>
+        <title></title>
     </head>
     <body>
-         <center>
-        <div class="header">
-            <div style="float:left;height:48px;width:100px">
-                <img src="img/site-logo.png" class="logo"/>
-            </div>
-            <div style="width:200px; height:50px;text-align:center">
-                <div style="padding-top:13px;">
-                <i class="header-font">Profile</i>
+        <center>
+            <div class="header" style="position:fixed;top:0px">
+                <div style="float:left;height:48px;width:100px;padding-top:4px;padding-left:4px">
+                    <img src="img/logo1.png" class="logo"/>
+                    
                 </div>
+                <div style="width:200px;height:50px;text-align:center">
+                    <div style="padding-top:20px;">
+                        <i class="header-font">Profile</i>
+                        
+                    </div>
+                    
+                </div>
+                <!--<div style="float:right;height:50px;width:50px; margin-top:-55px;padding-top:4px;padding-left:4px;margin-left:20px">
+                    <img src="img/backk.png" width="60px" height="32px" style=" cursor:pointer;" onclick="BacktoHome()"/>
+                    
+                </div>-->
+                <!--<div style="float:right;height:50px;width:50px; margin-top:-55px;padding-top:15px;margin-right:12px">
+                <img src="img/backk.png" width="60px" height="28px" style=" cursor:pointer;" onclick="BacktoHome()"/>
+            </div>-->
+                
             </div>
-            <div style="float:right;height:50px;width:50px; margin-top:-55px;">
-                <img src="img/back1.png" width="42px" height="48px"/>
-            </div>
-        </div>
-            <div style="padding-top:60px;">
-             <table align="center"  style="border-style:solid;border-radius:0.1" bgcolor="#ffffff">
-                 <tr>
-                     <td colspan="2" align="center">
-                         <img src="#" id="DImage" alt="YourImage" width="150px" height="100px" />
-                     </td>
-                 </tr>
-                 <tr>
-                     <td align="center">
-                         <input type="file" id="SelectedImg" value="Browse" style="width:30px">
-                        <input type="button" value="Upload" onclick="BtnUploadDImg()"> 
-                     </td>
-                 </tr>
-             </table>
-        <table width="90%" align="center">
-            <tr>
-                     <td colspan="2">
-                         <label id="lblWarning" style="color:red;font-size:12px;margin-left:70px"></label>
-                     </td>
-                 </tr>
-            <tr>
-                <td width="30%">
-                    <!--<img class="font-style" src="img/1377197235_man-24.png" width="20px" height="20px"  align="center"/>-->
-                   <label id="lname" class="font-style"><b style="font-size:13px">First Name:</b></label>
-                   
-                </td>
-                <td width="70%">
-                    <label id="lblname" class="font-style" style="text-align:center"></label>
-                    <input type="text" id="txtname" class="font-style" style="display:none;width:100%"/>
-                </td>
-               <!-- <td>
-                    <img id="Edit0" class="font-style" src="img/EditImage.png" width="10px" height="10px"/>
-                </td>-->
-                 
-            </tr>
-            <tr>
-             <td width="30%">
-                    <!--<img class="font-style" src="img/1377197235_man-24.png" width="20px" height="20px"/>-->
-                   <label id="lname" class="font-style"><b style="font-size:13px">Last Name:</b></label>
-                   
-                </td>
-                <td width="70%">
-                    <label id="lblLastname" class="font-style" style="text-align:center"></label>
-                    <input type="text" id="txtLastname" class="font-style" style="display:none;width:100%" />
-                </td>
-               <!-- <td>
-                    <img id="Edit0" class="font-style" src="img/EditImage.png" width="10px" height="10px"/>
-                </td>-->
-                 
-            </tr>
-             <tr>
-                <td width="30%">
-       <!--<img class="font-style" src="img/1377279422_home.png" width="20px" height="20px"  align="center"/>-->
-                    <label id="lLocation" class="font-style"><b style="font-size:13px">Address1:</b></label>
-                </td>
-                <td width="70%">
-                    <label id="lblLocation" class="font-style" style="text-align:center"></label>
-                       <input type="text" id="txtLocation" class="font-style" style="display:none;width:100%;text-align:center"/>
-                </td>
-                 <!--<td>
-                    <img id="Edit1" class="font-style" src="img/EditImage.png" width="10px" height="10px"/>
-                </td>-->
-            </tr>
             
-            <tr>
-                <td width="30%">
-                    <!--<img class="font-style" src="img/1377279422_home.png" width="20px" height="20px" align="center"/>-->
-                    <label id="lLocation2" class="font-style"><b style="font-size:13px">Address2  :</b></label>
-                </td>
-                <td width="70%">
-                    <label id="lblLocation2" class="font-style" style="text-align:center"></label>
-                       <input type="text" id="txtLocation2" class="font-style" style="display:none;width:100%"/>
-                </td>
-                <!--<td>
-                    <img id="Edit2" class="font-style" src="img/EditImage.png" width="10px" height="10px"/>
-                </td>-->
-            </tr>
-            <tr>
-                <td width="30%">
-                    <!--<img class="font-style" src="img/phone.png" width="20px" height="20px"  align="center" />-->
-                   <label id="lMobileNo" class="font-style"><b style="font-size:13px">Mobile No:</b></label>
-                </td>
-                <td width="70%">
-                    <label id="lblMobileNo" class="font-style"style="text-align:center"></label>
-                       <input type="text" id="txtMobileno" class="font-style" maxlength="12" style="display:none;width:100%"/>
-                </td>
-                <!--<td>
-                    <img id="Edit3" class="font-style" src="img/EditImage.png" width="10px" height="10px"/>
-                </td>-->
-            </tr>
-            <tr>
-                <td width="30%">
-                    <!--<img class="font-style" src="img/LogoEmail.png" width="20px" height="20px"  align="center"/>-->
-                    <label id="lEmailID" class="font-style"><b style="font-size:13px">Email ID:</b></label>
-                </td>
-                <td width="70%">
-                    <label id="lblEmailID" class="font-style"style="text-align:center"></label>
-                    <input type="text" id="txtEmailID" class="font-style" style="width:100%"/>
-                </td>
-               <!-- <td>
-                    <img id="Edit4" class="font-style" src="img/EditImage.png" width="10px" height="10px"/>
-                </td>-->
-            </tr>
-        </table>
-        <input id="btnEdit" type="button" class="btn-tmp cursor" value="Edit" onclick="EditProfile();"/>
-        <input id="btnBack" type="button" class="btn-tmp cursor" value="Back" onclick="BackToProfile()"/>
-        <input id="btnUpdate" type="button" class="btn-tmp cursor" style="display:none" value="Update" onclick="UpdateProfile();"/>
-        <input id="btnCancel" type="button" class="btn-tmp cursor" style="display:none" value="Cancel" onclick="CancelProfile();"/>
-       </div> 
-      </center>
+            <div style="padding-top:75px">
+                
+                <div width="100%">
+                    <table style="width:30%;height:100px;float:left;">
+                        <tr>
+                            <td><img style="width:100%;height:100%;" src="img/User.png"/></td>
+                            
+                        </tr>
+                        
+                    </table>
+                    <table style="width:70%;float:right;">
+                        <tr>
+                            <td width="100%">
+                                <label id="lblname" class="font-style" style="font-size:20px;font-weight:bold"></label>
+                                <input type="text" id="txtname" class="font-style" style="display:none;text-align:center"/>
+                                <label id="lblLastname" class="font-style"></label>
+                                <input type="text" id="txtLastname" class="font-style" style="display:none;text-align:center"/>
+                                
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td width="100%">
+                                <label id="lblLocation" class="font-style"></label>
+                                <input type="text" id="txtLocation" class="font-style" style="display:none;text-align:center"/>
+                                
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td >
+                                <label id="lblLocation2" class="font-style"></label>
+                                <input type="text" id="txtLocation2" style="display:none;text-align:center"/>
+                                
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td width="100%">
+                                <label id="lblMobileNo" class="font-style"></label>
+                                <input type="text" id="txtMobileno" class="font-style" maxlength="12" style="display:none;text-align:center"/>
+                                
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td width="100%">
+                                <u style="color:#639ECD"><i><label id="lblEmailID" class="font-style" style="color:#639ECD"></label></i></u>
+                                <input type="text" id="txtEmailID" class="font-style" style="display:none;text-align:center"/>
+                                
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <label id="lblWarning" style="color:red;font-size:12px"></label>
+                                
+                            </td>
+                            
+                        </tr>
+                         <tr id="trBtnUpdate" style="display:none;" >
+                            <td colsapn="2"  align="left" width="100%">
+                                <input id="btnUpdate" type="button" class="btn-common cursor" value="Update" onclick="UpdateProfile();"/>
+                                
+                            </td>
+                            
+                        </tr>
+                        <tr id="trCancel" style="display:none;">
+                            <td colsapn="2" align="left" width="100%" >
+                                <input id="btnCancel" type="button" class="btn-common cursor"  value="Cancel" onclick="CancelProfile();"/>
+                                
+                            </td>
+                            
+                        </tr>
+                    </table>
+                    
+                </div>
+                
+                <div style="padding-top:255px;padding-bottom:35px">
+                    <table width="76%">
+                        <tr id="tredit">
+                            <td  width="100%" align="center">
+                                <input id="btnEdit" type="button" value="Edit" class="btn-common cursor" onclick="EditProfile();" />
+                                
+                            </td>
+                            
+                        </tr>
+                       
+                        
+                        
+                    </table>
+                    
+                </div>
+                
+            </div>
+            <div style="width:100%;position:fixed;bottom:6px;height:25px;">
+                <table style="width:98%;">
+                    <tr>
+                        <td style="width:20%;">
+                            <div>
+                                <img src="img/profile.png" width="22px;" style="float:left; cursor:pointer" title="Home" onclick="MyProfilePage()"/>
+                                
+                            </div>
+                            
+                        </td>
+                        <td style="width:20%;">
+                            <div>
+                                <img src="img/HomeNew.png" width="22px;" style="float:left;cursor:pointer" title="Status" onclick="HomePage()"/>
+                                
+                            </div>
+                            
+                        </td>
+                        <td style="width:20%;">
+                            <div>
+                                <img src="img/car.png" width="22px;" style="float:left;cursor:pointer" title="My Bookings" onclick="MyBookings()"/>
+                                
+                            </div>
+                            
+                        </td>
+                        <td style="width:20%;">
+                            <div>
+                                <img src="img/history.png" width="22px;" style="float:left;cursor:pointer" title="Booking History" onclick="bookedHistory()"/>
+                                
+                            </div>
+                            
+                        </td>
+                        <td style="width:20%;">
+                            <div>
+                                <img src="img/feedback.png" width="24px;" style="float:left;cursor:pointer" title="Feedback" onclick="feedBack()"/>
+                                
+                            </div>
+                            
+                        </td>
+                        <td style="width:20%;">
+                            <div>
+                                <img src="img/logout.png" width="24px;" style="float:left;cursor:pointer" title="Logout" onclick="logout()"/>
+                                
+                            </div>
+                            
+                        </td>
+                        
+                    </tr>
+                    
+                </table>
+                
+            </div>
+            
+        </center>
+        
     </body>
+    
 </html>
-     

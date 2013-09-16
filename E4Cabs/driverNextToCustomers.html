@@ -4,22 +4,93 @@
     <head>
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <link rel="stylesheet" type="text/css" href="css/site.css" />
+        <link rel="stylesheet" type="text/css" href="css/jqx.energyblue.css" />
         <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
         <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        <script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="Scripts/jqx-all.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/jqx.base.css" />
+          <script type="text/javascript" src="js/driverNextToCustomers.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function () {
+          // var fp = "560078";
+          // var tp = "560102";   
+           // var map="http://115.115.159.126/ECabs/ECabs4U.asmx/GetData?FP1="+fp+"&FP2="+tp;
+           
+            var source = {
+                type: "GET",
+                url: map,
+               data: {},
+               datatype: "json",
+                datafields: [
+                    { name: 'ID', type: 'long' },
+                    { name: 'DriverName', type: 'string' },
+                    { name: 'Postcode', type: 'string' },
+                    { name: 'MobileNumber', type: 'string' }
+
+                ],
+
+                cache: false,
+                root: 'data'
+            };
+
+            //Preparing the data for use
+            var dataAdapter = new $.jqx.dataAdapter(source, {
+                contentType: 'application/json; charset=utf-8',
+                downloadComplete: function (data, textStatus, jqXHR) {
+                    return data.d;
+                }
+            }
+            );
+            $("#jqxgrid").jqxGrid({
+                width: $(window).width(),
+                source: dataAdapter,
+                autoheight: true,
+                theme: 'energyblue',
+                columns: [
+                    { text: 'ID', dataField: 'ID', width: 100, hidden: true },
+                    { text: 'DriverName', dataField: 'DriverName', width: 100 },
+                    { text: 'Postcode', dataField: 'Postcode', width: 100 },
+                    { text: 'MobileNumber', dataField: 'MobileNumber', width: 100, cellsalign: 'right' },
+                    {
+                        text: 'Hire Me', datafield: 'ID', columntype: 'button', width: 100, cellsrenderer: function () { return "Hire Me"; },
+                        buttonclick: function (row) {
+                            editrowindex = row;
+                            var id = $("#jqxgrid").jqxGrid('getcellvalue', row, "ID");
+                            //window.location = '/Customers/Edit/?id=' + id;
+                            alert(id);
+                        }
+                    }
+                ]
+            });
+        });
+        var renderer = function (id) {
+            return "<input type='button' onClick='buttonclick(event)' class='gridButton' id='btn" + id + "' value='Hire me'/>"
+        };
+            
+    </script>
+
         <title></title>
     </head>
     <body>
-        <div class="header-temp">
-            <div align="center">
-                <img class="img-tmp" src="img/site-logo.png"/>
+         <div class="header">
+            <div style="float:left;height:48px;width:100px">
+                <img src="img/site-logo.png" class="logo"/>
+            </div>
+            <div style="width:200px; height:50px;text-align:center">
+                <div style="padding-top:13px;">
+                <i class="header-font">Book</i>
+                </div>
+            </div>
+             <div style="float:right;height:50px;width:50px; margin-top:-55px;">
+                <img src="img/back1.png" width="42px" height="48px" style=" cursor:pointer;" onclick="backtosearch();"/>
             </div>
         </div>
-        <div style="margin:10px 0 5px 0;" align="center">
-            <span class="font-style">List of Divers next to you</span>
-        </div>
+            <div style="padding-top:15%"></div>
+            <!--<span style="font-size:17px"><b>History</b></span>-->
         
-        <div id="container" align="center">
-            <label id="lblStatus" style="color:red;font-size:10px"></label>
-        </div>
+      
+        <div id="jqxgrid"></div>        
+             
     </body>
 </html>

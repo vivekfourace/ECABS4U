@@ -11,7 +11,7 @@ function backtoCustomerhome()
 {
     
        
-    window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    window.location =  'customerAfterLogin.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
  // window.location="customerHome.html";
 }
 
@@ -34,9 +34,9 @@ function gethistory()
                        
                          $('#msg').append("<tr>")
                             
-                            .append("<th width='35%' align='center' height='35px' style='background-color:#888888;font-size:13px'>" +"Date"+"</th>")
-                            .append("<th width='25%' align='center' height='35px' style='background-color:#888888;font-size:13px'>" +"From"+"</th>")
-                             .append("<th width='25%' align='center' height='35px' style='background-color:#888888;font-size:13px;'>" +"To"+"</th>")
+                            .append("<th width='35%' align='center' height='35px' style='background-color:#888888;font-size:13px;color:white'>" +"Date"+"</th>")
+                            .append("<th width='25%' align='center' height='35px' style='background-color:#888888;font-size:13px;color:white'>" +"From"+"</th>")
+                             .append("<th width='25%' align='center' height='35px' style='background-color:#888888;font-size:13px;color:white'>" +"To"+"</th>")
                             .append('</tr>');
                        
                             
@@ -59,7 +59,68 @@ function gethistory()
                 });
                 
             }
+
+
+
+//cab Now
+function cabNow()
+{
+  window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    
+}
+
+
+
+//Pre Cab
+function preCab()
+{
+   window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
+
+
+
+
+//Booked History
+function bookedHistory()
+{
+ //alert(relatedId);
+ 
+  window.location='bookedhistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+   
+}
+
+
+
+
+//My Profile Button
+ function myProfile()
+            {
+                window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+            }
   
+
+
+//Logout
+function logout()
+    {
+                
+       window.location="index.html";
+    }
+
+
+
+
+//Customer Feedback 
+function feedBack()
+{
+    window.location='customerFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
+
+
+function backtostart()
+{
+    window.location="index.html";
+}
 
     
     

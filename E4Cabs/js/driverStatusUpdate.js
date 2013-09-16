@@ -49,6 +49,7 @@ function engage()
 
 function available()
 {
+    
     $('#lblCurrentStatus').text("Available");
     $('#lblCurrentStatus').css("color","#33982C");
     
@@ -99,7 +100,64 @@ function rejected()
         //}
  //});
 }
-function backadmin()
+
+
+
+
+//Claer soon
+function soonToclear()
+{
+    //alert("hi");
+     $('#lblCurrentStatus').text("Soon To Clear");
+    $('#lblCurrentStatus').css("color","#336699");
+     var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/clearStatus";
+                $.ajax(url,{                      
+                     type:"POST",
+                     datatype:"json",
+                     data:"{'userID':'" +userId+ "'}",
+                     contentType: "application/json; charset=utf-8",                     
+                     success:{},
+                    
+                     error: function (XMLHttpRequest, textStatus, errorThrown) {
+                     alert(errorThrown);
+                }
+             });
+    
+    
+//var url = "";
+      //  $.ajax(url,{
+          //  type:"POST",
+          //  dataType: "Json",
+           // data:"{}",
+           // contentType: "application/json; charset=utf-8",                     
+           // success: ShowData,            
+           // error: function (XMLHttpRequest, textStatus, errorThrown) {
+            //alert(errorThrown);
+        //}
+ //});
+}
+
+
+//function backadmin()
+//{
+   // window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+//}
+function BacktoProfile()
 {
     window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
+
+
+
+function myProfile(){
+    window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
+function MyBookings(){
+    window.location='driverJobs.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
+function logout(){
+    window.location="index.html";
+}
+function myStatus(){
+    window.location='driverStatusUpdate.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }

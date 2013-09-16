@@ -252,20 +252,28 @@ function cabNow()
 
 function logout()
 {
-    window.location="login.html";
+    window.location="index.html";
 }
 function preCab()
 {
-    window.location="#";
+    window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
-
+//Back to customer Afterlogin
 function backtoCustomerhome()
 {
     
        
-    window.location =  'customerAfterlogin.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    window.location =  'customerAfterLogin.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
  // window.location="customerHome.html";
+}
+
+
+
+//Customer Feedback 
+function feedBack()
+{
+    window.location='customerFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
 //Pre Book Button
@@ -277,3 +285,12 @@ function backtoCustomerhome()
 //{
   //  window.location="AllMenu.html";
 //}
+
+
+
+
+//Home
+function backtostart()
+{
+    window.location="index.html";
+}

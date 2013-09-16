@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="css/site.css" />
+               
+        <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
+        <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        <script type="text/javascript" src="js/businessCustomer.js"></script> 
+    </head>
+    <body>
+       <center>
+       <div id="imgLoader" style="display:none;padding-top:140px;position:fixed; z-index: 2147483647;width:100%;height:100%;background-color: transparent;text-align: center;background-position: center;background-repeat: no-repeat;">
+            <img src="jquery-mobile/styles/images/ajax-loader.gif" width="270" height="200"/>
+        </div>
+       <div class="header" style="background-color:#242424">
+            <div style="float:left;height:48px;width:100px">
+                <img src="img/site-logo.png" class="logo"/>
+            </div>
+            <div style="width:200px; height:50px;text-align:center">
+                 <div style="padding-top:13px;">
+                <b class="header-font" style="color:white;font-size:16px;">Register</b>
+               </div>
+            </div>
+             <div style="float:right;height:50px;width:60px; margin-top:-45px;">
+                <img src="img/backk.png" width="53px" height="33px" onclick="backToIndex();"/>
+            </div>
+        </div>
+            <div style="padding-top:15%">
+                <span style="font-family:;font-weight:bold;color:#252261;font-size:16px;float:center;">
+                    Business Customer Register
+                </span>
+                
+            </div>
+        <div style="padding-top:25px">
+           
+            <label id="lblMsg" style="color:#D70007;font-size:12px"></label>        
+            <input type="text" id="txtFirstName" placeholder="First name" autofocus="autofocus"/>
+            <input type="text" id="txtLastName" placeholder="Last name"/>
+            <input type="text" id="txtPhone" placeholder="Phone number" maxlength="12"/>
+            <input type="text" id="txtEmail" placeholder="Email Address"/>
+            <input type="text" id="txtUserName" placeholder="Username"/>
+            <input type="password" id="txtPassword" placeholder="Password"/>
+            <input type="password" id="txtConfirmPassword" placeholder="Confirm Password"/>
+            <div style="margin-top:7px">
+            <input type="button" class="btn-tmp cursor" value="Register" onclick="businessRegistercustomer()"/>
+            </div>
+        </div>  
+           
+       </center>     
+    </body>
+</html>

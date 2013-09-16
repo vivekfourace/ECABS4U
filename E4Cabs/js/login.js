@@ -93,13 +93,27 @@ function CheckMsg(data)
             //Role 3 --> Driver
             case 3:
             
-            window.location= 'driverHome.html?id='+userID+'&rid='+roleID+'&rrid='+relatedID;
+            window.location= 'driverProfile.html?id='+userID+'&rid='+roleID+'&rrid='+relatedID;
             break;
             
             //Role 4 --> Customer
             case 4:
-            window.location = 'customerHome.html?id='+userID+'&rid='+roleID+'&rrid='+relatedID;
+            //alert(relatedID);
+            window.location = 'customerSearch.html?id='+userID+'&rid='+roleID+'&rrid='+relatedID;
             break;
         }
     }
 }
+
+
+//Back button
+function backtostartpage()
+{
+     window.location= "index.html";
+}
+
+function backtostart()
+{
+    window.location="index.html";
+}
+

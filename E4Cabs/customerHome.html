@@ -9,36 +9,30 @@
         
         <script type="text/javascript" src="js/customerHome.js"></script>
         
- <link rel="stylesheet" type="text/css" href="css/jquery.mobile.css" />
-        
-    <!-- <link rel="stylesheet" href="css/slider/jquery.mobile-1.3.1.min.css" />-->
-        <script type="text/javascript" src="Scripts/slider/jquery-1.9.1.min.js"></script>
-        <script type="text/javascript" src="Scripts/slider/jquery.mobile-1.3.1.min.js"></script>
+ 
         <title></title>
     </head>
     <body>
         <center>
-        <div id="link-bar" style="margin-left:40%;padding-top:445px;position:fixed; z-index: 2147483647;background-repeat:no-repeat;background-color: transparent;text-align: center;background-position: center;">
-             <a id="bars-button" data-icon="bars"   style="text-align:center;" href="#navpanel"><img src="img/menubtn.png"/></a>
-        </div>
-        <div class="header">
-            <div style="float:left;height:48px;width:100px">
-                <img src="img/site-logo.png" class="logo"/>
+        
+        <div class="header" style="background-color:#242424;height:10%">
+            <div style="float:left;height:48px;width:90px">
+                  <img src="img/backk.png" onclick="backtoCustomerhome();" style="padding-top:8px"/>
             </div>
-            <div style="width:200px; height:50px;text-align:center">
+            <div style="width:60px; height:50px;text-align:center;" >
                 <div style="padding-top:13px;">
-                <i class="header-font">Profile</i>
+                <b class="header-font" style="color:white;font-size:16px">Profile</b>
                 </div>
             </div>
-            <div style="float:right;height:50px;width:50px; margin-top:-55px;">
-                <img src="img/back1.png" width="42px" height="48px" style=" cursor:pointer;" onclick="backtoCustomerhome();"/>
+            <div style="float:right;height:50px; margin-top:-41px;">
+                  <img src="img/homee.png"  onclick="backtostart();"/>
             </div>
         </div>            
    <div style="padding-top:65px">  
        <div width="100%">
-          <table style="width:25%;float:left;">
+          <table style="width:30%;float:left;">
               <tr>
-                 <td><img style="100px;height:100px;" src="img/brown-man-icon.png"/></td>
+                 <td style="float:right"align="right"><img style="height:100px;float:right;" src="img/brown-man-icon.png"/></td>
               </tr>
           </table> 
            <table style="width:65%;float:right;">
@@ -58,7 +52,7 @@
               </tr>
                <tr>
                 
-                <td >
+                <td>
                     <label id="lblLocation2" class="font-style"></label>
                        <input type="text" id="txtLocation2" style="display:none;text-align:left"/>
                 </td>
@@ -80,40 +74,67 @@
             </tr>
            </table>
        </div>
-       <div style="padding-top:250px;padding-bottom:90px">
-           <table width="76%">
+       
+       <div style="padding-top:270px;padding-bottom:100px">
+           <table width="76%" align="right">
                <tr id="tredit">
                    
                    <td  width="100%">
-                       <input id="btnEdit" type="button" value="Edit" onclick="EditProfile();" />
+                       <input id="btnEdit" type="button" value="Edit" class="btn-tmp cursor" onclick="EditProfile();" />
                    </td>
                </tr>
                <tr id="trBtnUpdate" style="display:none;" >
                    <td colsapn="2" width="100%"> 
-                       <input id="btnUpdate" type="button" value="Update" onclick="UpdateProfile();"/>
+                       <input id="btnUpdate" type="button"  value="Update" class="btn-tmp cursor" onclick="UpdateProfile();"/>
                    </td>
                </tr>
                <tr id="trCancel" style="display:none;">
                    <td colsapn="2" width="100%">
-                       <input id="btnCancel" type="button"   value="Cancel" onclick="CancelProfile();"/>
+                       <input id="btnCancel" type="button" class="btn-tmp cursor"  value="Cancel" onclick="CancelProfile();"/>
                    </td>
                </tr>
                
            </table> 
        </div>
      </div>
-        
-            <div  data-role="panel" id="navpanel" data-theme="a" data-display="overlay" data-position="left" >
-                <div data-role="controlgroup" data-corners="true">
-                    <a onclick="myProfile()"  data-role="button" style="text-align:left; font-family:cursive;" ><img src="img/profile.png" width="22px;" style="float:left;"/><span style="margin-left:10px;" >My Profile</span></a>
-                    <a onclick="cabNow()" data-role="button" style="text-align:left;font-family:cursive;"><img src="img/car.png" width="22px;" style="float:left;"/><span style="margin-left:10px;" >Cab Now</span></a>
-                    <a onclick="preCab()" data-role="button" style="text-align:left;font-family:cursive;"><img src="img/car.png" width="22px;"style="float:left;"/><span style="margin-left:10px;" >Pre Cab</span></a>
-                    <a onclick="bookedHistory()"  data-role="button" style="text-align:left;font-family:cursive;"><img src="img/history.png" width="22px;" style="float:left;"/><span style="margin-left:10px;" >Booked History</span></a>
-                    <a onclick="feedBack()" data-role="button" style="text-align:left;font-family:cursive;"><img src="img/feedback.png" width="24px;" style="float:left;"/><span style="margin-left:10px;" >FeedBack</span></a>
-                    <a onclick="logout()" data-role="button" style="text-align:left;font-family:cursive;"><img src="img/logout.png" width="24px;" style="float:left;"/><span style="margin-left:10px;" >Logout</span></a>
-			
-                </div>
-            </div>
+       
         </center>
+      
+        <div style="width:100%;position:fixed;bottom:8px;height:20px;">
+            <table style="width:100%;">
+                <tr>
+                    <td style="width:20%;">
+                        <div>
+                            <img src="img/profile.png" width="22px;" style="float:left; cursor:pointer" title="Profile" onclick="myProfile()"/>
+                        </div>
+                    </td>
+                    <td style="width:20%;">
+                        <div>
+                            <img src="img/car.png" width="22px;" style="float:left;cursor:pointer" title="CabNow" onclick="cabNow()"/>
+                        </div>
+                    </td>
+                    <td style="width:20%;">
+                        <div>
+                            <img src="img/images.jpg" width="22px;" style="float:left;cursor:pointer" title="PreCab" onclick="preCab()"/>
+                        </div>
+                    </td>
+                    <td style="width:20%;">
+                        <div>
+                            <img src="img/history.png" width="22px;" style="float:left;cursor:pointer" title="History" onclick="bookedHistory()"/>
+                        </div>
+                    </td>
+                    <td style="width:20%;">
+                        <div>
+                            <img src="img/feedback.png" width="24px;" style="float:left;cursor:pointer" title="Feedback" onclick="feedBack()"/>
+                        </div>
+                    </td>
+                    <td style="width:20%;">
+                        <div>
+                            <img src="img/logout.png" width="24px;" style="float:left;cursor:pointer" title="Logout" onclick="logout()"/>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </body>
 </html>
