@@ -8,7 +8,7 @@ function backtoCustomerhome()
     
     
        
-    window.location =  'customerAfterLogin.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    window.location =  'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
  // window.location="customerHome.html";
 }
 

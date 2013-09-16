@@ -114,7 +114,6 @@ function login()
                 }
              });
            }
-
 function CheckMsg(data)
 {
     if(data.d == "false")
@@ -155,6 +154,13 @@ function CheckMsg(data)
             //alert(relatedID);
             window.location = 'customerSearch.html?id='+userID+'&rid='+roleID+'&rrid='+relatedID;
             break;
+            
+            
+            //Role 6 --> Business Customer
+            case 6:
+            window.location = 'businessCustomerSearch.html?id='+userID+'&rid='+roleID+'&rrid='+relatedID;
+            break;
+            
         }
     }
 }
