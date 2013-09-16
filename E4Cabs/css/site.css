@@ -612,16 +612,13 @@ background-image: -webkit-gradient(
 .select-choice{
       width:80%;
       border-radius:3px;
-      height:20px;
+      height:28px;
       text-align:center;
       font-size:15px;
       color:#6E6E6E;
-      margin:2px 0 4px 0;
+      margin:2px 0 2px 0;
       font-weight:bold;
-     
-      outline:none;
       vertical-align:text-middle;
-    
 }
 
 .btnsize

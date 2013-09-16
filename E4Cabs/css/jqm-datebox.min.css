@@ -7,7 +7,7 @@
     padding-top: 0;
     padding-bottom: 0;
     border: 1px solid #2A81CF !important;
-    height:28px;
+    height:32px !important;
 }
 
 .ui-datebox-container > .ui-header:first-child
