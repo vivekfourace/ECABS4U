@@ -162,7 +162,7 @@
     <body onload="loadDateTime(),initialize()" >
         <center>
             
-        <div class="header" style="background-color:#242424;" >
+        <div class="header" >
             <div style="float:left;height:48px;width:100px">
                 <img src="img/site-logo.png" class="logo" style="width:80px;float:left"/>
             </div>
@@ -432,9 +432,14 @@
          </div>
         
       </center>
-         <div style="width:100%;position:fixed;bottom:0px;height::5%">
-            <table style="width:100%;">
+         <div style="width:100%;position:fixed;bottom:0px;height::5%"  >
+            <table style="width:100%;" class="btn-tmpFooter" >
                 <tr>
+                     <td style="width:20%;">
+                        <div>
+                            <img src="img/images.jpg" width="22px;" style="float:left;cursor:pointer" title="PreCab" onclick="preCab()"/>
+                        </div>
+                    </td>
                     <td style="width:20%;">
                         <div>
                             <img src="img/profile.png" width="22px;" style="float:left; cursor:pointer" title="Profile" onclick="myProfile()"/>
@@ -445,11 +450,7 @@
                             <img src="img/car.png" width="22px;" style="float:left;cursor:pointer" title="CabNow" onclick="cabNow()"/>
                         </div>
                     </td>
-                    <td style="width:20%;">
-                        <div>
-                            <img src="img/images.jpg" width="22px;" style="float:left;cursor:pointer" title="PreCab" onclick="preCab()"/>
-                        </div>
-                    </td>
+                   
                     <td style="width:20%;">
                         <div>
                             <img src="img/history.png" width="22px;" style="float:left;cursor:pointer" title="History" onclick="bookedHistory()"/>
