@@ -139,6 +139,9 @@
     
     <body onload="loadDateTime(),initialize()">
         <center>
+            <div id="link-bar" style="margin-left:40%;padding-top:445px;position:fixed; z-index: 2147483647;background-repeat:no-repeat;background-color: transparent;text-align: center;background-position: center;">
+             <a id="bars-button" data-icon="bars"   style="text-align:center;" href="#navpanel"><img src="img/menubtn.png"/></a>
+        </div>
         <div class="header">
             <div style="float:left;height:48px;width:100px">
                 <img src="img/site-logo.png" class="logo"/>
@@ -377,10 +380,19 @@
             </div>-->
             <input type="button" id="#" value="Search" class="btn-tmp"/>
           
-                <input id="btnBack" type="button" class="btn-tmp" value="Back" onclick="backtoHome();"/>
+            <input id="btnBack" type="button" class="btn-tmp" value="Back" onclick="backtoHome();"/>
            
+           <div  data-role="panel" id="navpanel" data-theme="a" data-display="overlay" data-position="left" >
+                <div data-role="controlgroup" data-corners="true">
+                    <a onclick="myProfile()"  data-role="button" style="text-align:left; font-family:cursive;" ><img src="img/profile.png" width="22px;" style="float:left;"/><span style="margin-left:10px;" >My Profile</span></a>
+                    <a onclick="cabNow()" data-role="button" style="text-align:left;font-family:cursive;"><img src="img/car.png" width="22px;" style="float:left;"/><span style="margin-left:10px;" >Cab Now</span></a>
+                    <a onclick="preCab()" data-role="button" style="text-align:left;font-family:cursive;"><img src="img/car.png" width="22px;"style="float:left;"/><span style="margin-left:10px;" >Pre Cab</span></a>
+                    <a onclick="bookedHistory()"  data-role="button" style="text-align:left;font-family:cursive;"><img src="img/history.png" width="22px;" style="float:left;"/><span style="margin-left:10px;" >Booked History</span></a>
+                    <a onclick="feedBack()" data-role="button" style="text-align:left;font-family:cursive;"><img src="img/feedback.png" width="24px;" style="float:left;"/><span style="margin-left:10px;" >FeedBack</span></a>
+                    <a onclick="logout()" data-role="button" style="text-align:left;font-family:cursive;"><img src="img/logout.png" width="24px;" style="float:left;"/><span style="margin-left:10px;" >Logout</span></a>
+                </div>
          </div>
-           
+           </div>
       </center>
     </body>
 </html>
