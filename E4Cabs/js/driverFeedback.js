@@ -34,8 +34,8 @@ function logout(){
 
 
 //Driver Status
-function myStatus(){
-    window.location='driverStatusUpdate.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+function MyHome(){
+    window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
 
