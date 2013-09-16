@@ -165,92 +165,62 @@
     
     <body onload="loadDateTime(),initialize()" >
         <center>
-            
-        <div class="header" >
-            <div style="float:left;height:48px;width:100px">
-                <img src="img/site-logo.png" class="logo" style="width:80px;float:left"/>
-            </div>
-            <div style="width:200px; height:50px;text-align:center">
-                <div style="padding-top:13px;">
-                <b class="header-font" style="color:white; font-size:16px">Book & GO >></b>
+        <div class="header" style="background-color:#242424;height:12.2%">
+                <div style="float:left;height:48px;width:122px;padding-top:3px;padding-left:5px">
+                    <img src="img/logo1.png" class="logo"/>
+                </div>
+            <div style="width:180px; height:90%;text-align:center;">
+                <div style="padding-top:12%;">
+                <i class="header-font" style="color:white;font-size:16px">Book and Go >></i>
                 </div>
             </div>
-          <!-- <div style="float:right;height:30px;width:65px; margin-top:-45px;">
-                <img src="img/backk.png" width="62px" height="38px" style=" cursor:pointer;float:left" onclick="backtoCustomerhome();"/>
-            </div>-->
         </div>
             
        <div style="padding-top:53px">
-           <table width="90%">
+           <table width="80%">
+               <center>
                <tr>
-                <td width="40%">
+                <td width="100%">
                     <label for="txtFrom" class="font-style"><b style="font-size:12px">From Location</b></label> 
-                   
-                </td>
-                <td width="60%">
-                    
                     <input type="text" id="txtFrom" class="font-style" autofocus="autofocus" style="width:100%;float:right;"/>
-                   
                 </td>
-                 
-            </tr>
-                <tr>
-                <td width="25%">
+               </tr>
+               
+              <tr>
+                <td>
                     <label for="txtTo" class="font-style"><b style="font-size:12px">To Location</b></label> 
-                   
-                </td>
-                <td width="75%">
-                    
                     <input type="text" id="txtTo" class="font-style" style="width:100%;float:right;"/>
-                   
                 </td>
-                 
-            </tr>
-               <tr>
-                <td width="25%">
-                    <label for="txtDistance" class="font-style"><b style="font-size:12px">Distance(In Miles)</b></label> 
-                   
-                </td>
-                <td width="75%">
-                    
-                    <input type="text" id="txtDistance" class="font-style" style="width:100%;float:right;" readonly="true" onclick="calcRoute()"/>
-                   
-                </td>
-                 
-            </tr>
-                <tr>
-                <td width="25%">
-                    <label for="mode2" class="font-style"><b style="font-size:12px">Pick Date</b></label> 
-                   
-                </td>
-                <td width="75%">
-                    
-                   
-                    <input type="text" id="mode2"  style="width:100%;float:right;" data-role="datebox" data-options='{"mode":"datebox","useNewStyle":true}'/>                   
-                </td>
-                 
-            </tr>
-               <tr>
-                <td width="25%">
-                    <label for="mode6" class="font-style"><b style="font-size:12px">Pick Time</b></label> 
-                   
-                </td>
-                <td width="75%">
-                    
-                   <input type="text" id="mode6" class="font-style" style="width:100%;float:right;" data-role="datebox" data-options='{"mode":"timebox","useNewStyle":true}'/>
-                   
-                </td>
-                 
-            </tr>
-              
+             </tr>
                
                <tr>
-                <td width="25%">
-                    <label for="#" class="font-style"><b style="font-size:12px">Passenger</b></label> 
-                   
+                <td>
+                    <label for="txtDistance" class="font-style"><b style="font-size:12px">Distance(In Miles)</b></label> 
+                    <input type="text" id="txtDistance" class="font-style" style="width:100%;float:right;" readonly="true" onclick="calcRoute()"/>
                 </td>
-                <td width="75%">
-                    
+              </tr>
+                <tr>
+                <td>
+                    <!--<label for="mode2" class="font-style"><b style="font-size:12px">Pick Date</b></label> 
+                    <input type="text" id="mode2"  style="width:100%;float:right;" data-role="datebox" data-options='{"mode":"datebox","useNewStyle":true}'/>                   
+                    -->
+                        <label for="mydate" class="font-style"><b style="font-size:12px">Pick Date</b></label>
+                        <input name="mydate" id="mydate" type="date" data-role="datebox"   data-options='{"mode": "datebox"}'>
+                </td>
+            </tr>
+               <tr>
+                <td>
+                    <!--<label for="mode6" class="font-style"><b style="font-size:12px">Pick Time</b></label> 
+                   <input type="text" id="mode6" class="font-style" style="width:100%;float:right;" data-role="datebox" data-options='{"mode":"timebox","useNewStyle":true}'/>
+                    -->
+                    <label for="linked2" class="font-style"><b style="font-size:12px">Pick Time</b></label>
+                    <input name="linked2" type="text" data-role="datebox" id="linked2" data-options='{"mode": "timebox", "overrideTimeFormat":12}' />
+                </td>
+            </tr>
+               
+               <tr>
+                <td>
+                    <label for="#" class="font-style"><b style="font-size:12px">Passenger</b></label> 
                     <select class="select-choice" class="font-style" style="width:100%;float:right;">
                           <option value="1" selected="true">1</option>
                           <option value="2">2</option>
@@ -259,16 +229,11 @@
                           <option value="5">5</option>
                           <option value="6">6</option>
                     </select>
-                   
                 </td>
-                 
             </tr>
                 <tr>
-                <td width="25%">
+                <td>
                     <label for="#" class="font-style"><b style="font-size:12px">Large case</b></label> 
-                   
-                </td>
-                <td width="75%; height:10px!important">
                    <div style="width:100%;">
                     <select class="select-choice" class="font-style" style="width:100%;float:right;">
                           <option value="1" selected="true">1</option>
@@ -280,24 +245,8 @@
                     </select>
                    </div> 
                 </td>
-                 
             </tr>
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
                <tr>
-                   <td></td>
                    <td>
                        <a href="#" id="specialreq" onclick="showReq()" style="width:100%;float:right;color:blue;" >Special Requirement</a>
                        <a href="#" id="cancelreq" onclick="cancelReq()" style="width:100%;float:right;display:none;color:blue;" >Cancel </a>
@@ -306,8 +255,6 @@
                <tr id="trboundChair" style="display: none;">
                    <td>
                        <label for="#" class="font-style"><b style="font-size:12px">Wheelchair bound</b></label>
-                   </td>
-                   <td>
                         <select class="select-choice" data-shadow="false" class="font-style" style="width:100%;float:right;">
                           <option value="1" selected="true">1</option>
                           <option value="2">2</option>
@@ -319,8 +266,8 @@
                    </td>
                </tr>
                <tr id="trchildSeats" style="display: none;">
-                   <td><label for="#" class="font-style"><b style="font-size:12px">Child seats</b></label></td>
                    <td>
+                       <label for="#" class="font-style"><b style="font-size:12px">Child seats</b></label>
                        <select class="select-choice" class="font-style" style="width:100%;float:right;">
                           <option value="1" selected="true">1</option>
                           <option value="2">2</option>
@@ -332,8 +279,7 @@
                    </td>
                </tr>
                <tr id="trChildBooster" style="display: none;">
-                   <td><label for="#" class="font-style"><b style="font-size:12px">Child booster</b></label></td>
-                   <td>
+                   <td><label for="#" class="font-style"><b style="font-size:12px">Child booster</b></label>
                        <select class="select-choice" class="font-style" style="width:100%;float:right;">
                           <option value="1" selected="true">1</option>
                           <option value="2">2</option>
@@ -342,65 +288,52 @@
                           <option value="5">5</option>
                           <option value="6">6</option>
                     </select>
-                   </td>
+                  </td>
                </tr>
                <tr>
-                   <td>
-                       
-                   </td>
                    <td>
                       <a href="#" id="bookreturn" onclick="bookReturn()" style="width:100%;float:right;color:blue;" >Book Return</a>
                        <a href="#" id="cancelreturn" onclick="cancelBookReturn()" style="width:100%;margin-left:45px;display:none;float:right;color:blue;" >Cancel Return</a>
                    </td>
                </tr>
                <tr id="trfrom" style="display: none;">
-                  <td width="25%"><label for="txtFrom" id="lblreturnfrom" class="font-style"><b style="font-size:12px;">Return From</b></label> </td>
-                  <td width="75%">
+                  <td>
+                      <label for="txtFrom" id="lblreturnfrom" class="font-style"><b style="font-size:12px;">Return From</b></label>
                        <input type="text" id="txtReturFrom" class="font-style" style="width:100%;"/>
                   </td>
               </tr>
                <tr id="trto" style="display: none;">
-                  <td width="25%">
+                  <td>
                       <label for="txtFrom" id="lblreturnfrom" class="font-style"><b style="font-size:12px;">Return To</b></label>
-                      
-                  </td>
-                  <td width="75%">
                        <input type="text" id="txtReturTo" class="font-style" style="width:100%;display:none;"/>
                   </td>
               </tr>
                 <tr id="trDate" style="display: none;">
-                <td width="25%">
+               <!--<td>
                     <label for="datepickers" class="font-style"><b style="font-size:12px">Return Date</b></label> 
-                   
-                </td>
-                <td width="75%">
-                    
-                    <input type="text" id="datepickers" class="font-style" style="width:100%;float:right;" data-role="datebox" data-options='{"mode":"datebox","useNewStyle":true}'/>
-                   
-                </td>
-                 
+                    <input type="text" id="datepickers" class="font-style" style="width:100%;float:right;" data-iconshadow="true" data-role="datebox" data-options='{"mode":"datebox","useNewStyle":true}'/>
+                </td>-->
+                    <td>
+                        <label for="mydate"  class="font-style"><b style="font-size:12px">Return Date</b></label>
+                        <input name="mydate" id="mydate" type="date" data-role="datebox"   data-options='{"mode": "datebox"}'>
+                    </td>
             </tr>
                <tr id="trTime" style="display: none;">
-                <td width="25%">
-                    <label for="timepickers" class="font-style"><b style="font-size:12px">Return Time</b></label> 
-                   
-                </td>
-                <td width="75%">
+                <td>
+                   <!-- <label for="timepickers" class="font-style"><b style="font-size:12px">Return Time</b></label> 
+                    <input type="text" id="timepickers" class="font-style" style="width:100%;float:right;" data-role="datebox" data-options='{"mode":"timebox", "useNewStyle":true}'/>
+                -->
+                     <label for="linked2" class="font-style"><b style="font-size:12px">Return Time</b></label>
+                    <input name="linked2" type="text" data-role="datebox" id="linked2" data-options='{"mode": "timebox", "overrideTimeFormat":12}' />
+                    </td>
                     
-                <input type="text" id="timepickers" class="font-style" style="width:100%;float:right;" data-role="datebox" data-options='{"mode":"timebox", "useNewStyle":true}'/>
-                     
-                   
-                </td>
-                 
             </tr>
-               <tr>
-                   <td width="25%" >
-                       
-                   </td>
-                   <td width="75%">
-                       <input type="button" id="#" value="Search" class="btn-tmp" style="width:100%;" onclick="availabledriver()"/>
-                   </td>
-               </tr>
+            <tr>
+                <td style="padding-bottom:34px">
+                    <input type="button" id="#" value="Search" class="btn-tmp" style="width:100%;" onclick="availabledriver()"/>
+                </td>
+            </tr>
+              </center>
            </table>
              <!-- <div style="margin-bottom:3px">
              <select class="select-choice">
