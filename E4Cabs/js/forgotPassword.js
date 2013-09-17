@@ -1,7 +1,4 @@
-function backToLogin()
-{
-    window.location = "index.html";
-}
+
 
 function forgotPassword()
             {

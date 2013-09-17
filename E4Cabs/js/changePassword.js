@@ -1,49 +1,62 @@
 function Reset()
              {
-                 var currentpwd = $('#curentpswd').val();
-                var UserID=document.getElementById('lblUserID').value;
+                 
+                var UserID=document.getElementById('curentpswd').value;
                   var newPass=document.getElementById('txtNew').value;
                 var confirm=document.getElementById('txtConform').value;
                  
-                if(currentpwd.length > 0)
-                 {
-                   $('#lblcurrentpswd').text("");
-                 }
-                 else if(currentpwd.length == 0)
-                 {
-                     $('#lblcurrentpswd').text("*Enter current password.");
-                     return false; 
-                 }
+                 if(UserID.length > 0)
+                {
+                    $('#lblMsg').text("");
+                }
+                else if(UserID.length==0)
+                {
+                $('#lblMsg').text("Please enter Current password!.");
+                $('#curentpswd').focus();
+                 return false;
+                }
                 
-                  if(newPass.length > 0)
+           if(newPass.length > 0)
+                {
+                    $('#lblMsg').text("");
+                }
+                else if(newPass.length==0)
+                {
+                $('#lblMsg').text("Please enter New password!.");
+                $('#txtNew').focus();
+                 return false;
+                }
+                 
+                 //validate Password
+    if(newPass.length > 0)
+                    {
+                        $('#lblMsg').text(" ");
+                    }
+                else if(newPass.length == 0)
                  {
-                    $('#lblPassword').text("");
-                    
+                     $('#lblMsg').text("Please enter News password");
+                    return false;
                  }
-                 else if(newPass.length == 0)
-                 {
-                     $('#lblPassword').text("*Enter new password.");
-                     return false;
-                 }
+    
+                if(confirm.length > 0)
+                    {
+                        if(newPass == confirm)
+                        {
+                            $('#lblMsg').text(" ");
+                        }
+                        else
+                        {
+                            $('#lblMsg').text("Password mismatch!");
+                            return false;
+                        }
+                    }
+                else if(confirm.length == 0)
+                    {
+                        $('#lblMsg').text("Please enter the ConfirmPassword");
+                        return false;
+                    }
                 
-                 if(confirm.length > 0)
-                 {
-                     if(newPass.match(confirm))
-                         {
-                             $('#lblConfirm').text("");
-                         }
-                     else
-                     {
-                     $('#lblConfirm').text("*Password mismatch!");
-                         return false;
-                     }
-                 }
-                 else if(confirm.length == 0)
-                 {
-                     $('#lblConfirm').text("*Enter confirm password.");
-                     return false;
-                 }
-                 alert(newPass);
+                
                  $.ajax({
                      url:"http://115.115.159.126/ECabs/ECabs4U.asmx/ChangePassword",
                      datatype:"POST",
@@ -59,3 +72,11 @@ function Reset()
                  });
                  
              }
+
+
+
+//Back button
+function backToIndex()
+{
+    window.location = "index.html";
+}

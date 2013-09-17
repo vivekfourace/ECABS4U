@@ -17,91 +17,103 @@
            </head>
     <body>
         <center>
-            <div class="header">
-                <div style="float:left;height:48px;width:100px;padding-top:4px;padding-left:4px">
+            <div class="header" style="background-color:#242424;height:12.2%">
+                <div style="float:left;height:48px;width:122px;padding-top:3px;">
                     <img src="img/logo1.png" class="logo"/>
-                    
                 </div>
-                <div style="width:200px; height:50px;text-align:center">
-                    <div style="padding-top:13px;">
-                        <i class="header-font"></i>
-                        
-                    </div>
-                    
-                </div>
+            <div style="width:180px; height:90%;text-align:center;">
                 
             </div>
-            <div style="padding-top:35%;">
-                <div style="width:67%;height:30px;background-color:#777B81;border-radius:3px;">
-                    <marquee slide="left" style="font-size:15px;color:#ffffff;padding-top:5px;">
+        </div>
+            <div style="padding-top:25%;">
+                <div style="width:80%;height:50px;background-color:#777B81;border-radius:3px;">
+                    <marquee slide="left" style="font-size:25px;color:#ffffff;padding-top:12px;">
                         <i>Current Status: &nbsp;<label id="driverStatusupdate" style="color:blue"/>Available</i>
                         
                     </marquee>
                     
                 </div>
-                <div style="padding-top:90px;">
-              <div style="padding-left:13%;height:40px">
-                  <div align="center" style="padding-top:15px">
-                      <span style="float:left;padding-left:17px" class="font-style"><b>Current Status : &nbsp;</b></span>
-                      <label class="font-Label" style="color:blue;text-decoration:none;float:left" id="lblCurrentStatus"/>
-                      
-                  </div>
-                  
-              </div>
-              
-            <table width="80%">
-                <tr>
-                    <td align="center">
-                        <input type="button" class="btn-common cursor" value="Soon To Clear" onclick="soonToclear();"/>
-                    </td>
-                </tr>
-                
-            </table>
-            </div>
-                  
-              </div>
-                <div style="padding-top:2%;width:80%;padding-bottom:27%">
-                    <input type="button"  value="Available" class="btn-common cursor" onclick="Available();" style="margin-top:5px;"/>
-                    
+                <div style="padding-top:25%;">
+                    <div style="padding-left:13%;height:40px">
+                        <div align="center" style="padding-top:15px">
+                            <span style="float:left;padding-left:25px" class="font-style"><b>Current Status : &nbsp;</b></span>
+                            <label class="font-Label" style="color:blue;text-decoration:none;float:left;font-size:12px" id="lblCurrentStatus"/>
+                            
+                        </div>
+                        
+                    </div>
+                    <table width="80%"style="padding-top:9%">
+                        <tr>
+                            <td align="center">
+                                <input type="button" class="btn-Common cursor" value="Soon To Clear" onclick="soonToclear();"/>
+                                
+                            </td>
+                            
+                        </tr>
+                        
+                    </table>                    
                 </div>
+                
+            </div>
+            <div style="padding-top:2%;width:80%;padding-bottom:27%;">
+                <input type="button"  value="Available" class="btn-Common cursor" onclick="Available();"/>
+                
+            </div>
             
         </center>
         <footer>
-         <div style="width:100%;position:fixed;bottom:6px;height:25px;">
-            <table style="width:100%;">
-                <tr>
-                    <td style="width:20%;">
-                        <div>
-                            <img src="img/profile.png" width="22px;" style="float:left; cursor:pointer" title="Profile" onclick="myProfile()"/>
-                        </div>
-                    </td>
-                    <td style="width:20%;">
-                        <div>
-                            <img src="img/HomeNew.png" width="22px;" style="float:left;cursor:pointer" title="Status" onclick="myhome()"/>
-                        </div>
-                    </td>
-                    <td style="width:20%;">
-                        <div>
-                            <img src="img/car.png" width="22px;" style="float:left;cursor:pointer" title="My Bookings" onclick="MyBookings()"/>
-                        </div>
-                    </td>
-                    <td style="width:20%;">
-                        <div>
-                            <img src="img/history.png" width="22px;" style="float:left;cursor:pointer" title="Booking History" onclick="bookedHistory()"/>
-                        </div>
-                    </td>
-                    <td style="width:20%;">
-                        <div>
-                            <img src="img/feedback.png" width="24px;" style="float:left;cursor:pointer" title="Feedback" onclick="feedBack()"/>
-                        </div>
-                    </td>
-                    <td style="width:20%;">
-                        <div>
-                            <img src="img/logout.png" width="24px;" style="float:left;cursor:pointer" title="Logout" onclick="logout()"/>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div></footer>
+            <div style="width:100%;position:fixed;bottom:0px;height:25px;padding-bottom:21px">
+                <table style="width:100%;" class="btn-tmpFooter">
+                    <tr>
+                        <td style="width:20%;">
+                            <div>
+                                <img src="img/User.png" width="40px;" style="float:left; cursor:pointer" title="Profile" onclick="myProfile()"/>
+                                
+                            </div>
+                            
+                        </td>
+                        <td style="width:20%;">
+                            <div>
+                                <img src="img/Home.png" width="40px;" style="float:left;cursor:pointer" title="Home" onclick="myhome()"/>
+                                
+                            </div>
+                            
+                        </td>
+                        <td style="width:20%;">
+                            <div>
+                                <img src="img/Cab.png" width="40px;" style="float:left;cursor:pointer" title="My Bookings" onclick="MyBookings()"/>
+                                
+                            </div>
+                            
+                        </td>
+                        <td style="width:20%;">
+                            <div>
+                                <img src="img/history.png" width="40px;" style="float:left;cursor:pointer" title="Booking History" onclick="bookedHistory()"/>
+                                
+                            </div>
+                            
+                        </td>
+                        <td style="width:20%;">
+                            <div>
+                                <img src="img/feedback.png" width="40px;" style="float:left;cursor:pointer" title="Feedback" onclick="feedBack()"/>
+                                
+                            </div>
+                            
+                        </td>
+                        <td style="width:20%;">
+                            <div>
+                                <img src="img/logout.png" width="40px;" style="float:left;cursor:pointer" title="Logout" onclick="logout()"/>
+                                
+                            </div>
+                            
+                        </td>
+                        
+                    </tr>
+                    
+                </table>
+                
+            </div>
+            
+        </footer>
     </body>
 </html>
