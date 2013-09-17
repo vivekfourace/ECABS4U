@@ -47,6 +47,10 @@
     
 
     <script type="text/javascript">
+        // $().ready(function(){
+          //  document.getElementById('mydate').value=new Date();
+        //})
+        
         function loadDateTime(){    
             //Code For current Time
             	var currentTime = new Date()
@@ -222,7 +226,8 @@
                 <td width="75%">
                     
                    
-                    <input type="text" id="mode2"  style="width:100%;float:right;" data-role="datebox" data-options='{"mode":"datebox","useNewStyle":true}'/>                   
+                       <!-- <input name="mydate" id="mydate" type="date" data-role="datebox"   data-options='{"mode": "datebox","dateFormat":"%b %d"}'>--> 
+                    <input type="text" id="mode2"  style="width:100%;float:right;" data-role="datebox" data-options='{"mode":"datebox","useNewStyle":true}'/>                  
                 </td>
                  
             </tr>
@@ -389,13 +394,20 @@
                 </td>
                  
             </tr>
-               <tr>
+               <!--<tr>
                    <td></td>
                    <td  style="padding-bottom:70px">
                        <input type="button" id="#" value="Search" class="btn-tmp" style="width:100%;" onclick="availabledriver()"/>
                    </td>
-               </tr>
+               </tr>-->
            </table>
+           
+           <div style="padding-bottom:40px;">
+                    <input type="button" style="width:100%" value="Search" class="btn-Login cursor" onclick="availabledriver()"/>
+               
+           </div>
+           </div>
+           
              <!-- <div style="margin-bottom:3px">
              <select class="select-choice">
                   <option value="0">From</option>
@@ -427,7 +439,7 @@
           
                
            
-         </div>
+  
            
       </center>
          <div style="width:100%;position:fixed;bottom:0px;z-index:99999">
