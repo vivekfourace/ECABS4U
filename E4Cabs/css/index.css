@@ -655,8 +655,7 @@ a.Header
 
 
 #nav ul{
-    background:#fff; 
-    background:rgba(255,255,255,0);
+    background:#2B81CF; 
     list-style:none;
     position:absolute;
     left:-9999px; 
@@ -676,6 +675,7 @@ a.Header
             left: 0;
             text-decoration:none;
         }
+
 #nav li:hover a
     {
     background:#DEDEDE;

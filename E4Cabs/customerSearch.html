@@ -63,14 +63,14 @@
             	if (hours == 0) {
             	hours = 12;
             	}
-                $('#linked2').val("Current time: "+hours+":"+minutes+":"+suffix);
+                $('#linked2').val("Now: "+hours+":"+minutes+":"+suffix);
             
             //Code For current Date
             	var currentDate = new Date()
             	var day = currentDate.getDate()
             	var month = currentDate.getMonth() + 1
             	var year = currentDate.getFullYear()
-                $('#mydate').val("Today date: "+day+"/"+month+"/"+year);
+                $('#mydate').val("Today: "+day+"/"+month+"/"+year);
             }
         var directionDisplay;
         var directionsService = new google.maps.DirectionsService();
@@ -175,14 +175,14 @@
                <center>
                <tr>
                 <td>
-                    <label for="txtFrom" class="font-style"><b style="font-size:12px">From Location</b></label> 
+                    <label for="txtFrom" class="font-style"><b style="font-size:12px">From</b></label> 
                     <input type="text" id="txtFrom" class="font-style" autofocus="autofocus" style="width:100%;float:right;"/>
                 </td>
                </tr>
                
               <tr>
                 <td>
-                    <label for="txtTo" class="font-style"><b style="font-size:12px">To Location</b></label> 
+                    <label for="txtTo" class="font-style"><b style="font-size:12px">To</b></label> 
                     <input type="text" id="txtTo" class="font-style" style="width:100%;float:right;"/>
                 </td>
              </tr>
@@ -198,7 +198,7 @@
                     <!--<label for="mode2" class="font-style"><b style="font-size:12px">Pick Date</b></label> 
                     <input type="text" id="mode2"  style="width:100%;float:right;" data-role="datebox" data-options='{"mode":"datebox","useNewStyle":true}'/>                   
                     -->
-                        <label for="mydate" class="font-style"><b style="font-size:12px">Pick Date</b></label>
+                        <label for="mydate" class="font-style"><b style="font-size:12px">Pick Up Date</b></label>
                         <input name="mydate" id="mydate" type="date" data-role="datebox"   data-options='{"mode": "datebox","dateFormat":"%b %d"}'>
                 </td>
             </tr>
@@ -207,7 +207,7 @@
                     <!--<label for="mode6" class="font-style"><b style="font-size:12px">Pick Time</b></label> 
                    <input type="text" id="mode6" class="font-style" style="width:100%;float:right;" data-role="datebox" data-options='{"mode":"timebox","useNewStyle":true}'/>
                     -->
-                    <label for="linked2" class="font-style"><b style="font-size:12px">Pick Time</b></label>
+                    <label for="linked2" class="font-style"><b style="font-size:12px">Pick Up Time</b></label>
                     <input name="linked2" type="text" data-role="datebox" id="linked2" data-options='{"mode": "timebox", "overrideTimeFormat":12}' />
                 </td>
             </tr>
@@ -227,10 +227,32 @@
             </tr>
                <tr>
                 <td>
-                    <label for="#" class="font-style"><b style="font-size:12px">Large case</b></label> 
+                   <div style="width:100%">
+                       
+                    <div style="width:45%;float:left">
+                    <label for="#" style="height:30px">
+                        <img src="img/Case.png" style="width:30px;height:25px"/>
+                    </label> 
                    <div style="width:100%;">
-                    <select class="select-choice" class="font-style" style="width:100%;float:right;">
-                          <option value="1" selected="true">1</option>
+                    <select class="select-choice" class="font-style">
+                          <option value="0" selected="true">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                    </select>
+                   </div>
+                   </div>   
+                   <div style="width:45%;float:right">
+                        <label for="#">
+                        <img src="img/Case.png" style="width:23px;height:20px"/>
+                    </label> 
+                   <div style="width:100%;padding-top:4px">
+                    <select class="select-choice" class="font-style">
+                          <option value="0" selected="true">0</option>
+                          <option value="1">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
                           <option value="4">4</option>
@@ -238,14 +260,19 @@
                           <option value="6">6</option>
                     </select>
                    </div> 
+                   </div>   
+                  </div>
                 </td>
+                        
             </tr>
                <tr>
                    <td>
-                       <a href="#" id="specialreq" onclick="showReq()" style="width:100%;float:right;color:blue;" >Special Requirement</a>
-                       <a href="#" id="cancelreq" onclick="cancelReq()" style="width:100%;float:right;display:none;color:blue;" >Cancel</a>
+                       <input type="button" id="specialreq" class="specialBtn" onclick="showReq()" style="width:58%;float:left;" value="Special Requirement" />
+                       <input type="button" id="bookreturn" class="specialBtn" onclick="bookReturn()" style="width:40%;float:right;" value="Book a Return"/>
                    </td>
                </tr>
+                   
+               <div style="background-color:red">
                <tr id="trboundChair" style="display: none;">
                    <td>
                        <label for="#" class="font-style"><b style="font-size:12px">Wheelchair bound</b></label>
@@ -284,12 +311,12 @@
                     </select>
                   </td>
                </tr>
-               <tr>
+                <tr>
                    <td>
-                      <a href="#" id="bookreturn" onclick="bookReturn()" style="width:100%;float:right;color:blue;" >Book Return</a>
-                       <a href="#" id="cancelreturn" onclick="cancelBookReturn()" style="width:100%;display:none;float:right;color:blue;" >Cancel Return</a>
+                       <input type="button" id="cancelreq" class="specialBtn" onclick="cancelReq()" style="width:50%;float:right;display:none;" value="Cancel" />
                    </td>
                </tr>
+               </div>
                <tr id="trfrom" style="display: none;">
                   <td>
                       <label for="txtFrom" id="lblreturnfrom" class="font-style"><b style="font-size:12px;">Return From</b></label>
@@ -322,10 +349,15 @@
                     </td>
                     
             </tr>
+                   <tr>
+                   <td>
+                       <input type="button" id="cancelreturn" class="specialBtn" onclick="cancelBookReturn()" style="display:none;float:right;" value="Cancel"/>
+                   </td>
+               </tr>
                     </center>
            </table>
            <div style="padding-bottom:40px;">
-                    <input type="button" style="width:100%" value="Search" class="btn-Login cursor" onclick="availabledriver()"/>
+                    <input type="button" value="Search" class="btn-tmp cursor" onclick="availabledriver()"/>
                
            </div>
              
