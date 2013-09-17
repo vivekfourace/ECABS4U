@@ -39,142 +39,121 @@
                 </div>
             </div>
         </div>
-             </center>
+         </center>
+        
         <center>
-            <div data-role="content" align="left" style="padding-top:23%;width:100%;">
+            <div data-role="content" align="left" style="padding-top:20%;width:100%;">
+            <div width="100%" style="float:right">
+               <span style="padding-right:10px">
+                   <a href="changePassword.html" style="color:#2980CE"><i>Change password</i></a>
+               </span>
+              </div>
                     <table align="left" style="width:30%;height:100px;float:left;padding-left:10px">
                         <tr>
                             <td><img style="width:100%;height:100%;" src="img/profile.png"/></td>
-                            
                         </tr>
-                        
                     </table>
-                    <table align="right" style="width:70%;float:right;padding-left:20px;z-index:-1;padding-bottom:10px">
+                    <table align="right" style="width:70%;float:right;padding-left:10px;">
                         <tr>
                             <td width="100%">
                                 <label id="lblname" class="font-style" style="font-size:25px;font-weight:bold"></label>
-                                <input type="text" id="txtname" class="font-style" style="display:none;text-align:center;height:45px;z-index:-9999"/>
+                                <input type="text" id="txtname" class="font-style" style="display:none;text-align:left;width:90%"/>
                                 <label id="lblLastname" class="font-style"></label>
-                                <input type="text" id="txtLastname" class="font-style" style="display:none;text-align:center;height:45px"/>
-                                
+                                <input type="text" id="txtLastname" class="font-style" style="display:none;text-align:left;width:90%"/>
                             </td>
-                            
                         </tr>
                         <tr>
                             <td width="100%">
                                 <label id="lblLocation" class="font-style"></label>
-                                <input type="text" id="txtLocation" class="font-style" style="display:none;text-align:center;height:45px"/>
-                                
+                                <input type="text" id="txtLocation" class="font-style" style="display:none;text-align:left;width:90%";/>
                             </td>
-                            
                         </tr>
                         <tr>
                             <td width="100%">
                                 <label id="lblLocation2" class="font-style"></label>
-                                <input type="text" id="txtLocation2" style="display:none;text-align:center;height:45px"/>
-                                
+                                <input type="text" id="txtLocation2" style="display:none;text-align:left;width:90%"/>
                             </td>
-                            
                         </tr>
                         <tr>
                             <td width="100%">
                                 <label id="lblMobileNo" class="font-style"></label>
-                                <input type="text" id="txtMobileno" class="font-style" maxlength="12" style="display:none;text-align:center;height:45px"/>
-                                
+                                <input type="text" id="txtMobileno" class="font-style" maxlength="12" style="display:none;text-align:left;width:90%"/>
                             </td>
-                            
                         </tr>
                         <tr>
                             <td width="100%">
                                 <u style="color:#639ECD"><i><label id="lblEmailID" class="font-style" style="color:#639ECD"></label></i></u>
-                                <input type="text" id="txtEmailID" class="font-style" style="display:none;text-align:center;height:45px"/>
-                                
+                                <input type="text" id="txtEmailID" class="font-style" style="display:none;text-align:left;width:90%"/>
                             </td>
-                            
                         </tr>
                         <tr>
-                            <td colspan="2">
+                            <td>
                                 <label id="lblWarning" style="color:red;font-size:12px"></label>
-                                
                             </td>
-                            
                         </tr>
-                         <tr id="trBtnUpdate" style="display:none;" >
-                            <td colsapn="2"  align="left" width="100%">
-                                <input id="btnUpdate" type="button" class="btn-Common cursor" value="Update" onclick="UpdateProfile();"/>
-                                
+                        </table>
+                </div>
+                <div style="padding-top:75%;padding-bottom:50px">
+                    <table width="100%">
+                        <tr id="tredit">
+                            <td  width="100%" align="center">
+                                <input id="btnEdit" type="button" value="Edit" class="btn-tmp cursor" style="width:100%;color:white;" onclick="EditProfile();" />
+                            </td>
+                        </tr>
+                        <tr id="trBtnUpdate" style="display:none;" >
+                            <td align="center" width="100%">
+                                <input id="btnUpdate" type="button" class="btn-tmp cursor" style="width:100%;color:white;" value="Update" onclick="UpdateProfile();"/>
                             </td>
                             
                         </tr>
                         <tr id="trCancel" style="display:none;">
-                            <td colsapn="2" align="left" width="100%" >
-                                <input id="btnCancel" type="button" class="btn-Common cursor"  value="Cancel" onclick="CancelProfile();"/>
-                                
+                            <td align="center" width="100%" >
+                                <input id="btnCancel" type="button" class="btn-tmp cursor" style="width:100%;color:white;" value="Cancel" onclick="CancelProfile();"/>
                             </td>
-                            
                         </tr>
                     </table>
-                    
                 </div>
-                
-                <div style="padding-top:75%;padding-bottom:35px">
-                    <table width="76%">
-                        <tr id="tredit">
-                            <td  width="100%" align="center">
-                                <input id="btnEdit" type="button" value="Edit" class="btn-Common cursor" onclick="EditProfile();" />
-                                
-                            </td>
-                            
-                        </tr>
-                       
-                        
-                        
-                    </table>
-                    
-                </div>
-                
-          
-            <div data-role="footer" data-position="fixed" style="width:100%;position:fixed;bottom:0px;height:25px;padding-bottom:21px">
+            <div data-role="footer" data-position="fixed" style="width:100%;position:fixed;bottom:0px;height:25px;padding-bottom:10px">
                 <table style="width:98%;" class="btn-tmpFooter">
                     <tr>
                         <td style="width:20%">
                             <div>
-                                <img src="img/User.png" width="40px;" style="float:left; cursor:pointer" title="Profile" onclick="MyProfilePage()"/>
+                                <img src="img/User.png" width="25px;" style="float:left; cursor:pointer" title="Profile" onclick="MyProfilePage()"/>
                                 
                             </div>
                             
                         </td>
                         <td style="width:20%;">
                             <div>
-                                <img src="img/Home.png" width="40px;" style="float:left;cursor:pointer" title="Home" onclick="HomePage()"/>
+                                <img src="img/Home.png" width="25px;" style="float:left;cursor:pointer" title="Home" onclick="HomePage()"/>
                                 
                             </div>
                             
                         </td>
                         <td style="width:20%;">
                             <div>
-                                <img src="img/Cab.png" width="40px;" style="float:left;cursor:pointer" title="My Bookings" onclick="MyBookings()"/>
+                                <img src="img/Cab.png" width="25px;" style="float:left;cursor:pointer" title="My Bookings" onclick="MyBookings()"/>
                                 
                             </div>
                             
                         </td>
                         <td style="width:20%;">
                             <div>
-                                <img src="img/history.png" width="40px;" style="float:left;cursor:pointer" title="Booking History" onclick="bookedHistory()"/>
+                                <img src="img/history.png" width="25px;" style="float:left;cursor:pointer" title="Booking History" onclick="bookedHistory()"/>
                                 
                             </div>
                             
                         </td>
                         <td style="width:20%;">
                             <div>
-                                <img src="img/feedback.png" width="40px;" style="float:left;cursor:pointer" title="Feedback" onclick="feedBack()"/>
+                                <img src="img/feedback.png" width="25px;" style="float:left;cursor:pointer" title="Feedback" onclick="feedBack()"/>
                                 
                             </div>
                             
                         </td>
                         <td style="width:20%;">
                             <div>
-                                <img src="img/logout.png" width="40px;" style="float:left;cursor:pointer" title="Logout" onclick="logout()"/>
+                                <img src="img/logout.png" width="25px;" style="float:left;cursor:pointer" title="Logout" onclick="logout()"/>
                                 
                             </div>
                             
