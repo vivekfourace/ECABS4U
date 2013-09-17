@@ -1,3 +1,8 @@
+function backToLogin()
+{
+    window.location = "index.html";
+}
+
 function forgotPassword()
             {
                 var pass=$('#txtEmail').val();
@@ -78,13 +83,13 @@ function forgotPassword()
             }
  }
 
-function backtologin()
-{
-  window.location="login.html";  
-} 
+//function backtologin()
+//{
+  //window.location="login.html";  
+//} 
 
 
-function backtostart()
+function backToIndex()
 {
     window.location="index.html";
 }
