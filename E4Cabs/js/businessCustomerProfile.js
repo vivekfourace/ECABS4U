@@ -267,6 +267,13 @@ function feedBack()
 }
 
 
+//Change Password
+function changepassword()
+{
+   window.location='changePassword.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+  
+}
+
 // Back Button
 //function backtostart()
 //{
