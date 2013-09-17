@@ -119,7 +119,7 @@ function feedBack()
 
 //function backtostart()
 //{
-   // window.location="index.html";
+   //window.location =  'customerAfterLogin.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 //}
 
     

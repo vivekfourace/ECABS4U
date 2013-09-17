@@ -266,6 +266,30 @@ function feedBack()
     window.location='businessCustomerFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
+
+// Back Button
+//function backtostart()
+//{
+  //  window.location =  'customerAfterLogin.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Pre Book Button
 //function prebook()
 //{

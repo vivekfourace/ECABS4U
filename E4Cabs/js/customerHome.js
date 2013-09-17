@@ -285,7 +285,7 @@ function feedBack()
 
 
 //Home
-function backtostart()
-{
-    window.location="index.html";
-}
+//function backtostart()
+//{
+   // window.location =  'customerAfterLogin.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+//}
