@@ -271,6 +271,31 @@ function feedBack()
     window.location='customerFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Change Password
+function changepassword()
+{
+   window.location='changePassword.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+  
+}
+
+
+
 //Pre Book Button
 //function prebook()
 //{
