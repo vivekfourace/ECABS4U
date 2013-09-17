@@ -10,61 +10,56 @@
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="Scripts/jquery-1.8.2.min.js"></script>
         <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        
         <script type="text/javascript">
             app.initialize();
-            
         </script>
        
     </head>
     <body>
         <center>
-            <div class="header" >
-                <div style="float:left;height:64px;width:33%;padding-left:12px;padding-top:12px">
+            <div id="imgLoader" style="display:none;padding-top:140px;position:fixed; z-index: 2147483647;width:100%;height:100%;background-color: transparent;text-align: center;background-position: center;background-repeat: no-repeat;">
+                <img src="jquery-mobile/styles/images/ajax-loader.gif" width="270" height="200"/>
+            </div>
+            <div class="header" style="background-color:#242424;height:12.2%">
+                <div style="float:left;height:48px;width:122px;padding-top:3px;">
                     <img src="img/logo1.png" class="logo"/>
-                    
                 </div>
-                <div style="width:67%; height:50px;">
-                    <div style="padding-top:10px;float:left;padding-left:50px">
+                
+                <div style="width:200px; height:50px;text-align:center">
+                    <div style="padding-top:1px;">
                         <ul id="nav" style="float:right; margin-left:4px">
                             <li>
-                                <i class="header-font" style="color:white;font-size:25px;">
+                                <i class="header-font" style="color:white;font-size:16px">
                                     <a href="#" id="register">Register</a></i>
-                                <ul class="sf-menu" style="width:270px !important; margin-left:-55px; z-index:100 !important;">
-                                    <li> <a  href="customerRegister.html" style="font-size:20px;" >Customer</a></li>
-                                    <li><a href="driverRegister.html" style="font-size:20px;">Taxi/Private Hire Operator </a></li>
-                                    <li><a href="businessCustomer.html" style="font-size:20px;">Business Customer</a></li>
-                                    
+                                <ul class="sf-menu" style="width:170px !important; margin-left:-55px; z-index:100 !important;">
+                                    <li> <a  href="customerRegister.html" >Customer</a></li>
+                                    <li><a href="driverRegister.html">Taxi/Private Hire Operator </a></li>
+                                    <li><a href="businessCustomer.html">Business Customer</a></li>
                                 </ul>
-                                
                             </li>
-                            
                         </ul>
-                        
                     </div>
-                    
                 </div>
-                
             </div>
-            <div style="height:10%;width:100%;padding-top:22%;">
-                <span style="color:#0C9516;" class="slogan">Save Money Save Time Save The Planet</span>
-                
+            <div style="height:5%;width:100%;padding-top:19%;">
+                <span style="color:#0C9516" class="slogan">Save Money - Save Time - Save the Planet</span>
             </div>
-            <div style="margin-bottom:10%;padding-top:8%;">
+            
+            <div style="margin-bottom:10%;padding-top:5%;">
                 <img src="img/LoganCar.png" width="60%" height="25%"/>
-                
             </div>
-            <div style="padding-top:2%">
+            
+            <div style="padding-top:3%">
                 <center><label id="lblMsg" style="color:#D70007;font-size:12px"></label></center>
-                <input type="text" id="txtUserName" style=" font-family:Trebuchet MS;width:80%;height:70px;text-align:center" placeholder="Username" />
-                <input type="password" id="txtPassword" style="font-family:Trebuchet MS;width:80%;height:70px;margin-top:20px;" placeholder="Password"/>
-                <div style="margin-top:5%;">
-                    <input type="button" class="btn-Login cursor"  value="Sign In" onclick="login()" />
-                    
+                <input type="text" id="txtUserName" style=" font-family:Trebuchet MS;width:65%" placeholder="Username" autofocus="autofocus"/>
+                <input type="password" id="txtPassword" style="font-family:Trebuchet MS;width:65%;" placeholder="Password"/>
+                <div style="margin-top:3%;">
+                    <input type="button" class="btn-Login cursor" value="Sign In" onclick="login()" />
                 </div>
-                <div style="margin-top:5%;margin-left:35px;text-align:left">
+                <div style="margin-top:5%;margin-left:55px;text-align:left">
                     <img src="img/key_icon.png" alt="forgotpassword" style="width:12px; height:12px"/>
-                    <a href="forgotPassword.html" style="color:#568bbe;font-size:27px;">Forgot password</a>
-                    
+                    <a href="forgotPassword.html" style="color:#568bbe">Forgot password</a>
                 </div>
                 
             </div>

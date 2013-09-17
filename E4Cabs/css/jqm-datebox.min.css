@@ -1,20 +1,15 @@
 
 .ui-input-datebox
 {
-    width: 97%;
     background-image: url('images/datebox.png');
-    padding: .4em;
-    line-height: 1.4;
     font-size: 16px;
     display: block;
     padding-top: 0;
     padding-bottom: 0;
-    background-color: transparent;
+    border: 1px solid #2A81CF !important;
+    height:32px !important;
 }
-.ui-input-datebox
-{
-    min-height: 25px;
-}
+
 .ui-datebox-container > .ui-header:first-child
 {
     -webkit-border-top-left-radius: 3px;
@@ -24,9 +19,7 @@
 }
 .ui-input-datebox input
 {
-    width: 100% !important;
     padding: 0 !important;
-    margin-top: 5px !important;
     margin-right: -40px !important;
     border: 1px solid transparent !important;
     vertical-align: middle;
@@ -50,13 +43,13 @@
 }
 .ui-icon-datebox
 {
-    background-image: url('image/datebox.png') !important;
+    background-image: url('images/datebox.png') !important;
     background-repeat: no-repeat !important;
     background-position: 99% 8px !important;
 }
 .ui-icon-datebox-alt
 {
-    background-image: url('image/datebox.png') !important;
+    background-image: url('images/datebox.png') !important;
     background-repeat: no-repeat !important;
     background-position: 99% -28px !important;
 }
