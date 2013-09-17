@@ -5,11 +5,6 @@ var relatedId = QString.split("=")[3].split("&")[0];
 
 
 window.onload = getProfile();
-
-
-
-
-
 //get customer profile
 function getProfile()
 {
