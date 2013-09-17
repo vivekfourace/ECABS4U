@@ -527,7 +527,7 @@ background-image: -ms-linear-gradient(bottom, #1D8A1D 3%, #48A63A 52%, #54C754 7
 .btn-Common{
      border-radius:3px!important;
      outline:none!important;
-     width:78%!important;               
+     width:100%!important;               
      height:35px!important;
      text-align:center!important;
      font-size:17px!important;
