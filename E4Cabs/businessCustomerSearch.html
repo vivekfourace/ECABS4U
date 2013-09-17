@@ -226,10 +226,32 @@
             </tr>
                <tr>
                 <td>
-                    <label for="#" class="font-style"><b style="font-size:12px">Large case</b></label> 
+                   <div style="width:100%">
+                       
+                    <div style="width:45%;float:left">
+                    <label for="#" style="height:30px">
+                        <img src="img/Case.png" style="width:30px;height:25px"/>
+                    </label> 
                    <div style="width:100%;">
-                    <select class="select-choice" class="font-style" style="width:100%;float:right;">
-                          <option value="1" selected="true">1</option>
+                    <select class="select-choice" class="font-style">
+                          <option value="0" selected="true">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                    </select>
+                   </div>
+                   </div>   
+                   <div style="width:45%;float:right">
+                        <label for="#">
+                        <img src="img/Case.png" style="width:23px;height:20px"/>
+                    </label> 
+                   <div style="width:100%;padding-top:4px">
+                    <select class="select-choice" class="font-style">
+                          <option value="0" selected="true">0</option>
+                          <option value="1">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
                           <option value="4">4</option>
@@ -237,14 +259,18 @@
                           <option value="6">6</option>
                     </select>
                    </div> 
+                   </div>   
+                  </div>
                 </td>
+                        
             </tr>
                <tr>
                    <td>
-                       <a href="#" id="specialreq" onclick="showReq()" style="width:100%;float:right;color:blue;" >Special Requirement</a>
-                       <a href="#" id="cancelreq" onclick="cancelReq()" style="width:100%;float:right;display:none;color:blue;" >Cancel</a>
+                       <input type="button" id="specialreq" class="specialBtn" onclick="showReq()" style="width:58%;float:left;" value="Special Requirement" />
+                       <input type="button" id="bookreturn" class="specialBtn" onclick="bookReturn()" style="width:40%;float:right;" value="Book a Return"/>
                    </td>
                </tr>
+               <div style="background-color:red">
                <tr id="trboundChair" style="display: none;">
                    <td>
                        <label for="#" class="font-style"><b style="font-size:12px">Wheelchair bound</b></label>
@@ -285,8 +311,7 @@
                </tr>
                <tr>
                    <td>
-                      <a href="#" id="bookreturn" onclick="bookReturn()" style="width:100%;float:right;color:blue;" >Book Return</a>
-                       <a href="#" id="cancelreturn" onclick="cancelBookReturn()" style="width:100%;display:none;float:right;color:blue;" >Cancel Return</a>
+                       <input type="button" id="cancelreq" class="specialBtn" onclick="cancelReq()" style="width:50%;float:right;display:none;" value="Cancel" />
                    </td>
                </tr>
                <tr id="trfrom" style="display: none;">
@@ -301,7 +326,7 @@
                        <input type="text" id="txtReturTo" class="font-style" style="width:100%;float:right;display:none;"/>
                   </td>
               </tr>
-                <tr id="trDate" style="display: none;">
+               <tr id="trDate" style="display: none;">
                <!--<td>
                     <label for="datepickers" class="font-style"><b style="font-size:12px">Return Date</b></label> 
                     <input type="text" id="datepickers" class="font-style" style="width:100%;float:right;" data-iconshadow="true" data-role="datebox" data-options='{"mode":"datebox","useNewStyle":true}'/>
@@ -311,7 +336,7 @@
                         <input name="mydate" id="datepickers" type="date" data-role="datebox"   data-options='{"mode": "datebox"}'>
                     </td>
             </tr>
-               <tr id="trTime" style="display: none;">
+              <tr id="trTime" style="display: none;">
                 <td>
                    <!-- <label for="timepickers" class="font-style"><b style="font-size:12px">Return Time</b></label> 
                     <input type="text" id="timepickers" class="font-style" style="width:100%;float:right;" data-role="datebox" data-options='{"mode":"timebox", "useNewStyle":true}'/>
@@ -320,11 +345,17 @@
                     <input name="linked2" type="text" data-role="datebox" id="timepickers" data-options='{"mode": "timebox", "overrideTimeFormat":12}' />
                     </td>
                     
-            </tr>
+            </tr><tr>
+                   <td>
+                       <input type="button" id="cancelreturn" class="specialBtn" onclick="cancelBookReturn()" style="display:none;float:right;" value="Cancel"/>
+                   </td>
+               </tr>
+                   </div>
                     </center>
            </table>
-           <div style="padding-bottom:40px;">
-                    <input type="button" style="width:100%" value="Search" class="btn-Login cursor" onclick="availabledriver()"/>
+                   
+            <div style="padding-bottom:40px;width:80%">
+                    <input type="button" style="width:100%" value="Search" class="btn-tmp cursor" onclick="availabledriver()"/>
                
            </div>
              
