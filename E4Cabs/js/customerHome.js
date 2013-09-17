@@ -272,21 +272,6 @@ function feedBack()
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //Change Password
 function changepassword()
 {

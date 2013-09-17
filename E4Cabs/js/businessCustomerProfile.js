@@ -6,7 +6,11 @@ var relatedId = QString.split("=")[3].split("&")[0];
 
 window.onload = getProfile();
 
-
+function changepassword()
+{
+   window.location='changePassword.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+  
+}
 
 
 

@@ -8,6 +8,12 @@ var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA
 
 window.onload = getProfile();
 
+function changepassword()
+{
+   window.location='changePassword.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+  
+}
+
 function getProfile()
 {
 var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetDriverDetails";

@@ -7,17 +7,17 @@ var relatedId = QString.split("=")[3].split("&")[0];
 function Reset()
              {
                  
-                var UserID=document.getElementById('curentpswd').value;
+                var currentPass=document.getElementById('curentpswd').value;
                   var newPass=document.getElementById('txtNew').value;
                 var confirm=document.getElementById('txtConform').value;
                  
-                 if(UserID.length > 0)
+                 if(currentPass.length > 0)
                 {
                     $('#lblMsg').text("");
                 }
-                else if(UserID.length==0)
+                else if(currentPass.length==0)
                 {
-                $('#lblMsg').text("Please enter Current password!.");
+                $('#lblMsg').text("Please enter current password!");
                 $('#curentpswd').focus();
                  return false;
                 }
@@ -28,22 +28,11 @@ function Reset()
                 }
                 else if(newPass.length==0)
                 {
-                $('#lblMsg').text("Please enter New password!.");
+                $('#lblMsg').text("Please enter new password!");
                 $('#txtNew').focus();
                  return false;
                 }
                  
-                 //validate Password
-    if(newPass.length > 0)
-                    {
-                        $('#lblMsg').text(" ");
-                    }
-                else if(newPass.length == 0)
-                 {
-                     $('#lblMsg').text("Please enter News password");
-                    return false;
-                 }
-    
                 if(confirm.length > 0)
                     {
                         if(newPass == confirm)
@@ -58,7 +47,7 @@ function Reset()
                     }
                 else if(confirm.length == 0)
                     {
-                        $('#lblMsg').text("Please enter the ConfirmPassword");
+                        $('#lblMsg').text("Please re-enter confirm password!");
                         return false;
                     }
                 
@@ -84,5 +73,17 @@ function Reset()
 //Back button
 function backToIndex()
 {
-    window.location = 'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-}
+        if(roleId == 4)
+        {
+            window.location = 'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+        }
+        else if(roleId == 3)
+        {
+            window.location = 'driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+        }
+        
+        else if(roleId == 6)
+        {
+            window.location = 'businessCustomerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+        }
+ }
