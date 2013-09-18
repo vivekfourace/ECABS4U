@@ -45,7 +45,7 @@ function forgotPassword()
                 };
               //Ajax loader--ends
                 $.ajax({
-                    //url:"http://115.115.159.126/ECabs/ECabs4U.asmx/forgotMyPwd",
+                    url:"http://115.115.159.126/ECabs/ECabs4U.asmx/forgotUsername",
                     datatype:"json",
                     type:"POST",
                     data:"{'emailid':'"+pass+"'}",
