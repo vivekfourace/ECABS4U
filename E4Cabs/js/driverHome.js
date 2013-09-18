@@ -89,6 +89,7 @@ function soonToclear()
     //alert("hi");
      $('#lblCurrentStatus').text("Soon To Clear");
     $('#driverStatusupdate').text("Soon To Clear");
+    $('#driverStatusupdate').css("color","blue");
     $('#lblCurrentStatus').css("color","#639ECD");
      var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/clearStatus";
                 $.ajax(url,{                      
@@ -117,5 +118,12 @@ function feedBack()
 }
 
 
-
+function Available()
+{
+  $('#lblCurrentStatus').text("Available");
+    $('#driverStatusupdate').text("Available");
+     $('#driverStatusupdate').css("color","#00195E");
+     $('#lblCurrentStatus').css("color","#00195E");
+    
+}
 
