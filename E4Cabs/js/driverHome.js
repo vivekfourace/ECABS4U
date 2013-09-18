@@ -67,9 +67,7 @@ function MyBookings(){
 //driver Logout logout(string userID)
 function logout(){
     
-        //$.removeCookie('remember');
-        //$.removeCookie('userName');
-        //$.removeCookie('pass');
+        
         $.cookie("remember", 'null');
         $.cookie("userName", 'null');
         $.cookie("pass", 'null');
@@ -108,6 +106,11 @@ function feedBack()
     window.location='driverFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
+//History
+function bookedHistory()
+{
+  window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;  
+}
 
 
 

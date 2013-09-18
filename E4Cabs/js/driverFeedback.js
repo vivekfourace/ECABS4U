@@ -50,6 +50,13 @@ function feedBack()
 }
 
 
+//History
+function bookedHistory()
+{
+  window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;  
+}
+
+
 
 
 

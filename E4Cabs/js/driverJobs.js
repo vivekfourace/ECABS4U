@@ -52,3 +52,11 @@ function feedBack()
 {
     window.location='driverFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
+
+
+
+//History
+function bookedHistory()
+{
+  window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;  
+}

@@ -209,3 +209,9 @@ function logout(){
 function MyProfilePage(){
     window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
+
+//History
+function bookedHistory()
+{
+  window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;  
+}
