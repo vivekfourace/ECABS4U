@@ -32,7 +32,10 @@ function MyBookings(){
 
 //driver Logout
 function logout(){
-    window.location="index.html";
+       $.cookie("remember", 'null');
+        $.cookie("userName", 'null');
+        $.cookie("pass", 'null');
+        window.location = "index.html";  
 }
 
 
