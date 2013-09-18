@@ -16,7 +16,7 @@ function backtoCustomerhome()
 //Search Available
 function availabledriver()
 {
-    window.location='pop.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    window.location='customerSearchList.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
 
