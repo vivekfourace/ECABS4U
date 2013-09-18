@@ -3,7 +3,6 @@ var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
-
 window.onload = getProfile();
 //get customer profile
 function getProfile()
@@ -221,13 +220,13 @@ function bookedHistory()
 //}
 
 
-
-
 //Logout Button
 function logout()
     {
-                
-       window.location="login.html";
+        $.cookie("remember", 'null');
+        $.cookie("userName", 'null');
+        $.cookie("pass", 'null');
+        window.location = "index.html";
     }
 
 
@@ -243,12 +242,6 @@ function cabNow()
 
 
 
-//Logout button
-
-function logout()
-{
-    window.location="index.html";
-}
 function preCab()
 {
     window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
