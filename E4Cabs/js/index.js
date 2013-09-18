@@ -23,7 +23,7 @@ function loginUsingCookie()
 {
     var name = $.cookie('userName');
     var password = $.cookie('pass');
-    alert(name + password);
+    //alert(name + password);
     if(name != "null" && password != "null")
     {
         var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UserLogin";
