@@ -58,6 +58,7 @@
                 autoheight: true,
                 theme: 'energyblue',
                 pageable: true, 
+                editable:true,
                 columns: [
                     { text: 'DriverID', dataField: 'DriverID', renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100, hidden: true },
                     { text: 'DriverName', dataField: 'DriverName', renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
@@ -88,7 +89,9 @@
                         {
                             editrowindex = row;
                             var id = $("#jqxgrid").jqxGrid('getcellvalue', row, "DriverID");
+                            var p = $("#jqxgrid").jqxGrid('getcellvalue', row, "MobileNumber");
                             alert(id);
+                            alert(p);
                             alert("rejecting");
                         }
                     }
