@@ -16,6 +16,31 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
+window.onload = loginUsingCookie();
+
+function loginUsingCookie()
+{
+    var name = $.cookie('userName');
+    var password = $.cookie('pass');
+    //alert(name + password);
+    if(name != "null" && password != "null")
+    {
+        var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UserLogin";
+                $.ajax(url,{                      
+                     type:"POST",
+                     datatype:"json",
+                     data:"{'username':'" +name+ "','userpassword':'" +password+ "'}",
+                     contentType: "application/json; charset=utf-8",                     
+                     success: CheckMsg,
+                    
+                     error: function (XMLHttpRequest, textStatus, errorThrown) {
+                     alert(errorThrown);
+                }
+             });
+        }
+    }
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -55,10 +80,11 @@ var app = {
 
 function login()
             {
-                
                 //document.getElementById("txtUserName").focus();
                 var name=document.getElementById('txtUserName').value;
                 var password=document.getElementById('txtPassword').value;
+                
+                
                 if(name.length > 0)
                 {
                     $('#lblMsg').text("");
@@ -98,8 +124,7 @@ function login()
                     hideDisableLayer = function() {
                     $("#loading").remove();
                 };
-              //Ajax loader--ends
-                
+              //Ajax loader--ends               
                 
                 var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UserLogin";
                 $.ajax(url,{                      
@@ -126,7 +151,20 @@ function CheckMsg(data)
     {
         var userID = data.d[0];
         var roleID = parseInt(data.d[1]);
-        var relatedID = data.d[2];      
+        var relatedID = data.d[2];
+        var passwd=document.getElementById('txtPassword').value;
+        var name=document.getElementById('txtUserName').value;
+        //creating Cookie        
+        var isChecked = $('#chkRem').attr('checked')?true:false;
+        if(isChecked == true)
+        {
+            
+            $.cookie('userName', name);
+            $.cookie('pass', passwd);
+            $.cookie('remember', 'true');
+        }
+        
+        
         
         switch(roleID)
         {
@@ -151,7 +189,6 @@ function CheckMsg(data)
             
             //Role 4 --> Customer
             case 4:
-            //alert(relatedID);
             window.location = 'customerSearch.html?id='+userID+'&rid='+roleID+'&rrid='+relatedID;
             break;
             
