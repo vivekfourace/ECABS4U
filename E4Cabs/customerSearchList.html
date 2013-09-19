@@ -94,7 +94,7 @@
                 return '<div style="text-align: center;">' + value + '</div>';
             }
             $("#jqxgrid").jqxGrid({
-                width: '400',
+                width: '300',
                
                 source: dataAdapter,
                 autoheight: true,
@@ -117,12 +117,7 @@
                         {                           
                             editrowindex = row;
                             var id = $("#jqxgrid").jqxGrid('getcellvalue', row, "CustomerRequestID");
-                            
-                            
-                            
-                            
-                            
-                            
+                                                  
                              $.ajax({
                                         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse",
                                         type:"POST",
@@ -131,8 +126,7 @@
                                         contentType: "application/json; charset=utf-8",  
                                         success: function (data) 
                                                 {
-                                        alert("inside");
-                                                 window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                                        
                                                 },
                                         error: function (XMLHttpRequest, textStatus, errorThrown)
                                                  {
@@ -151,7 +145,7 @@
                 return "<input type='button' onClick='buttonclick(event)' class='gridButton' id='btn" + id + "' value='Accept'/>"
             };
             $('#popup_box').fadeIn("slow");
-        }, 1000);
+        },2000);
            
             //back to searchPage          
 function backtosearch()

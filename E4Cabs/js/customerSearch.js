@@ -16,7 +16,43 @@ function backtoCustomerhome()
 //Search Available
 function availabledriver()
 {
-    window.location='customerSearchList.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+   // window.location='customerSearchList.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    
+    
+    var fromloc=document.getElementById('txtFrom').value;
+             alert(fromloc);
+            var toloc=document.getElementById('txtTo').value;
+    //alert(toloc);
+            var distance=document.getElementById('txtDistance').value;
+   // alert(distance);
+            var pickdate=document.getElementById('pickDate').value;
+    //alert(pickdate);
+            var picktime=document.getElementById('pickTime').value;
+    //alert(picktime);
+            var passenger = document.getElementById("ddlpassenger");      
+            var totalpassenger=passenger.options[passenger.selectedIndex].value;
+   // alert(totalpassenger);
+            var lcase = document.getElementById("ddllargecase"); 
+            var largecase=lcase.options[lcase.selectedIndex].value;
+    //alert(largecase);
+            var scase = document.getElementById("ddlsmallcase"); 
+            var smallcase=scase.options[scase.selectedIndex].value;
+    //alert(smallcase);
+          
+            $.ajax({
+                    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
+                    type:"POST",
+                    dataType: "Json",
+                    data:"{'userID':'" +relatedId+"','frompost':'"+ fromloc +"','topost':'"+ toloc +"','pickDate':'"+ pickdate +"','pickTime':'"+ picktime +"','passenger':'"+ totalpassenger +"','lcase':'"+ largecase +"','scase':'"+ smallcase +"','distance':'"+ distance +"'}",
+                    contentType: "application/json; charset=utf-8",  
+                    success: function (data) {
+                        alert("inside");
+                         window.location='customerSearchList.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert(errorThrown);
+                    }
+                });
 }
 
 
