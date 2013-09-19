@@ -12,16 +12,10 @@
          <script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
         <script type="text/javascript" src="Scripts/jqx-all.js"></script>
        <script type="text/javascript">
-           
-                   
-                      
-                      
-            
                var QString = window.location.search.substring(1);
                 var userId =  QString.split("=")[1].split("&")[0];
                 var roleId = QString.split("=")[2].split("&")[0];
                 var relatedId = QString.split("=")[3].split("&")[0];
-             var requestID="31";
   
      //   $(document).ready(function () {
      //       $('#popupBoxClose').click(function () {
@@ -54,7 +48,7 @@
           
             var source = {
                
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData?FP1=" + requestID,
+                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData?FP1=" + relatedId,
              type: "GET",
              datatype: "json",
                 data: {},
@@ -94,17 +88,17 @@
                 return '<div style="text-align: center;">' + value + '</div>';
             }
             $("#jqxgrid").jqxGrid({
-                width: '300',
+                width: '100%',
                
                 source: dataAdapter,
                 autoheight: true,
                 theme: 'energyblue',
-                pageable: true,
+                pageable: false,
                 editable:true,
                 columns: [
                     { text: 'CustomerRequestID', dataField: 'CustomerRequestID',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100, hidden: true },
-                    { text: 'DriverName', dataField: 'DriverName',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },  
-                    { text: 'MobileNumber', dataField: 'MobileNumber',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
+                    { text: 'Driver name', dataField: 'DriverName',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },  
+                    { text: 'Mobile number', dataField: 'MobileNumber',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
                     { text: 'Fare', dataField: 'Comments',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
                      
                     {
@@ -117,7 +111,6 @@
                         {                           
                             editrowindex = row;
                             var id = $("#jqxgrid").jqxGrid('getcellvalue', row, "CustomerRequestID");
-                                                  
                              $.ajax({
                                         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse",
                                         type:"POST",
@@ -126,14 +119,14 @@
                                         contentType: "application/json; charset=utf-8",  
                                         success: function (data) 
                                                 {
-                                        
+                                        alert("inside");
+                                                 window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                                                 },
                                         error: function (XMLHttpRequest, textStatus, errorThrown)
                                                  {
                                         alert(errorThrown);
                                                 }
                                     });
-                           
                         }
                     },
                 
@@ -145,7 +138,7 @@
                 return "<input type='button' onClick='buttonclick(event)' class='gridButton' id='btn" + id + "' value='Accept'/>"
             };
             $('#popup_box').fadeIn("slow");
-        },2000);
+        }, 1000);
            
             //back to searchPage          
 function backtosearch()
@@ -183,7 +176,7 @@ function backtosearch()
         <!--    <br />-->       
         
         
-        <div style="padding-top:53px"></div>
+        <div style="padding-top:100px"></div>
             
             <div id="imgLoader" style="padding-top:100px;position:fixed; z-index: 2147483647;width:100%;height:100%;background-color:transparent;text-align: center;background-position: center;background-repeat: no-repeat;">
                 <img src="jquery-mobile/styles/images/ajax-loader.gif" width="270" height="200"/>
