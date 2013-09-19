@@ -16,6 +16,32 @@ function backtoCustomerhome()
 //Search Available
 function availabledriver()
 {
+            var fromloc=document.getElementById('txtFrom').value;
+            var toloc=document.getElementById('txtTo').value;
+            var distance=document.getElementById('txtDistance').value;
+            var pickdate=document.getElementById('pickDate').value;
+            var picktime=document.getElementById('pickTime').value;
+            var passenger = document.getElementById("ddlpassenger");      
+            var totalpassenger=passenger.options[passenger.selectedIndex].value;
+            var lcase = document.getElementById("ddllargecase"); 
+            var largecase=lcase.options[lcase.selectedIndex].value;
+            var scase = document.getElementById("ddlsmallcase"); 
+            var smallcase=scase.options[scase.selectedIndex].value;
+          
+            $.ajax({
+                    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
+                    type:"POST",
+                    dataType: "Json",
+                    data:"{'userID':'" +relatedId+"','frompost':'"+ fromloc +"','topost':'"+ toloc +"','pickDate':'"+ pickdate +"','pickTime':'"+ picktime +"','passenger':'"+ totalpassenger +"','lcase':'"+ largecase +"','scase':'"+ smallcase +"','distance':'"+ distance +"'}",
+                    contentType: "application/json; charset=utf-8",  
+                    success: function (data) {
+                        alert("inside");
+                         window.location='RolePop.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert(errorThrown);
+                    }
+                });
     window.location='customerSearchList.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
