@@ -139,13 +139,22 @@ function login()
                 }
              });
            }
+
 function CheckMsg(data)
 {
     if(data.d == "false")
     {
-        $('#lblMsg').text("Incorrect usename or password!");
-        $('#lblMsg').css("color","#D70007");
-        $('#lblMsg').css("font-size","13");
+        var userNam = $.cookie('userName');
+        if(userNam == undefined)
+        {
+            
+        }
+        else
+        {
+            $('#lblMsg').text("Incorrect usename or password!");
+            $('#lblMsg').css("color","#D70007");
+            $('#lblMsg').css("font-size","13");
+        }
     }
     else
     {
