@@ -35,14 +35,19 @@ function availabledriver()
                     data:"{'userID':'" +relatedId+"','frompost':'"+ fromloc +"','topost':'"+ toloc +"','pickDate':'"+ pickdate +"','pickTime':'"+ picktime +"','passenger':'"+ totalpassenger +"','lcase':'"+ largecase +"','scase':'"+ smallcase +"','distance':'"+ distance +"'}",
                     contentType: "application/json; charset=utf-8",  
                     success: function (data) {
-                        alert("inside");
-                         window.location='RolePop.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                        alert(data.d);
+                        var reqID = data.d;
+                        alert('succes');
+                        //window.location='RolePop.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                        window.location='customerSearchList.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId+'&reqid='+reqID;
+    
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         alert(errorThrown);
                     }
                 });
-    window.location='customerSearchList.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+//window.location='customerSearchList.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    
 }
 
 
