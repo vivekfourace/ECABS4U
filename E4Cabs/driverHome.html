@@ -156,7 +156,7 @@
                 return "<input type='button' onClick='buttonclick(event)' class='gridButton' id='btn" + id + "' value='Accept'/>"
             };
             $('#popup_box1').fadeIn("slow");
-                },5000);
+                },10000);
                                 }
                                 else
                                 {
@@ -222,7 +222,42 @@
                     { text: 'To', dataField: 'ToPostcode',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
                     { text: 'Distance in Mile', dataField: 'DistanceInMile',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 120 },
                     { text: 'Fare', dataField: 'DriverComments',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 120 },                     
-                
+                  
+                     {
+                        text: 'Accept', datafield: 'CustomerRequestID', columntype: 'button',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100,
+                        cellsrenderer: function ()
+                        {
+                            return "Accept";
+                        },
+                        buttonclick: function (row)
+                        {
+                             editrowindex = row;
+                            $("#jqxgrid").on('cellbeginedit', function (event) 
+                            {
+                             var args = event.args;
+                               });
+                              $("#jqxgrid").on('cellendedit', function (event)
+                               {
+                                    var args = event.args;
+                             });
+                           
+                            var rid = $("#jqxgrid").jqxGrid('getcellvalue', row, "CustomerRequestID");
+                            $.ajax({
+                                        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/DriverResponse",
+                                        type:"POST",
+                                        dataType: "Json",
+                                        data:"{'userID':'" + relatedId +"','reqid':'"+ rid +"'}",
+                                        contentType: "application/json; charset=utf-8",  
+                                        success: function (data) 
+                                                    {
+                                                    },
+                                        error: function (XMLHttpRequest, textStatus, errorThrown)
+                                                 {
+                                        alert(errorThrown);
+                                                }
+                                    });
+                        }
+                    }
                 ]
             });
                

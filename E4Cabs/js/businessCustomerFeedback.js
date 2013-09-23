@@ -4,10 +4,10 @@ var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
 
-//function backtoCustomerhome()
-//{
- //   window.location =  'customerAfterLogin.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-//}
+function backtoCustomerhome()
+{
+    window.location =  'businessCustomerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
 
 
 
