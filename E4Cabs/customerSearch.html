@@ -154,6 +154,14 @@
         {
             window.location="customerHome.html";
         }
+        
+        function LocationPage()
+        {
+            var start = document.getElementById("txtFrom").value;
+            var end = document.getElementById("txtTo").value;
+            var distanceInput = document.getElementById("txtDistance").value;
+            window.location= 'Location.html?id='+start+'&rid='+end+'&rrid='+distanceInput;
+        }
     </script>
     
     <body onload="loadDateTime(),initialize()" >
@@ -170,6 +178,10 @@
         </div>
             
        <div style="padding-top:60px">
+           
+            <a href="#" onclick="LocationPage()">Location</a>
+           
+           
            <table width="80%" style="border-collapse:collapse">
                <center>
                <tr>
