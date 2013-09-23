@@ -80,10 +80,12 @@ var app = {
 
 function login()
             {
+                
                 //document.getElementById("txtUserName").focus();
                 var name=document.getElementById('txtUserName').value;
                 var password=document.getElementById('txtPassword').value;
                 
+                $.cookie('userName', name);
                 
                 if(name.length > 0)
                 {
@@ -145,7 +147,7 @@ function CheckMsg(data)
     if(data.d == "false")
     {
         var userNam = $.cookie('userName');
-        if(userNam == undefined)
+        if(userNam == undefined || userNam == 'null')
         {
             
         }
