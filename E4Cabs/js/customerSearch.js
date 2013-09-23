@@ -17,10 +17,10 @@ function backtoCustomerhome()
 
 
 //current Location
-function currentlocation()
-{
-  window.location =  'Location.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;  
-}
+//function currentlocation()
+//{
+//  window.location =  'Location.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;  
+//}
 
 
 
