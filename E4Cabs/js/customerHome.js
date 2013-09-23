@@ -67,6 +67,8 @@ function ShowData(data)
 
 
 
+
+
 //Edit Customer Profile
 function EditProfile()
 {
@@ -94,10 +96,8 @@ function EditProfile()
   $('#btnhistory').hide();
   
    // $("#btnEdit").hide();
-   
-    
-    
-    
+
+
    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetCustomerrDetails";
     $.ajax(url,{
         type:"POST",
@@ -122,6 +122,11 @@ function EditProfile()
 
 
 
+
+
+
+
+
 //upadate customer Profile
 
 function UpdateProfile()
@@ -134,6 +139,7 @@ function UpdateProfile()
       var phoneno = $('#txtMobileno').val();
      var phoneno2 =/^\d{12}$/;
      var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
+    
     
      //validate Email address
                 if(email.length > 0)
@@ -148,6 +154,7 @@ function UpdateProfile()
                             return false;
                         }
                     }
+    
     
     
     //validation of Phone No
@@ -177,6 +184,7 @@ function UpdateProfile()
         }
  });
 }
+
 
 
 
@@ -241,7 +249,7 @@ function cabNow()
 
 
 
-
+//Home
 function preCab()
 {
     window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
@@ -265,6 +273,9 @@ function feedBack()
 }
 
 
+
+
+
 //Change Password
 function changepassword()
 {
@@ -272,6 +283,21 @@ function changepassword()
   
 }
 
+
+
+
+
+
+
+
+//Back button
+function backToIndex()
+{
+    
+       
+   window.location =  'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+  
+}
 
 
 //Pre Book Button

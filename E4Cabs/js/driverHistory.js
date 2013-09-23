@@ -7,13 +7,13 @@ var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
-//function backToIndex()
-//{
+function backToIndex()
+{
     
        
-   // window.location =  'customerAfterLogin.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
- // window.location="customerHome.html";
-//}
+    window.location =  'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+ 
+}
 
 window.onload = gethistory();
 function gethistory()

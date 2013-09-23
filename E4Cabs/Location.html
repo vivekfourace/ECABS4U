@@ -18,6 +18,7 @@
       function initialize() {
         
         var mapOptions = {
+        
           center: new google.maps.LatLng(12.971599, 77.594563),
           zoom: 11,
           mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -28,7 +29,7 @@
                     var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
                     var infowindow = new google.maps.InfoWindow({
                         map: map,
-                        position: geolocate,
+                       position: geolocate,
                         content:
                             '<h1>Location pinned from HTML5 Geolocation!</h1>' +
                             '<h2>Latitude: ' + position.coords.latitude + '</h2>' +
@@ -41,15 +42,17 @@
       }
         
       google.maps.event.addDomListener(window, 'load', initialize);
+        //mapView.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longitude), 0));
     </script>
   </head>
   <body>
           <div class="header-temp">
                 
-              <input type="button" value="Back" id="btnback" onclick="backtohome();"style="float:left;background-color:black;color:white"/>
+              <!--<input type="button" value="Back" id="btnback" onclick="backtohome();"style="float:left;background-color:black;color:white"/>-->
                 <span>Current location</span>
+               <img src="img/backk.png" height="19" onclick="backtohome();" style="float:right"/>
             </div>
           <div style="padding-bottom:20px"></div>
-            <div id="map-canvas"></div>
+            <div id="map-canvas" ></div>
   </body>
 </html>

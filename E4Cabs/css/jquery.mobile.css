@@ -4618,7 +4618,7 @@ label.ui-submit
 /* input, label positioning */
 .ui-checkbox input, .ui-radio input
 {
-    position: absolute;
+    /*position: absolute;*/
     left: 20px;
     top: 50%;
     width: 10px;

@@ -3,6 +3,8 @@ var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
+
+
 function backtoCustomerhome()
 {
     
@@ -13,7 +15,18 @@ function backtoCustomerhome()
 }
 
 
+
+//current Location
+function currentlocation()
+{
+  window.location =  'Location.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;  
+}
+
+
+
 //Search Available
+
+
 function availabledriver()
 {
             var fromloc=document.getElementById('txtFrom').value;
@@ -27,9 +40,32 @@ function availabledriver()
             var largecase=lcase.options[lcase.selectedIndex].value;
             var scase = document.getElementById("ddlsmallcase"); 
             var smallcase=scase.options[scase.selectedIndex].value;
-          
+    
+    //special
+    var weelchairPassangers=document.getElementById("ddlWheelchair");
+    var WchairPassengers=weelchairPassangers.options[weelchairPassangers.selectedIndex].value;
+    
+    var childS=document.getElementById("ddlChidseats");
+    var childSeats=childS.options[childS.selectedIndex].value; 
+    
+    var childB=document.getElementById("ddlChidbooster");
+    var childBooster=childB.options[childB.selectedIndex].value;  
+    
+    var otherSpeRequirement=document.getElementById('txtothereSpecialRequirement').value;
+    
+    
+    
+    
+    //Return
+    
+   var returnfromloc=document.getElementById('txtReturFrom').value;
+            var returntoloc=document.getElementById('txtReturTo').value;
+ 
+    
+    
+    
             $.ajax({
-                    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
+                  url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
                     type:"POST",
                     dataType: "Json",
                     data:"{'userID':'" +relatedId+"','frompost':'"+ fromloc +"','topost':'"+ toloc +"','pickDate':'"+ pickdate +"','pickTime':'"+ picktime +"','passenger':'"+ totalpassenger +"','lcase':'"+ largecase +"','scase':'"+ smallcase +"','distance':'"+ distance +"'}",
@@ -68,12 +104,16 @@ function logout()
 
 
 
+
+
 //Cab Now Button
 function cabNow()
 { 
   
    window.location ='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
+
+
 //Customer Feedback 
 function feedBack()
 {

@@ -272,10 +272,10 @@ function changepassword()
 }
 
 // Back Button
-//function backtostart()
-//{
-  //  window.location =  'customerAfterLogin.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-//}
+function backtostart()
+{
+   window.location =  'businessCustomerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
 
 
 
