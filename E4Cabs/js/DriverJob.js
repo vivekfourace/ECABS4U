@@ -5,11 +5,6 @@ var relatedId = QString.split("=")[3].split("&")[0];
 
 
 
-
-
-
-
-
 function BackProfile()
 {
     window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
@@ -26,9 +21,29 @@ function myProfile()
 
 //Driver Jobs from menu
 function MyBookings(){
-    window.location='driverJobs.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
+function bid()
+{
+    var rid =relatedId ;
+    var status=true; 
+    var price=50;
+     $.ajax({
+           url: "http://115.115.159.126/ECabs/ECabs4U.asmx/setDriverResponse",
+           type:"POST",
+           dataType: "Json",
+           data:"{'userID':'" + relatedId +"','reqid':'"+ rid +"','status':'"+ status  +"','price':'"+ price +"'}",
+           contentType: "application/json; charset=utf-8",  
+           success: function (data) 
+                       {
+                       },
+           error: function (XMLHttpRequest, textStatus, errorThrown)
+                    {
+           alert(errorThrown);
+                   }
+       });
+    }
 
 //driver Logout
 function logout(){
@@ -41,7 +56,7 @@ function logout(){
 
 
 //Driver Status
-function HomePage(){
+function myhome(){
     window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
