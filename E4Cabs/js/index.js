@@ -85,8 +85,7 @@ function login()
                 var name=document.getElementById('txtUserName').value;
                 var password=document.getElementById('txtPassword').value;
                 
-                $.cookie('userName', name);
-                
+                //$.cookie('userName', name);
                 if(name.length > 0)
                 {
                     $('#lblMsg').text("");
@@ -146,10 +145,18 @@ function CheckMsg(data)
 {
     if(data.d == "false")
     {
+        var name=document.getElementById('txtUserName').value;
+        var password=document.getElementById('txtPassword').value;
+        
         var userNam = $.cookie('userName');
         if(userNam == undefined || userNam == 'null')
         {
-            
+            if( (name.length && password.length) > 0)
+            {
+                $('#lblMsg').text("Incorrect usename or password!");
+                $('#lblMsg').css("color","#D70007");
+                $('#lblMsg').css("font-size","13");
+            }
         }
         else
         {

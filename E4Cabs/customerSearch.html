@@ -208,6 +208,27 @@
             
         }
         
+        //Show hide textbox on checkbox select.
+        
+        function showLoctxt()
+        {
+            var isChecked = $('#chkFromLocation').attr('checked')?true:false;
+            if(isChecked == true)
+            {
+                $('#currentPos').show('slow', function(){
+                   $(this).animate({display:"show"},1000); 
+                });
+                //document.getElementById("currentPos").style.display = 'table-row';
+            }
+            else if(isChecked == false)
+            {
+               $('#currentPos').hide('slow', function(){
+                   $(this).animate({display:"none"},500); 
+               });
+                //document.getElementById("currentPos").style.display = 'none';
+            }
+        }
+        
         
         //current Location
         //function currentlocation()
@@ -245,12 +266,17 @@
                     <label for="txtFrom" class="font-style"><b style="font-size:12px">From</b></label> 
                     <input type="text" id="txtFrom" class="font-style" autofocus="autofocus" style="width:100%;float:right;"/>
                 </td>
+                <tr id="currentPos" style="display:none">
+                <td>
+                    <label for="txtFrom" class="font-style"><b style="font-size:12px">Current position</b></label> 
+                    <input type="text" id="txtCurrentFrom" class="font-style" style="width:100%;float:right;"/>
+                </td>
+               </tr>   
                </tr>
                    <tr>
                        <td  style="padding-top:10px">
-                         <input type="checkbox" id="chkFromLocation" style="width:10%;float:left;height:20px;" onclick="currentlocation()" />
-                          
-                           <label class="font-style" style="width:90%;height:15px;font-size:10px;float:right;color:#7ABAEE"><b>From current position</b></label>
+                         <input type="checkbox" id="chkFromLocation" style="width:10%;float:left;height:20px;" onclick="showLoctxt()" />
+                           <label class="font-style" style="width:85%;height:15px;font-size:10px;float:left;padding-top:6px;color:#7ABAEE"><b>From current position</b></label>
                        </td>
                    </tr>
                

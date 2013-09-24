@@ -11,11 +11,22 @@ function businessRegistercustomer()
     var business=$('#txtBusinessName').val();
     var address1=$('#txtAddress1').val();
     var address2=$('#txtAddress2').val();
+    var address3=$('#txtAddress3').val();
+    var address4=$('#txtAddress4').val();
+    var address5=$('#txtAddress5').val();
+    var address6=$('#txtAddress6').val();
     var postcode=$('#txtPostalCode').val();
     
     var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
     var phoneno =/^\d{12}$/;
     
+    //Business customer
+     if(!business)
+                 {
+                     $('#lblMsg').text("Please enter name of business!");
+                     $('#txtBusinessName').focus();                        
+                     return false;
+                 }
                if(!txt1)
                  {
                      $('#lblMsg').text("Please enter first name!");
@@ -108,13 +119,7 @@ function businessRegistercustomer()
                         $('#txtConfirmPassword').focus();
                         return false;
                     }
-    //Business customer
-     if(!business)
-                 {
-                     $('#lblMsg').text("Please enter Business type!");
-                     $('#txtBusinessName').focus();                        
-                     return false;
-                 }
+    
     
     
     //Address 1
