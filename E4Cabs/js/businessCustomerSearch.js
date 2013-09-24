@@ -13,6 +13,41 @@ function backtoCustomerhome()
 }
 
 
+//Pageload Function
+window.onload=showlocation();
+
+//Bind From And To location
+
+function showlocation()
+{
+     $('#txtFrom').show();
+     $('#txtTo').show();
+    var url="http://115.115.159.126/ECabs/ECabs4U.asmx/GetBusinessCustomerrDetails";
+    $.ajax(url,{
+         type:"POST",
+        dataType: "Json",
+        data:"{'userID':'" +relatedId+"'}",
+    contentType: "application/json; charset=utf-8",                     
+    success: ShowData,
+    
+    error: function (XMLHttpRequest, textStatus, errorThrown) {
+    alert(errorThrown);
+        }
+ });
+}
+ 
+    function ShowData(data)
+{
+   // $('#txtFrom').text(data.d[0]["Address1"]);
+  //$('#txtTo').text(data.d[0]["Address2"]);
+    $('#txtFrom').val(data.d[0]["Address1"]);
+    $('#txtTo').val(data.d[0]["Address2"]);
+   
+}
+
+
+
+
 //Search Available
 //function availabledriver()
 //{

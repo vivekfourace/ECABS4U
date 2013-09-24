@@ -35,11 +35,11 @@ $.ajax(url,{
 
 function ShowData(data)
 { 
-   $('#lblname').text(data.d[0]["BusinessCustomerName"] +"  "+ data.d[0]["BusinessCustomerLastName"]);
-   // $('#lbllastname').text(data.d[0]["CustomerLastName"]);
+   $('#lblname').text(data.d[0]["CustomerName"] +"  "+ data.d[0]["CustomerLastName"]);
+   //$('#lbllastname').text(data.d[0]["NameOfBusiness"]);
    $('#lblLocation').text(data.d[0]["Address1"]);
    $('#lblLocation2').text(data.d[0]["Address2"]);
-   $('#lblMobileNo').text(data.d[0]["MobileNumber"]);
+  $('#lblMobileNo').text(data.d[0]["MobileNumber"]);
    $('#lblEmailID').text(data.d[0]["Email"]);
     
     $('#txtname').hide();
@@ -115,12 +115,12 @@ function EditProfile()
         data:"{'userID':'" +relatedId+"'}",
         contentType: "application/json; charset=utf-8",                     
         success: function(data){
-            $('#txtname').val(data.d[0]["BusinessCustomerName"] +"  "+ data.d[0]["BusinessCustomerLastName"]); 
-          //$('#txtlastname').val(data.d[0]["CustomerLastName"]);
-            $('#txtLocation').val(data.d[0]["Address1"])
-            $('#txtLocation2').val(data.d[0]["Address2"])
-            $('#txtMobileno').val(data.d[0]["MobileNumber"]);    
-            $('#txtEmailID').val(data.d[0]["Email"]);
+          $('#txtname').val(data.d[0]["BusinessCustomerName"] +"  "+ data.d[0]["BusinessCustomerLastName"]); 
+        $('#txtlastname').val(data.d[0]["CustomerLastName"]);
+            $('#txtLocation').val(data.d[0]["Address1"]);
+            $('#txtLocation2').val(data.d[0]["Address2"]);
+           $('#txtMobileno').val(data.d[0]["MobileNumber"]);    
+           $('#txtEmailID').val(data.d[0]["Email"]);
             
             },
         error: function (XMLHttpRequest, textStatus, errorThrown) {

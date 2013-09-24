@@ -47,6 +47,20 @@
     
 
     <script type="text/javascript">
+        
+         $(document).ready(function(){
+            $('.expand').live({
+                
+              focus: function(){
+                        $(this).animate({height:"100"},500);
+              },
+              blur: function(){
+            $(this).animate({height:"50"},500);
+              },
+        });    
+      });
+        
+        
         function loadDateTime(){    
             //Code For current Time
             	var currentTime = new Date()
@@ -54,15 +68,18 @@
             	var minutes = currentTime.getMinutes()
             	if (minutes < 10)
             	minutes = "0" + minutes
-            	var suffix = " ";
-            	if (hours >= 12) {
-            	suffix = "PM";
-            	hours = hours - 12;
+            	//var suffix = "AM";
+            	if (hours >= 24 ) {
+            	//suffix = "PM";
+            	hours = hours - 24;
             	}
             	if (hours == 0) {
-            	hours = 12;
+            	hours = 0;
             	}
-                $('#linked2').val(" "+hours+":"+minutes+":"+suffix);
+               $('#linked2').val(hours+":"+minutes);
+              // $('#linked2').val(" "+hours+":"+minutes+"");
+            
+            
             
             //Code For current Date
             	var currentDate = new Date()
@@ -71,6 +88,8 @@
             	var year = currentDate.getFullYear()
                 $('#mydate').val(" "+day+"/"+month+"/"+year);
             }
+        
+        //Maping
         var directionDisplay;
         var directionsService = new google.maps.DirectionsService();
         var map;
@@ -140,6 +159,7 @@
            document.getElementById("trboundChair").style.display = 'table-row';
            document.getElementById("trchildSeats").style.display = 'table-row';
            document.getElementById("trChildBooster").style.display = 'table-row';
+            $('#trspecialrequirement').show();
         }
         //Cancel Special Requirements
         function cancelReq()
@@ -149,14 +169,29 @@
            document.getElementById("trboundChair").style.display = 'none';
            document.getElementById("trchildSeats").style.display = 'none';
            document.getElementById("trChildBooster").style.display = 'none';
+            $('#trspecialrequirement').hide();
         }
        function btnBack()
         {
             window.location="customerHome.html";
         }
+        
+        
+        //Reverse Location
+        function reverselocation()
+        {
+           var fromReverse=document.getElementById("txtFrom").value;
+             var toReverse=document.getElementById("txtTo").value;
+            document.getElementById("txtFrom").value=toReverse;
+            document.getElementById("txtTo").value=fromReverse;
+        }
+       
     </script>
     
-   <body onload="loadDateTime(),initialize()" >
+    
+    
+    
+   <body onload="loadDateTime(),initialize(),showlocation()" >
         <center>
         <div class="header" style="background-color:#242424;height:12.2%">
                 <div style="float:left;height:48px;width:122px;padding-top:3px;">
@@ -186,9 +221,14 @@
                 </td>
              </tr>
                
+                   <tr>
+                       <td>
+                           <input type="button" id="reverseLocation" class="specialBtn" onclick="reverselocation()" style="width=:50%;float:right;" value="Reverse Location"/>
+                       </td>
+                   </tr>
               <tr>
                 <td>
-                    <label for="txtDistance" class="font-style"><b style="font-size:12px">Distance</b></label> 
+                    <label for="txtDistance" class="font-style"><b style="font-size:12px">Distance In Miles</b></label> 
                     <input type="text" id="txtDistance" class="font-style" style="width:100%;float:right;" readonly="true" onclick="calcRoute()"/>
                 </td>
               </tr>
@@ -207,7 +247,7 @@
                    <input type="text" id="mode6" class="font-style" style="width:100%;float:right;" data-role="datebox" data-options='{"mode":"timebox","useNewStyle":true}'/>
                     -->
                     <label for="linked2" class="font-style"><b style="font-size:12px">Pick Time</b></label>
-                    <input name="linked2" type="text" data-role="datebox" id="linked2" data-options='{"mode": "timebox", "overrideTimeFormat":12}' />
+                    <input name="linked2" type="text" data-role="datebox" id="linked2" data-options='{"mode": "timebox", "overrideTimeFormat":24}' />
                 </td>
             </tr>
                
@@ -221,7 +261,9 @@
                           <option value="4">4</option>
                           <option value="5">5</option>
                           <option value="6">6</option>
-                    </select>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                        </select>
                 </td>
             </tr>
                <tr>
@@ -241,6 +283,8 @@
                           <option value="4">4</option>
                           <option value="5">5</option>
                           <option value="6">6</option>
+                         <option value="7">7</option>
+                          <option value="8">8</option>
                     </select>
                    </div>
                    </div>   
@@ -257,6 +301,8 @@
                           <option value="4">4</option>
                           <option value="5">5</option>
                           <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
                     </select>
                    </div> 
                    </div>   
@@ -273,20 +319,18 @@
                <div style="background-color:red">
                <tr id="trboundChair" style="display: none;">
                    <td>
-                       <label for="#" class="font-style"><b style="font-size:12px">Wheelchair bound</b></label>
+                       <label for="#" class="font-style"><b style="font-size:12px">Wheelchair Passengers</b></label>
                         <select class="select-choice" data-shadow="false" class="font-style" style="width:100%;float:right;">
                           <option value="1" selected="true">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                          <option value="6">6</option>
+                         
                     </select>
                    </td>
                </tr>
                <tr id="trchildSeats" style="display: none;">
                    <td>
-                       <label for="#" class="font-style"><b style="font-size:12px">Child seats</b></label>
+                       <label for="#" class="font-style"><b style="font-size:12px">Child Seats</b></label>
                        <select class="select-choice" class="font-style" style="width:100%;float:right;">
                           <option value="1" selected="true">1</option>
                           <option value="2">2</option>
@@ -294,11 +338,12 @@
                           <option value="4">4</option>
                           <option value="5">5</option>
                           <option value="6">6</option>
+                           <option value="7">7</option>
                     </select>
                    </td>
                </tr>
                <tr id="trChildBooster" style="display: none;">
-                   <td><label for="#" class="font-style"><b style="font-size:12px">Child booster</b></label>
+                   <td><label for="#" class="font-style"><b style="font-size:12px">Child Booster</b></label>
                        <select class="select-choice" class="font-style" style="width:100%;float:right;">
                           <option value="1" selected="true">1</option>
                           <option value="2">2</option>
@@ -306,8 +351,15 @@
                           <option value="4">4</option>
                           <option value="5">5</option>
                           <option value="6">6</option>
+                           <option value="7">7</option>
                     </select>
                   </td>
+               </tr>
+                    <tr id="trspecialrequirement" style="display: none;">
+                <td>
+                    <label for="txtothereSpecialRequirement" class="font-style"><b style="font-size:12px">Other Special Requirements</b></label> 
+                    <textarea id="txtothereSpecialRequirement" rows="3" cols="10" class="font-style expand" style="width:100%;float:right;"></textarea>
+                </td>
                </tr>
                <tr>
                    <td>
@@ -342,10 +394,12 @@
                     <input type="text" id="timepickers" class="font-style" style="width:100%;float:right;" data-role="datebox" data-options='{"mode":"timebox", "useNewStyle":true}'/>
                 -->
                      <label for="timepickers" class="font-style"><b style="font-size:12px">Return Time</b></label>
-                    <input name="linked2" type="text" data-role="datebox" id="timepickers" data-options='{"mode": "timebox", "overrideTimeFormat":12}' />
+                    <input name="linked2" type="text" data-role="datebox" id="timepickers" data-options='{"mode": "timebox", "overrideTimeFormat":24}' />
                     </td>
                     
-            </tr><tr>
+            </tr>
+                  
+                   <tr>
                    <td>
                        <input type="button" id="cancelreturn" class="specialBtn" onclick="cancelBookReturn()" style="display:none;float:right;" value="Cancel"/>
                    </td>

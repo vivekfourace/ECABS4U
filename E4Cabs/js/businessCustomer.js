@@ -27,6 +27,8 @@ function businessRegistercustomer()
                      $('#txtBusinessName').focus();                        
                      return false;
                  }
+    
+    //Name Validation
                if(!txt1)
                  {
                      $('#lblMsg').text("Please enter first name!");
@@ -39,7 +41,7 @@ function businessRegistercustomer()
                      $('#txtLastName').focus();                     
                     return false;
                  }
-                //validate Phone number.
+      //validate Phone number.
                if(txt3.length > 0)
                     {
                         if(phoneno.test(txt3))
@@ -60,7 +62,7 @@ function businessRegistercustomer()
                     return false;
                 }
     
-                //validate Email address
+       //validate Email address
                 if(txt4.length > 0)
                     {
                         if(txt4.match(regExpEmail))
@@ -80,12 +82,16 @@ function businessRegistercustomer()
                     return false;
                 }
     
+    
+    //Postcode Validation
           if(!txt6)
                  {
                      $('#lblMsg').text("Please enter postcode!");
                      $('#txtUserName').focus();
                     return false;
                  }
+    
+    //Password Validation
     
                 if(txt7.length > 0)
                     {
@@ -130,6 +136,8 @@ function businessRegistercustomer()
                      $('#txtAddress1').focus();                        
                      return false;
                  }
+    
+    
     //Address 2
      if(!address2)
                  {
@@ -137,6 +145,8 @@ function businessRegistercustomer()
                      $('#txtAddress2').focus();                        
                      return false;
                  }
+    
+    
     //Postcode
      if(!postcode)
                  {
@@ -171,7 +181,7 @@ $.ajax({
     url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RegisterBusinessCustomer",
     type: "POST",
     dataType: "json",
-    data: "{ 'fname': '" + txt1 + "','lname': '" + txt2 + "','email': '" + txt4 + "','userID': '" + txt6 + "','password': '" + txt7 + "','contactNumber': '" + txt3 + "'}",
+    data: "{'nameofbusiness':'"+business+"','fname': '" + txt1 + "','lname': '" + txt2 + "','add1':'"+address1+"','add2':'"+address2+"','add3':'"+address3+"','add4':'"+address4+"','add5':'"+address5+"','add6':'"+address6+"','email': '" + txt4 + "','userID': '" + txt6 + "','password': '" + txt7 + "','contactNumber': '" + txt3 + "','postcode':'"+postcode+"'}",
     contentType: "application/json; charset=utf-8",
     success: CheckData,
     error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -179,6 +189,8 @@ $.ajax({
            }
        });    
 }
+
+//public string RegisterBusinessCustomer(string nameofbusiness, string fname, string lname, string add1, string add2, string add3, string add4, string add5, string add6, string email, string userID, string password, string contactNumber, string postcode)
 
 function CheckData(data){
     if(data.d == "false")
