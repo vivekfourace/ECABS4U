@@ -4,6 +4,13 @@ var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
 
+function loc()
+{
+    var from = $('#txtFrom').val();
+    var to = $('#txtTo').val();
+    var dis = "none";
+    window.location =  'Location.html?id='+from+'&rid='+to+'&rrid='+dis;
+}
 
 function backtoCustomerhome()
 {
