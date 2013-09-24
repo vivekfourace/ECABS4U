@@ -734,7 +734,9 @@
 
             var displayHour = hour;
             if ((hour > 12) && showPeriod) {
-                displayHour = hour - 12;
+                //alert(displayHour);
+              displayHour = hour - 12;
+                //displayHour = '12'+ displayHour;
             }
             if ((displayHour == 0) && showPeriod) {
                 displayHour = 12;
@@ -1167,6 +1169,10 @@
                 if ((retVal.hours < 12) && (showPeriod) && (timeValUpper.indexOf(amPmText[1].toUpperCase()) != -1)) {
                     retVal.hours += 12;
                 }
+                //count upTO24HR
+                // if ((retVal.hours < 24) && (showPeriod) && (timeValUpper.indexOf(amPmText[2].toUpperCase()) != -1)) {
+                   // retVal.hours += 24;
+                //}
                 // fix for 12 AM
                 if ((retVal.hours == 12) && (showPeriod) && (timeValUpper.indexOf(amPmText[0].toUpperCase()) != -1)) {
                     retVal.hours = 0;

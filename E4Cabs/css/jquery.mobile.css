@@ -4496,7 +4496,6 @@ label.ui-submit
 
 .ui-checkbox, .ui-radio
 {
-    position: relative;
     clear: both;
     margin: 0;
     z-index: 1;
@@ -4618,12 +4617,8 @@ label.ui-submit
 /* input, label positioning */
 .ui-checkbox input, .ui-radio input
 {
-    position: absolute;
     left: 20px;
     top: 50%;
-    width: 10px;
-    height: 10px;
-    margin: -5px 0 0 0;
     outline: 0 !important;
     z-index: 1;
 }

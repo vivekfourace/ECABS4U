@@ -44,9 +44,23 @@
         
         
     </head>
-    
 
     <script type="text/javascript">
+        
+          $(document).ready(function(){
+            $('.expand').live({
+                
+              focus: function(){
+                        $(this).animate({height:"100"},500);
+              },
+              blur: function(){
+            $(this).animate({height:"50"},500);
+              },
+        });    
+      });
+        
+        
+        
         function loadDateTime(){    
             //Code For current Time
             	var currentTime = new Date()
@@ -54,16 +68,16 @@
             	var minutes = currentTime.getMinutes()
             	if (minutes < 10)
             	minutes = "0" + minutes
-            	var suffix = " ";
-            	if (hours >= 24) {
-            	suffix = " ";
+            	//var suffix = "AM";
+            	if (hours >= 24 ) {
+            	//suffix = "PM";
             	hours = hours - 24;
             	}
             	if (hours == 0) {
-            	hours = 24;
+            	hours = 0;
             	}
-                $('#pickTime').val(hours+":"+minutes);
-            
+               $('#pickTime').val(hours+":"+minutes);
+           
             //Code For current Date
             	var currentDate = new Date()
             	var day = currentDate.getDate()
@@ -110,6 +124,8 @@
              
             document.getElementById("trfrom").style.display = 'table-row';
             document.getElementById("trto").style.display = 'table-row';
+            document.getElementById("returnJ").style.display = 'table-row';
+            document.getElementById("termCond").style.display = 'table-row';
              document.getElementById("trDate").style.display = 'table-row';
              document.getElementById("trTime").style.display = 'table-row';
              var to=document.getElementById("txtTo").value;
@@ -125,6 +141,8 @@
              document.getElementById("datepickers").value="";
              document.getElementById("timepickers").value="";
             document.getElementById("trfrom").style.display = 'none';
+            document.getElementById("termCond").style.display = 'none';
+            document.getElementById("returnJ").style.display = 'none';
             document.getElementById("trto").style.display = 'none';
              document.getElementById("trDate").style.display = 'none';
              document.getElementById("trTime").style.display = 'none';
@@ -140,10 +158,16 @@
            document.getElementById("trboundChair").style.display = 'table-row';
            document.getElementById("trchildSeats").style.display = 'table-row';
            document.getElementById("trChildBooster").style.display = 'table-row';
+             document.getElementById("txtothereSpecialRequirement").style.display = 'table-row';
+           
+            $('#trspecialrequirement').show();
+         
         }
         //Cancel Special Requirements
         function cancelReq()
         {
+            
+             $('#trspecialrequirement').hide();
           $('#specialreq').show();
              $('#cancelreq').hide();
            document.getElementById("trboundChair").style.display = 'none';
@@ -154,9 +178,72 @@
         {
             window.location="customerHome.html";
         }
+        
+        
+        //Add 2Location
+        function secoundLocation()
+        {
+            $('#2location').show();  
+            $('#secoundLoc').hide();
+             $('#thirdLoc').show();
+        }
+        
+        //Add 3rdLocation
+        function thirdLocation()
+        {
+            $('#3location').show();
+            $('#thirdLoc').hide();
+            $('#cancelAddLocation').show();
+        }
+        
+        //cancel AddLocation
+        function cancelAddLocation()
+        {
+            $('#3location').hide(); 
+             $('#2location').hide(); 
+            $('#cancelAddLocation').hide();
+            $('#secoundLoc').show();
+          $('#txt2location').val('');
+            $('#txt3location').val('');
+            
+        }
+        
+        //Show hide textbox on checkbox select.
+        
+        function showLoctxt()
+        {
+            var isChecked = $('#chkFromLocation').attr('checked')?true:false;
+            if(isChecked == true)
+            {
+                $('#currentPos').show('slow', function(){
+                   $(this).animate({display:"show"},1000); 
+                });
+                //document.getElementById("currentPos").style.display = 'table-row';
+            }
+            else if(isChecked == false)
+            {
+               $('#currentPos').hide('slow', function(){
+                   $(this).animate({display:"none"},500); 
+               });
+                //document.getElementById("currentPos").style.display = 'none';
+            }
+        }
+        
+        
+        //current Location
+        //function currentlocation()
+        //{
+           // window.location="Location.html";
+            
+       // }
+        
+        
+        
+        //Other Special Requirements
     </script>
     
     <body onload="loadDateTime(),initialize()" >
+        
         <center>
         <div class="header" style="background-color:#242424;height:12.2%">
                 <div style="float:left;height:48px;width:122px;padding-top:3px;">
@@ -169,6 +256,8 @@
             </div>
         </div>
             
+            
+            
        <div style="padding-top:60px">
            <table width="80%" style="border-collapse:collapse">
                <center>
@@ -177,15 +266,47 @@
                     <label for="txtFrom" class="font-style"><b style="font-size:12px">From</b></label> 
                     <input type="text" id="txtFrom" class="font-style" autofocus="autofocus" style="width:100%;float:right;"/>
                 </td>
+                <tr id="currentPos" style="display:none">
+                <td>
+                    <label for="txtFrom" class="font-style"><b style="font-size:12px">Current position</b></label> 
+                    <input type="text" id="txtCurrentFrom" class="font-style" style="width:100%;float:right;"/>
+                </td>
+               </tr>   
                </tr>
+                   <tr>
+                       <td  style="padding-top:10px">
+                         <input type="checkbox" id="chkFromLocation" style="width:10%;float:left;height:20px;" onclick="showLoctxt()" />
+                           <label class="font-style" style="width:85%;height:15px;font-size:10px;float:left;padding-top:6px;color:#7ABAEE"><b>From current position</b></label>
+                       </td>
+                   </tr>
                
               <tr>
                 <td>
                     <label for="txtTo" class="font-style"><b style="font-size:12px">To</b></label> 
-                    <input type="text" id="txtTo" class="font-style" style="width:100%;float:right;"/>
+                    <input type="text" id="txtTo" class="font-style" style="width:85%;float:left;"/>
+                    <img src="img/Addlocation.png" id="secoundLoc" width="25" height="25" style="float:right" onclick="secoundLocation()"/>
                 </td>
              </tr>
-               
+               <tr  id="2location" style="display:none">
+                <td>
+                    <label for="txt2location" class="font-style"><b style="font-size:12px">2nd Location</b></label> 
+                    <input type="text" id="txt2location" class="font-style" style="width:85%;float:left;"/>
+                    <img src="img/Addlocation.png" id="thirdLoc" width="25" height="25" style="float:right" onclick="thirdLocation()"/>
+                </td>
+             </tr>
+                   <tr  id="3location" style="display:none">
+                <td>
+                    <label for="txt3location" class="font-style"><b style="font-size:12px">3rd Location</b></label> 
+                    <input type="text" id="txt3location" class="font-style" style="width:85%;float:left;"/>
+                   
+                </td>
+             </tr>
+                    <tr>
+                   <td>
+                       <input type="button" id="cancelAddLocation" class="specialBtn" onclick="cancelAddLocation()" style="display:none;float:right;" value="Cancel"/>
+                   </td>
+               </tr>
+                  
               <tr>
                 <td>
                     <label for="txtDistance" class="font-style"><b style="font-size:12px">Distance</b></label> 
@@ -207,7 +328,7 @@
                    <input type="text" id="mode6" class="font-style" style="width:100%;float:right;" data-role="datebox" data-options='{"mode":"timebox","useNewStyle":true}'/>
                     -->
                     <label for="pickTime" class="font-style"><b style="font-size:12px">Pick Up Time</b></label>
-                    <input name="pickTime" type="text" data-role="datebox" id="pickTime" data-options='{"mode": "timebox", "overrideTimeFormat":12}' />
+                    <input name="pickTime" type="text" data-role="datebox" id="pickTime" data-options='{"mode": "timebox", "overrideTimeFormat":24}' />
                 </td>
             </tr>
                
@@ -221,6 +342,8 @@
                           <option value="4">4</option>
                           <option value="5">5</option>
                           <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
                     </select>
                 </td>
             </tr>
@@ -241,6 +364,8 @@
                           <option value="4">4</option>
                           <option value="5">5</option>
                           <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
                     </select>
                    </div>
                    </div>   
@@ -257,6 +382,8 @@
                           <option value="4">4</option>
                           <option value="5">5</option>
                           <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
                     </select>
                    </div> 
                    </div>   
@@ -274,41 +401,49 @@
                <div style="background-color:red">
                <tr id="trboundChair" style="display: none;">
                    <td>
-                       <label for="#" class="font-style"><b style="font-size:12px">Wheelchair bound</b></label>
-                        <select class="select-choice" data-shadow="false" class="font-style" style="width:100%;float:right;">
+                       <label for="#" class="font-style"><b style="font-size:12px">Wheelchair Passengers</b></label>
+                        <select class="select-choice" data-shadow="false" id="ddlWheelchair" class="font-style" style="width:100%;float:right;">
                           <option value="1" selected="true">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                          <option value="6">6</option>
+                         
                     </select>
                    </td>
                </tr>
                <tr id="trchildSeats" style="display: none;">
                    <td>
                        <label for="#" class="font-style"><b style="font-size:12px">Child seats</b></label>
-                       <select class="select-choice" class="font-style" style="width:100%;float:right;">
+                       <select class="select-choice" class="font-style" id="ddlChidseats" style="width:100%;float:right;">
                           <option value="1" selected="true">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
                           <option value="4">4</option>
                           <option value="5">5</option>
                           <option value="6">6</option>
+                           <option value="7">7</option>
+                        
                     </select>
                    </td>
                </tr>
                <tr id="trChildBooster" style="display: none;">
                    <td><label for="#" class="font-style"><b style="font-size:12px">Child booster</b></label>
-                       <select class="select-choice" class="font-style" style="width:100%;float:right;">
+                       <select class="select-choice" id="ddlChidbooster" class="font-style"  style="width:100%;float:right;">
                           <option value="1" selected="true">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
                           <option value="4">4</option>
                           <option value="5">5</option>
                           <option value="6">6</option>
+                           <option value="7">7</option>
+                        
                     </select>
                   </td>
+               </tr>
+                   <tr id="trspecialrequirement" style="display: none;">
+                <td>
+                    <label for="txtothereSpecialRequirement" class="font-style"><b style="font-size:12px">Other Special Requirements</b></label> 
+                    <textarea id="txtothereSpecialRequirement" rows="3" cols="10" class="font-style expand" style="width:100%;float:right;"></textarea>
+                </td>
                </tr>
                 <tr>
                    <td>
@@ -316,6 +451,32 @@
                    </td>
                </tr>
                </div>
+                   <tr id="termCond" style="display:none">
+                   <td style="background-color:#00A3C9">
+                      <label style="text-align:justify;">
+                          <i style="color:Black;">For long journeys requiring a return trip we recommend treating them as two separate jobs. This enables the most competitive bids to be obtained. If you would like us to do this please leave this NO selection. However, if you would prefer to have both journeys undertaken by the same operator please select YES.</i>
+                      </label><br /> 
+                      
+                   </td>
+               </tr>
+               <tr id="returnJ" style="display:none">
+                   <td style="background-color:orange">
+                       <table>
+                           <tr>
+                               <td>
+                                   <b>I want both journeys carried out by the same operator</b>
+                               </td>
+                               <td>
+                                   <input type="checkbox" id="chkReturnYes"/>
+                               </td>
+                               <td>
+                                   <span style="font-size:12px;text-align:left;float:left;"><b>Yes</b></span>   
+                               </td>
+                           </tr>
+                       </table>
+                   </td>
+               </tr>
+                   
                <tr id="trfrom" style="display: none;">
                   <td>
                       <label for="txtFrom" id="lblreturnfrom" class="font-style"><b style="font-size:12px;">Return From</b></label>
@@ -344,7 +505,7 @@
                     <input type="text" id="timepickers" class="font-style" style="width:100%;float:right;" data-role="datebox" data-options='{"mode":"timebox", "useNewStyle":true}'/>
                 -->
                      <label for="timepickers" class="font-style"><b style="font-size:12px">Return Time</b></label>
-                    <input name="linked2" type="text" data-role="datebox" id="timepickers" data-options='{"mode": "timebox", "overrideTimeFormat":12}' />
+                    <input name="linked2" type="text" data-role="datebox" id="timepickers" data-options='{"mode": "timebox", "overrideTimeFormat":24}' />
                     </td>
                     
             </tr>
@@ -386,11 +547,7 @@
                   <option value="3">3</option>
             </select>
             </div>-->
-        
-            
-          
-               
-           
+  
          </div>
         
       </center>

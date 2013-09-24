@@ -16,7 +16,7 @@ jQuery.extend(jQuery.mobile.datebox.prototype.options.lang, {
 		tooltip: "Open Date Picker",
 		nextMonth: "Next Month",
 		prevMonth: "Previous Month",
-		timeFormat: 12,
+		timeFormat: 24,
 		headerFormat: '%A, %B %-d, %Y',
 		dateFieldOrder: ['m', 'd', 'y'],
 		timeFieldOrder: ['h', 'i', 'a'],

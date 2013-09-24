@@ -193,9 +193,9 @@ function CancelProfile()
     getProfile();
 }
 
-function BacktoHome()
+function backToIndex()
 {
-   // window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 function HomePage(){
     window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;

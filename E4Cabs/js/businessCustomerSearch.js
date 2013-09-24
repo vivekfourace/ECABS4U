@@ -14,10 +14,10 @@ function backtoCustomerhome()
 
 
 //Search Available
-function availabledriver()
-{
-    window.location='driverNextToCustomers.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-}
+//function availabledriver()
+//{
+  //  window.location='driverNextToCustomers.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+//}
 
 
 //My Profile Button
