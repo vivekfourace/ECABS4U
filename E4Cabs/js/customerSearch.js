@@ -19,7 +19,7 @@ function backtoCustomerhome()
 //current Location
 function currentlocation()
 {
-  window.location =  'Location.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;  
+  //window.location =  'Location.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;  
 }
 
 
@@ -40,6 +40,10 @@ function availabledriver()
             var largecase=lcase.options[lcase.selectedIndex].value;
             var scase = document.getElementById("ddlsmallcase"); 
             var smallcase=scase.options[scase.selectedIndex].value;
+    
+    //add Location
+            var secondLocation=document.getElementById("txt2location").value;
+            var thirdLocation=document.getElementById("txt3location").value;
     
     //special
     var weelchairPassangers=document.getElementById("ddlWheelchair");
