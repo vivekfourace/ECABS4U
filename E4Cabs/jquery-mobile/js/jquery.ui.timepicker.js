@@ -66,7 +66,7 @@
         this.regional[''] = { // Default regional settings
             hourText: 'Hour',           // Display text for hours section
             minuteText: 'Minute',       // Display text for minutes link
-            amPmText: ['AM', 'PM'],     // Display text for AM PM
+           // amPmText: ['AM', 'PM'],     // Display text for AM PM
             closeButtonText: 'Done',        // Text for the confirmation button (ok button)
             nowButtonText: 'Now',           // Text for the now button
             deselectButtonText: 'Deselect'  // Text for the deselect button
@@ -86,7 +86,7 @@
             timeSeparator: ':',             // The character to use to separate hours and minutes.
             periodSeparator: ' ',           // The character to use to separate the time from the time period.
             showPeriod: false,              // Define whether or not to show AM/PM with selected time
-            showPeriodLabels: true,         // Show the AM/PM labels on the left of the time picker
+            showPeriodLabels: FALSE,         // Show the AM/PM labels on the left of the time picker
             showLeadingZero: true,          // Define whether or not to show a leading zero for hours < 10. [true/false]
             showMinutesLeadingZero: true,   // Define whether or not to show a leading zero for minutes < 10.
             altField: '',                   // Selector for an alternate field to store selected time into

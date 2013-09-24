@@ -27,7 +27,7 @@ jQuery.extend(jQuery.mobile.datebox.prototype.options.lang, {
 		calStartDay: 0,
 		clearButton: "Clear",
 		durationOrder: ['d', 'h', 'i', 's'],
-		meridiem: ["AM", "PM"],
+		//meridiem: ["AM", "PM"],
 		timeOutput: "%l:%M %p",
 		durationFormat: "%Dd %DA, %Dl:%DM:%DS",
 		calDateListLabel: "Other Dates"
