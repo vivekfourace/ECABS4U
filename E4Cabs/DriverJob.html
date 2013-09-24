@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="jquery-mobile/styles/jquery.ui.theme.css" />
+        <link rel="stylesheet" type="text/css" href="jquery-mobile/styles/jquery-ui.css" />
+         <link rel="stylesheet" type="text/css" href="css/jquery.mobile.css" />
+         <link rel="stylesheet" type="text/css" href="css/site.css" />
+    </head>
+    <body>
+        <div class="header" style="background-color:#242424;height:12.2%">
+                <div style="float:left;height:48px;wforth:122px;padding-top:3px;">
+                    <img src="img/logo1.png" class="logo"/>
+                </div>
+           
+        </div>
+        <center>
+            <div style="wforth:100%;height:75%;padding-top:25%;">
+        <table wforth="100%" style="border-collapse:collapse">
+    <tr>
+                <td>
+                    <label for="txtjobno" class="font-style"><b style="font-size:16px;">Job Number :</b></label> 
+                  </td>
+        <td>
+                   <a  onclick="cal()" style="color:blue;">click here</a>
+                </td>
+  </tr>
+  <tr>
+                <td>
+                    <label for="txtFromLoc" class="font-style"><b style="font-size:16px;">From:</b></label> 
+                   </td>
+        <td>
+                    <input type="text" id="txtFromLoc" readonly="true"/>
+                </td>
+               </tr>
+               
+              <tr>
+                <td>
+                    <label for="txtToLoc" class="font-style"><b style="font-size:16px">To :</b></label> 
+                 </td>
+        <td>
+                    <input type="text" id="txtToLoc" readonly="true"/>
+                </td>
+             </tr>
+               
+              <tr>
+                <td>
+                    <label for="txtDistance" class="font-style"><b style="font-size:16px">Distance in Miles :</b></label> 
+                   </td>
+        <td>
+                    <input type="text" id="txtDistance" readonly="true" />
+                </td>
+              </tr>
+                <tr>
+                <td>
+                    
+                        <label for="pickDateDriver" class="font-style"><b style="font-size:16px">Pick Up Date :</b></label>
+                    </td>
+        <td>  
+                    <input type="text" id="pickDateDriver" readonly="true"/>
+                </td>
+            </tr>
+               <tr>
+                <td>
+                    
+                    <label for="pickTime" class="font-style"><b style="font-size:16px">Pick Up Time :</b></label>
+                 </td>
+        <td>
+                    <input type="text" id="pickTime" readonly="true"/>
+                </td>
+            </tr>
+               
+               <tr>
+                <td>
+                    <label for="passengercount" class="font-style"><b style="font-size:16px">Passenger :</b></label> 
+                  </td>
+        <td>
+                    <input type="text" id="passengercount" readonly="true"/>
+                </td>
+            </tr>
+               <tr>
+                <td>
+                  
+                    <label for="largecase" class="font-style"><b style="font-size:16px">Large Case :</b></label>
+                        
+                    </td>
+                    <td>  
+                    <input type="text" id="largecase" readonly="true" />          
+                </td>
+                        
+            </tr>
+           <tr>
+                <td>
+                  
+                    <label for="smallcase" class="font-style"><b style="font-size:16px">Small Case :</b></label>
+                    </td>
+        <td>
+                    <input type="text" id="smallcase" readonly="true" />      
+                                
+                </td>
+                        
+            </tr>
+              
+ </table>
+                <table wforht="100%">
+                           <tr>
+                               <td width="25%">
+                                    <input type="button" for="btnbfor" class="specialBtn" onclick="showReq()" style="wforth:100%;" value="Bfor" />
+                               </td>
+                               <td width="25%">
+                                  <input type="button" for="btnmap" class="specialBtn" onclick="bookReturn()" style="wforth:100%;" value="Map"/> 
+                               </td>
+                               <td width="25%">
+                                   <input type="button" for="btncancel" class="specialBtn" onclick="showReq()" style="wforth:100%;" value="Cancel" />
+                               </td>
+                               <td width="25%">
+                                    <input type="button" for="btnreject" class="specialBtn" onclick="bookReturn()" style="wforth:100%;" value="Reject"/>
+                               </td>
+                           </tr>
+                       </table>
+       
+            </div>
+           </center>  
+        
+    </body>
+</html>

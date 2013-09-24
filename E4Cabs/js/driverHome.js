@@ -60,7 +60,7 @@ function myProfile()
 
 //Driver Jobs from menu
 function MyBookings(){
-    window.location='driverJobs.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
 

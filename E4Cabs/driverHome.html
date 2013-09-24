@@ -98,7 +98,7 @@
                      
                      },    
                      {
-                        text: 'Accept', datafield: 'CustomerRequestID', columntype: 'button',editable:true, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100,
+                        text: 'Accept', datafield: 'CustomerRequestID', columntype: 'button',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100,
                         cellsrenderer: function ()
                         {
                             return "Accept";
@@ -156,7 +156,7 @@
                 return "<input type='button' onClick='buttonclick(event)' class='gridButton' id='btn" + id + "' value='Accept'/>"
             };
             $('#popup_box1').fadeIn("slow");
-                },10000);
+                },5000);
                                 }
                                 else
                                 {
@@ -222,27 +222,19 @@
                     { text: 'To', dataField: 'ToPostcode',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
                     { text: 'Distance in Mile', dataField: 'DistanceInMile',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 120 },
                     { text: 'Fare', dataField: 'DriverComments',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 120 },                     
-                  
                      {
-                        text: 'Accept', datafield: 'CustomerRequestID', columntype: 'button',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100,
+                        text: 'Accept', datafield: 'CustomerRequestID', columntype: 'button', renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100,
                         cellsrenderer: function ()
                         {
                             return "Accept";
                         },
                         buttonclick: function (row)
                         {
-                             editrowindex = row;
-                            $("#jqxgrid").on('cellbeginedit', function (event) 
-                            {
-                             var args = event.args;
-                               });
-                              $("#jqxgrid").on('cellendedit', function (event)
-                               {
-                                    var args = event.args;
-                             });
-                           
-                            var rid = $("#jqxgrid").jqxGrid('getcellvalue', row, "CustomerRequestID");
-                            $.ajax({
+                            editrowindex = row;
+                            var rid = $("#jqxgridnew").jqxGrid('getcellvalue', row, "CustomerRequestID");
+                            alert(rid);
+                            alert("accepting");
+                             $.ajax({
                                         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/DriverResponse",
                                         type:"POST",
                                         dataType: "Json",
@@ -379,7 +371,7 @@
                         </td>
                         <td style="width:20%;">
                             <div>
-                                <img src="img/Cab.png" width="25px;" style="float:left;cursor:pointer" title="My Bookings" onclick="MyBookings()"/>
+                                <img src="img/Cab.png" width="25px;" style="float:left;cursor:pointer" title="My Jobs" onclick="MyBookings()"/>
                                 
                             </div>
                             
