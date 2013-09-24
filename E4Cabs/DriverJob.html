@@ -8,6 +8,91 @@
         <link rel="stylesheet" type="text/css" href="jquery-mobile/styles/jquery-ui.css" />
          <link rel="stylesheet" type="text/css" href="css/jquery.mobile.css" />
          <link rel="stylesheet" type="text/css" href="css/site.css" />
+        <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
+         <script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="Scripts/jqx-all.js"></script>
+         <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
+        <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        <script type="text/javascript" src="js/DriverJob.js"></script>
+        <script type="text/javascript">
+             var QString = window.location.search.substring(1);
+            var userId =  QString.split("=")[1].split("&")[0];
+            var roleId = QString.split("=")[2].split("&")[0];
+            var relatedId = QString.split("=")[3].split("&")[0];
+            $(document).ready(function(){
+                $.ajax({url:'http://115.115.159.126/ECabs/ECabs4U.asmx/checkResponse',                      
+                     type:"POST",
+                     datatype:"json",
+                     data:"{'userID':'" + relatedId + "'}",
+                     contentType: "application/json; charset=utf-8",                     
+                     success: function(data)
+                    {
+                        var getID=data.d[0];
+                       var getValue=data.d[1];
+                       
+                     if(getValue == "False")
+                                {
+                                    
+                                    $.ajax({
+                                    url:"http://115.115.159.126/ECabs/ECabs4U.asmx/GetData",
+                                    type:"POST",
+                                    dataType: "Json",
+                                    data:"{'userID':'" + getID + "'}",
+                                    contentType: "application/json; charset=utf-8",                     
+                                    success: function(data)
+                                          {
+                                             $('#lbljobno').text(data.d[0]);
+                                             $('#lblFromLoc').text(data.d[1]);
+                                             $('#lblToLoc').text(data.d[2]);
+                                             $('#lblDistance').text(data.d[3]);
+                                             $('#lblpickDateDriver').text(data.d[4]);
+                                             $('#lblpickTime').text(data.d[5]);
+                                             $('#lblpassengercount').text(data.d[6]);
+                                             $('#lbllargecase').text(data.d[7]);
+                                             $('#lblsmallcase').text(data.d[8]);
+                                             $('#lblwheelchair').text(data.d[9]);
+                                             $('#lblchildseat').text(data.d[10]);
+                                             $('#lblchildbooster').text(data.d[11]);                                         
+                                       
+                                    },
+                                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                    alert(errorThrown);
+                                        }
+                              
+                                   });  
+                                    
+                             }
+                         else
+                         {
+                          
+                         }
+                     },
+                        
+                     error: function (XMLHttpRequest, textStatus, errorThrown) {
+                     alert(errorThrown);
+                }
+             });
+            })
+        function showdata(data)
+            { 
+                
+                }
+            function cal()
+            {
+               
+                document.getElementById("trwheelchair").style.display = 'none';
+                document.getElementById("trchildseats").style.display = 'none';
+                document.getElementById("trchildbooster").style.display = 'none';
+                document.getElementById("trOtherspec").style.display = 'none'; 
+            }
+            function showSpecial()
+            {
+               document.getElementById("trwheelchair").style.display = 'table-row';
+               document.getElementById("trchildseats").style.display = 'table-row';
+               document.getElementById("trchildbooster").style.display = 'table-row';
+               document.getElementById("trOtherspec").style.display = 'table-row'; 
+            }
+        </script>
     </head>
     <body>
         <div class="header" style="background-color:#242424;height:12.2%">
@@ -17,112 +102,220 @@
            
         </div>
         <center>
-            <div style="wforth:100%;height:75%;padding-top:25%;">
-        <table wforth="100%" style="border-collapse:collapse">
-    <tr>
-                <td>
-                    <label for="txtjobno" class="font-style"><b style="font-size:16px;">Job Number :</b></label> 
-                  </td>
-        <td>
-                   <a  onclick="cal()" style="color:blue;">click here</a>
-                </td>
-  </tr>
-  <tr>
-                <td>
-                    <label for="txtFromLoc" class="font-style"><b style="font-size:16px;">From:</b></label> 
-                   </td>
-        <td>
-                    <input type="text" id="txtFromLoc" readonly="true"/>
-                </td>
-               </tr>
-               
-              <tr>
-                <td>
-                    <label for="txtToLoc" class="font-style"><b style="font-size:16px">To :</b></label> 
+           <div style="wforth:100%;height:75%;padding-top:25%;">
+       <table width="100%" style="border-collapse:collapse">
+       <tr>
+               <td width="50%" style="padding-left:5%;">
+                   <label  class="font-style"><b style="font-size:13px;">Job number </b></label> 
+               </td>
+               <td width="50%" style="padding-left:5%;">
+                 <a  href="#" onclick="cal()"  style="color:blue;"><b style="font-size:13px"> <label id="lbljobno" ></label></b></a>
+               </td>
+     </tr>
+     <tr>
+               <td width="50%" style="padding-left:5%;">
+                   <label  class="font-style"><b style="font-size:13px;">From</b></label> 
                  </td>
-        <td>
-                    <input type="text" id="txtToLoc" readonly="true"/>
-                </td>
-             </tr>
-               
-              <tr>
-                <td>
-                    <label for="txtDistance" class="font-style"><b style="font-size:16px">Distance in Miles :</b></label> 
-                   </td>
-        <td>
-                    <input type="text" id="txtDistance" readonly="true" />
-                </td>
-              </tr>
-                <tr>
-                <td>
-                    
-                        <label for="pickDateDriver" class="font-style"><b style="font-size:16px">Pick Up Date :</b></label>
-                    </td>
-        <td>  
-                    <input type="text" id="pickDateDriver" readonly="true"/>
-                </td>
-            </tr>
-               <tr>
-                <td>
-                    
-                    <label for="pickTime" class="font-style"><b style="font-size:16px">Pick Up Time :</b></label>
-                 </td>
-        <td>
-                    <input type="text" id="pickTime" readonly="true"/>
-                </td>
-            </tr>
-               
-               <tr>
-                <td>
-                    <label for="passengercount" class="font-style"><b style="font-size:16px">Passenger :</b></label> 
-                  </td>
-        <td>
-                    <input type="text" id="passengercount" readonly="true"/>
-                </td>
-            </tr>
-               <tr>
-                <td>
-                  
-                    <label for="largecase" class="font-style"><b style="font-size:16px">Large Case :</b></label>
-                        
-                    </td>
-                    <td>  
-                    <input type="text" id="largecase" readonly="true" />          
-                </td>
-                        
-            </tr>
-           <tr>
-                <td>
-                  
-                    <label for="smallcase" class="font-style"><b style="font-size:16px">Small Case :</b></label>
-                    </td>
-        <td>
-                    <input type="text" id="smallcase" readonly="true" />      
-                                
-                </td>
-                        
-            </tr>
+               <td width="50%" style="padding-left:5%;">
+                  <b style="font-size:13px"> <label id="lblFromLoc" readonly="true"/></b>
+               </td>
+     </tr>
               
- </table>
-                <table wforht="100%">
+     <tr>
+               <td width="50%" style="padding-left:5%;">
+                   <label  class="font-style"><b style="font-size:13px">To </b></label> 
+                   
+               </td>
+               <td width="50%" style="padding-left:5%;">
+                 <b style="font-size:13px">  <label id="lblToLoc" readonly="true"></label></b><img src="img/Addlocation.png" id="secondLoc" width="15" height="15" style="padding-left:35%;" onclick="secoundLocation()"/>
+               </td> 
+     </tr>
+              
+     <tr>
+               <td width="50%" style="padding-left:5%;">
+                   <label for="txtDistance" class="font-style"><b style="font-size:13px">Distance In Miles </b></label> 
+               </td>
+               <td width="50%" style="padding-left:5%;">
+                 <b style="font-size:13px">  <label id="lblDistance" readonly="true" /></b>
+               </td>
+    </tr>
+    <tr>
+               <td width="50%" style="padding-left:5%;">
+                   
+                       <label for="pickDateDriver" class="font-style"><b style="font-size:13px">Pick Up Date </b></label>
+               </td>
+               <td width="50%" style="padding-left:5%;">  
+                 <b style="font-size:13px">  <label  id="lblpickDateDriver" readonly="true"/></b>
+               </td>
+    </tr>
+    <tr>
+               <td width="50%" style="padding-left:5%;">
+                   
+                   <label  class="font-style"><b style="font-size:13px">Pick Up Time </b></label>
+               </td>
+               <td width="50%" style="padding-left:5%;">
+                <b style="font-size:13px">   <label id="lblpickTime" readonly="true"/></b>
+               </td>
+    </tr>
+              
+    <tr>
+               <td width="50%" style="padding-left:5%;">
+                   <label class="font-style"><b style="font-size:13px">Passenger </b></label> 
+               </td>
+               <td width="50%" style="padding-left:5%;">
+                <b style="font-size:13px">   <label id="lblpassengercount" readonly="true"/></b>
+               </td>
+    </tr>
+    <tr>
+               <td width="50%" style="padding-left:5%;">
+                 
+                   <label class="font-style"><b style="font-size:13px">Large Case </b></label>
+                       
+               </td>
+               <td width="50%" style="padding-left:5%;">  
+                  <b style="font-size:13px"> <label id="lbllargecase" readonly="true" /> </b>         
+               </td>
+                       
+    </tr>
+    <tr>
+               <td width="50%" style="padding-left:5%;">
+                 
+                   <label for="smallcase" class="font-style"><b style="font-size:13px">Small Case </b></label>
+               </td>
+               <td width="50%" style="padding-left:5%;">
+                  <b style="font-size:13px"> <label id="lblsmallcase" readonly="true" /> </b>     
+                               
+               </td>
+                       
+   </tr>
+    <tr>
+               <td width="55%" style="padding-left:5%;">
+                  <b style="font-size:13px">Special Requirement </b>
+               </td>
+               <td width="50%" style="padding-left:5%;">
+                    
+                     <b style="font-size:13px">  <label id="specialReq" ><a href="#" onclick="showSpecial()" style="color:blue;">None</a> </label></b>
+             </td>
+   </tr>
+   <tr id="trwheelchair" style="display:none;">
+               
+                   
+               <td width="50%" style="padding-left:5%;" >
+                  <b style="font-size:13px">Wheelchair Passengers </b>
+               </td>
+               <td width="50%" style="padding-left:5%;">
+                  <b style="font-size:13px">   <label id="lblwheelchair" />  </b>
+                   </td>
+   </tr>
+   <tr id="trchildseats" style="display:none;">
+               <td width="50%" style="padding-left:5%;">
+                  <b style="font-size:13px">Child Seats </b>
+               </td>
+               <td width="50%" style="padding-left:5%;">
+                 <b style="font-size:13px">    <label id="lblchildseat" />  </b>
+              </td>
+   </tr>
+   <tr id="trchildbooster" style="display:none;" >
+               <td width="50%" style="padding-left:5%;">
+                  <b style="font-size:13px">Child Booster </b>
+               </td>
+               <td width="50%" style="padding-left:5%;">
+               <b style="font-size:13px">      <label id="lblchildbooster" /> </b> 
+               </td>
+  </tr>
+   <tr id="trOtherspec" style="display:none;">
+               <td width="100%" style="padding-left:5%;" colspan="4">
+                  <label for="txtothereSpecialRequirement" ><b style="font-size:13px" >Other Requirements</b></label> 
+                   
+               </td>
+               
+             
+ </tr>
+           <tr>
+               <td width="100%" style="padding-left:5%;" colspan="4">
+                   <textarea id="txtothereSpecialRequirement" rows="4" cols="10"  style="" readonly="true"></textarea>
+               </td>
+           </tr>
+                 
+  </table>
+        
+            </div>
+            <div style="padding-top:20%;width:100%;">
+                
+            </div>
+           </center> 
+         
+
+        <footer>
+            <div style="width:100%;position:fixed;bottom:0px;height:20px;padding-bottom:55px">
+                <table width="100%" style="">
                            <tr>
                                <td width="25%">
-                                    <input type="button" for="btnbfor" class="specialBtn" onclick="showReq()" style="wforth:100%;" value="Bfor" />
+                                    <input type="button" for="btnbfor" class="specialBtn" onclick="bid()" style="width:100%;" value="Bid" />
                                </td>
                                <td width="25%">
-                                  <input type="button" for="btnmap" class="specialBtn" onclick="bookReturn()" style="wforth:100%;" value="Map"/> 
+                                  <input type="button" for="btnmap" class="specialBtn" onclick="bookReturn()" style="width:100%;" value="Map"/> 
                                </td>
                                <td width="25%">
-                                   <input type="button" for="btncancel" class="specialBtn" onclick="showReq()" style="wforth:100%;" value="Cancel" />
+                                   <input type="button" for="btncancel" class="specialBtn" onclick="showReq()" style="width:100%;" value="Cancel" />
                                </td>
                                <td width="25%">
-                                    <input type="button" for="btnreject" class="specialBtn" onclick="bookReturn()" style="wforth:100%;" value="Reject"/>
+                                    <input type="button" for="btnreject" class="specialBtn" onclick="bookReturn()" style="width:100%;" value="Reject"/>
                                </td>
                            </tr>
                        </table>
-       
+                <table style="width:100%;" class="btn-tmpFooter">
+                    <tr>
+                        <td style="width:20%;">
+                            <div>
+                                <img src="img/User.png" width="25px;" style="float:left; cursor:pointer" title="Profile" onclick="myProfile()"/>
+                                
+                            </div>
+                            
+                        </td>
+                        <td style="width:20%;">
+                            <div>
+                                <img src="img/Home.png" width="25px;" style="float:left;cursor:pointer" title="Home" onclick="myhome()"/>
+                                
+                            </div>
+                            
+                        </td>
+                        <td style="width:20%;">
+                            <div>
+                                <img src="img/Cab.png" width="25px;" style="float:left;cursor:pointer" title="My Jobs" onclick="MyBookings()"/>
+                                
+                            </div>
+                            
+                        </td>
+                        <td style="width:20%;">
+                            <div>
+                                <img src="img/History1.png" width="25px;" style="float:left;cursor:pointer" title="Booking History" onclick="bookedHistory()"/>
+                                
+                            </div>
+                            
+                        </td>
+                        <td style="width:20%;">
+                            <div>
+                                <img src="img/feedback.png" width="25px;" style="float:left;cursor:pointer" title="Feedback" onclick="feedBack()"/>
+                                
+                            </div>
+                            
+                        </td>
+                        <td style="width:20%;">
+                            <div>
+                                <img src="img/logout.png" width="25px;" style="float:left;cursor:pointer" title="Logout" onclick="logout()"/>
+                                
+                            </div>
+                            
+                        </td>
+                        
+                    </tr>
+                    
+                </table>
+                
             </div>
-           </center>  
-        
+            
+        </footer>
+
     </body>
 </html>
