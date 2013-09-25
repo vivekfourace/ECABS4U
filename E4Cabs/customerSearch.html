@@ -120,14 +120,24 @@
          function initialize() {
             directionsDisplay = new google.maps.DirectionsRenderer();
         }
-
+        
+        
+        
+        
         //Distance Calculation
+        var dis1, dis2,dis3,dis4,dis5,dis6; 
+        
         function calcRoute() {
             var start = document.getElementById("txtFrom").value;
-            var end = document.getElementById("txtTo").value;
+            var loc2 = document.getElementById("txt2location").value;
+           var loc3 = document.getElementById("txt3location").value;
+             var end = document.getElementById("txtTo").value;
             var distanceInput = document.getElementById("txtDistance");
-
-            var request = {
+            
+    //2nd and 3rd Location is Empty        
+            if(loc2 == 0 && loc3 == 0)
+            {
+                var request = {
                 origin: start,
                 destination: end,
                 travelMode: google.maps.DirectionsTravelMode.DRIVING
@@ -136,10 +146,153 @@
             directionsService.route(request, function (response, status) {
                 if (status == google.maps.DirectionsStatus.OK) {
                     directionsDisplay.setDirections(response);
-                    distanceInput.value = (response.routes[0].legs[0].distance.value /1609.34).toFixed(2) + " miles";
+                    dis4 = (response.routes[0].legs[0].distance.value /1609.34).toFixed(2);
+                   distanceInput.value = (dis4 + " miles");
                 }
+               // alert(dis4);
+           
             });
+            
+      
+            }
+            
+      //3rd Location is Empty      
+            else if(loc2!= 0 && loc3 == 0)
+            {
+                var request1 = {
+                origin: start,
+                destination: loc2,
+                travelMode: google.maps.DirectionsTravelMode.DRIVING
+            };
+
+            directionsService.route(request1, function (response, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                    dis5 = (response.routes[0].legs[0].distance.value /1609.34).toFixed(2);
+                    //distanceInput.value = (dis5 + " miles");
+                }
+                //alert(dis5);
+            calcRoute4();
+            });
+            
+                function calcRoute4() {
+            //alert('3in');
+           
+            var loc3 = document.getElementById("txt3location").value;
+             var end = document.getElementById("txtTo").value;
+            //var loc3 = document.getElementById("txt3location").value;
+            //var loc3 = document.getElementById("txtTo").value;
+            var distanceInput = document.getElementById("txtDistance");
+
+            var request = {
+                origin: loc2,
+                destination: end,
+                travelMode: google.maps.DirectionsTravelMode.DRIVING
+            };
+
+            directionsService.route(request, function (response, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                    dis6 = (response.routes[0].legs[0].distance.value /1609.34).toFixed(2);
+                }
+               // alert(dis6);
+                
+                var dis = parseFloat(dis5, 10)+ parseFloat(dis6, 10);
+                    distanceInput.value = (dis + " miles");
+            });           
+        
+                }
+            }
+            
+            
+  
+            
+  //All Location is Filled          
+   else {
+            
+            var request = {
+                origin: start,
+                destination: loc2,
+                travelMode: google.maps.DirectionsTravelMode.DRIVING
+            };
+
+            directionsService.route(request, function (response, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                    dis1 = (response.routes[0].legs[0].distance.value /1609.34).toFixed(2);
+                   // distanceInput.value = (dis1 + " miles");
+                }
+                //alert(dis1);
+           calcRoute2();
+            });
+            
         }
+            }
+        
+        
+        
+        
+        function calcRoute2() {
+            //alert('2in');
+           
+            var loc2 = document.getElementById("txt2location").value;
+            //var end = document.getElementById("txtTo").value;
+            //var loc3 = document.getElementById("txt3location").value;
+            var loc3 = document.getElementById("txt3location").value;
+            var distanceInput = document.getElementById("txtDistance");
+
+            var request = {
+                origin: loc2,
+                destination: loc3,
+                travelMode: google.maps.DirectionsTravelMode.DRIVING
+            };
+
+            directionsService.route(request, function (response, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                    dis2 = (response.routes[0].legs[0].distance.value /1609.34).toFixed(2);
+                    //distanceInput.value = (dis2 + " miles");
+                }
+                //alert(dis2);
+                calcRoute3();
+                //var dis = parseFloat(dis1, 10)+ parseFloat(dis2, 10);
+                    //distanceInput.value = (dis + " miles");
+            });           
+        }
+        
+        
+        
+        
+        
+        
+        function calcRoute3() {
+            //alert('3in');
+           
+            var loc3 = document.getElementById("txt3location").value;
+             var end = document.getElementById("txtTo").value;
+            //var loc3 = document.getElementById("txt3location").value;
+            //var loc3 = document.getElementById("txtTo").value;
+            var distanceInput = document.getElementById("txtDistance");
+
+            var request = {
+                origin: loc3,
+                destination: end,
+                travelMode: google.maps.DirectionsTravelMode.DRIVING
+            };
+
+            directionsService.route(request, function (response, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                    dis3 = (response.routes[0].legs[0].distance.value /1609.34).toFixed(2);
+                }
+                //alert(dis3);
+                
+                var dis = parseFloat(dis1, 10)+ parseFloat(dis2, 10)+ parseFloat(dis3,10);
+                    distanceInput.value = (dis + " miles");
+            });           
+        }
+        
+        
         //Book Return Journey
         function bookReturn() 
         {

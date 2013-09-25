@@ -74,9 +74,12 @@
               }
             }
 
+        
+        var res1,res2;
            function calcRoute() {
              var start = locFrom;
              var end = locTo;
+               //var 2nd=distance
              var request = {
                  origin:start,
                  destination:end,
@@ -85,11 +88,41 @@
              directionsService.route(request, function(response, status) {
                if (status == google.maps.DirectionsStatus.OK) {
                  directionsDisplay.setDirections(response);
+                   res1 = (response.routes[0].legs[0]).toFixed(2);
+               }
+                  calcRoute2();
+             });
+               
+               
+               
+           }
+        
+        function calcRoute2()
+        {
+            //var start = locFrom;
+             var start = locTo;
+               var end=distance
+             var request = {
+                 origin:start,
+                 destination:end,
+                 travelMode: google.maps.DirectionsTravelMode.DRIVING
+             };
+             directionsService.route(request, function(response, status) {
+               if (status == google.maps.DirectionsStatus.OK) {
+                 directionsDisplay.setDirections(response);
+                   res2 = (response.routes[0].legs[0]).toFixed(2);
                }
              });
-           }
+               
+            
+        }
             google.maps.event.addDomListener(window, 'load', initialize);
         
+        
+        function backtostart()
+        {
+            window.location="customerSearch.html";
+        }
         </script>
    </head>
   <body>
@@ -101,6 +134,9 @@
                 <div style="padding-top:13px;">
                 <b class="header-font" style="color:white;font-size:16px;float:right">Cab location</b>
                 </div>
+            </div>
+            <div style="float:right;height:50px;width:60px; margin-top:-44px;">
+                  <img src="img/backk.png" height="35" onclick="backtostart();"  style="cursor: pointer;"/>
             </div>
          </div>
           <div style="padding-top:50px"></div>

@@ -40,7 +40,7 @@ function showlocation()
 {
    // $('#txtFrom').text(data.d[0]["Address1"]);
   //$('#txtTo').text(data.d[0]["Address2"]);
-    $('#txtFrom').val(data.d[0]["Address1"]);
+    $('#txtFrom').val(data.d[0]["CustomerName"]+" "+ data.d[0]["CustomerLastName"]+" , "+ data.d[0]["Address1"]);
     $('#txtTo').val(data.d[0]["Address2"]);
    
 }
