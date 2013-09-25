@@ -3,7 +3,13 @@ var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
-
+function showMap()
+{
+   var from = $('#lblFromLoc').text();
+   var to = $('#lblToLoc').text();
+   var dis = "loc"; //it will specify later;
+   window.location =  'Location.html?id='+from+'&rid='+to+'&rrid='+dis;
+}
 
 function BackProfile()
 {
@@ -41,7 +47,7 @@ function bid()
            error: function (XMLHttpRequest, textStatus, errorThrown)
                     {
            alert(errorThrown);
-                   }
+            }
        });
     }
 
@@ -73,5 +79,7 @@ function feedBack()
 //History
 function bookedHistory()
 {
+    
   window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;  
 }
+
