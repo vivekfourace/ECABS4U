@@ -5,8 +5,8 @@ var relatedId = QString.split("=")[3].split("&")[0];
 
 function showMap()
 {
-   var from = $('#lbljobno').text();
-   var to = $('#lblFromLoc').text();
+   var from = $('#lblFromLoc').text();
+   var to = $('#lblToLoc').text();
    var dis = "loc"; //it will specify later;
    window.location =  'Location.html?id='+from+'&rid='+to+'&rrid='+dis;
 }

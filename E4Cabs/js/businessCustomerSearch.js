@@ -47,7 +47,6 @@ function showlocation()
 
 function searchResult()
 {
-    alert('hit');
             var fromloc=document.getElementById('txtFrom').value;
             var toloc=document.getElementById('txtTo').value;
             var distance=document.getElementById('txtDistance').value;
