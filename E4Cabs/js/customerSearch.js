@@ -50,8 +50,7 @@ function availabledriver()
     
     //add Location
             var secondLoc=document.getElementById("txt2location").value;
-            var thirdLoc=document.getElementById("txt3location").value;
-    
+            var thirdLoc=document.getElementById("txt3location").value;    
     //special
     var weelchairPassangers=document.getElementById("ddlWheelchair");
     var WchairPassengers=weelchairPassangers.options[weelchairPassangers.selectedIndex].value;
@@ -70,6 +69,17 @@ function availabledriver()
     
    var returnfromloc=document.getElementById('txtReturFrom').value;
     var returntoloc=document.getElementById('txtReturTo').value;
+    
+    if(!fromloc)
+    {
+        $('#lblMessage').text("Enter From location!");
+        return false;
+    }
+    if(!toloc)
+    {
+        $('#lblMessage').text("Enter To location!"); 
+        return false;
+    }
 
     $.ajax({
      url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",

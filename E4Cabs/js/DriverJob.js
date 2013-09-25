@@ -47,7 +47,7 @@ function bid()
            error: function (XMLHttpRequest, textStatus, errorThrown)
                     {
            alert(errorThrown);
-                   }
+            }
        });
     }
 
