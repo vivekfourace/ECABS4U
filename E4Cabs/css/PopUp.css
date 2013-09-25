@@ -1,20 +1,21 @@
 #popup_box {
+            
             display: none;
             position: absolute;
             height: auto;
             width: 300px;            
             padding-right:.25px;
-            background: #FFD583;            
-            top: 10%;            
+            background: #FFFFFF;            
+            top: 12%;            
             z-index: 100;
-            border: 2px solid #E14E4E;            
+            border: 2px solid #2981CF;            
             font-size: 15px;
             -webkit-border-radius: 8px;
             -moz-border-radius: 8px;
             border-radius: 8px;
-            -moz-box-shadow: 2px 2px 5px 5px #E14E4E;
-            -webkit-box-shadow: 2px 2px 5px 5px #E14E4E;
-            box-shadow: 2px 2px 5px 5px #E14E4E;                    
+            -moz-box-shadow: 2px 2px 5px 5px #2981CF;
+            -webkit-box-shadow: 2px 2px 5px 5px #2981CF;
+            box-shadow: 2px 2px 5px 5px #2981CF;                    
         }
 
         #popupBoxClose {                        
