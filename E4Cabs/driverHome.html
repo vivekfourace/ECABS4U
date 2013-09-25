@@ -13,36 +13,172 @@
         <script type="text/javascript" src="Scripts/jqx-all.js"></script>
         <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
         <script type="text/javascript" src="js/driverHome.js"></script>
+         <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
         
+         <script type="text/javascript">
         
-        
-         <!-- Phone 320x480 High DPI (aka Retina) -->
-		<link rel="stylesheet" media="only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio:2)" href="css/Styles/480.css" type="text/css" />
-        <!-- Phone 480x800 Medium DPI (aka Samsung Galaxy S II Skyrocket) -->
-        <link rel="stylesheet" media="only screen and (min-device-width: 320px) and (max-device-width: 508px) and (-webkit-device-pixel-ratio:1.5)" href="css/Styles/800.css" type="text/css" />
-        <!-- Tablet 768x1024 Low DPI (aka iPad 1 & 2") -->
-        <link rel="stylesheet" media="only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-device-pixel-ratio:1)" href="css/Styles/1024.css" type="text/css" />
-        <!-- Tablet 800x1280 Low DPI (aka Samsung Galaxy Tab 8.9" & Lenovo K1) -->
-        <!--<link rel="stylesheet" media="only screen and (min-device-width: 800px) and (max-device-width: 1280px) and (-webkit-device-pixel-ratio:1)" href="styles/tablet-1280.css" type="text/css" />-->
-        <!-- Phone 720x1280 High DPI (aka Google Nexus) -->
-        <link rel="stylesheet" media="only screen and (min-device-width: 720px) and (max-device-width: 1280px) and (-webkit-device-pixel-ratio:2)" href="css/Styles/1280.css" type="text/css" />
-		<!-- Tablet 500x1024 Low DPI (aka Kindle Fire) -->
-        <!--<link rel="stylesheet" media="only screen and (min-device-width: 600px) and (max-device-width: 1024px) and (-webkit-device-pixel-ratio:1)" href="styles/tablet-600-1024.css" type="text/css" />-->
-        <!-- Tablet 768x1024 High DPI (aka iPad3") -->
-        <!--<link rel="stylesheet" media="only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-device-pixel-ratio:2)" href="styles/tablet-1024-hdpi.css" type="text/css" />-->
-       
+            
+        $(document).ready(function () {
+           
+
+           
+            $('#popupBoxClose').click(function () {
+                unloadPopupBox();
+            });
+        });
+        function unloadPopupBox() {
+            $('#popup_box').fadeOut("slow");
+        }
+            
+        window.setInterval(function () {
+             
+           var fp="560078";
+            var tp = "560102";
+            var source = {
+                type: "GET",
+                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetData?FP1=" + fp + "&FP2=" + tp,
+                data: {},
+                datatype: "json",
+                updaterow: function (rowid, rowdata, commit) {
+                    // synchronize with the server - send update command
+                    // call commit with parameter true if the synchronization with the server is successful 
+                    // and with parameter false if the synchronization failder.
+                    commit(true);
+                },
+                datafields: [
+                    { name: 'CustomerRequestID', type: 'string' },
+                    { name: 'CustomerName', type: 'string' },   
+                    { name: 'StartDate', type: 'string' },
+                    { name: 'StartTime', type: 'string' },
+                    { name: 'FromPostcode', type: 'string' },
+                    { name: 'ToPostcode', type: 'string' },
+                    { name: 'DistanceInMile', type: 'string' },
+                    { name: 'DriverComments', type: 'string' }
+                ],
+                cache: false,
+                root: 'data',
+                async: false
+            };
+            $('#jqxgrid').bind('bindingcomplete', function (){});            
+            var dataAdapter = new $.jqx.dataAdapter(source, {
+                contentType: 'application/json; charset=utf-8',
+                downloadComplete: function (data, textStatus, jqXHR)
+                {
+                    return data.d;
+                }
+            });
+            var cellsrenderer = function (row, column, value)
+            {
+                return '<div style="text-align: center;">' + value + '</div>';
+            }
+            var columnrenderer = function (value)
+            {
+                return '<div style="text-align: center;">' + value + '</div>';
+            }
+            $("#jqxgrid").jqxGrid({
+                width: '900',
+               
+                source: dataAdapter,
+                autoheight: true,
+                theme: 'energyblue',
+                pageable: true,
+                editable:true,
+                columns: [
+                    { text: 'CustomerRequestID', dataField: 'CustomerRequestID',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100, hidden: true },
+                    { text: 'CustomerName', dataField: 'CustomerName',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },  
+                    { text: 'StartDate', dataField: 'StartDate',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
+                    { text: 'StartTime', dataField: 'StartTime',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
+                    { text: 'FromPostcode', dataField: 'FromPostcode',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
+                    { text: 'ToPostcode', dataField: 'ToPostcode',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
+                    { text: 'DistanceInMile', dataField: 'DistanceInMile',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
+                     { text: 'DriverComments', dataField: 'DriverComments',editable:true, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 ,
+                     
+                     },    
+                {
+                        text: 'Accept', datafield: 'CustomerRequestID', columntype: 'button',editable:true, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100,
+                        cellsrenderer: function ()
+                        {
+                            return "Accept";
+                        },
+                        buttonclick: function (row)
+                        {
+                            $("#jqxgrid").on('cellbeginedit', function (event) 
+                            {
+                             var args = event.args;
+                               });
+                              $("#jqxgrid").on('cellendedit', function (event)
+                               {
+                                    var args = event.args;
+                             });
+                            editrowindex = row;
+                            var rid = $("#jqxgrid").jqxGrid('getcellvalue', row, "CustomerRequestID");
+                            var status=true; 
+                            var price=$("#jqxgrid").jqxGrid('getcellvalue', row, "DriverComments");
+                            var dID=relatedId;
+                            alert(dID);
+                             $.ajax({
+                                        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/setDriverResponse",
+                                        type:"POST",
+                                        dataType: "Json",
+                                        data:"{'userID':'" + relatedId +"','reqid':'"+ rid +"','status':'"+ status  +"','price':'"+ price +"'}",
+                                        contentType: "application/json; charset=utf-8",  
+                                        success: function (data) 
+                                                {
+                                                    alert(relatedId);
+                                        var get=data.d;
+                                                    if(get==false)
+                                                    {
+                                                 window.location='CustomerPop.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId+'&reqid='+rid;
+                                                }
+                                                  
+                                                    
+                                                    },
+                                        error: function (XMLHttpRequest, textStatus, errorThrown)
+                                                 {
+                                        alert(errorThrown);
+                                                }
+                                    });
+                           
+                        }
+                    },
+                    {
+                        text: 'Reject', datafield: 'CustomerRequestID', columntype: 'button',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100,
+                        cellsrenderer: function ()
+                        {
+                            return "Reject";
+                        },
+                        buttonclick: function (row)
+                        {
+                            editrowindex = row;
+                            var id = $("#jqxgrid").jqxGrid('getcellvalue', row, "CustomerRequestID");
+                            alert(id);
+                            alert("rejecting");
+                        }
+                    }
+                
+                ]
+            });
+             
+            var renderer = function (id)
+            {
+                return "<input type='button' onClick='buttonclick(event)' class='gridButton' id='btn" + id + "' value='Accept'/>"
+            };
+            $('#popup_box').fadeIn("slow");
+        }, 5000);
+    </script>
         
            </head>
     <body>
         <center>
-            <div class="header" style="background-color:#242424;height:12.2%">
-                <div style="float:left;height:48px;width:122px;padding-top:3px;">
+            <div class="header" style="background-color:#242424;height:12.2%;left:0px;top:0px">
+                <div style="float:left;height:48px;width:122px;padding-top:5px;">
                     <img src="img/logo1.png" class="logo"/>
                 </div>
             <div style="width:180px; height:90%;text-align:center;">
                 
             </div>
         </div>
+           
             <div style="padding-top:25%;">
                 <div style="width:80%;height:30px;background-color:#777B81;border-radius:3px;">
                     <marquee slide="left" style="font-size:20px;color:#ffffff;padding-top:3px;">
@@ -51,6 +187,17 @@
                     </marquee>
                     
                 </div>
+                 
+       <!-- <div id="popup_boxnew">
+       <!--     <a id="popupBoxClose" style="cursor: pointer;">
+       <!--         <img src="img/close.png" style="height: 40px; width: 40px; margin-top: -30px; margin-right: -26px;" />
+       <!--     </a>
+       <!--     <br />
+       <!--     <div align="center" style="overflow:auto;">                
+       <!--         <div id="jqxgridnew"></div>
+       <!--     </div>
+       <!--     <br />
+       <!-- </div>-->
                 <div style="padding-top:25%;">
                     <div style="padding-left:13%;height:40px">
                         <div align="center" style="padding-top:15px">
@@ -79,6 +226,16 @@
             </div>
             
         </center>
+        <div id="popup_box">
+            <a id="popupBoxClose" style="cursor: pointer;">
+                <img src="img/close.png" style="height: 40px; width: 40px; margin-top: -30px; margin-right: -26px;" />
+            </a>
+            <br />
+            <div align="center" style="overflow:auto;">                
+                <div id="jqxgrid"></div>
+            </div>
+            <br />
+        </div>
         <footer>
             <div style="width:100%;position:fixed;bottom:0px;height:20px;padding-bottom:15px">
                 <table style="width:100%;" class="btn-tmpFooter">
@@ -133,5 +290,6 @@
             </div>
             
         </footer>
+        
     </body>
 </html>

@@ -6,7 +6,11 @@ var relatedId = QString.split("=")[3].split("&")[0];
 
 window.onload = getProfile();
 
-
+function changepassword()
+{
+   window.location='changePassword.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+  
+}
 
 
 
@@ -190,7 +194,6 @@ function UpdateProfile()
 //Cancel update
 function CancelProfile()
 {
-    
     getProfile();
 }
 
@@ -226,12 +229,6 @@ function bookedHistory()
 //}
 
 
-
-
-
-
-
-
 //Cab Now Button
 function cabNow()
 { 
@@ -239,14 +236,14 @@ function cabNow()
    window.location ='businessCustomerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
-
-
-
 //Logout button
 
 function logout()
 {
-    window.location="index.html";
+        $.cookie("remember", 'null');
+        $.cookie("userName", 'null');
+        $.cookie("pass", 'null');
+        window.location = "index.html";
 }
 
 
@@ -265,6 +262,30 @@ function feedBack()
 {
     window.location='businessCustomerFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
+
+
+// Back Button
+//function backtostart()
+//{
+  //  window.location =  'customerAfterLogin.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Pre Book Button
 //function prebook()

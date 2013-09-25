@@ -3,9 +3,38 @@ var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
+
+
+
 $(document).ready(function(){
-     var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/userStatus";
-                $.ajax(url,{                      
+   var getID= relatedId;
+    alert(getID);
+    
+    $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/responseStatus",                      
+                     type:"POST",
+                     datatype:"json",
+                     data:"{'userID':'" + relatedId + "'}",
+                     contentType: "application/json; charset=utf-8",                     
+                     success: function (data) {
+                        alert(getID);
+                        var status=data.d;
+                         if(status==false)
+                         {
+                             window.location.href="driverHome.html"; 
+                         
+                             }
+                         else
+                         {window.location.href="driverHome.html"; 
+                          $('#driverStatusupdate').text("Available");
+                         }
+                     },
+                    
+                     error: function (XMLHttpRequest, textStatus, errorThrown) {
+                     alert(errorThrown);
+                }
+             });
+   
+                $.ajax({   url:"http://115.115.159.126/ECabs/ECabs4U.asmx/userStatus",                    
                      type:"POST",
                      datatype:"json",
                      data:"{'userID':'" +userId+ "'}",
@@ -66,22 +95,14 @@ function MyBookings(){
 
 //driver Logout logout(string userID)
 function logout(){
-     var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/logout";
-                $.ajax(url,{                      
-                     type:"POST",
-                     datatype:"json",
-                     data:"{'userID':'" +userId+ "'}",
-                     contentType: "application/json; charset=utf-8",                     
-                     success: function (data) {
-                         
-                         window.location="index.html";
-                     },
-                    
-                     error: function (XMLHttpRequest, textStatus, errorThrown) {
-                     alert(errorThrown);
-                }
-             });
     
+        //$.removeCookie('remember');
+        //$.removeCookie('userName');
+        //$.removeCookie('pass');
+        $.cookie("remember", 'null');
+        $.cookie("userName", 'null');
+        $.cookie("pass", 'null');
+        window.location = "index.html";
 }
 
 function soonToclear()

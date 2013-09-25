@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
          <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+         <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>        
         
         <script type="text/javascript" src="js/businessCustomerProfile.js"></script>
         
@@ -25,10 +26,15 @@
                 </div>
             </div>
             <div style="float:right;height:50px;width:60px; margin-top:-44px;">
-                  <img src="img/backk.png" height="35" onclick="backtostart();"/>
+                  <img src="img/backk.png" height="35" onclick="backtostart();"  style="cursor: pointer;"/>
             </div>
         </div>            
    <div style="padding-top:65px">  
+       <div width="100%" style="float:right">
+           <span style="padding-right:10px">
+               <a href="#" style="color:#2980CE" onclick="changepassword()"><i>Change password</i></a>
+           </span>
+       </div>
        <div width="100%">
           <table style="width:30%;float:left;">
               <tr>
@@ -39,22 +45,22 @@
                <tr>
                    <td>
                     <label id="lblname" class="font-style" style="font-size:20px;font-weight:bold"></label>
-                    <input type="text" id="txtname" class="font-style" style="display:none;text-align:left"/>
+                    <input type="text" id="txtname" class="font-style" style="display:none;text-align:left;width:90%"/>
                     <label id="lbllastname" class="font-style"></label>
-                    <input type="text" id="txtlastname" class="font-style" style="display:none;text-align:left"/>
+                    <input type="text" id="txtlastname" class="font-style" style="display:none;text-align:left;width:90%"/>
                    </td>
                </tr>
                <tr>
                 <td>
                     <label id="lblLocation" class="font-style"></label>
-                       <input type="text" id="txtLocation" class="font-style" style="display:none;text-align:left"/>
+                       <input type="text" id="txtLocation" class="font-style" style="display:none;text-align:left;width:90%"/>
                 </td>
               </tr>
                <tr>
                 
                 <td>
                     <label id="lblLocation2" class="font-style"></label>
-                       <input type="text" id="txtLocation2" style="display:none;text-align:left"/>
+                       <input type="text" id="txtLocation2" style="display:none;text-align:left;width:90%"/>
                 </td>
             </tr>
                
@@ -62,40 +68,43 @@
            
                 <td>
                     <label id="lblMobileNo" class="font-style"></label>
-                       <input type="text" id="txtMobileno" class="font-style" maxlength="12" style="display:none;text-align:left"/>
+                       <input type="text" id="txtMobileno" class="font-style" maxlength="12" style="display:none;text-align:left;width:90%"/>
                 </td>
             </tr>
                <tr>
                
                 <td>
                     <i><label id="lblEmailID" class="font-style" style="color:#639ECD"></label></i>
-                       <input type="text" id="txtEmailID" class="font-style" style="display:none;text-align:left"/>
+                       <input type="text" id="txtEmailID" class="font-style" style="display:none;text-align:left;width:90%"/>
                 </td>
             </tr>
            </table>
        </div>
        
        <div style="padding-top:250px;padding-bottom:100px">
-           <table width="76%" align="right">
+           <table width="70%"  align="center">
+               <center>
+           <table width="100%">
                <tr id="tredit">
-                   
-                   <td  width="100%">
-                       <input id="btnEdit" type="button" value="Edit" class="btn-tmp cursor" style="color:white" onclick="EditProfile();" />
+                   <td  width="100%" align="center">
+                       <input id="btnEdit" type="button" value="Edit" class="btn-tmp cursor" style="width:100%;color:white;" onclick="EditProfile();" />
                    </td>
                </tr>
                <tr id="trBtnUpdate" style="display:none;" >
-                   <td colsapn="2" width="100%"> 
+                   <td width="100%" align="center"> 
                        <input id="btnUpdate" type="button"  value="Update" class="btn-tmp cursor" style="color:white" onclick="UpdateProfile();"/>
                    </td>
                </tr>
                <tr id="trCancel" style="display:none;">
-                   <td colsapn="2" width="100%">
+                   <td width="100%" align="center">
                        <input id="btnCancel" type="button" class="btn-tmp cursor"  value="Cancel" style="color:white" onclick="CancelProfile();"/>
                    </td>
                </tr>
-               
            </table> 
+              </center>
+               </table>
        </div>
+       
      </div>
        
         </center>
