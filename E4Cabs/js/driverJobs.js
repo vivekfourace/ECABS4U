@@ -3,13 +3,6 @@ var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
-
-
-
-
-
-
-
 function BackProfile()
 {
     window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
@@ -18,9 +11,7 @@ function BackProfile()
 
 //diver Profile from menu
 function myProfile()
-
 {
-    
     window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 

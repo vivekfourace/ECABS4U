@@ -7,6 +7,7 @@
       <link rel="stylesheet" type="text/css" href="css/index.css" />
       <script type="text/javascript" src="Scripts/jquery-1.8.2.min.js"></script>
       <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+      <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
       <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAKXfZggeVZMCwQnR-mGebtLCvjuRfZcg&sensor=true"></script>
       
     <style type="text/css">
@@ -15,7 +16,7 @@
       #map-canvas { height: 90% }
     </style>
       
-    <script type="text/javascript">        
+    <script type="text/javascript">
         var QString = window.location.search.substring(1);
         var locFrom =  QString.split("=")[1].split("&")[0];
         var locTo = QString.split("=")[2].split("&")[0];
@@ -89,7 +90,6 @@
              });
            }
             google.maps.event.addDomListener(window, 'load', initialize);
-        
         </script>
    </head>
   <body>
