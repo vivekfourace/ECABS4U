@@ -8,6 +8,7 @@
          <link rel="stylesheet" type="text/css" href="css/jqx.base.css"/>
         <link rel="stylesheet" type="text/css" href="css/jqx.energyblue.css"/>
         <link rel="stylesheet" type="text/css" href="css/customerSearchList.css" />
+        <link rel="stylesheet" type="text/css" href="css/PopUp.css" />
         <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
          <script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
         <script type="text/javascript" src="Scripts/jqx-all.js"></script>
@@ -17,15 +18,15 @@
          var roleId = QString.split("=")[2].split("&")[0];
          var relatedId = QString.split("=")[3].split("&")[0];
          var requestID = QString.split("=")[4].split("&")[0];
-     //   $(document).ready(function () {
-     //       $('#popupBoxClose').click(function () {
-     //           unloadPopupBox();
-     //       });
-     //   });
-     //   function unloadPopupBox() {
-     //       $('#popup_box').fadeOut("slow");
-     //   }
-        window.setInterval(function () {
+               $(document).ready(function () {
+           $('#popupBoxClose').click(function () {
+               unloadPopupBox();
+           });
+       });
+       function unloadPopupBox() {
+           $('#popup_box').fadeOut("slow");
+       }
+       window.setInterval(function () {
            
          //Ajax loader--start
               $('#imgLoader').bind('ajaxStart', function(){
@@ -64,7 +65,8 @@
                 datafields: [
                     { name: 'CustomerRequestID', type: 'long' },
                     { name: 'DriverName', type: 'string' },   
-                    { name: 'MobileNumber', type: 'string' },
+                    { name: 'StartDate', type: 'string' },
+                    { name: 'StartTime', type: 'string' },
                     { name: 'Comments', type: 'string' }
                    
                 ],
@@ -97,11 +99,11 @@
                 pageable: false,
                 editable:true,
                 columns: [
-                    { text: 'CustomerRequestID', dataField: 'CustomerRequestID',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100, hidden: true },
+                    { text: 'Job Number', dataField: 'CustomerRequestID',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100, hidden: true },
                     { text: 'Driver name', dataField: 'DriverName',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },  
-                    { text: 'Mobile number', dataField: 'MobileNumber',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
-                    { text: 'Fare', dataField: 'Comments',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
-                     
+                    { text: 'Start Date', dataField: 'StartDate',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
+                    { text: 'Start Time', dataField: 'StartTime',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
+                      { text: 'Comments', dataField: 'Comments',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
                     {
                         text: '', datafield: 'CustomerRequestID', columntype: 'button',editable:true, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100,
                         cellsrenderer: function ()
@@ -139,11 +141,7 @@
             $('#popup_box').fadeIn("slow");
         }, 30000);
            
-            //back to searchPage          
-function backtosearch()
-{
-    window.location = 'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-}
+            
     </script>
     </head>
     
@@ -168,18 +166,83 @@ function backtosearch()
         
         
         
-        <!--<div id="popup_box">
-        <!--    <a id="popupBoxClose" style="cursor: pointer;">
-        <!--        <img src="img/close.png" style="height: 40px; width: 40px; margin-top: -30px; margin-right: -26px;" />
-        <!--    </a>
-        <!--    <br />-->       
-        
+       
+          
+       <!--  <div id="popup_box" >
+                        <a id="popupBoxClose" style="cursor: pointer;">
+                            <img src="img/close.png" style="height: 30px; width: 30px; margin-top: -30px;" />
+                        </a>
+                        <br />
+                        <div id="divCustomerPop" align="center" style="overflow:auto;display:none;">                
+                               <table align="left" style="padding-left:10%;width:100%">
+                                   <tr>
+                                       <td width="50%">
+                                        <b style="font-size:13px;">Job Number</b>
+                                       </td>
+                                       <td width="50%">
+                                          <b> <label id="lblcustomerpopjob" style="font-size:13px;padding-left:10%;"/></b>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td width="50%">
+                                          <b style="font-size:13px;">Fare</b>  
+                                       </td>
+                                       <td width="50%">
+                                         <b>  <label id="lblprice" style="font-size:13px;padding-left:10%;"/></b>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td width="50%">
+                                          <b style="font-size:13px;">Driver Name</b>  
+                                       </td>
+                                       <td width="50%">
+                                         <b>  <label id="lbldriver" style="font-size:13px;padding-left:10%;"/></b>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td width="50%">
+                                        <b style="font-size:13px;">Pick Date</b>
+                                       </td>
+                                       <td width="50%">
+                                         <b>  <label id="lblPickDate" style="font-size:13px;padding-left:10%;"/></b>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td width="50%"> 
+                                          <b style="font-size:13px;">Pick Time</b>  
+                                       </td>
+                                       <td width="50%">
+                                          <b> <label id="lblPickTime" style="font-size:13px;padding-left:10%;"/></b>
+                                       </td>
+                                   </tr>
+                                    <tr>
+                                       <td width="50%">
+                                       <input type="button" class="specialBtn" value="Vehicle Enroute" style="width:80%;" onclick="bidCancel()" />
+                                       </td>
+                                        <td width="50%">
+                                         <input type="button" class="specialBtn" value="Map" style="width:80%;" onclick="bidCancel()" />
+                                        </td>
+                                   </tr>
+                                   <tr>
+                                       <td width="50%">
+                                           <input type="button" class="specialBtn" value="Rate Driver" style="width:80%;" onclick="bidCancel()" />
+                                       </td>
+                                       <td width="50%">
+                                         <input type="button" class="specialBtn" value="Completed" style="width:80%;" onclick="bidCancel()" />
+                                       </td>
+                                   </tr>
+                               </table>
+                        </div>
+                    <div id="reqError" style="display:none;">
+                        <label id="lblerr" value="Error ocured!" style="color:red"/>
+                    </div>
+               </div> -->
         
         <div style="padding-top:100px"></div>
             
-            <div id="imgLoader" style="padding-top:100px;position:fixed; z-index: 2147483647;width:100%;height:100%;background-color:transparent;text-align: center;background-position: center;background-repeat: no-repeat;">
+           <!--<div id="imgLoader" style="padding-top:100px;position:fixed; z-index: 2147483647;width:100%;height:100%;background-color:transparent;text-align: center;background-position: center;background-repeat: no-repeat;">
                 <img src="jquery-mobile/styles/images/ajax-loader.gif" width="270" height="200"/>
-            </div>
+            </div>-->
             <div align="center" style="overflow:auto;">                
                 <div id="jqxgrid2"></div>
             </div>

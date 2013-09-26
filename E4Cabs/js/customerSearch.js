@@ -10,7 +10,7 @@ function loc()
     var loc2=$('#txt2location').val();
     var to = $('#txtTo').val();
     //var dis = "none";
-    window.location =  'Location.html?id='+from+'&rid='+loc2+'&rrid='+to;
+    window.location =  'Location.html?id='+from+'&rid='+to+'&rrid='+loc2;
 }
 
 function backtoCustomerhome()

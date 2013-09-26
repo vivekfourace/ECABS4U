@@ -32,6 +32,8 @@
            function initialize() {
                var geocoder = new google.maps.Geocoder();
                var address = locFrom;
+  
+               
                geocoder.geocode({ 'address': address }, function (results, status) {                   
                 if (status == google.maps.GeocoderStatus.OK) {
                     latitude = results[0].geometry.location.lat();
@@ -78,7 +80,7 @@
            function calcRoute() {
              var start = locFrom;
              var end = locTo;
-             var waypts = [];
+             //var waypts = [];
              var request = {
                  origin:start,
                  destination:end,
@@ -88,6 +90,7 @@
                if (status == google.maps.DirectionsStatus.OK) {
                  directionsDisplay.setDirections(response);
                }
+                
              });
            }
             google.maps.event.addDomListener(window, 'load', initialize);
