@@ -1,0 +1,36 @@
+#msg{
+    width:100%;
+}
+table th {
+border-left: 1px solid #000;
+border-right: 1px solid #000;
+}
+.table-style{
+    border-collapse:collapse;
+    border:1px solid;
+}
+.header-style{
+    background-color:#D8DCBB;
+}
+.body-style{
+    background-color:LightBlue;
+    word-wrap:break-word;
+}
+.th1{
+    width:25%;
+    height:30px;
+    text-align:center;
+}
+.th2{
+    width:15%;    
+    text-align:center;
+}
+.th3{
+    width:20%;
+    text-align:center;
+}
+.font{
+    font-size:14px;
+    font-family:vardana;
+    font:bold;
+}
