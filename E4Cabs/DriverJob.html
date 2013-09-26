@@ -74,7 +74,53 @@
                      alert(errorThrown);
                 }
              });
-                
+                                $.ajax({
+                                        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/dealResponse",
+                                        type:"POST",
+                                        dataType: "Json",
+                                        data:"{'userID':'" + relatedId +"'}",
+                                        contentType: "application/json; charset=utf-8",  
+                                        success: function (data) 
+                                                    {
+                                                        var getResID=data.d[0];
+                                                        var getResponse=data.d[1];
+                                                        if(getResponse="True")
+                                                        {
+                                                             $('#popup_box').fadeIn("slow");
+                                                            $('#divDeal').show();
+                                                            $.ajax({
+                                                                       url:"http://115.115.159.126/ECabs/ECabs4U.asmx/GetDealData",
+                                                                       type:"POST",
+                                                                       dataType: "Json",
+                                                                       data:"{'userID':'" + getResID + "'}",
+                                                                       contentType: "application/json; charset=utf-8",                     
+                                                                       success: function(data)
+                                                                             {
+                                                                                
+                                                                                $('#lbldealjob').text(data.d[0]);
+                                                                                $('#lbldealfrom').text(data.d[1]);
+                                                                                $('#lbldealto').text(data.d[2]);
+                                                                                $('#lbldealdistance').text(data.d[3]);
+                                                                                $('#lbldealdate').text(data.d[4]);
+                                                                                $('#lbldealtime').text(data.d[5]);                                      
+                                                                                $('#lbldealfare').text(data.d[6]);  
+                                                                       },
+                                                                       error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                                                       alert(errorThrown);
+                                                                           }
+                                                                      
+                                                                      });  
+                                                        }
+                                                        else
+                                                        {
+                                                            $('#divDeal').hide();
+                                                        }
+                                                    },
+                                        error: function (XMLHttpRequest, textStatus, errorThrown)
+                                                 {
+                                        alert(errorThrown);
+                                                }
+                                    });  
                $('#popupBoxClose').click(function ()
                 {
                   $('#popup_box').fadeOut("slow");
@@ -212,6 +258,7 @@
                                         alert(errorThrown);
                                                 }
                                     }); 
+                            
             }
             </script>
     </head>
@@ -336,6 +383,76 @@
                         </table>
                     </div>   
                     <br />
+                     <div id="divDeal" style="overflow:auto;display:none;"align="center">
+                        <table align="left" style="padding-left:10%;width:100%">
+                                   <tr>
+                                       <td width="50%">
+                                        <b style="font-size:13px;">Job Number</b>
+                                       </td>
+                                       <td width="50%">
+                                          <b> <label id="lbldealjob" style="font-size:13px;padding-left:10%;"/></b>
+                                       </td>
+                                   </tr>
+                                   
+                                   <tr>
+                                       <td width="50%">
+                                        <b style="font-size:13px;">From</b>
+                                       </td>
+                                       <td width="50%">
+                                         <b>  <label id="lbldealfrom" style="font-size:13px;padding-left:10%;"/></b>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td width="50%">
+                                          <b style="font-size:13px;">To</b>  
+                                       </td>
+                                       <td width="50%">
+                                          <b> <label id="lbldealto" style="font-size:13px;padding-left:10%;"/></b>
+                                       </td>
+                                   </tr>
+                                    <tr>
+                                       <td width="50%">
+                                          <b style="font-size:13px;">Pick Date</b>  
+                                       </td>
+                                       <td width="50%">
+                                          <b> <label id="lbldealdate" style="font-size:13px;padding-left:10%;"/></b>
+                                       </td>
+                                   </tr>
+                                    <tr>
+                                       <td width="50%">
+                                          <b style="font-size:13px;">Pick Time</b>  
+                                       </td>
+                                       <td width="50%">
+                                          <b> <label id="lbldealtime" style="font-size:13px;padding-left:10%;"/></b>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td width="50%">
+                                          <b style="font-size:13px;">Distance In Mile</b>  
+                                       </td>
+                                       <td width="50%">
+                                          <b> <label id="lbldealdistance" style="font-size:13px;padding-left:10%;"/></b>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td width="50%">
+                                          <b style="font-size:13px;">Fare</b>  
+                                       </td>
+                                       <td width="50%">
+                                        <b><img src="img/euro.png"width="10" height="10" style="padding-left:10%;"/><label id="lbldealfare" style="font-size:13px;"/></b>
+                                       </td>
+                                   </tr>
+                                    <tr>
+                                        <td width="50%">
+                                            <input type="button" class="specialBtn" value="Cancel" style="width:80%;" onclick="dealCancel()" />
+                                        </td>
+                                        <td width="50%">
+                                            <input type="button" class="specialBtn" value="Submit" style="width:80%;padding-left:10%;" onclick="dealSubmit()"/>
+                                        </td>
+                                    </tr>
+                          
+                        </table>
+                    </div> 
                </div>
        <table width="100%" style="border-collapse:collapse">
        <tr>
