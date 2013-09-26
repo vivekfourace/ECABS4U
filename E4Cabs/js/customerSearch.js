@@ -7,8 +7,9 @@ var relatedId = QString.split("=")[3].split("&")[0];
 function loc()
 {
     var from = $('#txtFrom').val();
-    var loc2=$('#txt2location').val();
     var to = $('#txtTo').val();
+    var loc2=$('#txt2location').val();
+    alert(from + to);
     //var dis = "none";
     window.location =  'Location.html?id='+from+'&rid='+loc2+'&rrid='+to;
 }
@@ -117,10 +118,6 @@ function logout()
         $.cookie("pass", 'null');
         window.location = "index.html";
     }
-
-
-
-
 
 //Cab Now Button
 function cabNow()

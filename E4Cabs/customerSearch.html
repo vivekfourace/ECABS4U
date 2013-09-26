@@ -55,7 +55,6 @@
                 });  
             } 
             function successCallback(position) {
-                alert('ddd');
                 var latitude = position.coords.latitude;
                 var longitude = position.coords.longitude;
                var geocoder = new google.maps.Geocoder();
@@ -65,7 +64,6 @@
                         if (status.match(google.maps.GeocoderStatus.OK)) {
                             var address = results[0].address_components;
                             var zipcode = address[address.length - 1].long_name;
-                            alert(zipcode);
                             alert(results[0].formatted_address);
                      }
                   });
@@ -440,6 +438,11 @@
        <div style="padding-top:60px">
            <table width="80%" style="border-collapse:collapse">
                <center>
+                   <tr>
+                       <td style="padding-top:20px">
+                           <a href="#" onclick="loc()" style="color:Black !important">Location</a>
+                       </td>
+                   </tr>
                    <tr>
                        <td align="center">
                            <label id="lblMessage" style="color:red;font-size:12px"/>
