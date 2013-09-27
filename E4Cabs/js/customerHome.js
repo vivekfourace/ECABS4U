@@ -7,7 +7,9 @@ window.onload = getProfile();
 //get customer profile
 function getProfile()
 {
-   
+   //alert(relatedId);
+    //alert(userId);
+    //alert(roleId);
 var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetCustomerrDetails";
 $.ajax(url,{
     type:"POST",
