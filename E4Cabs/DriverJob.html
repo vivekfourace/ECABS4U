@@ -46,15 +46,34 @@
                                              $('#lbljobno').text(data.d[0]);
                                              $('#lblFromLoc').text(data.d[1]);
                                              $('#lblToLoc').text(data.d[2]);
-                                             $('#lblDistance').text(data.d[3]);
-                                             $('#lblpickDateDriver').text(data.d[4]);
-                                             $('#lblpickTime').text(data.d[5]);
-                                             $('#lblpassengercount').text(data.d[6]);
-                                             $('#lbllargecase').text(data.d[7]);
-                                             $('#lblsmallcase').text(data.d[8]);
-                                             $('#lblwheelchair').text(data.d[9]);
-                                             $('#lblchildseat').text(data.d[10]);
-                                             $('#lblchildbooster').text(data.d[11]);                                         
+                                             
+                                             $('#lblDistance').text(data.d[5]);
+                                             $('#lblpickDateDriver').text(data.d[6]);
+                                             $('#lblpickTime').text(data.d[7]);
+                                             $('#lblpassengercount').text(data.d[8]);
+                                             $('#lbllargecase').text(data.d[9]);
+                                             $('#lblsmallcase').text(data.d[10]);
+                                             $('#lblwheelchair').text(data.d[11]);
+                                             $('#lblchildseat').text(data.d[12]);
+                                             $('#lblchildbooster').text(data.d[13]); 
+                                              if(data.d[3]!=null)
+                                              {
+                                                   var sec= data.d[3];
+                                                  
+                                                   $('#lblpopthird').text(sec);
+                                                   $('#otherLoc').show();
+                                                  if(data.d[4]!=null)
+                                                  {
+                                                       var third= data.d[4];
+                                                       $('#lblpopfour').text(third);
+                                                       $('#otherLoc').show();
+                                                  }
+                                                  
+                                              }
+                                              else
+                                              {
+                                                 $('#otherLoc').hide();  
+                                              }
                                        
                                     },
                                     error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -137,13 +156,13 @@
                // var customer=abc;
                 var from=$('#lblFromLoc').text();
                 var to=$('#lblToLoc').text();
-               // var third=$('#lblpopthird').text();
-               // var four=$('#lblpopfour').text();
+                var third=$('#lblpopthird').text();
+                var four=$('#lblpopfour').text();
                 $('#lblpopjob').text(job);
                 $('#lblcustomer').text("abc");
                 $('#lblpopfrom').text(from);
                 $('#lblpopto').text(to);
-                //$('#lblpopthird').text(third);
+               $('#lblpopthird').text(third);
                 //$('#lblpopfour').text(four);
                 document.getElementById("trwheelchair").style.display = 'none';
                 document.getElementById("trfare").style.display = 'none';
@@ -259,6 +278,32 @@
                                                 }
                                     }); 
                             
+            }
+            function dealSubmit()
+            {
+              var reqID=$('#lbldealjob').text();  
+              alert(reqID);
+                                    $.ajax({
+                                        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/jobBooked",
+                                        type:"POST",
+                                        dataType: "Json",
+                                        data:"{'userID':'" + relatedId +"','reqid':'"+ reqID +"'}",
+                                        contentType: "application/json; charset=utf-8",  
+                                        success: function (data) 
+                                                    {
+                                                          alert(reqID);
+                                                    },
+                                        error: function (XMLHttpRequest, textStatus, errorThrown)
+                                                 {
+                                        alert(errorThrown);
+                                                }
+                                    }); 
+            }
+            function dealCancel()
+            {
+                 $('#divDeal').hide();
+                 $('#popup_box').fadeOut("slow");
+                                                            
             }
             </script>
     </head>
@@ -478,7 +523,7 @@
                    
                </td>
                <td width="50%" style="padding-left:5%;">
-                 <b style="font-size:13px">  <label id="lblToLoc" readonly="true"></label></b><img src="img/Addlocation.png" id="secondLoc" width="15" height="15" style="padding-left:35%;" onclick="secoundLocation()"/>
+                 <b style="font-size:13px">  <label id="lblToLoc" readonly="true"></label></b><img src="img/Addlocation.png" id="otherLoc" width="15" height="15" style="padding-left:35%;display:none;" onclick="secoundLocation()"/>
                </td> 
      </tr>
               
