@@ -6,10 +6,16 @@
          <link rel="stylesheet" type="text/css" href="css/index.css" />
         <link rel="stylesheet" type="text/css" href="css/site.css" />
         <link rel="stylesheet" type="text/css" href="css/PopUp.css" />
+        <link rel="stylesheet" type="text/css" href="css/append.css" />
         <script type="text/javascript" src="Scripts/jquery-1.8.2.min.js"></script>
         <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
         
         <script type="text/javascript" src="js/customerSearchList.js"></script>
+        <script type="text/javascript">
+            function AutoRefresh( t ) {
+	            setTimeout("location.reload(true);", t);
+        }
+        </script>
         
         <style type="text/css">
             .header-style{
@@ -21,9 +27,8 @@
         </style>
         
     </head>
-    <body>
-        <center>
-         
+    <body onload="JavaScript:AutoRefresh(5000);">
+        <center>         
         <div class="header">
             <div style="float:left;height:48px;width:100px;padding-left:5px">
                 <img src="img/logo1.png" class="logo"/>
@@ -53,13 +58,6 @@
                                        
                                    </td>
                                   
-                                   </tr>
-                                   <tr style="display:none;">
-                                   <td width="50%" colspan="2">
-                                       <b style="font-size:13px;color:red">Driver Id</b>
-                                       
-                                   </td>
-                                      <label id="lbldriverId" style="font-size:13px;padding-left:10%;"/>
                                    </tr>
                                    <tr>
                                        <td width="50%">
@@ -142,32 +140,71 @@
         <div style="padding-top:80px"></div>            
             <!--<div id="imgLoader" style="padding-top:100px;position:fixed; z-index: 2147483647;width:100%;height:100%;background-color:transparent;text-align: center;background-position: center;background-repeat: no-repeat;">
                 <img src="jquery-mobile/styles/images/ajax-loader.gif" width="270" height="200"/>
+            </div>
+            <div id="msg" style="width:100%"></div>
+            
+            <div style="width:100%;position:fixed;bottom:40px;">              
+                <table id="btnTable" style="display:" width="90%">
             </div>-->
             
-            <div align="center"> 
-                <div id="msg"></div>
-                
+            <div id="divDriverList" style="width:100%;position:fixed;bottom:40px;display:none"> 
+                <div id="msg"></div>                
                 <table id="btnTable" style="display:" width="100%">
                     <tr>
-                        <td width="50%">
-                            <input type="button" id="btnVehiclEnroute" class="btn-tmp" value="Vehicle Enroute" onclick="demo()"/>
+                        <td width="50%" align="center">
+                            <input type="button" id="btnVehiclEnroute" class="btn-cust" value="Vehicle Enroute" onclick="VehicleStatus()"/>
                         </td>
-                        <td width="50%">
-                            <input type="button" id="btnMap" class="btn-tmp" value="Map" onclick=""/>
+                        <td width="50%" align="center">
+                            <input type="button" id="btnMap" class="btn-cust" value="Map" onclick="Map()"/>
                         </td>
                     </tr>
                     <tr>
-                        <td width="50%">
-                            <input type="button" id="btnRateDriver" value="Rate Driver" class="btn-tmp" onclick=""/>
+                        <td width="50%" align="center">
+                            <input type="button" id="btnRateDriver" value="Rate Driver" class="btn-cust" onclick="DriverRating()"/>
                         </td>
-                        <td width="50%">
-                            <input type="button" id="btnComplete" class="btn-tmp" value="Complete" onclick=""/>
+                        <td width="50%" align="center">
+                            <input type="button" id="btnComplete" class="btn-cust" value="Complete" onclick="Complete()"/>
                         </td>
                     </tr>
                 </table>
             </div>
             
-          
+            <div style="width:100%;position:fixed;bottom:0px;">
+            <table style="width:100%;" class="btn-tmpFooter">
+                <tr>
+                    <td style="width:20%;">
+                        <div>
+                            <img src="img/Home.png" width="27px;" style="float:left;cursor:pointer" title="Home" onclick="preCab()"/>
+                        </div>
+                    </td>
+                     <td style="width:20%;">
+                        <div>
+                            <img src="img/Cab.png" width="27px;" style="float:left;cursor:pointer" title="CabNow" onclick="cabNow()"/>
+                        </div>
+                    </td>
+                    <td style="width:20%;">
+                        <div>
+                            <img src="img/User.png" width="27px;" style="float:left; cursor:pointer" title="Profile" onclick="myProfile()"/>
+                        </div>
+                    </td>
+                    <td style="width:20%;">
+                        <div>
+                            <img src="img/History1.png" width="27px;" style="float:left;cursor:pointer" title="History" onclick="bookedHistory()"/>
+                        </div>
+                    </td>
+                    <td style="width:20%;">
+                        <div>
+                            <img src="img/feedback.png" width="27px;" style="float:left;cursor:pointer" title="Feedback" onclick="feedBack()"/>
+                        </div>
+                    </td>
+                    <td style="width:20%;">
+                        <div>
+                            <img src="img/logout.png" width="27px;" style="float:left;cursor:pointer" title="Logout" onclick="logout()"/>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
         </center>
     </body>
 </html>
