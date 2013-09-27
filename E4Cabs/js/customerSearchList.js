@@ -176,7 +176,24 @@ $(document).ready(function()
              
 })
 
-  function calOk()
+ function calOk()
+  {
+     $('#popup_box').fadeOut("slow");
+      var requestId=$('#lblconfirmjob').text();
+      var driverId=$('#lbldriverId').text();
+      $.ajax({
+       url: "http://115.115.159.126/ECabs/ECabs4U.asmx/SaveData",
+       type:"POST",
+       dataType: "Json",
+       data:"{'driverId':'" +driverId+"','requestId':'"+ requestId +"'}",
+       contentType: "application/json; charset=utf-8",  
+       success:function(data)
+          {
+              
+          },
+       error: function (XMLHttpRequest, textStatus, errorThrown)
                 {
-                  $('#popup_box').fadeOut("slow");
-                } 
+                   alert(errorThrown);
+               }
+   });
+  }    
