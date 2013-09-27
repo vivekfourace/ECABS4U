@@ -20,7 +20,7 @@ function gethistory()
 {
    
     
-    //var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerHistoryDetails";
+   var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerHistoryDetails";
                 $.ajax(url, {
                     
                     type:"POST",
