@@ -30,25 +30,27 @@ function backtosearch()
             //Ajax loader--ends
 
 
-  $.ajax({
-    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData",
-     type:"POST",
-     dataType: "Json",
-     data:"{'requestID':'" +requestID+"'}",
-     contentType: "application/json; charset=utf-8",  
-     success: getData,
-     error: function (XMLHttpRequest, textStatus, errorThrown) {
-          alert(errorThrown);
-      }
-   });
+//  $.ajax({
+//    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData",
+//     type:"POST",
+//     dataType: "Json",
+//     data:"{'requestID':'" +requestID+"'}",
+//     contentType: "application/json; charset=utf-8",  
+//     success: getData,
+//     error: function (XMLHttpRequest, textStatus, errorThrown) {
+//          alert(errorThrown);
+//      }
+//   });
 
 
-function getData(data)
+//function getData(data)
+function show()
 {
-    var count = data.d.length;
-    var html = '<table width="100%" class="table-style">';
-    
-    html += '<thead class="header-style">';
+    var count = 5;
+    //var count = data.d.length;
+    var html = '<table width="100%" style="border-collapse:collapse">';
+    html += '<div style="background-color:yellow;"><i style="font:bold;font-size:16px;color:Blue;">Available Drivers<i></div>'
+    html += '<thead style="background-color:#D8DCBB;color:darkblue;">';
     html += '<tr>';
     html += '<th class="th1 font">Name</th>';
     html += '<th class="th2 font">Fare</th>';
@@ -60,29 +62,38 @@ function getData(data)
                    html +='<tbody class="body-style">';  
                         for(var i=0; i<count; i++)
                         {
-                            var driverID = data.d[i]["DriverID"];
-                            var customerReqId = data.d[i]["CustomerRequestID"];
                             html += '<tr>';
-                            html += "<td width='25%' align='center'>" + data.d[i]["DriverName"] + "</td>";
-                            html += "<td width='15%' align='center'>" + data.d[i]["DriverName"] +"</td>";
-                            html += "<td width='20%' align='center'>" + data.d[i]["StartDate"] +"</td>";
-                            html += "<td width='20%' align='center'>" + data.d[i]["StartTime"] +"</td>";
-                            html += "<td width='20%' align='center'>" + '<input type="button" value="Hire" id= "'+ driverID +'" onclick = "Hireme(\''+driverID+'\',\''+customerReqId+'\'); return false;" title= "'+driverID+'" />' + "</td>";
+                            html += "<td width='25%' align='center'>" + i + "</td>";
+                            html += "<td width='15%' align='center'>" + i +"</td>";
+                            html += "<td width='20%' align='center'>" + i +"</td>";
+                            html += "<td width='20%' align='center'>" + i +"</td>";
+                            html += "<td width='20%' align='center'>" + '<input type="button" value="Hire" id= "'+ i +'" onclick = "this.disabled=true; this.value=loading" return false;" title= "'+i+'" />' + "</td>";
                             html += '</tr>';
+                           // var driverID = data.d[i]["DriverID"];
+                           // var customerReqId = data.d[i]["CustomerRequestID"];
+                           // html += '<tr>';
+                           // html += "<td width='25%' align='center'>" + data.d[i]["DriverName"] + "</td>";
+                           // html += "<td width='15%' align='center'>" + data.d[i]["Comments"] +"</td>";
+                           // html += "<td width='20%' align='center'>" + data.d[i]["StartDate"] +"</td>";
+                           // html += "<td width='20%' align='center'>" + data.d[i]["StartTime"] +"</td>";
+                           // html += "<td width='20%' align='center'>" + '<input type="button" value="Hire" id= "'+ driverID +'" onclick = "Hireme(\''+driverID+'\',\''+customerReqId+'\'); return false;" title= "'+driverID+'" />' + "</td>";
+                           // html += '</tr>';
                         }
                    html +='</tbody>';
    html +='</table>';
    $('#msg').append(html);
  }
 
+
 function Hireme(driID, reqID)
 {
+    //$(driID).attr('disabled', 'true');
+    
+    this.disabled=true;
     var driverId = driID;
     var requestId = reqID;
-    alert(driID);
-    alert(reqID);
     $.ajax({
-       url: "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse",
+       //url: "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse",
        type:"POST",
        dataType: "Json",
        data:"{'driverId':'" +driverId+"','requestId':'"+ requestId +"'}",

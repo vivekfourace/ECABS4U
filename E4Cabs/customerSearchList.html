@@ -9,11 +9,14 @@
         <script type="text/javascript" src="Scripts/jquery-1.8.2.min.js"></script>
         <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
         <script type="text/javascript" src="js/customerSearchList.js"></script>
-        
+        <script type="text/javascript">
+            function AutoRefresh( t ) {
+	            setTimeout("location.reload(true);", t);
+        }
+        </script>
     </head>
-    <body>
-        <center>
-         
+    <body onload="JavaScript:AutoRefresh(5000);">
+        <center>         
         <div class="header">
             <div style="float:left;height:48px;width:100px;padding-left:5px">
                 <img src="img/logo1.png" class="logo"/>
@@ -33,27 +36,64 @@
                 <img src="jquery-mobile/styles/images/ajax-loader.gif" width="270" height="200"/>
             </div>
             <div id="msg" style="width:100%"></div>
-            <div align="center">                
-                
-                <table id="btnTable" style="display:" width="100%">
+            
+            <div style="width:100%;position:fixed;bottom:40px;">              
+                <table id="btnTable" style="display:" width="90%">
                     <tr>
-                        <td width="50%">
-                            <input type="button" id="btnVehiclEnroute" class="" value="Vehicle Enroute" onclick="VehicleStatus()"/>
+                        <td width="50%" align="center">
+                            <input type="button" id="btnVehiclEnroute" class="btn-cust" value="Vehicle Enroute" onclick="VehicleStatus()"/>
                         </td>
-                        <td width="50%">
-                            <input type="button" id="btnMap" class="" value="Map" onclick="ShowMap()"/>
+                        <td width="50%" align="center">
+                            <input type="button" id="btnMap" class="btn-cust" value="Map" onclick="show()"/>
                         </td>
                     </tr>
                     <tr>
-                        <td width="50%">
-                            <input type="button" id="btnRateDriver" value="Rate Driver" class="" onclick="DriverRating()"/>
+                        <td width="50%" align="center">
+                            <input type="button" id="btnRateDriver" value="Rate Driver" class="btn-cust" onclick="DriverRating()"/>
                         </td>
-                        <td width="50%">
-                            <input type="button" id="btnComplete" class="" value="Complete" onclick="Complete()"/>
+                        <td width="50%" align="center">
+                            <input type="button" id="btnComplete" class="btn-cust" value="Complete" onclick="Complete()"/>
                         </td>
                     </tr>
                 </table>
             </div>
+            
+            <div style="width:100%;position:fixed;bottom:0px;">
+            <table style="width:100%;" class="btn-tmpFooter">
+                <tr>
+                    <td style="width:20%;">
+                        <div>
+                            <img src="img/Home.png" width="27px;" style="float:left;cursor:pointer" title="Home" onclick="preCab()"/>
+                        </div>
+                    </td>
+                     <td style="width:20%;">
+                        <div>
+                            <img src="img/Cab.png" width="27px;" style="float:left;cursor:pointer" title="CabNow" onclick="cabNow()"/>
+                        </div>
+                    </td>
+                    <td style="width:20%;">
+                        <div>
+                            <img src="img/User.png" width="27px;" style="float:left; cursor:pointer" title="Profile" onclick="myProfile()"/>
+                        </div>
+                    </td>
+                    <td style="width:20%;">
+                        <div>
+                            <img src="img/History1.png" width="27px;" style="float:left;cursor:pointer" title="History" onclick="bookedHistory()"/>
+                        </div>
+                    </td>
+                    <td style="width:20%;">
+                        <div>
+                            <img src="img/feedback.png" width="27px;" style="float:left;cursor:pointer" title="Feedback" onclick="feedBack()"/>
+                        </div>
+                    </td>
+                    <td style="width:20%;">
+                        <div>
+                            <img src="img/logout.png" width="27px;" style="float:left;cursor:pointer" title="Logout" onclick="logout()"/>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
         </center>
     </body>
 </html>
