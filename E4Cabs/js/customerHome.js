@@ -3,11 +3,12 @@ var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
+//alert(userId+" "+roleId+ " "+relatedId)
+
 window.onload = getProfile();
 //get customer profile
 function getProfile()
 {
-   
 var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetCustomerrDetails";
 $.ajax(url,{
     type:"POST",
@@ -17,7 +18,7 @@ $.ajax(url,{
     success: ShowData,
     
     error: function (XMLHttpRequest, textStatus, errorThrown) {
-    alert(errorThrown);
+    alert(errorThrown.message);
         }
  });
 }

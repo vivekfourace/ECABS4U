@@ -30,25 +30,27 @@ function backtosearch()
             //Ajax loader--ends
 
 
-  $.ajax({
-    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData",
-     type:"POST",
-     dataType: "Json",
-     data:"{'requestID':'" +requestID+"'}",
-     contentType: "application/json; charset=utf-8",  
-     success: getData,
-     error: function (XMLHttpRequest, textStatus, errorThrown) {
-          alert(errorThrown);
-      }
-   });
+ $.ajax({
+   url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData",
+    type:"POST",
+    dataType: "Json",
+    data:"{'requestID':'" +requestID+"'}",
+    contentType: "application/json; charset=utf-8",  
+    success: getData,
+    error: function (XMLHttpRequest, textStatus, errorThrown) {
+         alert(errorThrown);
+     }
+  });
 
 
-function getData(data)
+//function getData(data)
+function show()
 {
-    var count = data.d.length;
-    var html = '<table width="100%" class="table-style">';
-    
-    html += '<thead class="header-style">';
+    var count = 5;
+    //var count = data.d.length;
+    var html = '<table width="100%" style="border-collapse:collapse">';
+    html += '<div style="background-color:yellow;"><i style="font:bold;font-size:16px;color:Blue;">Available Drivers<i></div>'
+    html += '<thead style="background-color:#D8DCBB;color:darkblue;">';
     html += '<tr>';
     html += '<th class="th1 font">Name</th>';
     html += '<th class="th2 font">Fare</th>';
@@ -60,28 +62,29 @@ function getData(data)
                    html +='<tbody class="body-style">';  
                         for(var i=0; i<count; i++)
                         {
-                            var driverID = data.d[i]["DriverID"];
-                            
-                            var customerReqId = data.d[i]["CustomerRequestID"];
-                            html += '<tr>';
-                            html += "<td width='25%' align='center'>" + data.d[i]["DriverName"] + "</td>";
-                            html += "<td width='15%' align='center'>" + data.d[i]["DriverName"] +"</td>";
-                            html += "<td width='20%' align='center'>" + data.d[i]["StartDate"] +"</td>";
-                            html += "<td width='20%' align='center'>" + data.d[i]["StartTime"] +"</td>";
-                            html += "<td width='20%' align='center'>" + '<input type="button" value="Hire" id= "'+ driverID +'" onclick = "Hireme(\''+driverID+'\',\''+customerReqId+'\'); return false;" title= "'+driverID+'" />' + "</td>";
-                            html += '</tr>';
+                           var driverID = data.d[i]["DriverID"];
+                           var customerReqId = data.d[i]["CustomerRequestID"];
+                           html += '<tr>';
+                           html += "<td width='25%' align='center'>" + data.d[i]["DriverName"] + "</td>";
+                           html += "<td width='15%' align='center'>" + data.d[i]["Comments"] +"</td>";
+                           html += "<td width='20%' align='center'>" + data.d[i]["StartDate"] +"</td>";
+                           html += "<td width='20%' align='center'>" + data.d[i]["StartTime"] +"</td>";
+                           html += "<td width='20%' align='center'>" + '<input type="button" value="Hire" id= "'+ driverID +'" onclick = "Hireme(\''+driverID+'\',\''+customerReqId+'\'); return false;" title= "'+driverID+'" />' + "</td>";
+                           html += '</tr>';
                         }
                    html +='</tbody>';
    html +='</table>';
    $('#msg').append(html);
  }
 
+
 function Hireme(driID, reqID)
 {
+    //$(driID).attr('disabled', 'true');
+    
+    this.disabled=true;
     var driverId = driID;
     var requestId = reqID;
-    alert(driID);
-    alert(reqID);
     $.ajax({
        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse",
        type:"POST",
@@ -98,59 +101,6 @@ function Hireme(driID, reqID)
 
 function getResponseFromDriver(data)
 {
-     window.setInterval(function () {
-      $.ajax({
-                                        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/checkdealResponse",
-                                        type:"POST",
-                                        dataType: "Json",
-                                        data:"{'userID':'" + relatedId +"'}",
-                                        contentType: "application/json; charset=utf-8",  
-                                        success: function (data) 
-                                                    {
-                                                        var getDriverID=data.d[0];
-                                                        var getResponse=data.d[1];
-                                                        var getBooked=data.d[2];
-                                                        if(getBooked="True")
-                                                        {
-                                                             $('#popup_box').fadeIn("slow");
-                                                            $('#divDealConfirmed').show();
-                                                            $.ajax({
-                                                                       url:"http://115.115.159.126/ECabs/ECabs4U.asmx/GetConfirmData",
-                                                                       type:"POST",
-                                                                       dataType: "Json",
-                                                                       data:"{'driverID':'"+ getDriverID +"','requestID':'" + getResponse + "'}",
-                                                                       contentType: "application/json; charset=utf-8",                     
-                                                                       success: function(data)
-                                                                             {
-                                                                                $('#lbldriverId').text(getDriverID);
-                                                                                $('#lblconfirmjob').text(data.d[0]);
-                                                                                $('#lblconfirmdrivername').text(data.d[1]);
-                                                                                $('#lblconfirmfrom').text(data.d[2]);
-                                                                                $('#lblconfirmto').text(data.d[3]);
-                                                                                $('#lblconfirmdistance').text(data.d[4]);
-                                                                                $('#lblconfirmdate').text(data.d[5]);
-                                                                                $('#lblconfirmtime').text(data.d[6]);                                      
-                                                                                $('#lblconfirmfare').text(data.d[7]);  
-                                                                       },
-                                                                       error: function (XMLHttpRequest, textStatus, errorThrown) {
-                                                                               alert(errorThrown);
-                                                                           }
-                                                                      
-                                                                      });  
-                                                        }
-                                                       if(getBooked="Error")
-                                                        {
-                                                             $('#popup_box').hide();
-                                                            $('#divDealConfirmed').hide();
-                                                        }
-                                                    },
-                                        error: function (XMLHttpRequest, textStatus, errorThrown)
-                                                 {
-                                        alert(errorThrown);
-                                                }
-                                    });  
-    
-           },10000);     
 }
 
 function VehicleStatus()
@@ -170,27 +120,63 @@ function Complete()
     
 }
 
-function calOk()
-  {
-     $('#popup_box').fadeOut("slow");
-      var requestId=$('#lblconfirmjob').text();
-      var driverId=$('#lbldriverId').text();
-      $.ajax({
-       url: "http://115.115.159.126/ECabs/ECabs4U.asmx/SaveData",
-       type:"POST",
-       dataType: "Json",
-       data:"{'driverId':'" +driverId+"','requestId':'"+ requestId +"'}",
-       contentType: "application/json; charset=utf-8",  
-       success:getResponseFromDriver ,
-       error: function (XMLHttpRequest, textStatus, errorThrown)
-                {
-                   alert(errorThrown);
-               }
-   });
-  }    
-   
-         
+$(document).ready(function()
+{
+     $.ajax({
+                                        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/checkdealResponse",
+                                        type:"POST",
+                                        dataType: "Json",
+                                        data:"{'userID':'" + relatedId +"'}",
+                                        contentType: "application/json; charset=utf-8",  
+                                        success: function (data) 
+                                                    {
+                                                        var getDriverID=data.d[0];
+                                                        var getResponse=data.d[1];
+                                                        var getBooked=data.d[2];
+                                                        
+                                                        if(getBooked="True")
+                                                        {
+                                                             $('#popup_box').fadeIn("slow");
+                                                            $('#divDealConfirmed').show();
+                                                            $.ajax({
+                                                                       url:"http://115.115.159.126/ECabs/ECabs4U.asmx/GetConfirmData",
+                                                                       type:"POST",
+                                                                       dataType: "Json",
+                                                                       data:"{'driverID':'"+ getDriverID +"','requestID':'" + getResponse + "'}",
+                                                                       contentType: "application/json; charset=utf-8",                     
+                                                                       success: function(data)
+                                                                             {
+                                                                                
+                                                                                $('#lblconfirmjob').text(data.d[0]);
+                                                                                $('#lblconfirmdrivername').text(data.d[1]);
+                                                                                $('#lblconfirmfrom').text(data.d[2]);
+                                                                                $('#lblconfirmto').text(data.d[3]);
+                                                                                $('#lblconfirmdistance').text(data.d[4]);
+                                                                                $('#lblconfirmdate').text(data.d[5]);
+                                                                                $('#lblconfirmtime').text(data.d[6]);                                      
+                                                                                $('#lblconfirmfare').text(data.d[7]);  
+                                                                       },
+                                                                       error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                                                       alert(errorThrown);
+                                                                           }
+                                                                      
+                                                                      });  
+                                                        }
+                                                        else
+                                                        {
+                                                            $('#divDeal').hide();
+                                                        }
+                                                    },
+                                        error: function (XMLHttpRequest, textStatus, errorThrown)
+                                                 {
+                                        alert(errorThrown);
+                                                }
+                                    });  
     
+             
+})
 
-
-
+  function calOk()
+                {
+                  $('#popup_box').fadeOut("slow");
+                } 
