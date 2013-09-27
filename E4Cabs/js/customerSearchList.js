@@ -98,29 +98,8 @@ function Hireme(driID, reqID)
 
 function getResponseFromDriver(data)
 {
-    alert(data.d);
-}
-
-function VehicleStatus()
-{
-    
-}
-function ShowMap()
-{
-    
-}
-function DriverRating()
-{
-    
-}
-function Complete()
-{
-    
-}
-
-$(document).ready(function()
-{
-     $.ajax({
+     window.setInterval(function () {
+      $.ajax({
                                         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/checkdealResponse",
                                         type:"POST",
                                         dataType: "Json",
@@ -143,7 +122,7 @@ $(document).ready(function()
                                                                        contentType: "application/json; charset=utf-8",                     
                                                                        success: function(data)
                                                                              {
-                                                                                
+                                                                                $('#lbldriverId').text(getDriverID);
                                                                                 $('#lblconfirmjob').text(data.d[0]);
                                                                                 $('#lblconfirmdrivername').text(data.d[1]);
                                                                                 $('#lblconfirmfrom').text(data.d[2]);
@@ -154,14 +133,15 @@ $(document).ready(function()
                                                                                 $('#lblconfirmfare').text(data.d[7]);  
                                                                        },
                                                                        error: function (XMLHttpRequest, textStatus, errorThrown) {
-                                                                       alert(errorThrown);
+                                                                               alert(errorThrown);
                                                                            }
                                                                       
                                                                       });  
                                                         }
-                                                        else
+                                                       if(getBooked="Error")
                                                         {
-                                                            $('#divDeal').hide();
+                                                             $('#popup_box').hide();
+                                                            $('#divDealConfirmed').hide();
                                                         }
                                                     },
                                         error: function (XMLHttpRequest, textStatus, errorThrown)
@@ -170,14 +150,45 @@ $(document).ready(function()
                                                 }
                                     });  
     
-             
-})
+           },10000);     
+}
 
-  function calOk()
+function VehicleStatus()
+{
+    
+}
+function ShowMap()
+{
+    
+}
+function DriverRating()
+{
+    
+}
+function Complete()
+{
+    
+}
+
+function calOk()
+  {
+     $('#popup_box').fadeOut("slow");
+      var requestId=$('#lblconfirmjob').text();
+      var driverId=$('#lbldriverId').text();
+      $.ajax({
+       url: "http://115.115.159.126/ECabs/ECabs4U.asmx/SaveData",
+       type:"POST",
+       dataType: "Json",
+       data:"{'driverId':'" +driverId+"','requestId':'"+ requestId +"'}",
+       contentType: "application/json; charset=utf-8",  
+       success:getResponseFromDriver ,
+       error: function (XMLHttpRequest, textStatus, errorThrown)
                 {
-                  $('#popup_box').fadeOut("slow");
-                }    
-      
+                   alert(errorThrown);
+               }
+   });
+  }    
+   
          
     
 
