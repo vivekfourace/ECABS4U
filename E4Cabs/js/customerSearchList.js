@@ -42,12 +42,9 @@ function backtosearch()
      }
   });
 
-
-//function getData(data)
-function show()
+function getData(data)
 {
-    var count = 5;
-    //var count = data.d.length;
+    var count = data.d.length;
     var html = '<table width="100%" style="border-collapse:collapse">';
     html += '<div style="background-color:yellow;"><i style="font:bold;font-size:16px;color:Blue;">Available Drivers<i></div>'
     html += '<thead style="background-color:#D8DCBB;color:darkblue;">';
@@ -101,28 +98,8 @@ function Hireme(driID, reqID)
 
 function getResponseFromDriver(data)
 {
-}
-
-function VehicleStatus()
-{
-    
-}
-function ShowMap()
-{
-    
-}
-function DriverRating()
-{
-    
-}
-function Complete()
-{
-    
-}
-
-$(document).ready(function()
-{
-     $.ajax({
+    window.setInterval(function(){
+        $.ajax({
                                         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/checkdealResponse",
                                         type:"POST",
                                         dataType: "Json",
@@ -146,7 +123,7 @@ $(document).ready(function()
                                                                        contentType: "application/json; charset=utf-8",                     
                                                                        success: function(data)
                                                                              {
-                                                                                
+                                                                                $('#lbldriverId').text(getDriverID);
                                                                                 $('#lblconfirmjob').text(data.d[0]);
                                                                                 $('#lblconfirmdrivername').text(data.d[1]);
                                                                                 $('#lblconfirmfrom').text(data.d[2]);
@@ -172,9 +149,32 @@ $(document).ready(function()
                                         alert(errorThrown);
                                                 }
                                     });  
+        
+    },10000);
+}
+
+function VehicleStatus()
+{
     
-             
-})
+}
+function ShowMap()
+{
+    var from = $('#lblconfirmfrom').val();
+    var to = $('#lblconfirmto').val();
+    //var loc2=$('#txt2location').val();
+    var loc2 = "";
+    alert(from + to);
+    //var dis = "none";
+    window.location =  'Location.html?id='+from+'&rid='+to+'&rrid='+loc2; 
+}
+function DriverRating()
+{
+    
+}
+function Complete()
+{
+    
+}
 
  function calOk()
   {
