@@ -61,6 +61,7 @@ function getData(data)
                         for(var i=0; i<count; i++)
                         {
                             var driverID = data.d[i]["DriverID"];
+                            
                             var customerReqId = data.d[i]["CustomerRequestID"];
                             html += '<tr>';
                             html += "<td width='25%' align='center'>" + data.d[i]["DriverName"] + "</td>";
@@ -116,6 +117,69 @@ function Complete()
 {
     
 }
+
+$(document).ready(function()
+{
+     $.ajax({
+                                        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/checkdealResponse",
+                                        type:"POST",
+                                        dataType: "Json",
+                                        data:"{'userID':'" + relatedId +"'}",
+                                        contentType: "application/json; charset=utf-8",  
+                                        success: function (data) 
+                                                    {
+                                                        var getDriverID=data.d[0];
+                                                        var getResponse=data.d[1];
+                                                        var getBooked=data.d[2];
+                                                        if(getBooked="True")
+                                                        {
+                                                             $('#popup_box').fadeIn("slow");
+                                                            $('#divDealConfirmed').show();
+                                                            $.ajax({
+                                                                       url:"http://115.115.159.126/ECabs/ECabs4U.asmx/GetConfirmData",
+                                                                       type:"POST",
+                                                                       dataType: "Json",
+                                                                       data:"{'driverID':'"+ getDriverID +"','requestID':'" + getResponse + "'}",
+                                                                       contentType: "application/json; charset=utf-8",                     
+                                                                       success: function(data)
+                                                                             {
+                                                                                
+                                                                                $('#lblconfirmjob').text(data.d[0]);
+                                                                                $('#lblconfirmdrivername').text(data.d[1]);
+                                                                                $('#lblconfirmfrom').text(data.d[2]);
+                                                                                $('#lblconfirmto').text(data.d[3]);
+                                                                                $('#lblconfirmdistance').text(data.d[4]);
+                                                                                $('#lblconfirmdate').text(data.d[5]);
+                                                                                $('#lblconfirmtime').text(data.d[6]);                                      
+                                                                                $('#lblconfirmfare').text(data.d[7]);  
+                                                                       },
+                                                                       error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                                                       alert(errorThrown);
+                                                                           }
+                                                                      
+                                                                      });  
+                                                        }
+                                                        else
+                                                        {
+                                                            $('#divDeal').hide();
+                                                        }
+                                                    },
+                                        error: function (XMLHttpRequest, textStatus, errorThrown)
+                                                 {
+                                        alert(errorThrown);
+                                                }
+                                    });  
+    
+             
+})
+
+  function calOk()
+                {
+                  $('#popup_box').fadeOut("slow");
+                }    
+      
+         
+    
 
 
 
