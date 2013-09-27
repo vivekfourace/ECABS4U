@@ -9,27 +9,25 @@ function backtosearch()
     window.location = 'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
-//alert(userId + roleId + relatedId + requestID);
+        //alert(userId + roleId + relatedId + requestID);
         
-         ////Ajax loader--start
-         //     $('#imgLoader').bind('ajaxStart', function(){
-         //         $(this).show();
-         //         showDisableLayer();
-         //      }).bind('ajaxStop', function(){
-         //         $(this).hide();
-         //          hideDisableLayer();
-         //     });
-         //     
-         //       showDisableLayer = function() {
-         //       $('<div id="loading" style="position:fixed; z-index: 2147483647; top:0; left:0; background-color: #E6E6E6; opacity:0.4;filter:alpha(opacity=0);"></div>').appendTo(document.body);
-         //       $("#loading").height($(document).height());
-         //       $("#loading").width($(document).width());
-         //     };
-
-         //         hideDisableLayer = function() {
-         //         $("#loading").remove();
-         //     };
-         //   //Ajax loader--ends
+         //Ajax loader--start
+              $('#imgLoader').bind('ajaxStart', function(){
+                  $(this).show();
+                  showDisableLayer();
+               }).bind('ajaxStop', function(){
+                  $(this).hide();
+                   hideDisableLayer();
+              });
+                showDisableLayer = function() {
+                $('<div id="loading" style="position:fixed; z-index: 2147483647; top:0; left:0; background-color: #E6E6E6; opacity:0.4;filter:alpha(opacity=0);"></div>').appendTo(document.body);
+                $("#loading").height($(document).height());
+                $("#loading").width($(document).width());
+              };
+                  hideDisableLayer = function() {
+                  $("#loading").remove();
+              };
+            //Ajax loader--ends
 
 
   $.ajax({
@@ -48,33 +46,34 @@ function backtosearch()
 function getData(data)
 {
     var count = data.d.length;
-    alert(count);
-    $('#msg').append('<table style="width:100%" cellspacing="1" border="1px solid cyan">')
-    .append('<thead style="background-color:LightGray;" valign="left">')
-    .append('<tr>')
-    .append('<th style="width:25%;height:25px">Name</th>')
-    .append('<th style="width:15%">Fare</th>')
-    .append('<th style="width:20%">Date</th>')
-    .append('<th style="width:20%">Time</th>')
-    .append('<th style="width:20%"></th>')
-    .append('</tr>')
-    .append('</thead>')
-                   .append('<tbody>')     
+    var html = '<table width="100%" class="table-style">';
+    
+    html += '<thead class="header-style">';
+    html += '<tr>';
+    html += '<th class="th1 font">Name</th>';
+    html += '<th class="th2 font">Fare</th>';
+    html += '<th class="th3 font">Date</th>';
+    html += '<th class="th3 font">Time</th>';
+    html += '<th class="th3"></th>';
+    html += '</tr>';
+    html += '</thead>';
+                   html +='<tbody class="body-style">';  
                         for(var i=0; i<count; i++)
                         {
                             var driverID = data.d[i]["DriverID"];
                             
                             var customerReqId = data.d[i]["CustomerRequestID"];
-                            $('#msg').append('<tr>')
-                            .append("<td width='25%' align='center'>" + data.d[i]["DriverName"] + "</td>")
-                            .append("<td width='25%' align='left'>" + data.d[i]["DriverName"] +"</td>")
-                            .append("<td width='25%' align='left'>" + data.d[i]["StartDate"] +"</td>")
-                            .append("<td width='25%' align='left'>" + data.d[i]["StartTime"] +"</td>")
-                            .append("<td width='25%' align='center'>" + '<input type="button" value="Hire" id= "'+ driverID +'" onclick = "Hireme(\''+driverID+'\',\''+customerReqId+'\'); return false;" title= "'+driverID+'" />' + "</td>")
-                            .append('</tr>')
+                            html += '<tr>';
+                            html += "<td width='25%' align='center'>" + data.d[i]["DriverName"] + "</td>";
+                            html += "<td width='15%' align='center'>" + data.d[i]["DriverName"] +"</td>";
+                            html += "<td width='20%' align='center'>" + data.d[i]["StartDate"] +"</td>";
+                            html += "<td width='20%' align='center'>" + data.d[i]["StartTime"] +"</td>";
+                            html += "<td width='20%' align='center'>" + '<input type="button" value="Hire" id= "'+ driverID +'" onclick = "Hireme(\''+driverID+'\',\''+customerReqId+'\'); return false;" title= "'+driverID+'" />' + "</td>";
+                            html += '</tr>';
                         }
-                   $('#msg').append('</tbody>')
-   $('#msg').append('</table>');
+                   html +='</tbody>';
+   html +='</table>';
+   $('#msg').append(html);
  }
 
 function Hireme(driID, reqID)
@@ -99,6 +98,24 @@ function Hireme(driID, reqID)
 
 function getResponseFromDriver(data)
 {
+    alert(data.d);
+}
+
+function VehicleStatus()
+{
+    
+}
+function ShowMap()
+{
+    
+}
+function DriverRating()
+{
+    
+}
+function Complete()
+{
+    
 }
 
 $(document).ready(function()
