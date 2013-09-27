@@ -30,17 +30,17 @@ function backtosearch()
             //Ajax loader--ends
 
 
-//  $.ajax({
-//    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData",
-//     type:"POST",
-//     dataType: "Json",
-//     data:"{'requestID':'" +requestID+"'}",
-//     contentType: "application/json; charset=utf-8",  
-//     success: getData,
-//     error: function (XMLHttpRequest, textStatus, errorThrown) {
-//          alert(errorThrown);
-//      }
-//   });
+ $.ajax({
+   url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData",
+    type:"POST",
+    dataType: "Json",
+    data:"{'requestID':'" +requestID+"'}",
+    contentType: "application/json; charset=utf-8",  
+    success: getData,
+    error: function (XMLHttpRequest, textStatus, errorThrown) {
+         alert(errorThrown);
+     }
+  });
 
 
 //function getData(data)
@@ -62,22 +62,15 @@ function show()
                    html +='<tbody class="body-style">';  
                         for(var i=0; i<count; i++)
                         {
-                            html += '<tr>';
-                            html += "<td width='25%' align='center'>" + i + "</td>";
-                            html += "<td width='15%' align='center'>" + i +"</td>";
-                            html += "<td width='20%' align='center'>" + i +"</td>";
-                            html += "<td width='20%' align='center'>" + i +"</td>";
-                            html += "<td width='20%' align='center'>" + '<input type="button" value="Hire" id= "'+ i +'" onclick = "this.disabled=true; this.value=loading" return false;" title= "'+i+'" />' + "</td>";
-                            html += '</tr>';
-                           // var driverID = data.d[i]["DriverID"];
-                           // var customerReqId = data.d[i]["CustomerRequestID"];
-                           // html += '<tr>';
-                           // html += "<td width='25%' align='center'>" + data.d[i]["DriverName"] + "</td>";
-                           // html += "<td width='15%' align='center'>" + data.d[i]["Comments"] +"</td>";
-                           // html += "<td width='20%' align='center'>" + data.d[i]["StartDate"] +"</td>";
-                           // html += "<td width='20%' align='center'>" + data.d[i]["StartTime"] +"</td>";
-                           // html += "<td width='20%' align='center'>" + '<input type="button" value="Hire" id= "'+ driverID +'" onclick = "Hireme(\''+driverID+'\',\''+customerReqId+'\'); return false;" title= "'+driverID+'" />' + "</td>";
-                           // html += '</tr>';
+                           var driverID = data.d[i]["DriverID"];
+                           var customerReqId = data.d[i]["CustomerRequestID"];
+                           html += '<tr>';
+                           html += "<td width='25%' align='center'>" + data.d[i]["DriverName"] + "</td>";
+                           html += "<td width='15%' align='center'>" + data.d[i]["Comments"] +"</td>";
+                           html += "<td width='20%' align='center'>" + data.d[i]["StartDate"] +"</td>";
+                           html += "<td width='20%' align='center'>" + data.d[i]["StartTime"] +"</td>";
+                           html += "<td width='20%' align='center'>" + '<input type="button" value="Hire" id= "'+ driverID +'" onclick = "Hireme(\''+driverID+'\',\''+customerReqId+'\'); return false;" title= "'+driverID+'" />' + "</td>";
+                           html += '</tr>';
                         }
                    html +='</tbody>';
    html +='</table>';
@@ -93,7 +86,7 @@ function Hireme(driID, reqID)
     var driverId = driID;
     var requestId = reqID;
     $.ajax({
-       //url: "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse",
+       url: "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse",
        type:"POST",
        dataType: "Json",
        data:"{'driverId':'" +driverId+"','requestId':'"+ requestId +"'}",
@@ -108,7 +101,6 @@ function Hireme(driID, reqID)
 
 function getResponseFromDriver(data)
 {
-    alert(data.d);
 }
 
 function VehicleStatus()
@@ -128,5 +120,63 @@ function Complete()
     
 }
 
+$(document).ready(function()
+{
+     $.ajax({
+                                        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/checkdealResponse",
+                                        type:"POST",
+                                        dataType: "Json",
+                                        data:"{'userID':'" + relatedId +"'}",
+                                        contentType: "application/json; charset=utf-8",  
+                                        success: function (data) 
+                                                    {
+                                                        var getDriverID=data.d[0];
+                                                        var getResponse=data.d[1];
+                                                        var getBooked=data.d[2];
+                                                        
+                                                        if(getBooked="True")
+                                                        {
+                                                             $('#popup_box').fadeIn("slow");
+                                                            $('#divDealConfirmed').show();
+                                                            $.ajax({
+                                                                       url:"http://115.115.159.126/ECabs/ECabs4U.asmx/GetConfirmData",
+                                                                       type:"POST",
+                                                                       dataType: "Json",
+                                                                       data:"{'driverID':'"+ getDriverID +"','requestID':'" + getResponse + "'}",
+                                                                       contentType: "application/json; charset=utf-8",                     
+                                                                       success: function(data)
+                                                                             {
+                                                                                
+                                                                                $('#lblconfirmjob').text(data.d[0]);
+                                                                                $('#lblconfirmdrivername').text(data.d[1]);
+                                                                                $('#lblconfirmfrom').text(data.d[2]);
+                                                                                $('#lblconfirmto').text(data.d[3]);
+                                                                                $('#lblconfirmdistance').text(data.d[4]);
+                                                                                $('#lblconfirmdate').text(data.d[5]);
+                                                                                $('#lblconfirmtime').text(data.d[6]);                                      
+                                                                                $('#lblconfirmfare').text(data.d[7]);  
+                                                                       },
+                                                                       error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                                                       alert(errorThrown);
+                                                                           }
+                                                                      
+                                                                      });  
+                                                        }
+                                                        else
+                                                        {
+                                                            $('#divDeal').hide();
+                                                        }
+                                                    },
+                                        error: function (XMLHttpRequest, textStatus, errorThrown)
+                                                 {
+                                        alert(errorThrown);
+                                                }
+                                    });  
+    
+             
+})
 
-
+  function calOk()
+                {
+                  $('#popup_box').fadeOut("slow");
+                } 
