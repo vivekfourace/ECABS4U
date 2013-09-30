@@ -264,8 +264,23 @@
             }
            function bidCancel()
             {
+                 var job=$('#lbljobno').text();
                  $('#popup_box').fadeOut("slow");
                  $('#lblfare').text("");
+                            $.ajax({
+                                        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/cancelJob",
+                                        type:"POST",
+                                        dataType: "Json",
+                                        data:"{'userID':'" + relatedId +"','reqid':'"+ job +"'}",
+                                        contentType: "application/json; charset=utf-8",  
+                                        success: function (data) 
+                                                    {
+                                                    },
+                                        error: function (XMLHttpRequest, textStatus, errorThrown)
+                                                 {
+                                        alert(errorThrown);
+                                                }
+                                    });
                  document.getElementById("trfare").style.display = 'none';
             }
             function reqCancel()
