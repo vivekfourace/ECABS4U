@@ -35,8 +35,8 @@ function gethistory()
                          $('#msg').append("<tr>")
                             
                             .append("<th width='35%' align='center' height='35px' style='background-color:#888888;font-size:13px;color:white'>" +"Date"+"</th>")
-                             .append("<th width='25%' align='center' height='35px' style='background-color:#888888;font-size:13px;color:white'>" +"Time"+"</th>")
-                            .append("<th width='25%' align='center' height='35px' style='background-color:#888888;font-size:13px;color:white'>" +"From"+"</th>")
+                         .append("<th width='25%' align='center' height='35px' style='background-color:#888888;font-size:13px;color:white'>" +"Time"+"</th>")    
+                        .append("<th width='25%' align='center' height='35px' style='background-color:#888888;font-size:13px;color:white'>" +"From"+"</th>")
                              .append("<th width='25%' align='center' height='35px' style='background-color:#888888;font-size:13px;color:white'>" +"To"+"</th>")
                             .append('</tr>');
                        
@@ -45,7 +45,6 @@ function gethistory()
                             //var id = data.d[i]["ID"];
                            
                             $('#msg').append('<tr>')
-                            
                               .append("<td width='30%' align='center' height='25px' style='background-color:#DADADA;'>" + data.d[0]+"</td>")
                               .append("<td width='30%' align='center' height='25px' style='background-color:#DADADA;'>" + data.d[1]+"</td>")
                               .append("<td width=30%' align='center' height='25px' style='background-color:#DADADA;'>" + data.d[2]+"</td>")
