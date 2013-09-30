@@ -20,8 +20,16 @@ function showlocation()
 {
      $('#txtFrom').show();
      $('#txtTo').show();
+    
     var url="http://115.115.159.126/ECabs/ECabs4U.asmx/GetBusinessCustomerrDetails";
     $.ajax(url,{
+         cache: false,
+                    beforeSend: function(){
+                         $('#imgLoader').show();
+                     },
+                     complete: function(){
+                         $('#imgLoader').hide();
+                     },
          type:"POST",
         dataType: "Json",
         data:"{'userID':'" +relatedId+"'}",
@@ -37,10 +45,9 @@ function showlocation()
     function ShowData(data)
 {
    // $('#txtFrom').text(data.d[0]["Address1"]);
-  //$('#txtTo').text(data.d[0]["Address2"]);
-    $('#txtFrom').val(data.d[0]["CustomerName"]+" "+ data.d[0]["CustomerLastName"]+" , "+ data.d[0]["Address1"]);
-    $('#txtTo').val(data.d[0]["Address2"]);
-   
+   //$('#txtTo').text(data.d[0]["Address2"]);
+    $('#txtFrom').val(data.d[0]+", "+ data.d[3]+", "+ data.d[4]);
+    $('#txtTo').val("");
 }
 
 //Search Func
@@ -86,6 +93,13 @@ function searchResult()
     var returntoloc=document.getElementById('txtReturTo').value;
 
     $.ajax({
+    cache: false,
+                    beforeSend: function(){
+                         $('#imgLoader').show();
+                     },
+                     complete: function(){
+                         $('#imgLoader').hide();
+                     },
    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
        type:"POST",
        dataType: "Json",

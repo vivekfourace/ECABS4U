@@ -66,7 +66,7 @@ function Registercustomer()
     
           if(!txt6)
                  {
-                     $('#lblMsg').text("Please enter postcode!");
+                     $('#lblMsg').text("Please enter Username!");
                      $('#txtUserName').focus();
                     return false;
                  }
@@ -104,28 +104,17 @@ function Registercustomer()
                         return false;
                     }
     
-    //Ajax loader--start
-                $('#imgLoader').bind('ajaxStart', function(){
-                    $(this).show();
-                    showDisableLayer();
-                 }).bind('ajaxStop', function(){
-                    $(this).hide();
-                     hideDisableLayer();
-                });
-                
-                  showDisableLayer = function() {
-                  $('<div id="loading" style="position:fixed; z-index: 2147483647; top:0; left:0; background-color: #7B7F86; opacity:0.4;filter:alpha(opacity=0);"></div>').appendTo(document.body);
-                  $("#loading").height($(document).height());
-                  $("#loading").width($(document).width());
-                };
-
-                    hideDisableLayer = function() {
-                    $("#loading").remove();
-                };
-              //Ajax loader--ends
+    
     
 
 $.ajax({
+    cache: false,
+                    beforeSend: function(){
+                         $('#imgLoader').show();
+                     },
+                     complete: function(){
+                         $('#imgLoader').hide();
+                     },
     url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RegisterCustomer",
     type: "POST",
     dataType: "json",

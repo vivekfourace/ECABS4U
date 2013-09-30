@@ -82,6 +82,13 @@ function availabledriver()
             }
 
             $.ajax({
+             cache: false,
+                    beforeSend: function(){
+                         $('#imgLoader').show();
+                     },
+                     complete: function(){
+                         $('#imgLoader').hide();
+                     },
             url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
                type:"POST",
                dataType: "Json",
