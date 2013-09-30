@@ -26,7 +26,7 @@ function gethistory()
                     type:"POST",
                     datatype:"json",
                     data:"{'relatedId':'"+relatedId+"'}",
-        contentType: "application/json; charset=utf-8",
+                   contentType: "application/json; charset=utf-8",
                     success: function (data) {
                         //var len = data.d.length;
                      

@@ -12,10 +12,40 @@
          <script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
         <script type="text/javascript" src="Scripts/jqx-all.js"></script>
         <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
-        
+        <script type="text/javascript"  src="Scripts/jquery-ui-1.8.15.custom.min.js"></script>
         <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
         <script type="text/javascript" src="js/driverHome.js"></script>
         
+        <script type="text/javascript" language="javascript">
+    window.onload=Blink1();
+  
+      
+       
+       function myFunction()
+       {
+           $("#bbb").effect( "pulsate", 
+          {times:70},1000 );
+          
+           
+       }
+       
+       function Blink2()
+       {
+            alert("Welcome");
+           alert("You are Selected The Request");
+          
+           window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+       }
+      function Blink3()
+       {
+           
+           alert("You are Rejected The Request");
+           $('#btnreject').hide();
+           $('#btnselect').hide();
+           $('#bbb').hide();
+           
+       }
+   </script>
       <!--  <script type="text/javascript">
             var QString = window.location.search.substring(1);
             var userId =  QString.split("=")[1].split("&")[0];
@@ -283,7 +313,7 @@
     </head>
     
     
-    <body>
+    <body onload="myFunction()">
         <center>
             <div class="header" style="background-color:#242424;height:12.2%">
                 <div style="float:left;height:48px;width:122px;padding-top:3px;">
@@ -322,6 +352,7 @@
                 </div>
                 <br />
          </div>
+                
          <!--Pop up grid ends-->  
                 
                 <div style="padding-top:2%;">
@@ -403,7 +434,18 @@
                 </table>
                 
             </div>
+            <div align="center" style="margin-bottom:60px">
+       
+   
+            <input type="button" id="btnselect" class="btn-Login cursor" value="Select" onclick="Blink2();" style=" background-color:#2B81CF;"/>
+            <input type="button" id="btnreject" class="btn-Login cursor" value="Reject" onclick="Blink3();" style=" background-color:#2B81CF;"/><br/>
+           <button id="bbb"  style=" background:#2B81CF;hieght:200px;width:200px" >New Customer Booking</button>
+                
+           
+   
+            </div>
             
         </footer>
+        
     </body>
 </html>

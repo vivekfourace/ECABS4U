@@ -25,7 +25,7 @@ $.ajax(url,{
     success: ShowData,
     
     error: function (XMLHttpRequest, textStatus, errorThrown) {
-    alert(errorThrown);
+   // alert(errorThrown);
         }
  });
 }
