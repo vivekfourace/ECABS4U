@@ -31,7 +31,7 @@
                         var getID=data.d[0];
                        var getValue=data.d[1];
                        
-                     if(getValue == "False")
+                         if(getValue == "False")
                                 {
                                     
                                     $.ajax({
@@ -44,58 +44,59 @@
                                           {
                                               if(data.d[0]!=null)
                                               {
-                                             $('#lbljobno').text(data.d[0]);
-                                             $('#lblFromLoc').text(data.d[1]);
-                                             $('#lblToLoc').text(data.d[2]);
-                                             
-                                             $('#lblDistance').text(data.d[5]);
-                                             $('#lblpickDateDriver').text(data.d[6]);
-                                             $('#lblpickTime').text(data.d[7]);
-                                             $('#lblpassengercount').text(data.d[8]);
-                                             $('#lbllargecase').text(data.d[9]);
-                                             $('#lblsmallcase').text(data.d[10]);
-                                             $('#lblwheelchair').text(data.d[11]);
-                                             $('#lblchildseat').text(data.d[12]);
-                                             $('#lblchildbooster').text(data.d[13]); 
-                                              if(data.d[3]!=null)
-                                              {
-                                                   var sec= data.d[3];
-                                                  
-                                                   $('#lblpopthird').text(sec);
-                                                   $('#otherLoc').show();
-                                                  if(data.d[4]!=null)
-                                                  {
-                                                       var third= data.d[4];
-                                                       $('#lblpopfour').text(third);
-                                                       $('#otherLoc').show();
-                                                  }
-                                                  
-                                              }
-                                              else
-                                              {
-                                                 $('#otherLoc').hide();  
-                                              }
+                                                      $('#lbljobno').text(data.d[0]);
+                                                      $('#lblFromLoc').text(data.d[1]);
+                                                      $('#lblToLoc').text(data.d[2]);
+                                                      
+                                                      $('#lblDistance').text(data.d[5]);
+                                                      $('#lblpickDateDriver').text(data.d[6]);
+                                                      $('#lblpickTime').text(data.d[7]);
+                                                      $('#lblpassengercount').text(data.d[8]);
+                                                      $('#lbllargecase').text(data.d[9]);
+                                                      $('#lblsmallcase').text(data.d[10]);
+                                                      $('#lblwheelchair').text(data.d[11]);
+                                                      $('#lblchildseat').text(data.d[12]);
+                                                      $('#lblchildbooster').text(data.d[13]); 
+                                                       if(data.d[3]!=null)
+                                                       {
+                                                            var sec= data.d[3];
+                                                           
+                                                            $('#lblpopthird').text(sec);
+                                                            $('#otherLoc').show();
+                                                           if(data.d[4]!=null)
+                                                           {
+                                                                var third= data.d[4];
+                                                                $('#lblpopfour').text(third);
+                                                                $('#otherLoc').show();
+                                                           }
+                                                           
+                                                       }
+                                                       else
+                                                       {
+                                                          $('#otherLoc').hide();  
+                                                       }
+                                                }
+                                       else
+                                        {
+                                                        $('#divDetails').hide();
                                         }
-                                              if(data.d[0]=="Error")
+                                        },
+                                          error: function (XMLHttpRequest, textStatus, errorThrown)
                                               {
-                                                  $('#divDetails').hide();
+                                            $('#divDetails').hide();
                                               }
-                                    },
-                                    error: function (XMLHttpRequest, textStatus, errorThrown) {
-                                  
-                                        }
-                              
-                                   });  
+                                      
+                                         });  
                                     
                              }
-                         else
+                        if(data.d[0]=="Error")
                          {
-                           
+                            $('#divDetails').hide();
                          }
                      },
                         
                      error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    
+                     $('#divDetails').hide();
                 }
              });
                                 $.ajax({
@@ -142,14 +143,15 @@
                                                                       
                                                                       });  
                                                         }
-                                                        else
+                                                       if(data.d[0]=="Error")
                                                         {
                                                             $('#divDeal').hide();
+                                                           
                                                         }
                                                     },
                                         error: function (XMLHttpRequest, textStatus, errorThrown)
                                                  {
-                                     
+                                                     $('#divDeal').hide();
                                                 }
                                     });  
                $('#popupBoxClose').click(function ()
@@ -277,7 +279,7 @@
                                                     },
                                         error: function (XMLHttpRequest, textStatus, errorThrown)
                                                  {
-                                        alert(errorThrown);
+                                       // alert(errorThrown);
                                                 }
                                     });
                  document.getElementById("trfare").style.display = 'none';
@@ -689,16 +691,16 @@
                 <table width="100%" style="">
                            <tr>
                                <td width="25%">
-                                    <input type="button" for="btnbfor" class="specialBtn" onclick="showBid()" style="width:100%;" value="Bid" />
+                                    <input type="button" id="btnbid" class="specialBtn" onclick="showBid()" style="width:100%;" value="Bid" />
                                </td>
                                <td width="25%">
-                                  <input type="button" for="btnmap" class="specialBtn" onclick="showMap()" style="width:100%;" value="Map"/> 
+                                  <input type="button" id="btnmap" class="specialBtn" onclick="showMap()" style="width:100%;" value="Map"/> 
                                </td>
                                <td width="25%">
-                                   <input type="button" for="btncancel" class="specialBtn" onclick="reqCancel()" style="width:100%;" value="Cancel" />
+                                   <input type="button" id="btncancel" class="specialBtn" onclick="reqCancel()" style="width:100%;" value="Cancel" />
                                </td>
                                <td width="25%">
-                                    <input type="button" for="btnreject" class="specialBtn" onclick="reqReject()" style="width:100%;" value="Reject"/>
+                                    <input type="button" id="btnreject" class="specialBtn" onclick="reqReject()" style="width:100%;" value="Reject"/>
                                </td>
                            </tr>
                        </table>

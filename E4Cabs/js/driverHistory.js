@@ -21,7 +21,8 @@ function gethistory()
    
     
         var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/DriverHistoryDetails";
-                $.ajax(url, {
+                $.ajax(url, 
+    {
                     
                     type:"POST",
                     datatype:"json",
@@ -56,7 +57,7 @@ function gethistory()
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) 
                     {
-                        alert(errorThrown);
+                        //alert(errorThrown);
                     }
                 });
                 
@@ -95,7 +96,7 @@ function bookedHistory()
 
 //Driver Jobs from menu
 function MyBookings(){
-    window.location='driverJobs.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
 

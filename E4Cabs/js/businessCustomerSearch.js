@@ -29,7 +29,7 @@ function showlocation()
     success: ShowData,
     
     error: function (XMLHttpRequest, textStatus, errorThrown) {
-    alert(errorThrown);
+   // alert(errorThrown);
         }
  });
 }
@@ -98,7 +98,7 @@ function searchResult()
     
        },
        error: function (XMLHttpRequest, textStatus, errorThrown) {
-           alert(errorThrown);
+           //alert(errorThrown);
        }
     });
 }

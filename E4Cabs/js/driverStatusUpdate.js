@@ -119,7 +119,7 @@ function soonToclear()
                      success:{},
                     
                      error: function (XMLHttpRequest, textStatus, errorThrown) {
-                     alert(errorThrown);
+                     //alert(errorThrown);
                 }
              });
     

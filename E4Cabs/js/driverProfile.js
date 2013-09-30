@@ -107,7 +107,7 @@ function EditProfile()
             
             },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
-        alert(errorThrown);
+        //alert(errorThrown);
         }
  });
 }
@@ -183,7 +183,7 @@ function UpdateProfile()
         contentType: "application/json; charset=utf-8",
         success: ShowData,
         error: function (XMLHttpRequest, textStatus, errorThrown){
-            alert(errorThrown);
+            //alert(errorThrown);
         }
     });
 }
@@ -201,7 +201,7 @@ function HomePage(){
     window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 function MyBookings(){
-    window.location='driverJobs.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 function logout(){
     window.location="index.html";
@@ -215,3 +215,11 @@ function bookedHistory()
 {
   window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;  
 }
+
+
+//Driver Feedback
+function feedBack()
+{
+    window.location='driverFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
+

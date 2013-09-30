@@ -133,7 +133,7 @@ $.ajax({
     contentType: "application/json; charset=utf-8",
     success: CheckData,
     error: function (XMLHttpRequest, textStatus, errorThrown) {
-        alert(errorThrown);
+        //alert(errorThrown);
            }
        });    
 }

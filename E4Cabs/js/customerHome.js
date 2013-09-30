@@ -18,7 +18,7 @@ $.ajax(url,{
     success: ShowData,
     
     error: function (XMLHttpRequest, textStatus, errorThrown) {
-    alert(errorThrown.message);
+   //alert(errorThrown.message);
         }
  });
 }
@@ -115,7 +115,7 @@ function EditProfile()
             
             },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
-        alert(errorThrown);
+        //alert(errorThrown);
         }
  });
 }
@@ -181,7 +181,7 @@ function UpdateProfile()
             contentType: "application/json; charset=utf-8",                     
             success: ShowData,            
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert(errorThrown);
+            //alert(errorThrown);
         }
  });
 }

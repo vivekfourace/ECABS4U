@@ -55,7 +55,7 @@ function gethistory()
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) 
                     {
-                        alert(errorThrown);
+                        //alert(errorThrown);
                     }
                 });
                 

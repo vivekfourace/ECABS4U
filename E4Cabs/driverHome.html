@@ -46,43 +46,28 @@
   //         
   //     }
           
-         function myFunction(){
-              
-               $.ajax({
-                   //url:'http://115.115.159.126/ECabs/ECabs4U.asmx/GetData', 
-                   type:"POST",
-                   datatype:"json",
-                   data:"{'userID':'" +userId+ "'}",
-                    contentType: "application/json; charset=utf-8",                     
-                     success: function (data) {
-                          // $("#popup_box").effect( "pulsate", 
-                         //{times:70},1000 );
-                         $('#popup_box').show();
-                          $('#divDealStart').show();
-                     },
-                  error: function (XMLHttpRequest, textStatus, errorThrown) {
-                     alert(errorThrown);
-               }
-             });
-                   
-          }
-          
-      //Accepting The Request.    
-          function seeRequest()
-          {
-              window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-          }
-          
-          
-          
-          //Cancel The Request.
-          function closeRequest()
-          {
-              
-              $('#popup_box').hide();
-               $('#divDealStart').hide(); 
-              
-          }
+     // function myFunction(){
+     //      
+     //       $.ajax({
+     //           //url:'http://115.115.159.126/ECabs/ECabs4U.asmx/GetData', 
+     //           type:"POST",
+     //           datatype:"json",
+     //           data:"{'userID':'" +userId+ "'}",
+     //            contentType: "application/json; charset=utf-8",                     
+     //             success: function (data) {
+     //                  // $("#popup_box").effect( "pulsate", 
+     //                 //{times:70},1000 );
+     //                 $('#popup_box').show();
+     //                  $('#divDealStart').show();
+     //             },
+     //          error: function (XMLHttpRequest, textStatus, errorThrown) {
+     //             alert(errorThrown);
+     //       }
+     //     });
+     //           
+     //  }
+     //  
+     //
           
           
   </script>
@@ -90,7 +75,7 @@
     </head>
     
     
-    <body onload="myFunction()">
+    <body >
         <center>
             <div class="header" style="background-color:#242424;height:12.2%">
                 <div style="float:left;height:48px;width:122px;padding-top:3px;">
