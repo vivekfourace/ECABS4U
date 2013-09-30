@@ -169,29 +169,11 @@ function RegisterDriver()
                      url:"http://115.115.159.126/ECabs/ECabs4U.asmx/RegisterDriver",
                       type:"POST",
                      datatype:"json",
-                     //data:"{'fname':'"+name+"','lname':'"+name2+"''email':'"+email+"','contactNumber':'"+mobNo+"','password':'"+password+"','address1':'"+Add1+"','address2':'"+Add2+"','postcode':'"+post+"'}",
                      data:"{'fname':'"+name+"','lname':'"+name2+"','email':'"+email+"','userID':'"+User+"','password':'"+password+"','contactNumber':'"+mobNo+"','address1':'"+Add1+"','address2':'"+Add2+"','postcode':'"+post+"','image':'"+img2+"'}",
                      contentType: "application/json; charset=utf-8",
                       success: OnValidate,
-                     
-                     
-                    //success: function(data)
-                     //{
-                         //alert("WELCOME!");
-                         
-                          // $('#txt1').val('');
-                         //  $('#txt2').val('');
-                          // $('#txt3').val('');
-                          // $('#txt4').val('');
-                          // $('#txt5').val('');
-                           //$('#txt6').val('');
-                           //$('#txt7').val('');
-                           //$('#txt8').val('');
-                         
-                     //},
                      error: function (XMLHttpRequest, textStatus, errorThrown)
                      {
-                 alert(errorThrown);
                      }
                      
                  });
