@@ -46,25 +46,43 @@
   //         
   //     }
           
-          $(document).ready(function(){
+         function myFunction(){
               
                $.ajax({
-                   url:'http://115.115.159.126/ECabs/ECabs4U.asmx/checkResponse', 
-                   type:"",
-                   datatype:"",
-                   data:"",
+                   //url:'http://115.115.159.126/ECabs/ECabs4U.asmx/GetData', 
+                   type:"POST",
+                   datatype:"json",
+                   data:"{'userID':'" +userId+ "'}",
                     contentType: "application/json; charset=utf-8",                     
                      success: function (data) {
-                         
+                          // $("#popup_box").effect( "pulsate", 
+                         //{times:70},1000 );
+                         $('#popup_box').show();
                           $('#divDealStart').show();
                      },
-                   error: function (XMLHttpRequest, textStatus, errorThrown) {
+                  error: function (XMLHttpRequest, textStatus, errorThrown) {
                      alert(errorThrown);
-                }
+               }
              });
                    
-          });
+          }
           
+      //Accepting The Request.    
+          function seeRequest()
+          {
+              window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+          }
+          
+          
+          
+          //Cancel The Request.
+          function closeRequest()
+          {
+              
+              $('#popup_box').hide();
+               $('#divDealStart').hide(); 
+              
+          }
           
           
   </script>
@@ -95,14 +113,14 @@
                         <table align="left" style="padding-left:10%;width:100%">
                             
                                    <tr>
-                                   <td width="100%">
-                                       <b style="font-size:13px;color:red">You Have Got Job Request!</b>
+                                   <td width="100%" colspan="2">
+                                       <b style="font-size:15px;color:red">You Have Got Job Request!</b>
                                    </td>
                                    </tr>
                             
                                    <tr>
-                                   <td width="100%">
-                                       <b style="font-size:13px;color:red">Do you want to see?</b>
+                                   <td width="100%" colspan="2">
+                                       <b style="font-size:15px;color:red">Do you want to see?</b>
                                    </td>
                                    </tr>
                                   
@@ -232,7 +250,7 @@
                 </table>
                 
             </div>
-            <div align="center" style="margin-bottom:60px">
+            <!--<div align="center" style="margin-bottom:60px">
        
    
             <input type="button" id="btnselect" class="btn-Login cursor" value="Select" onclick="Blink2();" style=" background-color:#2B81CF;"/>
@@ -241,7 +259,7 @@
                 
            
    
-            </div>
+            </div>-->
             
         </footer>
         
