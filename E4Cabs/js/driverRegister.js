@@ -220,6 +220,15 @@ function OnValidate(data)
                            $('#txtpassword').val('');
                            $('#txtCpass').val('');
                             $('#txtusername').val('');
+         $('#lblDriverMsg').text("Registration success, wait 5s for login screen...")
+        $('#lblDriverMsg').css("color","green");  
+        $('#lblDriverMsg').css("font","bold");  
+        
+        setTimeout(function() {
+            $('#lblDriverMsg').fadeOut(3000);
+            window.location = "index.html";
+            }, 5000);
+        
     }
 }
 function backToIndex()
