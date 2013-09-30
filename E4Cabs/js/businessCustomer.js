@@ -190,7 +190,7 @@ function CheckData(data){
         $('#txtUserName').focus();
     }
     else if(data.d =="true"){
-        var timeOut = 5;
+        var timeOut = 6;
         setInterval(function() {  
             document.getElementById('lblMsg').innerHTML = "Registration success, wait " + --timeOut + "s for login screen.";
             $('#lblMsg').css("color","green");  

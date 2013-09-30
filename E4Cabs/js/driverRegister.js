@@ -186,7 +186,7 @@ function OnValidate(data)
         $('#lblRequiredField').text("Username already exist, enter another name!");
         $('#lblRequiredField').css("color","red");
     }
-    else
+    else if(data.d =="true")
     {
         $("#link2").show();
         $('#lblRequiredField').text("Registration successful,");
@@ -202,16 +202,17 @@ function OnValidate(data)
                            $('#txtpassword').val('');
                            $('#txtCpass').val('');
                             $('#txtusername').val('');
-         $('#lblDriverMsg').text("Registration success, wait 5s for login screen...")
-        $('#lblDriverMsg').css("color","green");  
-        $('#lblDriverMsg').css("font","bold");  
-        
-        setTimeout(function() {
-            $('#lblDriverMsg').fadeOut(3000);
-            window.location = "index.html";
-            }, 5000);
-        
-    }
+       var timeOut = 6;
+        setInterval(function() {  
+            document.getElementById('lblMsg').innerHTML = "Registration success, wait " + --timeOut + "s for login screen.";
+            $('#lblMsg').css("color","green");  
+            $('#lblMsg').css("font-size","14px");  
+            if(timeOut <= 0)
+            {
+                window.location = "index.html";
+            }
+        }, 1000);
+    }    
 }
 function backToIndex()
 {
