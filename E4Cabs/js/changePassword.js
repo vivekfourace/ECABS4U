@@ -80,7 +80,7 @@ function ChangePaswords()
                      success: ShowStatus,
                      
                      error: function (XMLHttpRequest, textStatus, errorThrown) {
-                     alert(errorThrown);
+                    // alert(errorThrown);
                 }
                  });
                  

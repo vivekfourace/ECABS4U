@@ -31,7 +31,7 @@
                         var getID=data.d[0];
                        var getValue=data.d[1];
                        
-                     if(getValue == "False")
+                         if(getValue == "False")
                                 {
                                     
                                     $.ajax({
@@ -42,54 +42,61 @@
                                     contentType: "application/json; charset=utf-8",                     
                                     success: function(data)
                                           {
-                                             $('#lbljobno').text(data.d[0]);
-                                             $('#lblFromLoc').text(data.d[1]);
-                                             $('#lblToLoc').text(data.d[2]);
-                                             
-                                             $('#lblDistance').text(data.d[5]);
-                                             $('#lblpickDateDriver').text(data.d[6]);
-                                             $('#lblpickTime').text(data.d[7]);
-                                             $('#lblpassengercount').text(data.d[8]);
-                                             $('#lbllargecase').text(data.d[9]);
-                                             $('#lblsmallcase').text(data.d[10]);
-                                             $('#lblwheelchair').text(data.d[11]);
-                                             $('#lblchildseat').text(data.d[12]);
-                                             $('#lblchildbooster').text(data.d[13]); 
-                                              if(data.d[3]!=null)
+                                              if(data.d[0]!=null)
                                               {
-                                                   var sec= data.d[3];
-                                                  
-                                                   $('#lblpopthird').text(sec);
-                                                   $('#otherLoc').show();
-                                                  if(data.d[4]!=null)
-                                                  {
-                                                       var third= data.d[4];
-                                                       $('#lblpopfour').text(third);
-                                                       $('#otherLoc').show();
-                                                  }
-                                                  
-                                              }
-                                              else
-                                              {
-                                                 $('#otherLoc').hide();  
-                                              }
-                                       
-                                    },
-                                    error: function (XMLHttpRequest, textStatus, errorThrown) {
-                                    alert(errorThrown);
+                                                      $('#lbljobno').text(data.d[0]);
+                                                      $('#lblFromLoc').text(data.d[1]);
+                                                      $('#lblToLoc').text(data.d[2]);
+                                                      
+                                                      $('#lblDistance').text(data.d[5]);
+                                                      $('#lblpickDateDriver').text(data.d[6]);
+                                                      $('#lblpickTime').text(data.d[7]);
+                                                      $('#lblpassengercount').text(data.d[8]);
+                                                      $('#lbllargecase').text(data.d[9]);
+                                                      $('#lblsmallcase').text(data.d[10]);
+                                                      $('#lblwheelchair').text(data.d[11]);
+                                                      $('#lblchildseat').text(data.d[12]);
+                                                      $('#lblchildbooster').text(data.d[13]); 
+                                                       if(data.d[3]!=null)
+                                                       {
+                                                            var sec= data.d[3];
+                                                           
+                                                            $('#lblpopthird').text(sec);
+                                                            $('#otherLoc').show();
+                                                           if(data.d[4]!=null)
+                                                           {
+                                                                var third= data.d[4];
+                                                                $('#lblpopfour').text(third);
+                                                                $('#otherLoc').show();
+                                                           }
+                                                           
+                                                       }
+                                                       else
+                                                       {
+                                                          $('#otherLoc').hide();  
+                                                       }
+                                                }
+                                       else
+                                        {
+                                                        $('#divDetails').hide();
                                         }
-                              
-                                   });  
+                                        },
+                                          error: function (XMLHttpRequest, textStatus, errorThrown)
+                                              {
+                                            $('#divDetails').hide();
+                                              }
+                                      
+                                         });  
                                     
                              }
-                         else
+                        if(data.d[0]=="Error")
                          {
-                          
+                            $('#divDetails').hide();
                          }
                      },
                         
                      error: function (XMLHttpRequest, textStatus, errorThrown) {
-                     alert(errorThrown);
+                     $('#divDetails').hide();
                 }
              });
                                 $.ajax({
@@ -114,7 +121,8 @@
                                                                        contentType: "application/json; charset=utf-8",                     
                                                                        success: function(data)
                                                                              {
-                                                                                
+                                                                                if(data.d[0]!=null)
+                                                                                 {
                                                                                 $('#lbldealjob').text(data.d[0]);
                                                                                 $('#lbldealfrom').text(data.d[1]);
                                                                                 $('#lbldealto').text(data.d[2]);
@@ -122,21 +130,28 @@
                                                                                 $('#lbldealdate').text(data.d[4]);
                                                                                 $('#lbldealtime').text(data.d[5]);                                      
                                                                                 $('#lbldealfare').text(data.d[6]);  
+                                                                                 }
+                                                                                 if(data.d[0]=="Error")
+                                                                                 {
+                                                                                      $('#popup_box').hide();
+                                                                                    $('#divDeal').hide();
+                                                                                 }
                                                                        },
                                                                        error: function (XMLHttpRequest, textStatus, errorThrown) {
-                                                                       alert(errorThrown);
+                                                                       
                                                                            }
                                                                       
                                                                       });  
                                                         }
-                                                        else
+                                                       if(data.d[0]=="Error")
                                                         {
                                                             $('#divDeal').hide();
+                                                           
                                                         }
                                                     },
                                         error: function (XMLHttpRequest, textStatus, errorThrown)
                                                  {
-                                        alert(errorThrown);
+                                                     $('#divDeal').hide();
                                                 }
                                     });  
                $('#popupBoxClose').click(function ()
@@ -162,12 +177,13 @@
                 $('#lblpopfrom').text(from);
                 $('#lblpopto').text(to);
                $('#lblpopthird').text(third);
-                //$('#lblpopfour').text(four);
+                //$('#lblpopfour').text(four);trSpecialtxt
                 document.getElementById("trwheelchair").style.display = 'none';
                 document.getElementById("trfare").style.display = 'none';
                 document.getElementById("trchildseats").style.display = 'none';
                 document.getElementById("trchildbooster").style.display = 'none';
                 document.getElementById("trOtherspec").style.display = 'none'; 
+                 document.getElementById("trSpecialtxt").style.display = 'none'; 
             }
            function showSpecial()
             {
@@ -176,6 +192,7 @@
                document.getElementById("trchildseats").style.display = 'table-row';
                document.getElementById("trchildbooster").style.display = 'table-row';
                document.getElementById("trOtherspec").style.display = 'table-row'; 
+               document.getElementById("trSpecialtxt").style.display = 'table-row'; 
             }
            function showBid()
             {
@@ -236,7 +253,7 @@
                                                     },
                                         error: function (XMLHttpRequest, textStatus, errorThrown)
                                                  {
-                                        alert(errorThrown);
+                                       
                                                 }
                                     });
                 document.getElementById("trfare").style.display = 'table-row';
@@ -262,7 +279,7 @@
                                                     },
                                         error: function (XMLHttpRequest, textStatus, errorThrown)
                                                  {
-                                        alert(errorThrown);
+                                       // alert(errorThrown);
                                                 }
                                     });
                  document.getElementById("trfare").style.display = 'none';
@@ -288,7 +305,7 @@
                                                     },
                                         error: function (XMLHttpRequest, textStatus, errorThrown)
                                                  {
-                                        alert(errorThrown);
+                                      
                                                 }
                                     }); 
                             
@@ -296,7 +313,7 @@
             function dealSubmit()
             {
               var reqID=$('#lbldealjob').text();  
-              alert(reqID);
+              //alert(reqID);
                                     $.ajax({
                                         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/jobBooked",
                                         type:"POST",
@@ -305,13 +322,16 @@
                                         contentType: "application/json; charset=utf-8",  
                                         success: function (data) 
                                                     {
-                                                          alert(reqID);
+                                                         // alert(reqID);
+                                                        
                                                     },
                                         error: function (XMLHttpRequest, textStatus, errorThrown)
                                                  {
-                                        alert(errorThrown);
+                                       
                                                 }
                                     }); 
+             $('#divDeal').hide();
+                 $('#popup_box').fadeOut("slow");
             }
             function dealCancel()
             {
@@ -651,7 +671,7 @@
                
              
  </tr>
-           <tr>
+           <tr id="trSpecialtxt">
                <td width="100%" style="padding-left:5%;" colspan="4">
                    <textarea id="txtothereSpecialRequirement" rows="4" cols="10"  style="" readonly="true"></textarea>
                </td>
@@ -671,16 +691,16 @@
                 <table width="100%" style="">
                            <tr>
                                <td width="25%">
-                                    <input type="button" for="btnbfor" class="specialBtn" onclick="showBid()" style="width:100%;" value="Bid" />
+                                    <input type="button" id="btnbid" class="specialBtn" onclick="showBid()" style="width:100%;" value="Bid" />
                                </td>
                                <td width="25%">
-                                  <input type="button" for="btnmap" class="specialBtn" onclick="showMap()" style="width:100%;" value="Map"/> 
+                                  <input type="button" id="btnmap" class="specialBtn" onclick="showMap()" style="width:100%;" value="Map"/> 
                                </td>
                                <td width="25%">
-                                   <input type="button" for="btncancel" class="specialBtn" onclick="reqCancel()" style="width:100%;" value="Cancel" />
+                                   <input type="button" id="btncancel" class="specialBtn" onclick="reqCancel()" style="width:100%;" value="Cancel" />
                                </td>
                                <td width="25%">
-                                    <input type="button" for="btnreject" class="specialBtn" onclick="reqReject()" style="width:100%;" value="Reject"/>
+                                    <input type="button" id="btnreject" class="specialBtn" onclick="reqReject()" style="width:100%;" value="Reject"/>
                                </td>
                            </tr>
                        </table>

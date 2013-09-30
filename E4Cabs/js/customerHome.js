@@ -18,7 +18,7 @@ $.ajax(url,{
     success: ShowData,
     
     error: function (XMLHttpRequest, textStatus, errorThrown) {
-    alert(errorThrown.message);
+   //alert(errorThrown.message);
         }
  });
 }
@@ -26,12 +26,12 @@ $.ajax(url,{
 
 function ShowData(data)
 { 
-   $('#lblname').text(data.d[0]["CustomerName"] +"  "+ data.d[0]["CustomerLastName"]);
+   $('#lblname').text(data.d[0] +"  "+ data.d[1]);
    // $('#lbllastname').text(data.d[0]["CustomerLastName"]);
-   $('#lblLocation').text(data.d[0]["Address1"]);
-   $('#lblLocation2').text(data.d[0]["Address2"]);
-   $('#lblMobileNo').text(data.d[0]["MobileNumber"]);
-   $('#lblEmailID').text(data.d[0]["Email"]);
+   $('#lblLocation').text(data.d[2]);
+   $('#lblLocation2').text(data.d[3]);
+   $('#lblMobileNo').text(data.d[4]);
+   $('#lblEmailID').text(data.d[5]);
     
     $('#txtname').hide();
     $('#txtlastname').hide();    
@@ -106,16 +106,16 @@ function EditProfile()
         data:"{'userID':'" +relatedId+"'}",
         contentType: "application/json; charset=utf-8",                     
         success: function(data){
-            $('#txtname').val(data.d[0]["CustomerName"] +"  "+ data.d[0]["CustomerLastName"]); 
+            $('#txtname').val(data.d[0] +"  "+ data.d[1]); 
           //$('#txtlastname').val(data.d[0]["CustomerLastName"]);
-            $('#txtLocation').val(data.d[0]["Address1"])
-            $('#txtLocation2').val(data.d[0]["Address2"])
-            $('#txtMobileno').val(data.d[0]["MobileNumber"]);    
-            $('#txtEmailID').val(data.d[0]["Email"]);
+            $('#txtLocation').val(data.d[2])
+            $('#txtLocation2').val(data.d[3])
+            $('#txtMobileno').val(data.d[4]);    
+            $('#txtEmailID').val(data.d[5]);
             
             },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
-        alert(errorThrown);
+        //alert(errorThrown);
         }
  });
 }
@@ -181,7 +181,7 @@ function UpdateProfile()
             contentType: "application/json; charset=utf-8",                     
             success: ShowData,            
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert(errorThrown);
+            //alert(errorThrown);
         }
  });
 }

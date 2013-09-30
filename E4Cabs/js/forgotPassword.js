@@ -47,7 +47,7 @@ function forgotPassword()
                     contentType: "application/json; charset=utf-8", 
                     success: CheckMsg,
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
-                            alert(errorThrown);
+                          //  alert(errorThrown);
                        }
                       });
                     }

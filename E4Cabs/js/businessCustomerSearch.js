@@ -29,7 +29,7 @@ function showlocation()
     success: ShowData,
     
     error: function (XMLHttpRequest, textStatus, errorThrown) {
-    alert(errorThrown);
+   // alert(errorThrown);
         }
  });
 }
@@ -86,7 +86,7 @@ function searchResult()
     var returntoloc=document.getElementById('txtReturTo').value;
 
     $.ajax({
-     url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
+   url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
        type:"POST",
        dataType: "Json",
        data:"{'userID':'" +relatedId+"','frompost':'"+ fromloc +"','topost':'"+ toloc +"','pickDate':'"+ pickdate +"','pickTime':'"+ picktime +"','passenger':'"+ totalpassenger +"','lcase':'"+ largecase +"','scase':'"+ smallcase +"','distance':'"+ distance +"','secondL':'"+secondLoc+"','thirdLoc':'"+thirdLoc+"','WchairPassengers':'"+WchairPassengers+"','childSeats':'"+childSeats+"','childBooster':'"+childBooster+"','otherSpeRequirement':'"+otherSpeRequirement+"','IsReturnTrue':'"+IsReturnTrue+"','returnfromloc':'"+returnfromloc+"','returntoloc':'"+returntoloc+"','returnDate':'"+returnDate+"','returnTime':'"+returnTime+"'}",
@@ -94,11 +94,11 @@ function searchResult()
        success: function (data) {
            var reqID = data.d;
            //window.location='RolePop.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-           window.location='customerSearchList.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId+'&reqid='+reqID;
+           //window.location='customerSearchList.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId+'&reqid='+reqID;
     
        },
        error: function (XMLHttpRequest, textStatus, errorThrown) {
-           alert(errorThrown);
+           //alert(errorThrown);
        }
     });
 }
