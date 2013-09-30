@@ -38,7 +38,6 @@ function backtosearch()
     contentType: "application/json; charset=utf-8",  
     success: getData,
     error: function (XMLHttpRequest, textStatus, errorThrown) {
-         alert(errorThrown);
      }
   });
 
@@ -91,7 +90,6 @@ function Hireme(driID, reqID)
        success:getResponseFromDriver ,
        error: function (XMLHttpRequest, textStatus, errorThrown)
                 {
-                   alert(errorThrown);
                }
    });
 }
@@ -134,7 +132,6 @@ function getResponseFromDriver(data)
                                                                                 $('#lblconfirmfare').text(data.d[7]);  
                                                                        },
                                                                        error: function (XMLHttpRequest, textStatus, errorThrown) {
-                                                                       alert(errorThrown);
                                                                            }
                                                                       
                                                                       });  
@@ -146,7 +143,6 @@ function getResponseFromDriver(data)
                                                     },
                                         error: function (XMLHttpRequest, textStatus, errorThrown)
                                                  {
-                                        alert(errorThrown);
                                                 }
                                     });  
         
@@ -163,7 +159,6 @@ function ShowMap()
     var to = $('#lblconfirmto').val();
     //var loc2=$('#txt2location').val();
     var loc2 = "";
-    alert(from + to);
     //var dis = "none";
     window.location =  'Location.html?id='+from+'&rid='+to+'&rrid='+loc2; 
 }
@@ -193,7 +188,6 @@ function Complete()
           },
        error: function (XMLHttpRequest, textStatus, errorThrown)
                 {
-                   alert(errorThrown);
                }
    });
   }    
