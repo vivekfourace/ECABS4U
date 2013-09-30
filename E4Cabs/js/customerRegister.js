@@ -145,18 +145,19 @@ function CheckData(data){
         $('#lblMsg').css("color","#D70007");
         $('#lblMsg').css("font-size","13");
         $('#txtUserName').val("");
-        $('#txtUserName').focus();;
+        $('#txtUserName').focus();
     }
     else if(data.d =="true"){
-        $('#lblMsg').text("Registration success, wait 5s for login screen...")
-        $('#lblMsg').css("color","green");  
-        $('#lblMsg').css("font","bold");  
-        
-        setTimeout(function() {
-            $('#lblMsg').fadeOut(3000);
-            window.location = "index.html";
-            }, 5000);
-        
+        var timeOut = 6;
+        setInterval(function() {  
+            document.getElementById('lblMsg').innerHTML = "Registration success, wait " + --timeOut + "s for login screen.";
+            $('#lblMsg').css("color","green");  
+            $('#lblMsg').css("font-size","14px");  
+            if(timeOut <= 0)
+            {
+                window.location = "index.html";
+            }
+        }, 1000);
     }    
 }
 

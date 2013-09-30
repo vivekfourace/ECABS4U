@@ -32,16 +32,16 @@ $.ajax(url,{
 
 function ShowData(data)
 { 
-    var nameis = data.d[0]["DriverName"]+" "+data.d[0]["DriverLastName"];
+    var nameis = data.d[0]+" "+data.d[1];
     $('#lblname').text(nameis);
    // var addressis=data.d[0]["Address1"]+","+data.d[0]["Address2"];
    // $('#lblLocation').text(addressis);
     //$('#lblname').text(data.d[0]["DriverName"]);
     //$('#lblLastname').text(data.d[0]["DriverLastName"]);
-    $('#lblLocation').text(data.d[0]["Address1"]);
-    $('#lblLocation2').text(data.d[0]["Address2"]);
-    $('#lblMobileNo').text(data.d[0]["MobileNumber"]);
-    $('#lblEmailID').text(data.d[0]["Email"]);
+    $('#lblLocation').text(data.d[2]);
+    $('#lblLocation2').text(data.d[3]);
+    $('#lblMobileNo').text(data.d[4]);
+    $('#lblEmailID').text(data.d[5]);
     
     $('#lblWarning').text("");
     $('#txtname').hide(); 
@@ -98,12 +98,12 @@ function EditProfile()
         data:"{'userID':'" +relatedId+"'}",
         contentType: "application/json; charset=utf-8",                     
         success: function(data){
-            $('#txtname').val(data.d[0]["DriverName"]);
-            $('#txtLastname').val(data.d[0]["DriverLastName"]);
-            $('#txtLocation').val(data.d[0]["Address1"])
-            $('#txtLocation2').val(data.d[0]["Address2"])
-            $('#txtMobileno').val(data.d[0]["MobileNumber"]);    
-            $('#txtEmailID').val(data.d[0]["Email"]);
+            $('#txtname').val(data.d[0]);
+            $('#txtLastname').val(data.d[1]);
+            $('#txtLocation').val(data.d[2])
+            $('#txtLocation2').val(data.d[3])
+            $('#txtMobileno').val(data.d[4]);    
+            $('#txtEmailID').val(data.d[5]);
             
             },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
