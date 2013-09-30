@@ -17,6 +17,13 @@ $(document).ready(function(){
                          {
                          $('#driverStatusupdate').text("Available");
                               $.ajax({
+                                          cache: false,
+                                            beforeSend: function(){
+                                                 $('#imgLoader').show();
+                                             },
+                                             complete: function(){
+                                                 $('#imgLoader').hide();
+                                             },
                                            url:'http://115.115.159.126/ECabs/ECabs4U.asmx/CheckNewJob', 
                                            type:"POST",
                                            datatype:"json",
@@ -55,10 +62,17 @@ $(document).ready(function(){
     
 });
 
+function Available()
+{
+    
+}
+
+
 //Driver status 
  function DriverStatus(){
    window.location = 'driverStatusUpdate.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
+
 
 //diver Profile
 function DriverProfile()
@@ -106,7 +120,15 @@ function soonToclear()
     $('#driverStatusupdate').text("Soon To Clear");
     $('#lblCurrentStatus').css("color","#639ECD");
      var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/clearStatus";
-                $.ajax(url,{                      
+                $.ajax(url,{
+                    cache: false,
+                    beforeSend: function(){
+                         $('#imgLoader').show();
+                     },
+                     complete: function(){
+                         $('#imgLoader').hide();
+                     },
+
                      type:"POST",
                      datatype:"json",
                      data:"{'userID':'" +userId+ "'}",
@@ -147,25 +169,23 @@ function bookedHistory()
           //cancel the Request.
           function closeRequest()
           {
-              
-               
                $.ajax({
-                                           url:'http://115.115.159.126/ECabs/ECabs4U.asmx/CancelNewJob', 
-                                           type:"POST",
-                                           datatype:"json",
-                                           data:"{'userID':'" +relatedId+ "'}",
-                                           contentType: "application/json; charset=utf-8",                     
-                                           success: function (data) 
-                                              {
-                                                  $('#popup_box').hide();
-                                                   $('#divDealStart').hide();
-                                             },
-                                           error: function (XMLHttpRequest, textStatus, errorThrown)
-                                              {
-                                                     $('#popup_box').hide();
-                                                   $('#divDealStart').hide(); 
-                                               }
-                                     });
+                        url:'http://115.115.159.126/ECabs/ECabs4U.asmx/CancelNewJob', 
+                        type:"POST",
+                        datatype:"json",
+                        data:"{'userID':'" +relatedId+ "'}",
+                        contentType: "application/json; charset=utf-8",                     
+                        success: function (data) 
+                           {
+                               $('#popup_box').hide();
+                                $('#divDealStart').hide();
+                          },
+                        error: function (XMLHttpRequest, textStatus, errorThrown)
+                           {
+                                  $('#popup_box').hide();
+                                $('#divDealStart').hide(); 
+                            }
+                  });
               
           }
 
