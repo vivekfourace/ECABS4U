@@ -35,13 +35,14 @@ $.ajax(url,{
 
 function ShowData(data)
 { 
-   $('#lblBusinessNam').text(data.d[0]["NameOfBusiness"])
-   $('#lblname').text(data.d[0]["CustomerName"] +"  "+ data.d[0]["CustomerLastName"]);
+   
+   $('#lblBusinessNam').text(data.d[0])
+   $('#lblname').text(data.d[1] +"  "+ data.d[2]);
    // $('#lbllastname').text(data.d[0]["CustomerLastName"]);
-   $('#lblLocation').text(data.d[0]["Address1"]);
-   $('#lblLocation2').text(data.d[0]["Address2"]);
-   $('#lblMobileNo').text(data.d[0]["MobileNumber"]);
-   $('#lblEmailID').text(data.d[0]["Email"]);
+   $('#lblLocation').text(data.d[3]);
+   $('#lblLocation2').text(data.d[4]);
+   $('#lblMobileNo').text(data.d[5]);
+   $('#lblEmailID').text(data.d[6]);
     
     $('#txtname').hide();
     $('#txtlastname').hide();    
@@ -116,13 +117,13 @@ function EditProfile()
         data:"{'userID':'" +relatedId+"'}",
         contentType: "application/json; charset=utf-8",                     
         success: function(data){
-            $('#txtBusinessNam').val(data.d[0]["NameOfBusiness"])
-            $('#txtname').val(data.d[0]["CustomerName"]);
-            $('#txtlastname').val(data.d[0]["CustomerLastName"]);
-            $('#txtLocation').val(data.d[0]["Address1"])
-            $('#txtLocation2').val(data.d[0]["Address2"])
-            $('#txtMobileno').val(data.d[0]["MobileNumber"]);    
-            $('#txtEmailID').val(data.d[0]["Email"]);
+            $('#txtBusinessNam').val(data.d[0])
+            $('#txtname').val(data.d[1]);
+            $('#txtlastname').val(data.d[2]);
+            $('#txtLocation').val(data.d[3])
+            $('#txtLocation2').val(data.d[4])
+            $('#txtMobileno').val(data.d[5]);    
+            $('#txtEmailID').val(data.d[6]);
             },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
         alert(errorThrown);
@@ -137,6 +138,7 @@ function EditProfile()
 
 function UpdateProfile()
 {
+   
       var businessNam = $('#txtBusinessNam').val();
       var name = $('#txtname').val();
       var lastname = $('#txtlastname').val();
@@ -146,7 +148,7 @@ function UpdateProfile()
       var phoneno = $('#txtMobileno').val();
      var phoneno2 =/^\d{12}$/;
      var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
-    
+     alert("insidw");
      //validate Email address
                 if(email.length > 0)
                     {
@@ -278,6 +280,8 @@ function backtostart()
 {
    window.location =  'businessCustomerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
+
+
 
 
 
