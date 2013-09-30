@@ -9,29 +9,15 @@ function backtosearch()
     window.location = 'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
-        //alert(userId + roleId + relatedId + requestID);
-        
-         //Ajax loader--start
-              $('#imgLoader').bind('ajaxStart', function(){
-                  $(this).show();
-                  showDisableLayer();
-               }).bind('ajaxStop', function(){
-                  $(this).hide();
-                   hideDisableLayer();
-              });
-                showDisableLayer = function() {
-                $('<div id="loading" style="position:fixed; z-index: 2147483647; top:0; left:0; background-color: #E6E6E6; opacity:0.4;filter:alpha(opacity=0);"></div>').appendTo(document.body);
-                $("#loading").height($(document).height());
-                $("#loading").width($(document).width());
-              };
-                  hideDisableLayer = function() {
-                  $("#loading").remove();
-              };
-            //Ajax loader--ends
-
-
  $.ajax({
-   url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData",
+   cache: false,
+   beforeSend: function(){
+        $('#imgLoader').show();
+    },
+    complete: function(){
+        $('#imgLoader').hide();
+    },  
+    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData",
     type:"POST",
     dataType: "Json",
     data:"{'requestID':'" +requestID+"'}",
@@ -43,45 +29,59 @@ function backtosearch()
 
 function getData(data)
 {
+    
     var count = data.d.length;
-    var html = '<table width="100%" style="border-collapse:collapse">';
-    html += '<div style="background-color:yellow;"><i style="font:bold;font-size:16px;color:Blue;">Available Drivers<i></div>'
-    html += '<thead style="background-color:#D8DCBB;color:darkblue;">';
-    html += '<tr>';
-    html += '<th class="th1 font">Name</th>';
-    html += '<th class="th2 font">Fare</th>';
-    html += '<th class="th3 font">Date</th>';
-    html += '<th class="th3 font">Time</th>';
-    html += '<th class="th3"></th>';
-    html += '</tr>';
-    html += '</thead>';
-                   html +='<tbody class="body-style">';  
-                        for(var i=0; i<count; i++)
-                        {
-                           var driverID = data.d[i]["DriverID"];
-                           var customerReqId = data.d[i]["CustomerRequestID"];
-                           html += '<tr>';
-                           html += "<td width='25%' align='center'>" + data.d[i]["DriverName"] + "</td>";
-                           html += "<td width='15%' align='center'>" + data.d[i]["Comments"] +"</td>";
-                           html += "<td width='20%' align='center'>" + data.d[i]["StartDate"] +"</td>";
-                           html += "<td width='20%' align='center'>" + data.d[i]["StartTime"] +"</td>";
-                           html += "<td width='20%' align='center'>" + '<input type="button" value="Hire" id= "'+ driverID +'" onclick = "Hireme(\''+driverID+'\',\''+customerReqId+'\'); return false;" title= "'+driverID+'" />' + "</td>";
-                           html += '</tr>';
-                        }
-                   html +='</tbody>';
-   html +='</table>';
-   $('#msg').append(html);
- }
-
-
+    if(count > 0)
+    {
+            $('#divDriverList').show();    
+            var html = '<table width="100%" style="border-collapse:collapse">';
+            html += '<div style="background-color:yellow;"><i style="font:bold;font-size:16px;color:Blue;">Available Drivers<i></div>'
+            html += '<thead style="background-color:#D8DCBB;color:darkblue;">';
+            html += '<tr>';
+            html += '<th class="th1 font">Name</th>';
+            html += '<th class="th2 font">Fare</th>';
+            html += '<th class="th3 font">Date</th>';
+            html += '<th class="th3 font">Time</th>';
+            html += '<th class="th3"></th>';
+            html += '</tr>';
+            html += '</thead>';
+                           html +='<tbody class="body-style">';  
+                                for(var i=0; i<count; i++)
+                                {
+                                   var driverID = data.d[i]["DriverID"];
+                                   var customerReqId = data.d[i]["CustomerRequestID"];
+                                   html += '<tr>';
+                                   html += "<td width='25%' align='center'>" + data.d[i]["DriverName"] + "</td>";
+                                   html += "<td width='15%' align='center'>" + data.d[i]["Comments"] +"</td>";
+                                   html += "<td width='20%' align='center'>" + data.d[i]["StartDate"] +"</td>";
+                                   html += "<td width='20%' align='center'>" + data.d[i]["StartTime"] +"</td>";
+                                   html += "<td width='20%' align='center'>" + '<input type="button" value="Hire" id= "'+ driverID +'" onclick = "Hireme(\''+driverID+'\',\''+customerReqId+'\');" title= "Hire me" />' + "</td>";
+                                   html += '</tr>';
+                                }
+                           html +='</tbody>';
+               html +='</table>';
+               $('#msg').append(html);
+     }
+    else
+    {
+      $('#divDriverList').hide();  
+    }
+}
 function Hireme(driID, reqID)
 {
-    //$(driID).attr('disabled', 'true');
+    $('#driID').attr('disabled', true);
     
-    this.disabled=true;
+    //this.disabled=true;
     var driverId = driID;
     var requestId = reqID;
     $.ajax({
+       cache: false,
+       beforeSend: function(){
+            $('#imgLoader').show();
+        },
+        complete: function(){
+            $('#imgLoader').hide();
+        }, 
        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse",
        type:"POST",
        dataType: "Json",
@@ -98,6 +98,13 @@ function getResponseFromDriver(data)
 {
     window.setInterval(function(){
         $.ajax({
+                                cache: false,
+                       beforeSend: function(){
+                            $('#imgLoader').show();
+                        },
+                        complete: function(){
+                            $('#imgLoader').hide();
+                        }, 
                          url: "http://115.115.159.126/ECabs/ECabs4U.asmx/checkdealResponse",
                          type:"POST",
                          dataType: "Json",
@@ -114,6 +121,13 @@ function getResponseFromDriver(data)
                                               $('#popup_box').fadeIn("slow");
                                              $('#divDealConfirmed').show();
                                              $.ajax({
+                                                        cache: false,
+                                                        beforeSend: function(){
+                                                             $('#imgLoader').show();
+                                                         },
+                                                         complete: function(){
+                                                             $('#imgLoader').hide();
+                                                         }, 
                                                         url:"http://115.115.159.126/ECabs/ECabs4U.asmx/GetConfirmData",
                                                         type:"POST",
                                                         dataType: "Json",
@@ -146,7 +160,7 @@ function getResponseFromDriver(data)
                                  }
                      });  
         
-    },10000);
+    },60000);
 }
 
 function VehicleStatus()
@@ -180,10 +194,14 @@ function Complete()
       var requestId=$('#lblconfirmjob').text();
       var driverId=$('#lbldriverId').text();
       $.ajax({
+       cache: false,
+       beforeSend: function(){
+            $('#imgLoader').show();
+        },
+        complete: function(){
+            $('#imgLoader').hide();
+        }, 
        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/SaveData",
-          
-          
-          
        type:"POST",
        dataType: "Json",
        data:"{'driverId':'" +driverId+"','requestId':'"+ requestId +"'}",

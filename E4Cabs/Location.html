@@ -21,9 +21,12 @@
         var locFrom =  QString.split("=")[1].split("&")[0];
         var To = QString.split("=")[2].split("&")[0];
         var loc2 = QString.split("=")[3].split("&")[0];
+        if(!loc2)
+        {
+            loc2 = "842001";
+        }
         
         //var loc2 = "842001";
-        alert(locFrom+To)
         var directionsDisplay, pos;
         var map;
         var latitude;
@@ -47,37 +50,22 @@
              myLocation = new google.maps.LatLng(latitude, longitude);
                 
              var mapOptions = {
+               center: myLocation,
                zoom:5,
-               mapTypeId: google.maps.MapTypeId.ROADMAP,
-               center: myLocation
+               panControl: true,
+               navigationControl:true,
+               draggable:true,
+               zoomControl: true,
+               scaleControl: true,
+               scrollwheel: true,
+               disableDoubleClickZoom: false,
+               mapTypeId: google.maps.MapTypeId.ROADMAP               
              }
-                   
              map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
              directionsDisplay.setMap(map);
              calcRoute();
-             
-            // var image = 'img/location.png';
-          //   var marker = new google.maps.Marker({
-          //   position: myLocation,
-          //   map: map,
-          //   animation: google.maps.Animation.DROP,
-          //   //icon: image,
-          //  //title: locFrom
-          //    });
-          //   google.maps.event.addListener(marker, 'click', toggleBounce);
-          //  });
-          //}
-           
-//  function toggleBounce() {
-//
-//    if (marker.getAnimation() != null) {
-//      marker.setAnimation(null);
-//    } else {
-//      marker.setAnimation(google.maps.Animation.BOUNCE);
-//    }
-//  }
-});
-               }
+        });
+       }
            function calcRoute() {
              var start = locFrom;
              var end = To;
