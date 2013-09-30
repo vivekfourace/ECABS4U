@@ -20,8 +20,16 @@ function showlocation()
 {
      $('#txtFrom').show();
      $('#txtTo').show();
+    
     var url="http://115.115.159.126/ECabs/ECabs4U.asmx/GetBusinessCustomerrDetails";
     $.ajax(url,{
+         cache: false,
+                    beforeSend: function(){
+                         $('#imgLoader').show();
+                     },
+                     complete: function(){
+                         $('#imgLoader').hide();
+                     },
          type:"POST",
         dataType: "Json",
         data:"{'userID':'" +relatedId+"'}",
@@ -86,6 +94,13 @@ function searchResult()
     var returntoloc=document.getElementById('txtReturTo').value;
 
     $.ajax({
+    cache: false,
+                    beforeSend: function(){
+                         $('#imgLoader').show();
+                     },
+                     complete: function(){
+                         $('#imgLoader').hide();
+                     },
    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
        type:"POST",
        dataType: "Json",
