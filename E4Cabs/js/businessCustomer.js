@@ -82,7 +82,7 @@ function businessRegistercustomer()
     
           if(!txt6)
                  {
-                     $('#lblMsg').text("Please enter postcode!");
+                     $('#lblMsg').text("Please enter Username!");
                      $('#txtUserName').focus();
                     return false;
                  }
