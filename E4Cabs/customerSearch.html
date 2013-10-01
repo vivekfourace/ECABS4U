@@ -38,37 +38,35 @@
         <script type="text/javascript" src="jquery-mobile/js/jquery.ui.timepicker.js"></script>
         
         <script type="text/javascript" src="jquery-mobile/js/jquery-ui.js"></script>
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBU8FgPOxbhstWHCJpvbAE6v05aMUrvRDc&sensor=true"></script>
+        
         <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
         <script type="text/javascript" src="js/customerSearch.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     </head>
 
     <script type="text/javascript">        
     function GetCurrentLocation()
         {
-                if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(successCallback, errorCallback, {
-                    maximumAge: 0
-                });  
-            } 
-            function successCallback(position) {
-                var latitude = position.coords.latitude;
-                var longitude = position.coords.longitude;
+            if(navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);           
+                alert(pos);
                var geocoder = new google.maps.Geocoder();
-               var latLng = new google.maps.LatLng(latitude,longitude);
-               if (geocoder) {
-                    geocoder.geocode({ 'latLng': latLng}, function (results,status) {
-                        if (status.match(google.maps.GeocoderStatus.OK)) {
-                            var address = results[0].address_components;
-                            var zipcode = address[address.length - 1].long_name;
-                            alert(results[0].formatted_address);
-                     }
-                  });
-               }    
-            }
-            function errorCallback(error) {
-            }
-      }
+               geocoder.geocode({ 'latlng': pos }, function (results, status) {                   
+               if (status == google.maps.GeocoderStatus.OK) 
+                 {
+                   if(results[1])
+                   {
+                      var add = results[1].formatted_address;     
+                      alert(add)
+                   }
+                 }
+              });
+            });
+          }
+            $('#txtCurrentFrom').val("Bangalore, India");
+        }
+        
         
         $(document).ready(function(){
             $('.expand').live({
@@ -395,7 +393,10 @@
                 </div>
             </div>
         </div>
-            
+        <div id="imgLoader" style="display:none;padding-top:130px; z-index: 2147483647;position:fixed;top:0; left:0; background-color: #E6E6E6; opacity:0.7;filter:alpha(opacity=0);
+                width:100%;height:100%;text-align:center;background-position: center;background-repeat: no-repeat;">
+                <img src="jquery-mobile/styles/images/ajax-loader.gif" width="270" height="200"/>
+            </div>    
        <div style="padding-top:60px">
            <table width="80%" style="border-collapse:collapse">
                <center>
@@ -421,7 +422,7 @@
                </tr>   
                    <tr>
                        <td  style="padding-top:10px">
-                         <input type="checkbox" id="chkFromLocation" style="width:10%;float:left;height:20px;" onclick="showLoctxt()" />
+                           <input type="checkbox" id="chkFromLocation" style="width:10%;float:left;height:20px;" onclick="showLoctxt()" />
                            <label class="font-style" style="width:85%;height:15px;font-size:10px;float:left;padding-top:6px;color:#7ABAEE"><b>From current position</b></label>
                        </td>
                    </tr>
@@ -666,7 +667,7 @@
                     </center>
            </table>
            <div style="padding-bottom:40px;">
-                    <input type="button" value="Search" class="btn-tmp cursor" onclick="availabledriver()"/>
+                    <input type="button" value="Search" class="btn-tmp cursor" onclick="availabledriver();" />
                
            </div>
              

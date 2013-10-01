@@ -27,7 +27,7 @@ $.ajax(url,{
     success: ShowData,
     
     error: function (XMLHttpRequest, textStatus, errorThrown) {
-    alert(errorThrown);
+    //alert(errorThrown);
         }
  });
 }
@@ -126,7 +126,7 @@ function EditProfile()
             $('#txtEmailID').val(data.d[6]);
             },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
-        alert(errorThrown);
+        //alert(errorThrown);
         }
  });
 }
@@ -148,7 +148,7 @@ function UpdateProfile()
       var phoneno = $('#txtMobileno').val();
      var phoneno2 =/^\d{12}$/;
      var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
-    
+     //alert("insidw");
      //validate Email address
                 if(email.length > 0)
                     {
@@ -187,7 +187,7 @@ function UpdateProfile()
             contentType: "application/json; charset=utf-8",                     
             success: ShowData,            
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert(errorThrown);
+            //alert(errorThrown);
         }
  });
 }

@@ -166,6 +166,14 @@ function RegisterDriver()
     
                  
                  $.ajax({
+                     cache: false,
+                    beforeSend: function(){
+                         $('#imgLoader').show();
+                     },
+                     complete: function(){
+                         $('#imgLoader').hide();
+                     },
+
                      url:"http://115.115.159.126/ECabs/ECabs4U.asmx/RegisterDriver",
                       type:"POST",
                      datatype:"json",

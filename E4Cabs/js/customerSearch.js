@@ -2,6 +2,7 @@ var QString = window.location.search.substring(1);
 var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
+//var requestID = QString.split("=")[4].split("&")[0];
 
 function loc()
 {
@@ -29,6 +30,8 @@ function currentlocation()
 
 function availabledriver()
 {
+    
+    
             var fromloc=document.getElementById('txtFrom').value;
             var toloc=document.getElementById('txtTo').value;
             var distance=document.getElementById('txtDistance').value;
@@ -79,7 +82,14 @@ function availabledriver()
             }
 
             $.ajax({
-             url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
+             cache: false,
+                    beforeSend: function(){
+                         $('#imgLoader').show();
+                     },
+                     complete: function(){
+                         $('#imgLoader').hide();
+                     },
+            url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
                type:"POST",
                dataType: "Json",
                data:"{'userID':'" +relatedId+"','frompost':'"+ fromloc +"','topost':'"+ toloc +"','pickDate':'"+ pickdate +"','pickTime':'"+ picktime +"','passenger':'"+ totalpassenger +"','lcase':'"+ largecase +"','scase':'"+ smallcase +"','distance':'"+ distance +"','secondL':'"+secondLoc+"','thirdLoc':'"+thirdLoc+"','WchairPassengers':'"+WchairPassengers+"','childSeats':'"+childSeats+"','childBooster':'"+childBooster+"','otherSpeRequirement':'"+otherSpeRequirement+"','IsReturnTrue':'"+IsReturnTrue+"','returnfromloc':'"+returnfromloc+"','returntoloc':'"+returntoloc+"','returnDate':'"+returnDate+"','returnTime':'"+returnTime+"'}",
@@ -89,7 +99,7 @@ function availabledriver()
                    window.location='customerSearchList.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId+'&reqid='+reqID;
                },
                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                   alert(errorThrown);
+                  // alert(errorThrown);
                }
             });
         }
@@ -98,6 +108,7 @@ function availabledriver()
 //My Profile Button
  function myProfile()
             {
+                
                 window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
             }
 
