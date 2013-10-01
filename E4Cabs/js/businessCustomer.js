@@ -1,5 +1,6 @@
 function businessRegistercustomer()
 {
+    var business=$('#txtBusinessName').val();
     var txt1 =$('#txtFirstName').val();
     var txt2 =$('#txtLastName').val();
     var txt3 =$('#txtPhone').val();
@@ -8,14 +9,24 @@ function businessRegistercustomer()
     var txt6 =$('#txtUserName').val();
     var txt7 =$('#txtPassword').val();
     var txt8 =$('#txtConfirmPassword').val();
-    var business=$('#txtBusinessName').val();
     var address1=$('#txtAddress1').val();
     var address2=$('#txtAddress2').val();
+    var address3=$('#txtAddress3').val();
+    var address4=$('#txtAddress4').val();
+    var address5=$('#txtAddress5').val();
+    var address6=$('#txtAddress6').val();
     var postcode=$('#txtPostalCode').val();
     
     var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
     var phoneno =/^\d{12}$/;
     
+    //Business customer
+     if(!business)
+                 {
+                     $('#lblMsg').text("Please enter name of business!");
+                     $('#txtBusinessName').focus();                        
+                     return false;
+                 }
                if(!txt1)
                  {
                      $('#lblMsg').text("Please enter first name!");
@@ -108,13 +119,7 @@ function businessRegistercustomer()
                         $('#txtConfirmPassword').focus();
                         return false;
                     }
-    //Business customer
-     if(!business)
-                 {
-                     $('#lblMsg').text("Please enter Business type!");
-                     $('#txtBusinessName').focus();                        
-                     return false;
-                 }
+    
     
     
     //Address 1
@@ -166,7 +171,7 @@ $.ajax({
     url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RegisterBusinessCustomer",
     type: "POST",
     dataType: "json",
-    data: "{ 'fname': '" + txt1 + "','lname': '" + txt2 + "','email': '" + txt4 + "','userID': '" + txt6 + "','password': '" + txt7 + "','contactNumber': '" + txt3 + "'}",
+    data: "{'nameofbusiness':'"+business+"', 'fname': '" + txt1 + "','lname': '" + txt2 + "','add1':'"+address1+"','add2':'"+address2+"','add3':'"+address3+"','add4':'"+address4+"','add5':'"+address5+"','add6':'"+address6+"', 'email': '" + txt4 + "','userID': '" + txt6 + "','password': '" + txt7 + "','contactNumber': '" + txt3 + "','postcode':'"+postcode+"'}",
     contentType: "application/json; charset=utf-8",
     success: CheckData,
     error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -181,6 +186,8 @@ function CheckData(data){
         $('#lblMsg').text("Username already exist!");
         $('#lblMsg').css("color","#D70007");
         $('#lblMsg').css("font-size","13");
+        $('#txtUserName').val(" ");
+        $('#txtUserName').focus();
     }
     else if(data.d =="true"){
         $('#lblMsg').text("Registration success, wait 5s for login screen...")

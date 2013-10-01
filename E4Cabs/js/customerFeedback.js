@@ -4,10 +4,10 @@ var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
 
-//function backtoCustomerhome()
-//{
- //   window.location =  'customerAfterLogin.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-//}
+function backtoCustomerhome()
+{
+   window.location =  'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
 
 
 
@@ -56,7 +56,10 @@ function bookedHistory()
 function logout()
     {
                 
-       window.location="index.html";
+       $.cookie("remember", 'null');
+        $.cookie("userName", 'null');
+        $.cookie("pass", 'null');
+        window.location = "index.html";  
     }
 
 

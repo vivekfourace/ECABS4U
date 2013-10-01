@@ -4,14 +4,13 @@ var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
 
-function Reset()
+function ChangePaswords()
              {
-                 
                 var currentPass=document.getElementById('curentpswd').value;
-                  var newPass=document.getElementById('txtNew').value;
+                var newPass=document.getElementById('txtNew').value;
                 var confirm=document.getElementById('txtConform').value;
                  
-                 if(currentPass.length > 0)
+                if(currentPass.length > 0)
                 {
                     $('#lblMsg').text("");
                 }
@@ -50,26 +49,72 @@ function Reset()
                         $('#lblMsg').text("Please re-enter confirm password!");
                         return false;
                     }
+                 
+                 //Ajax loader--start
+                $('#imgLoader').bind('ajaxStart', function(){
+                    $(this).show();
+                    showDisableLayer();
+                 }).bind('ajaxStop', function(){
+                    $(this).hide();
+                     hideDisableLayer();
+                });
                 
-                
-                 $.ajax({
-                     url:"http://115.115.159.126/ECabs/ECabs4U.asmx/ChangePassword",
-                     datatype:"POST",
-                     type:"json",
-                     data:"{'userid':'"+UserID+"','currentPswd':'"+currentpwd+"','newpassword':'"+newPass+"'}",
+                  showDisableLayer = function() {
+                  $('<div id="loading" style="position:fixed; z-index: 2147483647; top:0; left:0; background-color: #7B7F86; opacity:0.4;filter:alpha(opacity=0);"></div>').appendTo(document.body);
+                  $("#loading").height($(document).height());
+                  $("#loading").width($(document).width());
+                };
+
+                    hideDisableLayer = function() {
+                    $("#loading").remove();
+                };
+              //Ajax loader--ends               
+
+                var  url = "http://115.115.159.126/ECabs/ECabs4U.asmx/ChangePassword";
+                 $.ajax(url,{
+                     datatype:"JSON",
+                     type:"POST",
+                     data:"{'userid':'"+userId+"','oldpassword':'"+currentPass+"','newpassword':'"+newPass+"'}",
                      contentType: "application/json; charset=utf-8",
                      
-                     success: function(data)
-                     {
-                         
-                         alert("password changed successfully.");
-                     }
+                     success: ShowStatus,
+                     
+                     error: function (XMLHttpRequest, textStatus, errorThrown) {
+                     alert(errorThrown);
+                }
                  });
                  
              }
-
-
-
+ function ShowStatus(data){
+            if(data.d == "Incorrect current password!")
+            {
+                $('#lblMsg').text("Incorrect current password!");
+                $('#lblMsg').css("color","#D70007");
+                $('#lblMsg').css("font-size","13");
+                $('#curentpswd').val("");
+                
+                
+            }
+            else if (data.d == "Error occurs!") {
+                $('#lblMsg').text("Oops!! error occurs, please try again.");
+                $('#lblMsg').css("color", "#D70007");
+                $('#lblMsg').css("font-size", "13");
+                $('#curentpswd').val("");
+                $('#txtNew').val("");
+                $('#txtConform').val("");
+                
+            }
+            else {
+                $('#lblMsg').text("Password changed successfully.");
+                $('#lblMsg').css("color", "#237F0C");
+                $('#lblMsg').css("font-size", "13");
+                $('#txtConform').val("");
+                $('#curentpswd').val("");
+                $('#txtNew').val("");
+                
+                
+            }
+ }
 //Back button
 function backToIndex()
 {

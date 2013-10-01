@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="jquery-mobile/styles/jquery.ui.theme.css" />
+        <link rel="stylesheet" type="text/css" href="jquery-mobile/styles/jquery-ui.css" />
+         <link rel="stylesheet" type="text/css" href="css/jquery.mobile.css" />
+         <link rel="stylesheet" type="text/css" href="css/site.css" />
+        <link rel="stylesheet" type="text/css" href="css/PopUp.css" />
+        <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
+         <script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="Scripts/jqx-all.js"></script>
+         <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
+        <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        <script type="text/javascript" src="js/DriverJob.js"></script>
+        <script type="text/javascript">
+             var QString = window.location.search.substring(1);
+            var userId =  QString.split("=")[1].split("&")[0];
+            var roleId = QString.split("=")[2].split("&")[0];
+            var relatedId = QString.split("=")[3].split("&")[0];
+            $(document).ready(function(){
+                 
+                $.ajax({url:'http://115.115.159.126/ECabs/ECabs4U.asmx/checkResponse',                      
+                     type:"POST",
+                     datatype:"json",
+                     data:"{'userID':'" + relatedId + "'}",
+                     contentType: "application/json; charset=utf-8",                     
+                     success: function(data)
+                    {
+                        var getID=data.d[0];
+                       var getValue=data.d[1];
+                       
+                     if(getValue == "False")
+                                {
+                                    
+                                    $.ajax({
+                                    url:"http://115.115.159.126/ECabs/ECabs4U.asmx/GetData",
+                                    type:"POST",
+                                    dataType: "Json",
+                                    data:"{'userID':'" + getID + "'}",
+                                    contentType: "application/json; charset=utf-8",                     
+                                    success: function(data)
+                                          {
+                                             $('#lbljobno').text(data.d[0]);
+                                             $('#lblFromLoc').text(data.d[1]);
+                                             $('#lblToLoc').text(data.d[2]);
+                                             $('#lblDistance').text(data.d[3]);
+                                             $('#lblpickDateDriver').text(data.d[4]);
+                                             $('#lblpickTime').text(data.d[5]);
+                                             $('#lblpassengercount').text(data.d[6]);
+                                             $('#lbllargecase').text(data.d[7]);
+                                             $('#lblsmallcase').text(data.d[8]);
+                                             $('#lblwheelchair').text(data.d[9]);
+                                             $('#lblchildseat').text(data.d[10]);
+                                             $('#lblchildbooster').text(data.d[11]);                                         
+                                       
+                                    },
+                                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                    alert(errorThrown);
+                                        }
+                              
+                                   });  
+                                    
+                             }
+                         else
+                         {
+                          
+                         }
+                     },
+                        
+                     error: function (XMLHttpRequest, textStatus, errorThrown) {
+                     alert(errorThrown);
+                }
+             });
+                
+               $('#popupBoxClose').click(function ()
+                {
+                  $('#popup_box').fadeOut("slow");
+                });
+            })
+        
+            
+           function showJob()
+            {
+                $('#popup_box').fadeIn("slow");
+                $('#divDriverPop').show();
+                $('#divBid').hide();
+                var job=$('#lbljobno').text();
+               // var customer=abc;
+                var from=$('#lblFromLoc').text();
+                var to=$('#lblToLoc').text();
+               // var third=$('#lblpopthird').text();
+               // var four=$('#lblpopfour').text();
+                $('#lblpopjob').text(job);
+                $('#lblcustomer').text("abc");
+                $('#lblpopfrom').text(from);
+                $('#lblpopto').text(to);
+                //$('#lblpopthird').text(third);
+                //$('#lblpopfour').text(four);
+                document.getElementById("trwheelchair").style.display = 'none';
+                document.getElementById("trfare").style.display = 'none';
+                document.getElementById("trchildseats").style.display = 'none';
+                document.getElementById("trchildbooster").style.display = 'none';
+                document.getElementById("trOtherspec").style.display = 'none'; 
+            }
+           function showSpecial()
+            {
+               document.getElementById("trfare").style.display = 'table-row';
+               document.getElementById("trwheelchair").style.display = 'table-row';
+               document.getElementById("trchildseats").style.display = 'table-row';
+               document.getElementById("trchildbooster").style.display = 'table-row';
+               document.getElementById("trOtherspec").style.display = 'table-row'; 
+            }
+           function showBid()
+            {
+                $('#popup_box').fadeIn("slow");
+                 $('#divDriverPop').hide();
+                $('#divBid').show();
+                var job=$('#lbljobno').text();
+                var distance=$('#lblDistance').text();
+                var from=$('#lblFromLoc').text();
+                var to=$('#lblToLoc').text();
+               // var third=$('#lblpopthird').text();
+               // var four=$('#lblpopfour').text();
+                $('#lblbidjob').text(job);
+                $('#lblbiddistance').text(distance);
+                $('#lblbidfrom').text(from);
+                $('#lblbidto').text(to);
+                var fare=$('#txtbidFare').val()
+                 $('#lblfare').text(fare);
+                //$('#lblpopthird').text(third);
+                //$('#lblpopfour').text(four);
+                document.getElementById("trfare").style.display = 'table-row';
+                document.getElementById("trwheelchair").style.display = 'none';
+                document.getElementById("trchildseats").style.display = 'none';
+                document.getElementById("trchildbooster").style.display = 'none';
+                document.getElementById("trOtherspec").style.display = 'none';  
+            }
+           function bidSubmit()
+            {
+                
+                 $('#divDriverPop').hide();
+                $('#divBid').hide();
+                var job=$('#lbljobno').text();
+                var distance=$('#lblDistance').text();
+                var from=$('#lblFromLoc').text();
+                var to=$('#lblToLoc').text();
+               // var third=$('#lblpopthird').text();
+               // var four=$('#lblpopfour').text();
+                $('#lblbidjob').text(job);
+                $('#lblbiddistance').text(distance);
+                $('#lblbidfrom').text(from);
+                $('#lblbidto').text(to);
+                var fare=$('#txtbidFare').val()
+                 $('#lblfare').text(fare);
+                //$('#lblpopthird').text(third);
+                //$('#lblpopfour').text(four);
+                var rid=$('#lblbidjob').text();
+                var status=true; 
+                var price=fare;
+                           
+                             $.ajax({
+                                        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/setDriverResponse",
+                                        type:"POST",
+                                        dataType: "Json",
+                                        data:"{'userID':'" + relatedId +"','reqid':'"+ rid +"','status':'"+ status  +"','price':'"+ price +"'}",
+                                        contentType: "application/json; charset=utf-8",  
+                                        success: function (data) 
+                                                    {
+                                                    },
+                                        error: function (XMLHttpRequest, textStatus, errorThrown)
+                                                 {
+                                        alert(errorThrown);
+                                                }
+                                    });
+                document.getElementById("trfare").style.display = 'table-row';
+                document.getElementById("trwheelchair").style.display = 'none';
+                document.getElementById("trchildseats").style.display = 'none';
+                document.getElementById("trchildbooster").style.display = 'none';
+                document.getElementById("trOtherspec").style.display = 'none';  
+                 $('#popup_box').fadeOut("slow");
+            }
+           function bidCancel()
+            {
+                 $('#popup_box').fadeOut("slow");
+                 $('#lblfare').text("");
+                 document.getElementById("trfare").style.display = 'none';
+            }
+            function reqCancel()
+            {
+                $('#divDetails').hide();
+            }
+            function reqReject()
+            {
+                var rid=$('#lbljobno').text();
+                var status=true; 
+               
+                           
+                             $.ajax({
+                                        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/rejectResponse",
+                                        type:"POST",
+                                        dataType: "Json",
+                                        data:"{'userID':'" + relatedId +"','reqid':'"+ rid +"','status':'"+ status  +"'}",
+                                        contentType: "application/json; charset=utf-8",  
+                                        success: function (data) 
+                                                    {
+                                                    },
+                                        error: function (XMLHttpRequest, textStatus, errorThrown)
+                                                 {
+                                        alert(errorThrown);
+                                                }
+                                    }); 
+            }
+            </script>
+    </head>
+    <body>
+        <div class="header" style="background-color:#242424;height:12.2%">
+                <div style="float:left;height:48px;wforth:122px;padding-top:3px;">
+                    <img src="img/logo1.png" class="logo"/>
+                </div>
+           
+        </div>
+        <center>
+           <div style="width:100%;height:75%;padding-top:25%;" id="divDetails">
+                <div id="popup_box" >
+                        <a id="popupBoxClose" style="cursor: pointer;">
+                            <img src="img/close.png" style="height: 30px; width: 30px; margin-top: -30px;" />
+                        </a>
+                        <br />
+                        <div id="divDriverPop" align="center" style="overflow:auto;display:none;">                
+                               <table align="left" style="padding-left:10%;width:100%">
+                                   <tr>
+                                       <td width="50%">
+                                        <b style="font-size:13px;">Job Number</b>
+                                       </td>
+                                       <td width="50%">
+                                          <b> <label id="lblpopjob" style="font-size:13px;padding-left:10%;"/></b>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td width="50%">
+                                          <b style="font-size:13px;">Customer Name</b>  
+                                       </td>
+                                       <td width="50%">
+                                         <b>  <label id="lblcustomer" style="font-size:13px;padding-left:10%;"/></b>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td width="50%">
+                                        <b style="font-size:13px;">From</b>
+                                       </td>
+                                       <td width="50%">
+                                         <b>  <label id="lblpopfrom" style="font-size:13px;padding-left:10%;"/></b>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td width="50%"> 
+                                          <b style="font-size:13px;">To</b>  
+                                       </td>
+                                       <td width="50%">
+                                          <b> <label id="lblpopto" style="font-size:13px;padding-left:10%;"/></b>
+                                       </td>
+                                   </tr>
+                                    <tr>
+                                       <td width="50%">
+                                        <b style="font-size:13px;">Third Location</b>
+                                       </td>
+                                        <td width="50%">
+                                          <b>  <label id="lblpopthird" style="font-size:13px;padding-left:10%;"/></b>
+                                        </td>
+                                   </tr>
+                                   <tr>
+                                       <td width="50%">
+                                          <b style="font-size:13px;">Fourth Location</b>  
+                                       </td>
+                                       <td width="50%">
+                                         <b>  <label id="lblpopfour" style="font-size:13px;padding-left:10%;"/></b>
+                                       </td>
+                                   </tr>
+                               </table>
+                        </div>
+                    <div id="divBid" style="overflow:auto;display:none;"align="center">
+                        <table align="left" style="padding-left:10%;width:100%">
+                                   <tr>
+                                       <td width="50%">
+                                        <b style="font-size:13px;">Job Number</b>
+                                       </td>
+                                       <td width="50%">
+                                          <b> <label id="lblbidjob" style="font-size:13px;padding-left:10%;"/></b>
+                                       </td>
+                                   </tr>
+                                   
+                                   <tr>
+                                       <td width="50%">
+                                        <b style="font-size:13px;">From</b>
+                                       </td>
+                                       <td width="50%">
+                                         <b>  <label id="lblbidfrom" style="font-size:13px;padding-left:10%;"/></b>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td width="50%">
+                                          <b style="font-size:13px;">To</b>  
+                                       </td>
+                                       <td width="50%">
+                                          <b> <label id="lblbidto" style="font-size:13px;padding-left:10%;"/></b>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td width="50%">
+                                          <b style="font-size:13px;">Distance In Mile</b>  
+                                       </td>
+                                       <td width="50%">
+                                          <b> <label id="lblbiddistance" style="font-size:13px;padding-left:10%;"/></b>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td width="50%">
+                                          <b style="font-size:13px;">Fare</b>  
+                                       </td>
+                                       <td width="50%">
+                                        <b><img src="img/euro.png"width="10" height="10"/><input type="text" id="txtbidFare" maxlength="3" style="font-size:13px;width:70%;"/></b>
+                                       </td>
+                                   </tr>
+                                    <tr>
+                                        <td width="50%">
+                                            <input type="button" class="specialBtn" value="Cancel" style="width:80%;" onclick="bidCancel()" />
+                                        </td>
+                                        <td width="50%">
+                                            <input type="button" class="specialBtn" value="Submit" style="width:80%;padding-left:10%;" onclick="bidSubmit()"/>
+                                        </td>
+                                    </tr>
+                          
+                        </table>
+                    </div>   
+                    <br />
+               </div>
+       <table width="100%" style="border-collapse:collapse">
+       <tr>
+               <td width="50%" style="padding-left:5%;">
+                   <label  class="font-style"><b style="font-size:13px;">Job Number </b></label> 
+               </td>
+               <td width="50%" style="padding-left:5%;">
+                 <a  href="#" onclick="showJob()"  style="color:blue;"><b style="font-size:13px;"> <label id="lbljobno" style="cursor:pointer;" ></label></b></a>
+               </td>
+     </tr>
+     <tr>
+               <td width="50%" style="padding-left:5%;">
+                   <label  class="font-style"><b style="font-size:13px;">From</b></label> 
+                 </td>
+               <td width="50%" style="padding-left:5%;">
+                  <b style="font-size:13px"> <label id="lblFromLoc" readonly="true"/></b>
+               </td>
+     </tr>
+              
+     <tr>
+               <td width="50%" style="padding-left:5%;">
+                   <label  class="font-style"><b style="font-size:13px">To </b></label> 
+                   
+               </td>
+               <td width="50%" style="padding-left:5%;">
+                 <b style="font-size:13px">  <label id="lblToLoc" readonly="true"></label></b><img src="img/Addlocation.png" id="secondLoc" width="15" height="15" style="padding-left:35%;" onclick="secoundLocation()"/>
+               </td> 
+     </tr>
+              
+     <tr>
+               <td width="50%" style="padding-left:5%;">
+                   <label for="txtDistance" class="font-style"><b style="font-size:13px">Distance In Miles </b></label> 
+               </td>
+               <td width="50%" style="padding-left:5%;">
+                 <b style="font-size:13px">  <label id="lblDistance" readonly="true" /></b>
+               </td>
+    </tr>
+    <tr>
+               <td width="50%" style="padding-left:5%;">
+                   
+                       <label for="pickDateDriver" class="font-style"><b style="font-size:13px">Pick Up Date </b></label>
+               </td>
+               <td width="50%" style="padding-left:5%;">  
+                 <b style="font-size:13px">  <label  id="lblpickDateDriver" readonly="true"/></b>
+               </td>
+    </tr>
+    <tr>
+               <td width="50%" style="padding-left:5%;">
+                   
+                   <label  class="font-style"><b style="font-size:13px">Pick Up Time </b></label>
+               </td>
+               <td width="50%" style="padding-left:5%;">
+                <b style="font-size:13px">   <label id="lblpickTime" readonly="true"/></b>
+               </td>
+    </tr>
+              
+    <tr>
+               <td width="50%" style="padding-left:5%;">
+                   <label class="font-style"><b style="font-size:13px">Passenger </b></label> 
+               </td>
+               <td width="50%" style="padding-left:5%;">
+                <b style="font-size:13px">   <label id="lblpassengercount" readonly="true"/></b>
+               </td>
+    </tr>
+    <tr>
+               <td width="50%" style="padding-left:5%;">
+                 
+                   <label class="font-style"><b style="font-size:13px">Large Case </b></label>
+                       
+               </td>
+               <td width="50%" style="padding-left:5%;">  
+                  <b style="font-size:13px"> <label id="lbllargecase" readonly="true" /> </b>         
+               </td>
+                       
+    </tr>
+    <tr>
+               <td width="50%" style="padding-left:5%;">
+                 
+                   <label for="smallcase" class="font-style"><b style="font-size:13px">Small Case </b></label>
+               </td>
+               <td width="50%" style="padding-left:5%;">
+                  <b style="font-size:13px"> <label id="lblsmallcase" readonly="true" /> </b>     
+                               
+               </td>
+                       
+   </tr>
+   <tr id="trfare" style="display:none;">
+               
+                   
+               <td width="50%" style="padding-left:5%;" >
+                  <b style="font-size:13px">Fare </b>
+               </td>
+               <td width="50%" style="padding-left:5%;">
+                  <b style="font-size:13px"><img src="img/euro.png"width="10" height="10"/><label id="lblfare" />  </b>
+               </td>
+   </tr>
+    <tr>
+               <td width="55%" style="padding-left:5%;">
+                  <b style="font-size:13px">Special Requirement </b>
+               </td>
+               <td width="50%" style="padding-left:5%;">
+                    
+                     <b style="font-size:13px">  <label id="specialReq" ><a href="#" onclick="showSpecial()" style="color:blue;">None</a> </label></b>
+             </td>
+   </tr>
+   <tr id="trwheelchair" style="display:none;">
+               
+                   
+               <td width="50%" style="padding-left:5%;" >
+                  <b style="font-size:13px">Wheelchair Passengers </b>
+               </td>
+               <td width="50%" style="padding-left:5%;">
+                  <b style="font-size:13px">   <label id="lblwheelchair" />  </b>
+                   </td>
+   </tr>
+   <tr id="trchildseats" style="display:none;">
+               <td width="50%" style="padding-left:5%;">
+                  <b style="font-size:13px">Child Seats </b>
+               </td>
+               <td width="50%" style="padding-left:5%;">
+                 <b style="font-size:13px">    <label id="lblchildseat" />  </b>
+              </td>
+   </tr>
+   <tr id="trchildbooster" style="display:none;" >
+               <td width="50%" style="padding-left:5%;">
+                  <b style="font-size:13px">Child Booster </b>
+               </td>
+               <td width="50%" style="padding-left:5%;">
+               <b style="font-size:13px">      <label id="lblchildbooster" /> </b> 
+               </td>
+  </tr>
+   <tr id="trOtherspec" style="display:none;">
+               <td width="100%" style="padding-left:5%;" colspan="4">
+                  <label for="txtothereSpecialRequirement" ><b style="font-size:13px" >Other Requirements</b></label> 
+                   
+               </td>
+               
+             
+ </tr>
+           <tr>
+               <td width="100%" style="padding-left:5%;" colspan="4">
+                   <textarea id="txtothereSpecialRequirement" rows="4" cols="10"  style="" readonly="true"></textarea>
+               </td>
+           </tr>
+                 
+  </table>
+        
+            </div>
+            <div style="padding-top:20%;width:100%;">
+                
+            </div>
+           </center> 
+         
+
+        <footer>
+            <div style="width:100%;position:fixed;bottom:0px;height:20px;padding-bottom:55px">
+                <table width="100%" style="">
+                           <tr>
+                               <td width="25%">
+                                    <input type="button" for="btnbfor" class="specialBtn" onclick="showBid()" style="width:100%;" value="Bid" />
+                               </td>
+                               <td width="25%">
+                                  <input type="button" for="btnmap" class="specialBtn" onclick="showMap()" style="width:100%;" value="Map"/> 
+                               </td>
+                               <td width="25%">
+                                   <input type="button" for="btncancel" class="specialBtn" onclick="reqCancel()" style="width:100%;" value="Cancel" />
+                               </td>
+                               <td width="25%">
+                                    <input type="button" for="btnreject" class="specialBtn" onclick="reqReject()" style="width:100%;" value="Reject"/>
+                               </td>
+                           </tr>
+                       </table>
+                <table style="width:100%;" class="btn-tmpFooter">
+                    <tr>
+                        <td style="width:20%;">
+                            <div>
+                                <img src="img/User.png" width="25px;" style="float:left; cursor:pointer" title="Profile" onclick="myProfile()"/>
+                                
+                            </div>
+                            
+                        </td>
+                        <td style="width:20%;">
+                            <div>
+                                <img src="img/Home.png" width="25px;" style="float:left;cursor:pointer" title="Home" onclick="myhome()"/>
+                                
+                            </div>
+                            
+                        </td>
+                        <td style="width:20%;">
+                            <div>
+                                <img src="img/Cab.png" width="25px;" style="float:left;cursor:pointer" title="My Jobs" onclick="MyBookings()"/>
+                                
+                            </div>
+                            
+                        </td>
+                        <td style="width:20%;">
+                            <div>
+                                <img src="img/History1.png" width="25px;" style="float:left;cursor:pointer" title="Booking History" onclick="bookedHistory()"/>
+                                
+                            </div>
+                            
+                        </td>
+                        <td style="width:20%;">
+                            <div>
+                                <img src="img/feedback.png" width="25px;" style="float:left;cursor:pointer" title="Feedback" onclick="feedBack()"/>
+                                
+                            </div>
+                            
+                        </td>
+                        <td style="width:20%;">
+                            <div>
+                                <img src="img/logout.png" width="25px;" style="float:left;cursor:pointer" title="Logout" onclick="logout()"/>
+                                
+                            </div>
+                            
+                        </td>
+                        
+                    </tr>
+                    
+                </table>
+                
+            </div>
+            
+        </footer>
+
+    </body>
+</html>

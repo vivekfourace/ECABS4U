@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+         <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="css/site.css" />
+         <link rel="stylesheet" type="text/css" href="css/jqx.base.css"/>
+        <link rel="stylesheet" type="text/css" href="css/jqx.energyblue.css"/>
+        <link rel="stylesheet" type="text/css" href="css/customerSearchList.css" />
+        <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
+         <script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="Scripts/jqx-all.js"></script>
+       <script type="text/javascript">
+         var QString = window.location.search.substring(1);
+         var userId =  QString.split("=")[1].split("&")[0];
+         var roleId = QString.split("=")[2].split("&")[0];
+         var relatedId = QString.split("=")[3].split("&")[0];
+         var requestID = QString.split("=")[4].split("&")[0];
+     //   $(document).ready(function () {
+     //       $('#popupBoxClose').click(function () {
+     //           unloadPopupBox();
+     //       });
+     //   });
+     //   function unloadPopupBox() {
+     //       $('#popup_box').fadeOut("slow");
+     //   }
+        window.setInterval(function () {
+           
+         //Ajax loader--start
+              $('#imgLoader').bind('ajaxStart', function(){
+                  $(this).show();
+                  showDisableLayer();
+               }).bind('ajaxStop', function(){
+                  $(this).hide();
+                   hideDisableLayer();
+              });
+              
+                showDisableLayer = function() {
+                $('<div id="loading" style="position:fixed; z-index: 2147483647; top:0; left:0; background-color: #E6E6E6; opacity:0.4;filter:alpha(opacity=0);"></div>').appendTo(document.body);
+                $("#loading").height($(document).height());
+                $("#loading").width($(document).width());
+              };
+
+                  hideDisableLayer = function() {
+                  $("#loading").remove();
+              };
+            //Ajax loader--ends
+          
+            var source = {
+               
+             url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData?FP1=" + requestID,
+             type: "GET",
+             datatype: "json",
+                data: {},
+               
+                updaterow: function (rowid, rowdata, commit) {
+                    // synchronize with the server - send update command
+                    // call commit with parameter true if the synchronization with the server is successful 
+                    // and with parameter false if the synchronization failder.
+                    commit(true);
+            
+                },
+                datafields: [
+                    { name: 'CustomerRequestID', type: 'long' },
+                    { name: 'DriverName', type: 'string' },   
+                    { name: 'MobileNumber', type: 'string' },
+                    { name: 'Comments', type: 'string' }
+                   
+                ],
+                cache: false,
+                root: 'data',
+                async: false
+            };
+            $('#jqxgrid2').bind('bindingcomplete', function (){});            
+            var dataAdapter = new $.jqx.dataAdapter(source, {
+                contentType: 'application/json; charset=utf-8',
+                downloadComplete: function (data, textStatus, jqXHR)
+                {
+                    return data.d;
+                }
+            });
+            var cellsrenderer = function (row, column, value)
+            {
+                return '<div style="text-align: center;">' + value + '</div>';
+            }
+            var columnrenderer = function (value)
+            {
+                return '<div style="text-align: center;">' + value + '</div>';
+            }
+            $("#jqxgrid2").jqxGrid({
+                width: '100%',
+               
+                source: dataAdapter,
+                autoheight: true,
+                theme: 'energyblue',
+                pageable: false,
+                editable:true,
+                columns: [
+                    { text: 'CustomerRequestID', dataField: 'CustomerRequestID',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100, hidden: true },
+                    { text: 'Driver name', dataField: 'DriverName',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },  
+                    { text: 'Mobile number', dataField: 'MobileNumber',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
+                    { text: 'Fare', dataField: 'Comments',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
+                     
+                    {
+                        text: '', datafield: 'CustomerRequestID', columntype: 'button',editable:true, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100,
+                        cellsrenderer: function ()
+                        {
+                            return "Hire Me";
+                        },
+                        buttonclick: function (row)
+                        {                           
+                            editrowindex = row;
+                            var id = $("#jqxgrid2").jqxGrid('getcellvalue', row, "CustomerRequestID");
+                             $.ajax({
+                                        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse",
+                                        type:"POST",
+                                        dataType: "Json",
+                                        data:"{'userID':'" +relatedId+"','reqid':'"+ id +"'}",
+                                        contentType: "application/json; charset=utf-8",  
+                                        success: function (data) 
+                                                {
+                                                },
+                                        error: function (XMLHttpRequest, textStatus, errorThrown)
+                                                 {
+                                        alert(errorThrown);
+                                                }
+                                    });
+                        }
+                    },
+                
+                ]
+            });
+             
+            var renderer = function (id)
+            {
+                return "<input type='button' onClick='buttonclick(event)' class='gridButton' id='btn" + id + "' value='Accept'/>"
+            };
+            $('#popup_box').fadeIn("slow");
+        }, 30000);
+           
+            //back to searchPage          
+function backtosearch()
+{
+    window.location = 'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
+    </script>
+    </head>
+    
+    
+    
+    <body>
+        <center>
+         
+        <div class="header" >
+            <div style="float:left;height:48px;width:100px;padding-left:5px">
+                <img src="img/logo1.png" class="logo"/>
+            </div>
+            <div style="width:200px; height:50px;text-align:center">
+                <div style="padding-top:13px;">
+                <b class="header-font" style="font-size:16px;float:right">Book</b>
+                </div>
+            </div>
+             <div style="float:right;height:50px;width:50px; margin-top:-45px;">
+                <img src="img/backk.png"  height="35" style=" cursor:pointer;" onclick="backtosearch();"/>
+            </div>
+        </div>
+        
+        
+        
+        <!--<div id="popup_box">
+        <!--    <a id="popupBoxClose" style="cursor: pointer;">
+        <!--        <img src="img/close.png" style="height: 40px; width: 40px; margin-top: -30px; margin-right: -26px;" />
+        <!--    </a>
+        <!--    <br />-->       
+        
+        
+        <div style="padding-top:100px"></div>
+            
+            <div id="imgLoader" style="padding-top:100px;position:fixed; z-index: 2147483647;width:100%;height:100%;background-color:transparent;text-align: center;background-position: center;background-repeat: no-repeat;">
+                <img src="jquery-mobile/styles/images/ajax-loader.gif" width="270" height="200"/>
+            </div>
+            <div align="center" style="overflow:auto;">                
+                <div id="jqxgrid2"></div>
+            </div>
+            <br />
+        </center>
+    </body>
+</html>

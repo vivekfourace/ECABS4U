@@ -27,10 +27,14 @@
                 data: {},
                 datatype: "json",
                 datafields: [
-                    { name: 'DriverID', type: 'long' },
-                    { name: 'DriverName', type: 'string' },
-                    { name: 'Postcode', type: 'string' },
-                    { name: 'MobileNumber', type: 'string' }
+                    { name: 'CustomerRequestID', type: 'long' },
+                    { name: 'CustomerName', type: 'string' },   
+                    { name: 'StartDate', type: 'string' },
+                    { name: 'StartTime', type: 'string' },
+                    { name: 'FromPostcode', type: 'string' },
+                    { name: 'ToPostcode', type: 'string' },
+                    { name: 'DistanceInMile', type: 'string' },
+                    { name: 'DriverComments', type: 'string' }
                 ],
                 cache: false,
                 root: 'data',
@@ -53,19 +57,23 @@
                 return '<div style="text-align: center;">' + value + '</div>';
             }
             $("#jqxgrid").jqxGrid({
-                width: '500',
+                width: '100%',
                 source: dataAdapter,
                 autoheight: true,
                 theme: 'energyblue',
                 pageable: true, 
+                editable:true,
                 columns: [
-                    { text: 'DriverID', dataField: 'DriverID', renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100, hidden: true },
-                    { text: 'DriverName', dataField: 'DriverName', renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
-                    { text: 'Postcode', dataField: 'Postcode', renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
-                    { text: 'MobileNumber', dataField: 'MobileNumber',editable:true, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
-                    
+                    { text: 'CustomerRequestID', dataField: 'CustomerRequestID',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100, hidden: true },
+                    { text: 'Customer name', dataField: 'CustomerName',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 120 },  
+                    { text: 'Date', dataField: 'StartDate',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 80 },
+                    { text: 'Time', dataField: 'StartTime',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 80 },
+                    { text: 'From', dataField: 'FromPostcode',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
+                    { text: 'To', dataField: 'ToPostcode',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
+                    { text: 'Distance in Mile', dataField: 'DistanceInMile',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 120 },
+                    { text: 'Fare', dataField: 'DriverComments',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 120 },  
                     {
-                        text: 'Accept', datafield: 'DriverID', columntype: 'button', renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100,
+                        text: 'Accept', datafield: 'CustomerRequestID', columntype: 'button', renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100,
                         cellsrenderer: function ()
                         {
                             return "Accept";
@@ -73,7 +81,7 @@
                         buttonclick: function (row)
                         {
                             editrowindex = row;
-                            var id = $("#jqxgrid").jqxGrid('getcellvalue', row, "DriverID");
+                            var id = $("#jqxgrid").jqxGrid('getcellvalue', row, "CustomerRequestID");
                             alert(id);
                             alert("accepting");
                         }
@@ -87,8 +95,10 @@
                         buttonclick: function (row)
                         {
                             editrowindex = row;
-                            var id = $("#jqxgrid").jqxGrid('getcellvalue', row, "DriverID");
+                            var id = $("#jqxgrid").jqxGrid('getcellvalue', row, "CustomerRequestID");
+                            var p = $("#jqxgrid").jqxGrid('getcellvalue', row, "MobileNumber");
                             alert(id);
+                           
                             alert("rejecting");
                         }
                     }

@@ -12,27 +12,32 @@
          <script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
         <script type="text/javascript" src="Scripts/jqx-all.js"></script>
         <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        
+        <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
         <script type="text/javascript" src="js/driverHome.js"></script>
-         <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
         
-         <script type="text/javascript">
-        
+      <!--  <script type="text/javascript">
+            var QString = window.location.search.substring(1);
+            var userId =  QString.split("=")[1].split("&")[0];
+            var roleId = QString.split("=")[2].split("&")[0];
+            var relatedId = QString.split("=")[3].split("&")[0];
+            //alert(relatedId);
+            //alert(userId);
             
-        $(document).ready(function () {
-           
-
-           
-            $('#popupBoxClose').click(function () {
-                unloadPopupBox();
-            });
-        });
-        function unloadPopupBox() {
-            $('#popup_box').fadeOut("slow");
-        }
-            
-        window.setInterval(function () {
-             
-           var fp="560078";
+        $(document).ready(function () {         
+            $.ajax({url:'http://115.115.159.126/ECabs/ECabs4U.asmx/checkResponse',                      
+                     type:"POST",
+                     datatype:"json",
+                     data:"{'userID':'" + relatedId + "'}",
+                     contentType: "application/json; charset=utf-8",                     
+                     success: function(data)
+                        {
+                              var getValue=data.d;
+                    //alert(data.d);
+                                if(getValue == false)
+                                {
+                                  window.setInterval(function () {
+            var fp = "560102";
             var tp = "560102";
             var source = {
                 type: "GET",
@@ -46,7 +51,7 @@
                     commit(true);
                 },
                 datafields: [
-                    { name: 'CustomerRequestID', type: 'string' },
+                    { name: 'CustomerRequestID', type: 'long' },
                     { name: 'CustomerName', type: 'string' },   
                     { name: 'StartDate', type: 'string' },
                     { name: 'StartTime', type: 'string' },
@@ -76,32 +81,31 @@
                 return '<div style="text-align: center;">' + value + '</div>';
             }
             $("#jqxgrid").jqxGrid({
-                width: '900',
-               
+                width: '100%',               
                 source: dataAdapter,
                 autoheight: true,
                 theme: 'energyblue',
-                pageable: true,
                 editable:true,
                 columns: [
                     { text: 'CustomerRequestID', dataField: 'CustomerRequestID',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100, hidden: true },
-                    { text: 'CustomerName', dataField: 'CustomerName',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },  
-                    { text: 'StartDate', dataField: 'StartDate',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
-                    { text: 'StartTime', dataField: 'StartTime',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
-                    { text: 'FromPostcode', dataField: 'FromPostcode',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
-                    { text: 'ToPostcode', dataField: 'ToPostcode',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
-                    { text: 'DistanceInMile', dataField: 'DistanceInMile',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
-                     { text: 'DriverComments', dataField: 'DriverComments',editable:true, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 ,
+                    { text: 'Customer name', dataField: 'CustomerName',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 120 },  
+                    { text: 'Date', dataField: 'StartDate',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 80 },
+                    { text: 'Time', dataField: 'StartTime',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 80 },
+                    { text: 'From', dataField: 'FromPostcode',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
+                    { text: 'To', dataField: 'ToPostcode',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
+                    { text: 'Distance in mile', dataField: 'DistanceInMile',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 120 },
+                     { text: 'Fare', dataField: 'DriverComments',editable:true, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 120 ,
                      
                      },    
-                {
-                        text: 'Accept', datafield: 'CustomerRequestID', columntype: 'button',editable:true, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100,
+                     {
+                        text: 'Accept', datafield: 'CustomerRequestID', columntype: 'button',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100,
                         cellsrenderer: function ()
                         {
                             return "Accept";
                         },
                         buttonclick: function (row)
                         {
+                             editrowindex = row;
                             $("#jqxgrid").on('cellbeginedit', function (event) 
                             {
                              var args = event.args;
@@ -110,12 +114,11 @@
                                {
                                     var args = event.args;
                              });
-                            editrowindex = row;
+                           
                             var rid = $("#jqxgrid").jqxGrid('getcellvalue', row, "CustomerRequestID");
                             var status=true; 
                             var price=$("#jqxgrid").jqxGrid('getcellvalue', row, "DriverComments");
-                            var dID=relatedId;
-                            alert(dID);
+                           
                              $.ajax({
                                         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/setDriverResponse",
                                         type:"POST",
@@ -123,22 +126,13 @@
                                         data:"{'userID':'" + relatedId +"','reqid':'"+ rid +"','status':'"+ status  +"','price':'"+ price +"'}",
                                         contentType: "application/json; charset=utf-8",  
                                         success: function (data) 
-                                                {
-                                                    alert(relatedId);
-                                        var get=data.d;
-                                                    if(get==false)
                                                     {
-                                                 window.location='CustomerPop.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId+'&reqid='+rid;
-                                                }
-                                                  
-                                                    
                                                     },
                                         error: function (XMLHttpRequest, textStatus, errorThrown)
                                                  {
                                         alert(errorThrown);
                                                 }
                                     });
-                           
                         }
                     },
                     {
@@ -151,63 +145,194 @@
                         {
                             editrowindex = row;
                             var id = $("#jqxgrid").jqxGrid('getcellvalue', row, "CustomerRequestID");
-                            alert(id);
-                            alert("rejecting");
                         }
                     }
                 
                 ]
             });
-             
+               
             var renderer = function (id)
             {
                 return "<input type='button' onClick='buttonclick(event)' class='gridButton' id='btn" + id + "' value='Accept'/>"
             };
-            $('#popup_box').fadeIn("slow");
-        }, 5000);
-    </script>
-        
-           </head>
+            $('#popup_box1').fadeIn("slow");
+                },5000);
+                                }
+                                else
+                                {
+                                     window.setInterval(function () {
+                                                var fp = "560102";
+                                                    var tp = "560102";
+                                                    var source = {
+                type: "GET",
+                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetData?FP1=" + fp + "&FP2=" + tp,
+                data: {},
+                datatype: "json",
+                updaterow: function (rowid, rowdata, commit) {
+                    // synchronize with the server - send update command
+                    // call commit with parameter true if the synchronization with the server is successful 
+                    // and with parameter false if the synchronization failder.
+                    commit(true);
+                },
+                datafields: [
+                    { name: 'CustomerRequestID', type: 'long' },
+                    { name: 'CustomerName', type: 'string' },   
+                    { name: 'StartDate', type: 'string' },
+                    { name: 'StartTime', type: 'string' },
+                    { name: 'FromPostcode', type: 'string' },
+                    { name: 'ToPostcode', type: 'string' },
+                    { name: 'DistanceInMile', type: 'string' },
+                    { name: 'DriverComments', type: 'string' }
+                ],
+                cache: false,
+                root: 'data',
+                async: false
+            };
+            $('#jqxgridnew').bind('bindingcomplete', function (){});            
+            var dataAdapter = new $.jqx.dataAdapter(source, {
+                contentType: 'application/json; charset=utf-8',
+                downloadComplete: function (data, textStatus, jqXHR)
+                {
+                    return data.d;
+                }
+            });
+            var cellsrenderer = function (row, column, value)
+            {
+                return '<div style="text-align: center;">' + value + '</div>';
+            }
+            var columnrenderer = function (value)
+            {
+                return '<div style="text-align: center;">' + value + '</div>';
+            }
+            $("#jqxgridnew").jqxGrid({
+                width: '100%',
+               
+                source: dataAdapter,
+                autoheight: true,
+                theme: 'energyblue',
+                pageable: false,
+                scrollmode: true,
+                
+                columns: [
+                    { text: 'CustomerRequestID', dataField: 'CustomerRequestID',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100, hidden: true },
+                    { text: 'Customer name', dataField: 'CustomerName',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 120 },  
+                    { text: 'Date', dataField: 'StartDate',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 80 },
+                    { text: 'Time', dataField: 'StartTime',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 80 },
+                    { text: 'From', dataField: 'FromPostcode',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
+                    { text: 'To', dataField: 'ToPostcode',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100 },
+                    { text: 'Distance in Mile', dataField: 'DistanceInMile',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 120 },
+                    { text: 'Fare', dataField: 'DriverComments',editable:false, renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 120 },                     
+                     {
+                        text: 'Accept', datafield: 'CustomerRequestID', columntype: 'button', renderer: columnrenderer, cellsrenderer: cellsrenderer, width: 100,
+                        cellsrenderer: function ()
+                        {
+                            return "Accept";
+                        },
+                        buttonclick: function (row)
+                        {
+                            editrowindex = row;
+                            var rid = $("#jqxgridnew").jqxGrid('getcellvalue', row, "CustomerRequestID");
+                            alert(rid);
+                            alert("accepting");
+                             $.ajax({
+                                        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/DriverResponse",
+                                        type:"POST",
+                                        dataType: "Json",
+                                        data:"{'userID':'" + relatedId +"','reqid':'"+ rid +"'}",
+                                        contentType: "application/json; charset=utf-8",  
+                                        success: function (data) 
+                                                    {
+                                                    },
+                                        error: function (XMLHttpRequest, textStatus, errorThrown)
+                                                 {
+                                        alert(errorThrown);
+                                                }
+                                    });
+                        }
+                    }
+                ]
+            });
+               
+            var renderer = function (id)
+            {
+                return "<input type='button' onClick='buttonclick(event)' class='gridButton' id='btn" + id + "' value='Accept'/>"
+            };
+            $('#popup_boxnew').fadeIn("slow");
+        },10000);
+            
+                                }
+                        },
+                    
+                     error: function (XMLHttpRequest, textStatus, errorThrown) {
+                     alert(errorThrown);
+                }
+             });
+            $('#popupBoxClose').click(function () {
+                unloadPopupBox();
+            });
+        });
+        function unloadPopupBox() {
+            $('#popup_box1').fadeOut("slow");
+        }
+         
+        function unloadPopupBox() {
+            $('#popup_boxnew').fadeOut("slow");
+        }
+       
+    </script>-->
+    </head>
+    
+    
     <body>
         <center>
-            <div class="header" style="background-color:#242424;height:12.2%;left:0px;top:0px">
-                <div style="float:left;height:48px;width:122px;padding-top:5px;">
+            <div class="header" style="background-color:#242424;height:12.2%">
+                <div style="float:left;height:48px;width:122px;padding-top:3px;">
                     <img src="img/logo1.png" class="logo"/>
                 </div>
             <div style="width:180px; height:90%;text-align:center;">
                 
             </div>
         </div>
-           
             <div style="padding-top:25%;">
                 <div style="width:80%;height:30px;background-color:#777B81;border-radius:3px;">
                     <marquee slide="left" style="font-size:20px;color:#ffffff;padding-top:3px;">
                         <i>Current Status: &nbsp;<label id="driverStatusupdate" style="color:blue"/>Available</i>
-                        
                     </marquee>
-                    
                 </div>
-                 
-       <!-- <div id="popup_boxnew">
-       <!--     <a id="popupBoxClose" style="cursor: pointer;">
-       <!--         <img src="img/close.png" style="height: 40px; width: 40px; margin-top: -30px; margin-right: -26px;" />
-       <!--     </a>
-       <!--     <br />
-       <!--     <div align="center" style="overflow:auto;">                
-       <!--         <div id="jqxgridnew"></div>
-       <!--     </div>
-       <!--     <br />
-       <!-- </div>-->
-                <div style="padding-top:25%;">
+                
+            <!--Pop up grid starts-->
+            <div id="popup_box1">
+                <a id="popupBoxClose" style="cursor: pointer;">
+                    <img src="img/close.png" style="height: 40px; width: 40px; margin-top: -30px; " />
+                </a>
+                <br />
+                <div align="center" style="overflow:auto;">                
+                    <div id="jqxgrid"></div>
+                </div>
+                <br />
+            </div>
+
+            <div id="popup_boxnew">
+                <a id="popupBoxClose" style="cursor: pointer;">
+                    <img src="img/close.png" style="height: 40px; width: 40px; margin-top: -30px;" />
+                </a>
+                <br />
+                <div align="center" style="overflow:auto;">                
+                    <div id="jqxgridnew"></div>
+                </div>
+                <br />
+         </div>
+         <!--Pop up grid ends-->  
+                
+                <div style="padding-top:2%;">
                     <div style="padding-left:13%;height:40px">
                         <div align="center" style="padding-top:15px">
                             <span style="float:left;padding-left:25px" class="font-style"><b>Current Status : &nbsp;</b></span>
                             <label class="font-Label" style="color:blue;text-decoration:none;float:left;font-size:12px" id="lblCurrentStatus"/>
-                            
                         </div>
                         
                     </div>
-                    <table width="80%"style="padding-top:9%">
+                    <table width="80%"style="padding-top:2%">
                         <tr>
                             <td align="center">
                                 <input type="button" class="btn-Common cursor" value="Soon To Clear" onclick="soonToclear();"/>
@@ -226,16 +351,6 @@
             </div>
             
         </center>
-        <div id="popup_box">
-            <a id="popupBoxClose" style="cursor: pointer;">
-                <img src="img/close.png" style="height: 40px; width: 40px; margin-top: -30px; margin-right: -26px;" />
-            </a>
-            <br />
-            <div align="center" style="overflow:auto;">                
-                <div id="jqxgrid"></div>
-            </div>
-            <br />
-        </div>
         <footer>
             <div style="width:100%;position:fixed;bottom:0px;height:20px;padding-bottom:15px">
                 <table style="width:100%;" class="btn-tmpFooter">
@@ -256,14 +371,14 @@
                         </td>
                         <td style="width:20%;">
                             <div>
-                                <img src="img/Cab.png" width="25px;" style="float:left;cursor:pointer" title="My Bookings" onclick="MyBookings()"/>
+                                <img src="img/Cab.png" width="25px;" style="float:left;cursor:pointer" title="My Jobs" onclick="MyBookings()"/>
                                 
                             </div>
                             
                         </td>
                         <td style="width:20%;">
                             <div>
-                                <img src="img/history.png" width="25px;" style="float:left;cursor:pointer" title="Booking History" onclick="bookedHistory()"/>
+                                <img src="img/History1.png" width="25px;" style="float:left;cursor:pointer" title="Booking History" onclick="bookedHistory()"/>
                                 
                             </div>
                             
@@ -290,6 +405,5 @@
             </div>
             
         </footer>
-        
     </body>
 </html>

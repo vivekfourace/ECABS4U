@@ -193,9 +193,9 @@ function CancelProfile()
     getProfile();
 }
 
-function BacktoHome()
+function backToIndex()
 {
-   // window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 function HomePage(){
     window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
@@ -208,4 +208,10 @@ function logout(){
 }
 function MyProfilePage(){
     window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
+
+//History
+function bookedHistory()
+{
+  window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;  
 }

@@ -35,7 +35,8 @@ $.ajax(url,{
 
 function ShowData(data)
 { 
-   $('#lblname').text(data.d[0]["BusinessCustomerName"] +"  "+ data.d[0]["BusinessCustomerLastName"]);
+   $('#lblBusinessNam').text(data.d[0]["NameOfBusiness"])
+   $('#lblname').text(data.d[0]["CustomerName"] +"  "+ data.d[0]["CustomerLastName"]);
    // $('#lbllastname').text(data.d[0]["CustomerLastName"]);
    $('#lblLocation').text(data.d[0]["Address1"]);
    $('#lblLocation2').text(data.d[0]["Address2"]);
@@ -48,6 +49,7 @@ function ShowData(data)
     $('#txtLocation2').hide();    
     $('#txtMobileno').hide();    
     $('#txtEmailID').hide();
+    $('#txtBusinessNam').hide();
     
      document.getElementById("trBtnUpdate").style.display = 'none';
      document.getElementById("trCancel").style.display = 'none';
@@ -62,15 +64,14 @@ function ShowData(data)
     
    //$('#btnUpdate').hide();
       //$('#btnhistory').show();
-    
-    $('#lblname').show();
+    $('#lblBusinessNam').show();
+     $('#lblname').show();
      $('#lbllastname').show();
     $('#lblLocation').show();
     $('#lblLocation2').show();
     $('#lblMobileNo').show();
     $('#lblEmailID').show();
     $('#btnEdit').show();
-    
  }
 
 
@@ -80,8 +81,9 @@ function ShowData(data)
 //Edit Customer Profile
 function EditProfile()
 {
-    $('#txtname' ).show(); 
-     //$('#txtlastname').show();
+    $('#txtBusinessNam').show();
+    $('#txtname').show(); 
+    $('#txtlastname').show();
     $('#txtLocation').show();    
     $('#txtLocation2').show();    
     $('#txtMobileno').show();    
@@ -101,12 +103,11 @@ function EditProfile()
     $('#lblLocation2').hide();
     $('#lblMobileNo').hide();
     $('#lblEmailID').hide();
-  $('#btnhistory').hide();
+    $('#btnhistory').hide();
+    $('#lblBusinessNam').hide();
+    
   
    // $("#btnEdit").hide();
-   
-    
-    
     
    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetBusinessCustomerrDetails";
     $.ajax(url,{
@@ -115,13 +116,13 @@ function EditProfile()
         data:"{'userID':'" +relatedId+"'}",
         contentType: "application/json; charset=utf-8",                     
         success: function(data){
-            $('#txtname').val(data.d[0]["BusinessCustomerName"] +"  "+ data.d[0]["BusinessCustomerLastName"]); 
-          //$('#txtlastname').val(data.d[0]["CustomerLastName"]);
+            $('#txtBusinessNam').val(data.d[0]["NameOfBusiness"])
+            $('#txtname').val(data.d[0]["CustomerName"]);
+            $('#txtlastname').val(data.d[0]["CustomerLastName"]);
             $('#txtLocation').val(data.d[0]["Address1"])
             $('#txtLocation2').val(data.d[0]["Address2"])
             $('#txtMobileno').val(data.d[0]["MobileNumber"]);    
             $('#txtEmailID').val(data.d[0]["Email"]);
-            
             },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
         alert(errorThrown);
@@ -136,8 +137,9 @@ function EditProfile()
 
 function UpdateProfile()
 {
+      var businessNam = $('#txtBusinessNam').val();
       var name = $('#txtname').val();
-     var lastname = $('#txtlastname').val();
+      var lastname = $('#txtlastname').val();
       var address1 = $('#txtLocation').val();
       var address2 = $('#txtLocation2').val();
       var email = $('#txtEmailID').val();
@@ -178,8 +180,8 @@ function UpdateProfile()
      var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateBusinessCustomerDetails";
         $.ajax(url,{
             type:"POST",
-            dataType: "Json",
-            data:"{'userID':'" +relatedId+"','name':'" +name+"','lname':'"+lastname+"','address1':'" +address1+"','address2':'" +address2+"','contactNumber':'" +phoneno+"','emailID':'" +email+"'}",
+            dataType: "json",
+            data:"{'userID':'"+relatedId+"','businessName':'"+businessNam+"','name':'"+name+"','lname':'"+lastname+"','address1':'" +address1+"','address2':'" +address2+"','contactNumber':'" +phoneno+"','emailID':'" +email+"'}",
             contentType: "application/json; charset=utf-8",                     
             success: ShowData,            
             error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -264,11 +266,18 @@ function feedBack()
 }
 
 
+//Change Password
+function changepassword()
+{
+   window.location='changePassword.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+  
+}
+
 // Back Button
-//function backtostart()
-//{
-  //  window.location =  'customerAfterLogin.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-//}
+function backtostart()
+{
+   window.location =  'businessCustomerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
 
 
 

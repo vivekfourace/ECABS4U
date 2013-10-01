@@ -7,11 +7,11 @@ var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
-function backtostart()
+function backToIndex()
 {
     
        
-    window.location =  'businessCustomerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    window.location =  'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
  
 }
 
@@ -65,16 +65,16 @@ function gethistory()
 //cab Now
 function cabNow()
 {
-  window.location='businessCustomerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+  window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
     
 }
 
 
 
-//Home
-function Home()
+//Pre Cab
+function myhome()
 {
-   window.location='businessCustomerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+   window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
 
@@ -85,8 +85,15 @@ function bookedHistory()
 {
  //alert(relatedId);
  
-  window.location='businessCustomerHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+  window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
    
+}
+
+
+
+//Driver Jobs from menu
+function MyBookings(){
+    window.location='driverJobs.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
 
@@ -95,7 +102,7 @@ function bookedHistory()
 //My Profile Button
  function myProfile()
             {
-                window.location =  'businessCustomerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
             }
   
 
@@ -104,7 +111,7 @@ function bookedHistory()
 function logout()
     {
                 
-        $.cookie("remember", 'null');
+       $.cookie("remember", 'null');
         $.cookie("userName", 'null');
         $.cookie("pass", 'null');
         window.location = "index.html";  
@@ -116,14 +123,14 @@ function logout()
 //Customer Feedback 
 function feedBack()
 {
-    window.location='businessCustomerFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+   window.location='driverFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
 
-//function backtostart()
-//{
-   //window.location =  'customerAfterLogin.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-//}
+function backtostart()
+{
+    window.location="index.html";
+}
 
     
     

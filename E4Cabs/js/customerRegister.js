@@ -144,6 +144,8 @@ function CheckData(data){
         $('#lblMsg').text("Username already exist!");
         $('#lblMsg').css("color","#D70007");
         $('#lblMsg').css("font-size","13");
+        $('#txtUserName').val("");
+        $('#txtUserName').focus();;
     }
     else if(data.d =="true"){
         $('#lblMsg').text("Registration success, wait 5s for login screen...")

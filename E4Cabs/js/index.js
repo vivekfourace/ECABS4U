@@ -61,11 +61,12 @@ var app = {
 
 function login()
             {
+                
                 //document.getElementById("txtUserName").focus();
                 var name=document.getElementById('txtUserName').value;
                 var password=document.getElementById('txtPassword').value;
                 
-                
+                //$.cookie('userName', name);
                 if(name.length > 0)
                 {
                     $('#lblMsg').text("");
@@ -120,13 +121,30 @@ function login()
                 }
              });
            }
+
 function CheckMsg(data)
 {
     if(data.d == "false")
     {
-        $('#lblMsg').text("Incorrect usename or password!");
-        $('#lblMsg').css("color","#D70007");
-        $('#lblMsg').css("font-size","13");
+        var name=document.getElementById('txtUserName').value;
+        var password=document.getElementById('txtPassword').value;
+        
+        var userNam = $.cookie('userName');
+        if(userNam == undefined || userNam == 'null')
+        {
+            if( (name.length && password.length) > 0)
+            {
+                $('#lblMsg').text("Incorrect usename or password!");
+                $('#lblMsg').css("color","#D70007");
+                $('#lblMsg').css("font-size","13");
+            }
+        }
+        else
+        {
+            $('#lblMsg').text("Incorrect usename or password!");
+            $('#lblMsg').css("color","#D70007");
+            $('#lblMsg').css("font-size","13");
+        }
     }
     else
     {
