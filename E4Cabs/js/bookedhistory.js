@@ -36,6 +36,7 @@ function gethistory()
                                 html += '<th class="th4 font">Time</th>';
                                 html += '<th class="th4 font">From</th>';
                                 html += '<th class="th4 font">To</th>';
+                                
                                 html += '</tr>';
                                 html += '</thead>';
                                                html +='<tbody class="body-style">';  
@@ -46,6 +47,7 @@ function gethistory()
                                                        html += "<td width='25%' align='center'>" + data.d[i]["StartTime"] +"</td>";
                                                        html += "<td width='25%' align='center'>" + data.d[i]["FromLoc"] +"</td>";
                                                        html += "<td width='25%' align='center'>" + data.d[i]["ToLoc"] +"</td>";
+                                                         
                                                        html += '</tr>';
                                                     }
                                                html +='</tbody>';
