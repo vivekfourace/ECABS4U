@@ -16,7 +16,7 @@ function loginUsingCookie()
                      success: CheckMsg,
                     
                      error: function (XMLHttpRequest, textStatus, errorThrown) {
-                     alert(errorThrown);
+                    // alert(errorThrown);
                 }
              });
         }
@@ -117,7 +117,7 @@ function login()
                      success: CheckMsg,
                     
                      error: function (XMLHttpRequest, textStatus, errorThrown) {
-                     alert(errorThrown);
+                    // alert(errorThrown);
                 }
              });
            }

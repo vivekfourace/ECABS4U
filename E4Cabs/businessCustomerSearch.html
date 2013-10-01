@@ -205,7 +205,10 @@
                 </div>
             </div>
         </div>
-            
+       <div id="imgLoader" style="display:none;padding-top:130px; z-index: 2147483647;position:fixed;top:0; left:0; background-color: #E6E6E6; opacity:0.7;filter:alpha(opacity=0);
+                width:100%;height:100%;text-align:center;background-position: center;background-repeat: no-repeat;">
+                <img src="jquery-mobile/styles/images/ajax-loader.gif" width="270" height="200"/>
+            </div>     
        <div style="padding-top:60px">
            <table width="80%" style="border-collapse:collapse">
                <center>
@@ -323,7 +326,8 @@
                    <td>
                        <label for="#" class="font-style"><b style="font-size:12px">Wheelchair Passengers</b></label>
                         <select class="select-choice" data-shadow="false" id="ddlWheelchair" class="font-style" style="width:100%;float:right;">
-                          <option value="1" selected="true">1</option>
+                          <option value="0" selected="true">0</option>
+                          <option value="1">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
                          
@@ -334,7 +338,8 @@
                    <td>
                        <label for="#" class="font-style"><b style="font-size:12px">Child Seats</b></label>
                        <select class="select-choice" class="font-style" id="ddlChidseats" style="width:100%;float:right;">
-                          <option value="1" selected="true">1</option>
+                          <option value="0" selected="true">0</option>
+                           <option value="1">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
                           <option value="4">4</option>
@@ -347,7 +352,8 @@
                <tr id="trChildBooster" style="display: none;">
                    <td><label for="#" class="font-style"><b style="font-size:12px">Child Booster</b></label>
                        <select class="select-choice" class="font-style" id="ddlChidbooster" style="width:100%;float:right;">
-                          <option value="1" selected="true">1</option>
+                          <option value="0" selected="true">0</option>
+                           <option value="1">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
                           <option value="4">4</option>

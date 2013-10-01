@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" type="text/css" href="css/site.css" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         
@@ -58,8 +58,16 @@
                 <center><label id="lblMsg" style="color:#D70007;font-size:12px"></label></center>
                 <input type="text" id="txtUserName" style=" font-family:Trebuchet MS;width:65%" placeholder="Username" autofocus="autofocus"/>
                 <input type="password" id="txtPassword" style="font-family:Trebuchet MS;width:65%;" placeholder="Password"/><br/>
-                <input type="checkbox" id="chkRem" style="margin-left:-33%">
-                <span style="width:70%;height:10px;font-size:12px;text-align:left;color:#7ABAEE"><i>Remember me</i></span>    
+                
+                <table width="100%" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td  style="padding-top:5px;padding-left:50px">
+                           <input type="checkbox" id="chkRem" style="width:7%;float:left;height:20px"/>
+                           <label class="font-style" style="width:85%;height:15px;font-size:11px;float:left;padding-top:6px;color:#7ABAEE"><em>Remember me</em></label>
+                       </td>
+                    </tr>
+                </table>
+                
                 <div style="margin-top:3%;">
                     <input type="button" class="btn-Login cursor" value="Sign In" onclick="login()" />
                 </div>
@@ -71,6 +79,7 @@
                  <div style="margin-top:1%;text-align:center">
                     <img src="img/key_icon.png" alt="forgotpassword" style="width:12px; height:12px"/>
                     <a href="forgotUsername.html" style="color:#568bbe">Forgot Username</a>
+                    <!--<a href="getRole.html" style="color:#568bbe">Forgot </a>-->
                 </div>
                
                 

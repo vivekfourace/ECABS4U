@@ -3,38 +3,9 @@ var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
-
-
-
 $(document).ready(function(){
-   var getID= relatedId;
-    alert(getID);
-    
-    $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/responseStatus",                      
-                     type:"POST",
-                     datatype:"json",
-                     data:"{'userID':'" + relatedId + "'}",
-                     contentType: "application/json; charset=utf-8",                     
-                     success: function (data) {
-                        alert(getID);
-                        var status=data.d;
-                         if(status==false)
-                         {
-                             window.location.href="driverHome.html"; 
-                         
-                             }
-                         else
-                         {window.location.href="driverHome.html"; 
-                          $('#driverStatusupdate').text("Available");
-                         }
-                     },
-                    
-                     error: function (XMLHttpRequest, textStatus, errorThrown) {
-                     alert(errorThrown);
-                }
-             });
-   
-                $.ajax({   url:"http://115.115.159.126/ECabs/ECabs4U.asmx/userStatus",                    
+     var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/userStatus";
+                $.ajax(url,{                      
                      type:"POST",
                      datatype:"json",
                      data:"{'userID':'" +userId+ "'}",
@@ -45,6 +16,38 @@ $(document).ready(function(){
                          if(status==true)
                          {
                          $('#driverStatusupdate').text("Available");
+                              $.ajax({
+                                          cache: false,
+                                            beforeSend: function(){
+                                                 $('#imgLoader').show();
+                                             },
+                                             complete: function(){
+                                                 $('#imgLoader').hide();
+                                             },
+                                           url:'http://115.115.159.126/ECabs/ECabs4U.asmx/CheckNewJob', 
+                                           type:"POST",
+                                           datatype:"json",
+                                           data:"{'userID':'" +relatedId+ "'}",
+                                           contentType: "application/json; charset=utf-8",                     
+                                           success: function (data) 
+                                              {
+                                                  if(data.d=="True")
+                                                  {
+                                                     $('#popup_box').show();
+                                                     $('#divDealStart').show();
+                                                  }
+                                                 if(data.d=="False")
+                                                  {
+                                                     $('#popup_box').hide();
+                                                     $('#divDealStart').hide();  
+                                                  }
+                                             },
+                                           error: function (XMLHttpRequest, textStatus, errorThrown)
+                                              {
+                                                       $('#popup_box').hide();
+                                                     $('#divDealStart').hide(); 
+                                               }
+                                     });
                              }
                          else
                          {
@@ -53,16 +56,23 @@ $(document).ready(function(){
                      },
                     
                      error: function (XMLHttpRequest, textStatus, errorThrown) {
-                     alert(errorThrown);
+                     //alert(errorThrown);
                 }
              });
     
 });
 
+function Available()
+{
+    
+}
+
+
 //Driver status 
  function DriverStatus(){
    window.location = 'driverStatusUpdate.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
+
 
 //diver Profile
 function DriverProfile()
@@ -108,10 +118,17 @@ function soonToclear()
     //alert("hi");
      $('#lblCurrentStatus').text("Soon To Clear");
     $('#driverStatusupdate').text("Soon To Clear");
-    $('#driverStatusupdate').css("color","blue");
     $('#lblCurrentStatus').css("color","#639ECD");
      var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/clearStatus";
-                $.ajax(url,{                      
+                $.ajax(url,{
+                    cache: false,
+                    beforeSend: function(){
+                         $('#imgLoader').show();
+                     },
+                     complete: function(){
+                         $('#imgLoader').hide();
+                     },
+
                      type:"POST",
                      datatype:"json",
                      data:"{'userID':'" +userId+ "'}",
@@ -119,7 +136,7 @@ function soonToclear()
                      success:{},
                     
                      error: function (XMLHttpRequest, textStatus, errorThrown) {
-                     alert(errorThrown);
+                    // alert(errorThrown);
                 }
              });
     }
@@ -142,12 +159,33 @@ function bookedHistory()
   window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;  
 }
 
-function Available()
-{
-  $('#lblCurrentStatus').text("Available");
-    $('#driverStatusupdate').text("Available");
-     $('#driverStatusupdate').css("color","#00195E");
-     $('#lblCurrentStatus').css("color","#00195E");
-    
-}
+ //Accepting the Request.    
+          function seeRequest()
+          {
+              window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+          }
+          
+          
+          //cancel the Request.
+          function closeRequest()
+          {
+               $.ajax({
+                        url:'http://115.115.159.126/ECabs/ECabs4U.asmx/CancelNewJob', 
+                        type:"POST",
+                        datatype:"json",
+                        data:"{'userID':'" +relatedId+ "'}",
+                        contentType: "application/json; charset=utf-8",                     
+                        success: function (data) 
+                           {
+                               $('#popup_box').hide();
+                                $('#divDealStart').hide();
+                          },
+                        error: function (XMLHttpRequest, textStatus, errorThrown)
+                           {
+                                  $('#popup_box').hide();
+                                $('#divDealStart').hide(); 
+                            }
+                  });
+              
+          }
 

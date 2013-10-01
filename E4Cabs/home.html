@@ -5,45 +5,52 @@
         <link rel="stylesheet" type="text/css" href="css/site.css" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <title></title>
-    </head>
-    <body>
-        <div align="center">
-        <div class="header-temp">
-            <div style="margin-left:15px;float:left">
-                <img class="img-tmp" src="img/site-logo.png" style="width:100px"/>
-            </div>
-        </div>
-        <div style="margin:10px 0 5px 0;" align="center">
-            <span class="font-style" style="font-size:18px" ><b>Home</b></span>
-        </div>
-            <a href="registerOperator.html">
-                <div class="div-tile" align="center"><span style="color:white;text-decoration:none">Register Operator</span></div>
-            </a>
+        <script type="text/javascript"  src="Scripts/jquery-1.8.2.min.js"></script>
+   <script type="text/javascript"  src="Scripts/jquery-ui-1.8.15.custom.min.js"></script>
+   <script type="text/javascript" language="javascript">
+    window.onload=Blink1();
+  
+      
+       
+       function myFunction()
+       {
+           $("#bbb").effect( "pulsate", 
+          {times:70},1000 );
+          
+           
+       }
+       
+       function Blink2()
+       {
+            alert("Welcome");
+           alert("You are Selected The Request");
+          
+           window.location="getRole.html";
+       }
+      function Blink3()
+       {
+           alert("Welcome");
+           alert("You are Rejected The Request");
+           window.location="getRole.html";
+       }
+   </script>
+        
+        
             
-         <a href="getRole.html">
-                <div class="div-tile" align="center"><span style="color:white;text-decoration:none;">Get Roles</span></div>
-            </a>
-        <a href="login.html">
-            <div class="div-tile" align="center"><span style="color:white;text-decoration:none;">Login</span></div>
-        </a>
-        <a href="driverRegister.html">
-            <div class="div-tile" align="center"><span style="color:white;text-decoration:none;">Register Driver</span></div>
-        </a>
-             <a href="customerRegister.html">
-            <div class="div-tile" align="center"><span style="color:white;text-decoration:none">Register Customer</span></div>
-        </a>
-             <a href="customerSearch.html">
-            <div class="div-tile" align="center"><span style="color:white;text-decoration:none">Customer Search</span></div>
-        </a>
-             <a href="driverStatusUpdate.html">
-            <div class="div-tile" align="center"><span style="color:white;text-decoration:none">Driver status update</span></div>
-        </a>
-             <a href="changePassword.html">
-            <div class="div-tile" align="center"><span style="color:white;text-decoration:none">Change Password</span></div>
-        </a>
-            <a href="OperatorProfile.html">
-            <div class="div-tile" align="center"><span style="color:white;text-decoration:none">Operator Profile</span></div>
-        </a>
+           
+  
+    </head>
+    <body onload="myFunction()">
+        <div align="center">
+        <p>Click the button</p>
+   
+            <input type="button" class="btn-Login cursor" value="Select" onclick="Blink2();" style=" background-color:#2B81CF;"/>
+            <input type="button" class="btn-Login cursor" value="Reject" onclick="Blink3();" style=" background-color:#2B81CF;"/><br/>
+             <input type="button" id="bbb" class="btn-Login cursor" value="ACKNOWLEDGE ENROUTE"  style=" background:#2B81CF;"/>
+                
+           
+   
             </div>
+       
     </body>
 </html>

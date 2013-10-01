@@ -66,7 +66,7 @@ function Registercustomer()
     
           if(!txt6)
                  {
-                     $('#lblMsg').text("Please enter postcode!");
+                     $('#lblMsg').text("Please enter Username!");
                      $('#txtUserName').focus();
                     return false;
                  }
@@ -104,28 +104,17 @@ function Registercustomer()
                         return false;
                     }
     
-    //Ajax loader--start
-                $('#imgLoader').bind('ajaxStart', function(){
-                    $(this).show();
-                    showDisableLayer();
-                 }).bind('ajaxStop', function(){
-                    $(this).hide();
-                     hideDisableLayer();
-                });
-                
-                  showDisableLayer = function() {
-                  $('<div id="loading" style="position:fixed; z-index: 2147483647; top:0; left:0; background-color: #7B7F86; opacity:0.4;filter:alpha(opacity=0);"></div>').appendTo(document.body);
-                  $("#loading").height($(document).height());
-                  $("#loading").width($(document).width());
-                };
-
-                    hideDisableLayer = function() {
-                    $("#loading").remove();
-                };
-              //Ajax loader--ends
+    
     
 
 $.ajax({
+    cache: false,
+                    beforeSend: function(){
+                         $('#imgLoader').show();
+                     },
+                     complete: function(){
+                         $('#imgLoader').hide();
+                     },
     url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RegisterCustomer",
     type: "POST",
     dataType: "json",
@@ -133,7 +122,7 @@ $.ajax({
     contentType: "application/json; charset=utf-8",
     success: CheckData,
     error: function (XMLHttpRequest, textStatus, errorThrown) {
-        alert(errorThrown);
+        //alert(errorThrown);
            }
        });    
 }
@@ -145,18 +134,19 @@ function CheckData(data){
         $('#lblMsg').css("color","#D70007");
         $('#lblMsg').css("font-size","13");
         $('#txtUserName').val("");
-        $('#txtUserName').focus();;
+        $('#txtUserName').focus();
     }
     else if(data.d =="true"){
-        $('#lblMsg').text("Registration success, wait 5s for login screen...")
-        $('#lblMsg').css("color","green");  
-        $('#lblMsg').css("font","bold");  
-        
-        setTimeout(function() {
-            $('#lblMsg').fadeOut(3000);
-            window.location = "index.html";
-            }, 5000);
-        
+        var timeOut = 6;
+        setInterval(function() {  
+            document.getElementById('lblMsg').innerHTML = "Registration success, wait " + --timeOut + "s for login screen.";
+            $('#lblMsg').css("color","green");  
+            $('#lblMsg').css("font-size","14px");  
+            if(timeOut <= 0)
+            {
+                window.location = "index.html";
+            }
+        }, 1000);
     }    
 }
 

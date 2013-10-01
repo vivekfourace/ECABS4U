@@ -20,8 +20,16 @@ function showlocation()
 {
      $('#txtFrom').show();
      $('#txtTo').show();
+    
     var url="http://115.115.159.126/ECabs/ECabs4U.asmx/GetBusinessCustomerrDetails";
     $.ajax(url,{
+         cache: false,
+                    beforeSend: function(){
+                         $('#imgLoader').show();
+                     },
+                     complete: function(){
+                         $('#imgLoader').hide();
+                     },
          type:"POST",
         dataType: "Json",
         data:"{'userID':'" +relatedId+"'}",
@@ -29,7 +37,7 @@ function showlocation()
     success: ShowData,
     
     error: function (XMLHttpRequest, textStatus, errorThrown) {
-    alert(errorThrown);
+   // alert(errorThrown);
         }
  });
 }
@@ -37,10 +45,9 @@ function showlocation()
     function ShowData(data)
 {
    // $('#txtFrom').text(data.d[0]["Address1"]);
-  //$('#txtTo').text(data.d[0]["Address2"]);
-    $('#txtFrom').val(data.d[0]["CustomerName"]+" "+ data.d[0]["CustomerLastName"]+" , "+ data.d[0]["Address1"]);
-    $('#txtTo').val(data.d[0]["Address2"]);
-   
+   //$('#txtTo').text(data.d[0]["Address2"]);
+    $('#txtFrom').val(data.d[0]+", "+ data.d[3]+", "+ data.d[4]);
+    $('#txtTo').val("");
 }
 
 //Search Func
@@ -86,7 +93,14 @@ function searchResult()
     var returntoloc=document.getElementById('txtReturTo').value;
 
     $.ajax({
-     url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
+    cache: false,
+                    beforeSend: function(){
+                         $('#imgLoader').show();
+                     },
+                     complete: function(){
+                         $('#imgLoader').hide();
+                     },
+   url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
        type:"POST",
        dataType: "Json",
        data:"{'userID':'" +relatedId+"','frompost':'"+ fromloc +"','topost':'"+ toloc +"','pickDate':'"+ pickdate +"','pickTime':'"+ picktime +"','passenger':'"+ totalpassenger +"','lcase':'"+ largecase +"','scase':'"+ smallcase +"','distance':'"+ distance +"','secondL':'"+secondLoc+"','thirdLoc':'"+thirdLoc+"','WchairPassengers':'"+WchairPassengers+"','childSeats':'"+childSeats+"','childBooster':'"+childBooster+"','otherSpeRequirement':'"+otherSpeRequirement+"','IsReturnTrue':'"+IsReturnTrue+"','returnfromloc':'"+returnfromloc+"','returntoloc':'"+returntoloc+"','returnDate':'"+returnDate+"','returnTime':'"+returnTime+"'}",
@@ -94,11 +108,11 @@ function searchResult()
        success: function (data) {
            var reqID = data.d;
            //window.location='RolePop.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-           window.location='customerSearchList.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId+'&reqid='+reqID;
+           //window.location='customerSearchList.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId+'&reqid='+reqID;
     
        },
        error: function (XMLHttpRequest, textStatus, errorThrown) {
-           alert(errorThrown);
+           //alert(errorThrown);
        }
     });
 }

@@ -166,32 +166,22 @@ function RegisterDriver()
     
                  
                  $.ajax({
+                     cache: false,
+                    beforeSend: function(){
+                         $('#imgLoader').show();
+                     },
+                     complete: function(){
+                         $('#imgLoader').hide();
+                     },
+
                      url:"http://115.115.159.126/ECabs/ECabs4U.asmx/RegisterDriver",
                       type:"POST",
                      datatype:"json",
-                     //data:"{'fname':'"+name+"','lname':'"+name2+"''email':'"+email+"','contactNumber':'"+mobNo+"','password':'"+password+"','address1':'"+Add1+"','address2':'"+Add2+"','postcode':'"+post+"'}",
                      data:"{'fname':'"+name+"','lname':'"+name2+"','email':'"+email+"','userID':'"+User+"','password':'"+password+"','contactNumber':'"+mobNo+"','address1':'"+Add1+"','address2':'"+Add2+"','postcode':'"+post+"','image':'"+img2+"'}",
                      contentType: "application/json; charset=utf-8",
                       success: OnValidate,
-                     
-                     
-                    //success: function(data)
-                     //{
-                         //alert("WELCOME!");
-                         
-                          // $('#txt1').val('');
-                         //  $('#txt2').val('');
-                          // $('#txt3').val('');
-                          // $('#txt4').val('');
-                          // $('#txt5').val('');
-                           //$('#txt6').val('');
-                           //$('#txt7').val('');
-                           //$('#txt8').val('');
-                         
-                     //},
                      error: function (XMLHttpRequest, textStatus, errorThrown)
                      {
-                 alert(errorThrown);
                      }
                      
                  });
@@ -204,7 +194,7 @@ function OnValidate(data)
         $('#lblRequiredField').text("Username already exist, enter another name!");
         $('#lblRequiredField').css("color","red");
     }
-    else
+    else if(data.d =="true")
     {
         $("#link2").show();
         $('#lblRequiredField').text("Registration successful,");
@@ -220,7 +210,17 @@ function OnValidate(data)
                            $('#txtpassword').val('');
                            $('#txtCpass').val('');
                             $('#txtusername').val('');
-    }
+       var timeOut = 6;
+        setInterval(function() {  
+            document.getElementById('lblMsg').innerHTML = "Registration success, wait " + --timeOut + "s for login screen.";
+            $('#lblMsg').css("color","green");  
+            $('#lblMsg').css("font-size","14px");  
+            if(timeOut <= 0)
+            {
+                window.location = "index.html";
+            }
+        }, 1000);
+    }    
 }
 function backToIndex()
 {
