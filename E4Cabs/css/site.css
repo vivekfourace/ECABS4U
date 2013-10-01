@@ -92,7 +92,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', end
 
 /*ReturnButton, Cancel Button*/
 .specialBtn{
-     border-radius:2px!important;
+     border-radius:1px!important;
      outline:none!important;
      width:50%;               
      height:25px!important;
@@ -152,7 +152,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', end
      }
 
 .btn-Login{
-     border-radius:3px!important;
+     border-radius:1px!important;
      outline:none!important;
      width:65%!important;               
      height:35px!important;
@@ -179,14 +179,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', end
 .btn-Login:active{
     background: #FE9A2E;
     color:#2980CE;
-    border:1px solid #2980CE;
+    border:1px solid #FE9A2E;
 }
 a:clik, a:visited{
     color:#FE9A2E;
 }
 
 .btn-Edit{
-     border-radius:3px;
+     border-radius:1px;
      outline:none;
      width:80%;               
      height:35px;
@@ -228,7 +228,7 @@ background-image: -webkit-gradient(
 
 
 .start-btn{
-     border-radius:3px;
+     border-radius:1px;
      outline:none;
      width:75%;               
      height:39px;
@@ -258,7 +258,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6bba70', end
     border:1px solid #2980CE;
 }
 .sign-inbtn{
-     border-radius:3px;
+     border-radius:1px;
      outline:none;
      width:75%;               
      height:39px;
@@ -293,7 +293,7 @@ color: #333;
 
  input[type="text"],input[type="password"]{
       width:80%;
-      border-radius:3px;
+      border-radius:1px;
       height:28px;
       text-align:center;
       font-size:15px;
@@ -305,7 +305,7 @@ color: #333;
 
 textarea{
     width:80%;
-      border-radius:3px;
+      border-radius:1px;
       height:30px;
       text-align:left;
       font-size:15px;
@@ -474,7 +474,7 @@ background-image: -webkit-gradient(
     border:1px solid #2980CE;
 }
 .btn-tmp-engage{
-    border-radius:3px;
+    border-radius:1px;
      outline:none;
      width:75%;               
      height:39px;
@@ -509,7 +509,7 @@ background-image: -webkit-gradient(
 }
 
 .btn-tmp-check{
-    border-radius:3px;
+    border-radius:1px;
      outline:none;
      width:75%;               
      height:39px;
@@ -530,7 +530,7 @@ background-image: -webkit-gradient(
 }
 
 .btn-tmp-avail{
-    border-radius:3px;
+    border-radius:1px;
      outline:none;
      width:75%;               
      height:39px;
@@ -566,7 +566,7 @@ background-image: -ms-linear-gradient(bottom, #1D8A1D 3%, #48A63A 52%, #54C754 7
 
 /*change button color */
 .btn-Common{
-     border-radius:3px!important;
+     border-radius:1px!important;
      outline:none!important;
      width:100%!important;               
      height:35px!important;
@@ -598,7 +598,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', end
     border:1px solid #2980CE;  
 }
 .btn-tmp-onway{
-    border-radius:3px;
+    border-radius:1px;
      outline:none;
      width:75%;               
      height:39px;
@@ -634,7 +634,7 @@ background-image: -webkit-gradient(
 }
 
 .btn-tmp-reject{
-    border-radius:3px;
+    border-radius:1px;
      outline:none;
      width:75%;               
      height:39px;
@@ -670,7 +670,7 @@ background-image: -webkit-gradient(
 
 .select-choice{
       width:80%;
-      border-radius:3px;
+      border-radius:1px;
       height:28px;
       text-align:center;
       font-size:15px;
@@ -681,7 +681,7 @@ background-image: -webkit-gradient(
 }
 
 .btnsize{
-     border-radius:3px;
+     border-radius:1px;
      outline:none;
      width:30%;               
      height:30px;
@@ -715,7 +715,7 @@ background-image: -webkit-gradient(
 }
 
 .btnsize2{
-     border-radius:3px;
+     border-radius:1px;
      outline:none;
      width:90%;               
      height:30px;
