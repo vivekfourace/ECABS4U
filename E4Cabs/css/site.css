@@ -60,9 +60,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', end
     margin-bottom:30px;
 }
 .btn-tmp{
-    border-radius:3px!important;
+    border-radius:1px!important;
      outline:none!important;
-     width:70%!important;               
+     width:80%!important;               
      height:35px!important;
      text-align:center!important;
      font-size:17px!important;
