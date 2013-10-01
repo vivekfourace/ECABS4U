@@ -120,7 +120,7 @@ function backToIndex()
 {
         if(roleId == 4)
         {
-            window.location = 'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+            window.location ='customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
         }
         else if(roleId == 3)
         {
