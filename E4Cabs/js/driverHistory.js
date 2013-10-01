@@ -30,7 +30,7 @@ function gethistory()
                    contentType: "application/json; charset=utf-8",
                     success: function (data) {
                         var count = data.d.length;
-                        alert(count);
+                        //alert(count);
                         if(count > 0)
                         {
                                 var html = '<table width="100%" style="border-collapse:collapse">';
