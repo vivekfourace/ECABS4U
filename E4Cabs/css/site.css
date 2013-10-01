@@ -5,7 +5,6 @@ html
 }
 center
 {
-    
     background-color:#ffffff;
 }
 .cursor{
@@ -88,7 +87,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', end
 .btn-tmp:active{
     background: #FE9A2E;
     color:#2980CE;
-    border:1px solid #2980CE;
+    border:1px solid #FE9A2E;
 }
 
 /*ReturnButton, Cancel Button*/
@@ -121,7 +120,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', end
 .specialBtn:active{
     background: #FE9A2E;
     color:#2980CE;
-    border:1px solid #2980CE;
+    border:1px solid #FE9A2E;
 }
 
 /*FOR FOOTER BACKGROUND COLOR*/
@@ -217,7 +216,7 @@ background-image: -webkit-gradient(
 .btn-Edit:active{
     background: #FE9A2E;
     color:#2980CE;
-    border:1px solid #2980CE;
+    border:1px solid #FE9A2E;
 }
 
 .img-tmp{
@@ -226,7 +225,6 @@ background-image: -webkit-gradient(
     position:static;
     z-index:1;
 }
-
 
 .start-btn{
      border-radius:1px;
@@ -256,7 +254,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6bba70', end
 .start-btn:active{
     background: #FE9A2E;
     color:#2980CE;
-    border:1px solid #2980CE;
+    border:1px solid #FE9A2E;
 }
 .sign-inbtn{
      border-radius:1px;
@@ -285,7 +283,7 @@ color: #333;
 .sign-inbtn:active{
     background: #FE9A2E;
     color:#2980CE;
-    border:1px solid #2980CE;
+    border:1px solid #FE9A2E;
 }
 .logo{
     width:110px;
@@ -472,7 +470,7 @@ background-image: -webkit-gradient(
 .backbtn:active{
     background: #FE9A2E;
     color:#2980CE;
-    border:1px solid #2980CE;
+    border:1px solid #FE9A2E;
 }
 .btn-tmp-engage{
     border-radius:1px;
@@ -506,7 +504,7 @@ background-image: -webkit-gradient(
 .btn-tmp-engage:active{
     background: #FE9A2E;
     color:#2980CE;
-    border:1px solid #2980CE;
+    border:1px solid #FE9A2E;
 }
 
 .btn-tmp-check{
@@ -527,7 +525,7 @@ background-image: -webkit-gradient(
 .btn-tmp-check:active{
     background: #FE9A2E;
     color:#2980CE;
-    border:1px solid #2980CE;
+    border:1px solid #FE9A2E;
 }
 
 .btn-tmp-avail{
@@ -561,7 +559,7 @@ background-image: -ms-linear-gradient(bottom, #1D8A1D 3%, #48A63A 52%, #54C754 7
 .btn-tmp-avail:active{
     background: #FE9A2E;
     color:#2980CE;
-    border:1px solid #2980CE;
+    border:1px solid #FE9A2E;
 }
 
 
@@ -596,7 +594,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', end
 .btn-Common:active{
     background: #FE9A2E;
     color:#2980CE;
-    border:1px solid #2980CE;  
+    border:1px solid #FE9A2E;  
 }
 .btn-tmp-onway{
     border-radius:1px;
@@ -631,7 +629,7 @@ background-image: -webkit-gradient(
 .btn-tmp-onway:active{
     background: #FE9A2E;
     color:#2980CE;
-    border:1px solid #2980CE;  
+    border:1px solid #FE9A2E;  
 }
 
 .btn-tmp-reject{
@@ -665,9 +663,8 @@ background-image: -webkit-gradient(
 .btn-tmp-reject:active{
     background: #FE9A2E;
     color:#2980CE;
-    border:1px solid #2980CE;  
+    border:1px solid #FE9A2E;  
 }
-
 
 .select-choice{
       width:80%;
@@ -712,7 +709,7 @@ background-image: -webkit-gradient(
 .btnsize:active{
     background: #FE9A2E;
     color:#2980CE;
-    border:1px solid #2980CE;  
+    border:1px solid #FE9A2E;  
 }
 
 .btnsize2{
@@ -746,5 +743,5 @@ background-image: -webkit-gradient(
 .btnsize2:active{
     background: #FE9A2E;
     color:#2980CE;
-    border:1px solid #2980CE;  
+    border:1px solid #FE9A2E;  
 }
