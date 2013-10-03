@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <link rel="stylesheet" type="text/css" href="jquery-mobile/styles/jquery-ui.css" />
-        
+        <link rel="stylesheet" type="text/css" href="css/PopUp.css" />
         <link rel="stylesheet" type="text/css" href="css/jquery.mobile.css" />
 	    <link type="text/css" href="css/jqm-datebox.min.css" rel="stylesheet" /> 
 	    <link type="text/css" href="css/jquery.mobile.simpled.min.css" rel="stylesheet" /> 
@@ -69,7 +69,27 @@
               blur: function(){
             $(this).animate({height:"50"},500);
               },
-        });    
+        });
+            
+            
+            
+        $('#chkNo').click(function(){
+           document.getElementById("chkyes").checked=false;
+            $('#returnJ').fadeIn("slow");
+            $('#termCond').fadeIn("slow");
+           
+        });
+        $('#chkyes').click(function(){
+            document.getElementById("chkNo").checked=false;
+            $('#returnJ').fadeOut("slow");
+            $('#termCond').fadeOut("slow");
+            
+        });
+            
+          $('#popupBoxClose').click(function ()
+                {
+                  $('#popup_box').fadeOut("slow");
+                }); 
       });
                
         
@@ -266,11 +286,11 @@
             
              
             document.getElementById("trfrom").style.display = 'table-row';
-            document.getElementById("trto").style.display = 'table-row';
-            document.getElementById("returnJ").style.display = 'table-row';
-            document.getElementById("termCond").style.display = 'table-row';
+            document.getElementById("trto").style.display = 'table-row';         
+            
              document.getElementById("trDate").style.display = 'table-row';
              document.getElementById("trTime").style.display = 'table-row';
+             document.getElementById("trRequrementReturn").style.display = 'table-row';
              var to=document.getElementById("txtTo").value;
              var from =document.getElementById("txtFrom").value;
              document.getElementById("txtReturFrom").value=to;
@@ -284,8 +304,9 @@
              document.getElementById("datepickers").value="";
              document.getElementById("timepickers").value="";
             document.getElementById("trfrom").style.display = 'none';
-            document.getElementById("termCond").style.display = 'none';
-            document.getElementById("returnJ").style.display = 'none';
+            document.getElementById("trRequrementReturn").style.display = 'none';
+            
+          
             document.getElementById("trto").style.display = 'none';
              document.getElementById("trDate").style.display = 'none';
              document.getElementById("trTime").style.display = 'none';
@@ -370,6 +391,12 @@
                 //document.getElementById("currentPos").style.display = 'none';
             }
         }
+      
+        function showExpaBox()
+        {
+            $('#popup_box').fadeIn("slow");
+            $('#confirmAnchor').show();
+        }
         
     </script>
     
@@ -383,6 +410,9 @@
                 <div style="padding-top:11%;">
                 <i class="header-font" style="color:white;font-size:16px">Book and Go >></i>
                 </div>
+            </div>
+            <div style="float:right;height:50px;width:60px; margin-top:-45px;">
+                <img src="img/Home.png" height="35"  />
             </div>
         </div>
         <div id="imgLoader" style="display:none;padding-top:130px; z-index: 2147483647;position:fixed;top:0; left:0; background-color: #E6E6E6; opacity:0.7;filter:alpha(opacity=0);
@@ -593,10 +623,16 @@
                    </td>
                </tr>
                </div>
-                   <tr id="termCond" style="display:none">
-                   <td style="background-color:#00A3C9">
+                 
+                   <tr id="termCond" style="display:none">                       
+                   <td style="background-color:#A9D0F5">
                       <label style="text-align:justify;">
-                          <i style="color:Black;">For long journeys requiring a return trip we recommend treating them as two separate jobs. This enables the most competitive bids to be obtained. If you would like us to do this please leave this NO selection. However, if you would prefer to have both journeys undertaken by the same operator please select YES.</i>
+                          <i style="color:Black;">
+                              Leaving this YES selection for your  return trip will obtain the most competitive bids.
+                                (For further explanation 
+                              <a style="text-decoration:underline;color:blue" class="cursor" onclick="showExpaBox()">click here</a> )
+                                If you would rather the same operator carry out both journeys please confirm below.
+                           </i>
                       </label><br /> 
                       
                    </td>
@@ -609,15 +645,38 @@
                                    <b>I want both journeys carried out by the same operator</b>
                                </td>
                                <td>
-                                   <input type="checkbox" id="chkReturnYes"/>
+                                   <input type="checkbox" id="chkReturnYes" />
                                </td>
                                <td>
-                                   <span style="font-size:12px;text-align:left;float:left;"><b>Yes</b></span>   
+                                   <span style="font-size:12px;text-align:left;float:left;"><b>Confirm</b></span>   
                                </td>
                            </tr>
                        </table>
                    </td>
                </tr>
+                   <tr id="trRequrementReturn" style="display:none">
+                      
+                       <td>
+                         <table style="border-collapse:collapse">
+                           <tr style="background-color:#F6E3CE">
+                               <td colspan="2">
+                                 <b>I want separate bids from all operators for my return journey.</b>
+                               </td>
+                           </tr>
+                            <tr style="background-color:#FAAC58">
+                        <td width="50%"> 
+                            <input type="checkbox" id="chkyes" style="float:left" checked/>
+                            <label style="font-size:12px;text-align:left;float:left;padding-top:2px"><b>Yes</b></label>
+                         </td>
+                       <td>
+                           <input type="checkbox" id="chkNo" style="float:left" />
+                           <label style="font-size:12px;text-align:left;float:left;padding-top:2px"><b>No</b></label>
+                           
+                       </td>
+                      
+                   </tr></table>
+                       </td>
+                   </tr>
                    
                <tr id="trfrom" style="display: none;">
                   <td>
@@ -660,9 +719,28 @@
            </table>
            <div style="padding-bottom:40px;">
                     <input type="button" value="Search" class="btn-tmp cursor" onclick="availabledriver();" />
-               
            </div>
-             
+           
+        <div id="popup_box" style="margin-top:170px">
+                        <a id="popupBoxClose" style="cursor: pointer;">
+                            <img src="img/close.png" style="height: 30px; width: 30px; margin-top: -10px;margin-right:-8px" />
+                        </a>
+                      <br />
+                                         
+             <div id="confirmAnchor" style="overflow:auto;display:none;padding-left:5px"align="center">
+               <p style="text-align:left; color:#00A3C9">
+                  <i>Ecabs4u maintain a sophisticated booking registration system for all of our operators.
+                   Each journey requested by the customer is targeted in the first instance to those vehicles
+                   who would otherwise be travelling without passengers in the same direction that you desire.
+                   It is from these operators you will receive the most competitive bids and is why we recommend
+                   you allow all suitable operators to bid for your return journey.
+                   </i>
+               </p>
+           </div>
+          </div> 
+       </div>
+
+          
              <!-- <div style="margin-bottom:3px">
              <select class="select-choice">
                   <option value="0">From</option>
@@ -690,48 +768,9 @@
             </select>
             </div>-->
   
-         </div>
         
       </center>
-        <div style="width:100%;position:fixed;bottom:0px;z-index:1000">
-            <table style="width:100%;" class="btn-tmpFooter">
-                <tr>
-                    <td style="width:20%;">
-                        <div>
-                            <img src="img/Home.png" width="27px;" style="float:left;cursor:pointer" title="Home" onclick="preCab()"/>
-                        </div>
-                    </td>
-                     <td style="width:20%;">
-                        <div>
-                            <img src="img/Cab.png" width="27px;" style="float:left;cursor:pointer" title="CabNow" onclick="cabNow()"/>
-                        </div>
-                    </td>
-                    <td style="width:20%;">
-                        <div>
-                            <img src="img/User.png" width="27px;" style="float:left; cursor:pointer" title="Profile" onclick="myProfile()"/>
-                        </div>
-                    </td>
-                   
-                    
-                    <td style="width:20%;">
-                        <div>
-                            <img src="img/History1.png" width="27px;" style="float:left;cursor:pointer" title="History" onclick="bookedHistory()"/>
-                        </div>
-                    </td>
-                    <td style="width:20%;">
-                        <div>
-                            <img src="img/feedback.png" width="27px;" style="float:left;cursor:pointer" title="Feedback" onclick="feedBack()"/>
-                        </div>
-                    </td>
-                    <td style="width:20%;">
-                        <div>
-                            <img src="img/logout.png" width="27px;" style="float:left;cursor:pointer" title="Logout" onclick="logout()"/>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
+       
         
         
     </body>
