@@ -258,6 +258,7 @@ function bookedHistory()
 }
 
 //from Menu
+//Home Button
 function preCab()
 {
    window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;

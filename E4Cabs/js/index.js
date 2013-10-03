@@ -70,6 +70,7 @@ function login()
                 if(name.length > 0)
                 {
                     $('#lblMsg').text("");
+                    
                 }
                 else if(name.length==0)
                 {
