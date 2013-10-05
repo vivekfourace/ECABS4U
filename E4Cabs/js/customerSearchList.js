@@ -71,9 +71,14 @@ function getData(data)
                                     $('#lblexp').text(sh+":"+ em +":"+ss);
                                   // var expTime=searchTime+10;
                                    var bidTime=data.d[i]["BidTime"]; 
-                                     var bid=bidTime.split(" ");
-                                    $('#lblbid').text(bid[1]);
-                                    $('#lblpick').text(bid[1]);
+                                   var bid=bidTime.split(" ");
+                                  var bidmin=bid[1].split(":");
+                                   var bidh=bidmin[0];
+                                   var bidm=parseInt(bidmin[1])+3;
+                                   var bids=bidmin[2];
+                                    var pick=bidh+":"+ bidm +":"+bids;
+                                   $('#lblbid').text(bid[1]);
+                                    $('#lblpick').text(pick);
                                     alert(bid[1]);
                                     
                                     //var pickTime=bidTime+3;lblsearch,lblexp,lblbid,lblpick
@@ -85,7 +90,7 @@ function getData(data)
                                            html += "<td width='20%' align='center'>" + data.d[i]["StartTime"] +"</td>";
                                            html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] +"</td>";
                                            html += "<td width='20%' align='center'>" + '<img src="img/spec.png" class="pulse" width="15" height="15" style="color:grey;" onclick="SpecShow()"/>' +"</td>"; 
-                                           html += "<td width='20%' align='center'>" + tm[1]+"</td>";
+                                           html += "<td width='20%' align='center'>" + bid[1]  +"</td>";
                                            html += "<td width='20%' align='center'>" + '<input type="button"  value="Hire" id= "'+ driverID +'" onclick = "Hireme(\''+driverID+'\',\''+customerReqId+'\');" title= "Hire me" />' + "</td>";
                                            html += '</tr>';
                                         $('#txtothereSpecialReq').text(spec);
@@ -98,7 +103,7 @@ function getData(data)
                                            html += "<td width='20%' align='center'>" + data.d[i]["StartTime"] +"</td>";
                                            html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] +"</td>";
                                            html += "<td width='20%' align='center'>" + '<img src="img/spec.png" width="15" height="15" style="color:grey;" onclick="SpecShow()"/>' +"</td>"; 
-                                           html += "<td width='20%' align='center'>" + bid[1] +"</td>";
+                                           html += "<td width='20%' align='center'>" + pick +"</td>";
                                            html += "<td width='20%' align='center'>" + '<input type="button"  value="Hire" id= "'+ driverID +'" onclick = "Hireme(\''+driverID+'\',\''+customerReqId+'\');" title= "Hire me" />' + "</td>";
                                            html += '</tr>'; 
                                          $('#txtothereSpecialReq').text("Not Available");
