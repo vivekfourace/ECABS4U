@@ -28,10 +28,9 @@ function MyBookings(){
 
 //driver Logout
 function logout(){
-        $.cookie("remember", 'null');
+         $.cookie("remember", false);
         $.cookie("userName", 'null');
-        $.cookie("pass", 'null');
-        window.location = "index.html";  
+        window.location = "index.html";   
 }
 
 
