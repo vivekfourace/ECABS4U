@@ -55,26 +55,109 @@ function getData(data)
                                    var driverName=data.d[i]["DriverName"];
                                    var spec=data.d[i]["OtherSpecReq"];
                                    var searchTime=data.d[i]["SearchTime"]; 
-                                   
                                    var tm=searchTime.split(" ");
-                                   alert(tm[1]);
+                                 
                                    var min=tm[1].split(":");
                                    var sh=min[0];
                                    var sm=min[1];
-                                    var a=10;
-                                    
-                                   var em=parseInt(sm)+a;
-                                    alert(em);
+                                  
                                    var ss=min[2];
-                                    
-                                   $('#lblsearch').text(tm[1]);
-                                    $('#lblexp').text(sh+":"+ em +":"+ss);
-                                  // var expTime=searchTime+10;
-                                   var bidTime=data.d[i]["BidTime"]; 
+                                   if(sm>49)
+                                    {
+                                        alert(sm);
+                                        alert(sh);
+                                        sh=parseInt(sh)+1;
+                                        alert(sh);
+                                        sm=parseInt(sm)+10;
+                                        sm=parseInt(sm)-60;
+                                        if(ss==00)
+                                        {
+                                            sm=parseInt(sm)+1;
+                                            ss=00;
+                                            $('#lblsearch').text(tm[1]);
+                                            $('#lblexp').text(sh+":"+ sm +":"+ss);  
+                                        }
+                                        else
+                                        {
+                                            alert("inside");
+                                            alert(sh);
+                                            alert(sm);
+                                            $('#lblsearch').text(tm[1]);
+                                            $('#lblexp').text(sh+":"+sm +":"+ss);   
+                                        }
+                                       
+                                        
+                                    }
+                                    else
+                                    {
+                                       
+                                        
+                                        sm=parseInt(sm)+10;
+                                        if(ss==00)
+                                        {
+                                            sm=parseInt(sm)+1;
+                                            ss=00;
+                                            $('#lblsearch').text(tm[1]);
+                                            $('#lblexp').text(sh+":"+ sm +":"+ss);  
+                                        }
+                                        else
+                                        {
+                                            
+                                            $('#lblsearch').text(tm[1]);
+                                            $('#lblexp').text(sh+":"+ sm +":"+ss);   
+                                        }
+                                   
+                                    }
+                                   
+                                    //
+                                     var bidTime=data.d[i]["BidTime"]; 
                                      var bid=bidTime.split(" ");
-                                    $('#lblbid').text(bid[1]);
-                                    $('#lblpick').text(bid[1]);
-                                    alert(bid[1]);
+                                     var bidmin=bid[1].split(":");
+                                     var bidh=bidmin[0];
+                                     var bidm=bidmin[1];
+                                     var bids=bidmin[2];
+                                    if(bidm>56)
+                                    {
+                                        bidh=parseInt(bidh)+1; 
+                                        bidm=00;
+                                        if(bids==00)
+                                        {
+                                            bidm=parseInt(bidm)+1;
+                                            bids=00;
+                                            $('#lblbid').text(bid[1]);
+                                            $('#lblpick').text(bidh+":"+ bidm +":"+bids);  
+                                        }
+                                        else
+                                        {
+                                            
+                                            $('#lblbid').text(bid[1]);
+                                            $('#lblpick').text(bidh+":"+ bidm +":"+bids);   
+                                        }
+                                       
+                                        
+                                    }
+                                    else
+                                    {
+                                        
+                                        
+                                        bidm=parseInt(bidm)+3;
+                                        if(bids==00)
+                                        {
+                                            sm=parseInt(sm)+1;
+                                            ss=00;
+                                            $('#lblbid').text(bid[1]);
+                                            $('#lblpick').text(bidh+":"+ bidm +":"+bids);  
+                                        }
+                                        else
+                                        {
+                                            alert("hello");
+                                            $('#lblbid').text(bid[1]);
+                                            $('#lblpick').text(bidh+":"+ bidm +":"+bids);   
+                                        }
+                                    }
+                                 
+                                  // var expTime=searchTime+10;
+                                  
                                     
                                     //var pickTime=bidTime+3;lblsearch,lblexp,lblbid,lblpick
                                     if(spec!=null)
@@ -85,7 +168,7 @@ function getData(data)
                                            html += "<td width='20%' align='center'>" + data.d[i]["StartTime"] +"</td>";
                                            html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] +"</td>";
                                            html += "<td width='20%' align='center'>" + '<img src="img/spec.png" class="pulse" width="15" height="15" style="color:grey;" onclick="SpecShow()"/>' +"</td>"; 
-                                           html += "<td width='20%' align='center'>" + tm[1]+"</td>";
+                                           html += "<td width='20%' align='center'>" + bid[1]  +"</td>";
                                            html += "<td width='20%' align='center'>" + '<input type="button"  value="Hire" id= "'+ driverID +'" onclick = "Hireme(\''+driverID+'\',\''+customerReqId+'\');" title= "Hire me" />' + "</td>";
                                            html += '</tr>';
                                         $('#txtothereSpecialReq').text(spec);
@@ -98,7 +181,7 @@ function getData(data)
                                            html += "<td width='20%' align='center'>" + data.d[i]["StartTime"] +"</td>";
                                            html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] +"</td>";
                                            html += "<td width='20%' align='center'>" + '<img src="img/spec.png" width="15" height="15" style="color:grey;" onclick="SpecShow()"/>' +"</td>"; 
-                                           html += "<td width='20%' align='center'>" + bid[1] +"</td>";
+                                           html += "<td width='20%' align='center'>" + bidh+":"+ bidm +":"+bids +"</td>";
                                            html += "<td width='20%' align='center'>" + '<input type="button"  value="Hire" id= "'+ driverID +'" onclick = "Hireme(\''+driverID+'\',\''+customerReqId+'\');" title= "Hire me" />' + "</td>";
                                            html += '</tr>'; 
                                          $('#txtothereSpecialReq').text("Not Available");
