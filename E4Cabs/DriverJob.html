@@ -187,12 +187,20 @@
             }
            function showSpecial()
             {
-               document.getElementById("trfare").style.display = 'table-row';
-               document.getElementById("trwheelchair").style.display = 'table-row';
-               document.getElementById("trchildseats").style.display = 'table-row';
-               document.getElementById("trchildbooster").style.display = 'table-row';
-               document.getElementById("trOtherspec").style.display = 'table-row'; 
-               document.getElementById("trSpecialtxt").style.display = 'table-row'; 
+               //document.getElementById("trfare").style.display = 'table-row';
+               //document.getElementById("trwheelchair").style.display = 'table-row';
+               //document.getElementById("trchildseats").style.display = 'table-row';
+               //document.getElementById("trchildbooster").style.display = 'table-row';
+               //document.getElementById("trOtherspec").style.display = 'table-row'; 
+               //document.getElementById("trSpecialtxt").style.display = 'table-row'; 
+                
+            $( "#trfare" ).toggle();
+            $( "#trwheelchair" ).toggle();
+            $( "#trchildseats" ).toggle();
+             $( "#trchildbooster" ).toggle();
+             $( "#trOtherspec" ).toggle();
+             $( "#trSpecialtxt" ).toggle();
+             
             }
            function showBid()
             {
