@@ -113,9 +113,8 @@ function bookedHistory()
 function logout()
     {
                 
-       $.cookie("remember", 'null');
+      $.cookie("remember", false);
         $.cookie("userName", 'null');
-        $.cookie("pass", 'null');
         window.location = "index.html";  
     }
 
