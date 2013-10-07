@@ -192,14 +192,14 @@
                //document.getElementById("trchildseats").style.display = 'table-row';
                //document.getElementById("trchildbooster").style.display = 'table-row';
                //document.getElementById("trOtherspec").style.display = 'table-row'; 
-               //document.getElementById("trSpecialtxt").style.display = 'table-row'; 
+               document.getElementById("trSpecialtxt").style.display = 'table-row'; 
                 
             $( "#trfare" ).toggle();
             $( "#trwheelchair" ).toggle();
             $( "#trchildseats" ).toggle();
              $( "#trchildbooster" ).toggle();
              $( "#trOtherspec" ).toggle();
-             $( "#trSpecialtxt" ).toggle();
+            // $( "#trSpecialtxt" ).toggle();
              
             }
            function showBid()
@@ -761,7 +761,7 @@
                
              
  </tr>
-           <tr id="trSpecialtxt">
+           <tr id="trSpecialtxt" style="display:none;">
                <td width="100%" style="padding-left:5%;" colspan="4">
                    <textarea id="txtothereSpecialRequirement" rows="4" cols="10"  style="" readonly="true"></textarea>
                </td>
