@@ -145,6 +145,10 @@ function preCab()
 {
    window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
+function homeSearch()
+{
+    window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
 //window.onload = backFun();
 
 /*$(document).ready(function() {
