@@ -9,6 +9,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
         <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="css/PopUp.css" />
         <link rel="stylesheet" type="text/css" href="jquery-mobile/styles/jquery-ui.css" />
         <link rel="stylesheet" type="text/css" href="css/jquery.mobile.css" />
 	    <link type="text/css" href="css/jqm-datebox.min.css" rel="stylesheet" /> 
@@ -398,7 +399,7 @@
                 </div>
             </div>
             <div style="float:right;height:50px;width:60px; margin-top:-45px;">
-                <img src="img/Home.png" height="35"  />
+                <img src="img/Home.png" height="35" onclick="btnBack()" />
             </div>
         </div>
         <div id="imgLoader" style="display:none;padding-top:130px; z-index: 2147483647;position:fixed;top:0; left:0; background-color: #E6E6E6; opacity:0.7;filter:alpha(opacity=0);
@@ -418,11 +419,13 @@
                            <label id="lblMessage" style="color:red;font-size:12px"/>
                        </td>
                    </tr>
-                <td>
-                    <label for="txtFrom" class="font-style"><b style="font-size:12px">From</b></label> 
-                    <input type="text" id="txtFrom" class="font-style" autofocus="autofocus" style="width:100%;float:right;"/>
-                </td>
-                <tr id="currentPos" style="display:none">
+                <tr>
+                    <td>
+                        <label for="txtFrom" class="font-style"><b style="font-size:12px">From</b></label> 
+                        <input type="text" id="txtFrom" class="font-style" autofocus="autofocus" style="width:100%;float:right;"/>
+                    </td>
+                </tr>
+                <tr id="currentPos" style="display:">
                 <td>
                     <label class="font-style"><b style="font-size:12px">Current position</b></label> 
                     <input type="text" id="txtCurrentFrom" class="font-style" style="width:100%;float:right;"/>
@@ -530,7 +533,7 @@
                     </label> 
                    <div style="width:100%;padding-top:4px">
                     <select class="select-choice" id="ddlsmallcase" class="font-style">
-                          <option value="0" selected="true">0</option>
+                          <option value="0" selected="selected">0</option>
                           <option value="1">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
@@ -725,39 +728,6 @@
            </div>
           </div> 
        </div>
-
-          
-             <!-- <div style="margin-bottom:3px">
-             <select class="select-choice">
-                  <option value="0">From</option>
-                  <option value="bangalore">Bangalore</option>
-                  <option value="chennai">Chennai</option>
-                  <option value="delhi">Delhi</option>
-               </select>
-               
-            </div>-->
-            <!--<div style="margin-bottom:3px">
-           <select class="select-choice">
-                  <option value="0">To</option>
-                  <option value="bangalore">Bangalore</option>
-                  <option value="chennai">Chennai</option>
-                  <option value="delhi">Delhi</option>
-            </select>
-            </div>-->
-                <!--<input type="text" id="datepicker"/>-->
-                <!--<input type="text" id="timepicker"/>-->
-          <!--  <div style="margin-bottom:8px">
-            <select class="select-choice">
-                  <option value="1" selected="true">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-            </select>
-            </div>-->
-  
-        
       </center>
-       
-        
-        
     </body>
 </html>
