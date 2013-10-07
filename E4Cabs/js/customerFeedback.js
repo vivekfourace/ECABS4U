@@ -6,7 +6,7 @@ var relatedId = QString.split("=")[3].split("&")[0];
 
 function backtoCustomerhome()
 {
-   window.location =  'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+   window.location=  'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
 
@@ -15,7 +15,7 @@ function backtoCustomerhome()
 //cab Now
 function cabNow()
 {
-  window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+  window.location= 'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
     
 }
 
@@ -23,7 +23,7 @@ function cabNow()
 //Pre Cab
 function preCab()
 {
-   window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+   window.location = 'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
 
