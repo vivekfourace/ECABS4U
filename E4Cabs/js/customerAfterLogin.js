@@ -44,7 +44,9 @@ function bookedHistory()
 function logout()
     {
                 
-       window.location="index.html";
+       $.cookie("remember", false);
+        $.cookie("userName", 'null');
+        window.location = "index.html";  
     }
 
 

@@ -102,15 +102,11 @@ function MyBookings(){
     window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
-
-//driver Logout logout(string userID)
 function logout(){
-    
-        
-        $.cookie("remember", 'null');
+          
+        $.cookie("remember", false);
         $.cookie("userName", 'null');
-        
-        window.location = "index.html";
+        window.location = "index.html";  
 }
 
 function soonToclear()

@@ -398,25 +398,14 @@ function Complete()
   }  
 
 
-
-
-
-
-
-
-
-
-
-
 //From Menu 
 
 //Logout Button
 function logout()
     {
-        $.cookie("remember", 'null');
+        $.cookie("remember", false);
         $.cookie("userName", 'null');
-        $.cookie("pass", 'null');
-        window.location = "index.html";
+        window.location = "index.html";  
     }
 
 //cab Now Button
