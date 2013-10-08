@@ -66,6 +66,7 @@ function ShowData(data)
     $('#lblEmailID').show();
     $('#btnEdit').show();
     $('#btnBack').show();
+    $('hr').show();
  }
 
 function EditProfile()
@@ -85,6 +86,7 @@ function EditProfile()
     $('#lblMobileNo').hide();
     $('#lblEmailID').hide();
     $('#divMarquee').hide();
+    $('hr').hide();
     document.getElementById("trBtnUpdate").style.display = 'table-row';
      document.getElementById("trCancel").style.display = 'table-row';
      document.getElementById("tredit").style.display = 'none';
