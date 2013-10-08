@@ -13,6 +13,7 @@
   filter:alpha(opacity=10);
   background-position: center;
   background-repeat: no-repeat;
+  display:none;
 }
 
 #loading-image {
