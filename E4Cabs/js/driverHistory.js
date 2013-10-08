@@ -120,8 +120,7 @@ function MyBookings(){
 
 //Logout
 function logout()
-    {
-                
+    {                
       $.cookie("remember", false);
         $.cookie("userName", 'null');
         window.location = "index.html";  
