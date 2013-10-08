@@ -104,9 +104,9 @@ function bookedHistory()
 function logout()
     {
                 
-         $.cookie("remember", false);
+        $.cookie("remember", false);
         $.cookie("userName", 'null');
-        window.location = "index.html";    
+        window.location = "index.html";  
     }
 
 

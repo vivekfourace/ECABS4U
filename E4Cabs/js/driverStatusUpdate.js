@@ -156,9 +156,8 @@ function MyBookings(){
     window.location='driverJobs.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 function logout(){
-        $.cookie("remember", 'null');
+        $.cookie("remember", false);
         $.cookie("userName", 'null');
-        $.cookie("pass", 'null');
         window.location = "index.html";  
 }
 function myStatus(){

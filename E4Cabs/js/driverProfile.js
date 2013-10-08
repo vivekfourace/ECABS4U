@@ -4,7 +4,7 @@ var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
 var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
- var mobno =/^\d{12}$/;
+var mobno =/^\d{12}$/;
 
 window.onload = getProfile();
 
@@ -206,7 +206,9 @@ function MyBookings(){
     window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 function logout(){
-    window.location="index.html";
+        $.cookie("remember", false);
+        $.cookie("userName", 'null');
+        window.location = "index.html";  
 }
 function MyProfilePage(){
     window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
