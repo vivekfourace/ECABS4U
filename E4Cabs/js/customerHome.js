@@ -138,40 +138,11 @@ function UpdateProfile()
       var address2 = $('#txtLocation2').val();
       var email = $('#txtEmailID').val();
       var phoneno = $('#txtMobileno').val();
-     var phoneno2 =/^\d{12}$/;
-     var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
+    // var phoneno2 =/^\d{12}$/;
+     //var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
     
     
-     //validate Email address
-                if(email.length > 0)
-                    {
-                        if(email.match(regExpEmail))
-                        {
-                            $('#lblMsg').text(" ");
-                        }
-                        else{
-                            $('#lblMsg').text("Please enter valid email address!");
-                            $('#txtEmail').focus();
-                            return false;
-                        }
-                    }
-    
-    
-    
-    //validation of Phone No
-    if(phoneno.length > 0)
-                    {
-                        if(phoneno2.test(phoneno))
-                        {
-                            $('#lblMsg').text(" ");
-                        }
-                        else
-                        {
-                             $('#lblMsg').text("Please enter valid phone number!");
-                            $('#txtPhone').focus();
-                            return false;
-                        }
-                    }
+     
       
      var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateCustomerDetails";
         $.ajax(url,{

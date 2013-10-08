@@ -205,7 +205,8 @@ function HomePage(){
 function MyBookings(){
     window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-function logout(){
+function logout()
+{
         $.cookie("remember", false);
         $.cookie("userName", 'null');
         window.location = "index.html";  

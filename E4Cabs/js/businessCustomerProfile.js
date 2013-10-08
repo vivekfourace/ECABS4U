@@ -147,38 +147,7 @@ function UpdateProfile()
       var address2 = $('#txtLocation2').val();
       var email = $('#txtEmailID').val();
       var phoneno = $('#txtMobileno').val();
-     var phoneno2 =/^\d{12}$/;
-     var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
-     //alert("insidw");
-     //validate Email address
-                if(email.length > 0)
-                    {
-                        if(email.match(regExpEmail))
-                        {
-                            $('#lblMsg').text(" ");
-                        }
-                        else{
-                            $('#lblMsg').text("Please enter valid email address!");
-                            $('#txtEmail').focus();
-                            return false;
-                        }
-                    }
-    
-    
-    //validation of Phone No
-    if(phoneno.length > 0)
-                    {
-                        if(phoneno2.test(phoneno))
-                        {
-                            $('#lblMsg').text(" ");
-                        }
-                        else
-                        {
-                             $('#lblMsg').text("Please enter valid phone number!");
-                            $('#txtPhone').focus();
-                            return false;
-                        }
-                    }
+     
       
      var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateBusinessCustomerDetails";
         $.ajax(url,{
@@ -186,9 +155,11 @@ function UpdateProfile()
             dataType: "json",
             data:"{'userID':'"+relatedId+"','businessName':'"+businessNam+"','name':'"+name+"','lname':'"+lastname+"','address1':'" +address1+"','address2':'" +address2+"','contactNumber':'" +phoneno+"','emailID':'" +email+"'}",
             contentType: "application/json; charset=utf-8",                     
-            success: ShowData,            
+            success: ShowData,
+           
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-            //alert(errorThrown);
+           //alert(errorThrown);
+                 
         }
  });
 }

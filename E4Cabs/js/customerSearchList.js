@@ -64,10 +64,10 @@ function getData(data)
                                    var ss=min[2];
                                    if(sm>49)
                                     {
-                                        alert(sm);
-                                        alert(sh);
+                                        //alert(sm);
+                                        //alert(sh);
                                         sh=parseInt(sh)+1;
-                                        alert(sh);
+                                       // alert(sh);
                                         sm=parseInt(sm)+10;
                                         sm=parseInt(sm)-60;
                                         if(ss==00)
@@ -79,9 +79,9 @@ function getData(data)
                                         }
                                         else
                                         {
-                                            alert("inside");
-                                            alert(sh);
-                                            alert(sm);
+                                            //alert("inside");
+                                            //alert(sh);
+                                            //alert(sm);
                                             $('#lblsearch').text(tm[1]);
                                             $('#lblexp').text(sh+":"+sm +":"+ss);   
                                         }
@@ -150,7 +150,7 @@ function getData(data)
                                         }
                                         else
                                         {
-                                            alert("hello");
+                                            //alert("hello");
                                             $('#lblbid').text(bid[1]);
                                             $('#lblpick').text(bidh+":"+ bidm +":"+bids);   
                                         }
