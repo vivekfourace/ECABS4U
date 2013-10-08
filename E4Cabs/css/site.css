@@ -378,6 +378,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#959595', end
     font-size:14px;
     color:Black;
 }
+
+.font-style1{
+    font-family:"Comic Sans MS", cursive, sans-serif;
+    font-weight:bold;
+    font-size:13px;
+    color:black;
+}
+
 .font-Label{
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-weight:bold;
