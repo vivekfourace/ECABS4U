@@ -5,12 +5,12 @@
   left: 0px;
   position: fixed;
   display: block;
-  padding-top:130px;
+  padding-top:40%;
   opacity: 0.6;
-  background-color: #E6E6E6;
-  z-index: 2147483647;
+  background-color: #F2F2F2;
+  z-index: 9999;
   text-align: center;
-  filter:alpha(opacity=0);
+  filter:alpha(opacity=10);
   background-position: center;
   background-repeat: no-repeat;
 }
