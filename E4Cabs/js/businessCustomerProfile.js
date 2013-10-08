@@ -9,10 +9,7 @@ window.onload = getProfile();
 function changepassword()
 {
    window.location='changePassword.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-  
 }
-
-
 
 //get customer profile
 function getProfile()
@@ -35,7 +32,6 @@ $.ajax(url,{
 
 function ShowData(data)
 { 
-   
    $('#lblBusinessNam').text(data.d[0])
    $('#lblname').text(data.d[1] +"  "+ data.d[2]);
    // $('#lbllastname').text(data.d[0]["CustomerLastName"]);
@@ -55,14 +51,7 @@ function ShowData(data)
      document.getElementById("trBtnUpdate").style.display = 'none';
      document.getElementById("trCancel").style.display = 'none';
      document.getElementById("tredit").style.display = 'table-row';
-  //   $('#btnUpdate').hide();
-  // $('#btnCancel').hide();
-    
-   // {
-       // $("#btnCancel").button("disable")
-        
-//}
-    
+  
    //$('#btnUpdate').hide();
       //$('#btnhistory').show();
     $('#lblBusinessNam').show();
@@ -74,9 +63,6 @@ function ShowData(data)
     $('#lblEmailID').show();
     $('#btnEdit').show();
  }
-
-
-
 
 
 //Edit Customer Profile
@@ -131,14 +117,10 @@ function EditProfile()
  });
 }
 
-
-
-
 //upadate customer Profile
 
 function UpdateProfile()
 {
-   
       var businessNam = $('#txtBusinessNam').val();
       var name = $('#txtname').val();
       var lastname = $('#txtlastname').val();
@@ -146,40 +128,7 @@ function UpdateProfile()
       var address2 = $('#txtLocation2').val();
       var email = $('#txtEmailID').val();
       var phoneno = $('#txtMobileno').val();
-     var phoneno2 =/^\d{12}$/;
-     var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
-     //alert("insidw");
-     //validate Email address
-                if(email.length > 0)
-                    {
-                        if(email.match(regExpEmail))
-                        {
-                            $('#lblMsg').text(" ");
-                        }
-                        else{
-                            $('#lblMsg').text("Please enter valid email address!");
-                            $('#txtEmail').focus();
-                            return false;
-                        }
-                    }
-    
-    
-    //validation of Phone No
-    if(phoneno.length > 0)
-                    {
-                        if(phoneno2.test(phoneno))
-                        {
-                            $('#lblMsg').text(" ");
-                        }
-                        else
-                        {
-                             $('#lblMsg').text("Please enter valid phone number!");
-                            $('#txtPhone').focus();
-                            return false;
-                        }
-                    }
-      
-     var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateBusinessCustomerDetails";
+      var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateBusinessCustomerDetails";
         $.ajax(url,{
             type:"POST",
             dataType: "json",
@@ -192,18 +141,11 @@ function UpdateProfile()
  });
 }
 
-
-
-
 //Cancel update
 function CancelProfile()
 {
     getProfile();
 }
-
-
-
-
 
 //Booked history Button
 function bookedHistory()
@@ -213,24 +155,11 @@ function bookedHistory()
   window.location='businessCustomerHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
    
 }
-
-
-
-
-
 //My Profile Button
  function myProfile()
             {
                 window.location =  'businessCustomerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
             }
-
-
-
-//Location Button
-//function Location()
-//{
-   // window.location = "Location.html";
-//}
 
 
 //Cab Now Button
@@ -249,16 +178,11 @@ function logout()
         window.location = "index.html";  
 }
 
-
 //Home
 function Home()
 {
     window.location='businessCustomerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-
-
-
-
 
 //Customer Feedback 
 function feedBack()
@@ -279,47 +203,3 @@ function backtostart()
 {
    window.location =  'businessCustomerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Pre Book Button
-//function prebook()
-//{
- // window.location="";  
-//}
-//function getAllMenu()
-//{
-  //  window.location="AllMenu.html";
-//}
-//Back to customer Afterlogin
-//function backtoCustomerhome()
-//{
-    
-    // window.location =  'customerAfterLogin.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
- // window.location="customerHome.html";
-//}
-
-
-
-//Home
-//function backtostart()
-//{
-    //window.location="index.html";
-//}
