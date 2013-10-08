@@ -176,14 +176,22 @@
                 document.getElementById("trOtherspec").style.display = 'none'; 
                 document.getElementById("trSpecialtxt").style.display = 'none'; 
             }
-            function showSpecial()
+             function showSpecial()
             {
-                document.getElementById("trfare").style.display = 'table-row';
-                document.getElementById("trwheelchair").style.display = 'table-row';
-                document.getElementById("trchildseats").style.display = 'table-row';
-                document.getElementById("trchildbooster").style.display = 'table-row';
-                document.getElementById("trOtherspec").style.display = 'table-row'; 
-                document.getElementById("trSpecialtxt").style.display = 'table-row'; 
+               //document.getElementById("trfare").style.display = 'table-row';
+               //document.getElementById("trwheelchair").style.display = 'table-row';
+               //document.getElementById("trchildseats").style.display = 'table-row';
+               //document.getElementById("trchildbooster").style.display = 'table-row';
+               //document.getElementById("trOtherspec").style.display = 'table-row'; 
+               //document.getElementById("trSpecialtxt").style.display = 'table-row'; 
+                
+            $( "#trfare" ).toggle();
+            $( "#trwheelchair" ).toggle();
+            $( "#trchildseats" ).toggle();
+             $( "#trchildbooster" ).toggle();
+             $( "#trOtherspec" ).toggle();
+             $( "#trSpecialtxt" ).toggle();
+             
             }
             function showBid()
             {
@@ -967,7 +975,7 @@
                        </td>
                        
                    </tr>
-                   <tr id="trSpecialtxt">
+                   <tr id="trSpecialtxt" style="display:none;">
                        <td width="100%" style="padding-left:5%;" colspan="4">
                            <textarea id="txtothereSpecialRequirement" rows="4" cols="10"  style="" readonly="true"></textarea>
                            
