@@ -55,7 +55,7 @@ function bid()
 function logout(){
         $.cookie("remember", false);
         $.cookie("userName", 'null');
-        window.location = "index.html";  
+        window.location = "index.html";    
 }
 
 

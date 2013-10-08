@@ -45,17 +45,11 @@ function bookedHistory()
             {
                 window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
             }
-  
-
-
-
-
 
 
 //Logout
 function logout()
-    {
-                
+    {                
        $.cookie("remember", false);
         $.cookie("userName", 'null');
         window.location = "index.html";  
