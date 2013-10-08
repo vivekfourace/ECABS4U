@@ -176,7 +176,7 @@
                 document.getElementById("trOtherspec").style.display = 'none'; 
                 document.getElementById("trSpecialtxt").style.display = 'none'; 
             }
-            function showSpecial()
+             function showSpecial()
             {
                //document.getElementById("trfare").style.display = 'table-row';
                //document.getElementById("trwheelchair").style.display = 'table-row';
@@ -190,7 +190,7 @@
             $( "#trchildseats" ).toggle();
              $( "#trchildbooster" ).toggle();
              $( "#trOtherspec" ).toggle();
-            $( "#trSpecialtxt" ).toggle();
+             $( "#trSpecialtxt" ).toggle();
              
             }
             function showBid()
@@ -311,10 +311,23 @@
                                     }); 
                             
             }
-            function dealSubmit()
+           function dealSubmit()
             {
-              var reqID=$('#lbldealjob').text();  
-              //alert(reqID);
+                var getFare=$('#lbldealfare').text();
+                 $('#divDeal').hide();
+                 var reqID=$('#lbldealjob').text(); 
+                if(getFare==15 || getFare >15 )
+                {                  
+                 $('#divComission').show();
+                 $('#lblconfirmjob').text(reqID);
+                 $('#lblconfirmfare').text(getFare);
+                    
+                }
+                else
+                {
+                     $('#divComission').hide();
+                  
+              //alert(reqID);lblconfirmjob
                                     $.ajax({
                                         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/jobBooked",
                                         type:"POST",
@@ -332,7 +345,40 @@
                                                 }
                                     }); 
              $('#divDeal').hide();
+                 $('#popup_box').fadeOut("slow");   
+                }
+            
+            }
+            function Confirmcomission()
+            {
+                
+                  var reqID= $('#lblconfirmjob').text();
+                  var comission=1.2;
+                  window.location.href="https://sandbox.gocardless.com/pay/GW08QKY5";
+                  $.ajax({
+                                        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/jobBooked",
+                                        type:"POST",
+                                        dataType: "Json",
+                                        data:"{'userID':'" + relatedId +"','reqid':'"+ reqID +"'}",
+                                        contentType: "application/json; charset=utf-8",  
+                                        success: function (data) 
+                                                    {
+                                                         // alert(reqID);
+                                                        
+                                                    },
+                                        error: function (XMLHttpRequest, textStatus, errorThrown)
+                                                 {
+                                       
+                                                }
+                                    }); 
+                
+                                   
+             $('#divDeal').hide();
                  $('#popup_box').fadeOut("slow");
+            }
+            function RejectComission()
+            {
+                $('#divComission').hide();
             }
             function dealCancel()
             {
@@ -624,6 +670,40 @@
                             
                         </table>
                         
+                    </div>
+                    <div id="divComission" style="overflow:auto;display:none;"align="center">
+                        <table align="left" style="padding-left:10%;width:100%">
+                             <tr>
+                                <td width="100%" colspan="2">
+                                    <b><label value=""/></b>
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                             <td width="50%">
+                                        <b style="font-size:13px;">Job Number</b>
+                                       </td>
+                                       <td width="50%">
+                                          <b> <label id="lblconfirmjob" style="font-size:13px;padding-left:10%;"/></b>
+                                       </td>
+                            </tr>
+                                <tr>
+                                <td width="50%">
+                                    <label value="Fare" />
+                                </td>
+                                <td width="50%">
+                                   <b><img src="img/euro.png"width="10" height="10" style="padding-left:10%;"/><label id="lblconfirmfare" style="font-size:13px;"/></b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="50%">
+                                    <input type="button" value="Reject" class="specialBtn" onclick="RejectComission()"/>
+                                </td>
+                                <td width="50%">
+                                    <input type="button" value="Confirm" class="specialBtn" onclick="Confirmcomission()"/>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                     <div id="divabort" style="overflow:auto;display:none;"align="center">
                         <table align="left" style="padding-left:10%;width:100%">
