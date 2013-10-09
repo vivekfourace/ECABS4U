@@ -9,30 +9,27 @@ function backtosearch()
     window.location = 'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
- $.ajax({
-   cache: false,
-   beforeSend: function(){
-        $('#imgLoader').show();
-    },
-    complete: function(){
-        $('#imgLoader').hide();
-    },  
-    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData",
-    type:"POST",
-    dataType: "Json",
-    data:"{'requestID':'" +requestID+"'}",
-    contentType: "application/json; charset=utf-8",  
-    success: getData,
-    error: function (XMLHttpRequest, textStatus, errorThrown) {
-     }
-  });
+ var id = window.setInterval(function () {
+    $('#load').show();
+    $.ajax({
+        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData",
+        type: "POST",
+        dataType: "Json",
+        data: "{'requestID':'" + requestID + "'}",
+        contentType: "application/json; charset=utf-8",
+        success: getData,
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+        }
+    });
+}, 1000);
 
 function getData(data)
 {
-    
     var count = data.d.length;
     if(count > 0)
     {
+            window.clearInterval(id);
+            $('#load').hide();
             $('#divDriverList').show();    
             var html = '<table width="120%" style="border-collapse:collapse">';
             html += '<div style="background-color:yellow;"><i style="font:bold;font-size:16px;color:Blue;"><i></div>'
@@ -64,10 +61,7 @@ function getData(data)
                                    var ss=min[2];
                                    if(sm>49)
                                     {
-                                        //alert(sm);
-                                        //alert(sh);
                                         sh=parseInt(sh)+1;
-                                       // alert(sh);
                                         sm=parseInt(sm)+10;
                                         sm=parseInt(sm)-60;
                                         if(ss==00)
@@ -79,9 +73,6 @@ function getData(data)
                                         }
                                         else
                                         {
-                                            //alert("inside");
-                                            //alert(sh);
-                                            //alert(sm);
                                             $('#lblsearch').text(tm[1]);
                                             $('#lblexp').text(sh+":"+sm +":"+ss);   
                                         }
@@ -109,7 +100,7 @@ function getData(data)
                                    
                                     }
                                    
-                                   
+                                    //
                                      var bidTime=data.d[i]["BidTime"]; 
                                      var bid=bidTime.split(" ");
                                      var bidmin=bid[1].split(":");
@@ -150,7 +141,6 @@ function getData(data)
                                         }
                                         else
                                         {
-                                            //alert("hello");
                                             $('#lblbid').text(bid[1]);
                                             $('#lblpick').text(bidh+":"+ bidm +":"+bids);   
                                         }
@@ -194,7 +184,8 @@ function getData(data)
      }
     else
     {
-      $('#divDriverList').hide();  
+      $('#divDriverList').hide();
+      $('#load').show();
     }
 }
 
@@ -372,7 +363,6 @@ function Complete()
  function calOk()
   {
      $('#popup_box').fadeOut("slow");
-      $('#popup_box').hide();
       var requestId=$('#lblconfirmjob').text();
       var driverId=$('#lbldriverId').text();
       $.ajax({
