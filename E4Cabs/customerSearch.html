@@ -48,9 +48,8 @@
             }
 
         $('.expand').live({
-
             focus: function () {
-                $(this).animate({ height: "100" }, 500);
+                $(this).animate({ height: "70" }, 500);
             },
             blur: function () {
                 $(this).animate({ height: "50" }, 500);
@@ -269,7 +268,6 @@
         document.getElementById("trfrom").style.display = 'none';
         document.getElementById("trRequrementReturn").style.display = 'none';
 
-
         document.getElementById("trto").style.display = 'none';
         document.getElementById("trDate").style.display = 'none';
         document.getElementById("trTime").style.display = 'none';
@@ -277,6 +275,11 @@
         $('#txtReturTo').hide();
         $('#cancelreturn').hide();
         $('#bookreturn').show();
+        $('#termCond').hide();
+        $('#returnJ').hide();
+        document.getElementById("chkNo").checked = false;
+        document.getElementById("chkyes").checked = true;
+        document.getElementById("chkReturnYes").checked = false;
     }
 
     //Show Special Requirements
@@ -396,7 +399,7 @@
                    <tr>
                        <td  style="padding-top:10px">
                            <input type="checkbox" id="chkFromLocation" style="width:10%;float:left;height:20px;" onclick="showLoctxt()" />
-                           <label class="font-style" style="width:85%;height:15px;font-size:10px;float:left;padding-top:6px;color:#7ABAEE"><b>From current position</b></label>
+                           <label style="height:15px;float:left;padding-top:4px;color:#7ABAEE;font-family:'Trebuchet MS';"><b>From current position</b></label>
                        </td>
                    </tr>
                
@@ -567,13 +570,13 @@
                    </td>
                </tr>
                </div>
-                   <tr id="termCond" style="display:none">                       
+                  <tr id="termCond" style="display:none">                       
                    <td style="background-color:#A9D0F5">
-                      <label style="text-align:justify;">
+                      <label style="text-align:justify;font-family:'Trebuchet MS';">
                           <i style="color:Black;">
                               Leaving this YES selection for your  return trip will obtain the most competitive bids.
                                 (For further explanation 
-                              <a style="text-decoration:underline;color:blue" class="cursor" onclick="showExpaBox()">click here</a> )
+                              <a style="text-decoration:underline;color:blue" class="cursor" onclick="showExpaBox()">click here</a> ).
                                 If you would rather the same operator carry out both journeys please confirm below.
                            </i>
                       </label><br /> 
@@ -581,7 +584,7 @@
                    </td>
                </tr>
                <tr id="returnJ" style="display:none">
-                   <td style="background-color:orange">
+                   <td style="background-color:orange;font-family:'Trebuchet MS';">
                        <table>
                            <tr>
                                <td>
@@ -600,8 +603,8 @@
                    <tr id="trRequrementReturn" style="display:none">
                       
                        <td>
-                         <table style="border-collapse:collapse">
-                           <tr style="background-color:#F6E3CE">
+                         <table style="border-collapse:collapse;font-family:'Trebuchet MS';">
+                           <tr style="background-color:#F6E3CE;">
                                <td colspan="2">
                                  <b>I want separate bids from all operators for my return journey.</b>
                                </td>
