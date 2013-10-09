@@ -1,26 +1,41 @@
 #popup_box {
-            
-            display: none;
-            position: absolute;
-            height: auto;
-            width: 285px;  
-            margin-left:4%;
-            padding-right:1%;
-            background: #FFFFFF;            
-            top: 20%;            
-            z-index: 100;
-            border: 2px solid #2981CF;            
-            font-size: 15px;
-            -webkit-border-radius: 8px;
-            -moz-border-radius: 8px;
-            border-radius: 8px;
-            -moz-box-shadow: 2px 2px 5px 5px #2981CF;
-            -webkit-box-shadow: 2px 2px 5px 5px #2981CF;
-            box-shadow: 2px 2px 5px 5px #2981CF;                    
-        }
+    display: none;
+    width: 90%;
+    z-index: 1000;
+    border: 1px solid black;
+    border-radius: 2px;
+    -moz-box-shadow: 2px 2px 2px #A4A4A4;
+    -webkit-box-shadow: 2px 2px 2px #A4A4A4;
+    box-shadow: 2px 2px 2px #A4A4A4;
+    position: fixed; /*for align in middle*/
+    top: 27%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    color: white;
+    height:auto;
+}
 
-        #popupBoxClose {                        
-            right: 5px;
-            top: 5px;
-            position: absolute;            
-        }
+#popup_header {
+    height: 30px;
+    width: 100%;
+    background-color: #848484;
+    border-bottom: 1px solid black;
+    color: white;
+    text-align: left;
+    vertical-align: middle;    
+}
+
+#popup_content {
+    text-align: left;
+    color: black;
+    background-color: white;
+    font-family:'Trebuchet MS';
+    padding:0 3px 3px 3px;
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+
+#popup_footer {
+height: 30px;
+}

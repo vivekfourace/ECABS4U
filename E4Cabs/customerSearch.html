@@ -654,26 +654,33 @@
            </table>
            <div style="padding-bottom:40px;">
                     <input type="button" value="Search" class="btn-tmp cursor" onclick="availabledriver();" />
-           </div>
-           
-        <div id="popup_box" style="margin-top:170px">
-                        <a id="popupBoxClose" style="cursor: pointer;">
-                            <img src="img/close.png" style="height: 30px; width: 30px; margin-top: -10px;margin-right:-8px" />
-                        </a>
-                      <br />
-                                         
-             <div id="confirmAnchor" style="overflow:auto;display:none;padding-left:5px"align="center">
-               <p style="text-align:left; color:#00A3C9">
-                  <i>Ecabs4u maintain a sophisticated booking registration system for all of our operators.
-                   Each journey requested by the customer is targeted in the first instance to those vehicles
-                   who would otherwise be travelling without passengers in the same direction that you desire.
-                   It is from these operators you will receive the most competitive bids and is why we recommend
-                   you allow all suitable operators to bid for your return journey.
-                   </i>
-               </p>
-           </div>
-          </div> 
+           </div>          
        </div>
+        
+        <!--Popup div-->
+         <div id="popup_box">
+            <table style="width:100%; border-collapse:collapse; background-color:#FFFFFF;">
+                <tr>
+                    <td id="popup_header">
+                        <strong style="padding-left:5px">Comment</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="popup_content">
+                        <strong>Ecabs4u maintain a sophisticated booking registration system for all of our operators. 
+                            Each journey requested by the customer is targeted in the first instance to those vehicles 
+                            who would otherwise be travelling without passengers in the same direction that you desire. 
+                            It is from these operators you will receive the most competitive bids and is why we recommend 
+                            you allow all suitable operators to bid for your return journey.</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="popup_footer">
+                        <input type="button" class="ok" id="popupBoxClose" style="cursor: pointer;text-align:center;" value="OK"/>
+                    </td>
+                </tr>
+            </table>             
+        </div> 
       </center>
 </body>
 </html>
