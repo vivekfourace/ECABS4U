@@ -9,30 +9,27 @@ function backtosearch()
     window.location = 'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
- $.ajax({
-   cache: false,
-   beforeSend: function(){
-        $('#imgLoader').show();
-    },
-    complete: function(){
-        $('#imgLoader').hide();
-    },  
-    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData",
-    type:"POST",
-    dataType: "Json",
-    data:"{'requestID':'" +requestID+"'}",
-    contentType: "application/json; charset=utf-8",  
-    success: getData,
-    error: function (XMLHttpRequest, textStatus, errorThrown) {
-     }
-  });
+ var id = window.setInterval(function () {
+    $('#load').show();
+    $.ajax({
+        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData",
+        type: "POST",
+        dataType: "Json",
+        data: "{'requestID':'" + requestID + "'}",
+        contentType: "application/json; charset=utf-8",
+        success: getData,
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+        }
+    });
+}, 1000);
 
 function getData(data)
 {
-    
     var count = data.d.length;
     if(count > 0)
     {
+            window.clearInterval(id);
+            $('#load').hide();
             $('#divDriverList').show();    
             var html = '<table width="120%" style="border-collapse:collapse">';
             html += '<div style="background-color:yellow;"><i style="font:bold;font-size:16px;color:Blue;"><i></div>'
@@ -194,7 +191,8 @@ function getData(data)
      }
     else
     {
-      $('#divDriverList').hide();  
+      $('#divDriverList').hide();
+      $('#load').show();
     }
 }
 
@@ -316,6 +314,7 @@ function getResponseFromDriver(data)
                                                         contentType: "application/json; charset=utf-8",                     
                                                         success: function(data)
                                                               {
+                                                                  alert('Confirm');
                                                                  $('#lbldriverId').text(getDriverID);
                                                                  $('#lblconfirmjob').text(data.d[0]);
                                                                  $('#lblconfirmdrivername').text(data.d[1]);
@@ -341,7 +340,7 @@ function getResponseFromDriver(data)
                                  }
                      });  
         
-    },60000);
+    },6000);
 }
 
 function VehicleStatus()
