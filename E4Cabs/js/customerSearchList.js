@@ -8,6 +8,22 @@ function backtosearch()
 {
     window.location = 'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
+var timeOut = 181;
+var timer = setInterval(function() {
+    document.getElementById('lblMessage').innerHTML = "Your job will expire in " + --timeOut + "s.";
+    if(timeOut <= 0)
+            {
+                window.clearInterval(id);
+                alert('Oops! no driver found...search again.');
+                Destroy();
+            }
+    }, 1000);
+function Destroy()
+{
+    window.clearInterval(timer);
+    window.clearInterval(id);
+    window.location = "customerSearch.html";
+}
 
  var id = window.setInterval(function () {
     $('#load').show();
@@ -21,7 +37,7 @@ function backtosearch()
         error: function (XMLHttpRequest, textStatus, errorThrown) {
         }
     });
-}, 1000);
+}, 100);
 
 function getData(data)
 {
@@ -29,6 +45,7 @@ function getData(data)
     if(count > 0)
     {
             window.clearInterval(id);
+            window.clearInterval(timer);
             $('#load').hide();
             $('#divDriverList').show();    
             var html = '<table width="120%" style="border-collapse:collapse">';
