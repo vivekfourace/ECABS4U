@@ -71,6 +71,12 @@
             $('#termCond').fadeOut("slow");
 
         });
+        
+        $('#RBcabNOW').click(function () {
+            document.getElementById("RbFutureBook").checked = false;
+            window.location='customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+
+        });
 
         $('#popupBoxClose').click(function () {
             $('#popup_box').fadeOut("slow");
@@ -376,9 +382,30 @@
        <div style="padding-top:60px">
            <table style="width:80%;border-collapse:collapse">
                <center>
+                   
+                   
+                    <tr>
+                       <td>
+                           <table style="border-collapse:collapse;width:100%;height:41px" border="1" >
+                               <tr style="background-color:#336699">
+                        <td style="width:40%"> 
+                            <input type="radio" id="RBcabNOW" name="cab" style="float:left" />
+                            <label style="font-size:14px;text-align:left;float:left;padding-top:2px;color:white;"><b>Cab now</b></label>
+                         </td>
+                       <td style="width:50%">
+                           <input type="radio" id="RbFutureBook" name="cab" style="float:left" checked/>
+                           <label style="font-size:14px;text-align:left;float:left;padding-top:2px;color:white;"><b>Future Booking</b></label>
+                           
+                       </td>
+                      
+                   </tr>
+                           </table>
+                       </td>
+                       
+                   </tr>
                    <tr>
                        <td style="padding-top:20px">
-                           <a href="#" onclick="loc()" style="color:Black !important">Location</a>
+                           <a href="#" onclick="loc()" style="color:Black !important">LocationFuture</a>
                        </td>
                    </tr>
                    <tr>
