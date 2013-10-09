@@ -354,7 +354,7 @@
                 
                   var reqID= $('#lblconfirmjob').text();
                   var comission=1.2;
-                  window.location.href="https://sandbox.gocardless.com/pay/GW08QKY5";
+                  
                   $.ajax({
                                         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/jobBooked",
                                         type:"POST",
@@ -371,7 +371,7 @@
                                        
                                                 }
                                     }); 
-                
+                window.location.href="https://sandbox.gocardless.com/pay/GW08QKY5";
                                    
              $('#divDeal').hide();
                  $('#popup_box').fadeOut("slow");
@@ -430,14 +430,16 @@
         <center>
             <div style="width:100%;height:75%;padding-top:25%;" id="divDetails">
                 <div id="popup_box" >
-                    <a id="popupBoxClose" style="cursor: pointer;">
-                        <img src="img/close.png" style="height: 30px; width: 30px; margin-top: -30px;" />
-                        
-                    </a>
-                    <br />
-                    <div id="divDriverPop" align="center" style="overflow:auto;display:none;">
-                        <table align="left" style="padding-left:10%;width:100%">
-                            <tr>
+                    
+                   
+                    <div id="divDriverPop" align="center" style="display:none;">
+                        <table align="left" style="width:100%;background-color:#FFFFFF;">
+                             <tr>
+                                <td class="popup_header" width="100%" colspan="2">
+                                    <strong style="padding-left:5px" width="100%" align="center">Job Details</strong>
+                                </td>
+                            </tr>
+                            <tr class="popup_content">
                                 <td width="50%">
                                     <b style="font-size:13px;">Job Number</b>
                                     
@@ -448,7 +450,7 @@
                                 </td>
                                 
                             </tr>
-                            <tr>
+                            <tr class="popup_content">
                                 <td width="50%">
                                     <b style="font-size:13px;">Customer Name</b>
                                     
@@ -459,7 +461,7 @@
                                 </td>
                                 
                             </tr>
-                            <tr>
+                            <tr class="popup_content"> 
                                 <td width="50%">
                                     <b style="font-size:13px;">From</b>
                                     
@@ -470,7 +472,7 @@
                                 </td>
                                 
                             </tr>
-                            <tr>
+                            <tr class="popup_content">
                                 <td width="50%"> 
                                     <b style="font-size:13px;">To</b>
                                     
@@ -481,7 +483,7 @@
                                 </td>
                                 
                             </tr>
-                            <tr>
+                            <tr class="popup_content">
                                 <td width="50%">
                                     <b style="font-size:13px;">Third Location</b>
                                     
@@ -492,7 +494,7 @@
                                 </td>
                                 
                             </tr>
-                            <tr>
+                            <tr class="popup_content">
                                 <td width="50%">
                                     <b style="font-size:13px;">Fourth Location</b>
                                     
@@ -503,15 +505,25 @@
                                 </td>
                                 
                             </tr>
+                            <tr width="100%" class="popup_footer">
+                                <td  width="100%" colspan="2">
+                                    <input type="button" class="ok" id="popupBoxClose" style="cursor: pointer;text-align:center;" value="OK"/>
+                                </td>
+                           </tr>
                             
                         </table>
                         
                     </div>
-                    <div id="divBid" style="overflow:auto;display:none;"align="center">
-                        <table align="left" style="padding-left:10%;width:100%">
+                    <div id="divBid" style="display:none;"align="center">
+                        <table align="left" style="width:100%;background-color:#FFFFFF;">
                             <tr>
+                                <td class="popup_header" width="100%" colspan="2">
+                                    <strong style="padding-left:5px" width="100%" align="center">Bid Details</strong>
+                                </td>
+                            </tr>
+                            <tr class="popup_content">
                                 <td width="50%">
-                                    <b style="font-size:13px;">Number</b>
+                                    <b style="font-size:13px;">Job Number</b>
                                     
                                 </td>
                                 <td width="50%">
@@ -520,7 +532,7 @@
                                 </td>
                                 
                             </tr>
-                            <tr>
+                            <tr class="popup_content">
                                 <td width="50%">
                                     <b style="font-size:13px;">From</b>
                                     
@@ -531,7 +543,7 @@
                                 </td>
                                 
                             </tr>
-                            <tr>
+                            <tr class="popup_content">
                                 <td width="50%">
                                     <b style="font-size:13px;">To</b>
                                     
@@ -542,7 +554,7 @@
                                 </td>
                                 
                             </tr>
-                            <tr>
+                            <tr class="popup_content">
                                 <td width="50%">
                                     <b style="font-size:13px;">Distance In Mile</b>  
                                     
@@ -553,7 +565,7 @@
                                 </td>
                                 
                             </tr>
-                            <tr>
+                            <tr class="popup_content">
                                 <td width="50%">
                                     <b style="font-size:13px;">Fare</b>
                                     
@@ -564,13 +576,13 @@
                                 </td>
                                 
                             </tr>
-                            <tr>
+                            <tr class="popup_footer">
                                 <td width="50%">
-                                    <input type="button" class="specialBtn" value="Cancel" style="width:80%;" onclick="bidCancel()" />
+                                    <input type="button" class="ok" value="Cancel" style="width:100%;" onclick="bidCancel()" />
                                     
                                 </td>
                                 <td width="50%">
-                                    <input type="button" class="specialBtn" value="Accept" style="width:80%;padding-left:10%;" onclick="bidSubmit()"/>
+                                    <input type="button" class="ok" value="Accept" style="width:100%;" onclick="bidSubmit()"/>
                                     
                                 </td>
                                 
@@ -579,10 +591,15 @@
                         </table>
                         
                     </div>
-                    <br />
-                    <div id="divDeal" style="overflow:auto;display:none;"align="center">
-                        <table align="left" style="padding-left:10%;width:100%">
-                            <tr>
+                   
+                    <div id="divDeal" style="display:none;"align="center">
+                        <table align="left" style="width:100%;background-color:#FFFFFF;">
+                             <tr>
+                                <td class="popup_header" width="100%" colspan="2">
+                                    <strong style="padding-left:5px" width="100%" align="center">Booked Details</strong>
+                                </td>
+                            </tr>
+                            <tr class="popup_content">
                                 <td width="50%">
                                     <b style="font-size:13px;">Job Number</b>
                                     
@@ -593,7 +610,7 @@
                                 </td>
                                 
                             </tr>
-                            <tr>
+                            <tr class="popup_content">
                                 <td width="50%">
                                     <b style="font-size:13px;">From</b>
                                     
@@ -604,7 +621,7 @@
                                 </td>
                                 
                             </tr>
-                            <tr>
+                            <tr class="popup_content">
                                 <td width="50%">
                                     <b style="font-size:13px;">To</b>  
                                     
@@ -615,7 +632,7 @@
                                 </td>
                                 
                             </tr>
-                            <tr>
+                            <tr id="popup_content">
                                 <td width="50%">
                                     <b style="font-size:13px;">Pick Date</b>
                                     
@@ -626,7 +643,7 @@
                                 </td>
                                 
                             </tr>
-                            <tr>
+                            <tr class="popup_content">
                                 <td width="50%">
                                     <b style="font-size:13px;">Pick Time</b>
                                     
@@ -637,7 +654,7 @@
                                 </td>
                                 
                             </tr>
-                            <tr>
+                            <tr class="popup_content">
                                 <td width="50%">
                                     <b style="font-size:13px;">Distance In Mile</b>  
                                     
@@ -648,7 +665,7 @@
                                 </td>
                                 
                             </tr>
-                            <tr>
+                            <tr class="popup_content">
                                 <td width="50%">
                                     <b style="font-size:13px;">Fare</b>
                                     
@@ -659,13 +676,13 @@
                                 </td>
                                 
                             </tr>
-                            <tr>
+                            <tr class="popup_footer">
                                 <td width="50%">
-                                    <input type="button" class="specialBtn" value="Cancel" style="width:80%;" onclick="dealCancel()" />
+                                    <input type="button" class="ok" value="Cancel" style="width:100%;" onclick="dealCancel()" />
                                     
                                 </td>
                                 <td width="50%">
-                                    <input type="button" class="specialBtn" value="Submit" style="width:80%;padding-left:10%;" onclick="dealSubmit()"/>
+                                    <input type="button" class="ok" value="Submit" style="width100%;" onclick="dealSubmit()"/>
                                     
                                 </td>
                                 
@@ -674,63 +691,60 @@
                         </table>
                         
                     </div>
-                    <div id="divComission" style="overflow:auto;display:none;"align="center">
-                        <table align="left" style="padding-left:10%;width:100%">
-                             <tr>
-                                <td width="100%" colspan="2">
-                                    <b><label value=""/></b>
-                                </td>
-                                
-                            </tr>
-                            <tr>
-                             <td width="50%">
-                                        <b style="font-size:13px;">Job Number</b>
-                                       </td>
-                                       <td width="50%">
-                                          <b> <label id="lblconfirmjob" style="font-size:13px;padding-left:10%;"/></b>
-                                       </td>
-                            </tr>
-                                <tr>
-                                <td width="50%">
-                                    <label value="Fare" />
-                                </td>
-                                <td width="50%">
-                                   <b><img src="img/euro.png"width="10" height="10" style="padding-left:10%;"/><label id="lblconfirmfare" style="font-size:13px;"/></b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="50%">
-                                    <input type="button" value="Reject" class="specialBtn" onclick="RejectComission()"/>
-                                </td>
-                                <td width="50%">
-                                    <input type="button" value="Confirm" class="specialBtn" onclick="Confirmcomission()"/>
-                                </td>
-                            </tr>
+                    <div id="divComission" style="display:none;"align="center">
+                        <table align="left" style="width:100%;background-color:#FFFFFF;">
+                                 <tr>
+                                            <td class="popup_header" width="100%" colspan="2">
+                                                <strong style="padding-left:5px" width="100%" align="center">Commission Payment</strong>
+                                            </td>
+                                </tr>
+                                <tr class="popup_content">
+                                 <td width="50%">
+                                            <b style="font-size:13px;">Job Number</b>
+                                           </td>
+                                           <td width="50%">
+                                              <b> <label id="lblconfirmjob" style="font-size:13px;padding-left:10%;"/></b>
+                                           </td>
+                                </tr>
+                                <tr class="popup_content">
+                                            <td width="50%">
+                                                <b style="font-size:13px;">Fare</b>
+                                            </td>
+                                            <td width="50%">
+                                               <b><img src="img/euro.png"width="10" height="10" style="padding-left:10%;"/><label id="lblconfirmfare" style="font-size:13px;"/></b>
+                                            </td>
+                                </tr>
+                                <tr class="popup_footer">
+                                            <td width="50%">
+                                                <input type="button" value="Reject" class="ok" onclick="RejectComission()"/>
+                                            </td>
+                                            <td width="50%">
+                                                <input type="button" value="Confirm" class="ok" onclick="Confirmcomission()"/>
+                                            </td>
+                                </tr>
                         </table>
                     </div>
-                    <div id="divabort" style="overflow:auto;display:none;"align="center">
-                        <table align="left" style="padding-left:10%;width:100%">
-                            <tr>
-                                <td width="100%" colspan="2">
-                                    <b style="font-size:13px;">Reason</b>
-                                    
-                                </td>
-                                
-                            </tr>
-                            <tr>
+                    <div id="divabort" style="display:none;"align="center">
+                        <table align="left" style="width:100%;background-color:#FFFFFF;">
+                                 <tr>
+                                            <td class="popup_header" width="100%" colspan="2">
+                                                <strong style="padding-left:5px" width="100%" align="center">Reason</strong>
+                                            </td>
+                                </tr>
+                                <tr class="popup_content">
                                 <td width="100%" colspan="2">
                                     <input type="text" id="txtreason" style="width:80%"/>
                                     
                                 </td>
                                 
                             </tr>
-                            <tr>
+                            <tr class="popup_footer">
                                 <td width="50%">
-                                    <input type="button" id="ok" class="specialBtn" value="OK" style="width:80%;" onclick="abortOk()" />
+                                    <input type="button" id="ok" class="ok" value="OK" style="width:80%;" onclick="abortOk()" />
                                     
                                 </td>
                                 <td width="50%">
-                                    <input type="button" class="specialBtn" value="Cancel" style="width:80%;padding-left:10%;" onclick="abortcancel()"/>
+                                    <input type="button" class="ok" value="Cancel" style="width:80%;" onclick="abortcancel()"/>
                                     
                                 </td>
                                 
