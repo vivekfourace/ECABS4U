@@ -55,7 +55,7 @@
                                       <strong style="padding-left:5px">Job expired time</strong>
                                   </td>
                              </tr>
-                            <tr>
+                            <tr class="popup_content">
                                 <td style="width:50%">
                                     <label id="">Searched Time</label>
                                 </td>
@@ -63,7 +63,7 @@
                                     <label id="lblsearch"/>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr class="popup_content">
                                 <td style="width:50%">
                                      <label id="Label1">Expiry  Time</label>
                                 </td>
@@ -79,29 +79,29 @@
                         </table>
                     </div>
                     <div id="divBiding" style="display:none;">
-                        <table style="width:100%; border-collapse:collapse; background-color:#FFFFFF;">
+                        <table style="width:100%;  background-color:#FFFFFF;">
                             <tr>
                                   <td class="popup_header" colspan="2">
                                       <strong style="padding-left:5px">Job Bidded Time</strong>
                                   </td>
                              </tr>
-                            <tr>
+                            <tr class="popup_content">
                                 <td style="width:50%">
-                                    <label id="Label2">Bid Time</label>
+                                    <label >Bid Time</label>
                                 </td>
                                 <td style="width:50%">
                                     <label id="lblbid"/>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr class="popup_content">
                                 <td style="width:50%">
-                                     <label id="Label3">Pick Up Time</label>
+                                     <label >Pick Up Time</label>
                                 </td>
                                 <td style="width:50%">
                                      <label id="lblpick"/>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr width="100%" class="popup_footer">
                                  <td style="width:100%;text-align:center" colspan="2">
                                      <input type="button" class="ok" value="Close" style="cursor: pointer;text-align:center;" onclick="closeBid()"/>
                                  </td>
@@ -128,7 +128,7 @@
                         </table>
                     </div>
                     <div id="divDealConfirmed" style="display:none">
-                        <table style="width:100%; border-collapse:collapse; background-color:#FFFFFF;">
+                        <table style="width:100%; background-color:#FFFFFF;">
                              <tr>
                                   <td class="popup_header" colspan="2">
                                       <strong style="padding-left:5px">Cab Booked Details are</strong>
@@ -140,7 +140,7 @@
                                            <label id="lbldriverId" style="font-size:13px;padding-left:10%;"/>
                                        </td>
                                    </tr>
-                             <tr>
+                             <tr class="popup_content">
                                        <td style="width:50%">
                                         <b style="font-size:13px;">Job Number</b>
                                        </td>
@@ -148,7 +148,7 @@
                                           <b> <label id="lblconfirmjob" style="font-size:13px;padding-left:10%;"/></b>
                                        </td>
                                    </tr>
-                             <tr>
+                             <tr class="popup_content">
                                        <td style="width:50%">
                                         <b style="font-size:13px;">Driver Name</b>
                                        </td>
@@ -156,7 +156,7 @@
                                          <b>  <label id="lblconfirmdrivername" style="font-size:13px;padding-left:10%;"/></b>
                                        </td>
                                    </tr>
-                             <tr>
+                             <tr class="popup_content">
                                        <td style="width:50%">
                                         <b style="font-size:13px;">From</b>
                                        </td>
@@ -164,7 +164,7 @@
                                          <b>  <label id="lblconfirmfrom" style="font-size:13px;padding-left:10%;"/></b>
                                        </td>
                                    </tr>
-                             <tr>
+                             <tr class="popup_content">
                                        <td style="width:50%">
                                           <b style="font-size:13px;">To</b>  
                                        </td>
@@ -172,7 +172,7 @@
                                           <b> <label id="lblconfirmto" style="font-size:13px;padding-left:10%;"/></b>
                                        </td>
                                    </tr>
-                             <tr>
+                             <tr class="popup_content">
                                        <td style="width:50%">
                                           <b style="font-size:13px;">Pick Date</b>  
                                        </td>
@@ -180,7 +180,7 @@
                                           <b> <label id="lblconfirmdate" style="font-size:13px;padding-left:10%;"/></b>
                                        </td>
                                    </tr>
-                             <tr>
+                             <tr class="popup_content">
                                        <td style="width:50%">
                                           <b style="font-size:13px;">Pick Time</b>  
                                        </td>
@@ -188,7 +188,7 @@
                                           <b> <label id="lblconfirmtime" style="font-size:13px;padding-left:10%;"/></b>
                                        </td>
                                    </tr>
-                             <tr>
+                             <tr class="popup_content">
                                        <td style="width:50%">
                                           <b style="font-size:13px;">Distance In Mile</b>  
                                        </td>
@@ -196,7 +196,7 @@
                                           <b> <label id="lblconfirmdistance" style="font-size:13px;padding-left:10%;"/></b>
                                        </td>
                                    </tr>
-                             <tr>
+                             <tr class="popup_content">
                                        <td style="width:50%">
                                           <b style="font-size:13px;">Fare</b>  
                                        </td>
@@ -214,7 +214,7 @@
                </div>
              </div>
              <div id="divDriverList" style="display:none;width:100%;position:fixed;bottom:40px;"> 
-                <table id="btnTable" style="width:100%; border-collapse:collapse;">
+                <table id="btnTable" style="width:100%;">
                     <tr>
                         <td style="width:50%;text-align:center">
                             <input type="button" id="btnVehiclEnroute" class="btn-cust" value="Vehicle Enroute" onclick="VehicleStatus()"/>
