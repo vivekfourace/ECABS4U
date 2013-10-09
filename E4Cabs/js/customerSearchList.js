@@ -109,7 +109,7 @@ function getData(data)
                                    
                                     }
                                    
-                                    //
+                                   
                                      var bidTime=data.d[i]["BidTime"]; 
                                      var bid=bidTime.split(" ");
                                      var bidmin=bid[1].split(":");
@@ -341,7 +341,7 @@ function getResponseFromDriver(data)
                                  }
                      });  
         
-    },60000);
+    },6000);
 }
 
 function VehicleStatus()
@@ -372,6 +372,7 @@ function Complete()
  function calOk()
   {
      $('#popup_box').fadeOut("slow");
+      $('#popup_box').hide();
       var requestId=$('#lblconfirmjob').text();
       var driverId=$('#lbldriverId').text();
       $.ajax({

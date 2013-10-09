@@ -24,6 +24,7 @@
     <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
     <script type="text/javascript" src="js/customerSearch.js"></script>
     <script type="text/javascript">
+        //Google Maps
     $(document).ready(function () {        
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
@@ -44,7 +45,9 @@
                     });
                 });
             }
-
+        
+        
+//Other Requirements
         $('.expand').live({
 
             focus: function () {
@@ -55,6 +58,8 @@
             },
         });
 
+        
+ //Checkbox Hide And Show       
         $('#chkNo').click(function () {
             document.getElementById("chkyes").checked = false;
             $('#returnJ').fadeIn("slow");
@@ -71,16 +76,22 @@
         $('#popupBoxClose').click(function () {
             $('#popup_box').fadeOut("slow");
         });
+  
         
-        $('#RbFutureBook').click(function () {
-            document.getElementById("RBcabNOW").checked = false;
-            window.location='customerSearchFuture.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-
-        });
+//Redict To Future Booking Page 
+        
+       $('#RbFutureBook').click(function () {
+           //alert(relatedId);
+           document.getElementById("RBcabNOW").checked = false;
+          window.location='customerSearchFuture.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+       
+     });
        
     });
 
 
+        
+        //Current Date Time
     function loadDateTime() {
         //Code For current Time
         var currentTime = new Date()
@@ -383,14 +394,14 @@
                <center>
                    
                    <tr>
-                       <td>
+                       <td style="padding-top:15px">
                            <table style="border-collapse:collapse;width:100%;height:41px" border="1" >
                                <tr style="background-color:#336699">
-                        <td style="width:40%"> 
+                        <td style="width:47%"> 
                             <input type="radio" id="RBcabNOW" name="cab" style="float:left" checked/>
-                            <label style="font-size:14px;text-align:left;float:left;padding-top:2px;color:white;"><b>Cab now</b></label>
+                            <label style="font-size:14px;text-align:left;float:left;padding-top:2px;color:white;"><b>Cab Now</b></label>
                          </td>
-                       <td style="width:50%">
+                       <td style="width:53%">
                            <input type="radio" id="RbFutureBook" name="cab" style="float:left" />
                            <label style="font-size:14px;text-align:left;float:left;padding-top:2px;color:white;"><b>Future Booking</b></label>
                            
