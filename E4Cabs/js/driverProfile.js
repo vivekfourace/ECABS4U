@@ -66,6 +66,7 @@ function ShowData(data)
     $('#lblEmailID').show();
     $('#btnEdit').show();
     $('#btnBack').show();
+    $('hr').show();
  }
 
 function EditProfile()
@@ -85,6 +86,7 @@ function EditProfile()
     $('#lblMobileNo').hide();
     $('#lblEmailID').hide();
     $('#divMarquee').hide();
+    $('hr').hide();
     document.getElementById("trBtnUpdate").style.display = 'table-row';
      document.getElementById("trCancel").style.display = 'table-row';
      document.getElementById("tredit").style.display = 'none';
@@ -203,7 +205,8 @@ function HomePage(){
 function MyBookings(){
     window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-function logout(){
+function logout()
+{
         $.cookie("remember", false);
         $.cookie("userName", 'null');
         window.location = "index.html";  

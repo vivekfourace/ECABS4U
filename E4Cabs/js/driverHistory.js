@@ -33,8 +33,8 @@ function gethistory()
                         //alert(count);
                         if(count > 0)
                         {
-                                var html = '<table width="100%" style="border-collapse:collapse">';
-                                html += '<thead style="background-color:#D8DCBB;color:darkblue;">';
+                                var html = '<table width="100%" >';
+                                html += '<thead style="background-color:#0A0A2A;color:#fff;">';
                                 html += '<tr>';
                                 html += '<th class="th4 font">JobNo</th>';
                                 html += '<th class="th4 font">Date</th>';
@@ -43,11 +43,11 @@ function gethistory()
                                 html += '<th class="th4 font">To</th>';
                                 html += '</tr>';
                                 html += '</thead>';
-                                               html +='<tbody class="body-style">';  
+                                               html +='<tbody class="body-style altColor"  style="font-size:14px;">';  
                                                     for(var i=0; i<count; i++)
                                                     {
                                                        html += '<tr>';
-                                                       html += "<td width='25%' align='center'>" +'<a href="#" onclick="">'+ data.d[i]["JobNo"]+'</a>' + "</td>";
+                                                       html += "<td width='25%' align='center'>" +'<a href="#" style="color:blue;" onclick="">'+ data.d[i]["JobNo"]+'</a>' + "</td>";
                                                        html += "<td width='25%' align='center'>" + data.d[i]["StartDate"] + "</td>";
                                                        html += "<td width='25%' align='center'>" + data.d[i]["StartTime"] +"</td>";
                                                        html += "<td width='25%' align='center'>" + data.d[i]["FromLoc"] +"</td>";
