@@ -107,6 +107,7 @@
                  
               // window.clearInterval(timer);
                 window.clearInterval(Dealid);
+                alert("tbz");
                 window.location = "driverHome.html";
             }
             function showJob()
@@ -373,14 +374,14 @@
                                         success: function (data) 
                                                     {
                                                           $('#divDetails').hide();
-                                                          
+                                                          Destroy();
                                                     },
                                         error: function (XMLHttpRequest, textStatus, errorThrown)
                                                  {
                                        
                                                 }
                                     }); 
-                     Destroy();
+                     
              $('#divDeal').hide();
                  $('#popup_box').fadeOut("slow");   
                 }
