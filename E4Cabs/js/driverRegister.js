@@ -1,18 +1,6 @@
 function UploadImage()
 {
-     //if (raghu.PostedFile != null) {
-         
-            // raghu.PostedFile.SaveAs("C:\Users\Anil.Muchenthula\Desktop\Uploads\");
-             
-         // 
-         //}
-  //var img2=document.getElementById('raghu');   
- //var imginKB= Math.ceil(img2.files[0].size/1024);
-      // alert(raghu.value);
-   // alert(imginKB);
     
-    
-   //\\uploadedfile.txt
 }
 function RegisterDriver()
 {
