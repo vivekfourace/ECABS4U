@@ -95,7 +95,51 @@
                     }
                 });
                 
-               $.ajax({
+             
+                $('#popupBoxClose').click(function ()
+                {
+                    $('#popup_box').fadeOut("slow");
+                });
+            })
+            
+           function Destroy()
+            {
+                 
+              // window.clearInterval(timer);
+                window.clearInterval(Dealid);
+                window.location = "driverHome.html";
+            }
+            function showJob()
+            {
+                $("#divDealload").hide();
+                $('#popup_box').fadeIn("slow");
+                $('#divDriverPop').show();
+                $('#divBid').hide();
+                var job=$('#lbljobno').text();
+                // var customer=abc;
+                var from=$('#lblFromLoc').text();
+                var to=$('#lblToLoc').text();
+                var third=$('#lblpopthird').text();
+                var four=$('#lblpopfour').text();
+                $('#lblpopjob').text(job);
+                $('#lblcustomer').text("abc");
+                $('#lblpopfrom').text(from);
+                $('#lblpopto').text(to);
+                $('#lblpopthird').text(third);
+                //$('#lblpopfour').text(four);trSpecialtxt
+                document.getElementById("trwheelchair").style.display = 'none';
+                document.getElementById("trfare").style.display = 'none';
+                document.getElementById("trchildseats").style.display = 'none';
+                document.getElementById("trchildbooster").style.display = 'none';
+                document.getElementById("trOtherspec").style.display = 'none'; 
+                document.getElementById("trSpecialtxt").style.display = 'none'; 
+            }
+            
+            function SubmitDeal()
+            {
+                
+               
+                 $.ajax({
                     url: "http://115.115.159.126/ECabs/ECabs4U.asmx/dealResponse",
                     type:"POST",
                     dataType: "Json",
@@ -148,6 +192,7 @@
                         if(data.d[0]=="Error")
                         {
                             $('#divDeal').hide();
+                            SubmitDeal();
                             
                         }
                     },
@@ -155,49 +200,7 @@
                     {
                         $('#divDeal').hide();
                     }
-                });  
-                $('#popupBoxClose').click(function ()
-                {
-                    $('#popup_box').fadeOut("slow");
-                });
-            })
-            
-           function Destroy()
-            {
-                 
-              // window.clearInterval(timer);
-                window.clearInterval(Dealid);
-                window.location = "driverHome.html";
-            }
-            function showJob()
-            {
-                $('#popup_box').fadeIn("slow");
-                $('#divDriverPop').show();
-                $('#divBid').hide();
-                var job=$('#lbljobno').text();
-                // var customer=abc;
-                var from=$('#lblFromLoc').text();
-                var to=$('#lblToLoc').text();
-                var third=$('#lblpopthird').text();
-                var four=$('#lblpopfour').text();
-                $('#lblpopjob').text(job);
-                $('#lblcustomer').text("abc");
-                $('#lblpopfrom').text(from);
-                $('#lblpopto').text(to);
-                $('#lblpopthird').text(third);
-                //$('#lblpopfour').text(four);trSpecialtxt
-                document.getElementById("trwheelchair").style.display = 'none';
-                document.getElementById("trfare").style.display = 'none';
-                document.getElementById("trchildseats").style.display = 'none';
-                document.getElementById("trchildbooster").style.display = 'none';
-                document.getElementById("trOtherspec").style.display = 'none'; 
-                document.getElementById("trSpecialtxt").style.display = 'none'; 
-            }
-            
-            function SubmitDeal()
-            {
-                
-                 
+                });    
             }
              function showSpecial()
             {
@@ -289,7 +292,7 @@
                 document.getElementById("trchildbooster").style.display = 'none';
                 document.getElementById("trOtherspec").style.display = 'none';  
                 $('#popup_box').fadeOut("slow");
-                //var Dealid= window.setInterval(SubmitDeal, 1000);
+                var Dealid=window.setInterval(SubmitDeal,2000);
                 
             }
             
@@ -352,7 +355,7 @@
                  $('#divComission').show();
                  $('#lblconfirmjob').text(reqID);
                  $('#lblconfirmfare').text(getFare);
-               
+                
                    
                 }
                 else
@@ -377,6 +380,7 @@
                                        
                                                 }
                                     }); 
+                     Destroy();
              $('#divDeal').hide();
                  $('#popup_box').fadeOut("slow");   
                 }
