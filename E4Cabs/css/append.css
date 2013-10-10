@@ -13,6 +13,17 @@ font-size:20px;
 thead tr{
     border:1px solid blue;
 }
+
+.altColor tr:nth-child(2n)
+{
+ background:#A9F5E1;
+}
+
+.altColor tr:nth-child(2n-1)
+{
+ background:#F5F6CE;
+}
+
 tbody tr{
     border-bottom:1px solid;
 }
@@ -36,9 +47,10 @@ table-row{
 .th4{
     width:25%;
     text-align:center;
+    height:30px;
 }
 .font{
-    font-size:16px;
+    font-size:18px;
     font-family:sans-serif;
     font:bold;
 }

@@ -7,14 +7,16 @@ var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
+
 function backToIndex()
 {
-    
-       
    window.location =  'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
   
 }
 window.onload = gethistory();
+
+
+
 
 function gethistory()
 {
@@ -29,8 +31,8 @@ function gethistory()
                         //alert(count);
                         if(count > 0)
                         {
-                                var html = '<table width="100%" style="border-collapse:collapse">';
-                                html += '<thead style="background-color:#D8DCBB;color:darkblue;">';
+                                var html = '<table cellspacing="0"; width="100%" style="border-collaspe:collaspe;">';
+                                html += '<thead style="background-color:#0A0A2A;color:#fff;">';
                                 html += '<tr>';
                                 html += '<th class="th4 font">JobNo</th>';
                                 html += '<th class="th4 font">Date</th>';
@@ -40,11 +42,11 @@ function gethistory()
                                 
                                 html += '</tr>';
                                 html += '</thead>';
-                                               html +='<tbody class="body-style">';  
+                                               html +='<tbody class="body-style altColor"  style="font-size:14px;">';  
                                                     for(var i=0; i<count; i++)
                                                     {
                                                        html += '<tr>';
-                                                       html += "<td width='25%' align='center'>" +'<a href="#" onclick="" style="color:blue;">'+ data.d[i]["JobNo"]+'</a>' + "</td>"; 
+                                                       html += "<td width='25%' align='center'>" +'<a href="#" onclick="" style="color:#0B0719;font-weight:bold;">'+ data.d[i]["JobNo"]+'</a>' + "</td>"; 
                                                        html += "<td width='25%' align='center'>" + data.d[i]["StartDate"] + "</td>";
                                                        html += "<td width='25%' align='center'>" + data.d[i]["StartTime"] +"</td>";
                                                        html += "<td width='25%' align='center'>" + data.d[i]["FromLoc"] +"</td>";

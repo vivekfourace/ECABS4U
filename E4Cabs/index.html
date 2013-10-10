@@ -13,33 +13,50 @@
     <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
+    <script>
+      $('#register').click(function(){
+          $('#divMenu').animate({
+              height:'toggle'
+          });
+      } );
+    </script>
 </head>
 <body>
     <div class="app">
         <center>
             <div id="imgLoader">
                 <img src="jquery-mobile/styles/images/ajax-loader.gif" id="loading-image"/>
+                
             </div>
             <div class="header" data-position="fixed" style="height:57px">
                 <div style="float:left;height:50px;padding-top:3px;padding-left:3px">
                     <img src="img/logo1.png" class="logo"/>
+                    
                 </div>
-                
                 <div style="width:80%;padding-right:5px; height:16%;text-align:center">
                     <div style="padding-top:1px;">
                         <ul id="nav" style="float:right; margin-left:4px">
                             <li>
-                                <i class="header-font" style="color:white;font-size:16px">
-                                    <a href="#" id="register">Log On</a></i>
-                                <ul class="sf-menu" style="width:170px !important; margin-left:-150%; z-index:100 !important;">
-                                    <li><a  href="customerRegister.html">Customer</a></li>
-                                    <li><a href="driverRegister.html">Taxi/Private Hire Operator </a></li>
-                                    <li><a href="businessCustomer.html">Business Customer</a></li>
+                                <div class="header-font" style="color:white;font-size:16px">
+                                    <a href="#" id="register">Log On</a>
+                                    
+                                </div>
+                                <div id="divMenu">
+                                <ul class="sf-menu" style="width:170px !important; !important; margin-left:-150%; z-index:100 !important;">
+                                    <li style="width:100%;height:auto;font-size:auto;"><a  href="customerRegister.html">Customer</a></li>
+                                    <li style="width:100%;height:auto;font-size:auto;"><a href="driverRegister.html">Taxi/Private Hire Operator </a></li>
+                                    <li style="width:100%;height:auto;font-size:auto;"><a href="businessCustomer.html">Business Customer</a></li>
+                                    
                                 </ul>
+                                </div>
                             </li>
+                            
                         </ul>
+                        
                     </div>
+                    
                 </div>
+                
             </div>
 
             <div style="height:5%;width:100%;padding-top:65px;">
@@ -53,7 +70,7 @@
                 <center>
                     <label id="lblMsg" style="color:#D70007;font-size:12px"></label>
                 </center>
-                <input type="text" id="txtUserName" style=" font-family: MS;width:65%" placeholder="Username" autofocus="autofocus"/>
+                <input type="text" id="txtUserName" style=" font-family: MS;width:65%" placeholder="Username" />
                 <input type="password" id="txtPassword" style="font-family: MS;width:65%;" placeholder="Password"/><br/>
                 
                 <table style="width:100%">

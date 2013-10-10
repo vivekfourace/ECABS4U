@@ -162,6 +162,7 @@ center {
 .btn-tmpFooter {
     /* border-radius:3px!important; */
     outline: none!important;
+   bottom:0px!important;
     width: 100%!important;
     height: 35px!important;
     text-align: center!important;
@@ -171,6 +172,7 @@ center {
     font-style: normal!important;
     /* margin:5px 0 5px 0!important;*/
     font-family: sans-serif!important;
+    margin-top:20px;
     color: #333;
     /*border: 1px solid #bbb;*/
     background: rgb(30,87,153); /* Old browsers */
@@ -404,7 +406,14 @@ input[type="password"]:focus {
 }
 
 .font-style {
-    font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    color: Black;
+}
+
+.font-style1 {
+    font-family:  "Comic Sans MS", cursive, sans-serif;
     font-weight: bold;
     font-size: 14px;
     color: Black;

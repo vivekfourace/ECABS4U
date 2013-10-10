@@ -4991,12 +4991,12 @@ textarea.ui-mini
 /* Resolves issue #5166: Added to support issue introduced in Firefox 15. We can likely remove this in the future. */
 input::-moz-placeholder, textarea::-moz-placeholder
 {
-    color: #aaa;
+    color: #000;
 }
 /* For IE10 */
 :-ms-input-placeholder
 {
-    color: #aaa;
+    color: #000;
 }
 /* Resolves issue #5131: Width of textinput depends on its type, for Android 4.1 */
 input[type=number]::-webkit-outer-spin-button
