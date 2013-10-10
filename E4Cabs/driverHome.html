@@ -15,8 +15,11 @@
         <script type="text/javascript"  src="Scripts/jquery-ui-1.8.15.custom.min.js"></script>
         <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
         <script type="text/javascript" src="js/driverHome.js"></script>
-        
+        <style type="text/css">
+            body.js .nojs { display: none; }
+        </style>
       <script type="text/javascript" language="javascript">
+          
   //  window.onload=Blink1();
   //
   //    
@@ -65,19 +68,16 @@
      //       }
      //     });
      //           
-     //  }
-     //  
-     //
+     
           
-          
+   // function AutoRefresh( t ) {
+         
+   //     alert("tbz");
+   //     Check();
+	///setTimeout("location.reload(true);", t);
+//}      
   </script>
-      <!--<script type="text/javascript">
-            $(document).ready(function(){
-                alert("hi");
-                 window.location.href="https://sandbox.gocardless.com/pay/YH0MFHY7";
-            });
-          
-        </script>-->
+      
     </head>
     <body >
         <center>
@@ -97,29 +97,33 @@
              <div id="msg" style="padding-top:56px"></div>   
              <div style="width:100%;height:75%;" id="divDetails">
                 <div id="popup_box" >                       
-                        <br />
-                <div id="divDealStart" style="overflow:auto;"align="center">
-                        <table align="left" style="padding-left:10%;width:100%">
-                            
-                                   <tr>
-                                   <td width="100%" colspan="2">
-                                       <b style="font-size:15px;color:red">You have got new job request!</b>
-                                   </td>
-                                   </tr>
-                            
-                                   <tr>
-                                   <td width="100%" colspan="2">
-                                       <b style="font-size:15px;color:red">Do you want to see?</b>
-                                   </td>
-                                   </tr>
-                                  
-                                  
+                        
+                <div id="divDealStart"  style="display:none;"align="center">
+                        <table align="left" style="width:100%;background-color:#FFFFFF;">
                                     <tr>
+                                           <td class="popup_header" width="100%" colspan="2">
+                                                <strong style="padding-left:5px;" width="100%" align="center">New Job Notification</strong>
+                                           </td>
+                                   </tr>
+                                   <tr id="popup_content">
+                                           <td width="100%" colspan="2">
+                                               <b style="font-size:13px;color:blue"><strong>You have got new job request!</strong></b>
+                                           </td>
+                                   </tr>
+                            
+                                   <tr id="popup_content">
+                                           <td width="100%" colspan="2">
+                                               <b style="font-size:13px;color:blue"><strong>Do you want to see?</strong></b>
+                                           </td>
+                                   </tr>
+                                  
+                                  
+                                    <tr class="popup_footer">
                                         <td width="50%">
-                                            <input type="button" class="specialBtn" value="Yes" style="width:80%;" onclick="seeRequest()" />
+                                            <input type="button" class="ok" value="Yes" style="width:100%;" onclick="seeRequest()" />
                                         </td>
                                         <td width="50%">
-                                            <input type="button" class="specialBtn" value="No" style="width:80%;padding-left:10%;" onclick="closeRequest()"/>
+                                            <input type="button" class="ok" value="No" style="width:100%;" onclick="closeRequest()"/>
                                         </td>
                                     </tr>
                           
