@@ -25,7 +25,6 @@ function currentlocation() {
 //Search Available
 
 function availabledriver() {
-
     var fromloc = document.getElementById('txtFrom').value;
     var toloc = document.getElementById('txtTo').value;
     var distance = document.getElementById('txtDistance').value;
@@ -74,13 +73,6 @@ function availabledriver() {
     }
 
     $.ajax({
-        cache: false,
-        beforeSend: function () {
-            $('#imgLoader').show();
-        },
-        complete: function () {
-            $('#imgLoader').hide();
-        },
         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
         type: "POST",
         dataType: "Json",
