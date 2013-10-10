@@ -33,7 +33,7 @@ function gethistory()
                         //alert(count);
                         if(count > 0)
                         {
-                                var html = '<table cellspacing="0"; width="100%" style="border-collaspe:collaspe;">';
+                                var html = '<table cellspacing="0"; width="100%"  style="border-collaspe:collaspe;">';
                                 html += '<thead style="background-color:#0A0A2A;color:#fff;">';
                                 html += '<tr>';
                                 html += '<th class="th4 font">JobNo</th>';
