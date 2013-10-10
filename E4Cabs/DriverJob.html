@@ -22,6 +22,7 @@
             
             
             $(document).ready(function(){
+                 $("#divDealload").show();
                 $.ajax({url:'http://115.115.159.126/ECabs/ECabs4U.asmx/checkResponse',
                     type:"POST",
                     datatype:"json",
@@ -41,6 +42,7 @@
                                 contentType: "application/json; charset=utf-8",
                                 success: function(data)
                                 {
+                                     $("#divDealload").hide();
                                     if(data.d[0]!=null)
                                     {
                                         $('#lbljobno').text(data.d[0]);
@@ -92,7 +94,49 @@
                         $('#divDetails').hide();
                     }
                 });
-                $.ajax({
+                
+               
+                $('#popupBoxClose').click(function ()
+                {
+                    $('#popup_box').fadeOut("slow");
+                });
+            })
+            
+           function Destroy()
+            {
+               // window.clearInterval(timer);
+                window.clearInterval(Dealid);
+                window.location = "driverHome.html";
+            }
+            function showJob()
+            {
+                $('#popup_box').fadeIn("slow");
+                $('#divDriverPop').show();
+                $('#divBid').hide();
+                var job=$('#lbljobno').text();
+                // var customer=abc;
+                var from=$('#lblFromLoc').text();
+                var to=$('#lblToLoc').text();
+                var third=$('#lblpopthird').text();
+                var four=$('#lblpopfour').text();
+                $('#lblpopjob').text(job);
+                $('#lblcustomer').text("abc");
+                $('#lblpopfrom').text(from);
+                $('#lblpopto').text(to);
+                $('#lblpopthird').text(third);
+                //$('#lblpopfour').text(four);trSpecialtxt
+                document.getElementById("trwheelchair").style.display = 'none';
+                document.getElementById("trfare").style.display = 'none';
+                document.getElementById("trchildseats").style.display = 'none';
+                document.getElementById("trchildbooster").style.display = 'none';
+                document.getElementById("trOtherspec").style.display = 'none'; 
+                document.getElementById("trSpecialtxt").style.display = 'none'; 
+            }
+            
+            function SubmitDeal()
+            {
+                
+                 $.ajax({
                     url: "http://115.115.159.126/ECabs/ECabs4U.asmx/dealResponse",
                     type:"POST",
                     dataType: "Json",
@@ -100,12 +144,16 @@
                     contentType: "application/json; charset=utf-8",  
                     success: function (data) 
                     {
+                         $("#divDealload").hide();
                         var getResID=data.d[0];
                         var getResponse=data.d[1];
-                        if(getResponse="True")
+                        if(getResponse=="True")
                         {
                             $('#popup_box').fadeIn("slow");
                             $('#divDeal').show();
+                           
+                              
+                          
                             $.ajax({
                                 url:"http://115.115.159.126/ECabs/ECabs4U.asmx/GetDealData",
                                 type:"POST",
@@ -133,13 +181,15 @@
                                 error: function (XMLHttpRequest, textStatus, errorThrown)
                                 {
                                     
-                                    
+                                  
                                 }
                             });
-                        }
+                       
+                            }
                         if(data.d[0]=="Error")
                         {
                             $('#divDeal').hide();
+                            
                         }
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown)
@@ -147,34 +197,6 @@
                         $('#divDeal').hide();
                     }
                 });  
-                $('#popupBoxClose').click(function ()
-                {
-                    $('#popup_box').fadeOut("slow");
-                });
-            })
-            function showJob()
-            {
-                $('#popup_box').fadeIn("slow");
-                $('#divDriverPop').show();
-                $('#divBid').hide();
-                var job=$('#lbljobno').text();
-                // var customer=abc;
-                var from=$('#lblFromLoc').text();
-                var to=$('#lblToLoc').text();
-                var third=$('#lblpopthird').text();
-                var four=$('#lblpopfour').text();
-                $('#lblpopjob').text(job);
-                $('#lblcustomer').text("abc");
-                $('#lblpopfrom').text(from);
-                $('#lblpopto').text(to);
-                $('#lblpopthird').text(third);
-                //$('#lblpopfour').text(four);trSpecialtxt
-                document.getElementById("trwheelchair").style.display = 'none';
-                document.getElementById("trfare").style.display = 'none';
-                document.getElementById("trchildseats").style.display = 'none';
-                document.getElementById("trchildbooster").style.display = 'none';
-                document.getElementById("trOtherspec").style.display = 'none'; 
-                document.getElementById("trSpecialtxt").style.display = 'none'; 
             }
              function showSpecial()
             {
@@ -190,7 +212,7 @@
             $( "#trchildseats" ).toggle();
              $( "#trchildbooster" ).toggle();
              $( "#trOtherspec" ).toggle();
-            l
+           
              
             }
             function showBid()
@@ -223,7 +245,8 @@
            function bidSubmit()
             {
                  //$('#divComplete').hide();
-                 $('#divDriverPop').hide();
+                
+                $('#divDriverPop').hide();
                 $('#divBid').hide();
                 var job=$('#lbljobno').text();
                 var distance=$('#lblDistance').text();
@@ -251,19 +274,24 @@
                                         contentType: "application/json; charset=utf-8",  
                                         success: function (data) 
                                                     {
+                                                        $("#divDealload").show(); 
+                                                       
                                                     },
                                         error: function (XMLHttpRequest, textStatus, errorThrown)
                                                  {
                                        
-                                                }
+                                                 }
                                     });
                 document.getElementById("trfare").style.display = 'table-row';
                 document.getElementById("trwheelchair").style.display = 'none';
                 document.getElementById("trchildseats").style.display = 'none';
                 document.getElementById("trchildbooster").style.display = 'none';
                 document.getElementById("trOtherspec").style.display = 'none';  
-                 $('#popup_box').fadeOut("slow");
+                $('#popup_box').fadeOut("slow");
+                var Dealid= setInterval(SubmitDeal, 1000);
+                
             }
+            
            function bidCancel()
             {
                  var job=$('#lbljobno').text();
@@ -303,6 +331,7 @@
                                         contentType: "application/json; charset=utf-8",  
                                         success: function (data) 
                                                     {
+                                                       
                                                     },
                                         error: function (XMLHttpRequest, textStatus, errorThrown)
                                                  {
@@ -317,7 +346,8 @@
                  $('#divDeal').hide();
                  var reqID=$('#lbldealjob').text(); 
                 if(getFare==15 || getFare >15 )
-                {                  
+                { 
+                 Destroy();   
                  $('#divComission').show();
                  $('#lblconfirmjob').text(reqID);
                  $('#lblconfirmfare').text(getFare);
@@ -325,7 +355,8 @@
                 }
                 else
                 {
-                     $('#divComission').hide();
+                   Destroy(); 
+                    $('#divComission').hide();
                   
               //alert(reqID);lblconfirmjob
                                     $.ajax({
@@ -336,7 +367,7 @@
                                         contentType: "application/json; charset=utf-8",  
                                         success: function (data) 
                                                     {
-                                                         // alert(reqID);
+                                                          $('#divDetails').hide();
                                                         
                                                     },
                                         error: function (XMLHttpRequest, textStatus, errorThrown)
@@ -401,7 +432,7 @@
             {
                  $('#popup_box').hide();
                  $('#divabort').hide();
-              $('#divComplete').show();  
+                 $('#divComplete').show();  
             }
             
             function abortOk()
@@ -417,9 +448,7 @@
             </script>
     </head>
     <body>
-        <div id="imgLoader">
-                <img src="jquery-mobile/styles/images/ajax-loader.gif" id="loading-image"/>
-            </div>
+        
         <div class="header" style="background-color:#242424;height:12.2%">
             <div style="float:left;height:48px;wforth:122px;padding-top:3px;">
                 <img src="img/logo1.png" class="logo"/>
@@ -428,6 +457,10 @@
             
         </div>
         <center>
+             <div id="divDealload" class="loadForall">            
+                <span style="font-family:'Trebuchet MS';color:white">Please wait...</span><br>
+                <img src="jquery-mobile/styles/images/ajax-loader-hor.gif" style="width:140px;height:10px"/>
+            </div>
             <div style="width:100%;height:75%;padding-top:25%;" id="divDetails">
                 <div id="popup_box" >
                     
@@ -632,7 +665,7 @@
                                 </td>
                                 
                             </tr>
-                            <tr id="popup_content">
+                            <tr class="popup_content">
                                 <td width="50%">
                                     <b style="font-size:13px;">Pick Date</b>
                                     
@@ -908,7 +941,7 @@
                     </div>
 
                 
-                
+
                 
                 <table width="100%" style="border-collapse:collapse">
                    <tr>
@@ -1090,7 +1123,7 @@
         </center>
         <footer>
             <div style="width:100%;position:fixed;bottom:0px;height:20px;padding-bottom:55px">
-                <table width="100%" style="">
+                <table width="100%" style="" id="tbdeal">
                     <tr>
                         <td width="25%">
                             <input type="button" id="btnbid" class="specialBtn" onclick="showBid()" style="width:100%;" value="Bid" />
