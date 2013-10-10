@@ -3,7 +3,9 @@ var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
-$(document).ready(function(){
+function Check(){
+   // $("body").css({visibility:'none '})
+   //  alert("tbz");
      var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/userStatus";
                 $.ajax(url,{                      
                      type:"POST",
@@ -16,14 +18,9 @@ $(document).ready(function(){
                          if(status==true)
                          {
                          $('#driverStatusupdate').text("Available");
+                             
                               $.ajax({
-                                          cache: false,
-                                            beforeSend: function(){
-                                                 $('#imgLoader').show();
-                                             },
-                                             complete: function(){
-                                                 $('#imgLoader').hide();
-                                             },
+                                          
                                            url:'http://115.115.159.126/ECabs/ECabs4U.asmx/CheckNewJob', 
                                            type:"POST",
                                            datatype:"json",
@@ -60,8 +57,8 @@ $(document).ready(function(){
                 }
              });
     
-});
-
+}
+setInterval(Check, 1000);
 function Available()
 {
     

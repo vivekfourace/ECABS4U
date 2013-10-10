@@ -19,7 +19,7 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none; /* prevent copy paste, to allow, change 'none' to 'text' */
-    font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif,'Trebuchet MS';
+    font-family: 'Trebuchet MS';
     font-size: 12px;
     height: 100%;
     margin: 0px;
