@@ -62,6 +62,7 @@ function ShowData(data)
     $('#lblMobileNo').show();
     $('#lblEmailID').show();
     $('#btnEdit').show();
+    $('hr').show();
  }
 
 
@@ -92,7 +93,7 @@ function EditProfile()
     $('#lblEmailID').hide();
     $('#btnhistory').hide();
     $('#lblBusinessNam').hide();
-    
+    $('hr').hide();
   
    // $("#btnEdit").hide();
     
