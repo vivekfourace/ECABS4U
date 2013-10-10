@@ -330,7 +330,7 @@ function calOk() {
         contentType: "application/json; charset=utf-8",
         success: function (data) {
             alert("Cab booked successfully.");
-            myProfile();
+            bookedHistory();
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
         }
