@@ -29,14 +29,13 @@
     $(document).ready(function () {        
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
-                    alert('hi');
                     var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
                     var geocoder = new google.maps.Geocoder();
                     var latLng = pos;
                     geocoder.geocode({ 'latLng': latLng }, function (results, status) {
                         if (status == google.maps.GeocoderStatus.OK) {
                             if (results[1]) {
-                                alert(results[1].formatted_address);
+                                //alert(results[1].formatted_address);
                                 $('#txtCurrentFrom').val(results[1].formatted_address);
                             }
                         }
