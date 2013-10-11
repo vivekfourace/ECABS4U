@@ -15,13 +15,13 @@ font-size:20px;
 
 .altColor tr:nth-child(2n)
 {
- background:#D3D3D3;
+ background:#C0C0C0;
     
 }
 
 .altColor tr:nth-child(2n-1)
 {
- background:#199EBD;
+ background:#FFFAFA;
     
 }
 

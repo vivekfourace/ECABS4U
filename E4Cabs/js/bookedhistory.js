@@ -46,7 +46,7 @@ function gethistory()
                                                     for(var i=0; i<count; i++)
                                                     {
                                                        html += '<tr>';
-                                                       html += "<td width='25%' align='center'>" +'<a href="#" onclick="" style="color:#0B0719;font-weight:bold;">'+ data.d[i]["JobNo"]+'</a>' + "</td>"; 
+                                                       html += "<td width='25%' align='center'>" +'<a href="#" onclick="" style="color:blue;">'+ data.d[i]["JobNo"]+'</a>' + "</td>"; 
                                                        html += "<td width='25%' align='center'>" + data.d[i]["StartDate"] + "</td>";
                                                        html += "<td width='25%' align='center'>" + data.d[i]["StartTime"] +"</td>";
                                                        html += "<td width='25%' align='center'>" + data.d[i]["FromLoc"] +"</td>";
