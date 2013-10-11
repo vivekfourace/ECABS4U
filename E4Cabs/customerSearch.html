@@ -310,17 +310,22 @@
         $('#2location').show();
         $('#secoundLoc').hide();
         $('#thirdLoc').show();
+        $('#txtTo').css("width","100%");
+        $('#txt2location').css("width","85%");
     }
 
     //Add 3rdLocation
     function thirdLocation() {
         $('#3location').show();
         $('#thirdLoc').hide();
+        $('#txt2location').css("width","100%");
+        $('#txt3location').css("width","100%");
         $('#cancelAddLocation').show();
     }
 
     //cancel AddLocation
     function cancelAddLocation() {
+        $('#txtTo').css("width","85%");
         $('#3location').hide();
         $('#2location').hide();
         $('#cancelAddLocation').hide();
@@ -423,7 +428,11 @@
                     <input type="text" id="txt3location" class="font-style" style="width:85%;float:left;"/>
                    
                 </td>
+                       
              </tr>
+                   <tr>
+                       <td style="height:5px"></td>
+                   </tr>
                     <tr>
                    <td>
                        <input type="button" id="cancelAddLocation" class="specialBtn" onclick="cancelAddLocation()" style="display:none;float:right;" value="Cancel"/>
@@ -585,7 +594,7 @@
                </tr>
                <tr id="returnJ" style="display:none">
                    <td style="background-color:orange;font-family:'Trebuchet MS';">
-                       <table>
+                       <table >
                            <tr>
                                <td>
                                    <b>I want both journeys carried out by the same operator</b>
@@ -600,10 +609,10 @@
                        </table>
                    </td>
                </tr>
-                   <tr id="trRequrementReturn" style="display:none">
+                   <tr id="trRequrementReturn" style="display:none;">
                       
                        <td>
-                         <table style="border-collapse:collapse;font-family:'Trebuchet MS';">
+                         <table style="border-collapse:collapse;font-family:'Trebuchet MS';width:100%">
                            <tr style="background-color:#F6E3CE;">
                                <td colspan="2">
                                  <b>I want separate bids from all operators for my return journey.</b>
