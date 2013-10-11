@@ -45,8 +45,7 @@ function getData(data) {
         window.clearInterval(timer);
         $('#load').hide();
        // $('#divDriverList').show();  // status buttons(4)
-        var html = '<table width="120%" style="border-collapse:collapse">';
-        html += '<div style="background-color:yellow;"><i style="font:bold;font-size:16px;color:Blue;"><i></div>'
+        var html = '<table width="120%" style="border-collapse:collapse;">';
         html += '<thead style="background-color:#D8DCBB;color:darkblue;">';
         html += '<tr>';
         html += '<th >Fare</th>';
@@ -146,7 +145,7 @@ function getData(data) {
                 html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
                 html += "<td width='20%' align='center'>" + '<img src="img/spec.png" class="pulse" width="15" height="15" style="color:grey;" onclick="SpecShow()"/>' + "</td>";
                 html += "<td width='20%' align='center'>" + bid[1] + "</td>";
-                html += "<td width='20%' align='center'>" + '<input type="button"  value="Hire" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\');" title= "Hire me" />' + "</td>";
+                html += "<td width='20%' align='center'>" + '<input type="button"  value="Hire driver" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\');" title= "Hire driver" />' + "</td>";
                 html += '</tr>';
                 $('#txtothereSpecialReq').text(spec);
             }
@@ -158,7 +157,7 @@ function getData(data) {
                 html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
                 html += "<td width='20%' align='center'>" + '<img src="img/spec.png" width="15" height="15" style="color:grey;" onclick="SpecShow()"/>' + "</td>";
                 html += "<td width='20%' align='center'>" + bidh + ":" + bidm + ":" + bids + "</td>";
-                html += "<td width='20%' align='center'>" + '<input type="button"  value="Hire" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\');" title= "Hire me" />' + "</td>";
+                html += "<td width='20%' align='center'>" + '<input type="button"  value="Hire driver" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\');" title= "Hire driver" />' + "</td>";
                 html += '</tr>';
                 $('#txtothereSpecialReq').text("Not Available");
             }

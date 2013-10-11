@@ -222,10 +222,10 @@ center {
 .btn-Login {
     border-radius: 1px!important;
     outline: none!important;
-    width: 65%!important;
+    width: 80%;
     height: 35px!important;
     text-align: center!important;
-    font-size: 17px!important;
+    font-size: 17px;
     margin: auto!important;
     vertical-align: middle!important;
     font-style: normal!important;
@@ -773,25 +773,4 @@ input[type="password"]:focus {
     color: #fff;
     border: 1px solid #848484;
     background-color: #848484;
-}
-/* Loader CSS*/
-.loadForall{
-  width: 82%;
-  border-radius:2px;
-  z-index: 9999;
-  opacity: 1;
-  filter:alpha(opacity=10);
-  background-color:#267FCD;
-  text-align: center;
-  background-position: center;
-  background-repeat: no-repeat;
-  box-shadow: 2px 2px 2px #A4A4A4;
-  position: fixed; /*for align in middle*/
-  top: 45%;
-  left: 0;
-  right: 0;
-  margin: auto;
-  height:40px;
-  font-size:13px;
-  display:none;
 }

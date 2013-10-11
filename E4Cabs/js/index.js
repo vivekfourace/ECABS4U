@@ -23,8 +23,21 @@ var app = {
     bindEvents: function () {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
+    onDeviceReady: function() {
+        navigator.splashscreen.hide();
+    },
 
 };
+
+function forgotPass()
+{
+    window.location ="forgotPassword.html";
+}
+
+function forgotUser()
+{
+    window.location ='forgotUsername.html';
+}
 
 function login() {
 
@@ -111,14 +124,4 @@ function CheckMsg(data) {
                 break;
         }
     }
-}
-
-
-//Back button
-function backtostartpage() {
-    window.location = "index.html";
-}
-
-function backtostart() {
-    window.location = "index.html";
 }
