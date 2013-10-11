@@ -25,7 +25,17 @@ function currentlocation() {
 //Search Available
 
 function availabledriver() {
-    var fromloc = document.getElementById('txtFrom').value;
+    var fromloc;
+     var isChecked = $('#chkFromLocation').attr('checked') ? true : false;
+    if(isChecked == false)
+    {
+        fromloc = document.getElementById('txtFrom').value;
+    }
+    else if(isChecked == true)
+    {
+        fromloc = document.getElementById('txtCurrentFrom').value;
+    }
+    //var fromloc = document.getElementById('txtFrom').value;
     var toloc = document.getElementById('txtTo').value;
     var distance = document.getElementById('txtDistance').value;
     var pickdate = document.getElementById('pickDate').value;

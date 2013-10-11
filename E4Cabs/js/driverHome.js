@@ -32,6 +32,7 @@ function Check(){
                                                   {
                                                      $('#popup_box').show();
                                                      $('#divDealStart').show();
+                                                     //$('#beep').Play(); //for playing beep sound
                                                   }
                                                  if(data.d=="False")
                                                   {

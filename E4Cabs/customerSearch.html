@@ -45,7 +45,6 @@
                     });
                 });
             }
-
         $('.expand').live({
             focus: function () {
                 $(this).animate({ height: "70" }, 500);
@@ -333,14 +332,25 @@
     function showLoctxt() {
         var isChecked = $('#chkFromLocation').attr('checked') ? true : false;
         if (isChecked == true) {
-            $('#currentPos').show('slow', function () {
-                $(this).animate({ display: "show" }, 1000);
-            });
+            $('#currentPos').show();
+            //'slow', function () {
+            //    $(this).animate({ display: "show" }, 1000);
+            //});
+             $('#Fromloc').hide();
+            //'slow', function () {
+                //$(this).animate({ display: "none" }, 500);
+            //});
         }
         else if (isChecked == false) {
-            $('#currentPos').hide('slow', function () {
-                $(this).animate({ display: "none" }, 500);
-            });
+            $('#currentPos').hide();
+            //'slow', function () {
+            //    $(this).animate({ display: "none" }, 500);
+            //});
+            $('#Fromloc').show();
+            //'slow', function () {
+            //    $(this).animate({ display: "none" }, 500);
+            //});
+            
         }
     }
 
@@ -373,17 +383,17 @@
        <div style="padding-top:60px">
            <table style="width:80%;border-collapse:collapse">
                <center>
-                   <tr>
+                   <!--<tr>
                        <td style="padding-top:20px">
                            <a href="#" onclick="loc()" style="color:Black !important">Location</a>
                        </td>
-                   </tr>
+                   </tr>-->
                    <tr>
                        <td align="center">
                            <label id="lblMessage" style="color:red;font-size:12px"/>
                        </td>
                    </tr>
-                <tr>
+                <tr id="Fromloc">
                     <td>
                         <label for="txtFrom" class="font-style"><b style="font-size:12px">From</b></label> 
                         <input type="text" id="txtFrom" class="font-style" autofocus="autofocus" style="width:100%;float:right;"/>

@@ -222,10 +222,10 @@ center {
 .btn-Login {
     border-radius: 1px!important;
     outline: none!important;
-    width: 65%!important;
+    width: 80%;
     height: 35px!important;
     text-align: center!important;
-    font-size: 17px!important;
+    font-size: 17px;
     margin: auto!important;
     vertical-align: middle!important;
     font-style: normal!important;
@@ -436,9 +436,7 @@ input[type="password"]:focus {
     cursor: pointer;
     text-decoration: none;
 }
-.test{
-    font-family: verdana, arial, sans-serif;
-}
+
 .font-style {
     font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-weight: bold;
@@ -776,4 +774,3 @@ input[type="password"]:focus {
     border: 1px solid #848484;
     background-color: #848484;
 }
-
