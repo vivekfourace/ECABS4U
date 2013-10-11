@@ -436,7 +436,9 @@ input[type="password"]:focus {
     cursor: pointer;
     text-decoration: none;
 }
-
+.test{
+    font-family: verdana, arial, sans-serif;
+}
 .font-style {
     font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-weight: bold;
