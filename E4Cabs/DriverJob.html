@@ -200,6 +200,11 @@
             $("#trchildseats").toggle();
             $("#trchildbooster").toggle();
             $("#trOtherspec").toggle();
+             $( "#wheel" ).toggle();
+                $( "#childseat" ).toggle();
+                $( "#booster" ).toggle();
+                $( "#other" ).toggle();
+              $( "#fare" ).toggle();
 
 
         }
@@ -906,7 +911,7 @@
                 
 
                 
-                <table width="100%" style="border-collapse:collapse">
+                 <table width="100%" style="border-collapse:collapse;padding-bottom:50px">
                    <tr>
                        <td width="50%" style="padding-left:5%;">
                            <label  class="font-style"><b style="font-size:13px;">Job Number </b></label> 
@@ -918,6 +923,11 @@
                        </td>
                        
                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <hr style="color:blue;">
+                        </td>
+                    </tr>
                    <tr>
                        <td width="50%" style="padding-left:5%;">
                            <label  class="font-style"><b style="font-size:13px;">From</b></label> 
@@ -929,6 +939,11 @@
                        </td>
                        
                    </tr>
+                     <tr>
+                        <td colspan="2">
+                            <hr>
+                        </td>
+                    </tr>
                    <tr>
                        <td width="50%" style="padding-left:5%;">
                            <label  class="font-style"><b style="font-size:13px">To </b></label> 
@@ -940,6 +955,11 @@
                        </td>
                        
                    </tr>
+                     <tr>
+                        <td colspan="2">
+                            <hr>
+                        </td>
+                    </tr>
                    <tr>
                        <td width="50%" style="padding-left:5%;">
                            <label for="txtDistance" class="font-style"><b style="font-size:13px">Distance In Miles </b></label> 
@@ -951,6 +971,11 @@
                        </td>
                        
                    </tr>
+                     <tr>
+                        <td colspan="2">
+                            <hr>
+                        </td>
+                    </tr>
                    <tr>
                        <td width="50%" style="padding-left:5%;">
                            <label for="pickDateDriver" class="font-style"><b style="font-size:13px">Pick Up Date </b></label>
@@ -962,6 +987,11 @@
                        </td>
                        
                    </tr>
+                     <tr>
+                        <td colspan="2">
+                            <hr>
+                        </td>
+                    </tr>
                    <tr>
                        <td width="50%" style="padding-left:5%;">
                            <label  class="font-style"><b style="font-size:13px">Pick Up Time </b></label>
@@ -973,6 +1003,11 @@
                        </td>
                        
                    </tr>
+                     <tr>
+                        <td colspan="2">
+                            <hr>
+                        </td>
+                    </tr>
                    <tr>
                        <td width="50%" style="padding-left:5%;">
                            <label class="font-style"><b style="font-size:13px">Passenger </b></label> 
@@ -984,6 +1019,11 @@
                        </td>
                        
                    </tr>
+                     <tr>
+                        <td colspan="2">
+                            <hr>
+                        </td>
+                    </tr>
                    <tr>
                        <td width="50%" style="padding-left:5%;">
                            <label class="font-style"><b style="font-size:13px">Large Case </b></label>
@@ -995,6 +1035,11 @@
                        </td>
                        
                    </tr>
+                     <tr>
+                        <td colspan="2">
+                            <hr>
+                        </td>
+                    </tr>
                    <tr>
                        <td width="50%" style="padding-left:5%;">
                            <label for="smallcase" class="font-style"><b style="font-size:13px">Small Case </b></label>
@@ -1006,9 +1051,14 @@
                        </td>
                        
                    </tr>
-                   <tr id="trfare" style="display:none;">
+                     <tr id="fare" style="display:none">
+                        <td colspan="2">
+                            <hr>
+                        </td>
+                    </tr>
+                   <tr id="trfare" style="display:none">
                        <td width="50%" style="padding-left:5%;" >
-                           <b style="font-size:13px">Fare </b>
+                           <b class="font-style" style="font-size:13px">Fare </b>
                            
                        </td>
                        <td width="50%" style="padding-left:5%;">
@@ -1017,9 +1067,14 @@
                        </td>
                        
                    </tr>
+                     <tr>
+                        <td colspan="2">
+                            <hr>
+                        </td>
+                    </tr>
                    <tr>
                        <td width="55%" style="padding-left:5%;">
-                           <b style="font-size:13px">Special Requirement </b>
+                           <b class="font-style" style="font-size:13px">Special Requirement </b>
                            
                        </td>
                        <td width="50%" style="padding-left:5%;">
@@ -1028,9 +1083,14 @@
                        </td>
                        
                    </tr>
+                     <tr id="wheel" style="display:none;">
+                        <td colspan="2">
+                            <hr>
+                        </td>
+                    </tr>
                    <tr id="trwheelchair" style="display:none;">
                        <td width="50%" style="padding-left:5%;" >
-                           <b style="font-size:13px">Wheelchair Passengers </b>
+                           <b class="font-style" style="font-size:13px">Wheelchair Passengers </b>
                            
                        </td>
                        <td width="50%" style="padding-left:5%;">
@@ -1039,9 +1099,14 @@
                        </td>
                        
                    </tr>
+                     <tr id="childseat" style="display:none;">
+                        <td colspan="2">
+                            <hr>
+                        </td>
+                    </tr>
                    <tr id="trchildseats" style="display:none;">
                        <td width="50%" style="padding-left:5%;">
-                           <b style="font-size:13px">Child Seats </b>
+                           <b class="font-style" style="font-size:13px">Child Seats </b>
                            
                        </td>
                        <td width="50%" style="padding-left:5%;">
@@ -1050,9 +1115,14 @@
                        </td>
                        
                    </tr>
+                     <tr id="booster" style="display:none;">
+                        <td colspan="2">
+                            <hr>
+                        </td>
+                    </tr>
                    <tr id="trchildbooster" style="display:none;" >
                        <td width="50%" style="padding-left:5%;">
-                           <b style="font-size:13px">Child Booster </b>
+                           <b class="font-style" style="font-size:13px">Child Booster </b>
                            
                        </td>
                        <td width="50%" style="padding-left:5%;">
@@ -1061,16 +1131,22 @@
                        </td>
                        
                    </tr>
+                     <tr id="other" style="display:none;" >
+                        <td colspan="2">
+                            <hr>
+                        </td>
+                    </tr>
                    <tr id="trOtherspec" style="display:none;">
                        <td width="100%" style="padding-left:5%;" colspan="4">
-                           <label for="txtothereSpecialRequirement" ><b style="font-size:13px" >Other Requirements</b></label> 
+                           <label for="txtothereSpecialRequirement" class="font-style" ><b style="font-size:13px" >Other Requirements</b></label> 
                            
                        </td>
                        
                    </tr>
+                    
                    <tr id="trSpecialtxt" style="display:none;">
                        <td width="100%" style="padding-left:5%;" colspan="4">
-                           <textarea id="txtothereSpecialRequirement" rows="4" cols="10"  style="" readonly="true"></textarea>
+                           <textarea id="txtothereSpecialRequirement" class="font-style" rows="4" cols="10"  style="" readonly="true"></textarea>
                            
                        </td>
                        
@@ -1084,9 +1160,10 @@
             </div>
             
         </center>
+    
     <footer>
-        <div style="width: 100%; position: fixed; bottom: 0px; height: 20px; padding-bottom: 55px">
-            <table width="100%" style="" id="tbdeal">
+        <div  style="width:100%;position:fixed;bottom:0px;height:20px;padding-bottom:45px">
+            <table width="100%" style="" >
                 <tr>
                     <td width="25%">
                         <input type="button" id="btnbid" class="specialBtn" onclick="showBid()" style="width: 100%;" value="Bid" />
