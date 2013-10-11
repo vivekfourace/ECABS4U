@@ -116,6 +116,11 @@
             document.getElementById("trchildbooster").style.display = 'none';
             document.getElementById("trOtherspec").style.display = 'none';
             document.getElementById("trSpecialtxt").style.display = 'none';
+             $( "#wheel" ).hide();
+            $( "#childseat" ).hide();
+            $( "#booster" ).hide();
+            $( "#other" ).hide();
+            $( "#fare" ).hide();
         }
 
         function SubmitDeal() {
@@ -188,16 +193,24 @@
         
 
         function showSpecial() {
-            //$("#trfare").toggle();
+            //document.getElementById("trfare").style.display = 'table-row';
+            //document.getElementById("trwheelchair").style.display = 'table-row';
+            //document.getElementById("trchildseats").style.display = 'table-row';
+            //document.getElementById("trchildbooster").style.display = 'table-row';
+            //document.getElementById("trOtherspec").style.display = 'table-row'; 
+            //document.getElementById("trSpecialtxt").style.display = 'table-row'; 
+
+            $("#trfare").toggle();
             $("#trwheelchair").toggle();
             $("#trchildseats").toggle();
             $("#trchildbooster").toggle();
             $("#trOtherspec").toggle();
-            $("#wheel").toggle();
-            $("#childseat").toggle();
-            $("#booster").toggle();
-            $("#other").toggle();
-            $("#txtothereSpecialRequirement").toggle();
+            $( "#wheel" ).toggle();
+            $( "#childseat" ).toggle();
+            $( "#booster" ).toggle();
+            $( "#other" ).toggle();
+            $( "#fare" ).toggle();
+            //trfare
 
 
         }
@@ -230,11 +243,20 @@
             document.getElementById("trchildseats").style.display = 'none';
             document.getElementById("trchildbooster").style.display = 'none';
             document.getElementById("trOtherspec").style.display = 'none';
+             $( "#wheel" ).hide();
+            $( "#childseat" ).hide();
+            $( "#booster" ).hide();
+            $( "#other" ).hide();
+            $( "#fare" ).hide();
         }
         function bidSubmit() {
             //$('#divComplete').hide();
             $("#divDealload").show();
-
+            $( "#wheel" ).hide();
+            $( "#childseat" ).hide();
+            $( "#booster" ).hide();
+            $( "#other" ).hide();
+            $( "#fare" ).hide();
             $('#divDriverPop').hide();
             $('#divBid').hide();
             var job = $('#lbljobno').text();
@@ -924,7 +946,7 @@
                 
 
                 
-                <table width="100%" style="border-collapse:collapse;margin-bottom:50px">
+                 <table width="100%" style="border-collapse:collapse;padding-bottom:50px">
                    <tr>
                        <td width="50%" style="padding-left:5%;">
                            <label  class="font-style" ><b style="font-size:13px;"class="test">Job Number </b></label> 
@@ -1064,12 +1086,12 @@
                        </td>
                        
                    </tr>
-                     <tr>
+                     <tr id="fare" style="display:none">
                         <td colspan="2">
                             <hr>
                         </td>
                     </tr>
-                   <tr id="trfare">
+                   <tr id="trfare" style="display:none">
                        <td width="50%" style="padding-left:5%;" >
                           <label class="font-style"> <b  style="font-size:13px" class="test">Fare </b></label>
                            
@@ -1096,7 +1118,7 @@
                        </td>
                        
                    </tr>
-                     <tr id="wheel" style="display:none">
+                     <tr id="wheel" style="display:none;">
                         <td colspan="2">
                             <hr>
                         </td>
@@ -1168,13 +1190,15 @@
                </table>
                 
             </div>
-            <div style="padding-top:20%;width:100%;">
+            <div style="padding-top:25%;width:100%;">
                 
-            </div>            
+            </div>
+            
         </center>
+    
     <footer>
-        <div style="width: 100%; position: fixed; bottom: 0px; padding-bottom: 35px;background-color:white">
-            <table width="100%" style="" id="tbdeal">
+        <div  style="width:100%;position:fixed;bottom:0px;height:20px;padding-bottom:55px">
+            <table width="100%" style="" >
                 <tr>
                     <td width="25%">
                         <input type="button" id="btnbid" class="specialBtn" onclick="showBid()" style="width: 100%;" value="Bid" />
@@ -1196,8 +1220,6 @@
                 </tr>
 
             </table>
-            </div>
-         <div data-role="footer" data-position="fixed" style="width:100%;position:fixed;bottom:0px;height:25px;padding-bottom:10px">
             <table style="width: 100%;" class="btn-tmpFooter">
                 <tr>
                     <td style="width: 20%;">
