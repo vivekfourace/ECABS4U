@@ -1,474 +1,425 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title></title>
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <link rel="stylesheet" type="text/css" href="jquery-mobile/styles/jquery.ui.theme.css" />
-        <link rel="stylesheet" type="text/css" href="jquery-mobile/styles/jquery-ui.css" />
-        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.css" />
-        <link rel="stylesheet" type="text/css" href="css/site.css" />
-        <link rel="stylesheet" type="text/css" href="css/PopUp.css" />
-        <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
-        <script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
-        <script type="text/javascript" src="Scripts/jqx-all.js"></script>
-        <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
-        <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
-        <script type="text/javascript" src="js/DriverJob.js"></script>
-        <script type="text/javascript">
-            var QString = window.location.search.substring(1);
-            var userId =  QString.split("=")[1].split("&")[0];
-            var roleId = QString.split("=")[2].split("&")[0];
-            var relatedId = QString.split("=")[3].split("&")[0];
-            
-            
-            $(document).ready(function(){
-                
-                $.ajax({url:'http://115.115.159.126/ECabs/ECabs4U.asmx/checkResponse',
-                    type:"POST",
-                    datatype:"json",
-                    data:"{'userID':'" + relatedId + "'}",
-                    contentType: "application/json; charset=utf-8",
-                    success: function(data)
-                    {
-                        var getID=data.d[0];
-                        var getValue=data.d[1];
-                        if(getValue == "False")
-                        {
-                            $.ajax({
-                                url:"http://115.115.159.126/ECabs/ECabs4U.asmx/GetData",
-                                type:"POST",
-                                dataType: "Json",
-                                data:"{'userID':'" + getID + "'}",
-                                contentType: "application/json; charset=utf-8",
-                                success: function(data)
-                                {
-                                     $("#divDealload").hide();
-                                    if(data.d[0]!=null)
-                                    {
-                                        $('#lbljobno').text(data.d[0]);
-                                        $('#lblFromLoc').text(data.d[1]);
-                                        $('#lblToLoc').text(data.d[2]);
-                                        $('#lblDistance').text(data.d[5]);
-                                        $('#lblpickDateDriver').text(data.d[6]);
-                                        $('#lblpickTime').text(data.d[7]);
-                                        $('#lblpassengercount').text(data.d[8]);
-                                        $('#lbllargecase').text(data.d[9]);
-                                        $('#lblsmallcase').text(data.d[10]);
-                                        $('#lblwheelchair').text(data.d[11]);
-                                        $('#lblchildseat').text(data.d[12]);
-                                        $('#lblchildbooster').text(data.d[13]); 
-                                        if(data.d[3]!=null)
-                                        {
-                                            var sec= data.d[3];
-                                            $('#lblpopthird').text(sec);
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="jquery-mobile/styles/jquery.ui.theme.css" />
+    <link rel="stylesheet" type="text/css" href="jquery-mobile/styles/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile.css" />
+    <link rel="stylesheet" type="text/css" href="css/site.css" />
+    <link rel="stylesheet" type="text/css" href="css/PopUp.css" />
+    <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
+    <script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="Scripts/jqx-all.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script type="text/javascript" src="js/DriverJob.js"></script>
+    <script type="text/javascript">
+        var QString = window.location.search.substring(1);
+        var userId = QString.split("=")[1].split("&")[0];
+        var roleId = QString.split("=")[2].split("&")[0];
+        var relatedId = QString.split("=")[3].split("&")[0];
+
+        $(document).ready(function () {
+            $.ajax({
+                url: 'http://115.115.159.126/ECabs/ECabs4U.asmx/checkResponse',
+                type: "POST",
+                datatype: "json",
+                data: "{'userID':'" + relatedId + "'}",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    var getID = data.d[0];
+                    var getValue = data.d[1];
+                    if (getValue == "False") {
+                        $.ajax({
+                            url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetData",
+                            type: "POST",
+                            dataType: "Json",
+                            data: "{'userID':'" + getID + "'}",
+                            contentType: "application/json; charset=utf-8",
+                            success: function (data) {
+                                if (data.d[0] != null) {
+                                    $('#lbljobno').text(data.d[0]);
+                                    $('#lblFromLoc').text(data.d[1]);
+                                    $('#lblToLoc').text(data.d[2]);
+                                    $('#lblDistance').text(data.d[5]);
+                                    $('#lblpickDateDriver').text(data.d[6]);
+                                    $('#lblpickTime').text(data.d[7]);
+                                    $('#lblpassengercount').text(data.d[8]);
+                                    $('#lbllargecase').text(data.d[9]);
+                                    $('#lblsmallcase').text(data.d[10]);
+                                    $('#lblwheelchair').text(data.d[11]);
+                                    $('#lblchildseat').text(data.d[12]);
+                                    $('#lblchildbooster').text(data.d[13]);
+                                    if (data.d[3] != null) {
+                                        var sec = data.d[3];
+                                        $('#lblpopthird').text(sec);
+                                        $('#otherLoc').show();
+                                        if (data.d[4] != null) {
+                                            var third = data.d[4];
+                                            $('#lblpopfour').text(third);
                                             $('#otherLoc').show();
-                                            if(data.d[4]!=null)
-                                            {
-                                                var third= data.d[4];
-                                                $('#lblpopfour').text(third);
-                                                $('#otherLoc').show();
-                                            }
-                                        }
-                                        else
-                                        {
-                                            $('#otherLoc').hide();
                                         }
                                     }
-                                    else
-                                    {
-                                        $('#divDetails').hide();
+                                    else {
+                                        $('#otherLoc').hide();
                                     }
-                                },
-                                error: function (XMLHttpRequest, textStatus, errorThrown)
-                                {
+                                }
+                                else {
                                     $('#divDetails').hide();
                                 }
-                            });
-                        }
-                        if(data.d[0]=="Error")
-                        {
-                            $('#divDetails').hide();
-                        }
-                    },
-                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            },
+                            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                $('#divDetails').hide();
+                            }
+                        });
+                    }
+                    if (data.d[0] == "Error") {
                         $('#divDetails').hide();
                     }
-                });
-                
-             
-                $('#popupBoxClose').click(function ()
-                {
-                    $('#popup_box').fadeOut("slow");
-                });
-            })
-            
-           function Destroy()
-            {
-                 
-              // window.clearInterval(timer);
-                window.clearInterval(Dealid);
-                alert("tbz");
-                window.location = "driverHome.html";
-            }
-            function showJob()
-            {
-                $("#divDealload").hide();
-                $('#popup_box').fadeIn("slow");
-                $('#divDriverPop').show();
-                $('#divBid').hide();
-                var job=$('#lbljobno').text();
-                // var customer=abc;
-                var from=$('#lblFromLoc').text();
-                var to=$('#lblToLoc').text();
-                var third=$('#lblpopthird').text();
-                var four=$('#lblpopfour').text();
-                $('#lblpopjob').text(job);
-                $('#lblcustomer').text("abc");
-                $('#lblpopfrom').text(from);
-                $('#lblpopto').text(to);
-                $('#lblpopthird').text(third);
-                //$('#lblpopfour').text(four);trSpecialtxt
-                document.getElementById("trwheelchair").style.display = 'none';
-                document.getElementById("trfare").style.display = 'none';
-                document.getElementById("trchildseats").style.display = 'none';
-                document.getElementById("trchildbooster").style.display = 'none';
-                document.getElementById("trOtherspec").style.display = 'none'; 
-                document.getElementById("trSpecialtxt").style.display = 'none'; 
-            }
-            
-            function SubmitDeal()
-            {
-                
-               
-                 $.ajax({
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $('#divDetails').hide();
+                }
+            });
+            $('#popupBoxClose').click(function () {
+                $('#popup_box').fadeOut("slow");
+            });
+        })
+
+        //function Destroy() {
+
+        //    // window.clearInterval(timer);
+        //    //window.clearInterval(Dealid);
+        //    window.location = "driverHome.html";
+        //}
+        function showJob() {
+            $("#divDealload").hide();
+            $('#popup_box').fadeIn("slow");
+            $('#divDriverPop').show();
+            $('#divBid').hide();
+            var job = $('#lbljobno').text();
+            // var customer=abc;
+            var from = $('#lblFromLoc').text();
+            var to = $('#lblToLoc').text();
+            var third = $('#lblpopthird').text();
+            var four = $('#lblpopfour').text();
+            $('#lblpopjob').text(job);
+            $('#lblcustomer').text("abc");
+            $('#lblpopfrom').text(from);
+            $('#lblpopto').text(to);
+            $('#lblpopthird').text(third);
+            //$('#lblpopfour').text(four);trSpecialtxt
+            document.getElementById("trwheelchair").style.display = 'none';
+            document.getElementById("trfare").style.display = 'none';
+            document.getElementById("trchildseats").style.display = 'none';
+            document.getElementById("trchildbooster").style.display = 'none';
+            document.getElementById("trOtherspec").style.display = 'none';
+            document.getElementById("trSpecialtxt").style.display = 'none';
+        }
+
+        function SubmitDeal() {
+            $("#divDealload").show();
+            var timereOut = window.setInterval(function () {
+                $("#divDealload").show();
+                $('#popup_box').hide();
+                $('#divDeal').hide();
+                $.ajax({
                     url: "http://115.115.159.126/ECabs/ECabs4U.asmx/dealResponse",
-                    type:"POST",
+                    type: "POST",
                     dataType: "Json",
-                    data:"{'userID':'" + relatedId +"'}",
-                  
-                    contentType: "application/json; charset=utf-8",  
-                    success: function (data) 
-                    {
-                         $("#divDealload").hide();
-                        var getResID=data.d[0];
-                        var getResponse=data.d[1];
-                        if(getResponse=="True")
-                        {
-                            $('#popup_box').fadeIn("slow");
-                            $('#divDeal').show();
-                           
-                              
-                          
+                    data: "{'userID':'" + relatedId + "'}",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        
+                        var getResID = data.d[0];
+                        var getResponse = data.d[1];
+                        
+                        if (getResponse == "True") {
+                            
                             $.ajax({
-                                url:"http://115.115.159.126/ECabs/ECabs4U.asmx/GetDealData",
-                                type:"POST",
+                                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetDealData",
+                                type: "POST",
                                 dataType: "Json",
-                                data:"{'userID':'" + getResID + "'}",
+                                data: "{'userID':'" + getResID + "'}",
                                 contentType: "application/json; charset=utf-8",
-                                success: function(data)
-                                {
-                                    if(data.d[0]!=null)
-                                    {
+                                success: function (data) {
+                                    if (data.d[0] != "Error") {
+                                        //alert(data.d[0]);
+                                        $("#divDealload").hide();
+                                        $('#popup_box').show();
+                                        $('#divDeal').show();                                        
                                         $('#lbldealjob').text(data.d[0]);
                                         $('#lbldealfrom').text(data.d[1]);
                                         $('#lbldealto').text(data.d[2]);
                                         $('#lbldealdistance').text(data.d[3]);
                                         $('#lbldealdate').text(data.d[4]);
-                                        $('#lbldealtime').text(data.d[5]);                                      
-                                        $('#lbldealfare').text(data.d[6]);  
+                                        $('#lbldealtime').text(data.d[5]);
+                                        $('#lbldealfare').text(data.d[6]);
+                                        DestroyMe();
+                                        
                                     }
-                                    if(data.d[0]=="Error")
-                                    {
+                                    else if(data.d[0] == "Error"){
                                         $('#popup_box').hide();
                                         $('#divDeal').hide();
+                                        $("#divDealload").show();
                                     }
                                 },
-                                error: function (XMLHttpRequest, textStatus, errorThrown)
-                                {
-                                    
-                                  
-                                }
+                                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                                },
                             });
-                       
-                            }
-                        if(data.d[0]=="Error")
-                        {
+
+                        }
+                        else if (data.d[0] == "Error") {
                             $('#divDeal').hide();
-                            SubmitDeal();
-                            
                         }
                     },
-                    error: function (XMLHttpRequest, textStatus, errorThrown)
-                    {
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
                         $('#divDeal').hide();
                     }
-                });    
-            }
-             function showSpecial()
-            {
-               //document.getElementById("trfare").style.display = 'table-row';
-               //document.getElementById("trwheelchair").style.display = 'table-row';
-               //document.getElementById("trchildseats").style.display = 'table-row';
-               //document.getElementById("trchildbooster").style.display = 'table-row';
-               //document.getElementById("trOtherspec").style.display = 'table-row'; 
-               //document.getElementById("trSpecialtxt").style.display = 'table-row'; 
-                
-            $( "#trfare" ).toggle();
-            $( "#trwheelchair" ).toggle();
-            $( "#trchildseats" ).toggle();
-             $( "#trchildbooster" ).toggle();
-             $( "#trOtherspec" ).toggle();
-   
-             $( "#wheel" ).toggle();
-                $( "#childseat" ).toggle();
-                $( "#booster" ).toggle();
-                $( "#other" ).toggle();
-                $('#faree').toggle();
-            }
-            function showBid()
-            {
-                $('#divDeal').hide();
-                $('#divComplete').hide();
-                $('#popup_box').fadeIn("slow");
-                $('#divDriverPop').hide();
-                $('#divBid').show();
-                var job=$('#lbljobno').text();
-                var distance=$('#lblDistance').text();
-                var from=$('#lblFromLoc').text();
-                var to=$('#lblToLoc').text();
-               // var third=$('#lblpopthird').text();
-               // var four=$('#lblpopfour').text();
-                $('#lblbidjob').text(job);
-                $('#lblbiddistance').text(distance);
-                $('#lblbidfrom').text(from);
-                $('#lblbidto' ).text(to);
-                var fare=$('#txtbidFare').val()
-                 $('#lblfare').text(fare);
-                //$('#lblpopthird').text(third);
-                //$('#lblpopfour').text(four);
-                document.getElementById("trfare").style.display = 'table-row';
-                document.getElementById("trwheelchair").style.display = 'none';
-                document.getElementById("trchildseats").style.display = 'none';
-                document.getElementById("trchildbooster").style.display = 'none';
-                document.getElementById("trOtherspec").style.display = 'none';  
-            }
-           function bidSubmit()
-            {
-                 //$('#divComplete').hide();
-                
-                $('#divDriverPop').hide();
-                $('#divBid').hide();
-                var job=$('#lbljobno').text();
-                var distance=$('#lblDistance').text();
-                var from=$('#lblFromLoc').text();
-                var to=$('#lblToLoc').text();
-               // var third=$('#lblpopthird').text();
-               // var four=$('#lblpopfour').text();
-                $('#lblbidjob').text(job);
-                $('#lblbiddistance').text(distance);
-                $('#lblbidfrom').text(from);
-                $('#lblbidto').text(to);
-                var fare=$('#txtbidFare').val()
-                 $('#lblfare').text(fare);
-                //$('#lblpopthird').text(third);
-                //$('#lblpopfour').text(four);
-                var rid=$('#lblbidjob').text();
-                var status=true; 
-                var price=fare;
-                           
-                             $.ajax({
-                                        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/setDriverResponse",
-                                        type:"POST",
-                                        dataType: "Json",
-                                        data:"{'userID':'" + relatedId +"','reqid':'"+ rid +"','status':'"+ status  +"','price':'"+ price +"'}",
-                                        contentType: "application/json; charset=utf-8",  
-                                        success: function (data) 
-                                                    {
-                                                        $("#divDealload").show(); 
-                                                       
-                                                    },
-                                        error: function (XMLHttpRequest, textStatus, errorThrown)
-                                                 {
-                                       
-                                                 }
-                                    });
-                document.getElementById("trfare").style.display = 'table-row';
-                document.getElementById("trwheelchair").style.display = 'none';
-                document.getElementById("trchildseats").style.display = 'none';
-                document.getElementById("trchildbooster").style.display = 'none';
-                document.getElementById("trOtherspec").style.display = 'none';  
-                $('#popup_box').fadeOut("slow");
-                var Dealid=window.setInterval(SubmitDeal,2000);
-                
-            }
-            
-           function bidCancel()
-            {
-                 var job=$('#lbljobno').text();
-                 $('#popup_box').fadeOut("slow");
-                 $('#lblfare').text("");
-                            $.ajax({
-                                        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/cancelJob",
-                                        type:"POST",
-                                        dataType: "Json",
-                                        data:"{'userID':'" + relatedId +"','reqid':'"+ job +"'}",
-                                        contentType: "application/json; charset=utf-8",  
-                                        success: function (data) 
-                                                    {
-                                                    },
-                                        error: function (XMLHttpRequest, textStatus, errorThrown)
-                                                 {
-                                       // alert(errorThrown);
-                                                }
-                                    });
-                 document.getElementById("trfare").style.display = 'none';
-            }
-            function reqCancel()
-            {
-                $('#divDetails').hide();
-            }
-            function reqReject()
-            {
-                var rid=$('#lbljobno').text();
-                var status=true; 
-               
-                           
-                             $.ajax({
-                                        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/rejectResponse",
-                                        type:"POST",
-                                        dataType: "Json",
-                                        data:"{'userID':'" + relatedId +"','reqid':'"+ rid +"','status':'"+ status  +"'}",
-                                        contentType: "application/json; charset=utf-8",  
-                                        success: function (data) 
-                                                    {
-                                                       
-                                                    },
-                                        error: function (XMLHttpRequest, textStatus, errorThrown)
-                                                 {
-                                      
-                                                }
-                                    }); 
-                            
-            }
-           function dealSubmit()
-            {
-                var getFare=$('#lbldealfare').text();
-                 $('#divDeal').hide();
-                 var reqID=$('#lbldealjob').text(); 
-                if(getFare==15 || getFare >15 )
-                { 
-                 
-                 $('#divComission').show();
-                 $('#lblconfirmjob').text(reqID);
-                 $('#lblconfirmfare').text(getFare);
-                
-                   
-                }
-                else
-                {
-                    
-                    $('#divComission').hide();
-                  
-              //alert(reqID);lblconfirmjob
-                                    $.ajax({
-                                        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/jobBooked",
-                                        type:"POST",
-                                        dataType: "Json",
-                                        data:"{'userID':'" + relatedId +"','reqid':'"+ reqID +"'}",
-                                        contentType: "application/json; charset=utf-8",  
-                                        success: function (data) 
-                                                    {
-                                                          $('#divDetails').hide();
-                                                          Destroy();
-                                                    },
-                                        error: function (XMLHttpRequest, textStatus, errorThrown)
-                                                 {
-                                       
-                                                }
-                                    }); 
-                     
-             $('#divDeal').hide();
-                 $('#popup_box').fadeOut("slow");   
-                }
-            
-            }
-            function Confirmcomission()
-            {
-                
-                  var reqID= $('#lblconfirmjob').text();
-                  var comission=1.2;
-                  
-                  $.ajax({
-                                        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/jobBooked",
-                                        type:"POST",
-                                        dataType: "Json",
-                                        data:"{'userID':'" + relatedId +"','reqid':'"+ reqID +"'}",
-                                        contentType: "application/json; charset=utf-8",  
-                                        success: function (data) 
-                                                    {
-                                                        
-                                                        
-                                                    },
-                                        error: function (XMLHttpRequest, textStatus, errorThrown)
-                                                 {
-                                       
-                                                }
-                                    }); 
-                window.location.href="https://sandbox.gocardless.com/pay/YH0MFHY7";
-                                   
-             $('#divDeal').hide();
-                 $('#popup_box').fadeOut("slow");
-            }
-            function RejectComission()
-            {
-                $('#divComission').hide();
-            }
-            function dealCancel()
-            {
-                 $('#divDeal').hide();
-                 $('#popup_box').fadeOut("slow");
-                                                            
-            }
-            
-            
-            function btnAbort()
-            {
+                });
+            }, 1000);
 
-                        $('#popup_box').show();
-                            $('#divabort').show();
-    
-    
-                           $('#divComplete').hide();
-    }
-            function abortcancel()
-            {
-                 $('#popup_box').hide();
-                 $('#divabort').hide();
-                 $('#divComplete').show();  
-            }
-            
-            function abortOk()
-            {
-                
-                //var show=document.getElementById("txtreason").value();
-               
-            }
-            
-            
-            
-            
-            </script>
-    </head>
-    <body>
+          function DestroyMe() {
+              window.clearInterval(timereOut);
+          }
+        }
         
-        <div class="header" style="background-color:#242424;height:12.2%">
-            <div style="float:left;height:48px;wforth:122px;padding-top:3px;">
-                <img src="img/logo1.png" class="logo"/>
-                
-            </div>
-            
+
+        function showSpecial() {
+            //document.getElementById("trfare").style.display = 'table-row';
+            //document.getElementById("trwheelchair").style.display = 'table-row';
+            //document.getElementById("trchildseats").style.display = 'table-row';
+            //document.getElementById("trchildbooster").style.display = 'table-row';
+            //document.getElementById("trOtherspec").style.display = 'table-row'; 
+            //document.getElementById("trSpecialtxt").style.display = 'table-row'; 
+
+            $("#trfare").toggle();
+            $("#trwheelchair").toggle();
+            $("#trchildseats").toggle();
+            $("#trchildbooster").toggle();
+            $("#trOtherspec").toggle();
+
+
+        }
+        function showBid() {
+            $('#divDeal').hide();
+            $('#divComplete').hide();
+            $('#popup_box').fadeIn("slow");
+            $('#divDriverPop').hide();
+            $('#divBid').show();
+            var job = $('#lbljobno').text();
+            var distance = $('#lblDistance').text();
+            var from = $('#lblFromLoc').text();
+            var to = $('#lblToLoc').text();
+            // var third=$('#lblpopthird').text();
+            // var four=$('#lblpopfour').text();
+            $('#lblbidjob').text(job);
+            $('#lblbiddistance').text(distance);
+            $('#lblbidfrom').text(from);
+            $('#lblbidto').text(to);
+            var fare = $('#txtbidFare').val()
+            $('#lblfare').text(fare);
+            //$('#lblpopthird').text(third);
+            //$('#lblpopfour').text(four);
+            document.getElementById("trfare").style.display = 'table-row';
+            document.getElementById("trwheelchair").style.display = 'none';
+            document.getElementById("trchildseats").style.display = 'none';
+            document.getElementById("trchildbooster").style.display = 'none';
+            document.getElementById("trOtherspec").style.display = 'none';
+        }
+        function bidSubmit() {
+            //$('#divComplete').hide();
+            $("#divDealload").show();
+
+            $('#divDriverPop').hide();
+            $('#divBid').hide();
+            var job = $('#lbljobno').text();
+            var distance = $('#lblDistance').text();
+            var from = $('#lblFromLoc').text();
+            var to = $('#lblToLoc').text();
+            // var third=$('#lblpopthird').text();
+            // var four=$('#lblpopfour').text();
+            $('#lblbidjob').text(job);
+            $('#lblbiddistance').text(distance);
+            $('#lblbidfrom').text(from);
+            $('#lblbidto').text(to);
+            var fare = $('#txtbidFare').val()
+            $('#lblfare').text(fare);
+            //$('#lblpopthird').text(third);
+            //$('#lblpopfour').text(four);
+            var rid = $('#lblbidjob').text();
+            var status = true;
+            var price = fare;
+
+            $.ajax({
+                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/setDriverResponse",
+                type: "POST",
+                dataType: "Json",
+                data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "','price':'" + price + "'}",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    //$("#divDealload").show();
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                }
+            });
+            document.getElementById("trfare").style.display = 'table-row';
+            document.getElementById("trwheelchair").style.display = 'none';
+            document.getElementById("trchildseats").style.display = 'none';
+            document.getElementById("trchildbooster").style.display = 'none';
+            document.getElementById("trOtherspec").style.display = 'none';
+            $('#popup_box').fadeOut("slow");
+            SubmitDeal();
+            //var Dealid = window.setInterval(SubmitDeal, 2000);
+        }
+
+        function bidCancel() {
+            var job = $('#lbljobno').text();
+            $('#popup_box').fadeOut("slow");
+            $('#lblfare').text("");
+            $.ajax({
+                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/cancelJob",
+                type: "POST",
+                dataType: "Json",
+                data: "{'userID':'" + relatedId + "','reqid':'" + job + "'}",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    // alert(errorThrown);
+                }
+            });
+            document.getElementById("trfare").style.display = 'none';
+        }
+        function reqCancel() {
+            $('#divDetails').hide();
+        }
+        function reqReject() {
+            var rid = $('#lbljobno').text();
+            var status = true;
+
+
+            $.ajax({
+                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/rejectResponse",
+                type: "POST",
+                dataType: "Json",
+                data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "'}",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                }
+            });
+
+        }
+        function dealSubmit() {
+            var getFare = $('#lbldealfare').text();
+            $('#divDeal').hide();
+            var reqID = $('#lbldealjob').text();
+            if (getFare == 15 || getFare > 15) {
+
+                $('#divComission').show();
+                $('#lblconfirmjob').text(reqID);
+                $('#lblconfirmfare').text(getFare);
+
+
+            }
+            else {
+
+                $('#divComission').hide();
+
+                //alert(reqID);lblconfirmjob
+                $.ajax({
+                    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/jobBooked",
+                    type: "POST",
+                    dataType: "Json",
+                    data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        $('#divDetails').hide();
+
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                    }
+                });
+                Destroy();
+                $('#divDeal').hide();
+                $('#popup_box').fadeOut("slow");
+            }
+
+        }
+        function Confirmcomission() {
+
+            var reqID = $('#lblconfirmjob').text();
+            var comission = 1.2;
+
+            $.ajax({
+                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/jobBooked",
+                type: "POST",
+                dataType: "Json",
+                data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                }
+            });
+            window.location.href = "https://sandbox.gocardless.com/pay/YH0MFHY7";
+
+            $('#divDeal').hide();
+            $('#popup_box').fadeOut("slow");
+        }
+        function RejectComission() {
+            $('#divComission').hide();
+        }
+        function dealCancel() {
+            $('#divDeal').hide();
+            $('#popup_box').fadeOut("slow");
+
+        }
+
+        function btnAbort() {
+
+            $('#popup_box').show();
+            $('#divabort').show();
+
+
+            $('#divComplete').hide();
+        }
+        function abortcancel() {
+            $('#popup_box').hide();
+            $('#divabort').hide();
+            $('#divComplete').show();
+        }
+
+        function abortOk() {
+
+            //var show=document.getElementById("txtreason").value();
+
+        }
+
+    </script>
+</head>
+<body>
+
+    <div class="header" style="background-color: #242424; height: 12.2%">
+        <div style="float: left; height: 48px; width: 122px; padding-top: 3px;">
+            <img src="img/logo1.png" class="logo" />
+
         </div>
-        <center>
+
+    </div>
+    <center>
              <div id="divDealload" class="loadForall">            
                 <span style="font-family:'Trebuchet MS';color:white">Please wait...</span><br>
                 <img src="jquery-mobile/styles/images/ajax-loader-hor.gif" style="width:140px;height:10px"/>
@@ -967,11 +918,6 @@
                        </td>
                        
                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <hr>
-                        </td>
-                    </tr>
                    <tr>
                        <td width="50%" style="padding-left:5%;">
                            <label  class="font-style"><b style="font-size:13px;">From</b></label> 
@@ -983,11 +929,6 @@
                        </td>
                        
                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <hr>
-                        </td>
-                    </tr>
                    <tr>
                        <td width="50%" style="padding-left:5%;">
                            <label  class="font-style"><b style="font-size:13px">To </b></label> 
@@ -999,11 +940,6 @@
                        </td>
                        
                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <hr>
-                        </td>
-                    </tr>
                    <tr>
                        <td width="50%" style="padding-left:5%;">
                            <label for="txtDistance" class="font-style"><b style="font-size:13px">Distance In Miles </b></label> 
@@ -1015,11 +951,6 @@
                        </td>
                        
                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <hr>
-                        </td>
-                    </tr>
                    <tr>
                        <td width="50%" style="padding-left:5%;">
                            <label for="pickDateDriver" class="font-style"><b style="font-size:13px">Pick Up Date </b></label>
@@ -1031,11 +962,6 @@
                        </td>
                        
                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <hr>
-                        </td>
-                    </tr>
                    <tr>
                        <td width="50%" style="padding-left:5%;">
                            <label  class="font-style"><b style="font-size:13px">Pick Up Time </b></label>
@@ -1047,11 +973,6 @@
                        </td>
                        
                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <hr>
-                        </td>
-                    </tr>
                    <tr>
                        <td width="50%" style="padding-left:5%;">
                            <label class="font-style"><b style="font-size:13px">Passenger </b></label> 
@@ -1063,11 +984,6 @@
                        </td>
                        
                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <hr>
-                        </td>
-                    </tr>
                    <tr>
                        <td width="50%" style="padding-left:5%;">
                            <label class="font-style"><b style="font-size:13px">Large Case </b></label>
@@ -1079,11 +995,6 @@
                        </td>
                        
                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <hr>
-                        </td>
-                    </tr>
                    <tr>
                        <td width="50%" style="padding-left:5%;">
                            <label for="smallcase" class="font-style"><b style="font-size:13px">Small Case </b></label>
@@ -1095,11 +1006,6 @@
                        </td>
                        
                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <hr>
-                        </td>
-                    </tr>
                    <tr id="trfare" style="display:none;">
                        <td width="50%" style="padding-left:5%;" >
                            <b style="font-size:13px">Fare </b>
@@ -1111,11 +1017,6 @@
                        </td>
                        
                    </tr>
-                     <tr id="faree" style="display:none">
-                        <td colspan="2">
-                            <hr>
-                        </td>
-                    </tr>
                    <tr>
                        <td width="55%" style="padding-left:5%;">
                            <b style="font-size:13px">Special Requirement </b>
@@ -1127,11 +1028,6 @@
                        </td>
                        
                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <hr>
-                        </td>
-                    </tr>
                    <tr id="trwheelchair" style="display:none;">
                        <td width="50%" style="padding-left:5%;" >
                            <b style="font-size:13px">Wheelchair Passengers </b>
@@ -1143,11 +1039,6 @@
                        </td>
                        
                    </tr>
-                    <tr id="wheel" style="display:none">
-                        <td colspan="2">
-                            <hr>
-                        </td>
-                    </tr>
                    <tr id="trchildseats" style="display:none;">
                        <td width="50%" style="padding-left:5%;">
                            <b style="font-size:13px">Child Seats </b>
@@ -1159,11 +1050,6 @@
                        </td>
                        
                    </tr>
-                    <tr id="childseat" style="display:none">
-                        <td colspan="2" >
-                            <hr>
-                        </td>
-                    </tr>
                    <tr id="trchildbooster" style="display:none;" >
                        <td width="50%" style="padding-left:5%;">
                            <b style="font-size:13px">Child Booster </b>
@@ -1175,11 +1061,6 @@
                        </td>
                        
                    </tr>
-                     <tr id="booster" style="display:none">
-                        <td colspan="2">
-                            <hr>
-                        </td>
-                    </tr>
                    <tr id="trOtherspec" style="display:none;">
                        <td width="100%" style="padding-left:5%;" colspan="4">
                            <label for="txtothereSpecialRequirement" ><b style="font-size:13px" >Other Requirements</b></label> 
@@ -1198,91 +1079,87 @@
                </table>
                 
             </div>
-           
-            
-        </center>
-        
-    
-
-        <footer style="padding-top:76px">
-            <div style="width:100%;position:fixed;bottom:0px;height:20px;padding-bottom:55px">
-                <table width="100%" style="" id="tbdeal">
-                    <tr>
-                        <td width="25%">
-                            <input type="button" id="btnbid" class="specialBtn" onclick="showBid()" style="width:100%;cursor:pointer" value="Bid" />
-                            
-                        </td>
-                        <td width="25%">
-                            <input type="button" id="btnmap" class="specialBtn" onclick="showMap()" style="width:100%;cursor:pointer" value="Map"/> 
-                            
-                        </td>
-                        <td width="25%">
-                            <input type="button" id="btncancel" class="specialBtn" onclick="reqCancel()" style="width:100%;cursor:pointer" value="Cancel" />
-                            
-                        </td>
-                        <td width="25%">
-                            <input type="button" id="btnreject" class="specialBtn" onclick="reqReject()" style="width:100%;cursor:pointer" value="Reject"/>
-                            
-                        </td>
-                        
-                    </tr>
-                    
-                </table>
-                </div>
-            <div data-role="footer" data-position="fixed" style="width:100%;position:fixed;bottom:0px;height:25px;padding-bottom:10px">
-                <table style="width:100%;" class="btn-tmpFooter">
-                    <tr>
-                        <td style="width:20%;">
-                            <div>
-                                <img src="img/User.png" width="25px;" style="float:left; cursor:pointer" title="Profile" onclick="myProfile()"/>
-                                
-                            </div>
-                            
-                        </td>
-                        <td style="width:20%;">
-                            <div>
-                                <img src="img/Home.png" width="25px;" style="float:left;cursor:pointer" title="Home" onclick="myhome()"/>
-                                
-                            </div>
-                            
-                        </td>
-                        <td style="width:20%;">
-                            <div>
-                                <img src="img/Cab.png" width="25px;" style="float:left;cursor:pointer" title="My Jobs" onclick="MyBookings()"/>
-                                
-                            </div>
-                            
-                        </td>
-                        <td style="width:20%;">
-                            <div>
-                                <img src="img/History1.png" width="25px;" style="float:left;cursor:pointer" title="Booking History" onclick="bookedHistory()"/>
-                                
-                            </div>
-                            
-                        </td>
-                        <td style="width:20%;">
-                            <div>
-                                <img src="img/feedback.png" width="25px;" style="float:left;cursor:pointer" title="Feedback" onclick="feedBack()"/>
-                                
-                            </div>
-                            
-                        </td>
-                        <td style="width:20%;">
-                            <div>
-                                <img src="img/logout.png" width="25px;" style="float:left;cursor:pointer" title="Logout" onclick="logout()"/>
-                                
-                            </div>
-                            
-                        </td>
-                        
-                    </tr>
-                    
-                </table>
+            <div style="padding-top:20%;width:100%;">
                 
             </div>
             
-        </footer>
-        
-    </body>
-    
+        </center>
+    <footer>
+        <div style="width: 100%; position: fixed; bottom: 0px; height: 20px; padding-bottom: 55px">
+            <table width="100%" style="" id="tbdeal">
+                <tr>
+                    <td width="25%">
+                        <input type="button" id="btnbid" class="specialBtn" onclick="showBid()" style="width: 100%;" value="Bid" />
+
+                    </td>
+                    <td width="25%">
+                        <input type="button" id="btnmap" class="specialBtn" onclick="showMap()" style="width: 100%;" value="Map" />
+
+                    </td>
+                    <td width="25%">
+                        <input type="button" id="btncancel" class="specialBtn" onclick="reqCancel()" style="width: 100%;" value="Cancel" />
+
+                    </td>
+                    <td width="25%">
+                        <input type="button" id="btnreject" class="specialBtn" onclick="reqReject()" style="width: 100%;" value="Reject" />
+
+                    </td>
+
+                </tr>
+
+            </table>
+            <table style="width: 100%;" class="btn-tmpFooter">
+                <tr>
+                    <td style="width: 20%;">
+                        <div>
+                            <img src="img/User.png" width="25px;" style="float: left; cursor: pointer" title="Profile" onclick="myProfile()" />
+
+                        </div>
+
+                    </td>
+                    <td style="width: 20%;">
+                        <div>
+                            <img src="img/Home.png" width="25px;" style="float: left; cursor: pointer" title="Home" onclick="myhome()" />
+
+                        </div>
+
+                    </td>
+                    <td style="width: 20%;">
+                        <div>
+                            <img src="img/Cab.png" width="25px;" style="float: left; cursor: pointer" title="My Jobs" onclick="MyBookings()" />
+
+                        </div>
+
+                    </td>
+                    <td style="width: 20%;">
+                        <div>
+                            <img src="img/History1.png" width="25px;" style="float: left; cursor: pointer" title="Booking History" onclick="bookedHistory()" />
+
+                        </div>
+
+                    </td>
+                    <td style="width: 20%;">
+                        <div>
+                            <img src="img/feedback.png" width="25px;" style="float: left; cursor: pointer" title="Feedback" onclick="feedBack()" />
+
+                        </div>
+
+                    </td>
+                    <td style="width: 20%;">
+                        <div>
+                            <img src="img/logout.png" width="25px;" style="float: left; cursor: pointer" title="Logout" onclick="logout()" />
+                        </div>
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </footer>
+
+</body>
+
 </html>
