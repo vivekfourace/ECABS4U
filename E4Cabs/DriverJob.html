@@ -116,6 +116,11 @@
             document.getElementById("trchildbooster").style.display = 'none';
             document.getElementById("trOtherspec").style.display = 'none';
             document.getElementById("trSpecialtxt").style.display = 'none';
+             $( "#wheel" ).hide();
+            $( "#childseat" ).hide();
+            $( "#booster" ).hide();
+            $( "#other" ).hide();
+            $( "#fare" ).hide();
         }
 
         function SubmitDeal() {
@@ -205,6 +210,7 @@
             $( "#booster" ).toggle();
             $( "#other" ).toggle();
             $( "#fare" ).toggle();
+            //trfare
 
 
         }
@@ -233,11 +239,20 @@
             document.getElementById("trchildseats").style.display = 'none';
             document.getElementById("trchildbooster").style.display = 'none';
             document.getElementById("trOtherspec").style.display = 'none';
+             $( "#wheel" ).toggle();
+            $( "#childseat" ).toggle();
+            $( "#booster" ).toggle();
+            $( "#other" ).toggle();
+            $( "#fare" ).toggle();
         }
         function bidSubmit() {
             //$('#divComplete').hide();
             $("#divDealload").show();
-
+            $( "#wheel" ).hide();
+            $( "#childseat" ).hide();
+            $( "#booster" ).hide();
+            $( "#other" ).hide();
+            $( "#fare" ).hide();
             $('#divDriverPop').hide();
             $('#divBid').hide();
             var job = $('#lbljobno').text();
