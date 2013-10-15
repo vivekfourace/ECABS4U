@@ -138,7 +138,7 @@ a {
 
     .sf-menu ul {
         position: absolute;
-        top: -999em;
+        /*top: -999em; */
         width: 100px; /* left offset of submenus need to match (see below) */
         background: #2A81CF;
     }
@@ -164,6 +164,7 @@ a {
     .sf-menu a {
         display: block;
         position: relative;
+       
     }
 
     .sf-menu li:hover ul,
