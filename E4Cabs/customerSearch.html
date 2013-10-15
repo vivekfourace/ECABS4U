@@ -2,10 +2,12 @@
 
 <html>
 <head>
+    
     <meta charset="utf-8" />
     <title></title>    
-    <script type="text/javascript" src="Scripts/jquery-2.0.3.min.js"></script>
+    <!--<script type="text/javascript" src="Scripts/jquery-2.0.3.min.js"></script>-->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAKXfZggeVZMCwQnR-mGebtLCvjuRfZcg&sensor=true"></script>
+    
     <link rel="stylesheet" type="text/css" href="css/site.css" />    
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <link rel="stylesheet" type="text/css" href="css/PopUp.css" />
@@ -20,62 +22,15 @@
     <script type="text/javascript" src="Scripts/jquery.mobile.datebox.i18n.js"></script>
     <script type="text/javascript" src="Scripts/jquery.mobile.simpled.min.js"></script>
     
+    
     <script type="text/javascript" src="jquery-mobile/js/jquery-ui.js"></script>
     <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
     <script type="text/javascript" src="js/customerSearch.js"></script>
+    
 </head>
 
 <script type="text/javascript">
-    $('#imgLoader').show();
-    
-    $(document).ready(function () {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function (position) {
-                    var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                    var geocoder = new google.maps.Geocoder();
-                    var latLng = pos;
-                    geocoder.geocode({ 'latLng': latLng }, function (results, status) {
-                        if (status == google.maps.GeocoderStatus.OK) {
-                            if (results[1]) {
-                                //alert(results[1].formatted_address);
-                                $('#txtCurrentFrom').val(results[1].formatted_address);
-                            }
-                        }
-                        else {
-                            alert("No location found!!")
-                        }
-                    });
-                });
-            }
-        $('.expand').live({
-            focus: function () {
-                $(this).animate({ height: "70" }, 500);
-            },
-            blur: function () {
-                $(this).animate({ height: "50" }, 500);
-            },
-        });
-
-        $('#chkNo').click(function () {
-            document.getElementById("chkyes").checked = false;
-            $('#returnJ').fadeIn("slow");
-            $('#termCond').fadeIn("slow");
-
-        });
-        $('#chkyes').click(function () {
-            document.getElementById("chkNo").checked = false;
-            $('#returnJ').fadeOut("slow");
-            $('#termCond').fadeOut("slow");
-
-        });
-
-        $('#popupBoxClose').click(function () {
-            $('#popup_box').fadeOut("slow");
-        });
-    });
-
-
-    function loadDateTime() {
+        function loadDateTime() {
         //Code For current Time
         var currentTime = new Date()
         var hours = currentTime.getHours()
@@ -372,7 +327,7 @@
     <center>
         <div id="imgLoader">
                 <img src="jquery-mobile/styles/images/ajax-loader.gif" id="loading-image"/>
-            </div>
+        </div>
         <div class="header" style="height:57px">
                 <div style="float:left;height:48px;width:122px;padding-top:3px;">
                     <img src="img/logo1.png" class="logo"/>
@@ -705,8 +660,9 @@
             </table>             
         </div> 
       </center>
-    <script type="text/javascript">
-        $('#imgLoader').hide();
-    </script>
+   
 </body>
 </html>
+    
+        
+

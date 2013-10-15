@@ -4,6 +4,56 @@ var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 //var requestID = QString.split("=")[4].split("&")[0];
 
+
+ $(document).ready(function () {
+     $('#imgLoader').show();
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                    var geocoder = new google.maps.Geocoder();
+                    var latLng = pos;
+                    geocoder.geocode({ 'latLng': latLng }, function (results, status) {
+                        if (status == google.maps.GeocoderStatus.OK) {
+                            if (results[1]) {
+                                //alert(results[1].formatted_address);
+                                $('#txtCurrentFrom').val(results[1].formatted_address);
+                            }
+                        }
+                        else {
+                            alert("No location found!!")
+                        }
+                    });
+                });
+            }
+        $('.expand').live({
+            focus: function () {
+                $(this).animate({ height: "70" }, 500);
+            },
+            blur: function () {
+                $(this).animate({ height: "50" }, 500);
+            },
+        });
+
+        $('#chkNo').click(function () {
+            document.getElementById("chkyes").checked = false;
+            $('#returnJ').fadeIn("slow");
+            $('#termCond').fadeIn("slow");
+
+        });
+        $('#chkyes').click(function () {
+            document.getElementById("chkNo").checked = false;
+            $('#returnJ').fadeOut("slow");
+            $('#termCond').fadeOut("slow");
+
+        });
+
+        $('#popupBoxClose').click(function () {
+            $('#popup_box').fadeOut("slow");
+        });
+     $('#imgLoader').hide();
+    });
+
+
 function loc() {
     var from = $('#txtFrom').val();
     var to = $('#txtTo').val();

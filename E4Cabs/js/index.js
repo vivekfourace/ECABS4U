@@ -43,7 +43,6 @@ function forgotUser()
 }
 
 function login() {
-
     //document.getElementById("txtUserName").focus();
     var name = document.getElementById('txtUserName').value;
     var password = document.getElementById('txtPassword').value;
@@ -73,9 +72,9 @@ function login() {
         beforeSend: function () {
             $('#imgLoader').show();
         },
-        //complete: function () {
-        //    $('#imgLoader').hide();
-        //},
+        complete: function () {
+            $('#imgLoader').hide();
+        },
         type: "POST",
         datatype: "json",
         data: "{'username':'" + name + "','userpassword':'" + password + "'}",
@@ -90,17 +89,20 @@ function login() {
 
 function CheckMsg(data) {
     if (data.d == "false") {
+        $('#imgLoader').hide();
         $('#lblMsg').text("Incorrect usename or password!");
         $('#lblMsg').css("color", "#D70007");
         $('#lblMsg').css("font-size", "13");
     }
     else {
+        $('#imgLoader').show();
         var userID = data.d[0];
         var roleID = parseInt(data.d[1]);
         var relatedID = data.d[2];
         var name = document.getElementById('txtUserName').value;
         var password = document.getElementById('txtPassword').value;
-        //creating Cookie        
+        
+        //creating Cookie
         var isChecked = $('#chkRem').attr('checked') ? true : false;
         if (isChecked == true) {
             $.cookie('userName', name);
