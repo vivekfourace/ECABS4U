@@ -69,13 +69,13 @@ function login() {
 
     var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UserLogin";
     $.ajax(url, {
-        cache: false,
+        cache: true,
         beforeSend: function () {
             $('#imgLoader').show();
         },
-        complete: function () {
-            $('#imgLoader').hide();
-        },
+        //complete: function () {
+        //    $('#imgLoader').hide();
+        //},
         type: "POST",
         datatype: "json",
         data: "{'username':'" + name + "','userpassword':'" + password + "'}",

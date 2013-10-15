@@ -3,7 +3,7 @@ function businessRegistercustomer()
     var business=$('#txtBusinessName').val();
     var txt1 =$('#txtFirstName').val();
     var txt2 =$('#txtLastName').val();
-    var txt3 =$('#txtPhone').val();
+   var txt3 =$('#txtPhone').val();
     var txt4 =$('#txtEmail').val();
     //var txt5 =$('#txtPost').val();
     var txt6 =$('#txtUserName').val();
@@ -18,7 +18,7 @@ function businessRegistercustomer()
     var postcode=$('#txtPostalCode').val();
     
     var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
-    var phoneno =/^\d{12}$/;
+   var phoneno =/^\d{11}$/;
     
     //Business customer
      if(!business)
@@ -39,7 +39,8 @@ function businessRegistercustomer()
                      $('#txtLastName').focus();                     
                     return false;
                  }
-                //validate Phone number.
+    
+                 //validate Phone number.
                if(txt3.length > 0)
                     {
                         if(phoneno.test(txt3))

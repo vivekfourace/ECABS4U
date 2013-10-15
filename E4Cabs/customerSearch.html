@@ -26,7 +26,9 @@
 </head>
 
 <script type="text/javascript">
-    $(document).ready(function () {        
+    $('#imgLoader').show();
+    
+    $(document).ready(function () {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
                     var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -689,9 +691,9 @@
                     <input type="button" value="Search" class="btn-tmp cursor" onclick="availabledriver();" />
            </div>          
        </div>
-        
+       
         <!--Popup div-->
-         <div id="popup_box">
+       <div id="popup_box">
             <table style="width:100%; border-collapse:collapse; background-color:#FFFFFF;">
                 <tr>
                     <td class="popup_header">
@@ -715,5 +717,8 @@
             </table>             
         </div> 
       </center>
+    <script type="text/javascript">
+        $('#imgLoader').hide();
+    </script>
 </body>
 </html>
