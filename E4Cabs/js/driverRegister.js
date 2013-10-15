@@ -15,7 +15,7 @@ function RegisterDriver()
     var Cpassword =$('#txtCpass').val();
     var User =$('#txtusername').val();
      var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
-    var phoneno =/^\d{12}$/;
+    var phoneno =/^\d{11}$/;
     var img2="a";
       //var img2=document.getElementById('raghu').value; 
     //var validate=document.getElementById('MAX_FILE_SIZE').value;

@@ -9,7 +9,7 @@ function Registercustomer()
     var txt7 =$('#txtPassword').val();
     var txt8 =$('#txtConfirmPassword').val();
     var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
-    var phoneno =/^\d{12}$/;
+    var phoneno =/^\d{11}$/;
     
                if(!txt1)
                  {
