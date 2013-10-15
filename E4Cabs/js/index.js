@@ -2,16 +2,19 @@ window.onload = loginUsingCookie();
 
 function loginUsingCookie() {
     var name = $.cookie('userName');
+    var password= $.cookie('userPassword');
     var remMe = $.cookie('remember');
 
     if (remMe == "true") {
         $('#txtUserName').val(name);
-        $('#txtPassword').focus();
+        $('#txtPassword').val(password);
+        
         return true;
     }
     if (remMe == "false") {
         $('#txtUserName').val("");
-        $('#txtUserName').focus();
+        $('#txtPassword').val("");
+       
         return true;
     }
 }
@@ -96,10 +99,12 @@ function CheckMsg(data) {
         var roleID = parseInt(data.d[1]);
         var relatedID = data.d[2];
         var name = document.getElementById('txtUserName').value;
+        var password = document.getElementById('txtPassword').value;
         //creating Cookie        
         var isChecked = $('#chkRem').attr('checked') ? true : false;
         if (isChecked == true) {
             $.cookie('userName', name);
+            $.cookie('userPassword', password);
             $.cookie('remember', true);
         }
         else {

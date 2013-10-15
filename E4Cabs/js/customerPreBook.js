@@ -32,8 +32,10 @@ function availabledriver()
 //Logout Button
 function logout()
     {
-                
-       window.location="login.html";
+        $.cookie("remember", false);
+        $.cookie("userName", 'null');
+        $.cookie("userPassword", 'null');        
+        window.location="login.html";
     }
 
 
