@@ -51,8 +51,9 @@ function bookedHistory()
 function logout()
     {                
        $.cookie("remember", false);
-        $.cookie("userName", 'null');
-        window.location = "index.html";  
+       $.cookie("userName", 'null');
+       $.cookie("userPassword", 'null');
+       window.location = "index.html";  
     }
 
 
