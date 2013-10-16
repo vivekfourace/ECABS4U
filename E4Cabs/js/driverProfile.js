@@ -4,7 +4,7 @@ var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
 var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
-var mobno =/^\d{12}$/;
+var mobno =/^\d{11}$/;
 
 window.onload = getProfile();
 
@@ -66,27 +66,29 @@ function ShowData(data)
     $('#lblEmailID').show();
     $('#btnEdit').show();
     $('#btnBack').show();
-    $('hr').show();
+  $('hr').show();
+    //$('#mobno').show();
  }
 
 function EditProfile()
 {
-    $('#txtname').show();
-   $('#lblWarning').show();
-    $('#txtLastname').show();
-    $('#txtLocation').show();    
-    $('#txtLocation2').show();    
+    $('#txtname').hide();
+    $('#lblWarning').hide();
+    $('#txtLastname').hide();
+    $('#txtLocation').hide();    
+    $('#txtLocation2').hide();    
     $('#txtMobileno').show();    
-   $('#txtEmailID').show();
-    $('#btnBack').hide();
-    $('#lblname').hide();
-    $('#lblLastname').hide();
-    $('#lblLocation').hide();
-    $('#lblLocation2').hide();
+    $('#txtEmailID').hide();
+    $('#btnBack').show();
+    $('#lblname').show();
+    $('#lblLastname').show();
+    $('#lblLocation').show();
+    $('#lblLocation2').show();
     $('#lblMobileNo').hide();
-    $('#lblEmailID').hide();
+    $('#lblEmailID').show();
     $('#divMarquee').hide();
-    $('hr').hide();
+    $('hr').show();
+    //$('#mobno').hide();
     document.getElementById("trBtnUpdate").style.display = 'table-row';
      document.getElementById("trCancel").style.display = 'table-row';
      document.getElementById("tredit").style.display = 'none';

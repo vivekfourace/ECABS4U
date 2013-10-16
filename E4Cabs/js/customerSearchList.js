@@ -43,7 +43,11 @@ function getData(data) {
     if (count > 0) {
         window.clearInterval(id);
         window.clearInterval(timer);
+        $('#divbid').show();
+         $('#divawait').hide();
         $('#load').hide();
+        $('#popup_box').show();
+        $('#divselect').show();
        // $('#divDriverList').show();  // status buttons(4)
         var html = '<table width="120%" style="border-collapse:collapse;">';
         html += '<thead style="background-color:#D8DCBB;color:darkblue;">';
@@ -267,6 +271,9 @@ function getResponseFromDriver(data) {
 
                             $('#popup_box').fadeIn("slow");
                             $('#divDealConfirmed').show();
+                            $('#divselect').hide();
+                            
+                            
                         },
                         complete: function () {
                             destroySetInterval();    //Call destroy                             

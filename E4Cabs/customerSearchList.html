@@ -20,13 +20,13 @@
 <body>
     <center> 
         <div id="load" class="load">            
-                <span style="font-family:'Trebuchet MS';color:white">We are searching for the driver next to you, please wait...</span><br>
-                <img src="jquery-mobile/styles/images/ajax-loader-hor.gif" style="width:140px;height:10px"/><br>
+                <span style="font-family:'Trebuchet MS';color:white"> Locating suitable vehicles</span><br>
+                <img src="jquery-mobile/styles/images/ajax-loader-hor.gif" style="width:140px;height:10px;padding-top:2px"/><br>
                 <!--<label id="lblMessage" style="font-family:'Trebuchet MS';color:white"></label>-->
             </div>
         
         <div id="loading" class="loadForall">            
-                <span style="font-family:'Trebuchet MS';color:white">Processing request, please wait...</span><br>
+                <span style="font-family:'Trebuchet MS';color:white">Transmitting job request to drivers</span><br>
                 <img src="jquery-mobile/styles/images/ajax-loader-hor.gif" style="width:140px;height:10px"/>
          </div>
              <div id="imgLoader">
@@ -43,10 +43,13 @@
                              </div>
                               
                         </td>
-                        <td  width="50%" style="float:left;padding-left:3%;">
+                       <td  width="50%" style="float:left;padding-left:3%;">
                            
-                                <div style="padding-top:13px;">
-                                    <b class="header-font" style="color:white;font-size:16px;">Change password</b>
+                                <div style="padding-top:13px;display:none;" id="divbid">
+                                    <b class="header-font" style="color:white;font-size:16px;">Bids Received</b>
+                                </div>
+                                <div style="padding-top:13px;" id="divawait">
+                                    <b class="header-font" style="color:white;font-size:16px;">Awaiting Bids</b>
                                 </div>
                            
                         </td>
@@ -61,6 +64,27 @@
              <div id="msg" style="padding-top:72px"></div>
              <div style="width:100%;height:75%;" id="divDetails">
                 <div id="popup_box">
+                    <div id="divselect" style="display:none;width:100%;">
+                        <table style="width:100%">
+                            <tr>
+                                  <td class="popup_header" colspan="2" width="100%">
+                                      <strong style="padding-left:5px">Driver selection</strong>
+                                  </td>
+                             </tr>
+                            <tr class="popup_content">
+                                <td >
+                                    <span style="font-size:13px;padding-left:10%; " class="test">
+                                           Please select your driver
+                                     </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                   <input type="button" class="ok" value="Ok" style="cursor: pointer;text-align:center;" onclick="calOk()"/>
+                                </td>
+                            </tr>
+                        </table>
+                   </div>
                     <div id="divExpiry" style="display:none;width:100%;" >
                         <table style="width:100%;background-color:#FFFFFF;">
                             <tr>
@@ -224,7 +248,10 @@
                              </tr>
                         </table>
                     </div> 
-               </div>
+               
+                    
+                </div>
+                 
              </div>
              <div id="divDriverList" style="display:none;width:100%;position:fixed;padding-top:70px;"> 
                 <table id="btnTable" style="width:100%;">
