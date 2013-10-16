@@ -50,7 +50,11 @@ function showlocation()
     $('#txtTo').val("");
 }
 
-//Search Func
+//Home Button in Header
+function homeSearch()
+{
+    
+}
 
 function searchResult()
 {

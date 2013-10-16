@@ -72,12 +72,12 @@ function ShowData(data)
 function EditProfile()
 {
     $('#txtname').show();
-    $('#lblWarning').show();
+   $('#lblWarning').show();
     $('#txtLastname').show();
     $('#txtLocation').show();    
     $('#txtLocation2').show();    
     $('#txtMobileno').show();    
-    $('#txtEmailID').show();
+   $('#txtEmailID').show();
     $('#btnBack').hide();
     $('#lblname').hide();
     $('#lblLastname').hide();
