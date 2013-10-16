@@ -19,10 +19,9 @@
         var userId = QString.split("=")[1].split("&")[0];
         var roleId = QString.split("=")[2].split("&")[0];
         var relatedId = QString.split("=")[3].split("&")[0];
-//Got Job a New Job Request
-        
-        $(document).ready(function () 
-        {
+        //Got Job a New Job Request
+
+        $(document).ready(function () {
             $.ajax({
                 url: 'http://115.115.159.126/ECabs/ECabs4U.asmx/checkResponse',
                 type: "POST",
@@ -73,16 +72,16 @@
                             },
                             error: function (XMLHttpRequest, textStatus, errorThrown) {
                                 $('#divDetails').hide();
-                               
+
                             }
                         });
                     }
                     if (data.d[0] == "Error") {
                         $('#divDetails').hide();
-                         $('#btnbid').hide();
-                         $('#btnmap').hide();
-                         $('#btncancel').hide();
-                         $('#btnreject').hide();
+                        $('#btnbid').hide();
+                        $('#btnmap').hide();
+                        $('#btncancel').hide();
+                        $('#btnreject').hide();
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -123,11 +122,11 @@
             document.getElementById("trchildbooster").style.display = 'none';
             document.getElementById("trOtherspec").style.display = 'none';
             document.getElementById("trSpecialtxt").style.display = 'none';
-             $( "#wheel" ).hide();
-            $( "#childseat" ).hide();
-            $( "#booster" ).hide();
-            $( "#other" ).hide();
-            $( "#fare" ).hide();
+            $("#wheel").hide();
+            $("#childseat").hide();
+            $("#booster").hide();
+            $("#other").hide();
+            $("#fare").hide();
         }
 
         function SubmitDeal() {
@@ -143,12 +142,12 @@
                     data: "{'userID':'" + relatedId + "'}",
                     contentType: "application/json; charset=utf-8",
                     success: function (data) {
-                        
+
                         var getResID = data.d[0];
                         var getResponse = data.d[1];
-                        
+
                         if (getResponse == "True") {
-                            
+
                             $.ajax({
                                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetDealData",
                                 type: "POST",
@@ -160,7 +159,7 @@
                                         //alert(data.d[0]);
                                         $("#divDealload").hide();
                                         $('#popup_box').show();
-                                        $('#divDeal').show();                                        
+                                        $('#divDeal').show();
                                         $('#lbldealjob').text(data.d[0]);
                                         $('#lbldealfrom').text(data.d[1]);
                                         $('#lbldealto').text(data.d[2]);
@@ -168,10 +167,11 @@
                                         $('#lbldealdate').text(data.d[4]);
                                         $('#lbldealtime').text(data.d[5]);
                                         $('#lbldealfare').text(data.d[6]);
+                                        $('#isReturnJourney').val(data.d[7]);
                                         DestroyMe();
-                                        
+
                                     }
-                                    else if(data.d[0] == "Error"){
+                                    else if (data.d[0] == "Error") {
                                         $('#popup_box').hide();
                                         $('#divDeal').hide();
                                         $("#divDealload").show();
@@ -193,11 +193,11 @@
                 });
             }, 1000);
 
-          function DestroyMe() {
-              window.clearInterval(timereOut);
-          }
+            function DestroyMe() {
+                window.clearInterval(timereOut);
+            }
         }
-        
+
 
         function showSpecial() {
             //document.getElementById("trfare").style.display = 'table-row';
@@ -212,11 +212,11 @@
             $("#trchildseats").toggle();
             $("#trchildbooster").toggle();
             $("#trOtherspec").toggle();
-            $( "#wheel" ).toggle();
-            $( "#childseat" ).toggle();
-            $( "#booster" ).toggle();
-            $( "#other" ).toggle();
-            $( "#fare" ).toggle();
+            $("#wheel").toggle();
+            $("#childseat").toggle();
+            $("#booster").toggle();
+            $("#other").toggle();
+            $("#fare").toggle();
             //trfare
 
 
@@ -250,20 +250,20 @@
             document.getElementById("trchildseats").style.display = 'none';
             document.getElementById("trchildbooster").style.display = 'none';
             document.getElementById("trOtherspec").style.display = 'none';
-             $( "#wheel" ).hide();
-            $( "#childseat" ).hide();
-            $( "#booster" ).hide();
-            $( "#other" ).hide();
-            $( "#fare" ).hide();
+            $("#wheel").hide();
+            $("#childseat").hide();
+            $("#booster").hide();
+            $("#other").hide();
+            $("#fare").hide();
         }
         function bidSubmit() {
             //$('#divComplete').hide();
             $("#divDealload").show();
-            $( "#wheel" ).hide();
-            $( "#childseat" ).hide();
-            $( "#booster" ).hide();
-            $( "#other" ).hide();
-            $( "#fare" ).hide();
+            $("#wheel").hide();
+            $("#childseat").hide();
+            $("#booster").hide();
+            $("#other").hide();
+            $("#fare").hide();
             $('#divDriverPop').hide();
             $('#divBid').hide();
             var job = $('#lbljobno').text();
@@ -350,20 +350,30 @@
 
         }
         function dealSubmit() {
+            var getIsReturnJourney = $('#isReturnJourney').val();
+
             var getFare = $('#lbldealfare').text();
             $('#divDeal').hide();
             var reqID = $('#lbldealjob').text();
             if (getFare == 15 || getFare > 15) {
-
-                $('#divComission').show();
-                $('#lblconfirmjob').text(reqID);
-                $('#lblconfirmfare').text(getFare);
-
-
+                if (getIsReturnJourney == "True") {
+                    var _avgFare = getFare / 2;
+                    if (_avgFare == 15 || _avgFare > 15) {
+                        $('#divComission2').show();
+                        $('#lblconfirmjob2').text(reqID);
+                        $('#lblconfirmfare2').text(getFare);
+                    }
+                }
+                else if (getIsReturnJourney == "False") {
+                    $('#divComission').show();
+                    $('#lblconfirmjob').text(reqID);
+                    $('#lblconfirmfare').text(getFare);
+                }
             }
             else {
 
                 $('#divComission').hide();
+                $('#divComission2').hide();
 
                 //alert(reqID);lblconfirmjob
                 $.ajax({
@@ -374,7 +384,7 @@
                     contentType: "application/json; charset=utf-8",
                     success: function (data) {
                         $('#divDetails').hide();
-                       $('#btnbid').hide();
+                        $('#btnbid').hide();
                         $('#btnmap').hide();
                         $('#btncancel').hide();
                         $('#btnreject').hide();
@@ -409,13 +419,37 @@
 
                 }
             });
-            window.location.href = "https://sandbox.gocardless.com/pay/YH0MFHY7";
+            window.location.href = "https://sandbox.gocardless.com/pay/YH0MFHY7"; //for commission 1.2pond
 
             $('#divDeal').hide();
             $('#popup_box').fadeOut("slow");
         }
+
+        function Confirmcomission2() {
+
+            var reqID = $('#lblconfirmjob2').text();
+            var comission = 2.4;
+
+            $.ajax({
+                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/jobBooked",
+                type: "POST",
+                dataType: "Json",
+                data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                }
+            });
+            window.location.href = "https://sandbox.gocardless.com/pay/GAP5Y6VH"; //for commission 2.4pond
+            $('#divDeal').hide();
+            $('#popup_box').fadeOut("slow");
+        }
+
         function RejectComission() {
             $('#divComission').hide();
+            $('#divComission2').hide();
         }
         function dealCancel() {
             $('#divDeal').hide();
@@ -625,6 +659,7 @@
                    
                     <div id="divDeal" style="display:none;"align="center">
                         <table align="left" style="width:100%;background-color:#FFFFFF;">
+                            <input type="hidden" id="isReturnJourney"/>
                              <tr>
                                 <td class="popup_header" width="100%" colspan="2">
                                     <strong style="padding-left:5px; " width="100%" align="center" class="test">Booking Details</strong>
@@ -742,8 +777,6 @@
                                         <b style="font-size:13px;text-align:justify;color:blue;" class="test">Confirming will take you to the payment page, we will charge 1.2<img src="img/euro.png"width="10" height="10" /> for this job on a commission.</b>
                                         <hr>
                                     </td>
-                                   
-                                    
                                 </tr>
                                 <tr class="popup_content">
                                  <td width="50%">
@@ -771,6 +804,49 @@
                                 </tr>
                         </table>
                     </div>
+                    
+                    <!--Commission fare for return journey pop up box-->
+
+                    <div id="divComission2" style="display:none;"align="center">
+                        <table align="left" style="width:100%;background-color:#FFFFFF;">
+                                 <tr>
+                                            <td class="popup_header" width="100%" colspan="2">
+                                                <strong style="padding-left:5px" width="100%" align="center" class="test">Commission Payment</strong>
+                                            </td>
+                                </tr>
+                                 <tr class="popup_content">
+                                    <td width="100%" colspan="2">
+                                        <b style="font-size:13px;text-align:justify;color:blue;" class="test">Confirming will take you to the payment page, we will charge 2.4<img src="img/euro.png"width="10" height="10" /> for this job on a commission.</b>
+                                        <hr>
+                                    </td>
+                                </tr>
+                                <tr class="popup_content">
+                                 <td width="50%">
+                                            <b style="font-size:13px; " class="test">Job Number</b>
+                                           </td>
+                                           <td width="50%">
+                                              <b> <label id="lblconfirmjob2" style="font-size:13px;padding-left:10%; " class="test"/></b>
+                                           </td>
+                                </tr>
+                                <tr class="popup_content">
+                                            <td width="50%">
+                                                <b style="font-size:13px;" class="test">Fare</b>
+                                            </td>
+                                            <td width="50%">
+                                               <b><img src="img/euro.png"width="10" height="10" style="padding-left:10%;"/><label id="lblconfirmfare2" style="font-size:13px; "/></b>
+                                            </td>
+                                </tr>
+                                <tr class="popup_footer">
+                                            <td width="50%">
+                                                <input type="button" value="Reject" class="ok" onclick="RejectComission()"/>
+                                            </td>
+                                            <td width="50%">
+                                                <input type="button" value="Confirm" class="ok" onclick="Confirmcomission2()"/>
+                                            </td>
+                                </tr>
+                        </table>
+                    </div>
+                    
                     <div id="divabort" style="display:none;"align="center">
                         <table align="left" style="width:100%;background-color:#FFFFFF;">
                                  <tr>
@@ -1279,11 +1355,7 @@
                 </tr>
 
             </table>
-
         </div>
-
     </footer>
-
 </body>
-
 </html>
