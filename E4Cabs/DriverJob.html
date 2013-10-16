@@ -52,6 +52,14 @@
                                     $('#lblwheelchair').text(data.d[11]);
                                     $('#lblchildseat').text(data.d[12]);
                                     $('#lblchildbooster').text(data.d[13]);
+                                    $('#lblisReturnJourney').text(data.d[14]);
+                                    
+                                    $('#lblreturnTo').text(data.d[15]);
+                                    $('#lblreturnFrom').text(data.d[16]);
+                                    $('#lblreturnDate').text(data.d[17]);
+                                    $('#lblreturnTime').text(data.d[18]);
+                                    $('#otherReq').text(data.d[19]);
+                                    
                                     if (data.d[3] != null) {
                                         var sec = data.d[3];
                                         $('#lblpopthird').text(sec);
@@ -115,18 +123,24 @@
             $('#lblpopfrom').text(from);
             $('#lblpopto').text(to);
             $('#lblpopthird').text(third);
-            //$('#lblpopfour').text(four);trSpecialtxt
+            //$('#lblpopfour').text(four);
             document.getElementById("trwheelchair").style.display = 'none';
             document.getElementById("trfare").style.display = 'none';
             document.getElementById("trchildseats").style.display = 'none';
             document.getElementById("trchildbooster").style.display = 'none';
+            document.getElementById("returnFrom").style.display = 'none';
+            document.getElementById("returnTo").style.display = 'none';
+            document.getElementById("returnDate").style.display = 'none';
+            document.getElementById("returnTime").style.display = 'none';
             document.getElementById("trOtherspec").style.display = 'none';
             document.getElementById("trSpecialtxt").style.display = 'none';
             $("#wheel").hide();
             $("#childseat").hide();
             $("#booster").hide();
             $("#other").hide();
-            $("#fare").hide();
+            $("#Tr1").hide();
+            $("#Tr2").hide(); $("#Tr3").hide(); $("#Tr4").hide(); $("#Tr5").hide();
+
         }
 
         function SubmitDeal() {
@@ -211,19 +225,26 @@
             $("#trwheelchair").toggle();
             $("#trchildseats").toggle();
             $("#trchildbooster").toggle();
+            $("#returnFrom").toggle();
+            $("#returnTo").toggle();
+            $("#returnDate").toggle();
+            $("#returnTime").toggle();
             $("#trOtherspec").toggle();
+            $("#trSpecialtxt").toggle();
             $("#wheel").toggle();
             $("#childseat").toggle();
             $("#booster").toggle();
             $("#other").toggle();
             $("#fare").toggle();
+            $("#Tr1").toggle(); $("#Tr2").toggle(); $("#Tr3").toggle(); $("#Tr4").toggle(); $("#Tr5").toggle();
+
             //trfare
 
 
         }
         function showBid() {
-            $("#wheel").hide();
-            $("#childseat").hide();
+            $("#wheel").hide(); $("#Tr1").hide(); $("#Tr2").hide(); $("#Tr3").hide(); $("#Tr4").hide();
+            $("#childseat").hide(); $("#Tr5").hide();
             $("#booster").hide();
             $("#other").hide();
             $('#divDeal').hide();
@@ -250,6 +271,7 @@
             document.getElementById("trchildseats").style.display = 'none';
             document.getElementById("trchildbooster").style.display = 'none';
             document.getElementById("trOtherspec").style.display = 'none';
+            document.getElementById("trSpecialtxt").style.display = 'none';
             $("#wheel").hide();
             $("#childseat").hide();
             $("#booster").hide();
@@ -259,7 +281,7 @@
         function bidSubmit() {
             //$('#divComplete').hide();
             $("#divDealload").show();
-            $("#wheel").hide();
+            $("#wheel").hide(); $("#Tr1").hide(); $("#Tr2").hide(); $("#Tr3").hide(); $("#Tr4").hide(); $("#Tr5").hide();
             $("#childseat").hide();
             $("#booster").hide();
             $("#other").hide();
@@ -302,7 +324,12 @@
             document.getElementById("trwheelchair").style.display = 'none';
             document.getElementById("trchildseats").style.display = 'none';
             document.getElementById("trchildbooster").style.display = 'none';
+            document.getElementById("returnFrom").style.display = 'none';
+            document.getElementById("returnTo").style.display = 'none';
+            document.getElementById("returnDate").style.display = 'none';
+            document.getElementById("returnTime").style.display = 'none';
             document.getElementById("trOtherspec").style.display = 'none';
+            document.getElementById("trSpecialtxt").style.display = 'none';
             $('#popup_box').fadeOut("slow");
             SubmitDeal();
             //var Dealid = window.setInterval(SubmitDeal, 2000);
@@ -351,11 +378,12 @@
         }
         function dealSubmit() {
             var getIsReturnJourney = $('#isReturnJourney').val();
-
+            alert(getIsReturnJourney);
             var getFare = $('#lbldealfare').text();
             $('#divDeal').hide();
             var reqID = $('#lbldealjob').text();
             if (getFare == 15 || getFare > 15) {
+                
                 if (getIsReturnJourney == "True") {
                     var _avgFare = getFare / 2;
                     if (_avgFare == 15 || _avgFare > 15) {
@@ -371,7 +399,7 @@
                 }
             }
             else {
-
+                alert('cominginjobBooked');
                 $('#divComission').hide();
                 $('#divComission2').hide();
 
@@ -388,7 +416,7 @@
                         $('#btnmap').hide();
                         $('#btncancel').hide();
                         $('#btnreject').hide();
-
+                        alert('Job Booked Successfully.');
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
 
@@ -977,20 +1005,17 @@
                                 </td>
                                 <td width="50%" style="padding-left:5%;">
                                     <b style="font-size:13px"> <label id="lblsmallcaseComplete" readonly="true" /> </b>
-                                    
                                 </td>
                                 
                             </tr>
+                           
                             <tr>
                                 <td width="55%" style="padding-left:5%;">
                                     <label for="SpecialReqComplete" class="font-style"><b style="font-size:13px">Special Requirenments</b></label>
-                                    
                                 </td>
                                 <td width="45%" style="padding-left:5%;">
                                     <b style="font-size:13px"> <label id="lblSpecialReqComplete" readonly="true" /> </b>
-                                    
                                 </td>
-                                
                             </tr>
                             <tr>
                                 <td width="50%" style="padding-left:5%;">
@@ -1171,8 +1196,21 @@
                            <b style="font-size:13px" class="test"> <label id="lblsmallcase" readonly="true" /> </b>     
                            
                        </td>
-                       
                    </tr>
+
+                    <tr>
+                        <td colspan="2">
+                            <hr>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td width="50%" style="padding-left:5%;">
+                            <label for="isReturnJourney" class="font-style" ><b style="font-size:13px;" class="test">Is Return Journey</b></label>
+                        </td>
+                        <td width="50%" style="padding-left:5%;">
+                            <b style="font-size:13px" class="test"> <label id="lblisReturnJourney" readonly="true" /> </b>
+                        </td>
+                     </tr>
                      <tr id="fare" style="display:none">
                         <td colspan="2">
                             <hr>
@@ -1200,7 +1238,7 @@
                            
                        </td>
                        <td width="50%" style="padding-left:5%;">
-                           <b style="font-size:13px" class="test">  <label id="specialReq" ><a href="#" onclick="showSpecial()" style="color:blue;">None</a> </label></b>
+                           <b style="font-size:13px" class="test">  <label id="specialReq" ><a href="#" onclick="showSpecial()" style="color:blue;">Show</a> </label></b>
                            
                        </td>
                        
@@ -1229,11 +1267,9 @@
                    <tr id="trchildseats" style="display:none;">
                        <td width="50%" style="padding-left:5%;">
                            <label class="font-style"><b  style="font-size:13px" class="test">Child Seats </b></label>
-                           
                        </td>
                        <td width="50%" style="padding-left:5%;">
                            <b style="font-size:13px" class="test">    <label id="lblchildseat" />  </b>
-                           
                        </td>
                        
                    </tr>
@@ -1248,28 +1284,81 @@
                            
                        </td>
                        <td width="50%" style="padding-left:5%;">
-                           <b style="font-size:13px" class="font-style">      <label id="lblchildbooster" class="test" /> </b> 
-                           
+                           <b style="font-size:13px" class="font-style"> 
+                                <label id="lblchildbooster" class="test" /> </b> 
                        </td>
-                       
                    </tr>
+                     <tr id="Tr1" style="display:none;">
+                        <td colspan="2">
+                            <hr>
+                        </td>
+                    </tr>
+                   <tr id="returnFrom" style="display:none;" >
+                       <td width="50%" style="padding-left:5%;">
+                            <label class="font-style"><b style="font-size:13px" class="test">Return From </b></label>
+                       </td>
+                       <td width="50%" style="padding-left:5%;">
+                           <b style="font-size:13px" class="font-style"> 
+                                <label id="lblreturnFrom" class="test" /> </b> 
+                       </td>
+                   </tr>
+                     <tr id="Tr3" style="display:none;">
+                        <td colspan="2">
+                            <hr>
+                        </td>
+                    </tr>
+                    <tr id="returnTo" style="display:none;" >
+                       <td width="50%" style="padding-left:5%;">
+                            <label class="font-style"><b style="font-size:13px" class="test">Return To </b></label>
+                       </td>
+                       <td width="50%" style="padding-left:5%;">
+                           <b style="font-size:13px" class="font-style"> 
+                                <label id="lblreturnTo" class="test" /> </b> 
+                       </td>
+                   </tr>
+                     <tr id="Tr4" style="display:none;">
+                        <td colspan="2">
+                            <hr>
+                        </td>
+                    </tr>
+                    <tr id="returnDate" style="display:none;" >
+                       <td width="50%" style="padding-left:5%;">
+                            <label class="font-style"><b style="font-size:13px" class="test">Return Date </b></label>
+                       </td>
+                       <td width="50%" style="padding-left:5%;">
+                           <b style="font-size:13px" class="font-style"> 
+                                <label id="lblreturnDate" class="test" /> </b> 
+                       </td>
+                   </tr> 
+                     <tr id="Tr5" style="display:none;">
+                        <td colspan="2">
+                            <hr>
+                        </td>
+                    </tr>
+                    <tr id="returnTime" style="display:none;" >
+                       <td width="50%" style="padding-left:5%;">
+                            <label class="font-style"><b style="font-size:13px" class="test">Return Time </b></label>
+                       </td>
+                       <td width="50%" style="padding-left:5%;">
+                           <b style="font-size:13px" class="font-style"> 
+                                <label id="lblreturnTime" class="test" /> </b> 
+                       </td>
+                   </tr>  
+                    
                      <tr id="other" style="display:none;" >
                         <td colspan="2">
                             <hr>
                         </td>
                     </tr>
                    <tr id="trOtherspec" style="display:none;">
-                       <td width="100%" style="padding-left:5%;" colspan="4">
+                       <td width="100%" style="padding-left:5%;" colspan="2">
                            <label for="txtothereSpecialRequirement" class="font-style" ><b style="font-size:13px"class="test" >Other Requirements</b></label> 
-                           
                        </td>
-                       
                    </tr>
                     
                    <tr id="trSpecialtxt" style="display:none;">
-                       <td width="100%" style="padding-left:5%;" colspan="4">
-                           <textarea id="txtothereSpecialRequirement" class="font-style" rows="4" cols="10"  style="" readonly="true"></textarea>
-                           
+                       <td width="100%" style="padding-left:5%;" colspan="2">
+                           <label id="otherReq" class="font-style"></label>
                        </td>
                        
                    </tr>
@@ -1282,32 +1371,32 @@
             </div>
             
         </center>
-    <table width="100%" style="padding-bottom:35px" >
-                <tr>
-                    <td width="25%">
-                        <input type="button" id="btnbid" class="specialBtn" onclick="showBid()" style="width: 100%;" value="Bid" />
+    <table width="100%" style="padding-bottom: 35px">
+        <tr>
+            <td width="25%">
+                <input type="button" id="btnbid" class="specialBtn" onclick="showBid()" style="width: 100%;" value="Bid" />
 
-                    </td>
-                    <td width="25%">
-                        <input type="button" id="btnmap" class="specialBtn" onclick="showMap()" style="width: 100%;" value="Map" />
+            </td>
+            <td width="25%">
+                <input type="button" id="btnmap" class="specialBtn" onclick="showMap()" style="width: 100%;" value="Map" />
 
-                    </td>
-                    <td width="25%">
-                        <input type="button" id="btncancel" class="specialBtn" onclick="reqCancel()" style="width: 100%;" value="Cancel" />
+            </td>
+            <td width="25%">
+                <input type="button" id="btncancel" class="specialBtn" onclick="reqCancel()" style="width: 100%;" value="Cancel" />
 
-                    </td>
-                    <td width="25%">
-                        <input type="button" id="btnreject" class="specialBtn" onclick="reqReject()" style="width: 100%;" value="Reject" />
+            </td>
+            <td width="25%">
+                <input type="button" id="btnreject" class="specialBtn" onclick="reqReject()" style="width: 100%;" value="Reject" />
 
-                    </td>
+            </td>
 
-                </tr>
+        </tr>
 
-            </table>
-    
+    </table>
+
     <footer>
-        <div  style="width:100%;position:fixed;bottom:0px;height:20px;padding-bottom:15px">
-            
+        <div style="width: 100%; position: fixed; bottom: 0px; height: 20px; padding-bottom: 15px">
+
             <table style="width: 100%;" class="btn-tmpFooter">
                 <tr>
                     <td style="width: 20%;">
