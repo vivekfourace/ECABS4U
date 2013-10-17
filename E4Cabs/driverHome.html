@@ -29,7 +29,6 @@
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
                     var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                    //var pos = new google.maps.LatLng(51.7519, 1.2578);
                     var geocoder = new google.maps.Geocoder();
                     var latLng = pos;
                     geocoder.geocode({ 'latLng': latLng }, function (results, status) {
@@ -43,17 +42,18 @@
                                         for (var j = 0; j < components[i].types.length; j++)
                                             if (components[i].types[j] == type)
                                                return components[i].long_name;
-                                    return " ";
+                                    return "";
                                     
-                                    if(postalCode != " "){
-                                        
+                                    if(postalCode != "")
+                                    {
+                                        alert('updating');
                                         $.ajax({
                                           url:'http://115.115.159.126/ECabs/ECabs4U.asmx/updateLocationMapping',
                                           type:"post",
                                           dataType: "json",
                                           contentType: "application/json; charset=utf-8",
                                           data:"{'postalCode':'"+postalCode+"','Id':'"+relatedId+"'}",
-                                          success: function (data) {},
+                                          success: function (data) {alert('Updated');},
                                           error: function (XMLHttpRequest, textStatus, errorThrown) {
                                                   alert(errorThrown);
                                             }
