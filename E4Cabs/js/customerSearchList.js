@@ -11,7 +11,6 @@ function backtosearch() {
 //Job Time out//
 var timeOut = 181;
 var timer = setInterval(function () {
-    --timeOut;
     //document.getElementById('loadStatus').innerHTML = "Your job will expire in " + --timeOut + "s.";
     if (timeOut <= 0) {
         window.clearInterval(id);
@@ -19,6 +18,7 @@ var timer = setInterval(function () {
         Destroy();
     }
 }, 1000);
+
 function Destroy() {
     window.clearInterval(timer);
     window.clearInterval(id);
@@ -26,7 +26,8 @@ function Destroy() {
 }
 
 var id = window.setInterval(function () {
-    $('#load').show();
+     $('#load').show();
+    
     //$('#loadStatus').html("Locating suitable vehicles...");
     $.ajax({
         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData",    //Get Response from driver
@@ -38,20 +39,19 @@ var id = window.setInterval(function () {
         error: function (XMLHttpRequest, textStatus, errorThrown) {
         }
     });
-}, 100);
+}, 1000);
 
 function getData(data) {
     var count = data.d.length;
     if (count > 0) {
-        $('#loadStatus').html("Locating suitable vehicles...");
+        //$('#loadStatus').html("Locating suitable vehicles...");
         window.clearInterval(id);
-        window.clearInterval(timer);
-        $('#divbid').show();
-         $('#divawait').hide();
+        window.clearInterval(timer); 
         $('#load').hide();
-        $('#popup_box').show();
-        $('#divselect').show();
-       // $('#divDriverList').show();  // status buttons(4)
+        //$('#divbid').show();     
+        //$('#popup_box').show();
+        //$('#divselect').show();
+        //$('#divDriverList').show();  // status buttons(4)
         var html = '<table width="120%" style="border-collapse:collapse;">';
         html += '<thead style="background-color:#D8DCBB;color:darkblue;">';
         html += '<tr>';
