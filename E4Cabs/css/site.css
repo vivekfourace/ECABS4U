@@ -681,10 +681,11 @@ input[type="password"]:focus {
     height: 28px;
     text-align: center;
     font-size: 15px;
-    color: #6E6E6E;
+    color: black;
     margin: 2px 0 2px 0;
     font-weight: bold;
     vertical-align: middle;
+    background-color:white;
 }
 
 .btnsize {

@@ -6,52 +6,51 @@ var relatedId = QString.split("=")[3].split("&")[0];
 
 
 $(document).ready(function () {
-    $('#imgLoader').show();
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-            var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            var geocoder = new google.maps.Geocoder();
-            var latLng = pos;
-            geocoder.geocode({ 'latLng': latLng }, function (results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    if (results[1]) {
-                        //alert(results[1].formatted_address);
-                        $('#txtCurrentFrom').val(results[1].formatted_address);
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                var geocoder = new google.maps.Geocoder();
+                var latLng = pos;
+                geocoder.geocode({ 'latLng': latLng }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        if (results[1]) {
+                            //alert(results[1].formatted_address);
+                            $('#txtCurrentFrom').val(results[1].formatted_address);
+                        }
                     }
-                }
-                else {
-                    alert("Oops!, your entered location is not understandable by google map. ")
-                }
+                    else {
+                        alert("No location found!!")
+                    }
+                });
             });
+        }
+        $('.expand').live({
+            focus: function () {
+                $(this).animate({ height: "70" }, 500);
+            },
+            blur: function () {
+                $(this).animate({ height: "50" }, 500);
+            },
         });
-    }
-    $('.expand').live({
-        focus: function () {
-            $(this).animate({ height: "70" }, 500);
-        },
-        blur: function () {
-            $(this).animate({ height: "50" }, 500);
-        },
+
+        $('#chkNo').click(function () {
+            document.getElementById("chkyes").checked = false;
+            $('#returnJ').fadeIn("slow");
+            $('#termCond').fadeIn("slow");
+
+        });
+        $('#chkyes').click(function () {
+            document.getElementById("chkNo").checked = false;
+            $('#returnJ').fadeOut("slow");
+            $('#termCond').fadeOut("slow");
+
+        });
+
+        $('#popupBoxClose').click(function () {
+            $('#popup_box').fadeOut("slow");
+        });
     });
 
-    $('#chkNo').click(function () {
-        document.getElementById("chkyes").checked = false;
-        $('#returnJ').fadeIn("slow");
-        $('#termCond').fadeIn("slow");
-
-    });
-    $('#chkyes').click(function () {
-        document.getElementById("chkNo").checked = false;
-        $('#returnJ').fadeOut("slow");
-        $('#termCond').fadeOut("slow");
-
-    });
-
-    $('#popupBoxClose').click(function () {
-        $('#popup_box').fadeOut("slow");
-    });
-    $('#imgLoader').hide();
-});
 
 
 function loc() {
@@ -130,7 +129,6 @@ function availabledriver() {
     }
     var IsReturnTrue = $('#chkReturnYes').attr('checked') ? true : false;
     var isCheckedNo = $('#chkNo').attr('checked') ? true : false;
-    alert(isCheckedNo);
     if (isCheckedNo == true) {
         if (IsReturnTrue == false) {
             var pickD = returnDate;
@@ -158,46 +156,45 @@ function availabledriver() {
         }
         else
         {
-            $.ajax({
-            url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
-            cache: true,
-            type: "POST",
-            dataType: "Json",
-            data: "{'userID':'" + relatedId + "','frompost':'" + fromloc + "','topost':'" + toloc + "','pickDate':'" + pickdate + "','pickTime':'" + picktime + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnfromloc + "','returntoloc':'" + returntoloc + "','returnDate':'" + returnDate + "','returnTime':'" + returnTime + "'}",
-            contentType: "application/json; charset=utf-8",
-            success: function (data) {
-                alert('moving');
-                var reqID = data.d;
-                window.location = 'customerSearchList.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId + '&reqid=' + reqID;
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                // alert(errorThrown);
-            }
-        });
+            moveSearch();
+           // $.ajax({
+           // url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
+           // cache: true,
+           // type: "POST",
+           // dataType: "Json",
+           // data: "{'userID':'" + relatedId + "','frompost':'" + fromloc + "','topost':'" + toloc + "','pickDate':'" + pickdate + "','pickTime':'" + picktime + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnfromloc + "','returntoloc':'" + returntoloc + "','returnDate':'" + returnDate + "','returnTime':'" + returnTime + "'}",
+           // contentType: "application/json; charset=utf-8",
+           // success: function (data) {
+           //     var reqID = data.d;
+           //     window.location = 'customerSearchList.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId + '&reqid=' + reqID;
+           // },
+           // error: function (XMLHttpRequest, textStatus, errorThrown) {
+           //     // alert(errorThrown);
+           // }
+            //});
         }
     }
     else
     {
-        $.ajax({
-            url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
-            cache: true,
-            type: "POST",
-            dataType: "Json",
-            data: "{'userID':'" + relatedId + "','frompost':'" + fromloc + "','topost':'" + toloc + "','pickDate':'" + pickdate + "','pickTime':'" + picktime + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnfromloc + "','returntoloc':'" + returntoloc + "','returnDate':'" + returnDate + "','returnTime':'" + returnTime + "'}",
-            contentType: "application/json; charset=utf-8",
-            success: function (data) {
-                alert('moving');
-                var reqID = data.d;
-                window.location = 'customerSearchList.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId + '&reqid=' + reqID;
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                // alert(errorThrown);
-            }
-        });
+        moveSearch();
+       // $.ajax({
+       //     url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
+       //     cache: true,
+       //     type: "POST",
+       //     dataType: "Json",
+       //     data: "{'userID':'" + relatedId + "','frompost':'" + fromloc + "','topost':'" + toloc + "','pickDate':'" + pickdate + "','pickTime':'" + picktime + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnfromloc + "','returntoloc':'" + returntoloc + "','returnDate':'" + returnDate + "','returnTime':'" + returnTime + "'}",
+       //     contentType: "application/json; charset=utf-8",
+       //     success: function (data) {
+       //         var reqID = data.d;
+       //         window.location = 'customerSearchList.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId + '&reqid=' + reqID;
+       //     },
+       //     error: function (XMLHttpRequest, textStatus, errorThrown) {
+       //         // alert(errorThrown);
+       //     }
+       // });
     }
         function moveSearch()
         {
-            alert('inmoving');
             $.ajax({
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
                 cache: true,
@@ -206,7 +203,6 @@ function availabledriver() {
                 data: "{'userID':'" + relatedId + "','frompost':'" + fromloc + "','topost':'" + toloc + "','pickDate':'" + pickdate + "','pickTime':'" + picktime + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnfromloc + "','returntoloc':'" + returntoloc + "','returnDate':'" + returnDate + "','returnTime':'" + returnTime + "'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
-                    alert('moving');
                     var reqID = data.d;
                     window.location = 'customerSearchList.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId + '&reqid=' + reqID;
                 },

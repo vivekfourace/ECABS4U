@@ -3,12 +3,27 @@
     <head>
         <link rel="stylesheet" type="text/css" href="css/site.css" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        
+        <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+       
           <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
         <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
         <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>    
         <script type="text/javascript" src="js/businessCustomerFeedback.js"></script>
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        <script>
+        $(function() {
+        $( "#datepicker" ).datepicker({
+        showOn: "button",
+        buttonImage: "img/calendar.gif",
+        buttonImageOnly: true,
+            
+    });
+           
         
+            
+  });
+  </script>
         
     </head>
     <body>
@@ -52,9 +67,17 @@
         
         </div>
        
-        <!--<div style="padding-top:75px;">
-            <img src="img/LoganCar.png" width="60%" height="25%"/>
-        </div>-->
+        <div style="padding-top:75px;">
+            <table style="width:100%;">
+                <tr>
+                    <td>
+                      <p>Date: <input type="text" id="datepicker" style="width:70%;margin-right:1%" placeholder="Today"/></p> 
+                    </td>
+                    
+                </tr>
+                
+            </table>  
+        </div>
        
        
             
