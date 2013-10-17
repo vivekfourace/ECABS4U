@@ -357,10 +357,22 @@
             $('#divDetails').hide();
         }
         function reqReject() {
+            
+             $('#popup_box').fadeIn("slow");
+             $('#divreject').show();
+            //alert("hi");  divreject 
+            
+        
+        }
+       //
+        function rejectJob()
+        {
             var rid = $('#lbljobno').text();
             var status = true;
-
-
+            $('#divDetails').hide();
+            $('#btnbid').hide();
+            $('#btnmap').hide();
+            $('#btnreject').hide();
             $.ajax({
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/rejectResponse",
                 type: "POST",
@@ -368,17 +380,25 @@
                 data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
-
+    
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
 
                 }
-            });
-
+            });  
         }
+        //
+        function cancelReject()
+        {
+         
+          $('#divreject').hide(); 
+          $('#popup_box').fadeOut("slow");
+        }
+        //
         function dealSubmit() {
             var getIsReturnJourney = $('#isReturnJourney').val();
            // alert(getIsReturnJourney);
+           
             var getFare = $('#lbldealfare').text();
             $('#divDeal').hide();
             var reqID = $('#lbldealjob').text();
@@ -931,7 +951,36 @@
                         </table>
                         
                     </div>
-                    
+                     <div id="divreject" style="display:none;"align="center">
+                        <table align="left" style="width:100%;background-color:#FFFFFF;">
+                                 <tr>
+                                            <td class="popup_header" width="100%" colspan="2">
+                                                <strong style="padding-left:5px; " class="test" width="100%" align="center">Cancel Job</strong>
+                                            </td>
+                                </tr>
+                                <tr class="popup_content">
+                                <td width="100%" colspan="2">
+                                    <strong style="padding-left:5px; " class="test" width="100%" align="center">Are you sure to reject the job?</strong>
+                                    
+                                </td>
+                                
+                            </tr>
+                            <tr class="popup_footer">
+                                
+                                <td width="50%">
+                                    <input type="button" class="ok" value="Cancel" style="width:100%;" onclick="cancelReject()"/>
+                                    
+                                </td>
+                                <td width="50%">
+                                    <input type="button" id="ok" class="ok" value="Confirm" style="width:100%;" onclick="rejectJob()" />
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                        
+                    </div>
+
                 </div>
                 
                 <div id="divComplete" style="overflow:auto;display:none" align="center" >
@@ -1408,10 +1457,7 @@
                 <input type="button" id="btnmap" class="specialBtn" onclick="showMap()" style="width: 100%;" value="Map" />
 
             </td>
-            <td width="25%">
-                <input type="button" id="btncancel" class="specialBtn" onclick="reqCancel()" style="width: 100%;" value="Cancel" />
-
-            </td>
+            
             <td width="25%">
                 <input type="button" id="btnreject" class="specialBtn" onclick="reqReject()" style="width: 100%;" value="Reject" />
 
