@@ -11,7 +11,12 @@ function backtosearch() {
 //Job Time out//
 var timeOut = 181;
 var timer = setInterval(function () {
-    //document.getElementById('lblMessage').innerHTML = "Your job will expire in " + --timeOut + "s.";
+    --timeOut;
+    //document.getElementById('loadStatus').innerHTML = "Your job will expire in " + --timeOut + "s.";
+    if(timeOut === 174)
+    {
+        $('#loadStatus').html("Transmitting job request to drivers...");
+    }
     if (timeOut <= 0) {
         window.clearInterval(id);
         alert('Oops! no driver found...search again.');
