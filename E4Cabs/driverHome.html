@@ -25,7 +25,8 @@
           $(document).ready(function () {
               window.setInterval(getCurrentPostCode, 5000);
          });
-      function getCurrentPostCode(){
+          
+        function getCurrentPostCode() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
                     var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -36,36 +37,32 @@
                             if (results[0]) {
                                 var postalCode = extractFromAdress(results[0].address_components, "postal_code");
                                 alert("Zip Code = " + postalCode);
-
+                                //UpdatePostCode();
                                 function extractFromAdress(components, type) {
                                     for (var i = 0; i < components.length; i++)
                                         for (var j = 0; j < components[i].types.length; j++)
                                             if (components[i].types[j] == type)
-                                               return components[i].long_name;
+                                                return components[i].long_name;
                                     return "";
-                                    
-                                    if(postalCode != "")
-                                    {
-                                        alert('updating');
-                                        $.ajax({
-                                          url:'http://115.115.159.126/ECabs/ECabs4U.asmx/updateLocationMapping',
-                                          type:"post",
-                                          dataType: "json",
-                                          contentType: "application/json; charset=utf-8",
-                                          data:"{'postalCode':'"+postalCode+"','Id':'"+relatedId+"'}",
-                                          success: function (data) {alert('Updated');},
-                                          error: function (XMLHttpRequest, textStatus, errorThrown) {
-                                                  alert(errorThrown);
-                                            }
-                                        });
-                                    }
                                 }
+                                $.ajax({
+                                    url: 'http://115.115.159.126/ECabs/ECabs4U.asmx/updateLocationMapping',
+                                    type: "post",
+                                    dataType: "json",
+                                    contentType: "application/json; charset=utf-8",
+                                    data: "{'postalCode':'" + postalCode + "','Id':'" + relatedId + "'}",
+                                    success: function (data) { alert('Updated'); },
+                                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                        alert(errorThrown);
+                                    }
+                                });
                             }
                         }
+
                     });
                 });
             }
-          }
+        }
   </script>
     </head>
     <body>
