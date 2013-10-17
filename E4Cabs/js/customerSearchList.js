@@ -11,8 +11,7 @@ function backtosearch() {
 //Job Time out//
 var timeOut = 181;
 var timer = setInterval(function () {
-    --timeOut;
-    //document.getElementById('loadStatus').innerHTML = "Your job will expire in " + --timeOut + "s.";
+    //document.getElementById('lblMessage').innerHTML = "Your job will expire in " + --timeOut + "s.";
     if (timeOut <= 0) {
         window.clearInterval(id);
         alert('Oops! no driver found...search again.');
@@ -27,7 +26,6 @@ function Destroy() {
 
 var id = window.setInterval(function () {
     $('#load').show();
-    //$('#loadStatus').html("Locating suitable vehicles...");
     $.ajax({
         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData",    //Get Response from driver
         type: "POST",
@@ -40,10 +38,9 @@ var id = window.setInterval(function () {
     });
 }, 100);
 
-function getData(data){
+function getData(data) {
     var count = data.d.length;
     if (count > 0) {
-        $('#loadStatus').html("Locating suitable vehicles...");
         window.clearInterval(id);
         window.clearInterval(timer);
         $('#divbid').show();
