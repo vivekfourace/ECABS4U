@@ -38,7 +38,7 @@ var id = window.setInterval(function () {
     });
 }, 100);
 
-function getData(data) {
+function getData(data){
     var count = data.d.length;
     if (count > 0) {
         window.clearInterval(id);
