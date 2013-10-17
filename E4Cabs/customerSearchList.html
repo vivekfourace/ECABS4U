@@ -6,7 +6,10 @@
     <link rel="stylesheet" type="text/css" href="css/site.css" />
     <link rel="stylesheet" type="text/css" href="css/PopUp.css" />
     <link rel="stylesheet" type="text/css" href="css/append.css" />
-
+    
+    <script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script type="text/javascript" src="js/customerSearchList.js"></script>
     <style type="text/css">
         .header-style {
             background-color: LightGray;
@@ -19,22 +22,15 @@
 </head>
 <body>
     <center> 
-        <div id="load" class="load">            
-                
-                <span style="font-family:'Trebuchet MS';color:white"> Locating suitable vehicles</span><br>
-                <img src="jquery-mobile/styles/images/ajax-loader-hor.gif" style="width:140px;height:10px;padding-top:2px"/><br>
-                <!--<label id="lblMessage" style="font-family:'Trebuchet MS';color:white"></label>-->
-            </div>
-        
-        <div id="loading" class="loadForall">            
-                <span style="font-family:'Trebuchet MS';color:white">Transmitting job request to drivers</span><br>
-                <img src="jquery-mobile/styles/images/ajax-loader-hor.gif" style="width:140px;height:10px"/>
-         </div>
+        <div id="load">
+            <div style="padding-top:8px">
+                <span style="font-family:'Trebuchet MS';color:white;" id="loadStatus">Locating suitable vehicles...</span><br>
+                <img src="jquery-mobile/styles/images/ajax-loader-hor.gif" style="width:140px;height:16px;padding-top:5px"/><br>
+             </div>
+        </div>
              <div id="imgLoader">
                 <img src="jquery-mobile/styles/images/ajax-loader.gif" id="loading-image"/>
             </div>
-            
-        
            <div style="width:100%;height:70px;"  class="header">
                 <table style="width:100%;padding-top:1%;">
                     <tr>
