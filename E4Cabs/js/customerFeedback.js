@@ -9,8 +9,16 @@ function backtoCustomerhome()
    window.location=  'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
+function PostComment()
+{
+    $('#divPostComment').fadeIn("slow");
+}
 
-
+function CancelComment()
+{
+    $('#txtPostComment').val("");
+    $('#divPostComment').fadeOut("slow");  
+}
 
 //cab Now
 function cabNow()
@@ -49,7 +57,20 @@ function bookedHistory()
 
 //Logout
 function logout()
-    {                
+    {   
+         $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
+            type:"POST",
+            dataType: "Json",
+            data:"{'userID':'" +userId+"'}",
+            contentType: "application/json; charset=utf-8",                     
+            success: function(data)
+            {
+                },
+            
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            //alert(errorThrown);
+                }
+     }); 
        $.cookie("remember", false);
        $.cookie("userName", 'null');
        $.cookie("userPassword", 'null');
