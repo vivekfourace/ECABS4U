@@ -4,6 +4,55 @@ var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 //var requestID = QString.split("=")[4].split("&")[0];
 
+
+$(document).ready(function () {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                var geocoder = new google.maps.Geocoder();
+                var latLng = pos;
+                geocoder.geocode({ 'latLng': latLng }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        if (results[1]) {
+                            //alert(results[1].formatted_address);
+                            $('#txtCurrentFrom').val(results[1].formatted_address);
+                        }
+                    }
+                    else {
+                        alert("No location found!!")
+                    }
+                });
+            });
+        }
+        $('.expand').live({
+            focus: function () {
+                $(this).animate({ height: "70" }, 500);
+            },
+            blur: function () {
+                $(this).animate({ height: "50" }, 500);
+            },
+        });
+
+        $('#chkNo').click(function () {
+            document.getElementById("chkyes").checked = false;
+            $('#returnJ').fadeIn("slow");
+            $('#termCond').fadeIn("slow");
+
+        });
+        $('#chkyes').click(function () {
+            document.getElementById("chkNo").checked = false;
+            $('#returnJ').fadeOut("slow");
+            $('#termCond').fadeOut("slow");
+
+        });
+
+        $('#popupBoxClose').click(function () {
+            $('#popup_box').fadeOut("slow");
+        });
+    });
+
+
+
 function loc() {
     var from = $('#txtFrom').val();
     var to = $('#txtTo').val();
@@ -26,20 +75,22 @@ function currentlocation() {
 
 function availabledriver() {
     var fromloc;
-     var isChecked = $('#chkFromLocation').attr('checked') ? true : false;
-    if(isChecked == false)
-    {
+    var isChecked = $('#chkFromLocation').attr('checked') ? true : false;
+    if (isChecked == false) {
         fromloc = document.getElementById('txtFrom').value;
     }
-    else if(isChecked == true)
-    {
+    else if (isChecked == true) {
         fromloc = document.getElementById('txtCurrentFrom').value;
     }
     //var fromloc = document.getElementById('txtFrom').value;
     var toloc = document.getElementById('txtTo').value;
     var distance = document.getElementById('txtDistance').value;
-    var pickdate = document.getElementById('pickDate').value;
-    var picktime = document.getElementById('pickTime').value;
+    //var pickdate = document.getElementById('pickDate').value;    
+    //var picktime = document.getElementById('pickTime').value;
+
+    var pickdate = document.getElementById('pickUpDate').value;
+    var picktime = document.getElementById('pickUpTime').value;
+
     var passenger = document.getElementById("ddlpassenger");
     var totalpassenger = passenger.options[passenger.selectedIndex].value;
     var lcase = document.getElementById("ddllargecase");
@@ -65,11 +116,6 @@ function availabledriver() {
     var childBooster = childB.options[childB.selectedIndex].value;
 
     var otherSpeRequirement = document.getElementById('txtothereSpecialRequirement').value;
-
-    var IsReturnTrue = $('#chkReturnYes').attr('checked') ? true : false;
-
-    //Return
-
     var returnfromloc = document.getElementById('txtReturFrom').value;
     var returntoloc = document.getElementById('txtReturTo').value;
 
@@ -81,25 +127,93 @@ function availabledriver() {
         $('#lblMessage').text("Enter To location!");
         return false;
     }
-
-    $.ajax({
-        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
-        cache:true,
-        type: "POST",
-        dataType: "Json",
-        data: "{'userID':'" + relatedId + "','frompost':'" + fromloc + "','topost':'" + toloc + "','pickDate':'" + pickdate + "','pickTime':'" + picktime + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnfromloc + "','returntoloc':'" + returntoloc + "','returnDate':'" + returnDate + "','returnTime':'" + returnTime + "'}",
-        contentType: "application/json; charset=utf-8",
-        success: function (data) {
-            var reqID = data.d;
-            window.location = 'customerSearchList.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId + '&reqid=' + reqID;
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            // alert(errorThrown);
+    var IsReturnTrue = $('#chkReturnYes').attr('checked') ? true : false;
+    var isCheckedNo = $('#chkNo').attr('checked') ? true : false;
+    if (isCheckedNo == true) {
+        if (IsReturnTrue == false) {
+            var pickD = returnDate;
+            var pickT = returnTime;
+            var fromL = returntoloc;
+            var toL = returnfromloc;
+            var retunD = "";
+            var retunT = "";
+            var returnFL = "";
+            var returnTL = "";
+            $.ajax({
+                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
+                type: "POST",
+                dataType: "Json",
+                data: "{'userID':'" + relatedId + "','frompost':'" + toL + "','topost':'" + fromL + "','pickDate':'" + pickD + "','pickTime':'" + pickT + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnFL + "','returntoloc':'" + returnTL + "','returnDate':'" + retunD + "','returnTime':'" + retunT + "'}",
+                contentType: "application/json; charset=utf-8",
+                success: moveSearch,
+                //alert('moving');
+                //var reqID = data.d;
+                //window.location = 'customerSearchList.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId + '&reqid=' + reqID;
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    // alert(errorThrown);
+                }
+            });
         }
-    });
-}
+        else
+        {
+            moveSearch();
+           // $.ajax({
+           // url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
+           // cache: true,
+           // type: "POST",
+           // dataType: "Json",
+           // data: "{'userID':'" + relatedId + "','frompost':'" + fromloc + "','topost':'" + toloc + "','pickDate':'" + pickdate + "','pickTime':'" + picktime + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnfromloc + "','returntoloc':'" + returntoloc + "','returnDate':'" + returnDate + "','returnTime':'" + returnTime + "'}",
+           // contentType: "application/json; charset=utf-8",
+           // success: function (data) {
+           //     var reqID = data.d;
+           //     window.location = 'customerSearchList.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId + '&reqid=' + reqID;
+           // },
+           // error: function (XMLHttpRequest, textStatus, errorThrown) {
+           //     // alert(errorThrown);
+           // }
+            //});
+        }
+    }
+    else
+    {
+        moveSearch();
+       // $.ajax({
+       //     url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
+       //     cache: true,
+       //     type: "POST",
+       //     dataType: "Json",
+       //     data: "{'userID':'" + relatedId + "','frompost':'" + fromloc + "','topost':'" + toloc + "','pickDate':'" + pickdate + "','pickTime':'" + picktime + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnfromloc + "','returntoloc':'" + returntoloc + "','returnDate':'" + returnDate + "','returnTime':'" + returnTime + "'}",
+       //     contentType: "application/json; charset=utf-8",
+       //     success: function (data) {
+       //         var reqID = data.d;
+       //         window.location = 'customerSearchList.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId + '&reqid=' + reqID;
+       //     },
+       //     error: function (XMLHttpRequest, textStatus, errorThrown) {
+       //         // alert(errorThrown);
+       //     }
+       // });
+    }
+        function moveSearch()
+        {
+            $.ajax({
+                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
+                cache: true,
+                type: "POST",
+                dataType: "Json",
+                data: "{'userID':'" + relatedId + "','frompost':'" + fromloc + "','topost':'" + toloc + "','pickDate':'" + pickdate + "','pickTime':'" + picktime + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnfromloc + "','returntoloc':'" + returntoloc + "','returnDate':'" + returnDate + "','returnTime':'" + returnTime + "'}",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    var reqID = data.d;
+                    window.location = 'customerSearchList.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId + '&reqid=' + reqID;
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    // alert(errorThrown);
+                }
+            });
+        }
+    }
 
-// Home Button In Hearder
-function homeSearch() {
-    window.location = 'customerHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-}
+    // Home Button In Hearder
+    function homeSearch() {
+        window.location = 'customerHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+    }
