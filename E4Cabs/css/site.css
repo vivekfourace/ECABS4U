@@ -24,7 +24,7 @@
   display:none;
 }
 
-#load{
+.load{
   width: 82%;
   border-radius:2px;
   z-index: 9999;
