@@ -24,7 +24,7 @@
   display:none;
 }
 
-#load{
+.load{
   width: 82%;
   border-radius:2px;
   z-index: 9999;
@@ -366,16 +366,24 @@ input[type="text"], input[type="password"] {
     border: 1px solid #2A81CF;
 }
 
+textarea:focus{
+    border-collapse: collapse;
+    outline: none;
+    border: 1px solid #2A81CF;
+    box-shadow: 0 0 8px #95999E;
+    background-color: #F2F5A9;
+}
 textarea {
     width: 80%;
     border-radius: 1px;
-    height: 30px;
+    height: 50px;
     text-align: left;
     font-size: 15px;
     color: #6E6E6E;
     margin: 2px 0 4px 0;
     font-weight: bold;
     border: 1px solid #2A81CF !important;
+    resize:none;
 }
 
 input[type="text"]:focus {
