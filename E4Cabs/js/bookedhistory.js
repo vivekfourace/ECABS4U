@@ -73,7 +73,7 @@ function gethistory()
             }
 
 
-function customerFeedback()
+/*function customerFeedback()
 {
    $("#tbhist").find("td").click(function(event){
    var listOfCell=$(this).siblings();
@@ -81,7 +81,7 @@ function customerFeedback()
    alert($(listOfCell[i]).text());
 }
 }); 
-}
+}*/
 //cab Now
 function cabNow()
 {
