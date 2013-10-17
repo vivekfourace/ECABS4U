@@ -53,13 +53,13 @@
                                     $('#lblchildseat').text(data.d[12]);
                                     $('#lblchildbooster').text(data.d[13]);
                                     $('#lblisReturnJourney').text(data.d[14]);
-                                    
+
                                     $('#lblreturnTo').text(data.d[15]);
                                     $('#lblreturnFrom').text(data.d[16]);
                                     $('#lblreturnDate').text(data.d[17]);
                                     $('#lblreturnTime').text(data.d[18]);
                                     $('#otherReq').text(data.d[19]);
-                                    
+
                                     if (data.d[3] != null) {
                                         var sec = data.d[3];
                                         $('#lblpopthird').text(sec);
@@ -383,13 +383,41 @@
             $('#divDeal').hide();
             var reqID = $('#lbldealjob').text();
             if (getFare == 15 || getFare > 15) {
-                
+
                 if (getIsReturnJourney == "True") {
                     var _avgFare = getFare / 2;
+
                     if (_avgFare == 15 || _avgFare > 15) {
                         $('#divComission2').show();
                         $('#lblconfirmjob2').text(reqID);
                         $('#lblconfirmfare2').text(getFare);
+                    }
+                    else {
+                        $('#divComission').hide();
+                        $('#divComission2').hide();
+
+                        //alert(reqID);lblconfirmjob
+                        $.ajax({
+                            url: "http://115.115.159.126/ECabs/ECabs4U.asmx/jobBooked",
+                            type: "POST",
+                            dataType: "Json",
+                            data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
+                            contentType: "application/json; charset=utf-8",
+                            success: function (data) {
+                                $('#divDetails').hide();
+                                $('#btnbid').hide();
+                                $('#btnmap').hide();
+                                $('#btncancel').hide();
+                                $('#btnreject').hide();
+                                alert('Job Booked Successfully.');
+                            },
+                            error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                            }
+                        });
+                        Destroy();
+                        $('#divDeal').hide();
+                        $('#popup_box').fadeOut("slow");
                     }
                 }
                 else if (getIsReturnJourney == "False") {
@@ -399,7 +427,6 @@
                 }
             }
             else {
-                alert('cominginjobBooked');
                 $('#divComission').hide();
                 $('#divComission2').hide();
 
@@ -456,7 +483,7 @@
         function Confirmcomission2() {
 
             var reqID = $('#lblconfirmjob2').text();
-            var comission = 2.4;
+            //var comission = 2.4;
 
             $.ajax({
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/jobBooked",
