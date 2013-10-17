@@ -48,11 +48,11 @@ function getData(data) {
     if (count > 0) {
         window.clearInterval(id);
         window.clearInterval(timer);
-        $('#divbid').show();
-         $('#divawait').hide();
+       // $('#divbid').show();
+       //  $('#divawait').hide();
         $('#load').hide();
-        $('#popup_box').show();
-        $('#divselect').show();
+      //  $('#popup_box').show();
+      //  $('#divselect').show();
        // $('#divDriverList').show();  // status buttons(4)
         var html = '<table width="120%" style="border-collapse:collapse;">';
         html += '<thead style="background-color:#D8DCBB;color:darkblue;">';
@@ -353,6 +353,19 @@ function calOk() {
 
 //Logout Button
 function logout() {
+     $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
+            type:"POST",
+            dataType: "Json",
+            data:"{'userID':'" +userId+"'}",
+            contentType: "application/json; charset=utf-8",                     
+            success: function(data)
+            {
+                },
+            
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            //alert(errorThrown);
+                }
+     }); 
     $.cookie("remember", false);
     $.cookie("userName", 'null');
     $.cookie("userPassword", 'null');

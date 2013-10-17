@@ -124,7 +124,7 @@ function availabledriver() {
         return false;
     }
     if (!toloc) {
-        $('#lblMessage').text("Enter To location!");
+        $('#lblMessage').text("Enter Final Destination!");
         return false;
     }
     var IsReturnTrue = $('#chkReturnYes').attr('checked') ? true : false;
