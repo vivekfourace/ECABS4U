@@ -20,50 +20,9 @@
         <style type="text/css">
             body.js .nojs { display: none; }
         </style>
-        
-      <script type="text/javascript" language="javascript">
-          $(document).ready(function () {
-              window.setInterval(getCurrentPostCode, 5000);
-         });
-          
-        function getCurrentPostCode() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function (position) {
-                    var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                    var geocoder = new google.maps.Geocoder();
-                    var latLng = pos;
-                    geocoder.geocode({ 'latLng': latLng }, function (results, status) {
-                        if (status == google.maps.GeocoderStatus.OK) {
-                            if (results[0]) {
-                                var postalCode = extractFromAdress(results[0].address_components, "postal_code");
-                                alert("Zip Code = " + postalCode);
-                                //UpdatePostCode();
-                                function extractFromAdress(components, type) {
-                                    for (var i = 0; i < components.length; i++)
-                                        for (var j = 0; j < components[i].types.length; j++)
-                                            if (components[i].types[j] == type)
-                                                return components[i].long_name;
-                                    return "";
-                                }
-                                $.ajax({
-                                    url: 'http://115.115.159.126/ECabs/ECabs4U.asmx/updateLocationMapping',
-                                    type: "post",
-                                    dataType: "json",
-                                    contentType: "application/json; charset=utf-8",
-                                    data: "{'postalCode':'" + postalCode + "','Id':'" + relatedId + "'}",
-                                    success: function (data) { alert('Updated'); },
-                                    error: function (XMLHttpRequest, textStatus, errorThrown) {
-                                        alert(errorThrown);
-                                    }
-                                });
-                            }
-                        }
-
-                    });
-                });
-            }
-        }
-  </script>
+        <script type="text/javascript">
+            var relId = relatedId;
+        </script>
     </head>
     <body>
         <center>
