@@ -46,7 +46,7 @@ function getData(data) {
         $('#divbid').show();
          $('#divawait').hide();
         $('#load').hide();
-        $('#popup_box').show();
+     $('#popup_box').show();
         $('#divselect').show();
        // $('#divDriverList').show();  // status buttons(4)
         var html = '<table width="120%" style="border-collapse:collapse;">';
@@ -222,6 +222,7 @@ function specClose() {
 function Hireme(driID, reqID) {
     $('#loading').show();   //Start loader
     var driverId = driID;
+    alert(driverId);
     var requestId = reqID;
     $.ajax({
         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse",
@@ -343,6 +344,11 @@ function calOk() {
     });
 }
 
+function selectDriver()
+{
+    $('#divselect').hide();
+    $('#popup_box').fadeOut("slow");
+}
 
 //Menu items--
 
