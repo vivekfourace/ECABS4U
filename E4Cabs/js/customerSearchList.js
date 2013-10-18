@@ -168,6 +168,7 @@ function getData(data) {
         }
         html += '</tbody>';
         html += '</table>';
+        html += '<div><input type="button" id="searchAgain" onclick="SearchAgain()"/></div>';
         $('#msg').append(html);
     }
     else {
