@@ -36,18 +36,18 @@ var id = window.setInterval(function () {
         error: function (XMLHttpRequest, textStatus, errorThrown) {
         }
     });
-}, 100);
+}, 1000);
 
 function getData(data) {
     var count = data.d.length;
-    if (count > 0) {
+    if (count > 0 ) {
         window.clearInterval(id);
         window.clearInterval(timer);
-       // $('#divbid').show();
-       //  $('#divawait').hide();
+        $('#divbid').show();
+        $('#divawait').hide();
         $('#load').hide();
-      //  $('#popup_box').show();
-      //  $('#divselect').show();
+        $('#popup_box').show();
+        $('#divselect').show();
        // $('#divDriverList').show();  // status buttons(4)
         var html = '<table width="120%" style="border-collapse:collapse;">';
         html += '<thead style="background-color:#D8DCBB;color:darkblue;">';
@@ -149,7 +149,7 @@ function getData(data) {
                 html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
                 html += "<td width='20%' align='center'>" + '<img src="img/spec.png" class="pulse" width="15" height="15" style="color:grey;" onclick="SpecShow()"/>' + "</td>";
                 html += "<td width='20%' align='center'>" + bid[1] + "</td>";
-                html += "<td width='20%' align='center'>" + '<input type="button"  value="Hire driver" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\');" title= "Hire driver" />' + "</td>";
+                html += "<td width='20%' align='center'>" + '<input type="button"  value="Hire driver" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\');" title= '+driverID+' />' + "</td>";
                 html += '</tr>';
                 $('#txtothereSpecialReq').text(spec);
             }
@@ -161,14 +161,15 @@ function getData(data) {
                 html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
                 html += "<td width='20%' align='center'>" + '<img src="img/spec.png" width="15" height="15" style="color:grey;" onclick="SpecShow()"/>' + "</td>";
                 html += "<td width='20%' align='center'>" + bidh + ":" + bidm + ":" + bids + "</td>";
-                html += "<td width='20%' align='center'>" + '<input type="button"  value="Hire driver" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\');" title= "Hire driver" />' + "</td>";
+                html += "<td width='20%' align='center'>" + '<input type="button"  value="Hire driver" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\');" title= ' +driverID+' />' + "</td>";
                 html += '</tr>';
                 $('#txtothereSpecialReq').text("Not Available");
             }
         }
         html += '</tbody>';
         html += '</table>';
-        html += '<div><input type="button" id="searchAgain" onclick="SearchAgain()"/></div>';
+        html += '<br/>'
+        html += '<div><input type="button" id="searchAgain" value="Search again" onclick="SearchAgain()"/></div>';
         $('#msg').append(html);
     }
     else {
@@ -177,8 +178,23 @@ function getData(data) {
     }
 }
 
+function SearchAgain()
+{
+    alert('hi');
+    $('#msg').empty();
+    $.ajax({
+        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData",    //Get Response from driver
+        type: "POST",
+        dataType: "Json",
+        data: "{'requestID':'" + requestID + "'}",
+        contentType: "application/json; charset=utf-8",
+        success: getData,
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+        }
+    });
+}
 function showExpiry() {
-    $('#popup_box').fadeIn("slow");
+    $('#popup_box').hide();
     $('#popupBoxClose').show();
     $('#divBiding').hide();
     $('#divExpiry').show();
@@ -188,7 +204,7 @@ function showExpiry() {
     $('#divspec').hide();
 }
 function showBid() {
-    $('#popup_box').fadeIn("slow");
+    $('#popup_box').hide();
     $('#popupBoxClose').show();
     $('#divBiding').show();
     $('#divExpiry').hide();
@@ -198,16 +214,16 @@ function showBid() {
     $('#divspec').hide();
 }
 function closeExpiry() {
-    $('#popup_box').fadeOut("slow");
+    $('#popup_box').hide();
     $('#divExpiry').hide();
 }
 function closeBid() {
-    $('#popup_box').fadeOut("slow");
+    $('#popup_box').hide();
     $('#divBiding').hide();
 }
 //specia req pop up divExpiry divBiding closeExpiry closeBid
 function SpecShow() {
-    $('#popup_box').fadeIn("slow");
+    $('#popup_box').hide();
     $('#popupBoxClose').show();
     $('#divDealConfirmed').hide();
     $('#divspec').show();
@@ -215,7 +231,7 @@ function SpecShow() {
 }
 //close the pop up spec 
 function specClose() {
-    $('#popup_box').fadeOut("slow");
+    $('#popup_box').hide();
     $('#divspec').hide();
 }
 
@@ -223,6 +239,7 @@ function specClose() {
 function Hireme(driID, reqID) {
     $('#loading').show();   //Start loader
     var driverId = driID;
+    alert(driverId);
     var requestId = reqID;
     $.ajax({
         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse",
@@ -344,24 +361,16 @@ function calOk() {
     });
 }
 
+function selectDriver()
+{
+    $('#divselect').hide();
+    $('#popup_box').hide();
+}
 
 //Menu items--
 
 //Logout Button
 function logout() {
-     $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
-            type:"POST",
-            dataType: "Json",
-            data:"{'userID':'" +userId+"'}",
-            contentType: "application/json; charset=utf-8",                     
-            success: function(data)
-            {
-                },
-            
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-            //alert(errorThrown);
-                }
-     }); 
     $.cookie("remember", false);
     $.cookie("userName", 'null');
     $.cookie("userPassword", 'null');
