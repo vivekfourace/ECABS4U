@@ -23,7 +23,7 @@ function Destroy() {
     window.clearInterval(id);
     window.location = "customerSearch.html";
 }
-
+$('#load').show();
 var id = window.setInterval(function () {
     $('#load').show();
     $.ajax({
@@ -180,7 +180,6 @@ function getData(data) {
 
 function SearchAgain()
 {
-    alert('hi');
     $('#msg').empty();
     $.ajax({
         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData",    //Get Response from driver
@@ -239,7 +238,6 @@ function specClose() {
 function Hireme(driID, reqID) {
     $('#loading').show();   //Start loader
     var driverId = driID;
-    alert(driverId);
     var requestId = reqID;
     $.ajax({
         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse",
