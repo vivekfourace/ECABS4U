@@ -36,7 +36,7 @@
                             url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetData",
                             type: "POST",
                             dataType: "Json",
-                            data: "{'userID':'" + getID + "'}",
+                            data: "{'userID':'" + getID + "', 'driverID':'" + relatedId + "'}",
                             contentType: "application/json; charset=utf-8",
                             success: function (data) {
                                 if (data.d[0] != null) {
@@ -97,7 +97,7 @@
                 }
             });
             $('#popupBoxClose').click(function () {
-                $('#popup_box').fadeOut("slow");
+                $('#popup_box').hide();
             });
         })
 
@@ -199,17 +199,19 @@
 
                         }
                         else if (data.d[0] == "Error") {
-                            $('#divDeal').hide();
-                            alert("Job allocated to other driver !");
-                            $('#divDealload').hide();
-                            $('#divDetails').hide();
-                             DestroyMe();
+                            //alert(data.d[0]);
+                           // $('#divDeal').hide();
+                            //alert("Job allocated to other driver !");
+                            $('#divDealload').show();
+                            //$('#divDetails').hide();
+                            // DestroyMe();
                         }
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         $('#divDeal').hide();
                         $('#divDealload').hide();
                         $('#divDetails').hide();
+                         //alert('expection');
                     }
                 });
             }, 1000);
@@ -337,14 +339,14 @@
             document.getElementById("returnTime").style.display = 'none';
             document.getElementById("trOtherspec").style.display = 'none';
             document.getElementById("trSpecialtxt").style.display = 'none';
-            $('#popup_box').fadeOut("slow");
+            $('#popup_box').hide();
             SubmitDeal();
             //var Dealid = window.setInterval(SubmitDeal, 2000);
         }
 
         function bidCancel() {
             var job = $('#lbljobno').text();
-            $('#popup_box').fadeOut("slow");
+            $('#popup_box').hide();
             $('#lblfare').text("");
             $.ajax({
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/cancelJob",
@@ -399,7 +401,7 @@
         {
          
           $('#divreject').hide(); 
-          $('#popup_box').fadeOut("slow");
+          $('#popup_box').hide();
         }
         //
         function dealSubmit() {
@@ -443,7 +445,7 @@
                         });
                         Destroy();
                         $('#divDeal').hide();
-                        $('#popup_box').fadeOut("slow");
+                        $('#popup_box').hide();
                     }
                 }
                 else if (getIsReturnJourney == "False") {
@@ -477,7 +479,7 @@
                 });
                 Destroy();
                 $('#divDeal').hide();
-                $('#popup_box').fadeOut("slow");
+                $('#popup_box').hide();
             }
 
         }
@@ -503,7 +505,7 @@
             window.location.href = "https://sandbox.gocardless.com/pay/YH0MFHY7"; //for commission 1.2pond
 
             $('#divDeal').hide();
-            $('#popup_box').fadeOut("slow");
+            $('#popup_box').hide();
         }
 
         function Confirmcomission2() {
@@ -525,7 +527,7 @@
             });
             window.location.href = "https://sandbox.gocardless.com/pay/GAP5Y6VH"; //for commission 2.4pond
             $('#divDeal').hide();
-            $('#popup_box').fadeOut("slow");
+            $('#popup_box').hide();
         }
 
         function RejectComission() {
@@ -534,7 +536,7 @@
         }
         function dealCancel() {
             $('#divDeal').hide();
-            $('#popup_box').fadeOut("slow");
+            $('#popup_box').hide();
 
         }
 
