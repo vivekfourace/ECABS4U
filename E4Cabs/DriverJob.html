@@ -160,7 +160,8 @@
                         var getResID = data.d[0];
                         var getResponse = data.d[1];
 
-                        if (getResponse == "False") {
+                        if (getResponse == "False")
+                        {
 
                             $.ajax({
                                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetDealData",
@@ -199,10 +200,16 @@
                         }
                         else if (data.d[0] == "Error") {
                             $('#divDeal').hide();
+                            alert("Job allocated to other driver !");
+                            $('#divDealload').hide();
+                            $('#divDetails').hide();
+                             DestroyMe();
                         }
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         $('#divDeal').hide();
+                        $('#divDealload').hide();
+                        $('#divDetails').hide();
                     }
                 });
             }, 1000);
