@@ -74,6 +74,7 @@ function currentlocation() {
 //Search Available
 
 function availabledriver() {
+    $('#imgLoader').show();
     var fromloc;
     var isChecked = $('#chkFromLocation').attr('checked') ? true : false;
     if (isChecked == false) {
@@ -141,63 +142,42 @@ function availabledriver() {
             var returnTL = "";
             $.ajax({
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
+                cache: false,
+                beforeSend: function(){
+                     $('#imgLoader').show();
+                 },
+                 complete: function(){
+                     $('#imgLoader').hide();
+                 },
                 type: "POST",
                 dataType: "Json",
                 data: "{'userID':'" + relatedId + "','frompost':'" + toL + "','topost':'" + fromL + "','pickDate':'" + pickD + "','pickTime':'" + pickT + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnFL + "','returntoloc':'" + returnTL + "','returnDate':'" + retunD + "','returnTime':'" + retunT + "'}",
                 contentType: "application/json; charset=utf-8",
                 success: moveSearch,
-                //alert('moving');
-                //var reqID = data.d;
-                //window.location = 'customerSearchList.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId + '&reqid=' + reqID;
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    // alert(errorThrown);
                 }
             });
         }
         else
         {
             moveSearch();
-           // $.ajax({
-           // url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
-           // cache: true,
-           // type: "POST",
-           // dataType: "Json",
-           // data: "{'userID':'" + relatedId + "','frompost':'" + fromloc + "','topost':'" + toloc + "','pickDate':'" + pickdate + "','pickTime':'" + picktime + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnfromloc + "','returntoloc':'" + returntoloc + "','returnDate':'" + returnDate + "','returnTime':'" + returnTime + "'}",
-           // contentType: "application/json; charset=utf-8",
-           // success: function (data) {
-           //     var reqID = data.d;
-           //     window.location = 'customerSearchList.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId + '&reqid=' + reqID;
-           // },
-           // error: function (XMLHttpRequest, textStatus, errorThrown) {
-           //     // alert(errorThrown);
-           // }
-            //});
         }
     }
     else
     {
         moveSearch();
-       // $.ajax({
-       //     url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
-       //     cache: true,
-       //     type: "POST",
-       //     dataType: "Json",
-       //     data: "{'userID':'" + relatedId + "','frompost':'" + fromloc + "','topost':'" + toloc + "','pickDate':'" + pickdate + "','pickTime':'" + picktime + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnfromloc + "','returntoloc':'" + returntoloc + "','returnDate':'" + returnDate + "','returnTime':'" + returnTime + "'}",
-       //     contentType: "application/json; charset=utf-8",
-       //     success: function (data) {
-       //         var reqID = data.d;
-       //         window.location = 'customerSearchList.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId + '&reqid=' + reqID;
-       //     },
-       //     error: function (XMLHttpRequest, textStatus, errorThrown) {
-       //         // alert(errorThrown);
-       //     }
-       // });
     }
         function moveSearch()
         {
             $.ajax({
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
-                cache: true,
+                cache: false,
+                beforeSend: function(){
+                     $('#imgLoader').show();
+                 },
+                 complete: function(){
+                     $('#imgLoader').hide();
+                 },
                 type: "POST",
                 dataType: "Json",
                 data: "{'userID':'" + relatedId + "','frompost':'" + fromloc + "','topost':'" + toloc + "','pickDate':'" + pickdate + "','pickTime':'" + picktime + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnfromloc + "','returntoloc':'" + returntoloc + "','returnDate':'" + returnDate + "','returnTime':'" + returnTime + "'}",

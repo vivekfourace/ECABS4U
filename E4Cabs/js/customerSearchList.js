@@ -4,6 +4,7 @@ var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 var requestID = QString.split("=")[4].split("&")[0];
 
+$('#load').show();
 function backtosearch() {
     window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
 }
@@ -23,7 +24,7 @@ function Destroy() {
     window.clearInterval(id);
     window.location = "customerSearch.html";
 }
-$('#load').show();
+
 var id = window.setInterval(function () {
     $('#load').show();
     $.ajax({
@@ -149,7 +150,7 @@ function getData(data) {
                 html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
                 html += "<td width='20%' align='center'>" + '<img src="img/spec.png" class="pulse" width="15" height="15" style="color:grey;" onclick="SpecShow()"/>' + "</td>";
                 html += "<td width='20%' align='center'>" + bid[1] + "</td>";
-                html += "<td width='20%' align='center'>" + '<input type="button"  value="Hire driver" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\');" title= '+driverID+' />' + "</td>";
+                html += "<td width='20%' align='center'>" + '<input type="button" class="disableBtn" value="Hire driver" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\');" title= '+driverID+' />' + "</td>";
                 html += '</tr>';
                 $('#txtothereSpecialReq').text(spec);
             }
@@ -161,7 +162,7 @@ function getData(data) {
                 html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
                 html += "<td width='20%' align='center'>" + '<img src="img/spec.png" width="15" height="15" style="color:grey;" onclick="SpecShow()"/>' + "</td>";
                 html += "<td width='20%' align='center'>" + bidh + ":" + bidm + ":" + bids + "</td>";
-                html += "<td width='20%' align='center'>" + '<input type="button"  value="Hire driver" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\');" title= ' +driverID+' />' + "</td>";
+                html += "<td width='20%' align='center'>" + '<input type="button" class="disableBtn"  value="Hire driver" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\');" title= ' +driverID+' />' + "</td>";
                 html += '</tr>';
                 $('#txtothereSpecialReq').text("Not Available");
             }
@@ -236,6 +237,9 @@ function specClose() {
 
 // hire me response send to driver 
 function Hireme(driID, reqID) {
+    
+    DisableHiremeBtns();    // Disable all other buttons once cliked on any one 'Hire me' button.
+    
     $('#loading').show();   //Start loader
     var driverId = driID;
     var requestId = reqID;
@@ -248,6 +252,14 @@ function Hireme(driID, reqID) {
         success: getResponseFromDriver,
         error: function (XMLHttpRequest, textStatus, errorThrown) {
         }
+    });
+}
+
+//Disable buttons function
+function DisableHiremeBtns()
+{
+    $(":button.disableBtn").each(function(){
+       this.disabled = true;
     });
 }
 
@@ -284,7 +296,6 @@ function getResponseFromDriver(data) {
                             $('#lblconfirmdate').text(data.d[5]);
                             $('#lblconfirmtime').text(data.d[6]);
                             $('#lblconfirmfare').text(data.d[7]);
-
                             $('#popup_box').fadeIn("slow");
                             $('#divDealConfirmed').show();
                             $('#divselect').hide();
