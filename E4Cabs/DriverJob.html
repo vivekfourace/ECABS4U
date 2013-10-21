@@ -20,7 +20,7 @@
         var roleId = QString.split("=")[2].split("&")[0];
         var relatedId = QString.split("=")[3].split("&")[0];
         //Got Job a New Job Request
-
+        var count = 0; //global variable for checking customer response.
         $(document).ready(function () {
             $.ajax({
                 url: 'http://115.115.159.126/ECabs/ECabs4U.asmx/checkResponse',
@@ -156,21 +156,23 @@
                     data: "{'userID':'" + relatedId + "'}",
                     contentType: "application/json; charset=utf-8",
                     success: function (data) {
-
                         var getResID = data.d[0];
                         var getResponse = data.d[1];
+                        var dataStatus = data.d[2];
+                        var statusInfo = data.d[3];
+                        //alert(getResID + getResponse + dataStatus);
 
-                        if (getResponse == "False")
-                        {
-
+                        if (getResponse == "False" && statusInfo == "False") {      // /*&& dataStatus == "True"*/
+                            //alert(count);
                             $.ajax({
                                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetDealData",
                                 type: "POST",
                                 dataType: "Json",
-                                data: "{'userID':'" + getResID + "','driverId':'"+ relatedId +"'}",
+                                data: "{'userID':'" + getResID + "','driverId':'" + relatedId + "'}",
                                 contentType: "application/json; charset=utf-8",
                                 success: function (data) {
                                     if (data.d[0] != "Error") {
+                                        count = 1;
                                         //alert(data.d[0]);
                                         $("#divDealload").hide();
                                         $('#popup_box').show();
@@ -183,10 +185,12 @@
                                         $('#lbldealtime').text(data.d[5]);
                                         $('#lbldealfare').text(data.d[6]);
                                         $('#isReturnJourney').val(data.d[7]);
-                                        DestroyMe();
+                                        //DestroyMe();
 
                                     }
                                     else if (data.d[0] == "Error") {
+                                        // alert(data.d[1]);
+                                        //alert(count + 'inside deal data');
                                         $('#popup_box').hide();
                                         $('#divDeal').hide();
                                         $("#divDealload").show();
@@ -198,30 +202,60 @@
                             });
 
                         }
-                        else if (data.d[0] == "Error") {
-                            //alert(data.d[0]);
-                           // $('#divDeal').hide();
-                            //alert("Job allocated to other driver !");
-                            $('#divDealload').show();
-                            //$('#divDetails').hide();
-                            // DestroyMe();
+                        else if (getResponse == "False" && statusInfo == "True") {
+                            alert("naveeen");
+                            $('#divDealload').hide();
+                            $('#divDetails').hide();
+                            DestroyMe();
+                        }
+                        else if (data.d[0] == "True") {
+                            DestroyMe();
+                            $('#divDealload').hide();
+                            alert('Job allocated to other driver.');
+                            $('#divDetails').hide();
+                            
                         }
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        // alert("delete2");
                         $('#divDeal').hide();
                         $('#divDealload').hide();
                         $('#divDetails').hide();
-                         //alert('expection');
+                        //alert('expection');
+                        deleteDriver();
                     }
                 });
-            }, 1000);
+            }, 5000);
 
             function DestroyMe() {
+                //alert('destroyCalled');
                 window.clearInterval(timereOut);
             }
         }
 
+        function deleteDriver() {
+            alert("delete");
 
+            $.ajax({
+                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/DeleteUnallocatedDriver",
+                type: "POST",
+                dataType: "Json",
+                data: "{'reqid':'" + reqID + "'}",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+
+                    alert("inside");
+                    //
+
+                    //
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("inside");
+                }
+            });
+
+        }
         function showSpecial() {
             //document.getElementById("trfare").style.display = 'table-row';
             //document.getElementById("trwheelchair").style.display = 'table-row';
@@ -366,16 +400,15 @@
             $('#divDetails').hide();
         }
         function reqReject() {
-            
-             $('#popup_box').fadeIn("slow");
-             $('#divreject').show();
+
+            $('#popup_box').fadeIn("slow");
+            $('#divreject').show();
             //alert("hi");  divreject 
-            
-        
+
+
         }
-       //
-        function rejectJob()
-        {
+        //
+        function rejectJob() {
             var rid = $('#lbljobno').text();
             var status = true;
             $('#divDetails').hide();
@@ -389,24 +422,22 @@
                 data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
-    
+
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
 
                 }
-            });  
+            });
         }
         //
-        function cancelReject()
-        {
-         
-          $('#divreject').hide(); 
-          $('#popup_box').hide();
+        function cancelReject() {
+
+            $('#divreject').hide();
+            $('#popup_box').hide();
         }
         //
         function dealSubmit() {
             var getIsReturnJourney = $('#isReturnJourney').val();
-           
             var getFare = $('#lbldealfare').text();
             $('#divDeal').hide();
             var reqID = $('#lbldealjob').text();
@@ -424,7 +455,6 @@
                         $('#divComission').hide();
                         $('#divComission2').hide();
 
-                        //alert(reqID);lblconfirmjob
                         $.ajax({
                             url: "http://115.115.159.126/ECabs/ECabs4U.asmx/jobBooked",
                             type: "POST",
@@ -437,12 +467,13 @@
                                 $('#btnmap').hide();
                                 $('#btncancel').hide();
                                 $('#btnreject').hide();
-                                alert('Job Booked Successfully.');
+                                alert('You have been awarded this job.');
                             },
                             error: function (XMLHttpRequest, textStatus, errorThrown) {
 
                             }
                         });
+
                         Destroy();
                         $('#divDeal').hide();
                         $('#popup_box').hide();
@@ -457,8 +488,6 @@
             else {
                 $('#divComission').hide();
                 $('#divComission2').hide();
-
-                //alert(reqID);lblconfirmjob
                 $.ajax({
                     url: "http://115.115.159.126/ECabs/ECabs4U.asmx/jobBooked",
                     type: "POST",
@@ -477,12 +506,13 @@
 
                     }
                 });
-                Destroy();
-                $('#divDeal').hide();
-                $('#popup_box').hide();
             }
-
+            Destroy();
+            $('#divDeal').hide();
+            $('#popup_box').hide();
         }
+
+
         function Confirmcomission() {
 
             var reqID = $('#lblconfirmjob').text();
@@ -980,7 +1010,7 @@
                                     
                                 </td>
                                 <td width="50%">
-                                    <input type="button" id="ok" class="ok" value="Confirm" style="width:100%;" onclick="rejectJob()" />
+                                    <input type="button" id="Button1" class="ok" value="Confirm" style="width:100%;" onclick="rejectJob()" />
                                     
                                 </td>
                             </tr>
@@ -1465,7 +1495,7 @@
                 <input type="button" id="btnmap" class="specialBtn" onclick="showMap()" style="width: 100%;" value="Map" />
 
             </td>
-            
+
             <td width="25%">
                 <input type="button" id="btnreject" class="specialBtn" onclick="reqReject()" style="width: 100%;" value="Reject" />
 
