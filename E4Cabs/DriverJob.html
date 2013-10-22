@@ -160,10 +160,10 @@
                         var getResponse = data.d[1];
                         var dataStatus = data.d[2];
                         var statusInfo = data.d[3];
-                        //alert(getResID + getResponse + dataStatus);
+                       
 
-                        if (getResponse == "False" && statusInfo == "False") {      // /*&& dataStatus == "True"*/
-                            //alert(count);
+                        if (getResponse == "False" && statusInfo == "False") {     
+                            
                             $.ajax({
                                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetDealData",
                                 type: "POST",
@@ -173,7 +173,7 @@
                                 success: function (data) {
                                     if (data.d[0] != "Error") {
                                         count = 1;
-                                        //alert(data.d[0]);
+                                        
                                         $("#divDealload").hide();
                                         $('#popup_box').show();
                                         $('#divDeal').show();
@@ -189,8 +189,7 @@
 
                                     }
                                     else if (data.d[0] == "Error") {
-                                        // alert(data.d[1]);
-                                        //alert(count + 'inside deal data');
+                                        
                                         $('#popup_box').hide();
                                         $('#divDeal').hide();
                                         $("#divDealload").show();
@@ -203,67 +202,45 @@
 
                         }
                         else if (getResponse == "False" && statusInfo == "True") {
-                            alert("naveeen");
+                           
                             $('#divDealload').hide();
                             $('#divDetails').hide();
+                            $('#btnbid').hide();
+                            $('#btnmap').hide();
+                            $('#btncancel').hide();
+                            $('#btnreject').hide();
                             DestroyMe();
                         }
                         else if (data.d[0] == "True") {
                             DestroyMe();
                             $('#divDealload').hide();
-                            alert('Job allocated to other driver.');
                             $('#divDetails').hide();
-                            
+                            $('#btnbid').hide();
+                            $('#btnmap').hide();
+                            $('#btncancel').hide();
+                            $('#btnreject').hide();
+                            alert('This job has been awarded to other driver ');
+                            window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                         }
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
-                        // alert("delete2");
+                        
                         $('#divDeal').hide();
                         $('#divDealload').hide();
                         $('#divDetails').hide();
-                        //alert('expection');
+                        
                         deleteDriver();
                     }
                 });
             }, 5000);
 
             function DestroyMe() {
-                //alert('destroyCalled');
+               
                 window.clearInterval(timereOut);
             }
         }
 
-        function deleteDriver() {
-            alert("delete");
-
-            $.ajax({
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/DeleteUnallocatedDriver",
-                type: "POST",
-                dataType: "Json",
-                data: "{'reqid':'" + reqID + "'}",
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
-
-                    alert("inside");
-                    //
-
-                    //
-
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    alert("inside");
-                }
-            });
-
-        }
-        function showSpecial() {
-            //document.getElementById("trfare").style.display = 'table-row';
-            //document.getElementById("trwheelchair").style.display = 'table-row';
-            //document.getElementById("trchildseats").style.display = 'table-row';
-            //document.getElementById("trchildbooster").style.display = 'table-row';
-            //document.getElementById("trOtherspec").style.display = 'table-row'; 
-            //document.getElementById("trSpecialtxt").style.display = 'table-row'; 
-
+            function showSpecial() {
             $("#trfare").toggle();
             $("#trwheelchair").toggle();
             $("#trchildseats").toggle();
@@ -391,7 +368,7 @@
                 success: function (data) {
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    // alert(errorThrown);
+                   
                 }
             });
             document.getElementById("trfare").style.display = 'none';
@@ -403,7 +380,7 @@
 
             $('#popup_box').fadeIn("slow");
             $('#divreject').show();
-            //alert("hi");  divreject 
+            
 
 
         }
@@ -462,12 +439,15 @@
                             data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
                             contentType: "application/json; charset=utf-8",
                             success: function (data) {
+                               
                                 $('#divDetails').hide();
                                 $('#btnbid').hide();
                                 $('#btnmap').hide();
                                 $('#btncancel').hide();
                                 $('#btnreject').hide();
                                 alert('You have been awarded this job.');
+                                UpdateStatus();
+                                window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                             },
                             error: function (XMLHttpRequest, textStatus, errorThrown) {
 
@@ -495,12 +475,15 @@
                     data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
                     contentType: "application/json; charset=utf-8",
                     success: function (data) {
+                       
                         $('#divDetails').hide();
                         $('#btnbid').hide();
                         $('#btnmap').hide();
                         $('#btncancel').hide();
                         $('#btnreject').hide();
-                        alert('Job Booked Successfully.');
+                        alert('You have been awarded this job.');
+                        UpdateStatus();
+                        window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
 
@@ -510,6 +493,23 @@
             Destroy();
             $('#divDeal').hide();
             $('#popup_box').hide();
+        }
+        
+        function UpdateStatus()
+        {
+            $.ajax({
+                    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateDriverStatus",
+                    type: "POST",
+                    dataType: "Json",
+                    data: "{}",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                       
+                        },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                    }
+                });
         }
 
 
