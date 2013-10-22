@@ -411,3 +411,11 @@ function preCab() {
 function myProfile() {
     window.location = 'customerHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
 }
+
+function ReIniciateJob(){
+    alert("Re-initiace");
+}
+function CancelJobRequest()
+{
+    alert("Cancel Job");
+}
