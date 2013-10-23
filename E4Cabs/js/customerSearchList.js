@@ -259,7 +259,7 @@ function Hireme(driID, reqID) {
 //Disable buttons function
 function DisableHiremeBtns()
 {
-    $(".disableBtn").each(function(){
+    $(":button.disableBtn").each(function(){
        this.disabled = true;
     });
 }
@@ -413,17 +413,6 @@ function myProfile() {
     window.location = 'customerHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
 }
 
-function ReInitiateJob(){
-    var result = confirm("Do you want to Re-initiate this job ?");    
-    if (result==true) {
-      DeleteJob();     
-    }
-    else
-    {
-     return false;
-    }
-}
-
 function CancelJobRequest()
 {
     var result = confirm("Do you really want to cancel this job ?");    
@@ -435,6 +424,19 @@ function CancelJobRequest()
      return false;    
     }
 }
+
+function ReInitiateJob(){
+    var result = confirm("Do you want to Re-initiate this job ?");    
+    if (result==true) {
+      DeleteJob();     
+    }
+    else
+    {
+     return false;
+    }
+}
+
+
 
 function DeleteJob()
 {
