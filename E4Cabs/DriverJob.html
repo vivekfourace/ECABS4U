@@ -22,12 +22,12 @@
         //Got Job a New Job Request
         var count = 0; //global variable for checking customer response.
         $(document).ready(function () {
-            
-            $('#txtbidFare').bind('keypress', function(e){                
-                alert(e.keyCode);
-                if(e.keyCode < 48 && e.keyCode > 58)
+            $('#txtbidFare').bind('keypress', function (e) {
+                if ((e.keyCode < 48 || e.keyCode > 57) && e.keyCode != 46)
+                {
                     e.stopPropagation();
-                return false
+                    return false;
+                }                    
             });
             
             $.ajax({
