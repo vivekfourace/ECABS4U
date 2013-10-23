@@ -140,7 +140,7 @@ function availabledriver() {
             var returnFL = "";
             var returnTL = "";
             $.ajax({
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
+                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerSearchRequest",
                 cache: false,
                 beforeSend: function(){
                      $('#imgLoader').show();
@@ -169,7 +169,7 @@ function availabledriver() {
         function moveSearch()
         {
             $.ajax({
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
+                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerSearchRequest",
                 cache: false,
                 beforeSend: function(){
                      $('#imgLoader').show();
