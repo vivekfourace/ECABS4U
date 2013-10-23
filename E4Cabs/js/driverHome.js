@@ -3,7 +3,7 @@ var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
-setInterval(getCurrentPostCode, 300000); 
+setInterval(getCurrentPostCode, 60000); 
 
         function getCurrentPostCode() {
             if (navigator.geolocation) {
