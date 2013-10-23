@@ -219,7 +219,8 @@
                             $('#btnmap').hide();
                             $('#btncancel').hide();
                             $('#btnreject').hide();
-                            alert('This job has been awarded to other driver ');
+                            alert('This job has been awarded to other driver.');
+                            UpdateStatus();
                             window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                         }
                     },
@@ -380,9 +381,6 @@
 
             $('#popup_box').fadeIn("slow");
             $('#divreject').show();
-            
-
-
         }
         //
         function rejectJob() {
@@ -446,7 +444,7 @@
                                 $('#btncancel').hide();
                                 $('#btnreject').hide();
                                 alert('You have been awarded this job.');
-                                ///UpdateStatus();
+                                //UpdateStatus();
                                 window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                             },
                             error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -482,7 +480,7 @@
                         $('#btncancel').hide();
                         $('#btnreject').hide();
                         alert('You have been awarded this job.');
-                       // UpdateStatus();
+                       // UpdateStatus();  //update when job not booked for other driver...
                         window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -516,7 +514,7 @@
         function Confirmcomission() {
 
             var reqID = $('#lblconfirmjob').text();
-            var comission = 1.2;
+            //var comission = 1.2;
 
             $.ajax({
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/jobBooked",
@@ -597,9 +595,7 @@
     <div class="header" style="background-color: #242424; height: 70px">
         <div style="float: left; height: 48px; width: 122px; padding-top: 3px;">
             <img src="img/logo1.png" class="logo" />
-
         </div>
-
     </div>
     <center>
              <div id="divDealload" class="loadForall">            
