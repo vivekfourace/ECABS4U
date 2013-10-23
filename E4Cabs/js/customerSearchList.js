@@ -19,6 +19,7 @@ var timer = setInterval(function () {
         Destroy();
     }
 }, 1000);
+
 function Destroy() {
     window.clearInterval(timer);
     window.clearInterval(id);
@@ -258,7 +259,7 @@ function Hireme(driID, reqID) {
 //Disable buttons function
 function DisableHiremeBtns()
 {
-    $(":button.disableBtn").each(function(){
+    $(".disableBtn").each(function(){
        this.disabled = true;
     });
 }
@@ -410,4 +411,45 @@ function preCab() {
 //My Profile Button
 function myProfile() {
     window.location = 'customerHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+}
+
+function ReInitiateJob(){
+    var result = confirm("Do you want to Re-initiate this job ?");    
+    if (result==true) {
+      DeleteJob();     
+    }
+    else
+    {
+     return false;
+    }
+}
+
+function CancelJobRequest()
+{
+    var result = confirm("Do you really want to cancel this job ?");    
+    if (result==true) {
+      DeleteJob();
+    }
+    else
+    {
+     return false;    
+    }
+}
+
+function DeleteJob()
+{
+     $.ajax({
+        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CancelCurrentJob",    //Cancel Current Job
+        type: "POST",
+        dataType: "Json",
+        data: "{'requestID':'" + requestID + "'}",
+        contentType: "application/json; charset=utf-8",
+        success: function(data)
+            {
+                alert(data.d);
+                window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+            },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+        }
+    });
 }

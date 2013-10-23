@@ -74,7 +74,6 @@ function currentlocation() {
 //Search Available
 
 function availabledriver() {
-    $('#imgLoader').show();
     var fromloc;
     var isChecked = $('#chkFromLocation').attr('checked') ? true : false;
     if (isChecked == false) {
