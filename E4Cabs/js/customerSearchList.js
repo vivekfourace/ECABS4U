@@ -19,6 +19,7 @@ var timer = setInterval(function () {
         Destroy();
     }
 }, 1000);
+
 function Destroy() {
     window.clearInterval(timer);
     window.clearInterval(id);
@@ -413,9 +414,33 @@ function myProfile() {
 }
 
 function ReIniciateJob(){
-    alert("Re-initiace");
+    var result = confirm("Do you want to Re-initiate this job ?");    
+    if (result==true) {
+      alert("Yes Job");      
+    }
+    else
+     return false;
 }
 function CancelJobRequest()
 {
-    alert("Cancel Job");
+    var result = confirm("Do you really want to cancel this job ?");    
+    if (result==true) {
+        $.ajax({
+        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CancelCurrentJob",    //Cancel Current Job
+        type: "POST",
+        dataType: "Json",
+        data: "{'requestID':'" + requestID + "'}",
+        contentType: "application/json; charset=utf-8",
+        success: function(data)
+            {
+                alert(data.d);
+                window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+            },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+        }
+    });
+      
+    }
+    else
+     return false;    
 }
