@@ -8,6 +8,7 @@ setInterval(getCurrentPostCode, 300000);
         function getCurrentPostCode() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
+                    alert('Capturing Driver Postcode through mobile GPS.');
                     var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
                     var geocoder = new google.maps.Geocoder();
                     var latLng = pos;
@@ -16,7 +17,6 @@ setInterval(getCurrentPostCode, 300000);
                             if (results[0]) {
                                 var postalCode = extractFromAdress(results[0].address_components, "postal_code");
                                 alert("Your Postcode is: " + postalCode);
-
                                 function extractFromAdress(components, type) {
                                     for (var i = 0; i < components.length; i++)
                                         for (var j = 0; j < components[i].types.length; j++)
@@ -107,6 +107,7 @@ function Check(){
     
 }
 setInterval(Check, 1000);
+
 function Available()
 {
     
