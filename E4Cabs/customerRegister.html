@@ -33,14 +33,14 @@
                            
                         </td>
                         <td  width="15%" style="float:right;">
-                            <!--<div style="float:right;padding-top:1%;">
-                               <img src="img/backk.png" height="35"  onclick="backToIndex();"/>
-                            </div>-->
+                            <div style="float:right;padding-top:1%;">
+                               <img src="img/backk.png" height="35" style="cursor:pointer;" onclick="backToIndex();"/>
+                            </div>
                         </td>
                     </tr>
                 </table>
          </div>
-        <div style="padding-top:71px">        
+        <div id="divcustomerreg" style="padding-top:71px">        
             <label id="lblMsg" style="color:#D70007;font-size:12px"></label><br/>  
             <input type="text" id="txtFirstName" placeholder="First name"  />
             <input type="text" id="txtLastName" placeholder="Last name" />
@@ -53,6 +53,12 @@
             <input type="button" class="btn-tmp cursor" value="Register" onclick="Registercustomer();"/>
             </div>
         </div>  
+            <div id="divSucessfulcustomer" style="width:100%;color:green;font-size:16px;padding-top:50%;font-weight:bold;backgroung-color:white">
+                
+            </div>
+            <div id="divMsgcustomer" style="width:100%;color:green;font-size:16px;padding-top:8%;font-weight:bold;backgroung-color:white">
+                
+            </div>
            
        </center>     
     </body>

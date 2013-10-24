@@ -9,7 +9,11 @@ function backtoCustomerhome()
     window.location =  'businessCustomerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
-
+//Back Button (header) to Search page
+function backtostart()
+{
+window.location= 'businessCustomerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;    
+}
 
 
 //cab Now
@@ -19,13 +23,11 @@ function cabNow()
     
 }
 
-
 //Home
 function Home()
 {
    window.location='businessCustomerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-
 
 
 //Booked History
@@ -37,31 +39,21 @@ function bookedHistory()
    
 }
 
-
-
-
 //My Profile Button
  function myProfile()
             {
                 window.location =  'businessCustomerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
             }
   
-
-
-
-
-
-
 //Logout
 function logout()
-    {                
-        $.cookie("remember", false);
-        $.cookie("userName", 'null');
+    {
+         //alert('function logout entered');       
+       $.cookie("remember", false);
+       $.cookie("userName", 'null');
         $.cookie("userPassword", 'null');
         window.location = "index.html";  
     }
-
-
 
 
 //Customer Feedback 

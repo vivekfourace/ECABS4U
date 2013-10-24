@@ -200,13 +200,17 @@ function OnValidate(data)
                             $('#txtusername').val('');
        var timeOut = 6;
         setInterval(function() {  
-            document.getElementById('lblMsg').innerHTML = "Registration success, wait " + --timeOut + "s for login screen.";
-            $('#lblMsg').css("color","green");  
-            $('#lblMsg').css("font-size","14px");  
+            $('#container').hide();
+             document.getElementById('divSucessfulDriver').innerHTML= "Registration successful.";
+            document.getElementById('divMsgDriver').innerHTML=  "Please wait " + --timeOut + "s for login screen.";  
             if(timeOut <= 0)
             {
                 window.location = "index.html";
             }
+
+
+
+
         }, 1000);
     }    
 }

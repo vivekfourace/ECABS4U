@@ -179,9 +179,9 @@ function CheckData(data){
     else if(data.d =="true"){
         var timeOut = 6;
         setInterval(function() {  
-            document.getElementById('lblMsg').innerHTML = "Registration success, wait " + --timeOut + "s for login screen.";
-            $('#lblMsg').css("color","green");  
-            $('#lblMsg').css("font-size","14px");  
+            $('#divBusinessreg').hide();
+            document.getElementById('divSucessfulBusiness').innerHTML= "Registration successful.";
+            document.getElementById('divMsgBusiness').innerHTML=  "Please wait " + --timeOut + "s for login screen.";  
             if(timeOut <= 0)
             {
                 window.location = "index.html";

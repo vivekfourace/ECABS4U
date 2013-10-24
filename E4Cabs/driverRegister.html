@@ -5,12 +5,9 @@
         <title></title>
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <link rel="stylesheet" type="text/css" href="css/site.css" />
+        <script type="text/javascript" src="js/driverRegister.js"></script>        
         <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
         <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
-        <script type="text/javascript" src="js/driverRegister.js"></script>        
-        
-        
-        
     </head>
     <body>
         <center>
@@ -34,9 +31,9 @@
                            
                         </td>
                         <td  width="15%" style="float:right;">
-                            <!--<div style="float:right;padding-top:1%;">
-                               <img src="img/backk.png" height="35"  onclick="backToIndex();"/>
-                            </div>-->
+                            <div style="float:right;padding-top:1%;">
+                               <img src="img/backk.png" height="35"  onclick="backToIndex();" style="cursor:pointer"/>
+                            </div>
                         </td>
                     </tr>
                 </table>
@@ -60,9 +57,9 @@
             
             <input type="text" id="txtmobile" placeholder="Contact number" maxlength="11"  />
             
-            <textarea id="txtaddress1" placeholder="Address1" maxlength="50"></textarea>
+            <textarea id="txtaddress1" placeholder="Address1" style="font-family:sans-serif" maxlength="50"></textarea>
             
-            <textarea id="txtaddress2" placeholder="Address2" maxlength="50"></textarea>
+            <textarea id="txtaddress2" placeholder="Address2" style="font-family:sans-serif" maxlength="50"></textarea>
           
             <input type="text" id="txtpostcode" placeholder="Postcode"/>
             <!--<input type="file" id="txtfile"  text="Browse"/>
@@ -71,7 +68,13 @@
         <div align="center" style="width:100%">
             <input type="button" class="btn-tmp cursor" value="Register" onclick="RegisterDriver();"/>
         </div>
-        </div>  
+        </div> 
+           <div id="divSucessfulDriver" style="width:100%;color:green;font-size:16px;padding-top:50%;font-weight:bold;backgroung-color:white">
+                
+            </div>
+            <div id="divMsgDriver" style="width:100%;color:green;font-size:16px;padding-top:8%;font-weight:bold;backgroung-color:white">
+                
+            </div>
             </center>
     </body>
 </html>
