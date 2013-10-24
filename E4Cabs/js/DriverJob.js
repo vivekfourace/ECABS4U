@@ -11,7 +11,7 @@ function showMap()
    window.location =  'Location.html?id='+from+'&rid='+to+'&rrid='+dis;
 }
 
-function BackProfile()
+function backToIndex()
 {
     window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }

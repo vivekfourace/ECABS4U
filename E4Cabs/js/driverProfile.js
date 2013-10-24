@@ -6,8 +6,12 @@ var relatedId = QString.split("=")[3].split("&")[0];
 var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
 var mobno =/^\d{11}$/;
 
+
+//Page load function.
 window.onload = getProfile();
 
+
+//Change Password function.
 function changepassword()
 {
    window.location='changePassword.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
@@ -124,61 +128,6 @@ function UpdateProfile()
       var address2 = $('#txtLocation2').val();
       var email = $('#txtEmailID').val();
       var phoneno = $('#txtMobileno').val();
- 
-    
-    //Name validation
-         
-    if(name == "First name"){
-        $('#lblWarning').text("*Please enter the First name");
-        return false;   
-    }
-    else if(name.length == 0){
-        $('#lblWarning').text("*Please enter the First name");
-        return false;
-    }
-    if(Lastname == "Last name"){
-        $('#lblWarning').text("*Please enter the Last name");
-        return false;
-    }
-    else if(Lastname.length == 0){
-        $('#lblWarning').text("*Please enter the Last name");
-        return false;
-    }    
-    //Address Validation
-    if(address1=="Location 1"){
-        $('#lblWarning').text("*Please enter the Address 1");
-        return false;
-    }
-    else if(address1.length == 0){
-        $('#lblWarning').text("*Please enter the Address1");
-        return false;
-    }
-    if(address2=="Location 2"){
-        $('#lblWarning').text("*Please enter the Address2");
-        return false;
-    }
-    else if(address2.length == 0){
-        $('#lblWarning').text("*Please enter the Address2");
-        return false;
-    }    
-    // Email Validation
-    if(email=="Email address"){
-        if(email.match(regExpEmail)){
-            $('#txtEmailID').text(" ");
-        }
-        else{
-            $('#lblWarning').text("*Please enter a valid Email");
-            return false;
-        }
-    }
-    else if(email.length == 0){
-        $('#lblWarning').text("*Please enter the Email");
-        return false;
-    }
-    if(phoneno=="Mobile number"){
-        $('#lblWarning').text("*Please enter a Mobile Number");
-        return false;
-    }
     var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateDriverDetails";
     $.ajax(url,{
         type:"POST",
@@ -209,19 +158,6 @@ function MyBookings(){
 }
 function logout()
 {
-    $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
-            type:"POST",
-            dataType: "Json",
-            data:"{'userID':'" +userId+"'}",
-            contentType: "application/json; charset=utf-8",                     
-            success: function(data)
-            {
-                },
-            
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-            //alert(errorThrown);
-                }
-         }); 
         $.cookie("remember", false);
         $.cookie("userName", 'null');
         $.cookie("userPassword", 'null');

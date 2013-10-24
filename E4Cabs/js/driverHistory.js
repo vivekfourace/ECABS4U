@@ -7,6 +7,7 @@ var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
+//Back button (header) to search page.
 function backToIndex()
 {
     
@@ -73,7 +74,7 @@ function gethistory()
 
 
 
-//cab Now
+//Cab Search
 function cabNow()
 {
   window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
@@ -121,19 +122,6 @@ function MyBookings(){
 //Logout
 function logout()
     {                
-         $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
-            type:"POST",
-            dataType: "Json",
-            data:"{'userID':'" +userId+"'}",
-            contentType: "application/json; charset=utf-8",                     
-            success: function(data)
-            {
-                },
-            
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-            //alert(errorThrown);
-                }
-         }); 
       $.cookie("remember", false);
       $.cookie("userName", 'null');
       $.cookie("userPassword", 'null');
