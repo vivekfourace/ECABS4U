@@ -11,6 +11,12 @@ function backtoCustomerhome()
 
 
 
+//Back Button (header) to Search page
+function backtostart()
+{
+window.location= 'businessCustomerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;    
+}
+
 
 //cab Now
 function cabNow()
@@ -54,12 +60,14 @@ function bookedHistory()
 
 //Logout
 function logout()
-    {                
+    {
+                
         $.cookie("remember", false);
         $.cookie("userName", 'null');
-        $.cookie("userPassword", 'null');
+         $.cookie("userPassword", 'null');
         window.location = "index.html";  
     }
+
 
 
 

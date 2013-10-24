@@ -7,12 +7,13 @@ var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
-
+//Back to search page(Header)
 function backToIndex()
 {
    window.location =  'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
   
 }
+//PageLoad function
 window.onload = gethistory();
 
 
@@ -31,7 +32,7 @@ function gethistory()
                         //alert(count);
                         if(count > 0)
                         {
-                                var html = '<table id="tbhist" cellspacing="0"; width="100%"  style="border-collaspe:collaspe;">';
+                                var html = '<table cellspacing="0"; width="100%"  style="border-collaspe:collaspe;">';
                                 html += '<thead style="background-color:#0A0A2A;color:#fff;">';
                                 html += '<tr>';
                                 html += '<th class="th4 font">JobNo</th>';
@@ -45,9 +46,8 @@ function gethistory()
                                                html +='<tbody class="body-style altColor"  style="font-size:14px;">';  
                                                     for(var i=0; i<count; i++)
                                                     {
-                                                        $('#lbljobFeed').text(data.d[i]["JobNo"]);
                                                        html += '<tr>';
-                                                       html += "<td width='25%' align='center'>" +'<a href="#" onclick="customerFeedback(event)" style="color:blue;">'+ data.d[i]["JobNo"]+'</a>' + "</td>"; 
+                                                       html += "<td width='25%' align='center'>" +'<a href="#" onclick="" style="color:blue;">'+ data.d[i]["JobNo"]+'</a>' + "</td>"; 
                                                        html += "<td width='25%' align='center'>" + data.d[i]["StartDate"] + "</td>";
                                                        html += "<td width='25%' align='center'>" + data.d[i]["StartTime"] +"</td>";
                                                        html += "<td width='25%' align='center'>" + data.d[i]["FromLoc"] +"</td>";
@@ -73,15 +73,7 @@ function gethistory()
             }
 
 
-/*function customerFeedback()
-{
-   $("#tbhist").find("td").click(function(event){
-   var listOfCell=$(this).siblings();
-   for(i=0;i<listOfCell.length;i++){
-   alert($(listOfCell[i]).text());
-}
-}); 
-}*/
+
 //cab Now
 function cabNow()
 {
@@ -123,19 +115,7 @@ function bookedHistory()
 //Logout
 function logout()
     {
-      $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
-            type:"POST",
-            dataType: "Json",
-            data:"{'userID':'" +userId+"'}",
-            contentType: "application/json; charset=utf-8",                     
-            success: function(data)
-            {
-                },
-            
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-            //alert(errorThrown);
-                }
-     });          
+                
       $.cookie("remember", false);
       $.cookie("userName", 'null');
       $.cookie("userPassword", 'null');
@@ -152,10 +132,7 @@ function feedBack()
 }
 
 
-function backtostart()
-{
-    window.location="index.html";
-}
+
 
     
     

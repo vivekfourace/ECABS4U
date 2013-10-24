@@ -33,27 +33,32 @@
                            
                         </td>
                         <td  width="15%" style="float:right;">
-                            <!--<div style="float:right;padding-top:1%;">
-                               <img src="img/backk.png" height="35"  onclick="backToIndex();"/>
-                            </div>-->
+                          <div style="float:right;padding-top:1%;">
+                               <img src="img/backk.png" height="35"  onclick="backToIndex();" style="cursor:pointer"/>
+                            </div>
                         </td>
                     </tr>
                 </table>
          </div>
-        <div style="padding-top:71px">        
-            <label id="lblMsg" style="color:#D70007;font-size:12px"></label><br/>  
-            <input type="text" id="txtFirstName" placeholder="First name"  />
-            <input type="text" id="txtLastName" placeholder="Last name" />
+        <div style="padding-top:76px">        
+             <label id="lblMsg" style="color:#D70007;font-size:12px;"></label><br/>
+            <input type="text" id="txtFirstName" placeholder="First name"/>
+            <input type="text" id="txtLastName" placeholder="Last name"/>
             <input type="text" id="txtPhone" placeholder="Phone number" maxlength="11" />
             <input type="text" id="txtEmail" placeholder="Email Address" />
             <input type="text" id="txtUserName" placeholder="Username" />
             <input type="password" id="txtPassword" placeholder="Password" />
             <input type="password" id="txtConfirmPassword" placeholder="Confirm Password" />
             <div style="margin-top:7px;width:100%">
-            <input type="button" class="btn-tmp cursor" value="Register" onclick="Registercustomer();"/>
+            <input type="button" class="btn-tmp cursor" id="customerReg" value="Register" onclick="Registercustomer();"/>
             </div>
         </div>  
-           
+           <div id="divMsg" align="center" style="width:100%;padding-top:40%">
+              <label id="lblMsg1" style="color:#D70007;font-size:14px;"></label>
+               <br/>
+               <br/>
+            <label id="lblMsg2" style="color:#D70007;font-size:14px"></label> 
+           </div>
        </center>     
     </body>
 </html>

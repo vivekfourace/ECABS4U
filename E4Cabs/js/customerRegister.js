@@ -13,17 +13,17 @@ function Registercustomer()
     
                if(!txt1)
                  {
-                     $('#lblMsg').text("Please enter first name!");
+                     $('#lblMsg').text("Please enter first name.");
                      $('#txtFirstName').focus();                        
                      return false;
                  }
                if(!txt2)
                  {
-                     $('#lblMsg').text("Please enter last name!");
+                     $('#lblMsg').text("Please enter last name.");
                      $('#txtLastName').focus();                     
                     return false;
                  }
-                //validate Phone number.
+      //validate Phone number.
                if(txt3.length > 0)
                     {
                         if(phoneno.test(txt3))
@@ -32,19 +32,19 @@ function Registercustomer()
                         }
                         else
                         {
-                             $('#lblMsg').text("Please enter valid phone number!");
+                             $('#lblMsg').text("Please enter valid phone number.");
                             $('#txtPhone').focus();
                             return false;
                         }
                     }
                 else if(txt3.length == 0)
                 {
-                     $('#lblMsg').text("Please enter phone number!");
+                     $('#lblMsg').text("Please enter phone number.");
                     $('#txtPhone').focus();
                     return false;
                 }
     
-                //validate Email address
+      //validate Email address
                 if(txt4.length > 0)
                     {
                         if(txt4.match(regExpEmail))
@@ -52,21 +52,21 @@ function Registercustomer()
                             $('#lblMsg').text(" ");
                         }
                         else{
-                            $('#lblMsg').text("Please enter valid email address!");
+                            $('#lblMsg').text("Please enter valid email address.");
                             $('#txtEmail').focus();
                             return false;
                         }
                     }
                 else if(txt4.length == 0)
                 {
-                    $('#lblMsg').text("Please enter email address!");
+                    $('#lblMsg').text("Please enter email address.");
                     $('#txtEmail').focus();
                     return false;
                 }
     
           if(!txt6)
                  {
-                     $('#lblMsg').text("Please enter Username!");
+                     $('#lblMsg').text("Please enter username.");
                      $('#txtUserName').focus();
                     return false;
                  }
@@ -77,7 +77,7 @@ function Registercustomer()
                     }
                 else if(txt7.length == 0)
                  {
-                     $('#lblMsg').text("Please enter password!");
+                     $('#lblMsg').text("Please enter password.");
                      $('#txtPassword').focus();
                     return false;
                  }
@@ -99,7 +99,7 @@ function Registercustomer()
                     }
                 else if(txt8.length == 0)
                     {
-                        $('#lblMsg').text("Please enter confirm password!");
+                        $('#lblMsg').text("Please enter confirm password.");
                         $('#txtConfirmPassword').focus();
                         return false;
                     }
@@ -130,18 +130,30 @@ $.ajax({
 function CheckData(data){
     if(data.d == "false")
     {
-        $('#lblMsg').text("Username already exist!");
+        $('#lblMsg').text("Username already exist.");
         $('#lblMsg').css("color","#D70007");
         $('#lblMsg').css("font-size","13");
         $('#txtUserName').val("");
         $('#txtUserName').focus();
     }
+    
     else if(data.d =="true"){
+        $('#txtFirstName').hide();
+        $('#txtLastName').hide();
+        $('#txtPhone').hide();
+        $('#txtEmail').hide();
+        $('#txtUserName').hide();
+        $('#txtPassword').hide();
+        $('#txtConfirmPassword').hide();
+        $('#customerReg').hide();
         var timeOut = 6;
         setInterval(function() {  
-            document.getElementById('lblMsg').innerHTML = "Registration success, wait " + --timeOut + "s for login screen.";
-            $('#lblMsg').css("color","green");  
-            $('#lblMsg').css("font-size","14px");  
+            document.getElementById('lblMsg1').innerHTML = "Registration successful";
+            document.getElementById('lblMsg2').innerHTML = "Please wait " + --timeOut + "s for login screen.";
+            $('#lblMsg1').css({"color":"green","font-size":"16px","font-weight":"bold"});
+            $('#lblMsg2').css({"color":"green","font-size":"16px","font-weight":"bold" });
+          
+            
             if(timeOut <= 0)
             {
                 window.location = "index.html";

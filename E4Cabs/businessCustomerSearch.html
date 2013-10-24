@@ -4,45 +4,29 @@
     <head>
         <meta charset="utf-8" />
         <title></title>
-        <meta name="viewport" content="width=device-width, initial-scale=1"> 
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <link rel="stylesheet" type="text/css" href="jquery-mobile/styles/jquery.ui.theme.css" />
-        <link rel="stylesheet" type="text/css" href="jquery-mobile/styles/jquery-ui.css" />
-        
-      <link rel="stylesheet" type="text/css" href="css/jquery.mobile.css" />
-	  <link type="text/css" href="css/jqm-datebox.min.css" rel="stylesheet" /> 
-	  <link type="text/css" href="css/jquery.mobile.simpled.min.css" rel="stylesheet" /> 
-	  <link type="text/css" href="css/demos.css" rel="stylesheet" /> 
-        <link rel="stylesheet" type="text/css" href="css/site.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="Scripts/jquery-2.0.3.min.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAKXfZggeVZMCwQnR-mGebtLCvjuRfZcg&sensor=true"></script>
+         <link rel="stylesheet" type="text/css" href="css/site.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/PopUp.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile.css" />
+    <link type="text/css" href="css/jqm-datebox.min.css" rel="stylesheet" />
       
-     <!-- <link rel="stylesheet" href="css/slider/jquery.mobile-1.3.1.min.css" />-->
+     
         
-     <!-- <link rel="stylesheet" type="text/css" href="css/mobipick.css" />
-        
-        <script type="text/javascript" src="Scripts/mobipick.js"/>
-         <script type="text/javascript" src="Scripts/modernizr-2.6.2.js"/>
-        <script type="text/javascript" src="Scripts/xdate.js"/>
-         <script type="text/javascript" src="Scripts/xdate.i18n.js"/>-->
-        
-         <script type="text/javascript" src="Scripts/jquery-1.7.1.js"></script> 
-	    <script type="text/javascript" src="Scripts/jquery.mobile.js"></script>
-	    <script type="text/javascript" src="Scripts/jquery.mousewheel.min.js"></script>
-	    <script type="text/javascript" src="Scripts/jqm-datebox.core.min.js"></script>
-        <script type="text/javascript" src="Scripts/datebox.mode.datebox.min.js"></script>
-        <script type="text/javascript" src="Scripts/jquery.mobile.datebox.i18n.js"></script>
-		<script type="text/javascript" src="Scripts/jquery.mobile.simpled.min.js"></script>
-        
-        
-        <script type="text/javascript" src="jquery-mobile/js/jquery.ui.core.min.js"></script>
-        <script type="text/javascript" src="jquery-mobile/js/jquery.ui.widget.min.js"></script>
-        <script type="text/javascript" src="jquery-mobile/js/jquery.ui.tabs.min.js"></script>
-         <script type="text/javascript" src="jquery-mobile/js/jquery.ui.position.min.js"></script>
-        <script type="text/javascript" src="jquery-mobile/js/jquery.ui.timepicker.js"></script>
-         <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>        
+     <script type="text/javascript" src="Scripts/jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.mobile.js"></script>
+    <script type="text/javascript" src="Scripts/jqm-datebox.core.min.js"></script>
+    <script type="text/javascript" src="Scripts/datebox.mode.datebox.min.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.mobile.datebox.i18n.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.mobile.simpled.min.js"></script>
+    
+    <script type="text/javascript" src="jquery-mobile/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>     
         
         <script type="text/javascript" src="js/businessCustomerSearch.js"></script>
-        <script type="text/javascript" src="jquery-mobile/js/jquery-ui.js"></script>
-         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+      
     </head>
     
 
@@ -216,7 +200,7 @@
                         </td>
                         <td  width="15%" style="float:right;">
                             <div style="float:right;padding-top:1%;">
-                              <img src="img/Home.png" height="35" onclick="homeSearch()" />
+                              <img src="img/Home.png" height="35" onclick="homeSearch()" style="cursor:pointer"/>
                             </div>
                         </td>
                     </tr>
@@ -229,22 +213,26 @@
                <tr>
                 <td>
                     <label for="txtFrom" class="font-style"><b style="font-size:12px">From Location</b></label> 
-                    <input type="text" id="txtFrom" class="font-style" autofocus="autofocus" style="width:100%;float:right;"/>
+                    <input type="text" id="txtFrom" class="font-style"  style="width:100%;float:right;"/>
+                    
                 </td>
+                   
                </tr>
                
               <tr>
                 <td>
                     <label for="txtTo" class="font-style"><b style="font-size:12px">To Location</b></label> 
                     <input type="text" id="txtTo" class="font-style" style="width:100%;float:right;"/>
+                   
                 </td>
              </tr>
-               
-                   <tr>
-                       <td>
-                           <input type="button" id="reverseLocation" class="specialBtn" onclick="reverselocation()" style="width=:50%;float:right;" value="Reverse Location"/>
-                       </td>
-                   </tr>
+                   
+
+                  <tr>
+                   <td>
+                       <input type="button" id="reverseLocation" class="specialBtn" onclick="reverselocation()" style="width:50%;float:right;" value="Reverse Location" />
+                   </td>
+               </tr>
               <tr>
                 <td>
                     <label for="txtDistance" class="font-style"><b style="font-size:12px">Distance In Miles</b></label> 
@@ -253,9 +241,7 @@
               </tr>
                 <tr>
                 <td>
-                    <!--<label for="mode2" class="font-style"><b style="font-size:12px">Pick Date</b></label> 
-                    <input type="text" id="mode2"  style="width:100%;float:right;" data-role="datebox" data-options='{"mode":"datebox","useNewStyle":true}'/>                   
-                    -->
+                   
                         <label for="pickDate" class="font-style"><b style="font-size:12px">Pick Date</b></label>
                         <input name="pickDate" id="pickDate" type="date" data-role="datebox"   data-options='{"mode": "datebox","dateFormat":"%b %d"}'>
                 </td>
@@ -332,7 +318,7 @@
                <tr>
                    <td>
                        <input type="button" id="specialreq" class="specialBtn" onclick="showReq()" style="width:58%;float:left;" value="Special Requirement" />
-                       <input type="button" id="bookreturn" class="specialBtn" onclick="bookReturn()" style="width:40%;float:right;" value="Book a Return"/>
+                       <input type="button" id="bookreturn" class="specialBtn" onclick="bookReturn()" style="width:40%;float:right;" value="Book a Return" />
                    </td>
                </tr>
                <div style="background-color:red">
@@ -469,7 +455,7 @@
          </div>
         
       </center>
-         <div style="width:100%;position:fixed;bottom:0px;z-index:99999">
+         <!--<div style="width:100%;position:fixed;bottom:0px;z-index:99999">
             <table style="width:100%;" class="btn-tmpFooter">
                 <tr>
                     <td style="width:20%;">
@@ -506,6 +492,6 @@
                     </td>
                 </tr>
             </table>
-        </div>
+        </div>-->
     </body>
 </html>

@@ -60,7 +60,7 @@
                     </td>
                     <td  width="15%" style="float:right;">
                         <div style="float:right;padding-top:1%;">
-                            <img src="img/backk.png" height="35" onclick="backtostart();"/>
+                            <img src="img/backk.png" height="35" onclick="backtostart();" style="cursor:pointer"/>
                             
                         </div>
                         
@@ -125,7 +125,7 @@
                     </td>
                     <td width="50%">
                         <!--<input id="btnAddComment" type="button" value="Write Comment" style="padding-top:4px;color:black;background-color:#EAEAEA;width:80%;" onclick="PostComment();"/>-->
-                        <img src="img/comment_add.png" style="height:30px;float:right;padding-right:10%" onclick="PostComment();"/>
+                        <img src="img/comment_add.png" style="height:30px;float:right;padding-right:10%;cursor:pointer" onclick="PostComment();"/>
                         
                     </td>
                 </tr>
@@ -153,8 +153,9 @@
                 </tr>
                 
             </table>
-            
+            <hr>
         </div>
+        
         <center>
             <div id="divPostComment" style="width:100%;margin-top:5px;display:none">
                 <table width="100%">
@@ -167,8 +168,8 @@
                     </tr>
                     <tr>
                         <td align="right">
-                            <input id="btnPostComment" type="button" value="Post" style="text-weight:bold;color:white;background-color:#247ECC"/>
-                            <input id="btnPostCommentCancel" type="button" value="Cancel" style="color:white;background-color:#247ECC" onclick="CancelComment();"/>
+                            <input id="btnPostComment" type="button" value="Post" style="cursor:pointer;text-weight:bold;color:white;background-color:#247ECC"/>
+                            <input id="btnPostCommentCancel" type="button" value="Cancel" style="cursor:pointer;color:white;background-color:#247ECC" onclick="CancelComment();"/>
                         </td>
                         
                     </tr>

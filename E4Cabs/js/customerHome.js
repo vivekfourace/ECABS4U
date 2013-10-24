@@ -193,29 +193,12 @@ function bookedHistory()
 
 
 
-//Location Button
-//function Location()
-//{
-   // window.location = "Location.html";
-//}
+
 
 
 //Logout Button
 function logout()
     {
-       $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
-            type:"POST",
-            dataType: "Json",
-            data:"{'userID':'" +userId+"'}",
-            contentType: "application/json; charset=utf-8",                     
-            success: function(data)
-            {
-                },
-            
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-            //alert(errorThrown);
-                }
-     }); 
         $.cookie("remember", false);
         $.cookie("userName", 'null');
         $.cookie("userPassword", 'null');
@@ -240,14 +223,7 @@ function preCab()
     window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
-//Back to customer Afterlogin
-function backtoCustomerhome()
-{
-    
-       
-    window.location =  'customerAfterLogin.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
- // window.location="customerHome.html";
-}
+
 
 
 
@@ -275,7 +251,7 @@ function changepassword()
 
 
 
-//Back button
+//Back button(header) to Search Page.
 function backToIndex()
 {
     
@@ -285,21 +261,3 @@ function backToIndex()
 }
 
 
-//Pre Book Button
-//function prebook()
-//{
- // window.location="";  
-//}
-//function getAllMenu()
-//{
-  //  window.location="AllMenu.html";
-//}
-
-
-
-
-//Home
-//function backtostart()
-//{
-   // window.location =  'customerAfterLogin.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-//}

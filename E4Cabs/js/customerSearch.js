@@ -62,9 +62,7 @@ function loc() {
     window.location = 'Location.html?id=' + from + '&rid=' + to + '&rrid=' + loc2;
 }
 
-function backtoCustomerhome() {
-    window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-}
+
 
 //current Location
 function currentlocation() {
@@ -120,11 +118,11 @@ function availabledriver() {
     var returntoloc = document.getElementById('txtReturTo').value;
 
     if (!fromloc) {
-        $('#lblMessage').text("Enter From location!");
+        $('#lblMessage').text("Enter from location.");
         return false;
     }
     if (!toloc) {
-        $('#lblMessage').text("Enter Final Destination!");
+        $('#lblMessage').text("Enter to location.");
         return false;
     }
     var IsReturnTrue = $('#chkReturnYes').attr('checked') ? true : false;
