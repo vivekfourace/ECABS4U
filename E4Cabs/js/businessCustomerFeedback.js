@@ -4,7 +4,7 @@ var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
 
-function backtoCustomerhome()
+function backToIndex()
 {
     window.location =  'businessCustomerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
@@ -62,9 +62,9 @@ function bookedHistory()
 function logout()
     {
                 
-       // $.cookie("remember", false);
-       // $.cookie("userName", 'null');
-       //  $.cookie("userPassword", 'null');
+       $.cookie("remember", false);
+       $.cookie("userName", 'null');
+        $.cookie("userPassword", 'null');
         window.location = "index.html";  
     }
 
