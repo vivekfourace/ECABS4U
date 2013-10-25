@@ -40,6 +40,7 @@
                     var getID = data.d[0];
                     var getValue = data.d[1];
                     if (getValue == "False") {
+                        
                         $.ajax({
                             url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetData",
                             type: "POST",
@@ -48,6 +49,11 @@
                             contentType: "application/json; charset=utf-8",
                             success: function (data) {
                                 if (data.d[0] != null) {
+                                    $('#divDetails').show();
+                                    $('#btnbid').show();
+                                    $('#btnmap').show();
+                                    $('#btncancel').show();
+                                    $('#btnreject').show();
                                     $('#lbljobno').text(data.d[0]);
                                     $('#lblFromLoc').text(data.d[1]);
                                     $('#lblToLoc').text(data.d[2]);
@@ -93,11 +99,16 @@
                         });
                     }
                     if (data.d[0] == "Error") {
+                       // $('#tbdetails').hide();
+                        $('#btnRow').hide();
                         $('#divDetails').hide();
+                        $('#divComplete').hide();                       
                         $('#btnbid').hide();
                         $('#btnmap').hide();
                         $('#btncancel').hide();
                         $('#btnreject').hide();
+                        alert("You have no any job request.");
+                        window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -605,9 +616,8 @@
                 <span style="font-family:'Trebuchet MS';color:white">Please wait...</span><br>
                 <img src="jquery-mobile/styles/images/ajax-loader-hor.gif" style="width:140px;height:10px"/>
             </div>
-            <div style="width:100%;height:75%;padding-top:25%;" id="divDetails">
+            <div style="width:100%;height:75%;padding-top:25%;display:none;" id="divDetails">
                 <div id="popup_box" >
-                    
                    
                     <div id="divDriverPop" align="center" style="display:none;">
                         <table align="left" style="width:100%;background-color:#FFFFFF;">
@@ -1172,7 +1182,7 @@
                 
 
                 
-                 <table width="100%" style="border-collapse:collapse;padding-bottom:50px">
+                 <table width="100%" id="tbdetails" style="border-collapse:collapse;padding-bottom:50px">
                    <tr>
                        <td width="50%" style="padding-left:5%;">
                            <label  class="font-style" ><b style="font-size:13px;"class="test">Job Number </b></label> 
@@ -1479,24 +1489,23 @@
                </table>
                 
             </div>
-            <div style="padding-top:20%;width:100%;">
-                
+            <div style="padding-top:20%;width:100%;">               
             </div>
             
         </center>
     <table width="100%" style="padding-bottom: 35px">
         <tr>
             <td width="25%">
-                <input type="button" id="btnbid" class="specialBtn" onclick="showBid()" style="width: 100%;" value="Bid" />
+                <input type="button"  id="btnbid" class="specialBtn" onclick="showBid()" style="width: 100%;display:none" value="Bid" />
 
             </td>
             <td width="25%">
-                <input type="button" id="btnmap" class="specialBtn" onclick="showMap()" style="width: 100%;" value="Map" />
+                <input type="button" id="btnmap" class="specialBtn" onclick="showMap()" style="width: 100%;display:none" value="Map" />
 
             </td>
 
             <td width="25%">
-                <input type="button" id="btnreject" class="specialBtn" onclick="reqReject()" style="width: 100%;" value="Reject" />
+                <input type="button" id="btnreject" class="specialBtn" onclick="reqReject()" style="width: 100%;display:none" value="Reject" />
 
             </td>
 
