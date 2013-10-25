@@ -103,7 +103,6 @@ function CalculateDuration(fromLocation, toLocation)
             time = time.replace('saat', 'Saat');
             time = time.replace('dakika', 'dk');
             total = total / 1000; //distance in KM
-
             return time;
         }
 }
@@ -140,7 +139,7 @@ function availabledriver() {
     //var fromloc = document.getElementById('txtFrom').value;
     var toloc = document.getElementById('txtTo').value;
     
-    //CalculateDuration(fromloc, toloc);    
+    CalculateDuration(fromloc, toloc);    
     
     var distance = document.getElementById('txtDistance').value;
     //var pickdate = document.getElementById('pickDate').value;    
