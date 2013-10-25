@@ -1060,7 +1060,8 @@
     }
 
     //Book Return Journey
-    function bookReturn() {
+    function bookReturn()
+    {
         $('#txtReturFrom').show();
         $('#txtReturTo').show();
         $('#cancelreturn').show();
@@ -1079,7 +1080,8 @@
         document.getElementById("txtReturTo").value = from;
     }
     //Cancel Book Return
-    function cancelBookReturn() {
+    function cancelBookReturn() 
+    {
         document.getElementById("txtReturFrom").value = "";
         document.getElementById("txtReturTo").value = "";
         document.getElementById("datepickers").value = "";
@@ -1102,19 +1104,20 @@
     }
 
     //Show Special Requirements
-    function showReq() {
+    function showReq() 
+    {
         $('#specialreq').hide();
         $('#cancelreq').show();
         document.getElementById("trboundChair").style.display = 'table-row';
         document.getElementById("trchildSeats").style.display = 'table-row';
         document.getElementById("trChildBooster").style.display = 'table-row';
         document.getElementById("txtothereSpecialRequirement").style.display = 'table-row';
-
         $('#trspecialrequirement').show();
 
     }
     //Cancel Special Requirements
-    function cancelReq() {
+    function cancelReq() 
+    {
         $('#trspecialrequirement').hide();
         $('#specialreq').show();
         $('#cancelreq').hide();
@@ -1125,7 +1128,8 @@
 
 
     //Add 2Location
-    function secoundLocation() {
+    function secoundLocation()
+    {
         $('#2location').show();
         $('#secoundLoc').hide();
         $('#thirdLoc').show();
@@ -1135,7 +1139,8 @@
     }
 
     //Add 3rdLocation
-    function thirdLocation() {
+    function thirdLocation()
+    {
         $('#3location').show();
         $('#thirdLoc').hide();
         $('#fourLoc').show();
@@ -1144,7 +1149,8 @@
         $('#cancelAddLocation').show();
     }
     //Add 4thLocation
-    function fourthLocation() {
+    function fourthLocation() 
+    {
         $('#4location').show();
         $('#fourLoc').hide();
         $('#fiveLoc').show();
@@ -1154,7 +1160,8 @@
         $('#cancelAddLocation').show();
     }
     //Add 5thLocation
-    function fifthLocation() {
+    function fifthLocation() 
+    {
         $('#5location').show();
         $('#fiveLoc').hide();
         $('#sixLoc').show();
@@ -1165,7 +1172,8 @@
         $('#cancelAddLocation').show();
     } 
     //Add 6thLocation
-    function sixthLocation() {
+    function sixthLocation() 
+    {
         $('#6location').show();
         $('#sixLoc').hide();
         $('#sevenLoc').show();
@@ -1177,7 +1185,8 @@
         $('#cancelAddLocation').show();
     } 
     //Add 7thLocation
-    function sevenLocation() {
+    function sevenLocation() 
+    {
         $('#7location').show();
         $('#sevenLoc').hide();
         $('#eightLoc').show();
@@ -1190,7 +1199,8 @@
         $('#cancelAddLocation').show();
     } 
     //Add 8thLocation
-    function eightLocation() {
+    function eightLocation() 
+    {
         $('#8location').show();
         $('#eightLoc').hide();
         $('#txt2location').css("width", "100%");
@@ -1203,7 +1213,8 @@
         $('#cancelAddLocation').show();
     } 
     //cancel AddLocation
-    function cancelAddLocation() {
+    function cancelAddLocation()
+    {
         $('#txtTo').css("width", "85%");
         $('#8location').hide();
         $('#7location').hide();
