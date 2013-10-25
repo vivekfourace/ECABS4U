@@ -185,8 +185,8 @@ function OnValidate(data)
     else if(data.d =="true")
     {
         $("#link2").show();
-        $('#lblRequiredField').text("Registration successful,");
-        $('#lblRequiredField').css("color","green");
+        //$('#lblRequiredField').text("Registration successful,");
+        //$('#lblRequiredField').css("color","green");
         $("#link1").show();
                        $('#txtname').val('');
                           $('#txt9').val('');
@@ -207,9 +207,6 @@ function OnValidate(data)
             {
                 window.location = "index.html";
             }
-
-
-
 
         }, 1000);
     }    
