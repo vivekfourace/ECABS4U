@@ -42,7 +42,7 @@ var id = window.setInterval(function () {
 
 function getData(data) {
     var count = data.d.length;
-    var getCount=data.d[0]["DriverDisplayCount"];
+    var getCount = data.d[0]["DriverDisplayCount"];
     if (count < getCount )
     {
         window.clearInterval(id);
@@ -333,7 +333,7 @@ function getData(data) {
  function SearchDriverAgain()
 {
     $('#msg').empty();
-    
+     $('#load').show();
     alert("SearchDriverAgain");
      $.ajax({
         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetNewResponseData",    //Get Response from driver 
