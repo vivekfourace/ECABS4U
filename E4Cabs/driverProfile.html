@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAKXfZggeVZMCwQnR-mGebtLCvjuRfZcg&sensor=true"></script>
+         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAKXfZggeVZMCwQnR-mGebtLCvjuRfZcg&sensor=true"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <link rel="stylesheet" type="text/css" href="css/site.css" />
+        <link rel="stylesheet" type="text/css" href="css/PopUp.css" />
         
         <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
          <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
-        <script type="text/javascript" src="js/watermark.js"></script>
         <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>  
         <script type="text/javascript" src="js/driverProfile.js"></script>
-        <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
-          <script type="text/javascript" src="Common/DriverJobNotification.js"></script>
         <script type="text/javascript" src="Common/GpsCurrentLocation.js"></script>
-        
-         <style type="text/css">
+        <script type="text/javascript" src="Common/DriverJobNotification.js"></script>
+        <style type="text/css">
   .rating {
           overflow: hidden;
           display: inline-block;
@@ -41,24 +39,7 @@
 
 
 </style>
-         
- 
 
-         <script type="text/javascript">
-             jQuery(function($){
-                $("#txtname").Watermark("First name");
-                $("#txtLastname").Watermark("Last name");
-                $("#txtLocation").Watermark("Location 1");
-                $("#txtLocation2").Watermark("Location 2");
-                $("#txtMobileno").Watermark("Mobile number");
-                $("#txtEmailID").Watermark("Email address");
-             });
-             function UseData(){
-                $.Watermark.HideAll();
-                $.Watermark.ShowAll();
-            }
-             
-         </script>
         <title></title>
     </head>
     <body>
@@ -80,29 +61,82 @@
                         </td>
                         <td  width="15%" style="float:right;">
                             <div style="float:right;padding-top:1%;">
-                               <img src="img/backk.png" height="35"  onclick="backToIndex();" style="cursor:pointer"/>
+                               <img src="img/backk.png" height="35"  onclick="backToIndex();"/>
                             </div>
                         </td>
                     </tr>
                 </table>
          </div>
         <center>
-            <div data-role="content" align="left" style="padding-top:76px;width:100%;">
-                <div width="100%" style="float:right">
-                    <span style="padding-right:10px">
+                 <div id="msg"></div>
+                 <div style="width:100%;height:75%;" id="divDetails">
+                     <div id="popup_box" >
+                         <div id="divDealStart"  style="display:none;"align="center">
+                             <table align="left" style="width:100%;background-color:#FFFFFF;">
+                                 <tr>
+                                     <td class="popup_header" width="100%" colspan="2">
+                                         <strong style="padding-left:5px;font-size:13px; " width="100%" align="center">New Job Notification</strong>
+                                         
+                                     </td>
+                                     
+                                 </tr>
+                                 <tr id="popup_content">
+                                     <td width="100%" colspan="2">
+                                         <b style="font-size:13px;color:blue; "><strong>You have got new job request!</strong></b>
+                                         
+                                     </td>
+                                     
+                                 </tr>
+                                 <tr id="popup_content">
+                                     <td width="100%" colspan="2">
+                                         <b style="font-size:13px;color:blue; "><strong>Do you want to see?</strong></b>
+                                         
+                                     </td>
+                                     
+                                 </tr>
+                                 <tr class="popup_footer">
+                                     <td width="50%">
+                                         <input type="button" class="ok" value="Yes" style="width:100%; " onclick="seeRequest()" />
+                                         
+                                     </td>
+                                     <td width="50%">
+                                         <input type="button" class="ok" value="No" style="width:100%; " onclick="closeRequest()"/>
+                                         
+                                     </td>
+                                     
+                                 </tr>
+                                 
+                             </table>
+                             
+                         </div>
+                         
+                     </div>
+                     
+                 </div>
+                 
+             </center>
+        
+        
+        
+            <div data-role="content" style="padding-top:76px;width:100%;">
+                <div width="100%" >
+                    <span style="padding-right:10px;float:right">
                         <a href="#" style="color:#2980CE" onclick="changepassword()"><i>Change password</i></a>
                         
                     </span>
                     
                 </div>
-                <table align="left" style="width:20%;">
+                <table align="left" style="width:25%;height:100px;">
                     <tr>
-                        <td width="100%"><img style="height:80px;" src="img/brown-man-icon.png"/></td>
+                        <td>
+                            <img style="height:80px" src="img/brown-man-icon.png"/>
+                            
+                        </td>
                         
                     </tr>
                     <tr>
                         <td>
-                            <span class="rating" >
+                            <span class="rating" style="float:left">
                                 <input type="radio" class="rating-input" id="rating-input-1-1" name="rating-input-1">
                                 <label for="rating-input-1-1" class="rating-star"></label>
                                 <input type="radio" class="rating-input" id="rating-input-1-2" name="rating-input-1">
@@ -121,7 +155,7 @@
                     </tr>
                     
                 </table>
-                <table align="right" style="width:73%;">
+                <table align="right" style="width:73%">
                     <tr>
                         <td width="100%">
                             <label id="lblname" class="font-style" style="font-size:25px;font-weight:bold"></label>
@@ -156,9 +190,9 @@
                         </td>
                         
                     </tr>
-                     <tr>
+                    <tr>
                         <td width="100%">
-                            <label id="lblEmailID" class="font-style1" style="color:#639ECD;text-decoration:none;width:100%"></label>
+                            <label id="lblEmailID" class="font-style" style="color:#639ECD;text-decoration:none;"></label>
                             <input type="text" id="txtEmailID" class="font-style" style="display:none;text-align:left;width:90%";/>
                             <hr>
                         </td>
@@ -254,7 +288,7 @@
                 
             </div>
             
-        </center>
+        
         
     </body>
     

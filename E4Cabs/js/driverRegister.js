@@ -28,7 +28,7 @@ function RegisterDriver()
                     }
                 else if(name.length == 0)
                  {
-                     $('#lblRequiredField').text("Please enter the first name.");
+                     $('#lblRequiredField').text("Please enter the First name");
                     return false;
                  }
                if(name2.length > 0)
@@ -37,7 +37,7 @@ function RegisterDriver()
                     }
                 else if(name2.length == 0)
                  {
-                     $('#lblRequiredField').text("Please enter the fast name.");
+                     $('#lblRequiredField').text("Please enter the Last name");
                     return false;
                  }
     
@@ -49,13 +49,13 @@ function RegisterDriver()
                             $('#lblRequiredField').text(" ");
                         }
                         else{
-                            $('#lblRequiredField').text("Please enter a valid email address.");
+                            $('#lblRequiredField').text("Please enter a valid Email address");
                             return false;
                         }
                     }
                 else if(email.length == 0)
                 {
-                    $('#lblRequiredField').text("Please enter the email address.");
+                    $('#lblRequiredField').text("Please enter the Email Address");
                     return false;
                 }
     //validate User ID
@@ -65,7 +65,7 @@ function RegisterDriver()
                     }
                 else if(User.length == 0)
                  {
-                     $('#lblRequiredField').text("Please enter the user id.");
+                     $('#lblRequiredField').text("Please enter the User ID");
                     return false;
                  }
 
@@ -76,7 +76,7 @@ function RegisterDriver()
                     }
                 else if(password.length == 0)
                  {
-                     $('#lblRequiredField').text("Please enter password.");
+                     $('#lblRequiredField').text("Please enter password");
                     return false;
                  }
     
@@ -88,13 +88,13 @@ function RegisterDriver()
                         }
                         else
                         {
-                            $('#lblRequiredField').text("Password mismatch.");
+                            $('#lblRequiredField').text("Password mismatch!");
                             return false;
                         }
                     }
                 else if(Cpassword.length == 0)
                     {
-                        $('#lblRequiredField').text("Please enter the confirmPassword.");
+                        $('#lblRequiredField').text("Please enter the ConfirmPassword");
                         return false;
                     }
     
@@ -107,13 +107,13 @@ function RegisterDriver()
                         }
                         else
                         {
-                             $('#lblRequiredField').text("Please enter valid phone number.");
+                             $('#lblRequiredField').text("Please enter valid phone number");
                             return false;
                         }
                     }
                 else if(mobNo.length == 0)
                 {
-                     $('#lblRequiredField').text("Please enter the phone number.");
+                     $('#lblRequiredField').text("Please enter the phone number");
                     return false;
                 }
     
@@ -124,7 +124,7 @@ function RegisterDriver()
                     }
                 else if(Add1.length == 0)
                  {
-                     $('#lblRequiredField').text("Please enter the address1.");
+                     $('#lblRequiredField').text("Please enter the Address1");
                     return false;
                  }
                  
@@ -136,7 +136,7 @@ function RegisterDriver()
                     }
                 else if(Add2.length == 0)
                  {
-                     $('#lblRequiredField').text("Please enter the address2.");
+                     $('#lblRequiredField').text("Please enter the Address2");
                     return false;
                  }
             
@@ -148,7 +148,7 @@ function RegisterDriver()
                     }
                 else if(post.length == 0)
                  {
-                     $('#lblRequiredField').text("Please fill the postcode.");
+                     $('#lblRequiredField').text("Please Fill the Postcode");
                     return false;
                  }
     
@@ -179,14 +179,14 @@ function OnValidate(data)
     if(data.d =="false")
     {
         $("#link2").show();
-        $('#lblRequiredField').text("Username already exist, enter another name.");
+        $('#lblRequiredField').text("Username already exist, enter another name!");
         $('#lblRequiredField').css("color","red");
     }
     else if(data.d =="true")
     {
         $("#link2").show();
-        $('#lblRequiredField').text("Registration successful.");
-        $('#lblRequiredField').css("color","green");
+        //$('#lblRequiredField').text("Registration successful,");
+        //$('#lblRequiredField').css("color","green");
         $("#link1").show();
                        $('#txtname').val('');
                           $('#txt9').val('');
@@ -207,9 +207,6 @@ function OnValidate(data)
             {
                 window.location = "index.html";
             }
-
-
-
 
         }, 1000);
     }    
