@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <title></title>    
     <script type="text/javascript" src="Scripts/jquery-2.0.3.min.js"></script>
+    <!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAKXfZggeVZMCwQnR-mGebtLCvjuRfZcg&sensor=true"></script>-->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAKXfZggeVZMCwQnR-mGebtLCvjuRfZcg&sensor=true"></script>
     <link rel="stylesheet" type="text/css" href="css/site.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
@@ -33,9 +34,7 @@
         var minutes = currentTime.getMinutes()
         if (minutes < 10)
             minutes = "0" + minutes
-        //var suffix = "AM";
         if (hours >= 24) {
-            //suffix = "PM";
             hours = hours - 24;
         }
         if (hours == 0) {
@@ -62,6 +61,16 @@
     var dis1, dis2, dis3, dis4, dis5, dis6;
 
     function calcRoute() {
+        var fromloc;
+        var isChecked = $('#chkFromLocation').attr('checked') ? true : false;
+        if (isChecked == false) {
+            fromloc = document.getElementById('txtFrom').value;
+        }
+        else if (isChecked == true) {
+            fromloc = document.getElementById('txtCurrentFrom').value;
+        }
+        var toloc = document.getElementById('txtTo').value;
+        CalculateDuration(fromloc, toloc);
         var start = document.getElementById("txtFrom").value;
         var loc2 = document.getElementById("txt2location").value;
         var loc3 = document.getElementById("txt3location").value;
@@ -1060,8 +1069,7 @@
     }
 
     //Book Return Journey
-    function bookReturn()
-    {
+    function bookReturn() {
         $('#txtReturFrom').show();
         $('#txtReturTo').show();
         $('#cancelreturn').show();
@@ -1080,8 +1088,7 @@
         document.getElementById("txtReturTo").value = from;
     }
     //Cancel Book Return
-    function cancelBookReturn() 
-    {
+    function cancelBookReturn() {
         document.getElementById("txtReturFrom").value = "";
         document.getElementById("txtReturTo").value = "";
         document.getElementById("datepickers").value = "";
@@ -1104,20 +1111,19 @@
     }
 
     //Show Special Requirements
-    function showReq() 
-    {
+    function showReq() {
         $('#specialreq').hide();
         $('#cancelreq').show();
         document.getElementById("trboundChair").style.display = 'table-row';
         document.getElementById("trchildSeats").style.display = 'table-row';
         document.getElementById("trChildBooster").style.display = 'table-row';
         document.getElementById("txtothereSpecialRequirement").style.display = 'table-row';
+
         $('#trspecialrequirement').show();
 
     }
     //Cancel Special Requirements
-    function cancelReq() 
-    {
+    function cancelReq() {
         $('#trspecialrequirement').hide();
         $('#specialreq').show();
         $('#cancelreq').hide();
@@ -1128,8 +1134,7 @@
 
 
     //Add 2Location
-    function secoundLocation()
-    {
+    function secoundLocation() {
         $('#2location').show();
         $('#secoundLoc').hide();
         $('#thirdLoc').show();
@@ -1139,8 +1144,7 @@
     }
 
     //Add 3rdLocation
-    function thirdLocation()
-    {
+    function thirdLocation() {
         $('#3location').show();
         $('#thirdLoc').hide();
         $('#fourLoc').show();
@@ -1149,8 +1153,7 @@
         $('#cancelAddLocation').show();
     }
     //Add 4thLocation
-    function fourthLocation() 
-    {
+    function fourthLocation() {
         $('#4location').show();
         $('#fourLoc').hide();
         $('#fiveLoc').show();
@@ -1160,8 +1163,7 @@
         $('#cancelAddLocation').show();
     }
     //Add 5thLocation
-    function fifthLocation() 
-    {
+    function fifthLocation() {
         $('#5location').show();
         $('#fiveLoc').hide();
         $('#sixLoc').show();
@@ -1172,8 +1174,7 @@
         $('#cancelAddLocation').show();
     } 
     //Add 6thLocation
-    function sixthLocation() 
-    {
+    function sixthLocation() {
         $('#6location').show();
         $('#sixLoc').hide();
         $('#sevenLoc').show();
@@ -1185,8 +1186,7 @@
         $('#cancelAddLocation').show();
     } 
     //Add 7thLocation
-    function sevenLocation() 
-    {
+    function sevenLocation() {
         $('#7location').show();
         $('#sevenLoc').hide();
         $('#eightLoc').show();
@@ -1199,8 +1199,7 @@
         $('#cancelAddLocation').show();
     } 
     //Add 8thLocation
-    function eightLocation() 
-    {
+    function eightLocation() {
         $('#8location').show();
         $('#eightLoc').hide();
         $('#txt2location').css("width", "100%");
@@ -1213,8 +1212,7 @@
         $('#cancelAddLocation').show();
     } 
     //cancel AddLocation
-    function cancelAddLocation()
-    {
+    function cancelAddLocation() {
         $('#txtTo').css("width", "85%");
         $('#8location').hide();
         $('#7location').hide();
@@ -1276,6 +1274,7 @@
             </div>
          <div style="width:100%;height:70px;"  class="header">
                 <table style="width:100%;padding-top:1%;">
+                    <input type="hidden" id="TravelTime"/>
                     <tr>
                         <td width="30%" style="float:left;">
                              <div style="float:left;height:48px;width:100px;">
@@ -1292,7 +1291,7 @@
                         </td>
                         <td  width="15%" style="float:right;">
                             <div style="float:right;padding-top:1%;">
-                              <img src="img/Home.png" height="35" onclick="homeSearch()" style="cursor:pointer"/>
+                              <img src="img/Home.png" height="35" onclick="homeSearch()" />
                             </div>
                         </td>
                     </tr>
@@ -1319,7 +1318,7 @@
                 </tr>
                 <tr id="currentPos" style="display:none">
                 <td>
-                    <label class="font-style;color:black"><b style="font-size:12px;">Current position</b></label> 
+                    <label class="font-style"><b style="font-size:12px">Current position</b></label> 
                     <input type="text" id="txtCurrentFrom" class="font-style" style="width:100%;float:right;"/>
                 </td>
                </tr>   
@@ -1397,7 +1396,7 @@
                    </tr>
                     <tr>
                    <td>
-                       <input type="button" id="cancelAddLocation" class="specialBtn" onclick="cancelAddLocation()" style="display:none;float:right;cursor:pointer" value="Cancel"/>
+                       <input type="button" id="cancelAddLocation" class="specialBtn" onclick="cancelAddLocation()" style="display:none;float:right;" value="Cancel"/>
                    </td>
                </tr>
                   
@@ -1482,8 +1481,8 @@
             </tr>
                <tr>
                    <td>
-                       <input type="button" id="specialreq" class="specialBtn" onclick="showReq()" style="width:58%;float:left;cursor:pointer" value="Special Requirement" />
-                       <input type="button" id="bookreturn" class="specialBtn" onclick="bookReturn()" style="width:40%;float:right;cursor:pointer" value="Book a Return"/>
+                       <input type="button" id="specialreq" class="specialBtn" onclick="showReq()" style="width:58%;float:left;" value="Special Requirement" />
+                       <input type="button" id="bookreturn" class="specialBtn" onclick="bookReturn()" style="width:40%;float:right;" value="Book a Return"/>
                    </td>
                </tr>
                    
@@ -1539,7 +1538,7 @@
                </tr>
                 <tr>
                    <td>
-                       <input type="button" id="cancelreq" class="specialBtn" onclick="cancelReq()" style="width:50%;float:right;display:none;cursor:pointer" value="Cancel" />
+                       <input type="button" id="cancelreq" class="specialBtn" onclick="cancelReq()" style="width:50%;float:right;display:none;" value="Cancel" />
                    </td>
                </tr>
                </div>
@@ -1623,7 +1622,7 @@
             </tr>
                 <tr>
                    <td>
-                       <input type="button" id="cancelreturn" class="specialBtn" onclick="cancelBookReturn()" style="display:none;float:right;cursor:pointer" value="Cancel"/>
+                       <input type="button" id="cancelreturn" class="specialBtn" onclick="cancelBookReturn()" style="display:none;float:right;" value="Cancel"/>
                    </td>
                </tr>
                     </center>
