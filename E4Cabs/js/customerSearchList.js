@@ -12,6 +12,7 @@ function backtosearch() {
 //Job Time out//
 var timeOut = 181;
 var timer = setInterval(function () {
+    --timeOut;
     //document.getElementById('lblMessage').innerHTML = "Your job will expire in " + --timeOut + "s.";
     if (timeOut <= 0) {
         window.clearInterval(id);
@@ -20,6 +21,15 @@ var timer = setInterval(function () {
     }
 }, 1000);
 
+var a = 0;
+function CheckJobCount(count)
+{
+    a++;
+    if(a == 59 && count==0)
+    {
+       return true;
+    }
+}
 function Destroy() {
     window.clearInterval(timer);
     window.clearInterval(id);
@@ -42,6 +52,15 @@ var id = window.setInterval(function () {
 
 function getData(data) {
     var count = data.d.length;
+    var isTrue =  CheckJobCount(count);
+    if(isTrue)
+    {
+        //TODO: send request again from the scratch to next five drivers.
+        //window.clearInterval(id);
+        
+        SearchDriverAgain();
+       
+    }
     var getCount = data.d[0]["DriverDisplayCount"];
     if (count < getCount )
     {
@@ -194,7 +213,7 @@ function getData(data) {
         $('#popup_box').show();
         $('#divselect').show();
        // $('#divDriverList').show();  // status buttons(4)
-        var html = '<table width="120%" style="border-collapse:collapse;">';
+        var html1 = '<table width="120%" style="border-collapse:collapse;">';
         html += '<thead style="background-color:#D8DCBB;color:darkblue;">';
         html += '<tr>';
         html += '<th >Fare</th>';
@@ -321,7 +340,7 @@ function getData(data) {
         html += '</td></tr>'; 
         html += '</table>';
         html += '</div>';
-        $('#msg').append(html);
+        $('#msg').append(html1);
     }
 
     else {
@@ -334,7 +353,8 @@ function getData(data) {
 {
     $('#msg').empty();
      $('#load').show();
-    alert("SearchDriverAgain");
+    $('#statusMessage').html("Searching for more drivers...");
+    //alert("SearchDriverAgain");
      $.ajax({
         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetNewResponseData",    //Get Response from driver 
         type: "POST",
@@ -362,9 +382,10 @@ function SearchAgain()
     });
 }
 function showExpiry() {
-    $('#popup_box').hide();
+    $('#popup_box').show();
     $('#popupBoxClose').show();
     $('#divBiding').hide();
+    $('#divselect').hide();
     $('#divExpiry').show();
     $('#lblsearch').text();
     $('#lblexp').text();
@@ -372,10 +393,11 @@ function showExpiry() {
     $('#divspec').hide();
 }
 function showBid() {
-    $('#popup_box').hide();
+    $('#popup_box').show();
     $('#popupBoxClose').show();
     $('#divBiding').show();
     $('#divExpiry').hide();
+     $('#divselect').hide();
     $('#lblbid').text();
     $('#lblpick').text();
     $('#divDealConfirmed').hide();
@@ -391,7 +413,7 @@ function closeBid() {
 }
 //specia req pop up divExpiry divBiding closeExpiry closeBid
 function SpecShow() {
-    $('#popup_box').hide();
+    $('#popup_box').show();
     $('#popupBoxClose').show();
     $('#divDealConfirmed').hide();
     $('#divspec').show();
@@ -405,9 +427,7 @@ function specClose() {
 
 // hire me response send to driver 
 function Hireme(driID, reqID) {
-    
     DisableHiremeBtns();    // Disable all other buttons once cliked on any one 'Hire me' button.
-    
     $('#loading').show();   //Start loader
     var driverId = driID;
     var requestId = reqID;
@@ -615,7 +635,7 @@ function DeleteJob()
         contentType: "application/json; charset=utf-8",
         success: function(data)
             {
-                alert(data.d);
+                alert(data.d); //delete job status
                 window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
             },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
