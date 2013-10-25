@@ -53,7 +53,7 @@ function showlocation()
 //Home Button in Header
 function homeSearch()
 {
-    
+   window.location='businessCustomerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId; 
 }
 
 function searchResult()

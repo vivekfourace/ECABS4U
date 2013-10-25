@@ -42,7 +42,7 @@ function bookedHistory()
 //My Profile Button
  function myProfile()
             {
-                window.location =  'businessCustomerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                window.location='businessCustomerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
             }
   
 //Logout
