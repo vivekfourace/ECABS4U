@@ -1,4 +1,4 @@
-setInterval(getCurrentPostCode, 60000); 
+setInterval(getCurrentPostCode, 10000); 
 
         function getCurrentPostCode() {
             if (navigator.geolocation) {
