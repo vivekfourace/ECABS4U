@@ -25,7 +25,7 @@ var a = 0;
 function CheckJobCount(count)
 {
     a++;
-    if(a == 10 && count==0)
+    if(a == 59 && count==0)
     {
        return true;
     }
@@ -56,8 +56,8 @@ function getData(data) {
     if(isTrue)
     {
         //TODO: send request again from the scratch to next five drivers.
-        
         //window.clearInterval(id);
+        
         SearchDriverAgain();
        
     }
@@ -353,8 +353,8 @@ function getData(data) {
 {
     $('#msg').empty();
      $('#load').show();
-    
-    alert("SearchDriverAgain");
+    $('#statusMessage').html("Searching for more drivers...");
+    //alert("SearchDriverAgain");
      $.ajax({
         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetNewResponseData",    //Get Response from driver 
         type: "POST",
@@ -635,7 +635,7 @@ function DeleteJob()
         contentType: "application/json; charset=utf-8",
         success: function(data)
             {
-                alert(data.d);
+                alert(data.d); //delete job status
                 window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
             },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
