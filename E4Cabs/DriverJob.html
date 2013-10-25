@@ -247,7 +247,7 @@
                         deleteDriver();
                     }
                 });
-            }, 5000);
+            }, 30000);
 
             function DestroyMe() {
                
@@ -429,18 +429,23 @@
             var getIsReturnJourney = $('#isReturnJourney').val();
             var getFare = $('#lbldealfare').text();
             $('#divDeal').hide();
+             $('#popup_box').hide();
             var reqID = $('#lbldealjob').text();
-            if (getFare == 15 || getFare > 15) {
+            if (getFare == 15 || getFare > 15)
+            {
 
-                if (getIsReturnJourney == "True") {
+                if (getIsReturnJourney == "True") 
+                {
                     var _avgFare = getFare / 2;
 
-                    if (_avgFare == 15 || _avgFare > 15) {
+                    if (_avgFare == 15 || _avgFare > 15) 
+                    {
                         $('#divComission2').show();
                         $('#lblconfirmjob2').text(reqID);
                         $('#lblconfirmfare2').text(getFare);
                     }
-                    else {
+                    else
+                    {
                         $('#divComission').hide();
                         $('#divComission2').hide();
 
@@ -471,13 +476,17 @@
                         $('#popup_box').hide();
                     }
                 }
-                else if (getIsReturnJourney == "False") {
+                else if (getIsReturnJourney == "False") 
+                {
+                    alert("inside");
+                     $('#popup_box').show();
                     $('#divComission').show();
                     $('#lblconfirmjob').text(reqID);
                     $('#lblconfirmfare').text(getFare);
                 }
             }
-            else {
+            else 
+            {
                 $('#divComission').hide();
                 $('#divComission2').hide();
                 $.ajax({
