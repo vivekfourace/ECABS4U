@@ -102,9 +102,9 @@ function CalculateDuration(fromLocation, toLocation)
             time = time.replace('mins', 'M');
             time = time.replace('saat', 'Saat');
             time = time.replace('dakika', 'dk');
-            total = total / 1000;
-            totalTime = total
-            return total;
+            total = total / 1000; //distance in KM
+
+            return time;
         }
 }
 

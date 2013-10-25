@@ -42,8 +42,7 @@ var id = window.setInterval(function () {
 
 function getData(data) {
     var count = data.d.length;
-    var getCount=data.d[0]["DriverDisplayCount"];
-    alert(getCount);
+    var getCount = data.d[0]["DriverDisplayCount"];
     if (count < getCount )
     {
         window.clearInterval(id);
