@@ -11,59 +11,60 @@ function Registercustomer()
     var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
     var phoneno =/^\d{11}$/;
     
-               if(!txt1)
-                 {
-                     $('#lblMsg').text("Please enter first name.");
-                     $('#txtFirstName').focus();                        
-                     return false;
-                 }
-               if(!txt2)
-                 {
-                     $('#lblMsg').text("Please enter last name.");
-                     $('#txtLastName').focus();                     
-                    return false;
-                 }
+    //Validation of First Name no.
+          if(!txt1)
+            {
+                $('#lblMsg').text("Please enter first name.");
+                $('#txtFirstName').focus();                        
+                return false;
+            }
+          if(!txt2)
+            {
+                $('#lblMsg').text("Please enter last name.");
+                $('#txtLastName').focus();                     
+               return false;
+            }
       //validate Phone number.
-               if(txt3.length > 0)
+           if(txt3.length > 0)
+               {
+                    if(phoneno.test(txt3))
                     {
-                        if(phoneno.test(txt3))
-                        {
-                            $('#lblMsg').text(" ");
-                        }
-                        else
-                        {
-                             $('#lblMsg').text("Please enter valid phone number.");
-                            $('#txtPhone').focus();
-                            return false;
-                        }
+                        $('#lblMsg').text(" ");
                     }
-                else if(txt3.length == 0)
-                {
-                     $('#lblMsg').text("Please enter phone number.");
-                    $('#txtPhone').focus();
-                    return false;
-                }
-    
+                    else
+                    {
+                        $('#lblMsg').text("Please enter valid phone number.");
+                        $('#txtPhone').focus();
+                        return false;
+                    }
+              }
+            else if(txt3.length == 0)
+            {
+                $('#lblMsg').text("Please enter phone number.");
+                $('#txtPhone').focus();
+                return false;
+            }
+           
       //validate Email address
-                if(txt4.length > 0)
-                    {
-                        if(txt4.match(regExpEmail))
-                        {
-                            $('#lblMsg').text(" ");
-                        }
-                        else{
-                            $('#lblMsg').text("Please enter valid email address.");
-                            $('#txtEmail').focus();
-                            return false;
-                        }
-                    }
-                else if(txt4.length == 0)
-                {
-                    $('#lblMsg').text("Please enter email address.");
-                    $('#txtEmail').focus();
-                    return false;
-                }
-    
+           if(txt4.length > 0)
+               {
+                   if(txt4.match(regExpEmail))
+                   {
+                       $('#lblMsg').text(" ");
+                   }
+                   else{
+                       $('#lblMsg').text("Please enter valid email address.");
+                       $('#txtEmail').focus();
+                       return false;
+                   }
+               }
+           else if(txt4.length == 0)
+           {
+               $('#lblMsg').text("Please enter email address.");
+               $('#txtEmail').focus();
+               return false;
+           }
+           
           if(!txt6)
                  {
                      $('#lblMsg').text("Please enter username.");

@@ -2,11 +2,12 @@ var QString = window.location.search.substring(1);
 var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
-
 //alert(userId+" "+roleId+ " "+relatedId)
 
+//Page Load Function. 
 window.onload = getProfile();
-//get customer profile
+
+//get(display) customer profile in label.
 function getProfile()
 {
 var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetCustomerrDetails";
@@ -16,14 +17,11 @@ $.ajax(url,{
     data:"{'userID':'" +relatedId+"'}",
     contentType: "application/json; charset=utf-8",                     
     success: ShowData,
-    
     error: function (XMLHttpRequest, textStatus, errorThrown) {
    //alert(errorThrown.message);
         }
  });
 }
-
-
 function ShowData(data)
 { 
    $('#lblname').text(data.d[0] +"  "+ data.d[1]);
@@ -33,73 +31,46 @@ function ShowData(data)
    $('#lblMobileNo').text(data.d[4]);
    $('#lblEmailID').text(data.d[5]);
     
-    $('#txtname').hide();
-    $('#txtlastname').hide();    
-    $('#txtLocation').hide();    
-    $('#txtLocation2').hide();    
-    $('#txtMobileno').hide();    
-    $('#txtEmailID').hide();
+   $('#txtname').hide();
+   $('#txtlastname').hide();    
+   $('#txtLocation').hide();    
+   $('#txtLocation2').hide();    
+   $('#txtMobileno').hide();    
+   $('#txtEmailID').hide();
     
-     document.getElementById("trBtnUpdate").style.display = 'none';
-     document.getElementById("trCancel").style.display = 'none';
-     document.getElementById("tredit").style.display = 'table-row';
-  //   $('#btnUpdate').hide();
-  // $('#btnCancel').hide();
-    
-   // {
-       // $("#btnCancel").button("disable")
-        
-//}
-    
-   //$('#btnUpdate').hide();
-      //$('#btnhistory').show();
-    
-    $('#lblname').show();
-     $('#lbllastname').show();
-    $('#lblLocation').show();
-    $('#lblLocation2').show();
-    $('#lblMobileNo').show();
-    $('#lblEmailID').show();
-    $('#btnEdit').show();
-    $('hr').show();
+   document.getElementById("trBtnUpdate").style.display = 'none';
+   document.getElementById("trCancel").style.display = 'none';
+   document.getElementById("tredit").style.display = 'table-row';
+   $('#lblname').show();
+   $('#lbllastname').show();
+   $('#lblLocation').show();
+   $('#lblLocation2').show();
+   $('#lblMobileNo').show();
+   $('#lblEmailID').show();
+   $('#btnEdit').show();
+   $('hr').show();
  }
 
-
-
-
-
-
-
-//Edit Customer Profile
+//Edit Customer Profile and It will Show the Data in Textbox.
 function EditProfile()
 {
     $('#txtname' ).show(); 
-     //$('#txtlastname').show();
     $('#txtLocation').show();    
     $('#txtLocation2').show();    
     $('#txtMobileno').show();    
     $('#txtEmailID').show();
     $('hr').hide();
-   //  $('#btnUpdate').show();
-   // $('#btnCancel').show();
-    
     document.getElementById("trBtnUpdate").style.display = 'table-row';
-     document.getElementById("trCancel").style.display = 'table-row';
-     document.getElementById("tredit").style.display = 'none';
-    //$('#btnchangepassword').show();
-    
+    document.getElementById("trCancel").style.display = 'table-row';
+    document.getElementById("tredit").style.display = 'none';
     $('#lblname').hide();
     $('#lbllastname').hide();
     $('#lblLocation').hide();
     $('#lblLocation2').hide();
     $('#lblMobileNo').hide();
     $('#lblEmailID').hide();
-  $('#btnhistory').hide();
-  
-   // $("#btnEdit").hide();
-
-
-   var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetCustomerrDetails";
+    $('#btnhistory').hide();
+    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetCustomerrDetails";
     $.ajax(url,{
         type:"POST",
         dataType: "Json",
@@ -107,7 +78,6 @@ function EditProfile()
         contentType: "application/json; charset=utf-8",                     
         success: function(data){
             $('#txtname').val(data.d[0] +"  "+ data.d[1]); 
-          //$('#txtlastname').val(data.d[0]["CustomerLastName"]);
             $('#txtLocation').val(data.d[2])
             $('#txtLocation2').val(data.d[3])
             $('#txtMobileno').val(data.d[4]);    
@@ -120,31 +90,17 @@ function EditProfile()
  });
 }
 
-
-
-
-
-
-
-
-
-//upadate customer Profile
+//Upadate customer Profile and it will show the data in label.
 
 function UpdateProfile()
 {
-      var name = $('#txtname').val();
-     var lastname = $('#txtlastname').val();
-      var address1 = $('#txtLocation').val();
-      var address2 = $('#txtLocation2').val();
-      var email = $('#txtEmailID').val();
-      var phoneno = $('#txtMobileno').val();
-    // var phoneno2 =/^\d{12}$/;
-     //var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
-    
-    
-     
-      
-     var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateCustomerDetails";
+    var name = $('#txtname').val();
+    var lastname = $('#txtlastname').val();
+    var address1 = $('#txtLocation').val();
+    var address2 = $('#txtLocation2').val();
+    var email = $('#txtEmailID').val();
+    var phoneno = $('#txtMobileno').val(); 
+    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateCustomerDetails";
         $.ajax(url,{
             type:"POST",
             dataType: "Json",
@@ -157,75 +113,59 @@ function UpdateProfile()
  });
 }
 
-
-
-
-
-//Cancel update
+//Cancel the Updating of customer Profile.
 function CancelProfile()
 {
-    
     getProfile();
 }
 
+//Change Password Link.
+function changepassword()
+{
+   window.location='changePassword.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;  
+}
+
+//Back button(header) to CustomerSearch Page.
+function backToIndex()
+{
+   window.location =  'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;  
+}
 
 
-
-
-//Booked history Button
+//Button From Footer Section.
+//Booked history Button Redirect to Driver History Page.
 function bookedHistory()
 {
-  //alert(relatedId);
- 
   window.location='bookedhistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
    
 }
 
-
-
-
-
-//My Profile Button
+//Profile Button
  function myProfile()
-            {
-                window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-            }
-
-
-
-
-
+{
+    window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
 
 //Logout Button
 function logout()
-    {
-        $.cookie("remember", false);
-        $.cookie("userName", 'null');
-        $.cookie("userPassword", 'null');
-        window.location = "index.html";  
-    }
-
-
-
-
-//Cab Now Button
-function cabNow()
-{ 
-   //alert(relatedId);
-   window.location ='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+{
+    $.cookie("remember", false);
+    $.cookie("userName", 'null');
+    $.cookie("userPassword", 'null');
+    window.location = "index.html";  
 }
 
-
+//Cabsearch Button
+function cabNow()
+{ 
+   window.location ='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
 
 //Home
 function preCab()
 {
     window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-
-
-
-
 
 //Customer Feedback 
 function feedBack()
@@ -234,30 +174,5 @@ function feedBack()
 }
 
 
-
-
-
-//Change Password
-function changepassword()
-{
-   window.location='changePassword.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-  
-}
-
-
-
-
-
-
-
-
-//Back button(header) to Search Page.
-function backToIndex()
-{
-    
-       
-   window.location =  'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-  
-}
 
 

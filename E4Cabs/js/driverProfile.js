@@ -1,11 +1,7 @@
- var QString = window.location.search.substring(1);
+var QString = window.location.search.substring(1);
 var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
-
-var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
-var mobno =/^\d{11}$/;
-
 
 //Page load function.
 window.onload = getProfile();
@@ -17,7 +13,7 @@ function changepassword()
    window.location='changePassword.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
   
 }
-
+//Display Profile.
 function getProfile()
 {
 var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetDriverDetails";
@@ -33,7 +29,6 @@ $.ajax(url,{
         }
  });
 }
-
 function ShowData(data)
 { 
     var nameis = data.d[0]+" "+data.d[1];
@@ -73,7 +68,7 @@ function ShowData(data)
   $('hr').show();
     //$('#mobno').show();
  }
-
+//Edit The Driver Profile. It Will convert Label To text Box.
 function EditProfile()
 {
     $('#txtname').hide();
@@ -119,7 +114,7 @@ function EditProfile()
         }
  });
 }
-
+//Upadate the Driver profile and converted it into Label.
 function UpdateProfile()
 {
       var name = $('#txtname').val();
@@ -140,22 +135,25 @@ function UpdateProfile()
         }
     });
 }
-
+//Cancel The Edit Profile Of Driver
 function CancelProfile()
 {
     getProfile();
 }
-
+//Back button From Header Back to Driver Home Page.
 function backToIndex()
 {
     window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
+//Home Button In Footer 
 function HomePage(){
     window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
+//My Job Button In footer Redirect To Driver Job Page.
 function MyBookings(){
     window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
+//Logout From button in Footer.
 function logout()
 {
        $.cookie("remember", false);
@@ -163,18 +161,18 @@ function logout()
        $.cookie("userPassword", 'null');
         window.location = "index.html";  
 }
+//Profile Button In Footer Redirect To Driver Profile.
 function MyProfilePage(){
     window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
-//History
+//History button in Footer Redirect to Driver History.
 function bookedHistory()
 {
   window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;  
 }
 
-
-//Driver Feedback
+//Feedback Button in  Footer Redirect to Driver Feedback.
 function feedBack()
 {
     window.location='driverFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;

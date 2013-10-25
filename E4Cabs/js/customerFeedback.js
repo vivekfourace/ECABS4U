@@ -1,87 +1,69 @@
- var QString = window.location.search.substring(1);
+var QString = window.location.search.substring(1);
 var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
-
+//Back Button In Header Redirect To Customer Search Page.
 function backtostart()
-{
-   window.location=  'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-}
+    {
+       window.location=  'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    }
 
+//Poast Comment Button.
 function PostComment()
-{
-    $('#divPostComment').fadeIn("slow");
-}
+    {
+        $('#divPostComment').fadeIn("slow");
+    }
 
+//Cancel Comment Button.
 function CancelComment()
-{
-    $('#txtPostComment').val("");
-    $('#divPostComment').fadeOut("slow");  
-}
+    {
+        $('#txtPostComment').val("");
+        $('#divPostComment').fadeOut("slow");  
+    }
 
-//cab Now
+
+//Footer Section 
+//Cabsearch Button.
 function cabNow()
-{
-  window.location= 'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-    
-}
+   {
+     window.location= 'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+       
+   }
 
-
-//Pre Cab
+//Home Button.
 function preCab()
-{
-   window.location = 'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-}
+    {
+       window.location = 'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    }
 
-
-
-//Booked History
+//Booked History Button
 function bookedHistory()
-{
- //alert(relatedId);
- 
-  window.location='bookedhistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-   
-}
+    {
+    
+      window.location='bookedhistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+       
+    }
 
 
-
-
-//My Profile Button
+//Profile Button
  function myProfile()
-            {
-                window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-            }
+    {
+        window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    }
 
-
-//Logout
+//Logout Button
 function logout()
     {   
-         $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
-            type:"POST",
-            dataType: "Json",
-            data:"{'userID':'" +userId+"'}",
-            contentType: "application/json; charset=utf-8",                     
-            success: function(data)
-            {
-                },
-            
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-            //alert(errorThrown);
-                }
-     }); 
+        
        $.cookie("remember", false);
        $.cookie("userName", 'null');
        $.cookie("userPassword", 'null');
        window.location = "index.html";  
     }
 
-
-
-
-//Customer Feedback 
+//Customer Feedback Button
 function feedBack()
-{
-    window.location='customerFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-}
+    {
+        window.location='customerFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    }
