@@ -42,9 +42,7 @@ var id = window.setInterval(function () {
 
 function getData(data) {
     var count = data.d.length;
-    var getCount = data.d[0]["DriverDisplayCount"];
-    if (count < getCount )
-    {
+    if (count > 0 ) {
         window.clearInterval(id);
         window.clearInterval(timer);
         $('#divbid').show();
@@ -173,185 +171,20 @@ function getData(data) {
         html += '</tbody>';
         html += '</table>';
         html += '<br/>'
-        html += '<div>';
-        html += '<table>';
-        html += '<tr><td>';
-        html += '<input type="button" id="searchAgain" value="Refresh Bids" onclick="SearchAgain()"/>';
-        html += '</td><td>';
-        html += '<input type="button" id="searchAgain" value="Insufficient Driver" onclick="SearchDriverAgain()"/>';
-        html += '</td></tr>'; 
-        html += '</table>';
-        html += '</div>';
+        html += '<div><input type="button" id="searchAgain" value="Search again" onclick="SearchAgain()"/></div>';
         $('#msg').append(html);
     }
-    else if (count  >= getCount )
-    {
-        window.clearInterval(id);
-        window.clearInterval(timer);
-        $('#divbid').show();
-        $('#divawait').hide();
-        $('#load').hide();
-        $('#popup_box').show();
-        $('#divselect').show();
-       // $('#divDriverList').show();  // status buttons(4)
-        var html = '<table width="120%" style="border-collapse:collapse;">';
-        html += '<thead style="background-color:#D8DCBB;color:darkblue;">';
-        html += '<tr>';
-        html += '<th >Fare</th>';
-        html += '<th >Date</th>';
-        html += '<th >Time</th>';
-        html += '<th >Job</th>';
-        html += '<th >Specs</th>';
-        html += '<th >ETA</th>';
-        html += '<th ></th>';
-        html += '</tr>';
-        html += '</thead>';
-        html += '<tbody class="body-style">';
-        for (var i = 0; i < count; i++) {
-            var driverID = data.d[i]["DriverID"];
-            var customerReqId = data.d[i]["CustomerRequestID"];
-            var driverName = data.d[i]["DriverName"];
-            var spec = data.d[i]["OtherSpecReq"];
-            var searchTime = data.d[i]["SearchTime"];
-            var tm = searchTime.split(" ");
-
-            var min = tm[1].split(":");
-            var sh = min[0];
-            var sm = min[1];
-
-            var ss = min[2];
-            if (sm > 49) {
-                sh = parseInt(sh) + 1;
-                sm = parseInt(sm) + 10;
-                sm = parseInt(sm) - 60;
-                if (ss == 00) {
-                    sm = parseInt(sm) + 1;
-                    ss = 00;
-                    $('#lblsearch').text(tm[1]);
-                    $('#lblexp').text(sh + ":" + sm + ":" + ss);
-                }
-                else {
-                    $('#lblsearch').text(tm[1]);
-                    $('#lblexp').text(sh + ":" + sm + ":" + ss);
-                }
-            }
-            else {
-                sm = parseInt(sm) + 10;
-                if (ss == 00) {
-                    sm = parseInt(sm) + 1;
-                    ss = 00;
-                    $('#lblsearch').text(tm[1]);
-                    $('#lblexp').text(sh + ":" + sm + ":" + ss);
-                }
-                else {
-                    $('#lblsearch').text(tm[1]);
-                    $('#lblexp').text(sh + ":" + sm + ":" + ss);
-                }
-            }
-
-            //
-            var bidTime = data.d[i]["BidTime"];
-            var bid = bidTime.split(" ");
-            var bidmin = bid[1].split(":");
-            var bidh = bidmin[0];
-            var bidm = bidmin[1];
-            var bids = bidmin[2];
-            if (bidm > 56) {
-                bidh = parseInt(bidh) + 1;
-                bidm = 00;
-                if (bids == 00) {
-                    bidm = parseInt(bidm) + 1;
-                    bids = 00;
-                    $('#lblbid').text(bid[1]);
-                    $('#lblpick').text(bidh + ":" + bidm + ":" + bids);
-                }
-                else {
-                    $('#lblbid').text(bid[1]);
-                    $('#lblpick').text(bidh + ":" + bidm + ":" + bids);
-                }
-            }
-            else {
-                bidm = parseInt(bidm) + 3;
-                if (bids == 00) {
-                    sm = parseInt(sm) + 1;
-                    ss = 00;
-                    $('#lblbid').text(bid[1]);
-                    $('#lblpick').text(bidh + ":" + bidm + ":" + bids);
-                }
-                else {
-                    $('#lblbid').text(bid[1]);
-                    $('#lblpick').text(bidh + ":" + bidm + ":" + bids);
-                }
-            }
-
-            // var expTime=searchTime+10;
-            //var pickTime=bidTime+3;lblsearch,lblexp,lblbid,lblpick
-            if (spec != null) {
-                html += '<tr>';
-                html += "<td width='20%' align='center'>" + '<img src="img/euro.png"width="5" height="5" style="padding-left:3%;"/>' + data.d[i]["Comments"] + "</td>";
-                html += "<td width='20%' align='center'>" + data.d[i]["StartDate"] + '<a href="#" class="pulse" style="color:blue;" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
-                html += "<td width='20%' align='center'>" + data.d[i]["StartTime"] + "</td>";
-                html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
-                html += "<td width='20%' align='center'>" + '<img src="img/spec.png" class="pulse" width="15" height="15" style="color:grey;" onclick="SpecShow()"/>' + "</td>";
-                html += "<td width='20%' align='center'>" + bid[1] + "</td>";
-                html += "<td width='20%' align='center'>" + '<input type="button" class="disableBtn" value="Hire driver" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\');" title= '+driverID+' />' + "</td>";
-                html += '</tr>';
-                $('#txtothereSpecialReq').text(spec);
-            }
-            if (spec == null) {
-                html += '<tr>';
-                html += "<td width='30%' align='center'>" + '<img src="img/euro.png"width="5" height="10" style="padding-left:2%;"/>' + data.d[i]["Comments"] + "</td>";
-                html += "<td width='20%' align='center'>" + data.d[i]["StartDate"] + '<a href="#" style="color:blue;" class="pulse" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
-                html += "<td width='20%' align='center'>" + data.d[i]["StartTime"] + "</td>";
-                html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
-                html += "<td width='20%' align='center'>" + '<img src="img/spec.png" width="15" height="15" style="color:grey;" onclick="SpecShow()"/>' + "</td>";
-                html += "<td width='20%' align='center'>" + bidh + ":" + bidm + ":" + bids + "</td>";
-                html += "<td width='20%' align='center'>" + '<input type="button" class="disableBtn"  value="Hire driver" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\');" title= ' +driverID+' />' + "</td>";
-                html += '</tr>';
-                $('#txtothereSpecialReq').text("Not Available");
-            }
-        }
-        html += '</tbody>';
-        html += '</table>';
-        html += '<br/>'
-        html += '<div>';
-        html += '<table>';
-        html += '<tr><td>';
-        html += '<input type="button" id="searchAgain" value="Refresh Bids" onclick="SearchAgain()"/>';
-        html += '</td></tr>'; 
-        html += '</table>';
-        html += '</div>';
-        $('#msg').append(html);
-    }
-
     else {
         $('#divDriverList').hide();
         $('#load').show();
     }
 }
-//
- function SearchDriverAgain()
-{
-    $('#msg').empty();
-     $('#load').show();
-    alert("SearchDriverAgain");
-     $.ajax({
-        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetNewResponseData",    //Get Response from driver 
-        type: "POST",
-        dataType: "Json",
-        data: "{'requestID':'" + requestID + "'}",
-        contentType: "application/json; charset=utf-8",
-        success: getData,
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-        }
-    });
-}
-//getting the more list of driver
+
 function SearchAgain()
 {
     $('#msg').empty();
     $.ajax({
-        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData",    //Get Response from driver 
+        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData",    //Get Response from driver
         type: "POST",
         dataType: "Json",
         data: "{'requestID':'" + requestID + "'}",

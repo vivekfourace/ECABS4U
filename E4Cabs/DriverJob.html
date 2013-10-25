@@ -24,14 +24,6 @@
         //Got Job a New Job Request
         var count = 0; //global variable for checking customer response.
         $(document).ready(function () {
-            $('#txtbidFare').bind('keypress', function (e) {
-                if ((e.keyCode < 48 || e.keyCode > 57) && e.keyCode != 46)
-                {
-                    e.stopPropagation();
-                    return false;
-                }                    
-            });
-            
             $.ajax({
                 url: 'http://115.115.159.126/ECabs/ECabs4U.asmx/checkResponse',
                 type: "POST",
@@ -769,8 +761,7 @@
                                     
                                 </td>
                                 <td width="50%">
-                                    <b><img src="img/euro.png"width="10" height="10"/>
-                                       <input type="text" id="txtbidFare" maxlength="3" style="font-size:13px;width:70%; " class="test"/></b>
+                                    <b><img src="img/euro.png"width="10" height="10"/><input type="text" id="txtbidFare" maxlength="3" style="font-size:13px;width:70%; " class="test"/></b>
                                     
                                 </td>
                                 
@@ -1276,7 +1267,8 @@
                     </tr>
                    <tr>
                        <td width="50%" style="padding-left:5%;">
-                           <label  class="font-style"><b style="font-size:13px; " class="test">Pick Up Time </b></label>                           
+                           <label  class="font-style"><b style="font-size:13px; " class="test">Pick Up Time </b></label>
+                           
                        </td>
                        <td width="50%" style="padding-left:5%;">
                            <b style="font-size:13px; " class="test">   <label id="lblpickTime" readonly="true"/></b>
