@@ -2,6 +2,21 @@ var QString = window.location.search.substring(1);
 var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
+setTimeout(function(){
+    $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/ChangeDriverStatus",
+            type:"POST",
+            dataType: "Json",
+            data:"",
+            contentType: "application/json; charset=utf-8",                     
+            success: function(data)
+            {
+                },
+            
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            //alert(errorThrown);
+                }
+         }); 
+    },1000); 
 
 setInterval(getCurrentPostCode, 60000); 
 
