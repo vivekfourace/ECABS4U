@@ -14,6 +14,8 @@
     <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
     <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script type="text/javascript" src="js/DriverJob.js"></script>
+     
+    
     <script type="text/javascript">
         var QString = window.location.search.substring(1);
         var userId = QString.split("=")[1].split("&")[0];
@@ -22,6 +24,14 @@
         //Got Job a New Job Request
         var count = 0; //global variable for checking customer response.
         $(document).ready(function () {
+            $('#txtbidFare').bind('keypress', function (e) {
+                if ((e.keyCode < 48 || e.keyCode > 57) && e.keyCode != 46)
+                {
+                    e.stopPropagation();
+                    return false;
+                }                    
+            });
+            
             $.ajax({
                 url: 'http://115.115.159.126/ECabs/ECabs4U.asmx/checkResponse',
                 type: "POST",
@@ -587,11 +597,30 @@
 </head>
 <body>
 
-    <div class="header" style="background-color: #242424; height: 70px">
-        <div style="float: left; height: 48px; width: 122px; padding-top: 3px;">
-            <img src="img/logo1.png" class="logo" />
-        </div>
-    </div>
+    <div style="width:100%;height:70px"  class="header">
+                <table style="width:100%;padding-top:1%;">
+                    <tr>
+                        <td width="30%" style="float:left;">
+                             <div style="float:left;height:48px;width:100px;">
+                                    <img src="img/logo1.png" class="logo"style="float:left;width:100px"/>
+                             </div>
+                              
+                        </td>
+                        <td  width="50%" style="float:left;padding-left:3%;">
+                           
+                                <div style="padding-top:13px;">
+                                    <b class="header-font" style="color:white;font-size:16px;">Driver job</b>
+                                </div>
+                           
+                        </td>
+                        <td  width="15%" style="float:right;">
+                            <div style="float:right;padding-top:1%;">
+                               <img src="img/backk.png" height="35"  onclick="backToIndex();" style="cursor:pointer"/>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+         </div>
     <center>
              <div id="divDealload" class="loadForall">            
                 <span style="font-family:'Trebuchet MS';color:white">Please wait...</span><br>
@@ -740,7 +769,8 @@
                                     
                                 </td>
                                 <td width="50%">
-                                    <b><img src="img/euro.png"width="10" height="10"/><input type="text" id="txtbidFare" maxlength="3" style="font-size:13px;width:70%; " class="test"/></b>
+                                    <b><img src="img/euro.png"width="10" height="10"/>
+                                       <input type="text" id="txtbidFare" maxlength="3" style="font-size:13px;width:70%; " class="test"/></b>
                                     
                                 </td>
                                 
@@ -1246,8 +1276,7 @@
                     </tr>
                    <tr>
                        <td width="50%" style="padding-left:5%;">
-                           <label  class="font-style"><b style="font-size:13px; " class="test">Pick Up Time </b></label>
-                           
+                           <label  class="font-style"><b style="font-size:13px; " class="test">Pick Up Time </b></label>                           
                        </td>
                        <td width="50%" style="padding-left:5%;">
                            <b style="font-size:13px; " class="test">   <label id="lblpickTime" readonly="true"/></b>
