@@ -354,6 +354,7 @@ function getData(data) {
     $('#msg').empty();
      $('#load').show();
     $('#statusMessage').html("Searching for more drivers...");
+    $('#statusMessage').css("color","Yellow");
     //alert("SearchDriverAgain");
      $.ajax({
         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetNewResponseData",    //Get Response from driver 
