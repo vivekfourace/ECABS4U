@@ -209,7 +209,7 @@ function getData(data) {
                 html += '</tr>';
                 $('#txtothereSpecialReq').text(spec);
             }
-            if (spec == null) {     //data.d[i]["StartDate"] + 
+            else if(spec == null) {     //data.d[i]["StartDate"] + 
                 html += '<tr>';
                 html += "<td width='10%' align='center'> &pound" + data.d[i]["Comments"] + "</td>";
                 html += "<td width='25%' align='center'>" + '<a href="#" style="color:blue;" class="pulse" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
