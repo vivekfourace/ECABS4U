@@ -425,12 +425,10 @@
         }
         //
         function dealSubmit() { 
-            alert('deal submit');
             var getIsReturnJourney = $('#isReturnJourney').val();
             var getFare = $('#lbldealfare').text();
             var reqID = $('#lbldealjob').text();
             if (getFare == 15 || getFare > 15) {
-                alert('deal submit2');
                 //window.clearInterval(timereOut);
                 
                 if (getIsReturnJourney == "True") {
@@ -442,7 +440,6 @@
                         $('#lblconfirmfare2').text(getFare);
                     }
                     else {
-                        alert('deal submit3');
                         $('#divComission').show();
                         $('#lblconfirmjob').text(reqID);
                         $('#lblconfirmfare').text(getFare);
@@ -452,7 +449,6 @@
                     }
                 }
                 else if (getIsReturnJourney == "False") {
-                    alert('deal submit4');
                     $('#divDeal').hide();
                     $('#divComission').show();
                     $('#lblconfirmjob').text(reqID);
@@ -526,7 +522,6 @@
 
 
         function Confirmcomission() {
-            alert('commission 2');
             var reqID = $('#lblconfirmjob').text();
             //var comission = 1.2;
 
@@ -551,7 +546,6 @@
         }
 
         function Confirmcomission2() {
-            alert('commission 2');
             var reqID = $('#lblconfirmjob2').text();
             //var comission = 2.4;
 

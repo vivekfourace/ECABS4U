@@ -72,12 +72,12 @@ function getData(data) {
         $('#popup_box').show();
         $('#divselect').show();
        // $('#divDriverList').show();  // status buttons(4)
-        var html = '<table width="120%" style="border-collapse:collapse;">';
+        var html = '<table width="100%" style="border-collapse:collapse;">';
         html += '<thead style="background-color:#D8DCBB;color:darkblue;">';
         html += '<tr>';
-        html += '<th >Fare</th>';
+        html += '<th align="center">Fare</th>';
         html += '<th >Date</th>';
-        html += '<th >Time</th>';
+        /* html += '<th >Time</th>';*/
         html += '<th >Job</th>';
         html += '<th >Specs</th>';
         html += '<th >ETA</th>';
@@ -163,28 +163,28 @@ function getData(data) {
             }
 
             // var expTime=searchTime+10;
-            //var pickTime=bidTime+3;lblsearch,lblexp,lblbid,lblpick
+            //var pickTime=bidTime+3;lblsearch,lblexp,lblbid,lblpick////*+ data.d[i]["StartDate"] + *
             if (spec != null) {
                 html += '<tr>';
-                html += "<td width='20%' align='center'>" + '<img src="img/euro.png"width="5" height="5" style="padding-left:3%;"/>' + data.d[i]["Comments"] + "</td>";
-                html += "<td width='20%' align='center'>" + data.d[i]["StartDate"] + '<a href="#" class="pulse" style="color:blue;" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
-                html += "<td width='20%' align='center'>" + data.d[i]["StartTime"] + "</td>";
+                html += "<td width='10%' align='center'>" + '<img src="img/euro.png"width="5" height="5" style="padding-left:3%;"/>' + data.d[i]["Comments"] + "</td>";
+                html += "<td width='25%' align='center'>"+'<a href="#" class="pulse" style="color:blue;" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
+               /* html += "<td width='20%' align='center'>" + data.d[i]["StartTime"] + "</td>";*/
                 html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
-                html += "<td width='20%' align='center'>" + '<img src="img/spec.png" class="pulse" width="15" height="15" style="color:grey;" onclick="SpecShow()"/>' + "</td>";
-                html += "<td width='20%' align='center'>" + bid[1] + "</td>";
-                html += "<td width='20%' align='center'>" + '<input type="button" class="disableBtn" value="Hire driver" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\');" title= '+driverID+' />' + "</td>";
+                html += "<td width='10%' align='center'>" + '<img src="img/spec.png" class="pulse" width="15" height="15" style="color:grey;" onclick="SpecShow()"/>' + "</td>";
+                html += "<td width='20%' align='center'>" + bidh + ":" + bidm + "</td>";
+                html += "<td width='15%' align='center'>" + '<input type="button" class="disableBtn" value="Hire" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\');" title= '+driverID+' />' + "</td>";
                 html += '</tr>';
                 $('#txtothereSpecialReq').text(spec);
             }
-            if (spec == null) {
+            if (spec == null) {     //data.d[i]["StartDate"] + 
                 html += '<tr>';
-                html += "<td width='30%' align='center'>" + '<img src="img/euro.png"width="5" height="10" style="padding-left:2%;"/>' + data.d[i]["Comments"] + "</td>";
-                html += "<td width='20%' align='center'>" + data.d[i]["StartDate"] + '<a href="#" style="color:blue;" class="pulse" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
-                html += "<td width='20%' align='center'>" + data.d[i]["StartTime"] + "</td>";
+                html += "<td width='10%' align='center'>" + '<img src="img/euro.png"width="5" height="10" style="padding-left:2%;"/>' + data.d[i]["Comments"] + "</td>";
+                html += "<td width='25%' align='center'>" + '<a href="#" style="color:blue;" class="pulse" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
+                /* html += "<td width='20%' align='center'>" + data.d[i]["StartTime"] + "</td>";*/
                 html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
-                html += "<td width='20%' align='center'>" + '<img src="img/spec.png" width="15" height="15" style="color:grey;" onclick="SpecShow()"/>' + "</td>";
-                html += "<td width='20%' align='center'>" + bidh + ":" + bidm + ":" + bids + "</td>";
-                html += "<td width='20%' align='center'>" + '<input type="button" class="disableBtn"  value="Hire driver" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\');" title= ' +driverID+' />' + "</td>";
+                html += "<td width='10%' align='center'>" + '<img src="img/spec.png" width="15" height="15" style="color:grey;" onclick="SpecShow()"/>' + "</td>";
+                html += "<td width='20%' align='center'>" + bidh + ":" + bidm + "</td>";
+                html += "<td width='15%' align='center'>" + '<input type="button" class="disableBtn"  value="Hire" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\');" title= ' +driverID+' />' + "</td>";
                 html += '</tr>';
                 $('#txtothereSpecialReq').text("Not Available");
             }
@@ -216,9 +216,9 @@ function getData(data) {
         var html1 = '<table width="120%" style="border-collapse:collapse;">';
         html += '<thead style="background-color:#D8DCBB;color:darkblue;">';
         html += '<tr>';
-        html += '<th >Fare</th>';
+        html += '<th align="center" >Fare</th>';
         html += '<th >Date</th>';
-        html += '<th >Time</th>';
+       /* html += '<th >Time</th>';*/
         html += '<th >Job</th>';
         html += '<th >Specs</th>';
         html += '<th >ETA</th>';
@@ -304,28 +304,28 @@ function getData(data) {
             }
 
             // var expTime=searchTime+10;
-            //var pickTime=bidTime+3;lblsearch,lblexp,lblbid,lblpick
+            //var pickTime=bidTime+3;lblsearch,lblexp,lblbid,lblpick      data.d[i]["StartDate"] +
             if (spec != null) {
                 html += '<tr>';
-                html += "<td width='20%' align='center'>" + '<img src="img/euro.png"width="5" height="5" style="padding-left:3%;"/>' + data.d[i]["Comments"] + "</td>";
-                html += "<td width='20%' align='center'>" + data.d[i]["StartDate"] + '<a href="#" class="pulse" style="color:blue;" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
-                html += "<td width='20%' align='center'>" + data.d[i]["StartTime"] + "</td>";
+                html += "<td width='10%' align='center'>" + '<img src="img/euro.png"width="5" height="5" style="padding-left:3%;"/>' + data.d[i]["Comments"] + "</td>";
+                html += "<td width='25%' align='center'>" + '<a href="#" class="pulse" style="color:blue;" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
+                /* html += "<td width='20%' align='center'>" + data.d[i]["StartTime"] + "</td>";*/
                 html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
-                html += "<td width='20%' align='center'>" + '<img src="img/spec.png" class="pulse" width="15" height="15" style="color:grey;" onclick="SpecShow()"/>' + "</td>";
-                html += "<td width='20%' align='center'>" + bid[1] + "</td>";
-                html += "<td width='20%' align='center'>" + '<input type="button" class="disableBtn" value="Hire driver" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\');" title= '+driverID+' />' + "</td>";
+                html += "<td width='10%' align='center'>" + '<img src="img/spec.png" class="pulse" width="15" height="15" style="color:grey;" onclick="SpecShow()"/>' + "</td>";
+                html += "<td width='20%' align='center'>" + bidh + ":" + bidm + "</td>";
+                html += "<td width='15%' align='center'>" + '<input type="button" class="disableBtn" value="Hire" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\');"  />' + "</td>";
                 html += '</tr>';
                 $('#txtothereSpecialReq').text(spec);
             }
-            if (spec == null) {
+            if (spec == null) {    // data.d[i]["StartDate"] + 
                 html += '<tr>';
-                html += "<td width='30%' align='center'>" + '<img src="img/euro.png"width="5" height="10" style="padding-left:2%;"/>' + data.d[i]["Comments"] + "</td>";
-                html += "<td width='20%' align='center'>" + data.d[i]["StartDate"] + '<a href="#" style="color:blue;" class="pulse" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
-                html += "<td width='20%' align='center'>" + data.d[i]["StartTime"] + "</td>";
+                html += "<td width='10%' align='center'>" + '<img src="img/euro.png"width="5" height="10" style="padding-left:2%;"/>' + data.d[i]["Comments"] + "</td>";
+                html += "<td width='25%' align='center'>" +'<a href="#" style="color:blue;" class="pulse" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
+                /* html += "<td width='20%' align='center'>" + data.d[i]["StartTime"] + "</td>";*/
                 html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
-                html += "<td width='20%' align='center'>" + '<img src="img/spec.png" width="15" height="15" style="color:grey;" onclick="SpecShow()"/>' + "</td>";
-                html += "<td width='20%' align='center'>" + bidh + ":" + bidm + ":" + bids + "</td>";
-                html += "<td width='20%' align='center'>" + '<input type="button" class="disableBtn"  value="Hire driver" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\');" title= ' +driverID+' />' + "</td>";
+                html += "<td width='10%' align='center'>" + '<img src="img/spec.png" width="15" height="15" style="color:grey;" onclick="SpecShow()"/>' + "</td>";
+                html += "<td width='20%' align='center'>" + bidh + ":" + bidm + "</td>";
+                html += "<td width='15%' align='center'>" + '<input type="button" class="disableBtn"  value="Hire" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\');"  />' + "</td>";
                 html += '</tr>';
                 $('#txtothereSpecialReq').text("Not Available");
             }
@@ -428,7 +428,7 @@ function specClose() {
 
 // hire me response send to driver 
 function Hireme(driID, reqID) {
-    DisableHiremeBtns();    // Disable all other buttons once cliked on any one 'Hire me' button.
+    DisableHiremeBtns();    // Disable all other buttons once cliked on any one 'Hire' button.
     $('#loading').show();   //Start loader
     var driverId = driID;
     var requestId = reqID;
