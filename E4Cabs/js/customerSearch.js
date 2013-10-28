@@ -55,8 +55,23 @@ $(document).ready(function () {
     
     });
 
+function Duration()
+{
+        var fromloc;
+        var isChecked = $('#chkFromLocation').attr('checked') ? true : false;
+        if (isChecked == false) {
+            fromloc = document.getElementById('txtFrom').value;
+        }
+        else if (isChecked == true) {
+            fromloc = document.getElementById('txtCurrentFrom').value;
+        }
+        var toloc = document.getElementById('txtTo').value;
+        CalculateDuration(fromloc, toloc);
+}
+
 function CalculateDuration(fromLocation, toLocation)
 {
+    
     var rendererOptions = {
             draggable: true
         };

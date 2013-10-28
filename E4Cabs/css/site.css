@@ -40,7 +40,7 @@
   left: 0;
   right: 0;
   margin: auto;
-  height:70px;
+  height:80px;
   font-size:13px;
   display:none;
 }
@@ -785,3 +785,4 @@ input[type="password"]:focus {
     border: 1px solid #848484;
     background-color: #848484;
 }
+/* *pulsaring class*/
