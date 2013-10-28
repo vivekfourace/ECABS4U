@@ -24,7 +24,7 @@ var timeOut;
 
 function JobExpiryTime(data)
 {
-    timeOut = data.d;
+    timeOut = (data.d)*1000;
     //alert(timeOut);
 }
 
