@@ -22,8 +22,6 @@
         //Got Job a New Job Request
         var count = 0; //global variable for checking customer response.
         $(document).ready(function () {
-            
-            
             $('#txtbidFare').bind('keypress', function (e) {
                 if ((e.keyCode < 48 || e.keyCode > 57) && e.keyCode != 46)
                 {
@@ -333,6 +331,10 @@
             var distance = $('#lblDistance').text();
             var from = $('#lblFromLoc').text();
             var to = $('#lblToLoc').text();
+            var specialReq = $('#txtSpecialReq').val();
+            alert(specialReq);
+            
+            
             // var third=$('#lblpopthird').text();
             // var four=$('#lblpopfour').text();
             $('#lblbidjob').text(job);
@@ -351,7 +353,7 @@
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/setDriverResponse",
                 type: "POST",
                 dataType: "Json",
-                data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "','price':'" + price + "'}",
+                data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "','price':'" + price + "','specialReq':'" + specialReq + "'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
                     //$("#divDealload").show();
@@ -758,15 +760,21 @@
                             </tr>
                             <tr class="popup_content">
                                 <td width="50%">
-                                    <b style="font-size:13px; " class="test">Fare</b>
-                                    
+                                    <b style="font-size:13px; " class="test">Special Requirements</b>
                                 </td>
                                 <td width="50%">
-                                    <b><img src="img/euro.png"width="10" height="10"/>
-                                       <input type="text" id="txtbidFare" maxlength="3" style="font-size:13px;width:70%; " class="test"/></b>
-                                    
+                                    <b>
+                                       <textarea id="txtSpecialReq" style="font-family:sans-serif" class="test" maxlength="100"></textarea>
+                                    </b>
                                 </td>
-                                
+                            </tr>
+                            <tr class="popup_content">
+                                <td width="50%">
+                                    <b style="font-size:13px; " class="test">Fare</b>
+                                </td>
+                                <td width="50%">
+                                    <b>&pound;<input type="text" id="txtbidFare" maxlength="3" style="font-size:13px;width:70%; " class="test"/></b>
+                                </td>
                             </tr>
                             <tr class="popup_footer">
                                 <td width="50%">

@@ -121,7 +121,8 @@ function getData(data) {
             var driverID = data.d[i]["DriverID"];
             var customerReqId = data.d[i]["CustomerRequestID"];
             //var driverName = data.d[i]["DriverName"];
-            var spec = data.d[i]["OtherSpecReq"];
+            //var spec = data.d[i]["OtherSpecReq"];
+            var spec = data.d[i]["DriverSpecialReq"];
             var searchTime = data.d[i]["SearchTime"];
             var tm = searchTime.split(" ");
 
