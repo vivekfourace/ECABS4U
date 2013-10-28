@@ -61,16 +61,7 @@
     var dis1, dis2, dis3, dis4, dis5, dis6;
 
     function calcRoute() {
-        var fromloc;
-        var isChecked = $('#chkFromLocation').attr('checked') ? true : false;
-        if (isChecked == false) {
-            fromloc = document.getElementById('txtFrom').value;
-        }
-        else if (isChecked == true) {
-            fromloc = document.getElementById('txtCurrentFrom').value;
-        }
-        var toloc = document.getElementById('txtTo').value;
-        CalculateDuration(fromloc, toloc);
+        
         var start = document.getElementById("txtFrom").value;
         var loc2 = document.getElementById("txt2location").value;
         var loc3 = document.getElementById("txt3location").value;
@@ -81,6 +72,12 @@
         var loc8 = document.getElementById("txt8location").value;
         var end = document.getElementById("txtTo").value;
         var distanceInput = document.getElementById("txtDistance");
+        
+        if(end == "" || end == " ")
+        {
+            distanceInput.value = "";
+        }
+        
 
         //2nd and 3rd Location is Empty        
         if (loc2 == 0 && loc3 == 0 && loc4 == 0 && loc5 == 0 && loc6 == 0 && loc7 == 0 && loc8 == 0)
@@ -219,7 +216,7 @@
                 });
             }
         }
-//5th location empty
+            //5th location empty
         else if (loc2 != 0 && loc3 != 0 && loc4 != 0 && loc5 == 0 && loc6 == 0 && loc7 == 0 && loc8 == 0)
         {
             var request3 = {
@@ -321,7 +318,7 @@
                 });
             }
         }
-//6th location empty
+            //6th location empty
          else if (loc2 != 0 && loc3 != 0 && loc4 != 0 && loc5 != 0 && loc6 == 0 && loc7 == 0 && loc8 == 0)
         {
             var request4 = {
@@ -454,7 +451,7 @@
                 });
             }
         }
-//7th location empty
+            //7th location empty
       else if (loc2 != 0 && loc3 != 0 && loc4 != 0 && loc5 != 0 && loc6 != 0 && loc7 == 0 && loc8 == 0)
         {
             var request5 = {
@@ -477,10 +474,6 @@
                 //alert('3in');
                 var loc2 = document.getElementById("txt2location").value;
                 var loc3 = document.getElementById("txt3location").value;
-                //var end = document.getElementById("txtTo").value;
-                //var loc3 = document.getElementById("txt3location").value;
-                //var loc3 = document.getElementById("txtTo").value;
-                //var distanceInput = document.getElementById("txtDistance");
 
                 var request = {
                     origin: loc2,
@@ -612,7 +605,7 @@
                 });
             }
         }
-  //8th location empty 
+          //8th location empty 
         else if (loc2 != 0 && loc3 != 0 && loc4 != 0 && loc5 != 0 && loc6 != 0 && loc7 != 0 && loc8 == 0)
         {
             var request6 = {
@@ -795,7 +788,7 @@
                 });
             }
         }
-//9th location empty
+            //9th location empty
          else if (loc2 != 0 && loc3 != 0 && loc4 != 0 && loc5 != 0 && loc6 != 0 && loc7 != 0 && loc8 != 0)
         {
             var request7 = {
@@ -1332,7 +1325,7 @@
               <tr>
                 <td>
                     <label for="txtTo" class="font-style"><b style="font-size:12px">Final Destination</b></label> 
-                    <input type="text" id="txtTo" class="font-style" style="width:85%;float:left;"/>
+                    <input type="text" id="txtTo" class="font-style" style="width:85%;float:left;" oninput="calcRoute()" onchange="Duration();"/>
                     <img src="img/Addlocation.png" id="secoundLoc" width="25" height="25" style="float:right;cursor:pointer" onclick="secoundLocation()"/>
                 </td>
              </tr>
@@ -1403,7 +1396,7 @@
               <tr>
                 <td>
                     <label for="txtDistance" class="font-style"><b style="font-size:12px">Distance In Miles</b></label> 
-                    <input type="text" id="txtDistance" class="font-style" style="width:100%;float:right;" readonly="true" onclick="calcRoute()"/>
+                    <input type="text" id="txtDistance" class="font-style" style="width:100%;float:right;" readonly="true"/>
                 </td>
               </tr>
                 <tr>
