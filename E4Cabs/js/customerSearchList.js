@@ -182,7 +182,7 @@ function getData(data) {
                 html += "<td width='25%' align='center'>" + '<a href="#" style="color:blue;" class="pulse" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
                 /* html += "<td width='20%' align='center'>" + data.d[i]["StartTime"] + "</td>";*/
                 html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
-                html += "<td width='10%' align='center'>" + '<img src="img/spec.png" width="15" height="15" style="color:grey;" onclick="SpecShow()"/>' + "</td>";
+                html += "<td width='10%' align='center'>" + '<img src="img/spec.png"  width="15" height="15" style="color:grey;" onclick="SpecShow()"/>' + "</td>";
                 html += "<td width='20%' align='center'>" + bidh + ":" + bidm + "</td>";
                 html += "<td width='15%' align='center'>" + '<input type="button" class="disableBtn"  value="Hire" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\');" title= ' +driverID+' />' + "</td>";
                 html += '</tr>';
@@ -197,7 +197,7 @@ function getData(data) {
         html += '<tr><td>';
         html += '<input type="button" id="searchAgain" value="Refresh Bids" onclick="SearchAgain()"/>';
         html += '</td><td>';
-        html += '<input type="button" id="searchAgain" value="Insufficient Driver" onclick="SearchDriverAgain()"/>';
+        html += '<input type="button" id="searchAgain" value="Insufficient Drivers" onclick="SearchDriverAgain()"/>';
         html += '</td></tr>'; 
         html += '</table>';
         html += '</div>';

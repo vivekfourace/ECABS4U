@@ -1320,6 +1320,7 @@
                 <td>
                     <label class="font-style"><b style="font-size:12px">Current position</b></label> 
                     <input type="text" id="txtCurrentFrom" class="font-style" style="width:100%;float:right;"/>
+                    
                 </td>
                </tr>   
                    <tr>
@@ -1329,13 +1330,7 @@
                        </td>
                    </tr>
                
-              <tr>
-                <td>
-                    <label for="txtTo" class="font-style"><b style="font-size:12px">Final Destination</b></label> 
-                    <input type="text" id="txtTo" class="font-style" style="width:85%;float:left;"/>
-                    <img src="img/Addlocation.png" id="secoundLoc" width="25" height="25" style="float:right;cursor:pointer" onclick="secoundLocation()"/>
-                </td>
-             </tr>
+             
                <tr  id="2location" style="display:none">
                 <td>
                     <label for="txt2location" class="font-style"><b style="font-size:12px">Destination 1</b></label> 
@@ -1390,15 +1385,23 @@
                    
                 </td>
                        
-             </tr>   
-                   <tr>
+             </tr>  
+              <tr>
                        <td style="height:5px"></td>
                    </tr>
                     <tr>
                    <td>
                        <input type="button" id="cancelAddLocation" class="specialBtn" onclick="cancelAddLocation()" style="display:none;float:right;" value="Cancel"/>
                    </td>
-               </tr>
+               </tr>     
+             <tr>
+                <td>
+                    <label for="txtTo" class="font-style"><b style="font-size:12px">Final Destination</b></label> 
+                    <input type="text" id="txtTo" class="font-style" style="width:85%;float:left;"/>
+                   <img src="img/Addlocation.png" id="secoundLoc" width="25" height="25" style="float:right;cursor:pointer" onclick="secoundLocation()"/> 
+                </td>
+             </tr>
+               
                   
               <tr>
                 <td>
