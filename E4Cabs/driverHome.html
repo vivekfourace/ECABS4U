@@ -18,7 +18,7 @@
         <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
         <script type="text/javascript" src="js/driverHome.js"></script>
         <script type="text/javascript" src="Common/GpsCurrentLocation.js"></script>
-        <script type="text/javascript" src="Common/DriverJobNotification.js"></script>
+        
         
         <style type="text/css">
             body.js.nojs { display: none; }
@@ -26,6 +26,20 @@
         <script type="text/javascript">
             var relId = relatedId;
         </script>
+        
+         <style>
+      
+     .target{ width:160px; 
+            height:30px; 
+            background:#2A81CF; 
+           border-radius:5px; 
+           color:white;
+         text-align:center;
+         padding-top:5px;
+
+
+        }
+  </style>
     </head>
     <body>
         <center>
@@ -94,6 +108,9 @@
                  
              </center>
             <div style="padding-top:20%;">
+                
+                 <div class="target" style="margin-bottom:20px;font-size:16px">New Job
+                 </div>
                 <div id="marque">
                     <marquee slide="left" style="font-size:20px;color:#ffffff;padding-top:4px">
                         <i>Current Status: &nbsp;<label id="driverStatusupdate" style="color:#ffffff"/></i>

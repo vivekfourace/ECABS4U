@@ -92,10 +92,22 @@ function Check(){
                                               {
                                                   if(data.d=="True")
                                                   {
-                                                     $('#popup_box').show();
-                                                     $('#divDealStart').show();
+                                                    // $('#popup_box').show();
+                                                    //$('#divDealStart').show();
                                                      //$('#beep').Play(); //for playing beep sound
-                                                  }
+                                                       $(document).ready(function() {
+
+                                                       //$("#button").click(function(){
+                                                         $(".target").effect( "pulsate", 
+                                                          {times:10}, 1000 );
+                                                       //});
+                                                        $(".target").click(function(){
+                                                        //alert("You got a new job request.");
+                                                          window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                                                         });
+                                   
+                                                         });
+                                       }
                                                  if(data.d=="False")
                                                   {
                                                      $('#popup_box').hide();
@@ -121,7 +133,7 @@ function Check(){
              });
     
 }
-setInterval(Check, 1000);
+setInterval(Check, 5000);
 
 function Available()
 {
