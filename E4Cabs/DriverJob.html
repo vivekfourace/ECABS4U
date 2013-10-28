@@ -313,7 +313,12 @@
             $("#fare").hide();
         }
         function bidSubmit() {
-            //$('#divComplete').hide();
+            var fare = $('#txtbidFare').val();
+            if(fare.length <= 0)
+            {
+                alert('Please enter fare.');
+                return false;
+            }
             $("#divDealload").show();
             $("#wheel").hide(); $("#Tr1").hide(); $("#Tr2").hide(); $("#Tr3").hide(); $("#Tr4").hide(); $("#Tr5").hide();
             $("#childseat").hide();
@@ -326,13 +331,17 @@
             var distance = $('#lblDistance').text();
             var from = $('#lblFromLoc').text();
             var to = $('#lblToLoc').text();
+            var specialReq = $('#txtSpecialReq').val();
+            alert(specialReq);
+            
+            
             // var third=$('#lblpopthird').text();
             // var four=$('#lblpopfour').text();
             $('#lblbidjob').text(job);
             $('#lblbiddistance').text(distance);
             $('#lblbidfrom').text(from);
             $('#lblbidto').text(to);
-            var fare = $('#txtbidFare').val()
+           
             $('#lblfare').text(fare);
             //$('#lblpopthird').text(third);
             //$('#lblpopfour').text(four);
@@ -344,7 +353,7 @@
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/setDriverResponse",
                 type: "POST",
                 dataType: "Json",
-                data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "','price':'" + price + "'}",
+                data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "','price':'" + price + "','specialReq':'" + specialReq + "'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
                     //$("#divDealload").show();
@@ -354,6 +363,7 @@
 
                 }
             });
+           
             document.getElementById("trfare").style.display = 'table-row';
             document.getElementById("trwheelchair").style.display = 'none';
             document.getElementById("trchildseats").style.display = 'none';
@@ -365,7 +375,10 @@
             document.getElementById("trOtherspec").style.display = 'none';
             document.getElementById("trSpecialtxt").style.display = 'none';
             $('#popup_box').hide();
-            SubmitDeal();
+            if(fare.length > 0)
+            {
+                SubmitDeal();
+            }
             //var Dealid = window.setInterval(SubmitDeal, 2000);
         }
 
@@ -747,15 +760,21 @@
                             </tr>
                             <tr class="popup_content">
                                 <td width="50%">
-                                    <b style="font-size:13px; " class="test">Fare</b>
-                                    
+                                    <b style="font-size:13px; " class="test">Special Requirements</b>
                                 </td>
                                 <td width="50%">
-                                    <b><img src="img/euro.png"width="10" height="10"/>
-                                       <input type="text" id="txtbidFare" maxlength="3" style="font-size:13px;width:70%; " class="test"/></b>
-                                    
+                                    <b>
+                                       <textarea id="txtSpecialReq" style="font-family:sans-serif" class="test" maxlength="100"></textarea>
+                                    </b>
                                 </td>
-                                
+                            </tr>
+                            <tr class="popup_content">
+                                <td width="50%">
+                                    <b style="font-size:13px; " class="test">Fare</b>
+                                </td>
+                                <td width="50%">
+                                    <b>&pound;<input type="text" id="txtbidFare" maxlength="3" style="font-size:13px;width:70%; " class="test"/></b>
+                                </td>
                             </tr>
                             <tr class="popup_footer">
                                 <td width="50%">
