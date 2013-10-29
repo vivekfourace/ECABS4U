@@ -1,13 +1,10 @@
-//var QString = window.location.search.substring(1);
-
-//var relatedId = QString.split("=")[1].split("&")[0];
-
+//Query String
 var QString = window.location.search.substring(1);
 var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
-
+//back to index page
 function backToIndex()
 {
    window.location =  'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
@@ -15,9 +12,7 @@ function backToIndex()
 }
 window.onload = gethistory();
 
-
-
-
+//getting the history details of booked cab
 function gethistory()
 {
    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerHistoryDetails";
@@ -73,74 +68,52 @@ function gethistory()
             }
 
 
-/*function customerFeedback()
-{
-   $("#tbhist").find("td").click(function(event){
-   var listOfCell=$(this).siblings();
-   for(i=0;i<listOfCell.length;i++){
-   alert($(listOfCell[i]).text());
-}
-}); 
-}*/
 //cab Now
 function cabNow()
 {
-  window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+      window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
     
 }
-
-
 
 //Pre Cab
 function preCab()
 {
-   window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+     window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-
-
-
 
 //Booked History
 function bookedHistory()
 {
- //alert(relatedId);
- 
-  window.location='bookedhistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-   
+      window.location='bookedhistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
-
-
-
 //My Profile Button
- function myProfile()
-            {
-                window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-            }
-  
-
+function myProfile()
+{
+     window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+ }
 
 //Logout
 function logout()
-    {
-      $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
-            type:"POST",
-            dataType: "Json",
-            data:"{'userID':'" +userId+"'}",
-            contentType: "application/json; charset=utf-8",                     
-            success: function(data)
-            {
-                },
-            
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-            //alert(errorThrown);
-                }
-     });          
-      $.cookie("remember", false);
-      $.cookie("userName", 'null');
-      $.cookie("userPassword", 'null');
-      window.location = "index.html";  
-    }
+ {
+          $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
+                type:"POST",
+                dataType: "Json",
+                data:"{'userID':'" +userId+"'}",
+                contentType: "application/json; charset=utf-8",                     
+                success: function(data)
+                {
+                    },
+                
+                error: function (XMLHttpRequest, textStatus, errorThrown)
+              {
+              }
+          });          
+          $.cookie("remember", false);
+          $.cookie("userName", 'null');
+          $.cookie("userPassword", 'null');
+          window.location = "index.html";  
+  }
 
 
 

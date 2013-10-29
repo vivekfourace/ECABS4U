@@ -1,17 +1,18 @@
+//query string
 var QString = window.location.search.substring(1);
 var userId = QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
-//var requestID = QString.split("=")[4].split("&")[0];
-
-
-$(document).ready(function () {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function (position) {
+$(document).ready(function ()
+ {
+        if (navigator.geolocation)
+        {
+                navigator.geolocation.getCurrentPosition(function (position) {
                 var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
                 var geocoder = new google.maps.Geocoder();
                 var latLng = pos;
-                geocoder.geocode({ 'latLng': latLng }, function (results, status) {
+                geocoder.geocode({ 'latLng': latLng }, function (results, status) 
+                    {
                     if (status == google.maps.GeocoderStatus.OK) {
                         if (results[1]) {
                             //alert(results[1].formatted_address);
@@ -54,7 +55,7 @@ $(document).ready(function () {
     
     
     });
-
+//finding duration between two distance
 function Duration()
 {
         var fromloc;
@@ -72,7 +73,7 @@ function Duration()
 function CalculateDuration(fromLocation, toLocation)
 {
     
-    var rendererOptions = {
+        var rendererOptions = {
             draggable: true
         };
         var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
@@ -121,7 +122,7 @@ function CalculateDuration(fromLocation, toLocation)
             return time;
         }
 }
-
+//getting location basis of postcode
 function loc() {
     var from = $('#txtFrom').val();
     var to = $('#txtTo').val();
@@ -130,8 +131,9 @@ function loc() {
     //var dis = "none";
     window.location = 'Location.html?id=' + from + '&rid=' + to + '&rrid=' + loc2;
 }
-
-function backtoCustomerhome() {
+//back to 
+function backtoCustomerhome() 
+{
     window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
 }
 

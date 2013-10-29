@@ -1,7 +1,4 @@
-//var QString = window.location.search.substring(1);
-
-//var relatedId = QString.split("=")[1].split("&")[0];
-
+//query string
 var QString = window.location.search.substring(1);
 var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
@@ -18,9 +15,7 @@ function backtostart()
 window.onload = gethistory();
 function gethistory()
 {
-   
-    
-    //var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerHistoryDetails";
+ //var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerHistoryDetails";
                 $.ajax(url, {
                     
                     type:"POST",

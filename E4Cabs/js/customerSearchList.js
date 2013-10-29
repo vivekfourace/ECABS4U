@@ -320,49 +320,51 @@ function specClose() {
 }
 
 // hire me response send to driver 
-function Hireme(driID, reqID) {
+function Hireme(driID, reqID)
+{
     DisableHiremeBtns();    // Disable all other buttons once cliked on any one 'Hire' button.
     var getSpec=$('#txtothereSpecialReq').text(); 
     if(getSpec != "Not Available")
     {
-        alert("inside");
-        var seeSpec=confirm("Please read the special circumstance entry");
-        if(seeSpec==true)
-        {
-           $('#popup_box').show();
-           $('#popupBoxClose').show(); 
-           $('#divspec').show();
-        }
-        else
-        {
-            return false;
-        }
+            alert("inside");
+            var seeSpec=confirm("Please read the special circumstance entry");
+            if(seeSpec==true)
+            {
+               $('#popup_box').show();
+               $('#popupBoxClose').show(); 
+               $('#divspec').show();
+            }
+            else
+            {
+                return false;
+            }
     }
-    $('#loading').show();   //Start loader
-    var driverId = driID;
-    var requestId = reqID;
-    $.ajax({
-        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse",
-        type: "POST",
-        dataType: "Json",
-        data: "{'driverId':'" + driverId + "','requestId':'" + requestId + "'}",
-        contentType: "application/json; charset=utf-8",
-        success: getResponseFromDriver,
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-        }
-    });
+             $('#loading').show();   //Start loader
+             var driverId = driID;
+             var requestId = reqID;
+             $.ajax({
+                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse",
+                 type: "POST",
+                 dataType: "Json",
+                 data: "{'driverId':'" + driverId + "','requestId':'" + requestId + "'}",
+                 contentType: "application/json; charset=utf-8",
+                 success: getResponseFromDriver,
+                 error: function (XMLHttpRequest, textStatus, errorThrown) {
+                 }
+             });
 }
 
 //Disable buttons function
 function DisableHiremeBtns()
 {
-    $(":button.disableBtn").each(function(){
-       this.disabled = true;
-    });
+            $(":button.disableBtn").each(function(){
+               this.disabled = true;
+            });
 }
-
-function getResponseFromDriver(data) {
-    var checkDealResp = window.setInterval(function () {
+//getting response data from drivers
+function getResponseFromDriver(data)
+ {
+        var checkDealResp = window.setInterval(function () {
         $.ajax({
             url: "http://115.115.159.126/ECabs/ECabs4U.asmx/checkdealResponse",
             type: "POST",
@@ -417,140 +419,136 @@ function getResponseFromDriver(data) {
         });
 
     }, 1000);
-    
+    //destroy the timer interval
     function destroySetInterval() {
         window.clearInterval(checkDealResp);    //clear Interval
-        //alert("Clear interval called");
     }
 }
-
-function VehicleStatus() {
-
-}
-
-function ShowMap() {
-    var from = $('#lblconfirmfrom').val();
-    var to = $('#lblconfirmto').val();
-    var loc2=$('#txt2location').val();
-    if(loc2 != "")
-    {
-        window.location = 'Location.html?id=' + from + '&rid=' + to + '&rrid=' + loc2;
-    }
-    else
-    {
-        loc2 = "";
-        window.location = 'Location.html?id=' + from + '&rid=' + to + '&rrid=' + loc2;
-    }
-}
-function DriverRating() {
-
-}
-function Complete() {
-
-}
-
-function calOk() {
-    $('#popup_box').hide();
-    var requestId = $('#lblconfirmjob').text();
-    var driverId = $('#lbldriverId').text();
-    $.ajax({
-        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/SaveData",
-        type: "POST",
-        dataType: "Json",
-        data: "{'driverId':'" + driverId + "','requestId':'" + requestId + "'}",
-        contentType: "application/json; charset=utf-8",
-        success: function (data) {
-            alert("Cab booked successfully.");
-            myProfile();
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
+//showing map location
+function ShowMap() 
+{
+        var from = $('#lblconfirmfrom').val();
+        var to = $('#lblconfirmto').val();
+        var loc2=$('#txt2location').val();
+        if(loc2 != "")
+        {
+            window.location = 'Location.html?id=' + from + '&rid=' + to + '&rrid=' + loc2;
         }
-    });
+        else
+        {
+            loc2 = "";
+            window.location = 'Location.html?id=' + from + '&rid=' + to + '&rrid=' + loc2;
+        }
 }
-
+//
+//saving the data after cab is booked in cab now table
+function calOk() 
+{
+            $('#popup_box').hide();
+            var requestId = $('#lblconfirmjob').text();
+            var driverId = $('#lbldriverId').text();
+            $.ajax({
+                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/SaveData",
+                type: "POST",
+                dataType: "Json",
+                data: "{'driverId':'" + driverId + "','requestId':'" + requestId + "'}",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    alert("Cab booked successfully.");
+                    myProfile();
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                }
+            });
+}
+//selection pop
 function selectDriver()
 {
-    $('#divselect').hide();
-    $('#popup_box').hide();
+            $('#divselect').hide();
+            $('#popup_box').hide();
 }
 
 //Menu items--
 
 //Logout Button
-function logout() {
-    $.cookie("remember", false);
-    $.cookie("userName", 'null');
-    $.cookie("userPassword", 'null');
-    window.location = "index.html";
+function logout()
+ {
+            $.cookie("remember", false);
+            $.cookie("userName", 'null');
+            $.cookie("userPassword", 'null');
+            window.location = "index.html";
 }
 
 //cab Now Button
 function cabNow() {
-    window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+        window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
 }
 
 //Customer Feedback 
-function feedBack() {
-    window.location = 'customerFeedback.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+function feedBack()
+ {
+        window.location = 'customerFeedback.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
 }
 
 //Booked History
-function bookedHistory() {
-    //alert(relatedId);
-    window.location = 'bookedhistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+function bookedHistory()
+ {
+        window.location = 'bookedhistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
 }
 
 //Home Button
-function preCab() {
-    window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+function preCab()
+{
+        window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
 }
 
 //My Profile Button
 function myProfile() {
-    window.location = 'customerHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+        window.location = 'customerHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
 }
 
 function CancelJobRequest()
 {
-    var result = confirm("Do you really want to cancel this job ?");    
-    if (result==true) {
-      var cause = "Cancelled";
-      DeleteJob(cause);
-    }
-    else
-    {
-     return false;    
-    }
+         var result = confirm("Do you really want to cancel this job ?");    
+         if (result==true) {
+           var cause = "Cancelled";
+           DeleteJob(cause);
+         }
+         else
+         {
+          return false;    
+         }
 }
 
-function ReInitiateJob(){
-    var result = confirm("Do you want to Re-Initiate this job ?");    
-    if (result==true) {
-      var cause = "ReInitiate";
-      DeleteJob(cause);     
-    }
-    else
-    {
-     return false;
-    }
+function ReInitiateJob()
+{
+        var result = confirm("Do you want to Re-Initiate this job ?");    
+        if (result==true) {
+          var cause = "ReInitiate";
+          DeleteJob(cause);     
+        }
+        else
+        {
+         return false;
+        }
 }
 
 
 
 function DeleteJob(cause)
 {
-     $.ajax({
-        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CancelCurrentJob",    //Cancel Current Job
-        type: "POST",
-        dataType: "Json",
-        data: "{'requestID':'" + requestID + "','relatedId':'" + relatedId + "','cause':'" + cause + "'}",
-        contentType: "application/json; charset=utf-8",
-        success: function(data)
-            {
-                alert(data.d); //delete job status
-                window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-            },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-        }
-    });
+         $.ajax({
+            url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CancelCurrentJob",    //Cancel Current Job
+            type: "POST",
+            dataType: "Json",
+            data: "{'requestID':'" + requestID + "','relatedId':'" + relatedId + "','cause':'" + cause + "'}",
+            contentType: "application/json; charset=utf-8",
+            success: function(data)
+                {
+                    alert(data.d); //delete job status
+                    window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+                },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            }
+        });
 }

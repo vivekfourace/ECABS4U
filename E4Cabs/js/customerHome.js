@@ -1,150 +1,107 @@
+//query string
 var QString = window.location.search.substring(1);
 var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
-//alert(userId+" "+roleId+ " "+relatedId)
-
 window.onload = getProfile();
 //get customer profile
 function getProfile()
 {
-var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetCustomerrDetails";
-$.ajax(url,{
-    type:"POST",
-    dataType: "Json",
-    data:"{'userID':'" +relatedId+"'}",
-    contentType: "application/json; charset=utf-8",                     
-    success: ShowData,
-    
-    error: function (XMLHttpRequest, textStatus, errorThrown) {
-   //alert(errorThrown.message);
-        }
- });
+        var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetCustomerrDetails";
+        $.ajax(url,{
+            type:"POST",
+            dataType: "Json",
+            data:"{'userID':'" +relatedId+"'}",
+            contentType: "application/json; charset=utf-8",                     
+            success: ShowData,
+            
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+           //alert(errorThrown.message);
+                }
+         });
 }
 
 
 function ShowData(data)
 { 
-   $('#lblname').text(data.d[0] +"  "+ data.d[1]);
-   // $('#lbllastname').text(data.d[0]["CustomerLastName"]);
-   $('#lblLocation').text(data.d[2]);
-   $('#lblLocation2').text(data.d[3]);
-   $('#lblMobileNo').text(data.d[4]);
-   $('#lblEmailID').text(data.d[5]);
-    
-    $('#txtname').hide();
-    $('#txtlastname').hide();    
-    $('#txtLocation').hide();    
-    $('#txtLocation2').hide();    
-    $('#txtMobileno').hide();    
-    $('#txtEmailID').hide();
-    
-     document.getElementById("trBtnUpdate").style.display = 'none';
-     document.getElementById("trCancel").style.display = 'none';
-     document.getElementById("tredit").style.display = 'table-row';
-  //   $('#btnUpdate').hide();
-  // $('#btnCancel').hide();
-    
-   // {
-       // $("#btnCancel").button("disable")
-        
-//}
-    
-   //$('#btnUpdate').hide();
-      //$('#btnhistory').show();
-    
-    $('#lblname').show();
-     $('#lbllastname').show();
-    $('#lblLocation').show();
-    $('#lblLocation2').show();
-    $('#lblMobileNo').show();
-    $('#lblEmailID').show();
-    $('#btnEdit').show();
-    $('hr').show();
+         $('#lblname').text(data.d[0] +"  "+ data.d[1]);
+         // $('#lbllastname').text(data.d[0]["CustomerLastName"]);
+         $('#lblLocation').text(data.d[2]);
+         $('#lblLocation2').text(data.d[3]);
+         $('#lblMobileNo').text(data.d[4]);
+         $('#lblEmailID').text(data.d[5]);
+          
+          $('#txtname').hide();
+          $('#txtlastname').hide();    
+          $('#txtLocation').hide();    
+          $('#txtLocation2').hide();    
+          $('#txtMobileno').hide();    
+          $('#txtEmailID').hide();
+          
+          document.getElementById("trBtnUpdate").style.display = 'none';
+          document.getElementById("trCancel").style.display = 'none';
+          document.getElementById("tredit").style.display = 'table-row';
+          
+          $('#lblname').show();
+          $('#lbllastname').show();
+          $('#lblLocation').show();
+          $('#lblLocation2').show();
+          $('#lblMobileNo').show();
+          $('#lblEmailID').show();
+          $('#btnEdit').show();
+          $('hr').show();
  }
-
-
-
-
-
-
 
 //Edit Customer Profile
 function EditProfile()
 {
-    $('#txtname' ).show(); 
-     //$('#txtlastname').show();
-    $('#txtLocation').show();    
-    $('#txtLocation2').show();    
-    $('#txtMobileno').show();    
-    $('#txtEmailID').show();
-    $('hr').hide();
-   //  $('#btnUpdate').show();
-   // $('#btnCancel').show();
-    
-    document.getElementById("trBtnUpdate").style.display = 'table-row';
-     document.getElementById("trCancel").style.display = 'table-row';
-     document.getElementById("tredit").style.display = 'none';
-    //$('#btnchangepassword').show();
-    
-    $('#lblname').hide();
-    $('#lbllastname').hide();
-    $('#lblLocation').hide();
-    $('#lblLocation2').hide();
-    $('#lblMobileNo').hide();
-    $('#lblEmailID').hide();
-  $('#btnhistory').hide();
-  
-   // $("#btnEdit").hide();
-
-
-   var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetCustomerrDetails";
-    $.ajax(url,{
-        type:"POST",
-        dataType: "Json",
-        data:"{'userID':'" +relatedId+"'}",
-        contentType: "application/json; charset=utf-8",                     
-        success: function(data){
-            $('#txtname').val(data.d[0] +"  "+ data.d[1]); 
-          //$('#txtlastname').val(data.d[0]["CustomerLastName"]);
-            $('#txtLocation').val(data.d[2])
-            $('#txtLocation2').val(data.d[3])
-            $('#txtMobileno').val(data.d[4]);    
-            $('#txtEmailID').val(data.d[5]);
-            
-            },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-        //alert(errorThrown);
-        }
- });
+          $('#txtname' ).show(); 
+          $('#txtLocation').show();    
+          $('#txtLocation2').show();    
+          $('#txtMobileno').show();    
+          $('#txtEmailID').show();
+          $('hr').hide();
+          document.getElementById("trBtnUpdate").style.display = 'table-row';
+          document.getElementById("trCancel").style.display = 'table-row';
+          document.getElementById("tredit").style.display = 'none';
+          $('#lblname').hide();
+          $('#lbllastname').hide();
+          $('#lblLocation').hide();
+          $('#lblLocation2').hide();
+          $('#lblMobileNo').hide();
+          $('#lblEmailID').hide();
+          $('#btnhistory').hide();
+          var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetCustomerrDetails";
+          $.ajax(url,{
+              type:"POST",
+              dataType: "Json",
+              data:"{'userID':'" +relatedId+"'}",
+              contentType: "application/json; charset=utf-8",                     
+              success: function(data){
+                  $('#txtname').val(data.d[0] +"  "+ data.d[1]); 
+                  $('#txtLocation').val(data.d[2])
+                  $('#txtLocation2').val(data.d[3])
+                  $('#txtMobileno').val(data.d[4]);    
+                  $('#txtEmailID').val(data.d[5]);
+                  
+                  },
+              error: function (XMLHttpRequest, textStatus, errorThrown) {
+             
+              }
+          });
 }
 
-
-
-
-
-
-
-
-
 //upadate customer Profile
-
 function UpdateProfile()
 {
       var name = $('#txtname').val();
-     var lastname = $('#txtlastname').val();
+      var lastname = $('#txtlastname').val();
       var address1 = $('#txtLocation').val();
       var address2 = $('#txtLocation2').val();
       var email = $('#txtEmailID').val();
       var phoneno = $('#txtMobileno').val();
-    // var phoneno2 =/^\d{12}$/;
-     //var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
-    
-    
-     
-      
-     var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateCustomerDetails";
+      var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateCustomerDetails";
         $.ajax(url,{
             type:"POST",
             dataType: "Json",
@@ -152,9 +109,9 @@ function UpdateProfile()
             contentType: "application/json; charset=utf-8",                     
             success: ShowData,            
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-            //alert(errorThrown);
+           
         }
- });
+     });
 }
 
 
