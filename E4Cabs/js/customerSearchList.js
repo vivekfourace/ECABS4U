@@ -498,7 +498,8 @@ function CancelJobRequest()
 {
     var result = confirm("Do you really want to cancel this job ?");    
     if (result==true) {
-      DeleteJob();
+      var cause = "Cancelled";
+      DeleteJob(cause);
     }
     else
     {
@@ -507,9 +508,10 @@ function CancelJobRequest()
 }
 
 function ReInitiateJob(){
-    var result = confirm("Do you want to Re-initiate this job ?");    
+    var result = confirm("Do you want to Re-Initiate this job ?");    
     if (result==true) {
-      DeleteJob();     
+      var cause = "ReInitiate";
+      DeleteJob(cause);     
     }
     else
     {
@@ -519,13 +521,13 @@ function ReInitiateJob(){
 
 
 
-function DeleteJob()
+function DeleteJob(cause)
 {
      $.ajax({
         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CancelCurrentJob",    //Cancel Current Job
         type: "POST",
         dataType: "Json",
-        data: "{'requestID':'" + requestID + "'}",
+        data: "{'requestID':'" + requestID + "','relatedId':'" + relatedId + "','cause':'" + cause + "'}",
         contentType: "application/json; charset=utf-8",
         success: function(data)
             {
