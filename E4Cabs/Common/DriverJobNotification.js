@@ -58,4 +58,4 @@ function Check(){
              });
     
 }
-setInterval(Check, 1000);
+setInterval(Check, 5000);
