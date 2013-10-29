@@ -138,12 +138,12 @@ function getData(data) {
                 if (ss == 00) {
                     sm = parseInt(sm) + 1;
                     ss = 00;
-                    $('#lblsearch').text(tm[1]);
-                    $('#lblexp').text(sh + ":" + sm + ":" + ss);
+                    $('#lblsearch').text(min[0] + ":" + min[1]);
+                    $('#lblexp').text(sh + ":" + sm );
                 }
                 else {
-                    $('#lblsearch').text(tm[1]);
-                    $('#lblexp').text(sh + ":" + sm + ":" + ss);
+                    $('#lblsearch').text(min[0] + ":" + min[1]);
+                    $('#lblexp').text(sh + ":" + sm );
                 }
             }
             else {
@@ -151,12 +151,12 @@ function getData(data) {
                 if (ss == 00) {
                     sm = parseInt(sm) + 1;
                     ss = 00;
-                    $('#lblsearch').text(tm[1]);
-                    $('#lblexp').text(sh + ":" + sm + ":" + ss);
+                    $('#lblsearch').text(min[0] + ":" + min[1]);
+                    $('#lblexp').text(sh + ":" + sm );
                 }
                 else {
-                    $('#lblsearch').text(tm[1]);
-                    $('#lblexp').text(sh + ":" + sm + ":" + ss);
+                    $('#lblsearch').text(min[0] + ":" + min[1]);
+                    $('#lblexp').text(sh + ":" + sm );
                 }
             }
 
@@ -173,12 +173,12 @@ function getData(data) {
                 if (bids == 00) {
                     bidm = parseInt(bidm) + 1;
                     bids = 00;
-                    $('#lblbid').text(bid[1]);
-                    $('#lblpick').text(bidh + ":" + bidm + ":" + bids);
+                    $('#lblbid').text(bidmin[0] + ":" + bidmin[1] );
+                    $('#lblpick').text(bidh + ":" + bidm );
                 }
                 else {
-                    $('#lblbid').text(bid[1]);
-                    $('#lblpick').text(bidh + ":" + bidm + ":" + bids);
+                    $('#lblbid').text(bidmin[0] + ":" + bidmin[1]);
+                    $('#lblpick').text(bidh + ":" + bidm );
                 }
             }
             else {
@@ -186,12 +186,12 @@ function getData(data) {
                 if (bids == 00) {
                     sm = parseInt(sm) + 1;
                     ss = 00;
-                    $('#lblbid').text(bid[1]);
-                    $('#lblpick').text(bidh + ":" + bidm + ":" + bids);
+                    $('#lblbid').text(bidmin[0] + ":" + bidmin[1]);
+                    $('#lblpick').text(bidh + ":" + bidm );
                 }
                 else {
-                    $('#lblbid').text(bid[1]);
-                    $('#lblpick').text(bidh + ":" + bidm + ":" + bids);
+                    $('#lblbid').text(bidmin[0] + ":" + bidmin[1]);
+                    $('#lblpick').text(bidh + ":" + bidm );
                 }
             }
 
@@ -203,7 +203,7 @@ function getData(data) {
                 html += "<td width='25%' align='center'>"+'<a href="#" class="pulse" style="color:blue;" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
                /* html += "<td width='20%' align='center'>" + data.d[i]["StartTime"] + "</td>";*/
                 html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
-                html += "<td width='10%' align='center'>" + '<img src="img/spec.png" class="pulse" width="15" height="15" style="color:grey;" onclick="SpecShow()"/>' + "</td>";
+                html += "<td width='10%' align='center'>" + '<img src="img/sc.png" class="pulse" width="15" height="15" style="color:grey;" onclick="SpecShow()"/>' + "</td>";
                 html += "<td width='20%' align='center'>" + bidh + ":" + bidm + "</td>";
                 html += "<td width='15%' align='center'>" + '<input type="button" class="disableBtn" value="Hire" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\');" title= '+driverID+' />' + "</td>";
                 html += '</tr>';
