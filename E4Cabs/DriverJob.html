@@ -410,11 +410,11 @@
         //
         function rejectJob() {
             var rid = $('#lbljobno').text();
-            var status = true;
             $('#divDetails').hide();
             $('#btnbid').hide();
             $('#btnmap').hide();
             $('#btnreject').hide();
+            var status="Reject";
             $.ajax({
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/rejectResponse",
                 type: "POST",
@@ -1029,7 +1029,7 @@
                                     
                                 </td>
                                 <td width="50%">
-                                    <input type="button" id="Button1" class="ok" value="Confirm" style="width:100%;" onclick="rejectJob()" />
+                                    <input type="button"  class="ok" value="Confirm" style="width:100%;" onclick="rejectJob()" />
                                     
                                 </td>
                             </tr>
