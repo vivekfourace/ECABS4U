@@ -1,6 +1,29 @@
-setInterval(getCurrentPostCode, 10000); 
+var postCodeFetchTime;
+
+//setInterval(function()
+//{
+    $.ajax({
+            url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetGPSTime",    //Get Response from driver
+            type: "POST",
+            dataType: "Json",
+            data: "",
+            contentType: "application/json; charset=utf-8",
+            success: UpdatePostCode,
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            }
+        });
+//},300000);
+
+function UpdatePostCode(data)
+{
+    //alert((data.d)*1000);
+    postCodeFetchTime = (data.d)*1000;
+}
+
+setInterval(getCurrentPostCode, postCodeFetchTime);
 
         function getCurrentPostCode() {
+            
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
                     //alert('Capturing Driver Postcode through mobile GPS.');
@@ -28,7 +51,7 @@ setInterval(getCurrentPostCode, 10000);
             }
         }
 
-function updatePostCode(postalCode) {
+       function updatePostCode(postalCode) {
             $.ajax({
                         url: 'http://115.115.159.126/ECabs/ECabs4U.asmx/updateLocationMapping',
                         type: "post",

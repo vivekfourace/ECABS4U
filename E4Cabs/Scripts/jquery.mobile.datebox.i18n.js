@@ -21,7 +21,7 @@ jQuery.extend(jQuery.mobile.datebox.prototype.options.lang, {
 		dateFieldOrder: ['m', 'd', 'y'],
 		timeFieldOrder: ['h', 'i', 'a'],
 		slideFieldOrder: ['y', 'm', 'd'],
-		dateFormat: "%-m/%-d/%Y",
+		dateFormat: "%-d/%-m/%Y",
 		useArabicIndic: false,
 		isRTL: false,
 		calStartDay: 0,
