@@ -322,6 +322,22 @@ function specClose() {
 // hire me response send to driver 
 function Hireme(driID, reqID) {
     DisableHiremeBtns();    // Disable all other buttons once cliked on any one 'Hire' button.
+    var getSpec=$('#txtothereSpecialReq').text(); 
+    if(getSpec != "Not Available")
+    {
+        alert("inside");
+        var seeSpec=confirm("Please read the special circumstance entry");
+        if(seeSpec==true)
+        {
+           $('#popup_box').show();
+           $('#popupBoxClose').show(); 
+           $('#divspec').show();
+        }
+        else
+        {
+            return false;
+        }
+    }
     $('#loading').show();   //Start loader
     var driverId = driID;
     var requestId = reqID;
