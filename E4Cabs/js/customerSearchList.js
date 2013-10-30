@@ -326,7 +326,6 @@ function Hireme(driID, reqID)
     var getSpec=$('#txtothereSpecialReq').text(); 
     if(getSpec != "Not Available")
     {
-            alert("inside");
             var seeSpec=confirm("Please read the special circumstance entry");
             if(seeSpec==true)
             {
