@@ -198,7 +198,7 @@ function OnValidate(data)
                            $('#txtpassword').val('');
                            $('#txtCpass').val('');
                             $('#txtusername').val('');
-       var timeOut = 600;
+       var timeOut = 6;
         setInterval(function() {  
             $('#container').hide();
             document.getElementById('divSucessfulDriver').innerHTML= "Registration successful.";
