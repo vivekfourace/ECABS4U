@@ -1,174 +1,182 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <link rel="stylesheet" type="text/css" href="css/site.css" />
-         <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
-        <script type="text/javascript" src="Scripts/jquery-1.8.2.min.js"></script>
-         <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>    
-        <script type="text/javascript" src="js/customerFeedback.js"></script>
-        
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-        
-        <style type="text/css">
-  .rating {
-          overflow: hidden;
-          display: inline-block;
-      }
-      .rating-input {
-          position: absolute;
-          left: 0;
-          top: -50px;
-      }
-      .rating:hover .rating-star:hover,
-      .rating:hover .rating-star:hover ~ .rating-star,
-      .rating-input:checked ~ .rating-star {
-          background-position: 0 0;
-      }
-      .rating-star,
-      .rating:hover .rating-star {
-          float: right;
-          display: block;
-          width: 16px;
-          height: 16px;
-          background: url('http://kubyshkin.ru/samples/star-rating/star.png') 0 -16px;
-      }
+<head>
 
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/site.css" />
+    <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script type="text/javascript" src="Scripts/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/customerFeedback.js"></script>
 
-</style>
-        
-    </head>
-    <body>
-        <div style="width:100%;height:70px;"  class="header">
-            <table style="width:100%;padding-top:1%;">
-                <tr>
-                    <td width="30%" style="float:left;">
-                        <div style="float:left;height:48px;width:100px;">
-                            <img src="img/logo1.png" class="logo"style="float:left;width:100px"/>
-                            
-                        </div>
-                        
-                    </td>
-                    <td  width="50%" style="float:left;padding-left:3%;">
-                        <div style="padding-top:13px;">
-                            <b class="header-font" style="color:white;font-size:16px;">FeedBack</b>
-                            
-                        </div>
-                        
-                    </td>
-                    <td  width="15%" style="float:right;">
-                        <div style="float:right;padding-top:1%;">
-                            <img src="img/backk.png" height="35" onclick="backtostart();"/>
-                            
-                        </div>
-                        
-                    </td>
-                    
-                </tr>
-                
-            </table>
-            
-        </div>
-        <div  style="width:100%;margin-top:22%;height:100px">
-            <table style="float:left;width:100%;border-collaspe:collaspe;">
-                <tr>
-                    <td width="30%">
-                        <img style="height:80px;" src="img/brown-man-icon.png"/>
-                    </td>
-                    <td width="70%" align="left">
-                        <table>
-                            <tr>
-                                <td>
-                                    <label id="lblName" style="font-size:18px;font-weight:bold">Driver Name</label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label id="lblAge" class="font-style">Age</label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label id="lblPhoneNo" class="font-style">Contact Number</label>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="float:left;">
-                        <span class="rating" style="float:left;padding-right:5px">
-                            <input type="radio" class="rating-input" id="rating-input-1-1" name="rating-input-1">
-                            <label for="rating-input-1-1" class="rating-star"></label>
-                            <input type="radio" class="rating-input" id="rating-input-1-2" name="rating-input-1">
-                            <label for="rating-input-1-2" class="rating-star"></label>
-                            <input type="radio" class="rating-input" id="rating-input-1-3" name="rating-input-1">
-                            <label for="rating-input-1-3" class="rating-star" ></label>
-                            <input type="radio" class="rating-input" id="rating-input-1-4" name="rating-input-1">
-                            <label for="rating-input-1-4" class="rating-star"></label>
-                            <input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1">
-                            <label for="rating-input-1-5" class="rating-star"></label>
-                            
-                        </span>
-                    </td>
-                </tr>                
-            </table>
-            </div>
-        <hr>
-        <div width="100%;">
-            <table width="100%">
-                <tr>
-                    <td width="50%" style="padding-bottom:10px">
-                       <u><label id="lblCommentBar" style="font-weight:bold;font-size:15px;width:100%;height:auto;padding-left:2%;">Comments</label></u> 
-                    </td>
-                    <td width="50%">
-                        <!--<input id="btnAddComment" type="button" value="Write Comment" style="padding-top:4px;color:black;background-color:#EAEAEA;width:80%;" onclick="PostComment();"/>-->
-                        <img src="img/comment_add.png" style="height:30px;float:right;padding-right:10%" onclick="PostComment();"/>
-                        
-                    </td>
-                </tr>
-            </table>
-        
-        </div>
-        <div id="divComment1" style="width:100%">
-            <table style="width:100%;">
-                <tr>
-                    <td  rowspan="2" style="padding-left:8px;width:20%;">
-                        <img style="height:40px;" src="img/administrator.png"/>
-                        
-                    </td>
-                    <td style="width:35%;">
-                        <u><label id="lblUserName" style="font-size:14px;height:auto;font-weight:bold">vikas</label></u>
-                    </td>
-                        <td align="35%">
-                            <u><label id="lblDate" style="width:auto;font-size:10px">22 Dec</label></u>
-                        </td>
-                </tr>
-                <tr >
-                    <td colspan="2" style="width:80%;">
-                        <label id="lblUserComment" style="width:100%;text-align:justify;">Driver is Good and also his driving.Charges are very geniune.</label>
-                    </td>
-                </tr>
-                
-            </table>
-            
-        </div>
-        <center>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+
+    <style type="text/css">
+        .rating
+        {
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .rating-input
+        {
+            position: absolute;
+            left: 0;
+            top: -50px;
+        }
+
+            .rating:hover .rating-star:hover,
+            .rating:hover .rating-star:hover ~ .rating-star,
+            .rating-input:checked ~ .rating-star
+            {
+                background-position: 0 0;
+            }
+
+        .rating-star,
+        .rating:hover .rating-star
+        {
+            float: right;
+            display: block;
+            width: 16px;
+            height: 16px;
+            background: url('http://kubyshkin.ru/samples/star-rating/star.png') 0 -16px;
+        }
+    </style>
+
+</head>
+<body>
+    <div style="width: 100%; height: 70px;" class="header">
+        <table style="width: 100%; padding-top: 1%;">
+            <tr>
+                <td  style="float: left;width:30%">
+                    <div style="float: left; height: 48px; width: 100px;">
+                        <img src="img/logo1.png" class="logo" style="float: left; width: 100px" />
+
+                    </div>
+
+                </td>
+                <td  style="float: left; padding-left: 3%;width:50%">
+                    <div style="padding-top: 13px;">
+                        <b class="header-font" style="color: white; font-size: 16px;">FeedBack</b>
+
+                    </div>
+
+                </td>
+                <td style="float: right; width:15%">
+                    <div style="float: right; padding-top: 1%;">
+                        <img src="img/backk.png" height="35" onclick="backtostart();" />
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        </table>
+
+    </div>
+    <div style="width: 100%; margin-top: 22%; height: 100px">
+        <table style="float: left; width: 100%; border-collaspe: collaspe;">
+            <tr>
+                <td style="width:30%;">
+                    <img style="height: 80px;" src="img/brown-man-icon.png" />
+                </td>
+                <td style="width:70%;" align="left">
+                    <table>
+                        <tr>
+                            <td>
+                                <label id="lblName" style="font-size: 18px; font-weight: bold">Driver Name</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label id="lblAge" class="font-style">Age</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label id="lblPhoneNo" class="font-style">Contact Number</label>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="float: left;">
+                    <span class="rating" style="float: left; padding-right: 5px">
+                        <input type="radio" class="rating-input" id="rating-input-1-1" name="rating-input-1">
+                        <label for="rating-input-1-1" class="rating-star"></label>
+                        <input type="radio" class="rating-input" id="rating-input-1-2" name="rating-input-1">
+                        <label for="rating-input-1-2" class="rating-star"></label>
+                        <input type="radio" class="rating-input" id="rating-input-1-3" name="rating-input-1">
+                        <label for="rating-input-1-3" class="rating-star"></label>
+                        <input type="radio" class="rating-input" id="rating-input-1-4" name="rating-input-1">
+                        <label for="rating-input-1-4" class="rating-star"></label>
+                        <input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1">
+                        <label for="rating-input-1-5" class="rating-star"></label>
+
+                    </span>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <hr>
+    <div style="width:100%;">
+        <table style="width:100%;">
+            <tr>
+                <td  style="padding-bottom: 10px;width:50%">
+                    <u>
+                        <label id="lblCommentBar" style="font-weight: bold; font-size: 15px; width: 100%; height: auto; padding-left: 2%;">Comments</label></u>
+                </td>
+                <td style="width:50%">
+                    <!--<input id="btnAddComment" type="button" value="Write Comment" style="padding-top:4px;color:black;background-color:#EAEAEA;width:80%;" onclick="PostComment();"/>-->
+                    <img src="img/comment_add.png" style="height: 30px; float: right; padding-right: 10%" onclick="PostComment();" />
+
+                </td>
+            </tr>
+        </table>
+
+    </div>
+    <div id="divComment1" style="width: 100%">
+        <table style="width: 100%;">
+            <tr>
+                <td rowspan="2" style="padding-left: 8px; width: 20%;">
+                    <img style="height: 40px;" src="img/administrator.png" />
+
+                </td>
+                <td style="width: 35%;">
+                    <u>
+                        <label id="lblUserName" style="font-size: 14px; height: auto; font-weight: bold">vikas</label></u>
+                </td>
+                <td align="35%">
+                    <u>
+                        <label id="lblDate" style="width: auto; font-size: 10px">22 Dec</label></u>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="width: 80%;">
+                    <label id="lblUserComment" style="width: 100%; text-align: justify;">Driver is Good and also his driving.Charges are very geniune.</label>
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
+    <center>
             <div id="divPostComment" style="width:100%;margin-top:5px;display:none">
-                <table width="100%">
+                <table style="width:100%;">
                     <tr>
-                        <td align="right" width="100%">
+                        <td style="width:100%;text-align:right">
                             <input type="text" id="txtPostComment" placeholder="Write comment..."  style="height:30px;"/><br/>
                             
                         </td>
                         
                     </tr>
                     <tr>
-                        <td align="right">
-                            <input id="btnPostComment" type="button" value="Post" style="text-weight:bold;color:white;background-color:#247ECC"/>
+                        <td style="text-align:right">
+                            <input id="btnPostComment" type="button" value="Post" style="font-weight:bold;color:white;background-color:#247ECC"/>
                             <input id="btnPostCommentCancel" type="button" value="Cancel" style="color:white;background-color:#247ECC" onclick="CancelComment();"/>
                         </td>
                         
@@ -178,43 +186,43 @@
             </div>
             
         </center>
-        <div data-role="footer" style="width:100%;position:fixed;bottom:0px;">
-            <table style="width:100%;" class="btn-tmpFooter">
-                <tr>
-                    <td style="width:20%;">
-                        <div>
-                            <img src="img/Home.png" width="27px;" style="float:left;cursor:pointer" title="Home" onclick="preCab()"/>
-                        </div>
-                    </td>
-                     <td style="width:20%;">
-                        <div>
-                            <img src="img/Cab.png" width="27px;" style="float:left;cursor:pointer" title="CabNow" onclick="cabNow()"/>
-                        </div>
-                    </td>
-                    <td style="width:20%;">
-                        <div>
-                            <img src="img/User.png" width="27px;" style="float:left; cursor:pointer" title="Profile" onclick="myProfile()"/>
-                        </div>
-                    </td>
-                   
-                    
-                    <td style="width:20%;">
-                        <div>
-                            <img src="img/History1.png" width="27px;" style="float:left;cursor:pointer" title="History" onclick="bookedHistory()"/>
-                        </div>
-                    </td>
-                    <td style="width:20%;">
-                        <div>
-                            <img src="img/feedback.png" width="27px;" style="float:left;cursor:pointer" title="Feedback" onclick="feedBack()"/>
-                        </div>
-                    </td>
-                    <td style="width:20%;">
-                        <div>
-                            <img src="img/logout.png" width="27px;" style="float:left;cursor:pointer" title="Logout" onclick="logout()"/>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </body>
+    <div data-role="footer" style="width: 100%; position: fixed; bottom: 0px;">
+        <table style="width: 100%;" class="btn-tmpFooter">
+            <tr>
+                <td style="width: 20%;">
+                    <div>
+                        <img src="img/Home.png"  style="float: left;width:27px;cursor: pointer" title="Home" onclick="preCab()" />
+                    </div>
+                </td>
+                <td style="width: 20%;">
+                    <div>
+                        <img src="img/Cab.png"  style="float: left;width:27px; cursor: pointer" title="CabNow" onclick="cabNow()" />
+                    </div>
+                </td>
+                <td style="width: 20%;">
+                    <div>
+                        <img src="img/User.png" style="float: left; width:27px;cursor: pointer" title="Profile" onclick="myProfile()" />
+                    </div>
+                </td>
+
+
+                <td style="width: 20%;">
+                    <div>
+                        <img src="img/History1.png" style="float: left;width:27px; cursor: pointer" title="History" onclick="bookedHistory()" />
+                    </div>
+                </td>
+                <td style="width: 20%;">
+                    <div>
+                        <img src="img/feedback.png"  style="float: left;width:27px; cursor: pointer" title="Feedback" onclick="feedBack()" />
+                    </div>
+                </td>
+                <td style="width: 20%;">
+                    <div>
+                        <img src="img/logout.png"  style="float: left;width:27px; cursor: pointer" title="Logout" onclick="logout()" />
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
 </html>

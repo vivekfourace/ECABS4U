@@ -14,9 +14,9 @@ var postCodeFetchTime;
         });
 //},300000);
 
+//update driver postcode after some time through gps
 function UpdatePostCode(data)
 {
-    //alert((data.d)*1000);
     postCodeFetchTime = (data.d)*1000;
 }
 
