@@ -244,7 +244,7 @@
                         deleteDriver();
                     }
                 });
-            }, 5000);
+            }, 10000);
 
             function DestroyMe() {
 
@@ -436,11 +436,12 @@
         }
         //
         function dealSubmit() {
+             $('#divDeal').hide();
             var getIsReturnJourney = $('#isReturnJourney').val();
             var getFare = $('#lbldealfare').text();
             var reqID = $('#lbldealjob').text();
             if (getFare == 15 || getFare > 15) {
-                //window.clearInterval(timereOut);
+                //window.clearInterval(timereOut);divDeal
 
                 if (getIsReturnJourney == "True") {
                     var _avgFare = getFare / 2;
