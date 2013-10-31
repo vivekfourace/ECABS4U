@@ -201,7 +201,7 @@ function OnValidate(data)
        var timeOut = 6;
         setInterval(function() {  
             $('#container').hide();
-             document.getElementById('divSucessfulDriver').innerHTML= "Registration successful.";
+            document.getElementById('divSucessfulDriver').innerHTML= "Registration successful.";
             document.getElementById('divMsgDriver').innerHTML=  "Please wait " + --timeOut + "s for login screen.";  
             if(timeOut <= 0)
             {

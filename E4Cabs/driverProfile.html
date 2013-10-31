@@ -14,31 +14,32 @@
         <script type="text/javascript" src="Common/GpsCurrentLocation.js"></script>
         <script type="text/javascript" src="Common/DriverJobNotification.js"></script>
         <style type="text/css">
-  .rating {
-          overflow: hidden;
-          display: inline-block;
-      }
-      .rating-input {
-          position: absolute;
-          left: 0;
-          top: -50px;
-      }
-      .rating:hover .rating-star:hover,
-      .rating:hover .rating-star:hover ~ .rating-star,
-      .rating-input:checked ~ .rating-star {
-          background-position: 0 0;
-      }
-      .rating-star,
-      .rating:hover .rating-star {
-          float: right;
-          display: block;
-          width: 16px;
-          height: 16px;
-          background: url('http://kubyshkin.ru/samples/star-rating/star.png') 0 -16px;
-      }
+            .rating {
+                overflow: hidden;
+                display: inline-block;
+            }
 
+            .rating-input {
+                position: absolute;
+                left: 0;
+                top: -50px;
+            }
 
-</style>
+                .rating:hover .rating-star:hover,
+                .rating:hover .rating-star:hover ~ .rating-star,
+                .rating-input:checked ~ .rating-star {
+                    background-position: 0 0;
+                }
+
+            .rating-star,
+            .rating:hover .rating-star {
+                float: right;
+                display: block;
+                width: 16px;
+                height: 16px;
+                background: url('http://kubyshkin.ru/samples/star-rating/star.png') 0 -16px;
+            }
+        </style>
 
         <title></title>
     </head>
@@ -46,20 +47,20 @@
        <div style="width:100%;height:70px;"  class="header">
                 <table style="width:100%;padding-top:1%;">
                     <tr>
-                        <td width="30%" style="float:left;">
+                        <td style="float:left;width:30%">
                              <div style="float:left;height:48px;width:100px;">
                                     <img src="img/logo1.png" class="logo"style="float:left;width:100px"/>
                              </div>
                               
                         </td>
-                        <td  width="50%" style="float:left;padding-left:3%;">
+                        <td style="float:left;padding-left:3%;width:50%">
                            
-                                <div style="padding-top:13px;">
-                                    <b class="header-font" style="color:white;font-size:16px;">Profile</b>
-                                </div>
+                            <div style="padding-top:13px;">
+                                <b class="header-font" style="color:white;font-size:16px;">Profile</b>
+                            </div>
                            
                         </td>
-                        <td  width="15%" style="float:right;">
+                        <td style="float:right;width:15%">
                             <div style="float:right;padding-top:1%;">
                                <img src="img/backk.png" height="35"  onclick="backToIndex();"/>
                             </div>
@@ -74,52 +75,44 @@
                          <div id="divDealStart"  style="display:none;"align="center">
                              <table align="left" style="width:100%;background-color:#FFFFFF;">
                                  <tr>
-                                     <td class="popup_header" width="100%" colspan="2">
-                                         <strong style="padding-left:5px;font-size:13px; " width="100%" align="center">New Job Notification</strong>
+                                     <td class="popup_header"  style="width:50%" colspan="2">
+                                         <strong style="padding-left:5px;font-size:13px;width:100%" align="center">New Job Notification</strong>
                                          
                                      </td>
                                      
                                  </tr>
                                  <tr id="popup_content">
-                                     <td width="100%" colspan="2">
+                                     <td style="width:50%" colspan="2">
                                          <b style="font-size:13px;color:blue; "><strong>You have got new job request!</strong></b>
                                          
                                      </td>
                                      
                                  </tr>
-                                 <tr id="popup_content">
-                                     <td width="100%" colspan="2">
+                                 <tr id="Tr1">
+                                     <td style="width:50%" colspan="2">
                                          <b style="font-size:13px;color:blue; "><strong>Do you want to see?</strong></b>
                                          
                                      </td>
                                      
                                  </tr>
                                  <tr class="popup_footer">
-                                     <td width="50%">
+                                     <td style="width:50%">
                                          <input type="button" class="ok" value="Yes" style="width:100%; " onclick="seeRequest()" />
                                          
                                      </td>
-                                     <td width="50%">
+                                     <td style="width:50%">
                                          <input type="button" class="ok" value="No" style="width:100%; " onclick="closeRequest()"/>
                                          
                                      </td>
-                                     
                                  </tr>
-                                 
                              </table>
-                             
                          </div>
-                         
                      </div>
-                     
                  </div>
-                 
              </center>
         
-        
-        
             <div data-role="content" style="padding-top:76px;width:100%;">
-                <div width="100%" >
+                <div style="width:100%" >
                     <span style="padding-right:10px;float:right">
                         <a href="#" style="color:#2980CE" onclick="changepassword()"><i>Change password</i></a>
                         
@@ -157,7 +150,7 @@
                 </table>
                 <table align="right" style="width:73%">
                     <tr>
-                        <td width="100%">
+                        <td style="width:100%">
                             <label id="lblname" class="font-style" style="font-size:25px;font-weight:bold"></label>
                             <input type="text" id="txtname" class="font-style" style="display:none;text-align:left;width:90%"/>
                             <label id="lblLastname" class="font-style"></label>
@@ -167,15 +160,15 @@
                         
                     </tr>
                     <tr>
-                        <td width="100%">
+                        <td style="width:100%">
                             <label id="lblLocation" class="font-style"></label>
-                            <input type="text" id="txtLocation" class="font-style" style="display:none;text-align:left;width:90%";/>
+                             <input type="text" id="txtLocation" class="font-style" style="display:none;text-align:left;width:90%";/>
                             <hr>
                         </td>
                         
                     </tr>
                     <tr>
-                        <td width="100%">
+                        <td style="width:100%">
                             <label id="lblLocation2" class="font-style"></label>
                             <input type="text" id="txtLocation2" style="display:none;text-align:left;width:90%"/>
                             <hr>
@@ -183,7 +176,7 @@
                         
                     </tr>
                     <tr>
-                        <td width="100%">
+                        <td style="width:100%">
                             <label id="lblMobileNo" class="font-style"></label>
                             <input type="text" id="txtMobileno" class="font-style" maxlength="11" style="display:none;text-align:left;width:90%"/>
                             <hr id="mobno">
@@ -191,7 +184,7 @@
                         
                     </tr>
                     <tr>
-                        <td width="100%">
+                        <td style="width:100%">
                             <label id="lblEmailID" class="font-style" style="color:#639ECD;text-decoration:none;"></label>
                             <input type="text" id="txtEmailID" class="font-style" style="display:none;text-align:left;width:90%";/>
                             <hr>
@@ -210,23 +203,23 @@
                 
             </div>
             <div style="padding-top:75%;padding-bottom:50px">
-                <table width="100%">
+                <table style="width:100%">
                     <tr id="tredit">
-                        <td  width="100%" align="center">
+                        <td style="width:100%" align="center">
                             <input id="btnEdit" type="button" value="Edit" class="btn-tmp cursor" style="width:100%;color:white;" onclick="EditProfile();" />
                             
                         </td>
                         
                     </tr>
                     <tr id="trBtnUpdate" style="display:none;" >
-                        <td align="center" width="100%">
+                        <td align="center"  style="width:100%">
                             <input id="btnUpdate" type="button" class="btn-tmp cursor" style="width:100%;color:white;" value="Update" onclick="UpdateProfile();"/>
                             
                         </td>
                         
                     </tr>
                     <tr id="trCancel" style="display:none;">
-                        <td align="center" width="100%" >
+                        <td align="center"  style="width:100%" >
                             <input id="btnCancel" type="button" class="btn-tmp cursor" style="width:100%;color:white;" value="Cancel" onclick="CancelProfile();"/>
                             
                         </td>
@@ -241,55 +234,46 @@
                     <tr>
                         <td style="width:20%">
                             <div>
-                                <img src="img/User.png" width="25px;" style="float:left; cursor:pointer" title="Profile" onclick="MyProfilePage()"/>
+                                <img src="img/User.png" style="float:left; cursor:pointer;width:25px" title="Profile" onclick="MyProfilePage()"/>
                                 
                             </div>
                             
                         </td>
                         <td style="width:20%;">
                             <div>
-                                <img src="img/Home.png" width="25px;" style="float:left;cursor:pointer" title="Home" onclick="HomePage()"/>
+                                <img src="img/Home.png" style="float:left;cursor:pointer;width:25px" title="Home" onclick="HomePage()"/>
                                 
                             </div>
                             
                         </td>
                         <td style="width:20%;">
                             <div>
-                                <img src="img/Cab.png" width="25px;" style="float:left;cursor:pointer" title="My Bookings" onclick="MyBookings()"/>
+                                <img src="img/Cab.png" style="float:left;cursor:pointer;width:25px" title="My Bookings" onclick="MyBookings()"/>
                                 
                             </div>
                             
                         </td>
                         <td style="width:20%;">
                             <div>
-                                <img src="img/History1.png" width="25px;" style="float:left;cursor:pointer" title="Booking History" onclick="bookedHistory()"/>
+                                <img src="img/History1.png" style="float:left;cursor:pointer;width:25px" title="Booking History" onclick="bookedHistory()"/>
                                 
                             </div>
                             
                         </td>
                         <td style="width:20%;">
                             <div>
-                                <img src="img/feedback.png" width="25px;" style="float:left;cursor:pointer" title="Feedback" onclick="feedBack()"/>
+                                <img src="img/feedback.png" style="float:left;cursor:pointer;width:25px" title="Feedback" onclick="feedBack()"/>
                                 
                             </div>
                             
                         </td>
                         <td style="width:20%;">
                             <div>
-                                <img src="img/logout.png" width="25px;" style="float:left;cursor:pointer" title="Logout" onclick="logout()"/>
-                                
+                                <img src="img/logout.png" style="float:left;cursor:pointer;width:25px" title="Logout" onclick="logout()"/>
                             </div>
-                            
                         </td>
-                        
                     </tr>
-                    
                 </table>
-                
             </div>
-            
-        
-        
     </body>
-    
 </html>

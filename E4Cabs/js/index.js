@@ -126,9 +126,9 @@ function CheckMsg(data) {
                 break;
 
                 //Role 6 --> Business Customer
-            case 6:
-                window.location = 'businessCustomerSearch.html?id=' + userID + '&rid=' + roleID + '&rrid=' + relatedID;
-                break;
+           // case 6:
+          //      window.location = 'businessCustomerSearch.html?id=' + userID + '&rid=' + roleID + '&rrid=' + relatedID;
+         //       break;
         }
     }
 }

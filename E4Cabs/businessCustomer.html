@@ -1,45 +1,45 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title></title>
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <link rel="stylesheet" type="text/css" href="css/site.css" />
-               
-        <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
-        <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
-        <script type="text/javascript" src="js/businessCustomer.js"></script> 
-    </head>
-    <body>
-       <center>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/site.css" />
+
+    <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script type="text/javascript" src="js/businessCustomer.js"></script>
+</head>
+<body>
+    <center>
        <div id="imgLoader">
                 <img src="jquery-mobile/styles/images/ajax-loader.gif" id="loading-image"/>
        </div>
        <div style="width:100%;height:70px;"  class="header">
                 <table style="width:100%;padding-top:1%;">
                     <tr>
-                        <td width="30%" style="float:left;">
+                        <td  style="float:left;width:30%">
                              <div style="float:left;height:48px;width:100px;">
                                     <img src="img/logo1.png" class="logo"style="float:left;width:100px"/>
                              </div>
                               
                         </td>
-                        <td  width="50%" style="float:left;padding-left:3%;">
+                        <td   style="float:left;padding-left:3%;width:50%;">
                            
                                 <div style="padding-top:13px;">
                                     <b class="header-font" style="color:white;font-size:15px;">Business Customer</b>
                                 </div>
                            
                         </td>
-                        <td  width="15%" style="float:right;">
-                            <div style="float:right;padding-top:1%;">
-                               <img src="img/backk.png" height="35"  onclick="backToIndex();" style="cursor:pointer"/>
+                        <td   style="float:right;width:15%">
+                           <div style="float:right;padding-top:1%;">
+                               <img src="img/backk.png" height="35" style="cursor:pointer;" onclick="backToIndex();"/>
                             </div>
                         </td>
                     </tr>
                 </table>
          </div>
-        <div style="padding-top:71px">
+        <div id="divBusinessreg" style="padding-top:71px">
             <label id="lblMsg" style="color:#D70007;font-size:12px"></label><br/>    
             <input type="text" id="txtBusinessName" placeholder="Name of business"  />
             <input type="text" id="txtFirstName" placeholder="Contact first name"  />
@@ -50,18 +50,23 @@
             <input type="text" id="txtUserName" placeholder="Username"  />
             <input type="password" id="txtPassword" placeholder="Password"  />
             <input type="password" id="txtConfirmPassword" placeholder="Confirm password"  />
-            <textarea id="txtAddress1" placeholder="Address line1" maxlength="50"></textarea>
-            <textarea id="txtAddress2" placeholder="Address line2" maxlength="50"></textarea>
-            <textarea id="txtAddress3" placeholder="Address line3" maxlength="50"></textarea>
-            <textarea id="txtAddress4" placeholder="Address line4" maxlength="50"></textarea>
-            <textarea id="txtAddress5" placeholder="Address line5" maxlength="50"></textarea>
-            <textarea id="txtAddress6" placeholder="Address line6" maxlength="50"></textarea>
+            <textarea id="txtAddress1" placeholder="Address line1" style="font-family:sans-serif" maxlength="50"></textarea>
+            <textarea id="txtAddress2" placeholder="Address line2" style="font-family:sans-serif" maxlength="50"></textarea>
+            <textarea id="txtAddress3" placeholder="Address line3" style="font-family:sans-serif" maxlength="50"></textarea>
+            <textarea id="txtAddress4" placeholder="Address line4" style="font-family:sans-serif" maxlength="50"></textarea>
+            <textarea id="txtAddress5" placeholder="Address line5" style="font-family:sans-serif" maxlength="50"></textarea>
+            <textarea id="txtAddress6" placeholder="Address line6" style="font-family:sans-serif" maxlength="50"></textarea>
             <input type="text" id="txtPostalCode" placeholder="Postcode"  />
             <div style="margin-top:7px;width:100%">
             <input type="button" class="btn-tmp cursor" value="Register" onclick="businessRegistercustomer()"/>
             </div>
         </div>  
-           
-       </center>     
-    </body>
+           <div id="divSucessfulBusiness" style="width:100%;color:green;font-size:16px;padding-top:50%;font-weight:bold;backgroung-color:white">
+                
+            </div>
+            <div id="divMsgBusiness" style="width:100%;color:green;font-size:16px;padding-top:8%;font-weight:bold;backgroung-color:white">
+                
+            </div>
+       </center>
+</body>
 </html>

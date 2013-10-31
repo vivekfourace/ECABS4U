@@ -1,19 +1,18 @@
+//Query String
 var QString = window.location.search.substring(1);
 var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
-//Back to search page(Header)
+//back to index page
 function backToIndex()
 {
    window.location =  'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
   
 }
-
-//PageLoad function
 window.onload = gethistory();
 
-//Display History Function.
+//getting the history details of booked cab
 function gethistory()
 {
    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerHistoryDetails";
@@ -27,7 +26,7 @@ function gethistory()
                         //alert(count);
                         if(count > 0)
                         {
-                                var html = '<table cellspacing="0"; width="100%"  style="border-collaspe:collaspe;">';
+                                var html = '<table id="tbhist" cellspacing="0"; width="100%"  style="border-collaspe:collaspe;">';
                                 html += '<thead style="background-color:#0A0A2A;color:#fff;">';
                                 html += '<tr>';
                                 html += '<th class="th4 font">JobNo</th>';
@@ -41,8 +40,9 @@ function gethistory()
                                                html +='<tbody class="body-style altColor"  style="font-size:14px;">';  
                                                     for(var i=0; i<count; i++)
                                                     {
+                                                        $('#lbljobFeed').text(data.d[i]["JobNo"]);
                                                        html += '<tr>';
-                                                       html += "<td width='25%' align='center'>" +'<a href="#" onclick="" style="color:blue;">'+ data.d[i]["JobNo"]+'</a>' + "</td>"; 
+                                                       html += "<td width='25%' align='center'>" +'<a href="#" onclick="customerFeedback(event)" style="color:blue;">'+ data.d[i]["JobNo"]+'</a>' + "</td>"; 
                                                        html += "<td width='25%' align='center'>" + data.d[i]["StartDate"] + "</td>";
                                                        html += "<td width='25%' align='center'>" + data.d[i]["StartTime"] +"</td>";
                                                        html += "<td width='25%' align='center'>" + data.d[i]["FromLoc"] +"</td>";
@@ -68,50 +68,67 @@ function gethistory()
             }
 
 
-//Button From Footer Section
-//cabsearch Button
+//cab Now
 function cabNow()
-    {
+{
       window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-        
-    }
+    
+}
 
-//Home Button
+//Pre Cab
 function preCab()
-    {
-       window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-    }
+{
+     window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
 
-//Booked History Button
+//Booked History
 function bookedHistory()
-    {
-      window.location='bookedhistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId; 
-    }
+{
+      window.location='bookedhistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
 
-//Profile Button
- function myProfile()
-    {
-       window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-    }
- 
+//My Profile Button
+function myProfile()
+{
+     window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+ }
+
 //Logout
 function logout()
-    {
+ {
+          $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
+                type:"POST",
+                dataType: "Json",
+                data:"{'userID':'" +userId+"'}",
+                contentType: "application/json; charset=utf-8",                     
+                success: function(data)
+                {
+                    },
                 
-      $.cookie("remember", false);
-      $.cookie("userName", 'null');
-      $.cookie("userPassword", 'null');
-      window.location = "index.html";  
-    }
+                error: function (XMLHttpRequest, textStatus, errorThrown)
+              {
+              }
+          });          
+          $.cookie("remember", false);
+          $.cookie("userName", 'null');
+          $.cookie("userPassword", 'null');
+          window.location = "index.html";  
+  }
+
+
+
 
 //Customer Feedback 
 function feedBack()
-    {
-        window.location='customerFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-    }
+{
+    window.location='customerFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
 
 
-
+function backtostart()
+{
+    window.location="index.html";
+}
 
     
     

@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAKXfZggeVZMCwQnR-mGebtLCvjuRfZcg&sensor=true"></script>
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <link rel="stylesheet" type="text/css" href="css/site.css" />
-        <link rel="stylesheet" type="text/css" href="css/PopUp.css" />
-        <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
-         <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
-        <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>    
-        <script type="text/javascript" src="js/driverFeedback.js"></script>
-         <script type="text/javascript" src="Common/GpsCurrentLocation.js"></script>
-        <script type="text/javascript" src="Common/DriverJobNotification.js"></script>
-        <title></title>
-        
-    </head>
-    <body>
-        <center>
+<head>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAKXfZggeVZMCwQnR-mGebtLCvjuRfZcg&sensor=true"></script>
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/site.css" />
+    <link rel="stylesheet" type="text/css" href="css/PopUp.css" />
+    <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/driverFeedback.js"></script>
+    <script type="text/javascript" src="Common/GpsCurrentLocation.js"></script>
+    <script type="text/javascript" src="Common/DriverJobNotification.js"></script>
+    <title></title>
+
+</head>
+<body>
+    <center>
             <div style="width:100%;height:70px"  class="header"> 
                 <table style="width:100%;padding-top:1%;">
                     <tr>
-                        <td width="30%" style="float:left;">
+                        <td  style="float:left;width:30%;">
                              <div style="float:left;height:48px;width:100px;">
                                     <img src="img/logo1.png" class="logo"style="float:left;width:100px"/>
                              </div>
                               
                         </td>
-                        <td  width="50%" style="float:left;padding-left:3%;">
+                        <td  style="float:left;padding-left:3%;width:50%;" >
                            
                                 <div style="padding-top:13px;">
                                     <b class="header-font" style="color:white;font-size:16px;">FeedBack</b>
                                 </div>
                            
                         </td>
-                        <td  width="15%" style="float:right;">
+                        <td   style="float:right;width:15%;">
                             <div style="float:right;padding-top:1%;">
                                <img src="img/backk.png" height="35"  onclick="backToIndex();"/>
                             </div>
@@ -43,40 +43,40 @@
          </div>
             
             </center>
-        
-        <center>
+
+    <center>
                  <div id="msg"></div>
                  <div style="width:100%;height:75%;" id="divDetails">
                      <div id="popup_box" >
                          <div id="divDealStart"  style="display:none;"align="center">
                              <table align="left" style="width:100%;background-color:#FFFFFF;">
                                  <tr>
-                                     <td class="popup_header" width="100%" colspan="2">
+                                     <td class="popup_header" style="width:100%;" colspan="2">
                                          <strong style="padding-left:5px;font-size:13px; " width="100%" align="center">New Job Notification</strong>
                                          
                                      </td>
                                      
                                  </tr>
                                  <tr id="popup_content">
-                                     <td width="100%" colspan="2">
+                                     <td style="width:100%;" colspan="2">
                                          <b style="font-size:13px;color:blue; "><strong>You have got new job request!</strong></b>
                                          
                                      </td>
                                      
                                  </tr>
-                                 <tr id="popup_content">
-                                     <td width="100%" colspan="2">
+                                 <tr id="Tr1">
+                                     <td style="width:100%;" colspan="2">
                                          <b style="font-size:13px;color:blue; "><strong>Do you want to see?</strong></b>
                                          
                                      </td>
                                      
                                  </tr>
                                  <tr class="popup_footer">
-                                     <td width="50%">
+                                     <td style="width:50%;">
                                          <input type="button" class="ok" value="Yes" style="width:100%; " onclick="seeRequest()" />
                                          
                                      </td>
-                                     <td width="50%">
+                                     <td style="width:50%;">
                                          <input type="button" class="ok" value="No" style="width:100%; " onclick="closeRequest()"/>
                                          
                                      </td>
@@ -92,64 +92,64 @@
                  </div>
                  
              </center>
-        
-        
-          <footer>
-           <div style="width:100%;position:fixed;bottom:0px;height:25px;padding-bottom:10px">
-                <table style="width:98%;" class="btn-tmpFooter">
-                    <tr>
-                        <td style="width:20%;">
-                            <div>
-                                <img src="img/User.png" width="25px;" style="float:left; cursor:pointer" title="Profile" onclick="myProfile()"/>
-                                
-                            </div>
-                            
-                        </td>
-                        <td style="width:20%;">
-                            <div>
-                                <img src="img/Home.png" width="25px;" style="float:left;cursor:pointer" title="Home" onclick="MyHome()"/>
-                                
-                            </div>
-                            
-                        </td>
-                        <td style="width:20%;">
-                            <div>
-                                <img src="img/Cab.png" width="25px;" style="float:left;cursor:pointer" title="My Jobs" onclick="MyBookings()"/>
-                                
-                            </div>
-                            
-                        </td>
-                        <td style="width:20%;">
-                            <div>
-                                <img src="img/History1.png" width="25px;" style="float:left;cursor:pointer" title="Booking History" onclick="bookedHistory()"/>
-                                
-                                
-                            </div>
-                            
-                        </td>
-                        <td style="width:20%;">
-                            <div>
-                                <img src="img/feedback.png" width="25px;" style="float:left;cursor:pointer" title="Feedback" onclick="feedBack()"/>
-                                
-                            </div>
-                            
-                        </td>
-                        <td style="width:20%;">
-                            <div>
-                                <img src="img/logout.png" width="25px;" style="float:left;cursor:pointer" title="Logout" onclick="logout()"/>
-                                
-                            </div>
-                            
-                        </td>
-                        
-                    </tr>
-                    
-                </table>
-                
-            </div>
-            
-        
-         </footer>
-    </body>
-    
+
+
+    <footer>
+        <div style="width: 100%; position: fixed; bottom: 0px; height: 25px; padding-bottom: 10px">
+            <table style="width: 98%;" class="btn-tmpFooter">
+                <tr>
+                    <td style="width: 20%;">
+                        <div>
+                            <img src="img/User.png"  style="float: left;width:25px; cursor: pointer" title="Profile" onclick="myProfile()" />
+
+                        </div>
+
+                    </td>
+                    <td style="width: 20%;">
+                        <div>
+                            <img src="img/Home.png" style="float: left;width:25px; cursor: pointer" title="Home" onclick="MyHome()" />
+
+                        </div>
+
+                    </td>
+                    <td style="width: 20%;">
+                        <div>
+                            <img src="img/Cab.png"  style="float: left;width:25px; cursor: pointer" title="My Jobs" onclick="MyBookings()" />
+
+                        </div>
+
+                    </td>
+                    <td style="width: 20%;">
+                        <div>
+                            <img src="img/History1.png"  style="float: left;width:25px; cursor: pointer" title="Booking History" onclick="bookedHistory()" />
+
+
+                        </div>
+
+                    </td>
+                    <td style="width: 20%;">
+                        <div>
+                            <img src="img/feedback.png"  style="float: left;width:25px; cursor: pointer" title="Feedback" onclick="feedBack()" />
+
+                        </div>
+
+                    </td>
+                    <td style="width: 20%;">
+                        <div>
+                            <img src="img/logout.png"  style="float: left;width:25px; cursor: pointer" title="Logout" onclick="logout()" />
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+    </footer>
+</body>
+
 </html>

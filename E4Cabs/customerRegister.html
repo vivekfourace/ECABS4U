@@ -1,64 +1,65 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title></title>
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <link rel="stylesheet" type="text/css" href="css/site.css" />
-        <script type="text/javascript" src="js/customerRegister.js"></script>        
-        <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
-        <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
-      
-    </head>
-    
-    <body>
-       <center>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/site.css" />
+    <script type="text/javascript" src="js/customerRegister.js"></script>
+    <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+</head>
+
+<body>
+    <center>
        <div id="imgLoader">
                 <img src="jquery-mobile/styles/images/ajax-loader.gif" id="loading-image"/>
             </div>
       <div style="width:100%;height:70px"  class="header">
                 <table style="width:100%;padding-top:1%;">
                     <tr>
-                        <td width="30%" style="float:left;">
+                        <td  style="float:left;width:30%;">
                              <div style="float:left;height:48px;width:100px;">
                                     <img src="img/logo1.png" class="logo"style="float:left;width:100px"/>
                              </div>
                               
                         </td>
-                        <td  width="50%" style="float:left;padding-left:3%;">
+                        <td  style="float:left;padding-left:3%;width:50%;">
                            
                                 <div style="padding-top:13px;">
                                     <b class="header-font" style="color:white;font-size:15px;">Customer Register</b>
                                 </div>
                            
                         </td>
-                        <td  width="15%" style="float:right;">
-                          <div style="float:right;padding-top:1%;">
-                               <img src="img/backk.png" height="35"  onclick="backToIndex();" style="cursor:pointer"/>
+                        <td   style="float:right;width:15%;">
+                            <div style="float:right;padding-top:1%;">
+                               <img src="img/backk.png" height="35" style="cursor:pointer;" onclick="backToIndex();"/>
                             </div>
                         </td>
                     </tr>
                 </table>
          </div>
-        <div style="padding-top:76px">        
-             <label id="lblMsg" style="color:#D70007;font-size:12px;"></label><br/>
-            <input type="text" id="txtFirstName" placeholder="First name"/>
-            <input type="text" id="txtLastName" placeholder="Last name"/>
+        <div id="divcustomerreg" style="padding-top:71px">        
+            <label id="lblMsg" style="color:#D70007;font-size:12px"></label><br/>  
+            <input type="text" id="txtFirstName" placeholder="First name"  />
+            <input type="text" id="txtLastName" placeholder="Last name" />
             <input type="text" id="txtPhone" placeholder="Phone number" maxlength="11" />
             <input type="text" id="txtEmail" placeholder="Email Address" />
             <input type="text" id="txtUserName" placeholder="Username" />
             <input type="password" id="txtPassword" placeholder="Password" />
             <input type="password" id="txtConfirmPassword" placeholder="Confirm Password" />
             <div style="margin-top:7px;width:100%">
-            <input type="button" class="btn-tmp cursor" id="customerReg" value="Register" onclick="Registercustomer();"/>
+            <input type="button" class="btn-tmp cursor" value="Register" onclick="Registercustomer();"/>
             </div>
         </div>  
-           <div id="divMsg" align="center" style="width:100%;padding-top:40%">
-              <label id="lblMsg1" style="color:#D70007;font-size:14px;"></label>
-               <br/>
-               <br/>
-            <label id="lblMsg2" style="color:#D70007;font-size:14px"></label> 
-           </div>
-       </center>     
-    </body>
+            <div id="divSucessfulcustomer" style="width:100%;color:green;font-size:16px;font-weight:bold;position: fixed;top: 45%;left: 0;right: 0;">
+                
+            </div>
+            <div id="divMsgcustomer" style="width:100%;color:green;font-size:16px;font-weight:bold;position: fixed;top: 53%;left: 0;right: 0;">
+                
+            </div>
+           
+       </center>
+</body>
 </html>
