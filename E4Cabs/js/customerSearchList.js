@@ -317,6 +317,7 @@ function SpecShow() {
 function specClose() {
     $('#popup_box').hide();
     $('#divspec').hide();
+    
 }
 
 // hire me response send to driver 
@@ -330,15 +331,17 @@ function Hireme(driID, reqID)
             if(seeSpec==true)
             {
                $('#popup_box').show();
-               $('#popupBoxClose').show(); 
                $('#divspec').show();
+               $('#popupBoxClose').show(); 
+              
+               
             }
             else
             {
                 return false;
             }
     }
-             $('#loading').show();   //Start loader
+   $('#loading').show();   //Start loader
              var driverId = driID;
              var requestId = reqID;
              $.ajax({
@@ -350,7 +353,8 @@ function Hireme(driID, reqID)
                  success: getResponseFromDriver,
                  error: function (XMLHttpRequest, textStatus, errorThrown) {
                  }
-             });
+             }); 
+    
 }
 
 //Disable buttons function
