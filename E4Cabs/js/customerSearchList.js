@@ -46,6 +46,7 @@ function CheckJobCount(count)
     {
        return true;
     }
+    return false;
 }
 function Destroy() {
     window.clearInterval(timer);
@@ -70,6 +71,8 @@ var id = window.setInterval(function () {
 function getData(data) {
     var count = data.d.length;
     var isTrue =  CheckJobCount(count);
+    //console.log(isTrue);
+    //alert(isTrue);
     if(isTrue)
     {
         //TODO: send request again from the scratch to next five drivers.
@@ -78,6 +81,7 @@ function getData(data) {
         SearchDriverAgain();
        
     }
+    
     var getCount = data.d[0]["DriverDisplayCount"];
     if (count < getCount )
     {
@@ -203,11 +207,11 @@ function getData(data) {
                 html += "<td width='25%' align='center'>"+'<a href="#" class="pulse" style="color:blue;" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
                /* html += "<td width='20%' align='center'>" + data.d[i]["StartTime"] + "</td>";*/
                 html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
-                html += "<td width='10%' align='center'>" + '<img src="img/sc.png" class="pulse" width="15" height="15" style="color:grey;" onclick="SpecShow()"/>' + "</td>";
+                html += "<td width='10%' align='center'>" + '<img src="img/sc.png" class="pulse" width="15" height="15" style="color:grey;" onclick="SpecShow(\''+spec+'\')"/>' + "</td>";
                 html += "<td width='20%' align='center'>" + bidh + ":" + bidm + "</td>";
-                html += "<td width='15%' align='center'>" + '<input type="button" class="disableBtn" value="Hire" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\');"/>' + "</td>";
+                html += "<td width='15%' align='center'>" + '<input type="button" class="disableBtn" value="Hire" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'' + spec + '\');"/>' + "</td>";
                 html += '</tr>';
-                $('#txtothereSpecialReq').text(spec);
+              //  $('#txtothereSpecialReq').text(spec);
             }
             else if(spec == null) {     //data.d[i]["StartDate"] + 
                 html += '<tr>';
@@ -215,9 +219,9 @@ function getData(data) {
                 html += "<td width='25%' align='center'>" + '<a href="#" style="color:blue;" class="pulse" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
                 /* html += "<td width='20%' align='center'>" + data.d[i]["StartTime"] + "</td>";*/
                 html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
-                html += "<td width='10%' align='center'>" + '<img src="img/spec.png"  width="15" height="15" style="color:grey;" onclick="SpecShow()"/>' + "</td>";
+                html += "<td width='10%' align='center'>" + '<img src="img/spec.png"  width="15" height="15" style="color:grey;" onclick="SpecShow(\''+spec+'\')"/>' + "</td>";
                 html += "<td width='20%' align='center'>" + bidh + ":" + bidm + "</td>";
-                html += "<td width='15%' align='center'>" + '<input type="button" class="disableBtn"  value="Hire" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\');"/>' + "</td>";
+                html += "<td width='15%' align='center'>" + '<input type="button" class="disableBtn"  value="Hire" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'' + spec + '\');"/>' + "</td>";
                 html += '</tr>';
                 $('#txtothereSpecialReq').text("Not Available");
             }
@@ -231,7 +235,7 @@ function getData(data) {
             html += '<table>';
             html += '<tr>';
             html += '<td>';
-            html += '<input type="button" id="searchAgain" value="Insufficient Drivers" onclick="SearchDriverAgain()"/>';
+            html += '<input type="button" id="searchAgain" value="InSufficient Drivers" onclick="SearchDriverAgain()"/>';
             html += '</td></tr>'; 
             html += '</table>';
             html += '</div>';
@@ -306,11 +310,15 @@ function closeBid() {
     $('#divBiding').hide();
 }
 //specia req pop up divExpiry divBiding closeExpiry closeBid
-function SpecShow() {
+function SpecShow(a) {
+    //alert(a);
     $('#popup_box').show();
+    $('#divspec').show();
     $('#popupBoxClose').show();
     $('#divDealConfirmed').hide();
-    $('#divspec').show();
+    $('#txtothereSpecialReq').text(a);
+    
+    
 
 }
 //close the pop up spec 
@@ -321,10 +329,11 @@ function specClose() {
 }
 
 // hire me response send to driver 
-function Hireme(driID, reqID)
+function Hireme(driID, reqID,spec)
 {
     DisableHiremeBtns();    // Disable all other buttons once cliked on any one 'Hire' button.
-    var getSpec=$('#txtothereSpecialReq').text(); 
+     $('#msg').disabled = true;
+    var getSpec=$('#txtothereSpecialReq').text(spec); 
     if(getSpec != "Not Available")
     {
             var seeSpec=confirm("Please read the special circumstance entry");
@@ -332,8 +341,7 @@ function Hireme(driID, reqID)
             {
                $('#popup_box').show();
                $('#divspec').show();
-               $('#popupBoxClose').show(); 
-              
+               $('#popupBoxClose').show();              
                
             }
             else
@@ -341,19 +349,20 @@ function Hireme(driID, reqID)
                 return false;
             }
     }
-   $('#loading').show();   //Start loader
-             var driverId = driID;
-             var requestId = reqID;
-             $.ajax({
-                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse",
-                 type: "POST",
-                 dataType: "Json",
-                 data: "{'driverId':'" + driverId + "','requestId':'" + requestId + "'}",
-                 contentType: "application/json; charset=utf-8",
-                 success: getResponseFromDriver,
-                 error: function (XMLHttpRequest, textStatus, errorThrown) {
-                 }
-             }); 
+      //$('#load').hide();
+      $('#loading').show();   //Start loader load
+      var driverId = driID;
+      var requestId = reqID;
+      $.ajax({
+          url: "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse",
+          type: "POST",
+          dataType: "Json",
+          data: "{'driverId':'" + driverId + "','requestId':'" + requestId + "'}",
+          contentType: "application/json; charset=utf-8",
+          success: getResponseFromDriver,
+          error: function (XMLHttpRequest, textStatus, errorThrown) {
+          }
+      }); 
     
 }
 
@@ -381,6 +390,7 @@ function getResponseFromDriver(data)
                 var getBooked = data.d[2];
 
                 if (getBooked == "True") {
+                    DisableHiremeBtns()
                     $.ajax({
                         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetConfirmData",
                         type: "POST",
@@ -388,6 +398,7 @@ function getResponseFromDriver(data)
                         data: "{'driverID':'" + getDriverID + "','requestID':'" + getResponse + "'}",
                         contentType: "application/json; charset=utf-8",
                         success: function (data) {
+                           
                             $('#loading').hide(); //Hide loader once deal found.
 
                             $('#lbldriverId').text(getDriverID);
@@ -413,8 +424,11 @@ function getResponseFromDriver(data)
                     });
                 }
                 else {
+                    $('#load').hide();
+                    $('#statusMessage').hide();
                     $('#divDeal').hide();
                     $('#loading').show();
+                    
                 }
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
