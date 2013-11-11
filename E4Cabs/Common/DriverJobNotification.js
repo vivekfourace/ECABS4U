@@ -29,8 +29,8 @@ function Check(){
                                               {
                                                   if(data.d=="True")
                                                   {
-                                                     //$('#popup_box').show();
-                                                    // $('#divDealStart').show();
+                                                    $('#popup_box').show();
+                                                    $('#divDealStart').show();
                                                      //$('#beep').Play(); //for playing beep sound
                                                   }
                                                  if(data.d=="False")

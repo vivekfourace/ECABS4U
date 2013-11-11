@@ -13,14 +13,14 @@ function forgotPassword()
                             $('#lblMsg').text(" ");
                         }
                         else{
-                            $('#lblMsg').text("Please enter a valid email address!");
+                            $('#lblMsg').text("Please enter a valid email address.");
                             $('#lblMsg').css("color","#D70007");
                             return false;
                         }
                     }
                 else if(pass.length == 0)
                 {
-                    $('#lblMsg').text("Please enter email address!");
+                    $('#lblMsg').text("Please enter email address.");
                     $('#lblMsg').css("color","#D70007");                    
                     return false;
                 }
@@ -55,7 +55,7 @@ function forgotPassword()
         function CheckMsg(data){
             if(data.d == "false")
             {
-                $('#lblMsg').text("Incorrect Email id");
+                $('#lblMsg').text("Incorrect email id.");
                 $('#lblMsg').css("color","#D70007");
                 $('#lblMsg').css("font-size","13");
                 $('#txtEmail').val("");
