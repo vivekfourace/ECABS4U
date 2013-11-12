@@ -29,13 +29,12 @@ function Check(){
                                               {
                                                   if(data.d=="True")
                                                   {
-                                                    $('#popup_box').show();
-                                                    $('#divDealStart').show();
+                                                     $('#popup_box').show();
+                                                     $('#divDealStart').show();
                                                      //$('#beep').Play(); //for playing beep sound
                                                   }
                                                  if(data.d=="False")
                                                   {
-                                                      
                                                      $('#popup_box').hide();
                                                      $('#divDealStart').hide();  
                                                   }
@@ -60,3 +59,35 @@ function Check(){
     
 }
 setInterval(Check, 5000);
+  //cancel the Request.
+          function closeRequest()
+          {
+              //alert("del");
+              var getResponse=confirm("Cancel job ?")
+              if( getResponse==true)
+              {
+                $.ajax({
+                        url:'http://115.115.159.126/ECabs/ECabs4U.asmx/CancelNewJob', 
+                        type:"POST",
+                        datatype:"json",
+                        data:"{'userID':'" +relatedId+ "'}",
+                        contentType: "application/json; charset=utf-8",                     
+                        success: function (data) 
+                           {
+                               $('#popup_box').hide();
+                                $('#divDealStart').hide();
+                          },
+                        error: function (XMLHttpRequest, textStatus, errorThrown)
+                           {
+                                  $('#popup_box').hide();
+                                $('#divDealStart').hide(); 
+                            }
+                  });  
+              }
+              else
+              {
+                  return false;
+              }
+               
+              
+          }

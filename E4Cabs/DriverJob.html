@@ -244,7 +244,7 @@
                         deleteDriver();
                     }
                 });
-            }, 5000);
+            }, 10000);
 
             function DestroyMe() {
 
@@ -380,8 +380,9 @@
         function bidCancel() {
             var job = $('#lbljobno').text();
             $('#popup_box').hide();
+             $('#divBid').hide();
             $('#lblfare').text("");
-            $.ajax({
+           /* $.ajax({
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/cancelJob",
                 type: "POST",
                 dataType: "Json",
@@ -392,7 +393,7 @@
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
 
                 }
-            });
+            });*/
             document.getElementById("trfare").style.display = 'none';
         }
         function reqCancel() {
@@ -400,11 +401,13 @@
         }
         function reqReject() {
 
-            $('#popup_box').fadeIn("slow");
+            $('#popup_box').show();
             $('#divreject').show();
+            
         }
         //
         function rejectJob() {
+             $('#popup_box').show();
             var rid = $('#lbljobno').text();
             $('#divDetails').hide();
             $('#btnbid').hide();
@@ -418,7 +421,7 @@
                 data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
-
+                     window.location = 'driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
 
@@ -433,11 +436,12 @@
         }
         //
         function dealSubmit() {
+             $('#divDeal').hide();
             var getIsReturnJourney = $('#isReturnJourney').val();
             var getFare = $('#lbldealfare').text();
             var reqID = $('#lbldealjob').text();
             if (getFare == 15 || getFare > 15) {
-                //window.clearInterval(timereOut);
+                //window.clearInterval(timereOut);divDeal
 
                 if (getIsReturnJourney == "True") {
                     var _avgFare = getFare / 2;
@@ -877,11 +881,11 @@
                                 
                             </tr>
                             <tr class="popup_footer">
-                                <td style="width:50%">
+                               <!-- <td style="width:50%">
                                     <input type="button" class="ok" value="Cancel" style="width:100%;" onclick="dealCancel()" />
                                     
-                                </td>
-                                <td style="width:50%">
+                                </td>-->
+                                <td style="width:100%" colspan="2">
                                     <input type="button" class="ok" value="Accept" style="width:100%;" onclick="dealSubmit()"/>
                                     
                                 </td>
