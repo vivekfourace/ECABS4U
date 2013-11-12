@@ -35,6 +35,7 @@ function Check(){
                                                   }
                                                  if(data.d=="False")
                                                   {
+                                                      
                                                      $('#popup_box').hide();
                                                      $('#divDealStart').hide();  
                                                   }
