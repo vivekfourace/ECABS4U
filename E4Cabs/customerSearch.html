@@ -232,14 +232,14 @@
         $('#confirmAnchor').show();
     }
 
-//$(document).ready(function () {  
-// $('#RbFutureBook').click(function () {
-//        //alert(relatedId);
-//        document.getElementById("RbFutureBook").checked = false;
-//        window.location='customerSearchFuture.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-//
-//    });
-//    });
+$(document).ready(function () {  
+ $('#RbFutureBook').click(function () {
+        //alert(relatedId);
+        document.getElementById("RBcabNOW").checked = false;
+        window.location='customerSearchFuture.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+
+    });
+    });
 </script>
 
 <body onload="loadDateTime()">
@@ -277,17 +277,17 @@
                <center>
                    
                    
-                   <!--<tr>
+                  <tr>
                        <td style="padding-top:15px">
-                           <table style="border-collapse:collapse;width:100%;height:41px" border="1">
-                               <tr style="background-color:#247ECC">
+                           <table style="border-collapse:collapse;width:100%;height:41px" border="0">
+                               <tr>
                         <td style="width:47%"> 
                             <input type="radio" id="RBcabNOW" name="cab" style="float:left" checked/>
-                            <label style="font-size:14px;text-align:left;float:left;padding-top:2px;color:white;"><b>Cab Now</b></label>
+                            <label style="font-size:16px;text-align:left;float:left;padding-top:2px;color:#568bbe"><b>Cab Now</b></label>
                          </td>
                        <td style="width:53%">
                            <input type="radio" id="RbFutureBook" name="cab" style="float:left" />
-                           <label style="font-size:14px;text-align:left;float:left;padding-top:2px;color:white;"><b>Cab Later</b></label>
+                           <label style="font-size:16px;text-align:left;float:left;padding-top:2px;color:#568bbe"><b>Cab Later</b></label>
                            
                        </td>
                       
@@ -295,7 +295,7 @@
                            </table>
                        </td>
                        
-                   </tr>-->
+                   </tr>
                   <!-- <tr>
                        <td style="padding-top:20px">
                            <a href="#" onclick="loc()" style="color:Black !important">Location</a>
