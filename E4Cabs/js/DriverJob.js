@@ -12,7 +12,7 @@ function showMap()
    window.location =  'Location.html?from='+from+'&to='+to+'&dist='+dis+'&id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
-function BackProfile()
+function backToIndex()
 {
     window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }

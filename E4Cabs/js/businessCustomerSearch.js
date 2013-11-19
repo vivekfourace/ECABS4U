@@ -50,11 +50,7 @@ function showlocation()
     $('#txtTo').val("");
 }
 
-//Home Button in Header
-function homeSearch()
-{
-   window.location='businessCustomerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId; 
-}
+
 
 function searchResult()
 {
@@ -161,35 +157,7 @@ function Home()
 }
 
 
-//window.onload = backFun();
-
-/*$(document).ready(function() {
-                  $('#timepicker').timepicker({
-                    showPeriod: true,
-                    showLeadingZero: true
-                });
-            });
-            $(function() {
-    $( "#datepicker" ).datepicker({
-      changeMonth: true,
-      changeYear: true,
-      minDate: 0, 
-	  maxDate: "+5D" 
-    });
-                 $('#timepickers').timepicker({
-                    showPeriod: true,
-                    showLeadingZero: true
-                });
-            });
-            $(function() {
-    $( "#datepickers" ).datepicker({
-      changeMonth: true,
-      changeYear: true,
-      minDate: 0, 
-	  maxDate: "+5D" 
-    });
-});*/
-
- 
-
-    
+// Home Button In Hearder
+    function homeSearch() {
+        window.location = 'businessCustomerProfile.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+    }

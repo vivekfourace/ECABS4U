@@ -4,6 +4,11 @@ var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
+
+
+
+
+//Back button(header) to search page. 
 function backtostart()
 {
     
@@ -13,6 +18,7 @@ function backtostart()
 }
 
 window.onload = gethistory();
+
 function gethistory()
 {
  //var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerHistoryDetails";
@@ -57,7 +63,7 @@ function gethistory()
 
 
 
-//cab Now
+//cab Search
 function cabNow()
 {
   window.location='businessCustomerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
@@ -115,10 +121,6 @@ function feedBack()
 }
 
 
-//function backtostart()
-//{
-   //window.location =  'customerAfterLogin.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-//}
 
     
     

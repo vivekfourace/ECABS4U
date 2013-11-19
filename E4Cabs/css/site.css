@@ -1,11 +1,10 @@
 #marque {
     width: 95%;
     height: 30px;
-    font-weight:bold;
-    background-color: #2B81CF;
+    background-color: #2980CE;
     border-radius: 2px;
-    border:1px solid #2B81CF;
-    box-shadow: 2px 2px 3px #2B81CF;
+    border:1px solid #2980CE;
+    box-shadow: 2px 2px 3px #2980CE;
     text-align:center;
 }
 
