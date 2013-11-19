@@ -954,71 +954,13 @@
 
                     var dis = (parseFloat(dist14, 10) + parseFloat(dis15, 10)).toFixed(2);
                     distanceInput.value = (dis + " miles");
-                });
-            }
-        }
-}
-            }
-            }
-            }
-            }
-        }
-            //All Location is Filled          
-        else {
-            var request = {
-                origin: start,
-                destination: loc2,
-                travelMode: google.maps.DirectionsTravelMode.DRIVING
-            };
-            directionsService.route(request, function (response, status) {
-                if (status == google.maps.DirectionsStatus.OK) {
-                    directionsDisplay.setDirections(response);
-                    dis1 = (response.routes[0].legs[0].distance.value / 1609.34).toFixed(2);
-                    // distanceInput.value = (dis1 + " miles");
-                }
-                //alert(dis1);
-                calcRoute2();
-            });
-        }
-    }
-
-    function calcRoute2() {
-        var loc2 = document.getElementById("txt2location").value;
-        var loc3 = document.getElementById("txt3location").value;
-        var distanceInput = document.getElementById("txtDistance");
-
-        var request = {
-            origin: loc2,
-            destination: loc3,
-            travelMode: google.maps.DirectionsTravelMode.DRIVING
-        };
-
-        directionsService.route(request, function (response, status) {
-            if (status == google.maps.DirectionsStatus.OK) {
-                directionsDisplay.setDirections(response);
-                dis2 = (response.routes[0].legs[0].distance.value / 1609.34).toFixed(2);
-            }
-            calcRoute3();
-        });
-    }
-
-    function calcRoute3() {
-        var loc3 = document.getElementById("txt3location").value;
-        var end = document.getElementById("txtTo").value;
-        var distanceInput = document.getElementById("txtDistance");
-
-        var request = {
-            origin: loc3,
-            destination: end,
-            travelMode: google.maps.DirectionsTravelMode.DRIVING
-        };
-
-        directionsService.route(request, function (response, status) {
-            if (status == google.maps.DirectionsStatus.OK) {
-                directionsDisplay.setDirections(response);
-                dis3 = (response.routes[0].legs[0].distance.value / 1609.34).toFixed(2);
-            }
-            var dis = parseFloat(dis1, 10) + parseFloat(dis2, 10) + parseFloat(dis3, 10);
-            distanceInput.value = (dis + " miles");
-        });
-    }
+                                });
+                             }
+                           }
+                        }
+                    }
+                 }
+               }
+             }
+         }
+      }
