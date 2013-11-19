@@ -21,9 +21,8 @@
         
         if(end == "" || end == " ")
         {
-            distanceInput.value = "";
+            distanceInput.value = "0.0";
         }
-        
 
         //2nd and 3rd Location is Empty        
         if (loc2 == 0 && loc3 == 0 && loc4 == 0 && loc5 == 0 && loc6 == 0 && loc7 == 0 && loc8 == 0)
@@ -551,7 +550,7 @@
                 });
             }
         }
-          //8th location empty 
+           //8th location empty 
         else if (loc2 != 0 && loc3 != 0 && loc4 != 0 && loc5 != 0 && loc6 != 0 && loc7 != 0 && loc8 == 0)
         {
             var request6 = {
@@ -958,9 +957,7 @@
                 if (status == google.maps.DirectionsStatus.OK) {
                     directionsDisplay.setDirections(response);
                     dis1 = (response.routes[0].legs[0].distance.value / 1609.34).toFixed(2);
-                    // distanceInput.value = (dis1 + " miles");
                 }
-                //alert(dis1);
                 calcRoute2();
             });
         }
