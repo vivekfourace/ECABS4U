@@ -42,7 +42,7 @@ function gethistory()
                                                     {
                                                         $('#lbljobFeed').text(data.d[i]["JobNo"]);
                                                        html += '<tr>';
-                                                       html += "<td width='25%' align='center'>" +'<a href="#" onclick="customerFeedback(event)" style="color:blue;">'+ data.d[i]["JobNo"]+'</a>' + "</td>"; 
+                                                       html += "<td width='25%' align='center'>" +'<a href="#" onclick="feedBackCustomer()" style="color:blue;">'+ data.d[i]["JobNo"]+'</a>' + "</td>"; 
                                                        html += "<td width='25%' align='center'>" + data.d[i]["StartDate"] + "</td>";
                                                        html += "<td width='25%' align='center'>" + data.d[i]["StartTime"] +"</td>";
                                                        html += "<td width='25%' align='center'>" + data.d[i]["FromLoc"] +"</td>";
@@ -66,7 +66,53 @@ function gethistory()
                 });
                 
             }
+//feedback
+function feedBackCustomer()
+{
+    $('#msg').on('click', 'tr', function (event) { 
+      $('#lbljobNo').text(this.cells[0].innerText);
+      $('#lblFeeddate').text(this.cells[1].innerText);
+      $('#lblFeedTime').text(this.cells[2].innerText);
+      $('#lblFeedFrom').text(this.cells[3].innerText);
+      $('#lblFeedTo').text(this.cells[4].innerText);
+     
+        
+    });
+    $('#popup_box').show();
+    $('#divFeedBack').show();
+}
 
+//cancel feedback
+function CancelFeedBack()
+{
+    $('#divFeedBack').hide();
+    $('#popup_box').hide();
+    
+    
+}
+//feedback post
+function PostFeedBack()
+{
+   var requestID=$('#lbljobNo').text();
+   var getRating=document.getElementById('sel').value;
+   var getComments=document.getElementById('txtarComments').value;
+   $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerFeedbackForDriver",
+            type:"POST",
+            dataType: "Json",
+            data:"{'userID':'" +relatedId+"','reqID':'" +requestID+"','rating':'" +getRating+"','feedback':'" +getComments+"'}",
+            contentType: "application/json; charset=utf-8",                     
+            success: function(data)
+            {
+                alert("Feedback comment posted successfully!");
+                $('#divFeedBack').hide();
+                $('#popup_box').hide();
+                },
+            
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            //alert(errorThrown);
+                }
+         });  
+}
 
 //cab Now
 function cabNow()

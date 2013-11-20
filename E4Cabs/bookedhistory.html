@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="css/site.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <link rel="stylesheet" type="text/css" href="css/append.css" />
+    <link rel="stylesheet" type="text/css" href="css/PopUp.css" />
     <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
     <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
@@ -43,6 +44,98 @@
     <div style="padding-top: 71px">
         <div id="msg" style="width:100%" class="div-grid">
             <label id="lbljobFeed" style="display: none;" />
+        </div>
+        <div id="popup_box">
+            <div id="divFeedBack" style="display:none;"align="center">
+               <table align="left" style="width:100%;background-color:#FFFFFF;">
+                   <tr>
+                       <td class="popup_header" style="width:100%;" colspan="2">
+                             <strong style="padding-left:5px;font-size:13px;width:100%;"  align="center">FeedBack</strong>
+                                    
+                       </td>
+                   </tr>
+                   <tr class="popup_content">
+                       <td style="width:50%;font-size:13px;">
+                           <label class="test"><b> Job No</b></label>
+                       </td>
+                       <td style="width:50%;font-size:13px;">
+                           <b><label id="lbljobNo" class="test"/></b>
+                       </td>
+                   </tr>
+                   <tr class="popup_content">
+                       <td style="width:50%;font-size:13px;">
+                           <label class="test"><b>Date</b></label>
+                       </td>
+                       <td style="width:50%;font-size:13px;">
+                          <b> <label id="lblFeeddate" class="test"/></b>
+                       </td>
+                   </tr>
+                   <tr class="popup_content">
+                       <td style="width:50%;font-size:13px;">
+                           <label class="test"><b>Time</b></label>
+                       </td>
+                       <td style="width:50%;font-size:13px;">
+                          <b> <label id="lblFeedTime" class="test"/></b>
+                       </td>
+                   </tr>
+                   <tr class="popup_content">
+                       <td style="width:50%;font-size:13px;">
+                           <label class="test"><b>From</b></label>
+                       </td>
+                       <td style="width:50%;font-size:13px;">
+                           <b>  <label id="lblFeedFrom" class="test"/></b>
+                       </td>
+                   </tr>
+                   <tr class="popup_content">
+                       <td style="width:50%;font-size:13px;">
+                            <label class="test"><b>To</b></label>
+                       </td>
+                       <td style="width:50%;font-size:13px;">
+                          <b> <label id="lblFeedTo" class="test"/></b>
+                       </td>
+                   </tr>
+                   <!--<tr class="popup_content">
+                       <td style="width:50%;font-size:13px;">
+                           <label class="test"><b>Driver Name</b></label>
+                       </td>
+                       <td style="width:50%;font-size:13px;">
+                           <label id="lblFeedDriver"/>
+                       </td>
+                   </tr>-->
+                   <tr class="popup_content">
+                       <td style="width:50%;font-size:13px;">
+                           <label class="test"><b>Rating </b></label> 
+                       </td>
+                       <td style="width:50%;font-size:13px;">
+                           <select name="sel" id="sel">
+                               <option>--Please Select--</option>
+                               <option value="1">1-Poor</option>
+                               <option value="2">2-Fair</option>
+                               <option value="3">3-Average</option>
+                               <option value="4">4-Good</option>
+                               <option value="5">5-Excellent</option>
+                           </select>
+                       </td>
+                   </tr>
+                   <tr class="popup_content">
+                       <td style="width:50%;font-size:13px;">
+                          <label class="test"><b>Comments</b></label>  
+                       </td>
+                       <td>
+                           <textarea id="txtarComments"></textarea>
+                       </td>
+                   </tr>
+                   <tr class="popup_footer">
+                       <td style="width:50%;text-align:center">
+                          <input type="button" id="btnFeedCancel" value="Cancel" class="ok" onclick="CancelFeedBack()"/>  
+                       </td>
+                       <td style="width:50%;text-align:center">
+                           <input type="button" id="btnFeedPost" value="Post" class="ok" onclick="PostFeedBack()"/> 
+                       </td>
+                   </tr>
+               </table>
+            </div>
+            
         </div>
     </div>
     <div style="width: 100%; position: fixed; bottom: 0px;">
