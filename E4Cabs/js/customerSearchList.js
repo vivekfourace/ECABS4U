@@ -203,7 +203,7 @@ function getData(data) {
             //var pickTime=bidTime+3;lblsearch,lblexp,lblbid,lblpick////*+ data.d[i]["StartDate"] + *
             if (spec != null) {
                 html += '<tr>';
-                html += "<td width='10%' align='center'> &pound" + data.d[i]["Comments"] + "</td>";
+                html += "<td width='10%' align='center'> &pound" + data.d[i]["Comments"] + '<img src="img/driver.png" onclick="ShowRating()"/>' +"</td>";
                 html += "<td width='25%' align='center'>"+'<a href="#" class="pulse" style="color:blue;" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
                /* html += "<td width='20%' align='center'>" + data.d[i]["StartTime"] + "</td>";*/
                 html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
@@ -244,7 +244,39 @@ function getData(data) {
     }
 }
 
-
+//rating or driver  lbl4star lbl3star lbl2star lbl1star
+function ShowRating()
+{
+    //alert("inside");
+    $.ajax({
+        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetDriverRating",    //Get Response from driver 
+        type: "POST",
+        dataType: "Json",
+        data: "{'requestID':'" + requestID + "'}",
+        contentType: "application/json; charset=utf-8",
+        success: function(data)
+        {
+            
+            $('#lbl5tar').text(data.d[0]);
+            $('#lbl4star').text(data.d[1]);
+            $('#lbl3star').text(data.d[2]);
+            $('#lbl2star').text(data.d[3]);
+            $('#lbl1star').text(data.d[4]);
+            $('#popup_box').show();
+            $('#divRating').show(); 
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+        }
+    });
+   
+}
+//close rating pop up
+function ratingClose()
+{
+   $('#divRating').hide(); 
+   $('#popup_box').hide();
+    
+}
 //
  function SearchDriverAgain()
 {
