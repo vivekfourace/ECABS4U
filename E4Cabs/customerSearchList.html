@@ -21,14 +21,14 @@
 </head>
 <body>
     <center> 
-        <div id="load" class="load">           
-                <div style="margin-top:10px;">
-                    <span style="font-family:'Trebuchet MS';color:white" id="statusMessage"> Locating suitable vehicles...</span><br>
-                    <img src="jquery-mobile/styles/images/ajax-loader-hor.gif" style="width:140px;height:10px;padding-top:5px"/><br>
+        <div id="freezBack">           
+               <div id="load" class="load">
+                    <span style="font-family:'Trebuchet MS';color:white;" id="statusMessage"> Locating suitable vehicles...</span><br>
+                    <img src="jquery-mobile/styles/images/ajax-loader-hor.gif" style="width:140px;height:10px;padding-top:10px"/><br>
                     <input type="button" value="Cancel Job" onclick="CancelJobRequest()"/>
                     <input type="button" value="Re-Initiate Job" onclick="ReInitiateJob()"/>
-                 </div>
-            </div>
+               </div>
+         </div>
         
         <div id="loading" class="loadForall">            
                 <span style="font-family:'Trebuchet MS';color:white">Transmitting job request to drivers...</span><br>
@@ -70,7 +70,7 @@
                     </tr>
                 </table>
          </div>
-             <div id="msg" style="padding-top:72px"></div>
+             <div id="msg" style="padding-top:72px"></div>        
              <div style="width:100%;height:75%;" id="divDetails">
                 <div id="popup_box">
                     <div id="divselect" style="display:none;width:100%;">

@@ -56,7 +56,7 @@
                              <table align="left" style="width:100%;background-color:#FFFFFF;">
                                  <tr>
                                      <td class="popup_header" style="width:100%;" colspan="2">
-                                         <strong style="padding-left:5px;font-size:13px;width:100%;"  align="center">New Job Notification</strong>
+                                         <strong style="padding-left:5px;font-size:13px;width:100%;" id="strJobTypeTitle" align="center"></strong>
                                          
                                      </td>
                                      
@@ -96,36 +96,84 @@
                  </div>
                  
              </center>
-            <div style="padding-top:20%;">
-                <div id="marque">
+            <div style="padding-top:5%;">
+                <!--<div id="marque">
                     <marquee slide="left" style="font-size:20px;color:#ffffff;padding-top:4px">
                         <i>Current Status: &nbsp;<label id="driverStatusupdate" style="color:#ffffff"/></i>
                     </marquee>
-                </div>
+                </div>-->
                 
-                <div style="padding-top:10%;">
-                    <div style="padding-left:13%;height:40px">
+               
+                    <div style="height:40px">
                         <div style="padding-top:15px">
-                            <span style="float:left;padding-left:25px"><b>Current Status : &nbsp;</b></span>
-                            <label class="font-Label" style="color:blue;float:left;text-decoration:none;font-size:12px" id="lblCurrentStatus"/>
+                            <span style="align:center;color:green;font-size:20px"><b>LOGGED IN</b></span>
+                            <!--<label class="font-Label" style="color:blue;float:left;text-decoration:none;font-size:12px" id="lblCurrentStatus"/>-->
+                            
                         </div>
-                    </div> 
-                 </div>
+                        
+                    </div>
+                    
+                
                  
                 <table style="padding-top:2%;width:85%;">
-                        <tr>
+                        <tr >
                             <td style="text-align:center;">
-                                <input type="button" class="btn-Common cursor" value="Soon To Clear" onclick="soonToclear();"/>
+                                <label id="lblEngaged" style="align:center;color:green;font-size:20px;display:none"></label>
                             </td>
                         </tr>
                         <tr>
                             <td style="text-align:center;">
-                                <input type="button"  value="Available" class="btn-Common cursor" onclick="Available();"/>
+                                <input type="button" class="btn-Common cursor" id="btnclear" value="CLEAR" onclick="clearJob();"/>
+                            </td>
+                        </tr>
+                        
+                    <tr>
+                            <td style="text-align:center;">
+                                <input type="button"  value="ABORT" id="btnabort" class="btn-Common cursor" onclick="AbortJob();"/>
                             </td>
                         </tr>
                  </table>                    
             </div>           
         </center>
+    <center>
+      <div id="popup_box1">
+          <div id="divAbortTask"  style="display:none;"align="center">
+              <table align="left" style="width:100%;background-color:#FFFFFF;">
+                  <tr>
+                      <td class="popup_header" style="width:100%;" colspan="2">
+                          <strong style="padding-left:5px;font-size:13px;width:100%;font-weight:bold"  align="left">Enter reason why you are aborting</strong>
+                          
+                      </td>
+                      
+                  </tr>
+                  <tr id="popup_content">
+                      <td style="width:100%;" colspan="2">
+                         <!--<input type="text" style="width:100%;height:100px;border-radius:5px"/>-->
+                          <center><textarea id="txtAbortmsg" style="width:90%;height:100px;border-radius:5px;"></textarea></center>
+                          
+                      </td>
+                      
+                  </tr>
+                 
+                  <tr class="popup_footer">
+                      <td style="width:50%;">
+                          <input type="button" class="ok" value="Submit" style="width:100%; " onclick="SubmitAbort()" />
+                          
+                      </td>
+                      <td style="width:50%;">
+                          <input type="button" class="ok" value="cancel" style="width:100%; " onclick="cancelAbort()"/>
+                          
+                      </td>
+                      
+                  </tr>
+                  
+              </table>
+              
+          </div>
+          
+      </div>
+        
+    </center>
     <footer>
         <div style="width: 100%; position: fixed; bottom: 0px; height: 20px; padding-bottom: 15px">
             <table style="width: 100%;" class="btn-tmpFooter">

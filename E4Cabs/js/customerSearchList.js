@@ -99,21 +99,15 @@ function getData(data) {
     
     function DisplayDriversData()
     {
-        //window.clearInterval(id);
-        //window.clearInterval(timer);
         $('#msg').empty();
         $('#divbid').show();
         $('#divawait').hide();
         $('#load').hide();
-        //$('#popup_box').show();
-       // $('#divselect').show();
-       // $('#divDriverList').show();  // status buttons(4)
         var html = '<table width="100%" style="border-collapse:collapse;">';
         html += '<thead style="background-color:#D8DCBB;color:darkblue;">';
         html += '<tr>';
         html += '<th align="center">Fare</th>';
         html += '<th >Date</th>';
-        /* html += '<th >Time</th>';*/
         html += '<th >Job</th>';
         html += '<th >Specs</th>';
         html += '<th >ETA</th>';
@@ -124,8 +118,6 @@ function getData(data) {
         for (var i = 0; i < count; i++) {
             var driverID = data.d[i]["DriverID"];
             var customerReqId = data.d[i]["CustomerRequestID"];
-            //var driverName = data.d[i]["DriverName"];
-            //var spec = data.d[i]["OtherSpecReq"];
             var spec = data.d[i]["DriverSpecialReq"];
             var searchTime = data.d[i]["SearchTime"];
             var tm = searchTime.split(" ");
@@ -211,9 +203,8 @@ function getData(data) {
                 html += "<td width='20%' align='center'>" + bidh + ":" + bidm + "</td>";
                 html += "<td width='15%' align='center'>" + '<input type="button" class="disableBtn" value="Hire" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'' + spec + '\');"/>' + "</td>";
                 html += '</tr>';
-              //  $('#txtothereSpecialReq').text(spec);
             }
-            else if(spec == null) {     //data.d[i]["StartDate"] + 
+            else if(spec == null) {
                 html += '<tr>';
                 html += "<td width='10%' align='center'> &pound" + data.d[i]["Comments"] + "</td>";
                 html += "<td width='25%' align='center'>" + '<a href="#" style="color:blue;" class="pulse" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
@@ -229,6 +220,11 @@ function getData(data) {
         html += '</tbody>';
         html += '</table>';
         html += '<br/>'
+        
+        //show the rating of drivers
+        
+           
+        
         if(count < getCount)
         {
             html += '<div>';

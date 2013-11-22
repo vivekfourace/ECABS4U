@@ -27,13 +27,26 @@ function Check(){
                                            contentType: "application/json; charset=utf-8",                     
                                            success: function (data) 
                                               {
-                                                  if(data.d=="True")
+                                                  var jobType = data.d[1];
+                                                  if(data.d[0]=="True")
                                                   {
-                                                     $('#popup_box').show();
-                                                     $('#divDealStart').show();
+                                                     if(jobType == "True")
+                                                      {
+                                                          $('#strJobTypeTitle').html("New 'Cab Now' Job Notification");
+                                                          $('#popup_box').show();
+                                                          $('#divDealStart').show();
+                                                      }
+                                                      else if(jobType == "False")
+                                                      {
+                                                          $('#strJobTypeTitle').html("New 'Cab Later' Job Notification");
+                                                          $('#popup_box').show();
+                                                          $('#divDealStart').show();
+                                                      }
+                                                      
+                                                     
                                                      //$('#beep').Play(); //for playing beep sound
                                                   }
-                                                 if(data.d=="False")
+                                                 if(data.d[0]=="False")
                                                   {
                                                      $('#popup_box').hide();
                                                      $('#divDealStart').hide();  

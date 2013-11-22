@@ -231,7 +231,21 @@
                             $('#btncancel').hide();
                             $('#btnreject').hide();
                             alert('This job has been awarded to other driver.');
-                            UpdateStatus();
+                            //UpdateStatus();
+                            
+                            $.ajax({
+                                      url: "http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateDriverStatus",
+                                      type: "POST",
+                                      dataType: "Json",
+                                      data: "",
+                                      contentType: "application/json; charset=utf-8",
+                                      success: function (data) {
+                                                  //alert(data.d);
+                                      },
+                                      error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                
+                                      }
+                                  });
                             window.location = 'driverProfile.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
                         }
                     },
@@ -484,6 +498,8 @@
                         $('#btncancel').hide();
                         $('#btnreject').hide();
                         alert('You have been awarded this job.');
+                        
+                        
                         RemoveDriverData();
 
                         // UpdateStatus();  //update when job not booked for other driver...relatedId

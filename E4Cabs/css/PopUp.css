@@ -16,6 +16,25 @@
     height:auto;
 }
 
+#popup_box1 {
+    display: none;
+    width: 90%;
+    z-index: 1000;
+    border: 1px solid black;
+    border-radius: 2px;
+    -moz-box-shadow: 2px 2px 2px #A4A4A4;
+    -webkit-box-shadow: 2px 2px 2px #A4A4A4;
+    box-shadow: 2px 2px 2px #A4A4A4;
+    position: fixed; /*for align in middle*/
+    top: 27%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    color: white;
+    height:auto;
+}
+
+
 .popup_header {
     height: 30px;
     width: 100%;
