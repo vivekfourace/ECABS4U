@@ -41,9 +41,18 @@ function availabledriver() {
     var returnDate = document.getElementById("datepickers").value;
     var returnTime = document.getElementById("timepickers").value;
 
-    //add Location    
+    
+    
+    
+    //add Location
     var secondLoc = document.getElementById("txt2location").value;
     var thirdLoc = document.getElementById("txt3location").value;
+    var forthLoc=document.getElementById().value("txt4location").value;
+    var fifthLOc=document.getElementById().value("txt5location").value;
+    var sixthLOc=document.getElementById().value("txt6location").value;
+    var seventhLoc=document.getElementById().value("txt7location").value;
+    var eightLoc=document.getElementById().value("txt8location").value;
+ 
 
     //special
     var weelchairPassangers = document.getElementById("ddlWheelchair");
