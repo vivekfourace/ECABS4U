@@ -12,9 +12,8 @@ function loginUsingCookie() {
         return true;
     }
     if (remMe == "false") {
-        $('#txtUserName').val("");
-        $('#txtPassword').val("");
-       
+        $('#txtUserName').val(name);
+        $('#txtPassword').val(password);
         return true;
     }
 }
