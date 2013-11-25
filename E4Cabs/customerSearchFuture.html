@@ -41,7 +41,8 @@
         if (hours == 0) {
             hours = 0;
         }
-        $('#pickTime').val('Soonest');
+        //$('#pickTime').val('Soonest');
+        $('#pickTime').val(hours + ":" + minutes);
         $('#pickUpTime').val(hours + ":" + minutes);
 
         //Code For current Date
@@ -50,7 +51,8 @@
         var month = currentDate.getMonth() + 1
         var year = currentDate.getFullYear()
         $('#pickUpDate').val(day + "/" + month + "/" + year);
-        $('#pickDate').val('Today');
+        $('#pickDate').val(day + "/" + month + "/" + year);
+        //$('#pickDate').val('Today');
        
         var isChecked = $('#RbFutureBook').attr('checked') ? true : false;
         //alert(isChecked);
