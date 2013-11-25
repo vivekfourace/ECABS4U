@@ -5,8 +5,8 @@
     <meta charset="utf-8" />
     <title></title>
     <script type="text/javascript" src="Scripts/jquery-2.0.3.min.js"></script>
-    <!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAKXfZggeVZMCwQnR-mGebtLCvjuRfZcg&sensor=true"></script>-->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAKXfZggeVZMCwQnR-mGebtLCvjuRfZcg&sensor=true"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
     <link rel="stylesheet" type="text/css" href="css/site.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <link rel="stylesheet" type="text/css" href="css/PopUp.css" />
@@ -26,8 +26,56 @@
     <script type="text/javascript" src="js/CalculateDistance.js"></script>
     <script type="text/javascript" src="js/customerSearch.js"></script>
 </head>
-
+    <script>
+        function initialize() {
+            var mapOptions = {
+            };
+            var map = new google.maps.Map(document.getElementById('map-canvas'),
+              mapOptions);
+            var PickupLocation = (document.getElementById('txtFrom'));
+            var L2Location = (document.getElementById('txt2location'));
+            var L3Location = (document.getElementById('txt3location'));
+            var L4Location = (document.getElementById('txt4location'));
+            var L5Location = (document.getElementById('txt5location'));
+            var L6Location = (document.getElementById('txt6location'));
+            var L7Location = (document.getElementById('txt7location'));
+            var L8Location = (document.getElementById('txt8location'));
+            var ToLocation = (document.getElementById('txtTo'));
+            var types = document.getElementById('type-selector');
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(PickupLocation);
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(L2Location);
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(L3Location);
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(L4Location);
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(L5Location);
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(L6Location);
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(L7Location);
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(L8Location);
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(ToLocation);
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
+            var autocompletePick = new google.maps.places.Autocomplete(PickupLocation);
+            var autocompleteL2 = new google.maps.places.Autocomplete(L2Location);
+            var autocompleteL3 = new google.maps.places.Autocomplete(L3Location);
+            var autocompleteL4 = new google.maps.places.Autocomplete(L4Location);
+            var autocompleteL5 = new google.maps.places.Autocomplete(L5Location);
+            var autocompleteL6 = new google.maps.places.Autocomplete(L6Location);
+            var autocompleteL7 = new google.maps.places.Autocomplete(L7Location);
+            var autocompleteL8 = new google.maps.places.Autocomplete(L8Location);
+            var autocompleteTo = new google.maps.places.Autocomplete(ToLocation);
+            autocompletePick.bindTo('bounds', map);
+            autocompleteL2.bindTo('bounds', map);
+            autocompleteL3.bindTo('bounds', map);
+            autocompleteL4.bindTo('bounds', map);
+            autocompleteL5.bindTo('bounds', map);
+            autocompleteL6.bindTo('bounds', map);
+            autocompleteL7.bindTo('bounds', map);
+            autocompleteL8.bindTo('bounds', map);
+            autocompleteTo.bindTo('bounds', map);
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+    
 <script type="text/javascript">
+    
     function loadDateTime() {
         //Code For current Time
         var currentTime = new Date()
@@ -243,6 +291,40 @@ $(document).ready(function () {
     });
 </script>
 
+    <style type="text/css">
+        #map-canvas {
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .controls {
+        }
+
+        .pac-input {
+        }
+
+            .pac-input:focus {
+            }
+
+        .pac-input-From .notfound {
+        }
+
+        .pac-container {
+        }
+
+        #type-selector {
+            color: #fff;
+            background-color: #4d90fe;
+            padding: 5px 11px 0px 11px;
+        }
+
+            #type-selector label {
+                font-family: Roboto;
+                font-size: 13px;
+                font-weight: 300;
+            }
+ </style>
 <body onload="loadDateTime()">
     <center>
         <div id="imgLoader">
@@ -277,7 +359,7 @@ $(document).ready(function () {
            <table style="width:80%;border-collapse:collapse">
                <center>
                    
-                   
+                   <div id="map-canvas"></div>
                   <tr>
                        <td style="padding-top:15px">
                            <table style="border-collapse:collapse;width:100%;height:41px" border="0">
@@ -308,7 +390,7 @@ $(document).ready(function () {
                 <tr id="Fromloc">
                     <td>
                         <label for="txtFrom" class="font-style"><b style="font-size:12px">From</b></label> 
-                        <input type="text" id="txtFrom" class="font-style" autofocus="autofocus" style="width:100%;float:right;"/>
+                        <input type="text" id="txtFrom" name="txtFrom" class="font-style" autofocus="autofocus" style="width:100%;float:right;"/>
                     </td>
                 </tr>
                 <tr id="currentPos" style="display:none">
@@ -331,14 +413,14 @@ $(document).ready(function () {
                <tr  id="2location" style="display:none">
                 <td>
                     <label for="txt2location" class="font-style"><b style="font-size:12px">Destination 1</b></label> 
-                    <input type="text" id="txt2location" class="font-style" style="width:85%;float:left;"/>
+                    <input type="text" id="txt2location" name="txt2location" class="font-style" style="width:85%;float:left;"/>
                     <img src="img/Addlocation.png" id="thirdLoc" width="25" height="25" style="float:right;cursor:pointer" onclick="thirdLocation()"/>
                 </td>
              </tr>
              <tr  id="3location" style="display:none">
                 <td>
                     <label for="txt3location" class="font-style"><b style="font-size:12px">Destination 2</b></label> 
-                    <input type="text" id="txt3location" class="font-style" style="width:85%;float:left;"/>
+                    <input type="text" id="txt3location" name="txt3location" class="font-style" style="width:85%;float:left;"/>
                     <img src="img/Addlocation.png" id="fourLoc" width="25" height="25" style="float:right;cursor:pointer" onclick="fourthLocation()"/>
                 </td>
                        
@@ -346,7 +428,7 @@ $(document).ready(function () {
                <tr  id="4location" style="display:none">
                 <td>
                     <label for="txt4location" class="font-style"><b style="font-size:12px">Destination 3</b></label> 
-                    <input type="text" id="txt4location" class="font-style" style="width:85%;float:left;"/>
+                    <input type="text" id="txt4location" name="txt4location" class="font-style" style="width:85%;float:left;"/>
                     <img src="img/Addlocation.png" id="fiveLoc" width="25" height="25" style="float:right;cursor:pointer" onclick="fifthLocation()"/>
                 </td>
                        
@@ -354,7 +436,7 @@ $(document).ready(function () {
                <tr  id="5location" style="display:none">
                 <td>
                     <label for="txt5location" class="font-style"><b style="font-size:12px">Destination 4</b></label> 
-                    <input type="text" id="txt5location" class="font-style" style="width:85%;float:left;"/>
+                    <input type="text" id="txt5location" name="txt5location" class="font-style" style="width:85%;float:left;"/>
                     <img src="img/Addlocation.png" id="sixLoc" width="25" height="25" style="float:right;cursor:pointer" onclick="sixthLocation()"/>
                 </td>
                        
@@ -362,7 +444,7 @@ $(document).ready(function () {
              <tr  id="6location" style="display:none">
                 <td>
                     <label for="txt6location" class="font-style"><b style="font-size:12px">Destination 5</b></label> 
-                    <input type="text" id="txt6location" class="font-style" style="width:85%;float:left;"/>
+                    <input type="text" id="txt6location" name="txt6location" class="font-style" style="width:85%;float:left;"/>
                     <img src="img/Addlocation.png" id="sevenLoc" width="25" height="25" style="float:right;cursor:pointer" onclick="sevenLocation()"/>
                 </td>
                        
@@ -370,7 +452,7 @@ $(document).ready(function () {
              <tr  id="7location" style="display:none">
                 <td>
                     <label for="txt7location" class="font-style"><b style="font-size:12px">Destination 6</b></label> 
-                    <input type="text" id="txt7location" class="font-style" style="width:85%;float:left;"/>
+                    <input type="text" id="txt7location" name="txt7location" class="font-style" style="width:85%;float:left;"/>
                     <img src="img/Addlocation.png" id="eightLoc" width="25" height="25" style="float:right;cursor:pointer" onclick="eightLocation()"/>
                 </td>
                        
@@ -378,7 +460,7 @@ $(document).ready(function () {
             <tr  id="8location" style="display:none">
                 <td>
                     <label for="txt8location" class="font-style"><b style="font-size:12px">Destination 7</b></label> 
-                    <input type="text" id="txt8location" class="font-style" style="width:85%;float:left;"/>
+                    <input type="text" id="txt8location" name="txt8location" class="font-style" style="width:85%;float:left;"/>
                    
                 </td>
                        
@@ -394,7 +476,7 @@ $(document).ready(function () {
              <tr>
                 <td>
                     <label for="txtTo" class="font-style"><b style="font-size:12px">Final Destination</b></label> 
-                    <input type="text" id="txtTo" class="font-style" style="width:85%;float:left;" oninput="calcRoute()" onchange="Duration();"/>
+                    <input type="text" id="txtTo" class="font-style" style="width:85%;float:left;" oninput="calcRoute()" onclick="calcRoute()" onchange()="Duration();"/>
                     <img src="img/Addlocation.png" id="secoundLoc" width="25" height="25" style="float:right;cursor:pointer" onclick="secoundLocation()"/>
                 </td>
              </tr>
