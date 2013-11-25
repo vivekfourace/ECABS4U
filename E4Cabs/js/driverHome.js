@@ -52,6 +52,7 @@ function AbortJob()
     var istrue = confirm("Do you want to abort this job?");
     if(istrue)
     {
+       $('#freezBack').show();
        $('#popup_box1').show();
        $('#divAbortTask').show();
     }
@@ -156,6 +157,7 @@ function SubmitAbort()
 
 function cancelAbort()
 {
+    $('#freezBack').hide();
     $('#popup_box1').hide();
     $('#divAbortTask').hide();
     $('#txtAbortmsg').val("");

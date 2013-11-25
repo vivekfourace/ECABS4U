@@ -23,31 +23,50 @@ function gethistory()
                    contentType: "application/json; charset=utf-8",
                     success: function (data) {                   
                         var count = data.d.length;
-                        //alert(count);
                         if(count > 0)
                         {
                                 var html = '<table id="tbhist" cellspacing="0"; width="100%"  style="border-collaspe:collaspe;">';
                                 html += '<thead style="background-color:#0A0A2A;color:#fff;">';
                                 html += '<tr>';
                                 html += '<th class="th4 font">JobNo</th>';
-                                html += '<th class="th4 font">Date</th>';
-                                html += '<th class="th4 font">Time</th>';
+                                //html += '<th class="th4 font">Date</th>';
+                                //html += '<th class="th4 font">Time</th>';
                                 html += '<th class="th4 font">From</th>';
                                 html += '<th class="th4 font">To</th>';
+                                html += '<th class="th4 font">Status</th>';                           
                                 
                                 html += '</tr>';
                                 html += '</thead>';
                                                html +='<tbody class="body-style altColor"  style="font-size:14px;">';  
                                                     for(var i=0; i<count; i++)
                                                     {
-                                                        $('#lbljobFeed').text(data.d[i]["JobNo"]);
+                                                       $('#lbljobFeed').text(data.d[i]["JobNo"]);
+                                                       var isCabNow = data.d[i]["isCabNow"];
+                                                       var isJobAlive = data.d[i]["isJobAlive"];
                                                        html += '<tr>';
-                                                       html += "<td width='25%' align='center'>" +'<a href="#" onclick="feedBackCustomer()" style="color:blue;">'+ data.d[i]["JobNo"]+'</a>' + "</td>"; 
-                                                       html += "<td width='25%' align='center'>" + data.d[i]["StartDate"] + "</td>";
-                                                       html += "<td width='25%' align='center'>" + data.d[i]["StartTime"] +"</td>";
-                                                       html += "<td width='25%' align='center'>" + data.d[i]["FromLoc"] +"</td>";
-                                                       html += "<td width='25%' align='center'>" + data.d[i]["ToLoc"] +"</td>";
+                                                       html += "<td width='25%' height='30px' align='center'>" +'<a href="#" onclick="feedBackCustomer(\''+data.d[i]["JobNo"]+'\')" style="color:blue;">'+ data.d[i]["JobNo"]+'</a>' + "</td>"; 
+                                                       html += "<td width='25%' align='center' style='display:none'>" + data.d[i]["StartDate"] + "</td>";
+                                                       html += "<td width='25%' align='center' style='display:none'>" + data.d[i]["StartTime"] +"</td>";
+                                                       html += "<td width='25%' height='30px' align='center'>" + data.d[i]["FromLoc"] +"</td>";
+                                                       html += "<td width='25%' height='30px' align='center'>" + data.d[i]["ToLoc"] +"</td>";
+                                                        //alert(isCabNow);
+                                                       if(!isCabNow)
+                                                        {
+                                                            if(isJobAlive)
+                                                            {
+                                                                html += "<td width='25%' height='30px' align='center'>"+'<input type="button" value="Abort" onclick="AbortJob(\''+data.d[i]["JobNo"]+'\')"/>'+"</td>";   
+                                                            }
+                                                            else
+                                                            {
+                                                                 html += "<td width='25%' height='30px' align='center'>"+'<label style="color:red">Aborted</label>'+"</td>";
+                                                            }
                                                          
+                                                        }
+                                                        else
+                                                        {
+                                                          html += "<td width='25%' height='30px' align='center'>"+"</td>";  
+                                                        }
+                                                        
                                                        html += '</tr>';
                                                     }
                                                html +='</tbody>';
@@ -66,20 +85,143 @@ function gethistory()
                 });
                 
             }
-//feedback
-function feedBackCustomer()
+
+function AbortJob(data)
 {
-    $('#msg').on('click', 'tr', function (event) { 
-      $('#lbljobNo').text(this.cells[0].innerText);
-      $('#lblFeeddate').text(this.cells[1].innerText);
-      $('#lblFeedTime').text(this.cells[2].innerText);
-      $('#lblFeedFrom').text(this.cells[3].innerText);
-      $('#lblFeedTo').text(this.cells[4].innerText);
-     
+    var jobNo = data;
+    document.getElementById("lblJobNumber").value = jobNo;
+    var isTrue = confirm("Do you want to abort the current Cab.");
+    if(isTrue)
+    {
         
-    });
-    $('#popup_box').show();
-    $('#divFeedBack').show();
+        //$('#lblJobNumber').text(data);
+        $('#freezBack').show();
+        $('#popup_box1').show();
+        $('#divAbortTask').show();
+    }
+    else
+    {
+        return false;
+    }
+    
+}
+
+function SubmitReject()
+{
+    var jobNumber = $('#lblJobNumber').val();   
+    var abortMessage = $('#txtAbortmsg').val();
+    if(!abortMessage)
+    {
+        alert('Please enter a reason.');
+        return false;
+    }
+    
+    //TODO: write service to abort the job and send email to the customer
+      var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/AbortCurrentJobCustomer";
+    
+            $.ajax(url,{
+                     beforeSend: function(){
+                        $('#imgLoader').show();
+                     },
+                     complete: function(){
+                        $('#imgLoader').hide();
+                     },
+                     type:"POST",
+                     datatype:"json",
+                     data:"{'relatedId':'" +relatedId+ "','abortMessage':'"+abortMessage+"','jobNumber':'"+jobNumber+"'}",
+                     contentType: "application/json; charset=utf-8",                     
+                     success: function(data){
+                         if(data.d == "true")
+                         {
+                              $('#popup_box1').hide();
+                              $('#divAbortTask').hide();
+                              $('#txtAbortmsg').val("");
+                              $('#freezBack').hide();
+                              alert("Job aborted successfully.");
+                              window.location='bookedhistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                         }                         
+                     },
+                    
+                     error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    // alert(errorThrown);
+                }
+             });
+    
+}
+
+function CancelReject()
+{
+    $('#popup_box1').hide();
+    $('#divAbortTask').hide();
+    $('#freezBack').hide();
+    $('#txtAbortmsg').val("");
+}
+
+
+//feedback
+function feedBackCustomer(JobNumber )
+{
+     $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/GetCabNowDataForCustomer",
+            type:"POST",
+            dataType: "Json",
+            data:"{'JobNumber':'" +JobNumber+"'}",
+            contentType: "application/json; charset=utf-8",                     
+            success: function(data)
+            {
+                    var isRatingLocked = data.d[1];
+                    var isJobAlive = data.d[2];
+                    var rating = data.d[3];
+                    var custFeed = data.d[4];
+                    var startDate = data.d[5]; 
+                    var startTime = data.d[6];
+                    var fromLoc = data.d[7];
+                    var toLoc = data.d[8];
+                
+                   if(isJobAlive == "True")
+                    {
+                        if(isRatingLocked == "True")
+                        {
+                               document.getElementById('sel').value = rating;
+                               document.getElementById('txtarComments').value = custFeed;
+                               $('#sel').attr('disabled',true);
+                               $('#txtarComments').attr("readOnly",true);
+                               $('#popup_box').show();
+                               $('#divFeedBack').show();
+                               $('#trbtnPopup').hide();
+                               $('#trbtnOK').show();
+                            
+                               $('#lbljobNo').text(JobNumber);
+                               $('#lblFeeddate').text(startDate);
+                               $('#lblFeedTime').text(startTime);
+                               $('#lblFeedFrom').text(fromLoc);
+                               $('#lblFeedTo').text(toLoc);
+                               
+                            
+                        }
+                        else if(isRatingLocked == "")
+                        {
+                           
+                               $('#lbljobNo').text(JobNumber);
+                               $('#lblFeeddate').text(startDate);
+                               $('#lblFeedTime').text(startTime);
+                               $('#lblFeedFrom').text(fromLoc);
+                               $('#lblFeedTo').text(toLoc);    
+                         
+                               $('#sel').attr('disabled',false);
+                               $('#txtarComments').attr("readOnly",false);
+                               $('#popup_box').show();
+                               $('#divFeedBack').show();
+                               $('#trbtnPopup').show();                            
+                               $('#trbtnOK').hide();
+                        }
+                    }
+                    else
+                    {
+                        alert('Job has been aborted, you cannot give feedback');
+                    }
+       },            
+        error: function (XMLHttpRequest, textStatus, errorThrown) {}
+  });  
 }
 
 //cancel feedback
@@ -87,16 +229,36 @@ function CancelFeedBack()
 {
     $('#divFeedBack').hide();
     $('#popup_box').hide();
+    document.getElementById('sel').value = 0;
+    document.getElementById('txtarComments').value = "";
     
     
 }
 //feedback post
 function PostFeedBack()
 {
-   var requestID=$('#lbljobNo').text();
-   var getRating=document.getElementById('sel').value;
-   var getComments=document.getElementById('txtarComments').value;
+   var requestID= $('#lbljobNo').text();
+   var getRating = document.getElementById('sel').value;
+   var getComments = document.getElementById('txtarComments').value;
+    if(getRating == 0)
+    {
+        alert("Please select Rating.");
+        return false;
+    }
+    if(!getComments)
+    {
+        alert("Please enter Comments.");
+        return false;
+    }
+    
+    
    $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerFeedbackForDriver",
+             beforeSend: function(){
+                $('#imgLoader').show();
+             },
+             complete: function(){
+                $('#imgLoader').hide();
+             },
             type:"POST",
             dataType: "Json",
             data:"{'userID':'" +relatedId+"','reqID':'" +requestID+"','rating':'" +getRating+"','feedback':'" +getComments+"'}",
@@ -104,6 +266,8 @@ function PostFeedBack()
             success: function(data)
             {
                 alert("Feedback comment posted successfully!");
+                document.getElementById('txtarComments').value ="";
+                document.getElementById('sel').value = 0;
                 $('#divFeedBack').hide();
                 $('#popup_box').hide();
                 },
@@ -175,6 +339,7 @@ function backtostart()
 {
     window.location="index.html";
 }
+
 
     
     
