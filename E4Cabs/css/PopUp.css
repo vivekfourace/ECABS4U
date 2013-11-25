@@ -3,7 +3,7 @@
     width: 90%;
     z-index: 1000;
     border: 1px solid black;
-    border-radius: 2px;
+    border-radius: 1px;
     -moz-box-shadow: 2px 2px 2px #A4A4A4;
     -webkit-box-shadow: 2px 2px 2px #A4A4A4;
     box-shadow: 2px 2px 2px #A4A4A4;
@@ -19,9 +19,8 @@
 #popup_box1 {
     display: none;
     width: 90%;
-    z-index: 1000;
     border: 1px solid black;
-    border-radius: 2px;
+    border-radius: 1px;
     -moz-box-shadow: 2px 2px 2px #A4A4A4;
     -webkit-box-shadow: 2px 2px 2px #A4A4A4;
     box-shadow: 2px 2px 2px #A4A4A4;

@@ -16,6 +16,11 @@
 
 </head>
 <body>
+    <div id="imgLoader">
+       <img src="jquery-mobile/styles/images/ajax-loader.gif" id="loading-image"/>
+     </div>
+    <input type="hidden" id="lblJobNumber"/>
+    
     <div style="width: 100%; height: 70px;" class="header">
         <table style="width: 100%; padding-top: 1%;">
             <tr>
@@ -108,7 +113,7 @@
                        </td>
                        <td style="width:50%;font-size:13px;">
                            <select name="sel" id="sel">
-                               <option>--Please Select--</option>
+                               <option value="0">--Please Select--</option>
                                <option value="1">1-Poor</option>
                                <option value="2">2-Fair</option>
                                <option value="3">3-Average</option>
@@ -125,12 +130,18 @@
                            <textarea id="txtarComments"></textarea>
                        </td>
                    </tr>
-                   <tr class="popup_footer">
+                   <tr class="popup_footer" id="trbtnPopup">
                        <td style="width:50%;text-align:center">
                           <input type="button" id="btnFeedCancel" value="Cancel" class="ok" onclick="CancelFeedBack()"/>  
                        </td>
                        <td style="width:50%;text-align:center">
                            <input type="button" id="btnFeedPost" value="Post" class="ok" onclick="PostFeedBack()"/> 
+                       </td>
+                       
+                   </tr>
+                   <tr id="trbtnOK" style="display:none">
+                       <td style="width:100%;text-align:center;" colspan="2">
+                           <input type="button" id="btnOK"  value="OK" class="ok" onclick="CancelFeedBack()"/> 
                        </td>
                    </tr>
                </table>
@@ -138,6 +149,38 @@
             
         </div>
     </div>
+    
+     <center>
+      <div id="freezBack">
+      <div id="popup_box1">
+          <div id="divAbortTask"  style="display:none;"align="center">
+              <table align="left" style="width:100%;background-color:#FFFFFF;">
+                  <tr>
+                      <td class="popup_header" style="width:100%;" colspan="2">
+                          <strong style="padding-left:5px;font-size:13px;width:100%;font-weight:bold"  align="left">Enter reason why you are aborting</strong>
+                      </td>
+                      
+                  </tr>
+                  <tr id="popup_content">
+                      <td style="width:100%;" colspan="2">
+                          <center><textarea id="txtAbortmsg" maxlength="199" style="width:90%;height:100px;border-radius:2px;"></textarea></center>
+                      </td>
+                  </tr>
+                  <tr class="popup_footer">
+                      <td style="width:50%;">
+                          <input type="button" class="ok" value="Submit" style="width:100%; " onclick="SubmitReject()" />
+                      </td>
+                      <td style="width:50%;">
+                          <input type="button" class="ok" value="Cancel" style="width:100%; " onclick="CancelReject()"/>
+                      </td>
+                  </tr>
+              </table>
+          </div>
+      </div>
+</div>
+     </center>
+    
+    
     <div style="width: 100%; position: fixed; bottom: 0px;">
         <table style="width: 100%; margin-top: 20px" class="btn-tmpFooter">
             <tr>

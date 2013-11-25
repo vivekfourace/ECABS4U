@@ -7,7 +7,6 @@
     var dis1, dis2, dis3, dis4, dis5, dis6;
 
     function calcRoute() {
-        
         var start = document.getElementById("txtFrom").value;
         var loc2 = document.getElementById("txt2location").value;
         var loc3 = document.getElementById("txt3location").value;
@@ -17,6 +16,8 @@
         var loc7 = document.getElementById("txt7location").value;
         var loc8 = document.getElementById("txt8location").value;
         var end = document.getElementById("txtTo").value;
+        //console.log(start);
+        //console.log(end);
         var distanceInput = document.getElementById("txtDistance");
         
         if(end == "" || end == " ")
@@ -25,7 +26,7 @@
         }
         
 
-        //2nd and 3rd Location is Empty        
+        //if only from and to location are present.        
         if (loc2 == 0 && loc3 == 0 && loc4 == 0 && loc5 == 0 && loc6 == 0 && loc7 == 0 && loc8 == 0)
         {
             var request = {
@@ -40,12 +41,10 @@
                     dis4 = (response.routes[0].legs[0].distance.value / 1609.34).toFixed(2);
                     distanceInput.value = (dis4 + " miles");
                 }
-                //alert(dis4);
-
             });
         }
 
-            //3rd Location is Empty      
+        //if only from, 1st and to location are present
         else if (loc2 != 0 && loc3 == 0 && loc4 == 0 && loc5 == 0 && loc6 == 0 && loc7 == 0 && loc8 == 0)
         
         {
@@ -59,16 +58,14 @@
                 if (status == google.maps.DirectionsStatus.OK) {
                     directionsDisplay.setDirections(response);
                     dis5 = (response.routes[0].legs[0].distance.value / 1609.34).toFixed(2);
-                    //distanceInput.value = (dis5 + " miles");
                 }
-                //alert(dis5);
                 calcRoute4();
             });
 
             function calcRoute4() {
                 //alert('3in');
-
-                var loc3 = document.getElementById("txt3location").value;
+                //var loc3 = document.getElementById("txt3location").value;
+                
                 var end = document.getElementById("txtTo").value;
                 var distanceInput = document.getElementById("txtDistance");
 
@@ -91,7 +88,7 @@
             }
         }
 
-            //4 th Location is Empty
+        //upto 4th Location is Empty
         else if (loc2 != 0 && loc3 != 0 && loc4 == 0 && loc5 == 0 && loc6 == 0 && loc7 == 0 && loc8 == 0)
         {
             var request2 = {
@@ -104,20 +101,13 @@
                 if (status == google.maps.DirectionsStatus.OK) {
                     directionsDisplay.setDirections(response);
                     dis6 = (response.routes[0].legs[0].distance.value / 1609.34).toFixed(2);
-                    //distanceInput.value = (dis5 + " miles");
                 }
-                //alert(dis5);
                 calcRoute5();
             });
 
             function calcRoute5() {
-                //alert('3in');
                 var loc2 = document.getElementById("txt2location").value;
                 var loc3 = document.getElementById("txt3location").value;
-                //var end = document.getElementById("txtTo").value;
-                //var loc3 = document.getElementById("txt3location").value;
-                //var loc3 = document.getElementById("txtTo").value;
-                //var distanceInput = document.getElementById("txtDistance");
 
                 var request = {
                     origin: loc2,
@@ -130,19 +120,14 @@
                         directionsDisplay.setDirections(response);
                         dis7 = (response.routes[0].legs[0].distance.value / 1609.34).toFixed(2);
                     }
-                  //  alert(dis7);
-
                     var dist7 = parseFloat(dis6, 10) + parseFloat(dis7, 10);
                      calcRoute6(dist7);
                 });
            
             function calcRoute6(dist7) {
-                //alert('3in');
                 
                 var loc3 = document.getElementById("txt3location").value;
                 var end = document.getElementById("txtTo").value;
-                //var loc3 = document.getElementById("txt3location").value;
-                //var loc3 = document.getElementById("txtTo").value;
                 var distanceInput = document.getElementById("txtDistance");
 
                 var request = {
@@ -156,15 +141,13 @@
                         directionsDisplay.setDirections(response);
                         dis8 = (response.routes[0].legs[0].distance.value / 1609.34).toFixed(2);
                     }
-                     //alert(dis8);
-
                     var dis = parseFloat(dist7, 10) + parseFloat(dis8, 10);
                     distanceInput.value = (dis + " miles");
                 });
             }
         }
  }
-            //5th location empty
+        //upto 5th location empty
         else if (loc2 != 0 && loc3 != 0 && loc4 != 0 && loc5 == 0 && loc6 == 0 && loc7 == 0 && loc8 == 0)
         {
             var request3 = {
