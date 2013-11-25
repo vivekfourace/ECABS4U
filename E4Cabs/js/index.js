@@ -69,10 +69,12 @@ function login() {
     var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UserLogin";
     $.ajax(url, {
         cache: true,
-        beforeSend: function () {
+        beforeSend: function() 
+        {
             $('#imgLoader').show();
         },
-        complete: function () {
+        complete: function () 
+        {
             $('#imgLoader').hide();
         },
         type: "POST",

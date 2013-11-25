@@ -106,8 +106,8 @@ function logout()
     {
                 
         $.cookie("remember", false);
-        $.cookie("userName", 'null');
-         $.cookie("userPassword", 'null');
+        //$.cookie("userName", 'null');
+        //$.cookie("userPassword", 'null');
         window.location = "index.html";  
     }
 

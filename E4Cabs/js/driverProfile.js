@@ -157,8 +157,8 @@ function MyBookings(){
 function logout()
 {
        $.cookie("remember", false);
-       $.cookie("userName", 'null');
-       $.cookie("userPassword", 'null');
+       //$.cookie("userName", 'null');
+       //$.cookie("userPassword", 'null');
         window.location = "index.html";  
 }
 //Profile Button In Footer Redirect To Driver Profile.
