@@ -3,6 +3,7 @@ var userId = QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 var requestID = QString.split("=")[4].split("&")[0];
+var iscabnow = QString.split("=")[5].split("&")[0];
 
 $('#load').show();
 function backtosearch() {
@@ -285,7 +286,7 @@ function ratingClose()
         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetNewResponseData",    //Get Response from driver 
         type: "POST",
         dataType: "Json",
-        data: "{'requestID':'" + requestID + "'}",
+        data: "{'requestID':'" + requestID + "','iscabnow':'"+iscabnow+"'}",
         contentType: "application/json; charset=utf-8",
         success: getData,
         error: function (XMLHttpRequest, textStatus, errorThrown) {
