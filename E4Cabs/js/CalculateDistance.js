@@ -4,7 +4,7 @@
     directionsDisplay = new google.maps.DirectionsRenderer();
 
     //Distance Calculation
-    var dis1, dis2, dis3, dis4, dis5, dis6;
+    var dis1, dis2, dis3, dis4, dis5, dis6,dis7,dis8,dis9,dis10,dis11,dis12,dis13,dis14,dis15;
 
     function calcRoute() {
         var start = document.getElementById("txtFrom").value;
@@ -726,8 +726,14 @@
                     var dis = (parseFloat(dist13, 10) + parseFloat(dis14, 10)).toFixed(2);
                     distanceInput.value = (dis + " miles");
                 });
-            }
-        }}}}}}
+    }
+     }
+       }
+          }
+               }
+                 }
+                    }
+        
             //9th location empty
          else if (loc2 != 0 && loc3 != 0 && loc4 != 0 && loc5 != 0 && loc6 != 0 && loc7 != 0 && loc8 != 0)
         {
