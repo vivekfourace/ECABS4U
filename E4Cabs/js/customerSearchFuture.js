@@ -31,6 +31,7 @@ function availabledriver() {
     var distance = document.getElementById('txtDistance').value;
     var pickdate = document.getElementById('pickDate').value;
     var picktime = document.getElementById('pickTime').value;
+    //alert(picktime);
     var passenger = document.getElementById("ddlpassenger");
     var totalpassenger = passenger.options[passenger.selectedIndex].value;
     var lcase = document.getElementById("ddllargecase");
@@ -81,7 +82,7 @@ function availabledriver() {
         complete: function () {
             $('#imgLoader').hide();
         },
-        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerRequest",
+        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerSearchRequest",
         type: "POST",
         dataType: "Json",
         data: "{'userID':'" + relatedId + "','frompost':'" + fromloc + "','topost':'" + toloc + "','pickDate':'" + pickdate + "','pickTime':'" + picktime + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnfromloc + "','returntoloc':'" + returntoloc + "','returnDate':'" + returnDate + "','returnTime':'" + returnTime + "'}",

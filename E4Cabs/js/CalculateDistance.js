@@ -16,16 +16,11 @@
         var loc7 = document.getElementById("txt7location").value;
         var loc8 = document.getElementById("txt8location").value;
         var end = document.getElementById("txtTo").value;
-        //console.log(start);
-        //console.log(end);
+        console.log(start);
+        console.log(end);
         var distanceInput = document.getElementById("txtDistance");
         
-        if(end == "" || end == " ")
-        {
-            distanceInput.value = "";
-        }
-        
-
+            
         //if only from and to location are present.        
         if (loc2 == 0 && loc3 == 0 && loc4 == 0 && loc5 == 0 && loc6 == 0 && loc7 == 0 && loc8 == 0)
         {
