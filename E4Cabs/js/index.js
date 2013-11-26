@@ -12,9 +12,8 @@ function loginUsingCookie() {
         return true;
     }
     if (remMe == "false") {
-        $('#txtUserName').val("");
-        $('#txtPassword').val("");
-       
+        $('#txtUserName').val(name);
+        $('#txtPassword').val(password);
         return true;
     }
 }
@@ -69,10 +68,12 @@ function login() {
     var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UserLogin";
     $.ajax(url, {
         cache: true,
-        beforeSend: function () {
+        beforeSend: function() 
+        {
             $('#imgLoader').show();
         },
-        complete: function () {
+        complete: function () 
+        {
             $('#imgLoader').hide();
         },
         type: "POST",
