@@ -52,11 +52,11 @@ function gethistory()
                                                         //alert(isCabNow);
                                                        if(!isCabNow)
                                                         {
-                                                            if(isJobAlive)
+                                                            if(isJobAlive == true || isJobAlive == null)
                                                             {
                                                                 html += "<td width='25%' height='30px' align='center'>"+'<input type="button" value="Abort" onclick="AbortJob(\''+data.d[i]["JobNo"]+'\')"/>'+"</td>";   
                                                             }
-                                                            else
+                                                            else if(isJobAlive == false)
                                                             {
                                                                  html += "<td width='25%' height='30px' align='center'>"+'<label style="color:red">Aborted</label>'+"</td>";
                                                             }
@@ -80,7 +80,7 @@ function gethistory()
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) 
                     {
-                        alert(errorThrown);
+                        //alert(errorThrown);
                     }
                 });
                 
@@ -177,7 +177,7 @@ function feedBackCustomer(JobNumber )
                     var fromLoc = data.d[7];
                     var toLoc = data.d[8];
                 
-                   if(isJobAlive == "True")
+                   if(isJobAlive == "True" || isJobAlive == "")
                     {
                         if(isRatingLocked == "True")
                         {

@@ -45,12 +45,12 @@ function bindGrid(data)
                     html += "<td width='25%' height='30px' align='center'>" + data.d[i]["From"] +"</td>";
                     html += "<td width='25%' height='30px' align='center'>" + data.d[i]["To"] +"</td>";
                      
-                    if(isCustomerAccepted == "True")
+                    if(isCustomerAccepted == true)
                      {
-                       html += "<td width='5%' height='30px' align='center'>"+'<input type="button" value="Accept" onclick="AcceptJob(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["Fare"]+'\')"/>'+"</td>";
+                       html += "<td width='5%' height='30px' align='center'>"+'<input type="button" value="Accept" onclick="AcceptJob(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["Fare"]+'\')"/>'+"</td>";'<br/>'
                        html += "<td width='5%' height='30px' align='center'>"+'<input type="button" value="Reject" onclick="RejectJob(\''+data.d[i]["CustomerRequestID"]+'\')"/>'+"</td>";
                      }
-                     else if(isCustomerAccepted == "False")
+                     else if(isCustomerAccepted == false)
                      {
                          html += "<td width='10%' height='30px' align='center'>No Response</td>";
                      }
@@ -64,7 +64,7 @@ function bindGrid(data)
      }
      else
      {
-         alert("No Cab Later Booking found.");
+         alert("No Current Cab Later Booking found.");
      }
 }
 
@@ -74,7 +74,7 @@ function AcceptJob(jobno, jobfare)
     var fare = jobfare;
     if(fare == 15 || fare > 15)
     {
-        $('#lblconfirmfare').text('&pound'+jobfare);
+        $('#lblconfirmfare').html('&pound'+jobfare);
         $('#lblconfirmjob').text(jobno);
         $('#popup_box').show();
         $('#divComission').show();
@@ -83,6 +83,12 @@ function AcceptJob(jobno, jobfare)
     {
             var reqID = $('#hidJobNo').val();
             $.ajax({
+                beforeSend: function(){
+                   $('#imgLoader').show();
+                },
+                complete: function(){
+                   $('#imgLoader').hide();
+                },
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CabLaterJobBooked",
                 type: "POST",
                 dataType: "Json",
@@ -92,6 +98,7 @@ function AcceptJob(jobno, jobfare)
                     if(data.d == true)
                     {
                        alert('Job booked successfully.');
+                       window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -101,6 +108,42 @@ function AcceptJob(jobno, jobfare)
     }
 }
 
+function ShowDetailBooking(data)
+{
+    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetCabLaterBooking";
+       $.ajax(url, {
+          type:"POST",
+          datatype:"json",
+          data:"{'customerReqID':'"+jobNo+"'}",
+          contentType: "application/json; charset=utf-8",
+           success: showDetail,
+           error: function (XMLHttpRequest, textStatus, errorThrown) 
+           {
+               
+           }
+       });
+    }
+
+function showDetail(data)
+{
+    $('#lblJobNo').text(data.d[0]);
+    $('#lblFare').html('&pound'+data.d[1]);
+    $('#lblDriverName').text(data.d[2]);
+    $('#lblStartDate').text(data.d[3]);
+    $('#lblStartTime').text(data.d[4]);
+    $('#lblSearchTime').text(data.d[5]);
+    $('#lblBidTime').text(data.d[6]);
+    $('#lblDSR').text(data.d[7]);
+    $('#lblDriverRating').text(data.d[8]);    
+    $('#popup_box').show();
+    $('#divCabLaterBooking').show();
+}
+
+function Cancel()
+{
+    $('#popup_box').hide();
+    $('#divCabLaterBooking').hide();
+}
 function RejectJob(data)
 {
     var isTrue = confirm("Do you want to reject this job offer!");
@@ -109,6 +152,12 @@ function RejectJob(data)
             var rid = data;   
             var status = "Reject";
             $.ajax({
+                beforeSend: function(){
+                   $('#imgLoader').show();
+                },
+                complete: function(){
+                   $('#imgLoader').hide();
+                },
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/rejectResponse",
                 type: "POST",
                 dataType: "Json",
@@ -140,6 +189,12 @@ function Confirmcomission()
 {
             var reqID = $('#hidJobNo').val();
             $.ajax({
+                beforeSend: function(){
+                   $('#imgLoader').show();
+                },
+                complete: function(){
+                   $('#imgLoader').hide();
+                },
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CabLaterJobBooked",
                 type: "POST",
                 dataType: "Json",

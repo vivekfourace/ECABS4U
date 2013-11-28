@@ -18,7 +18,7 @@ function myProfile()
 
 //Driver Jobs from menu
 function MyBookings(){
-    window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    window.location='DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 //driver Logout
 function logout()

@@ -32,9 +32,11 @@ function getCablaterBooking()
                                                     for(var i=0; i<count; i++)
                                                     {
                                                        $('#lbljobFeed').text(data.d[i]["CustomerRequestID"]);
-                                                        var isJobBooked = data.d[i]["IsBooked"];
+                                                       var isJobBooked = data.d[i]["IsBooked"];
+                                                       var driverID = data.d[i]["DriverID"];
+                                                       console.log(driverID);
                                                        html += '<tr>';
-                                                       html += "<td width='25%' height='30px' align='center'>" +'<a href="#" onclick="ShowDetailBooking(\''+data.d[i]["CustomerRequestID"]+'\')" style="color:blue;">'+ data.d[i]["CustomerRequestID"]+'</a>' + "</td>"; 
+                                                       html += "<td width='25%' height='30px' align='center'>" +'<a href="#" onclick="ShowDetailBooking(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["DriverID"]+'\')" style="color:blue;">'+ data.d[i]["CustomerRequestID"]+'</a>' + "</td>"; 
                                                        html += "<td width='15%' height='30px' align='center'>"+'&pound' + data.d[i]["Fare"] +"</td>";
                                                        html += "<td width='25%' height='30px' align='center'>" + data.d[i]["From"] +"</td>";
                                                        html += "<td width='25%' height='30px' align='center'>" + data.d[i]["To"] +"</td>";
@@ -67,13 +69,13 @@ function getCablaterBooking()
                 
  }
 
-function ShowDetailBooking(jobNo)
+function ShowDetailBooking(jobNo, driverid)
 {
     var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetCabLaterBooking";
                 $.ajax(url, {
                    type:"POST",
                    datatype:"json",
-                   data:"{'customerReqID':'"+jobNo+"'}",
+                   data:"{'customerReqID':'"+jobNo+"', 'driverid':'"+driverid+"'}",
                    contentType: "application/json; charset=utf-8",
                     success: showDetail,
                     error: function (XMLHttpRequest, textStatus, errorThrown) 
@@ -108,12 +110,19 @@ function HireDriver(customerReqID, driverid)
 {
     var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse";
                 $.ajax(url, {
+                   beforeSend: function(){
+                        $('#imgLoader').show();
+                     },
+                     complete: function(){
+                        $('#imgLoader').hide();
+                     },
                    type:"POST",
                    datatype:"json",
                    data:"{'driverId':'" + driverid + "','requestId':'" + customerReqID + "'}",
                    contentType: "application/json; charset=utf-8",
                     success: function(data){
                         alert('Cab booking is in process, please check after some time.');
+                        window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) 
                     {
@@ -154,8 +163,6 @@ function SubmitReject()
         alert('Please enter a reason.');
         return false;
     }
-    
-    //TODO: write service to abort the job and send email to the customer
       var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/AbortCurrentJobCustomer";
     
             $.ajax(url,{
