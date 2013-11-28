@@ -72,7 +72,6 @@ function Duration()
 
 function CalculateDuration(fromLocation, toLocation)
 {
-    
         var rendererOptions = {
             draggable: true
         };
@@ -105,8 +104,6 @@ function CalculateDuration(fromLocation, toLocation)
         function computeTotalDistance(result) {
             var total = 0;
             var time = 0;
-            var from = 0;
-            var to = 0;
             var myroute = result.routes[0];
             for (var i = 0; i < myroute.legs.length; i++) {
                 total += myroute.legs[i].distance.value;
@@ -127,11 +124,8 @@ function loc() {
     var from = $('#txtFrom').val();
     var to = $('#txtTo').val();
     var loc2 = $('#txt2location').val();
-    //alert(from + to);
-    //var dis = "none";
     window.location = 'Location.html?id=' + from + '&rid=' + to + '&rrid=' + loc2;
 }
-//back to 
 function backtoCustomerhome() 
 {
     window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
@@ -143,7 +137,6 @@ function currentlocation() {
 }
 
 //Search Available
-
 function availabledriverLater() {
     var fromloc;
     var isChecked = $('#chkFromLocation').attr('checked') ? true : false;
@@ -153,18 +146,11 @@ function availabledriverLater() {
     else if (isChecked == true) {
         fromloc = document.getElementById('txtCurrentFrom').value;
     }
-    //var fromloc = document.getElementById('txtFrom').value;
     var toloc = document.getElementById('txtTo').value;
-    
-    CalculateDuration(fromloc, toloc);    
-    
+    CalculateDuration(fromloc, toloc);  
     var distance = document.getElementById('txtDistance').value;
-    //var pickdate = document.getElementById('pickDate').value;    
-    //var picktime = document.getElementById('pickTime').value;
-
     var pickdate = document.getElementById('pickUpDate').value;
     var picktime = document.getElementById('pickUpTime').value;
-
     var passenger = document.getElementById("ddlpassenger");
     var totalpassenger = passenger.options[passenger.selectedIndex].value;
     var lcase = document.getElementById("ddllargecase");
@@ -178,11 +164,7 @@ function availabledriverLater() {
     //add Location    
     var secondLoc = document.getElementById("txt2location").value;
     var thirdLoc = document.getElementById("txt3location").value;
-    //var forthLoc=document.getElementById().value("txt4location").value;
-    //var fifthLOc=document.getElementById().value("txt5location").value;
-    //var sixthLOc=document.getElementById().value("txt6location").value;
-    //var seventhLoc=document.getElementById().value("txt7location").value;
-    //var eightLoc=document.getElementById().value("txt8location").value;
+
 
     //special
     var weelchairPassangers = document.getElementById("ddlWheelchair");
@@ -198,8 +180,7 @@ function availabledriverLater() {
     var returnfromloc = document.getElementById('txtReturFrom').value;
     var returntoloc = document.getElementById('txtReturTo').value;
     
-    //check Job type(cabnow or cablater)
-    
+    //check Job type(cabnow or cablater)    
     var isCabNow = $('#RBcabNOW').attr('checked') ? true : false;
     
     var travelTime = $('#TravelTime').val();
@@ -266,17 +247,15 @@ function availabledriverLater() {
                 data: "{'userID':'" + relatedId + "','frompost':'" + fromloc + "','topost':'" + toloc + "','pickDate':'" + pickdate + "','pickTime':'" + picktime + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnfromloc + "','returntoloc':'" + returntoloc + "','returnDate':'" + returnDate + "','returnTime':'" + returnTime + "','travelTime':'" + travelTime + "','isCabNow':'" + isCabNow + "'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
-                    var reqID = data.d;
-                    window.location = 'customerSearchList.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId + '&reqid=' + reqID;
+                    alert('Booking is under process, please check after sometime.');
+                    window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    // alert(errorThrown);
                 }
             });
         }
     }
 
-    // Home Button In Hearder
     function homeSearch() {
         window.location = 'customerHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
     }

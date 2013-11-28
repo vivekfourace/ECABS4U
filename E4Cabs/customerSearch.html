@@ -373,8 +373,8 @@ $(document).ready(function () {
                             <label style="font-size:16px;text-align:left;float:left;padding-top:2px;color:#568bbe"><b>Cab Later</b></label>
                        </td>
                    </tr>
-                           </table>
-                       </td>
+                  </table>
+                 </td>
                        
                    </tr>
                   <!-- <tr>
@@ -390,7 +390,7 @@ $(document).ready(function () {
                 <tr id="Fromloc">
                     <td>
                         <label for="txtFrom" class="font-style"><b style="font-size:12px">From</b></label> 
-                        <input type="text" id="txtFrom" name="txtFrom" class="font-style" autofocus="autofocus" style="width:100%;float:right;"/>
+                        <input type="text" id="txtFrom" name="txtFrom" class="font-style" onclick ="calcRoute();" style="width:100%;float:right;"/>
                     </td>
                 </tr>
                 <tr id="currentPos" style="display:none">
@@ -476,7 +476,7 @@ $(document).ready(function () {
              <tr>
                 <td>
                     <label for="txtTo" class="font-style"><b style="font-size:12px">Final Destination</b></label> 
-                    <input type="text" id="txtTo" class="font-style" style="width:85%;float:left;" oninput="calcRoute()" onclick="calcRoute()" onchange()="Duration();"/>
+                    <input type="text" id="txtTo" class="font-style" style="width:85%;float:left;" onclick ="calcRoute();" onchange="Duration();"/>
                     <img src="img/Addlocation.png" id="secoundLoc" width="25" height="25" style="float:right;cursor:pointer" onclick="secoundLocation()"/>
                 </td>
              </tr>

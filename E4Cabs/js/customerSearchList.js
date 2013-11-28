@@ -3,6 +3,7 @@ var userId = QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 var requestID = QString.split("=")[4].split("&")[0];
+//var iscabnow = QString.split("=")[5].split("&")[0];
 
 $('#load').show();
 function backtosearch() {

@@ -33,12 +33,14 @@ function Check(){
                                                      if(jobType == "True")
                                                       {
                                                           $('#strJobTypeTitle').html("New 'Cab Now' Job Notification");
+                                                          $('#strJobTypeTitle').css('color','#FFFFFF');
                                                           $('#popup_box').show();
                                                           $('#divDealStart').show();
                                                       }
                                                       else if(jobType == "False")
                                                       {
                                                           $('#strJobTypeTitle').html("New 'Cab Later' Job Notification");
+                                                          $('#strJobTypeTitle').css('color','#FFFFFF');
                                                           $('#popup_box').show();
                                                           $('#divDealStart').show();
                                                       }

@@ -19,9 +19,9 @@
         var userId = QString.split("=")[1].split("&")[0];
         var roleId = QString.split("=")[2].split("&")[0];
         var relatedId = QString.split("=")[3].split("&")[0];
-        //Got Job a New Job Request
-        var count = 0; //global variable for checking customer response.
-        $(document).ready(function () {
+        
+        //var count = 0; 
+        $(function () {
             $('#txtbidFare').bind('keypress', function (e) {
                 if ((e.keyCode < 48 || e.keyCode > 57) && e.keyCode != 46) {
                     e.stopPropagation();
@@ -72,6 +72,7 @@
                                     $('#lblreturnDate').text(data.d[17]);
                                     $('#lblreturnTime').text(data.d[18]);
                                     $('#otherReq').text(data.d[19]);
+                                    $('#hiddenIsCabnow').val(data.d[20]);
 
                                     if (data.d[3] != null) {
                                         var sec = data.d[3];
@@ -265,7 +266,12 @@
                 window.clearInterval(timereOut);
             }
         }
-
+        
+        function SubmitDealCabLater()
+        {
+            
+        }
+        
         function showSpecial() {
             $("#trfare").toggle();
             $("#trwheelchair").toggle();
@@ -324,7 +330,13 @@
             $("#other").hide();
             $("#fare").hide();
         }
+        
         function bidSubmit() {
+         var isCabnow = $('#hiddenIsCabnow').val();
+         alert(isCabnow);
+            
+         if(isCabnow == "True")
+         {
             var fare = $('#txtbidFare').val();
             if (fare.length <= 0) {
                 alert('Please enter fare.');
@@ -343,10 +355,7 @@
             var from = $('#lblFromLoc').text();
             var to = $('#lblToLoc').text();
             var specialReq = $('#txtSpecialReq').val();
-
-
-            // var third=$('#lblpopthird').text();
-            // var four=$('#lblpopfour').text();
+             
             $('#lblbidjob').text(job);
             $('#lblbiddistance').text(distance);
             $('#lblbidfrom').text(from);
@@ -387,8 +396,68 @@
             $('#popup_box').hide();
             if (fare.length > 0) {
                 SubmitDeal();
+                }
             }
-            //var Dealid = window.setInterval(SubmitDeal, 2000);
+            
+         else if(isCabnow == "False")
+            {
+            var fare2 = $('#txtbidFare').val();
+            if (fare2.length <= 0) {
+                alert('Please enter fare.');
+                return false;
+            }
+            $("#wheel").hide(); $("#Tr1").hide(); $("#Tr2").hide(); $("#Tr3").hide(); $("#Tr4").hide(); $("#Tr5").hide();
+            $("#childseat").hide();
+            $("#booster").hide();
+            $("#other").hide();
+            $("#fare").hide();
+            $('#divDriverPop').hide();
+            $('#divBid').hide();
+            
+            $('#lblbidjob').text(job);
+            
+            $('#lblfare').text(fare2);            
+            var reqid = $('#lblbidjob').text();
+            var statuS = true;
+            var pricE = fare2;
+            var specialreq = $('#txtSpecialReq').val();            
+
+            $.ajax({
+                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/SetDriverResponseCabLater",
+                type: "POST",
+                dataType: "Json",
+                data: "{'userID':'" + relatedId + "','reqid':'" + reqid + "','status':'" + statuS + "','price':'" + pricE + "','specialReq':'" + specialreq + "'}",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if(data.d == "true")
+                    {
+                        alert('Please response is under process, wait for customer response.');
+                        window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                        
+                    }
+                    else if(data.d =="false")
+                    {
+                        alert('Some error occurs, please try again!');
+                    }
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                }
+            });
+
+            document.getElementById("trfare").style.display = 'table-row';
+            document.getElementById("trwheelchair").style.display = 'none';
+            document.getElementById("trchildseats").style.display = 'none';
+            document.getElementById("trchildbooster").style.display = 'none';
+            document.getElementById("returnFrom").style.display = 'none';
+            document.getElementById("returnTo").style.display = 'none';
+            document.getElementById("returnDate").style.display = 'none';
+            document.getElementById("returnTime").style.display = 'none';
+            document.getElementById("trOtherspec").style.display = 'none';
+            document.getElementById("trSpecialtxt").style.display = 'none';
+            $('#popup_box').hide();
+            }
         }
 
         function bidCancel() {
@@ -396,7 +465,7 @@
             $('#popup_box').hide();
              $('#divBid').hide();
             $('#lblfare').text("");
-           /* $.ajax({
+            $.ajax({
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/cancelJob",
                 type: "POST",
                 dataType: "Json",
@@ -407,7 +476,7 @@
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
 
                 }
-            });*/
+            });
             document.getElementById("trfare").style.display = 'none';
         }
         function reqCancel() {
@@ -450,7 +519,7 @@
         }
         //
         function dealSubmit() {
-             $('#divDeal').hide();
+            $('#divDeal').hide();
             var getIsReturnJourney = $('#isReturnJourney').val();
             var getFare = $('#lbldealfare').text();
             var reqID = $('#lbldealjob').text();
@@ -631,6 +700,7 @@
         </div>
     </div>
     <center>
+        <input type="hidden" id="hiddenIsCabnow"/>
              <div id="divDealload" class="loadForall">            
                 <span style="font-family:'Trebuchet MS';color:white">Please wait...</span><br>
                 <img src="jquery-mobile/styles/images/ajax-loader-hor.gif" style="width:140px;height:10px"/>
@@ -1024,9 +1094,9 @@
                      <div id="divreject" style="display:none;"align="center">
                         <table align="left" style="width:100%;background-color:#FFFFFF;">
                                  <tr>
-                                            <td class="popup_header" style="width:50%" colspan="2">
-                                                <strong style="padding-left:5px;width:100%" class="test" align="center">Cancel Job</strong>
-                                            </td>
+                                   <td class="popup_header" style="width:50%" colspan="2">
+                                       <strong style="padding-left:5px;width:100%" class="test" align="center">Cancel Job</strong>
+                                   </td>
                                 </tr>
                                 <tr class="popup_content">
                                 <td style="width:100%" colspan="2">
