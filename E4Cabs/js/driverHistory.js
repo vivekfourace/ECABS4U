@@ -74,7 +74,7 @@ function gethistory()
                                  }
                                 else
                                 {
-                                    alert("No history found1");
+                                    alert("No history found");
                                 }
                             },
                             error: function (XMLHttpRequest, textStatus, errorThrown) 
@@ -278,41 +278,23 @@ function PostFeedBack()
  }
 
 
-
-
-
-
-//cab Now
-function cabNow()
-{
-              window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-    
-}
-//Pre Cab
 function myhome()
 {
            window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-
-//Booked History
 function bookedHistory()
 {
           window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
  
 }
-//Driver Jobs from menu
 function MyBookings(){
          window.location='DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-//My Profile Button
  function myProfile()
 {
          window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
-
-
-//Logout
 function logout()
 {                
          $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",

@@ -202,3 +202,44 @@ function CancelReject()
     $('#freezBack').hide();
     $('#txtAbortmsg').val("");
 }
+
+function cabNow()
+{
+      window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
+function preCab()
+{
+     window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
+function bookedHistory()
+{
+      window.location='bookedhistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
+function myProfile()
+{
+     window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+ }
+function feedBack()
+{
+    window.location='customerFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
+function logout()
+ {
+          $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
+                type:"POST",
+                dataType: "Json",
+                data:"{'userID':'" +userId+"'}",
+                contentType: "application/json; charset=utf-8",                     
+                success: function(data)
+                {
+                    },
+                
+                error: function (XMLHttpRequest, textStatus, errorThrown)
+              {
+              }
+          });          
+          $.cookie("remember", false);
+          //$.cookie("userName", 'null');
+          //$.cookie("userPassword", 'null');
+          window.location = "index.html";  
+  }
