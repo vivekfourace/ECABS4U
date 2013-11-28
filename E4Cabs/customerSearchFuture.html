@@ -30,8 +30,7 @@
         function initialize() {
             var mapOptions = {
             };
-            var map = new google.maps.Map(document.getElementById('map-canvas'),
-              mapOptions);
+            var map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
             var PickupLocation = (document.getElementById('txtFrom'));
             var L2Location = (document.getElementById('txt2location'));
             var L3Location = (document.getElementById('txt3location'));
@@ -377,11 +376,6 @@ $(document).ready(function () {
                        </td>
                        
                    </tr>
-                  <!-- <tr>
-                       <td style="padding-top:20px">
-                           <a href="#" onclick="loc()" style="color:Black !important">Location</a>
-                       </td>
-                   </tr>-->
                    <tr>
                        <td align="center">
                            <label id="lblMessage" style="color:red;font-size:12px"/>
@@ -390,7 +384,7 @@ $(document).ready(function () {
                 <tr id="Fromloc">
                     <td>
                         <label for="txtFrom" class="font-style"><b style="font-size:12px">From</b></label> 
-                        <input type="text" id="txtFrom" name="txtFrom" class="font-style" onclick="calcRoute()" onchange="calcRoute()" style="width:100%;float:right;"/>
+                        <input type="text" id="txtFrom" name="txtFrom" class="font-style" onchange="calcRoute()" style="width:100%;float:right;"/>
                     </td>
                 </tr>
                 <tr id="currentPos" style="display:none">

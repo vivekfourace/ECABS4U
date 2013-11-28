@@ -262,9 +262,9 @@ function availabledriver() {
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
                     var reqID = data.d[0];
-                    var isCabNow = data.d[1];
-                    alert(isCabNow);
-                    window.location = 'customerSearchList.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId + '&reqid=' + reqID+ '&isCabNow=' + isCabNow;
+                    //var isCabNow = data.d[1];
+                   // alert(isCabNow);
+                    window.location = 'customerSearchList.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId + '&reqid=' + reqID;
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     // alert(errorThrown);

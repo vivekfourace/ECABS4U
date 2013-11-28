@@ -59,7 +59,7 @@ function bookedHistory()
 //Accepting the Request.    
 function seeRequest()
 {
-          window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+   window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
  //cancel the Request.
  function closeRequest()

@@ -114,9 +114,10 @@ function UpdateProfile()
      });
 }
 
-
-
-
+function ShowCabLaterBooking()
+{
+    window.location='CustomerCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
 
 //Cancel update
 function CancelProfile()

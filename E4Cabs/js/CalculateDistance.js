@@ -17,7 +17,6 @@ function calcRoute() {
     var loc8 = document.getElementById("txt8location").value;
     var end = document.getElementById("txtTo").value;
     console.log(start);
-    console.log(end);
     var distanceInput = document.getElementById("txtDistance");
 
 

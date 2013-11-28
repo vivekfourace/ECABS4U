@@ -26,7 +26,6 @@ setInterval(getCurrentPostCode, postCodeFetchTime);
             
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
-                    //alert('Capturing Driver Postcode through mobile GPS.');
                     var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
                     var geocoder = new google.maps.Geocoder();
                     var latLng = pos;
