@@ -53,11 +53,11 @@ function gethistory()
                                                                
                                                             if(!isCabNow)
                                                             {
-                                                                if(isJobAlive)
+                                                                if(isJobAlive == true || isJobAlive == null)
                                                                 {
                                                                     html += "<td width='25%' height='30px' align='center'>"+'<input type="button" value="Abort" onclick="AbortJob(\''+data.d[i]["JobNo"]+'\')"/>'+"</td>";   
                                                                 }
-                                                                else
+                                                                else if(isJobAlive == false)
                                                                 {
                                                                      html += "<td width='25%' height='30px' align='center'>"+'<label style="color:red">Aborted</label>'+"</td>";
                                                                 }
@@ -104,7 +104,7 @@ function feedBackDriver(JobNumber )
                     var fromLoc = data.d[7];
                     var toLoc = data.d[8];
                 
-                   if(isJobAlive == "True")
+                   if(isJobAlive == "True" || isJobAlive == "")
                     {
                         if(isRatingLocked == "True")
                         {
@@ -302,7 +302,7 @@ function bookedHistory()
 }
 //Driver Jobs from menu
 function MyBookings(){
-         window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+         window.location='DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 //My Profile Button
  function myProfile()

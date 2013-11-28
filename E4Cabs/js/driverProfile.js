@@ -151,7 +151,7 @@ function HomePage(){
 }
 //My Job Button In footer Redirect To Driver Job Page.
 function MyBookings(){
-    window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    window.location='DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 //Logout From button in Footer.
 function logout()
