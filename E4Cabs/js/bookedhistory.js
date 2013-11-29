@@ -52,7 +52,7 @@ function gethistory()
                                                         //alert(isCabNow);
                                                        if(!isCabNow)
                                                         {
-                                                            if(isJobAlive == true || isJobAlive == null)
+                                                            if(isJobAlive == true)
                                                             {
                                                                 html += "<td width='25%' height='30px' align='center'>"+'<input type="button" value="Abort" onclick="AbortJob(\''+data.d[i]["JobNo"]+'\')"/>'+"</td>";   
                                                             }
