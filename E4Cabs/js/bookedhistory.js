@@ -278,32 +278,26 @@ function PostFeedBack()
          });  
 }
 
-//cab Now
 function cabNow()
 {
       window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-    
 }
-
-//Pre Cab
 function preCab()
 {
      window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-
-//Booked History
 function bookedHistory()
 {
       window.location='bookedhistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-
-//My Profile Button
 function myProfile()
 {
      window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
  }
-
-//Logout
+function feedBack()
+{
+    window.location='customerFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
 function logout()
  {
           $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
@@ -325,14 +319,6 @@ function logout()
           window.location = "index.html";  
   }
 
-
-
-
-//Customer Feedback 
-function feedBack()
-{
-    window.location='customerFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-}
 
 
 function backtostart()
