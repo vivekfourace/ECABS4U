@@ -132,6 +132,7 @@ function SubmitAbort()
                      },
                      complete: function(){
                         $('#imgLoader').hide();
+                         
                      },
                      type:"POST",
                      datatype:"json",
@@ -140,6 +141,7 @@ function SubmitAbort()
                      success: function(data){
                          if(data.d == "true")
                          {
+                            
                               $('#popup_box1').hide();
                               $('#divAbortTask').hide();
                               $('#txtAbortmsg').val("");
