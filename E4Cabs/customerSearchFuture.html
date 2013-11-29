@@ -29,6 +29,7 @@
     <script>
         function initialize() {
             var mapOptions = {
+                componentRestrictions: { country: "UK" }
             };
             var map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
             var PickupLocation = (document.getElementById('txtFrom'));
@@ -407,14 +408,14 @@ $(document).ready(function () {
                <tr  id="2location" style="display:none">
                 <td>
                     <label for="txt2location" class="font-style"><b style="font-size:12px">Destination 1</b></label> 
-                    <input type="text" id="txt2location" name="txt2location" class="font-style" style="width:85%;float:left;"/>
+                    <input type="text" id="txt2location" name="txt2location" onclick ="calcRoute();" class="font-style" style="width:85%;float:left;"/>
                     <img src="img/Addlocation.png" id="thirdLoc" width="25" height="25" style="float:right;cursor:pointer" onclick="thirdLocation()"/>
                 </td>
              </tr>
              <tr  id="3location" style="display:none">
                 <td>
                     <label for="txt3location" class="font-style"><b style="font-size:12px">Destination 2</b></label> 
-                    <input type="text" id="txt3location" name="txt3location" class="font-style" style="width:85%;float:left;"/>
+                    <input type="text" id="txt3location" name="txt3location" onclick ="calcRoute();" class="font-style" style="width:85%;float:left;"/>
                     <img src="img/Addlocation.png" id="fourLoc" width="25" height="25" style="float:right;cursor:pointer" onclick="fourthLocation()"/>
                 </td>
                        
@@ -422,7 +423,7 @@ $(document).ready(function () {
                <tr  id="4location" style="display:none">
                 <td>
                     <label for="txt4location" class="font-style"><b style="font-size:12px">Destination 3</b></label> 
-                    <input type="text" id="txt4location" name="txt4location" class="font-style" style="width:85%;float:left;"/>
+                    <input type="text" id="txt4location" name="txt4location" onclick ="calcRoute();" class="font-style" style="width:85%;float:left;"/>
                     <img src="img/Addlocation.png" id="fiveLoc" width="25" height="25" style="float:right;cursor:pointer" onclick="fifthLocation()"/>
                 </td>
                        
@@ -430,7 +431,7 @@ $(document).ready(function () {
                <tr  id="5location" style="display:none">
                 <td>
                     <label for="txt5location" class="font-style"><b style="font-size:12px">Destination 4</b></label> 
-                    <input type="text" id="txt5location" name="txt5location" class="font-style" style="width:85%;float:left;"/>
+                    <input type="text" id="txt5location" name="txt5location" onclick ="calcRoute();" class="font-style" style="width:85%;float:left;"/>
                     <img src="img/Addlocation.png" id="sixLoc" width="25" height="25" style="float:right;cursor:pointer" onclick="sixthLocation()"/>
                 </td>
                        
@@ -438,7 +439,7 @@ $(document).ready(function () {
              <tr  id="6location" style="display:none">
                 <td>
                     <label for="txt6location" class="font-style"><b style="font-size:12px">Destination 5</b></label> 
-                    <input type="text" id="txt6location" name="txt6location" class="font-style" style="width:85%;float:left;"/>
+                    <input type="text" id="txt6location" name="txt6location" onclick ="calcRoute();" class="font-style" style="width:85%;float:left;"/>
                     <img src="img/Addlocation.png" id="sevenLoc" width="25" height="25" style="float:right;cursor:pointer" onclick="sevenLocation()"/>
                 </td>
                        
@@ -446,7 +447,7 @@ $(document).ready(function () {
              <tr  id="7location" style="display:none">
                 <td>
                     <label for="txt7location" class="font-style"><b style="font-size:12px">Destination 6</b></label> 
-                    <input type="text" id="txt7location" name="txt7location" class="font-style" style="width:85%;float:left;"/>
+                    <input type="text" id="txt7location" name="txt7location" onclick ="calcRoute();" class="font-style" style="width:85%;float:left;"/>
                     <img src="img/Addlocation.png" id="eightLoc" width="25" height="25" style="float:right;cursor:pointer" onclick="eightLocation()"/>
                 </td>
                        
@@ -454,7 +455,7 @@ $(document).ready(function () {
             <tr  id="8location" style="display:none">
                 <td>
                     <label for="txt8location" class="font-style"><b style="font-size:12px">Destination 7</b></label> 
-                    <input type="text" id="txt8location" name="txt8location" class="font-style" style="width:85%;float:left;"/>
+                    <input type="text" id="txt8location" name="txt8location" onclick ="calcRoute();" class="font-style" style="width:85%;float:left;"/>
                    
                 </td>
                        
@@ -470,7 +471,7 @@ $(document).ready(function () {
              <tr>
                 <td>
                     <label for="txtTo" class="font-style"><b style="font-size:12px">Final Destination</b></label> 
-                    <input type="text" id="txtTo" class="font-style" style="width:85%;float:left;" onclick="calcRoute()" onchange="Duration();"/>
+                    <input type="text" id="txtTo" class="font-style" style="width:85%;float:left;" onclick="calcRoute()" oninput="calcRoute()" onchange="Duration();"/>
                     <img src="img/Addlocation.png" id="secoundLoc" width="25" height="25" style="float:right;cursor:pointer" onclick="secoundLocation()"/>
                 </td>
              </tr>
