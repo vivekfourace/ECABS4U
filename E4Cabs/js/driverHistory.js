@@ -41,7 +41,7 @@ function gethistory()
                                                             for(var i=0; i<count; i++)
                                                             {
                                                                $('#lbljobFeed').text(data.d[i]["JobNo"]);
-                                                               var isCabNow = data.d[i]["isCabNow"];
+                                                               //var isCabNow = data.d[i]["isCabNow"];
                                                                var isJobAlive = data.d[i]["isJobAlive"];
                                                                html += '<tr>';
                                                                html += "<td width='25%' align='center'>" +'<a href="#" onclick="feedBackDriver(\''+data.d[i]["JobNo"]+'\')" style="color:blue;" onclick="">'+ data.d[i]["JobNo"]+'</a>' + "</td>";
@@ -51,8 +51,8 @@ function gethistory()
                                                                html += "<td width='25%' align='center'>" + data.d[i]["ToLoc"] +"</td>";
                                                                
                                                                
-                                                            if(!isCabNow)
-                                                            {
+                                                            //if(!isCabNow)
+                                                            //{
                                                                 if(isJobAlive == true)
                                                                 {
                                                                     html += "<td width='25%' height='30px' align='center'>"+'<input type="button" value="Abort" onclick="AbortJob(\''+data.d[i]["JobNo"]+'\')"/>'+"</td>";   
@@ -61,11 +61,11 @@ function gethistory()
                                                                 {
                                                                      html += "<td width='25%' height='30px' align='center'>"+'<label style="color:red">Job not active</label>'+"</td>";
                                                                 }
-                                                            }
-                                                            else
-                                                            {
-                                                              html += "<td width='25%' height='30px' align='center'>"+"</td>";  
-                                                            }
+                                                           // }
+                                                            //else
+                                                            //{
+                                                              //html += "<td width='25%' height='30px' align='center'>"+"</td>";  
+                                                            //}
                                                             html += '</tr>';    
                                                             }
                                                        html +='</tbody>';
@@ -144,7 +144,7 @@ function feedBackDriver(JobNumber )
                     }
                     else
                     {
-                        alert('Job has been aborted, you cannot give feedback');
+                        alert('Job is not active, you cannot give feedback');
                     }
        },            
         error: function (XMLHttpRequest, textStatus, errorThrown) {}

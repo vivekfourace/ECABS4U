@@ -43,29 +43,31 @@ function gethistory()
                                                        $('#lbljobFeed').text(data.d[i]["JobNo"]);
                                                        var isCabNow = data.d[i]["isCabNow"];
                                                        var isJobAlive = data.d[i]["isJobAlive"];
+                                                       console.log(isJobAlive);
+                                                        console.log(isCabNow);
                                                        html += '<tr>';
                                                        html += "<td width='25%' height='30px' align='center'>" +'<a href="#" onclick="feedBackCustomer(\''+data.d[i]["JobNo"]+'\')" style="color:blue;">'+ data.d[i]["JobNo"]+'</a>' + "</td>"; 
                                                        html += "<td width='25%' align='center' style='display:none'>" + data.d[i]["StartDate"] + "</td>";
                                                        html += "<td width='25%' align='center' style='display:none'>" + data.d[i]["StartTime"] +"</td>";
                                                        html += "<td width='25%' height='30px' align='center'>" + data.d[i]["FromLoc"] +"</td>";
                                                        html += "<td width='25%' height='30px' align='center'>" + data.d[i]["ToLoc"] +"</td>";
-                                                        //alert(isCabNow);
-                                                       if(!isCabNow)
-                                                        {
+                                                       
+                                                       //if(!isCabNow)
+                                                       // {
                                                             if(isJobAlive == true)
                                                             {
                                                                 html += "<td width='25%' height='30px' align='center'>"+'<input type="button" value="Abort" onclick="AbortJob(\''+data.d[i]["JobNo"]+'\')"/>'+"</td>";   
                                                             }
                                                             else if(isJobAlive == false)
                                                             {
-                                                                 html += "<td width='25%' height='30px' align='center'>"+'<label style="color:red">Job not active</label>'+"</td>";
+                                                                 html += "<td width='25%' height='30px' align='center'>"+'<label style="color:red">Job Inactive</label>'+"</td>";
                                                             }
                                                          
-                                                        }
-                                                        else
-                                                        {
-                                                          html += "<td width='25%' height='30px' align='center'>"+"</td>";  
-                                                        }
+                                                       // }
+                                                       // else
+                                                        //{
+                                                          //html += "<td width='25%' height='30px' align='center'>"+"</td>";  
+                                                        //}
                                                         
                                                        html += '</tr>';
                                                     }
@@ -217,7 +219,7 @@ function feedBackCustomer(JobNumber )
                     }
                     else
                     {
-                        alert('Job has been aborted, you cannot give feedback');
+                        alert('Job is not active, you cannot give feedback');
                     }
        },            
         error: function (XMLHttpRequest, textStatus, errorThrown) {}
