@@ -16,7 +16,7 @@ function calcRoute() {
     var loc7 = document.getElementById("txt7location").value;
     var loc8 = document.getElementById("txt8location").value;
     var end = document.getElementById("txtTo").value;
-    console.log(start);
+    //console.log(start);
     var distanceInput = document.getElementById("txtDistance");
 
 
@@ -197,7 +197,7 @@ function calcRoute() {
                             directionsDisplay.setDirections(response);
                             dis9 = (response.routes[0].legs[0].distance.value / 1609.34);
                         }
-                        var dis = (parseFloat(dist8, 10) + parseFloat(dis9, 10)).toFixed(2);
+                        var dis = (parseFloat(dist8, 10) + parseFloat(dis9, 10));
                         distanceInput.value = (dis.toFixed(2) + " miles");
                     });
                 }
@@ -537,7 +537,7 @@ function calcRoute() {
                                         dis14 = (response.routes[0].legs[0].distance.value / 1609.34);
 
                                     }
-                                    var dis = (parseFloat(dist13, 10) + parseFloat(dis14, 10)).toFixed(2);
+                                    var dis = (parseFloat(dist13, 10) + parseFloat(dis14, 10))
                                     distanceInput.value = (dis.toFixed(2) + " miles");
                                 });
                             }
@@ -692,8 +692,8 @@ function calcRoute() {
                                             dis15 = (response.routes[0].legs[0].distance.value / 1609.34);
 
                                         }
-                                        var dis = (parseFloat(dist14, 10) + parseFloat(dis15, 10));
-                                        distanceInput.value = (dis.toFixed(2) + " miles");
+                                        var dist15 = (parseFloat(dist14, 10) + parseFloat(dis15, 10));
+                                        distanceInput.value = (dist15.toFixed(2) + " miles");
                                     });
                                 }
                             }

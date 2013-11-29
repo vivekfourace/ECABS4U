@@ -28,11 +28,10 @@
 </head>
     <script>
         function initialize() {
-            var mapOptions = {
-                componentRestrictions: { country: "UK" }
+             var mapOptions = {
+                    componentRestrictions: { country: "UK" }
             };
-            var map = new google.maps.Map(document.getElementById('map-canvas'),
-              mapOptions);
+            var map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
             var PickupLocation = (document.getElementById('txtFrom'));
             var L2Location = (document.getElementById('txt2location'));
             var L3Location = (document.getElementById('txt3location'));
