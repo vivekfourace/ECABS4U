@@ -77,7 +77,6 @@ function DriverProfile()
 function Jobs()
 {
     //window.location = 'pop.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-    
 }
 
 //diver Profile from menu
@@ -168,7 +167,7 @@ function clearJob()
     var isTrue = confirm('Do you want to clear the job?');
     if(isTrue)
     {
-        alert('cleared');
+        alert('Cleared');
     }
     else
     {
@@ -196,10 +195,10 @@ function bookedHistory()
 }
 
  //Accepting the Request.    
-          function seeRequest()
-          {
-              window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-          }
+ function seeRequest()
+ {
+     window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+ }
           
           
         
