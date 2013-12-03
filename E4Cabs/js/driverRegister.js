@@ -17,6 +17,7 @@ function RegisterDriver()
      var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
     var phoneno =/^\d{11}$/;
     var img2="a";
+    var pass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}$/;
       //var img2=document.getElementById('raghu').value; 
     //var validate=document.getElementById('MAX_FILE_SIZE').value;
     
@@ -71,9 +72,19 @@ function RegisterDriver()
 
  //validate Password
     if(password.length > 0)
-                    {
-                        $('#lblRequiredField').text(" ");
-                    }
+      {
+                       
+        if(password.match(pass))
+           {
+             $('#lblRequiredField').text(" ");  
+           }
+           else
+           {
+             $('#lblRequiredField').text("Password between 8 to 16 characters which contain at least one numeric digit, one uppercase and one lowercase letter.");
+             $('#password').focus();
+             return false;
+           }
+        }
                 else if(password.length == 0)
                  {
                      $('#lblRequiredField').text("Please enter password");

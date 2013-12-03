@@ -10,29 +10,44 @@ function ChangePaswords()
                 var currentPass=document.getElementById('curentpswd').value;
                 var newPass=document.getElementById('txtNew').value;
                 var confirm=document.getElementById('txtConform').value;
-                 
+                var pass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}$/;
+     
+     //Current password validation.
                 if(currentPass.length > 0)
                 {
                     $('#lblMsg').text("");
                 }
                 else if(currentPass.length==0)
                 {
-                $('#lblMsg').text("Please enter current password!");
+                $('#lblMsg').text("Please enter current password.");
                 $('#curentpswd').focus();
                  return false;
                 }
                 
+     
+     //New password validation.
                 if(newPass.length > 0)
                 {
-                    $('#lblMsg').text("");
+                    
+                    
+                    if(newPass.match(pass))
+                    {
+                      $('#lblMsg').text(" ");  
+                    }
+                    else
+                    {
+                      $('#lblMsg').text("Password between 8 to 16 characters which contain at least one numeric digit, one uppercase and one lowercase letter.");
+                      $('#newPass').focus();
+                      return false;
+                    }
                 }
                 else if(newPass.length==0)
                 {
-                $('#lblMsg').text("Please enter new password!");
+                $('#lblMsg').text("Please enter new password.");
                 $('#txtNew').focus();
                  return false;
                 }
-                 
+      //Current password and Confirm password validation.           
                 if(confirm.length > 0)
                     {
                         if(newPass == confirm)
@@ -41,13 +56,13 @@ function ChangePaswords()
                         }
                         else
                         {
-                            $('#lblMsg').text("Password mismatch!");
+                            $('#lblMsg').text("Password mismatch.");
                             return false;
                         }
                     }
                 else if(confirm.length == 0)
                     {
-                        $('#lblMsg').text("Please re-enter confirm password!");
+                        $('#lblMsg').text("Please re-enter confirm password.");
                         return false;
                     }
                  
