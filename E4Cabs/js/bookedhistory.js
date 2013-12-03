@@ -29,49 +29,48 @@ function gethistory()
                                 html += '<thead style="background-color:#0A0A2A;color:#fff;">';
                                 html += '<tr>';
                                 html += '<th class="th4 font">JobNo</th>';
-                                //html += '<th class="th4 font">Date</th>';
-                                //html += '<th class="th4 font">Time</th>';
+                                html += '<th class="th4 font"></th>';
                                 html += '<th class="th4 font">From</th>';
                                 html += '<th class="th4 font">To</th>';
-                                html += '<th class="th4 font">Status</th>';                           
-                                
+                                html += '<th class="th4 font">Status</th>';                      
                                 html += '</tr>';
                                 html += '</thead>';
-                                               html +='<tbody class="body-style altColor"  style="font-size:14px;">';  
-                                                    for(var i=0; i<count; i++)
-                                                    {
-                                                       $('#lbljobFeed').text(data.d[i]["JobNo"]);
-                                                       var isCabNow = data.d[i]["isCabNow"];
-                                                       var isJobAlive = data.d[i]["isJobAlive"];
-                                                       console.log(isJobAlive);
-                                                        console.log(isCabNow);
-                                                       html += '<tr>';
-                                                       html += "<td width='25%' height='30px' align='center'>" +'<a href="#" onclick="feedBackCustomer(\''+data.d[i]["JobNo"]+'\')" style="color:blue;">'+ data.d[i]["JobNo"]+'</a>' + "</td>"; 
-                                                       html += "<td width='25%' align='center' style='display:none'>" + data.d[i]["StartDate"] + "</td>";
-                                                       html += "<td width='25%' align='center' style='display:none'>" + data.d[i]["StartTime"] +"</td>";
-                                                       html += "<td width='25%' height='30px' align='center'>" + data.d[i]["FromLoc"] +"</td>";
-                                                       html += "<td width='25%' height='30px' align='center'>" + data.d[i]["ToLoc"] +"</td>";
-                                                       
-                                                       //if(!isCabNow)
-                                                       // {
-                                                            if(isJobAlive == true)
-                                                            {
-                                                                html += "<td width='25%' height='30px' align='center'>"+'<input type="button" value="Abort" onclick="AbortJob(\''+data.d[i]["JobNo"]+'\')"/>'+"</td>";   
-                                                            }
-                                                            else if(isJobAlive == false)
-                                                            {
-                                                                 html += "<td width='25%' height='30px' align='center'>"+'<label style="color:red">Job Inactive</label>'+"</td>";
-                                                            }
-                                                         
-                                                       // }
-                                                       // else
-                                                        //{
-                                                          //html += "<td width='25%' height='30px' align='center'>"+"</td>";  
-                                                        //}
-                                                        
-                                                       html += '</tr>';
-                                                    }
-                                               html +='</tbody>';
+                                   html +='<tbody class="body-style altColor"  style="font-size:14px;">';  
+                                        for(var i=0; i<count; i++)
+                                        {
+                                           $('#lbljobFeed').text(data.d[i]["JobNo"]);
+                                           var isCabNow = data.d[i]["isCabNow"];
+                                           var isJobAlive = data.d[i]["isJobAlive"];
+                                           //console.log(isJobAlive);
+                                           //console.log(isCabNow);
+                                           html += '<tr>';
+                                           html += "<td width='20%' height='30px' align='center'>" +'<a href="#" onclick="JobDetail(\''+data.d[i]["JobNo"]+'\')" style="color:blue;">'+ data.d[i]["JobNo"]+'</a>'+"</td>"; 
+                                           html += "<td width='5%' height='30px' align='center'>"+'<img src="img/feedbackicon.png" onclick="feedBackCustomer(\''+data.d[i]["JobNo"]+'\')"</img>'+"</td>"
+                                           html += "<td width='25%' align='center' style='display:none'>" + data.d[i]["StartDate"] + "</td>";
+                                           html += "<td width='25%' align='center' style='display:none'>" + data.d[i]["StartTime"] +"</td>";
+                                           html += "<td width='25%' height='30px' align='center'>" + data.d[i]["FromLoc"] +"</td>";
+                                           html += "<td width='25%' height='30px' align='center'>" + data.d[i]["ToLoc"] +"</td>";
+                                           
+                                           if(!isCabNow)
+                                            {
+                                                if(isJobAlive == true)
+                                                {
+                                                    html += "<td width='25%' height='30px' align='center'>"+'<input type="button" value="Abort" onclick="AbortJob(\''+data.d[i]["JobNo"]+'\')"/>'+"</td>";   
+                                                }
+                                                else if(isJobAlive == false)
+                                                {
+                                                     html += "<td width='25%' height='30px' align='center'>"+'<label style="color:red">Cancelled</label>'+"</td>";
+                                                }
+                                             
+                                            }
+                                            else
+                                            {
+                                                html += "<td width='25%' height='30px' align='center' style='color:green'>Cab Now</td>";  
+                                            }
+                                           
+                                           html += '</tr>';
+                                        }
+                                   html +='</tbody>';
                                    html +='</table>';
                                 $('#msg').append(html);
                          }
@@ -106,6 +105,43 @@ function AbortJob(data)
         return false;
     }
     
+}
+
+function JobDetail(data)
+{
+    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/JobDetailCustomer";
+                $.ajax(url, {
+                   type:"POST",
+                   datatype:"json",
+                   data:"{'customerReqID':'"+data+"'}",
+                   contentType: "application/json; charset=utf-8",
+                    success: showDetail,
+                    error: function (XMLHttpRequest, textStatus, errorThrown) 
+                    {
+                        
+                    }
+                });
+}
+
+function showDetail(data)
+{
+    $('#lblJobNo').text(data.d[0]);
+    $('#lblFare').html('&pound'+data.d[1]);
+    $('#lbltDate').text(data.d[2]);
+    $('#lblTime').text(data.d[3]);
+    $('#lblFrom').text(data.d[4]);
+    $('#lblTo').text(data.d[5]);
+    $('#lblCustomerName').text(data.d[6]);
+    $('#lblCustomerContact').text(data.d[7]);
+    $('#lblNoOfPassenger').text(data.d[8]);    
+    $('#popup_box').show();
+    $('#divCabLaterBooking').show();
+}
+
+function Cancel()
+{
+    $('#popup_box').hide();
+    $('#divCabLaterBooking').hide();
 }
 
 function SubmitReject()
@@ -170,20 +206,22 @@ function feedBackCustomer(JobNumber )
             contentType: "application/json; charset=utf-8",                     
             success: function(data)
             {
-                    var isRatingLocked = data.d[1];
+
+                    var isCustomerRatingLocked = data.d[1];
                     var isJobAlive = data.d[2];
-                    var rating = data.d[3];
+                    var custrating = data.d[3];
                     var custFeed = data.d[4];
                     var startDate = data.d[5]; 
                     var startTime = data.d[6];
                     var fromLoc = data.d[7];
                     var toLoc = data.d[8];
                 
-                   if(isJobAlive == "True" || isJobAlive == "")
-                    {
-                        if(isRatingLocked == "True")
+                    if(isJobAlive == "True")
+                     {
+                        console.log(isJobAlive);
+                        if(isCustomerRatingLocked == "True") //show read only
                         {
-                               document.getElementById('sel').value = rating;
+                               document.getElementById('sel').value = custrating;
                                document.getElementById('txtarComments').value = custFeed;
                                $('#sel').attr('disabled',true);
                                $('#txtarComments').attr("readOnly",true);
@@ -200,9 +238,8 @@ function feedBackCustomer(JobNumber )
                                
                             
                         }
-                        else if(isRatingLocked == "")
+                        else if(isCustomerRatingLocked == "False")
                         {
-                           
                                $('#lbljobNo').text(JobNumber);
                                $('#lblFeeddate').text(startDate);
                                $('#lblFeedTime').text(startTime);
@@ -216,11 +253,11 @@ function feedBackCustomer(JobNumber )
                                $('#trbtnPopup').show();                            
                                $('#trbtnOK').hide();
                         }
-                    }
-                    else
-                    {
-                        alert('Job is not active, you cannot give feedback');
-                    }
+                      }
+                      else
+                      {
+                          alert('Job is not active, you cannot give feedback');
+                      }
        },            
         error: function (XMLHttpRequest, textStatus, errorThrown) {}
   });  
@@ -320,8 +357,6 @@ function logout()
           //$.cookie("userPassword", 'null');
           window.location = "index.html";  
   }
-
-
 
 function backtostart()
 {

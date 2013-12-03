@@ -66,7 +66,6 @@ function getCablaterBooking()
                         
                     }
                 });
-                
  }
 
 function ShowDetailBooking(jobNo, driverid)
