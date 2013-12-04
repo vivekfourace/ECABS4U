@@ -60,9 +60,16 @@ function gethistory()
                                                       html += "<td width='25%' height='30px' align='center'>"+'<label style="color:red">Aborted</label>'+"</td>";
                                                  }
                                              }
-                                             else
+                                             else if(isCabNow)
                                              {
-                                                 html += "<td width='25%' height='30px' align='center'style='color:green'>Cab Now</td>";  
+                                                 if(isJobAlive == true)
+                                                 {
+                                                     html += "<td width='25%' height='30px' align='center'style='color:green'>Cab Now</td>"; 
+                                                 }
+                                                 else if(isJobAlive == false)
+                                                 {
+                                                     html += "<td width='25%' height='30px' align='center'>"+'<label style="color:red">Aborted</label>'+"</td>";
+                                                 }
                                              }
                                              html += '</tr>';    
                                              }

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script src="Scripts/jquery-2.0.3.min.js"></script> 
+      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=true"></script>
+      <script type="text/javascript" src="js/navigation.js"></script>      
+      
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }      
+      #map-canvas {
+          height: 100%;
+      }
+    </style>
+ </head>
+<body>    
+       <div style="position:relative; left:74%; top:92%;">
+            <img src="img/back-button-sq.png"  style="position:absolute; z-index:99;width:80px;height:35px" onclick="backToMap();"/>
+         </div>
+       <div id="map-canvas"></div>
+  </body>
+</html>

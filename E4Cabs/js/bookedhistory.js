@@ -63,10 +63,17 @@ function gethistory()
                                                 }
                                              
                                             }
-                                            else
-                                            {
-                                                html += "<td width='25%' height='30px' align='center' style='color:green'>Cab Now</td>";  
-                                            }
+                                            else if(isCabNow)
+                                             {
+                                                 if(isJobAlive == true)
+                                                 {
+                                                     html += "<td width='25%' height='30px' align='center'style='color:green'>Cab Now</td>"; 
+                                                 }
+                                                 else if(isJobAlive == false)
+                                                 {
+                                                     html += "<td width='25%' height='30px' align='center'>"+'<label style="color:red">Cancelled</label>'+"</td>";
+                                                 }
+                                             }
                                            
                                            html += '</tr>';
                                         }

@@ -34,7 +34,7 @@ setInterval(getCurrentPostCode, postCodeFetchTime);
                             if (results[0]) {
                                 var postalCode = extractFromAdress(results[0].address_components, "postal_code");
                                 
-                                //alert("Your Postcode is: " + postalCode);
+                                alert("Your Postcode is: " + postalCode);
                                 
                                 function extractFromAdress(components, type) {
                                     for (var i = 0; i < components.length; i++)

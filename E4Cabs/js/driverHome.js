@@ -4,22 +4,10 @@ var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
-//setTimeout(function(){
-//    $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/ChangeDriverStatus",
-//            type:"POST",
-//            dataType: "Json",
-//            data:"",
-//            contentType: "application/json; charset=utf-8",                     
-//            success: function(data)
-//            {
-//                
-//            },
-//            
-//            error: function (XMLHttpRequest, textStatus, errorThrown) {
-//            //alert(errorThrown);
-//                }
-//         }); 
-//    },1000); 
+function  NavigateToMap()
+{
+    window.location = 'Navigation.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
 
  $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/DriverAvaibalility",
         type:"POST",
@@ -40,12 +28,12 @@ var relatedId = QString.split("=")[3].split("&")[0];
                 $('#lblEngaged').text("No new job");
                 $('#btnabort').hide();
                 $('#btnclear').hide();
+                $('#btnnavigation').hide();
             }
             
         },
         
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-        }
+        error: function (XMLHttpRequest, textStatus, errorThrown) {}
      }); 
 
 function AbortJob()

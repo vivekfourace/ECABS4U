@@ -91,6 +91,10 @@ function feedBack()
 {
        window.location='driverFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
+function backToIndex()
+{
+    window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
 function bookedHistory()
 {
           window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;

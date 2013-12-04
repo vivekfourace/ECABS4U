@@ -4,7 +4,7 @@
 <head>
     <title></title>
     <script src="Scripts/jquery-2.0.3.min.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAKXfZggeVZMCwQnR-mGebtLCvjuRfZcg&sensor=true"></script>
+     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=true"></script>
 
     <link rel="stylesheet" type="text/css" href="css/site.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
@@ -38,16 +38,14 @@
            <div style="width:100%;height:70px;"  class="header">
                 <table style="width:100%;padding-top:1%;">
                     <tr>
-                        <td width="30%" style="float:left;">
+                        <td style="float:left;width:30%">
                              <div style="float:left;height:48px;width:100px;">
                                     <img src="img/logo1.png" class="logo"style="float:left;width:100px"/>
                              </div>
-                              
                         </td>
-                        
                     </tr>
                 </table>
-         </div>
+           </div>
              <center>
                  <div id="msg" style="padding-top:71px"></div>
                  <div style="width:100%;height:75%;" id="divDetails">
@@ -82,37 +80,19 @@
                                      </td>
                                      <td style="width:50%;">
                                          <input type="button" class="ok" value="No" style="width:100%; " onclick="closeRequest()"/>
-                                         
                                      </td>
-                                     
                                  </tr>
-                                 
                              </table>
-                             
                          </div>
-                         
                      </div>
-                     
                  </div>
-                 
-             </center>
+            </center>
             <div style="padding-top:5%;">
-                <!--<div id="marque">
-                    <marquee slide="left" style="font-size:20px;color:#ffffff;padding-top:4px">
-                        <i>Current Status: &nbsp;<label id="driverStatusupdate" style="color:#ffffff"/></i>
-                    </marquee>
-                </div>-->
-                
-               
                     <div style="height:40px">
                         <div style="padding-top:15px">
                             <span style="align:center;color:green;font-size:20px"><b>LOGGED IN</b></span>
-                            <!--<label class="font-Label" style="color:blue;float:left;text-decoration:none;font-size:12px" id="lblCurrentStatus"/>-->
                         </div>
                     </div>
-                    
-                
-                 
                 <table style="padding-top:2%;width:85%;">
                         <tr >
                             <td style="text-align:center;">
@@ -129,13 +109,17 @@
                                 <input type="button" class="btn-Common cursor" id="btnclear" value="CLEAR" onclick="clearJob();"/>
                             </td>
                         </tr>
-                        
                         <tr>
                             <td style="text-align:center;">
                                 <input type="button"  value="ABORT" id="btnabort" class="btn-Common cursor" onclick="AbortJob();"/>
                             </td>
                         </tr>
-                 </table>                    
+                        <tr>
+                            <td style="text-align:center;">
+                                <input type="button"  value="NAVIGATION" id="btnnavigation" class="btn-Common cursor" onclick="NavigateToMap();"/>
+                            </td>
+                        </tr>
+                 </table>
             </div>           
         </center>
     <center>
@@ -146,35 +130,23 @@
                   <tr>
                       <td class="popup_header" style="width:100%;" colspan="2">
                           <strong style="padding-left:5px;font-size:13px;width:100%;font-weight:bold"  align="left">Enter reason why you are aborting</strong>
-                          
                       </td>
-                      
                   </tr>
                   <tr id="popup_content">
                       <td style="width:100%;" colspan="2">
-                         <!--<input type="text" style="width:100%;height:100px;border-radius:5px"/>-->
                           <center><textarea id="txtAbortmsg" style="width:90%;height:100px;border-radius:5px;"></textarea></center>
-                          
                       </td>
-                      
                   </tr>
-                 
                   <tr class="popup_footer">
                       <td style="width:50%;">
                           <input type="button" class="ok" value="Submit" style="width:100%; " onclick="SubmitAbort()" />
-                          
                       </td>
                       <td style="width:50%;">
                           <input type="button" class="ok" value="cancel" style="width:100%; " onclick="cancelAbort()"/>
-                          
                       </td>
-                      
                   </tr>
-                  
               </table>
-              
           </div>
-          
       </div>
       </div>
     </center>
@@ -185,54 +157,36 @@
                     <td style="width: 20%;">
                         <div>
                             <img src="img/User.png"  style="float: left;width:25px; cursor: pointer" title="Profile" onclick="myProfile()" />
-
                         </div>
-
                     </td>
                     <td style="width: 20%;">
                         <div>
                             <img src="img/Home.png"  style="float: left;width:25px; cursor: pointer" title="Home" onclick="myhome()" />
-
                         </div>
-
                     </td>
                     <td style="width: 20%;">
                         <div>
                             <img src="img/Cab.png" style="float: left; width:25px;cursor: pointer" title="My Jobs" onclick="MyBookings()" />
-
                         </div>
-
                     </td>
                     <td style="width: 20%;">
                         <div>
                             <img src="img/History1.png" style="float: left;width:25px; cursor: pointer" title="Booking History" onclick="bookedHistory()" />
-
                         </div>
-
                     </td>
                     <td style="width: 20%;">
                         <div>
                             <img src="img/feedback.png" style="float: left;width:25px; cursor: pointer" title="Feedback" onclick="feedBack()" />
-
                         </div>
-
                     </td>
                     <td style="width: 20%;">
                         <div>
                             <img src="img/logout.png" style="float: left;width:25px; cursor: pointer" title="Logout" onclick="logout()" />
-
                         </div>
-
                     </td>
-
                 </tr>
-
             </table>
-
         </div>
-      
-
     </footer>
-
 </body>
 </html>
