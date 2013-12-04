@@ -28,12 +28,13 @@ var relatedId = QString.split("=")[3].split("&")[0];
         contentType: "application/json; charset=utf-8",                     
         success: function(data)
         {
-            if(data.d == "true")
+            if(data.d == true)
             {
                 $('#lblEngaged').show();
-                $('#lblEngaged').text("Engaged");    
+                $('#lblEngaged').text("Engaged"); 
+                $('#btnEngage').hide();
             }
-            else if(data.d == "false")
+            else if(data.d == false)
             {
                 $('#lblEngaged').show();
                 $('#lblEngaged').text("No new job");
@@ -81,9 +82,7 @@ function Jobs()
 
 //diver Profile from menu
 function myProfile()
-
 {
-    
     window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
@@ -121,8 +120,6 @@ function SubmitAbort()
         alert('Please enter a reason.');
         return false;
     }
-    
-    //TODO: write service to abort the job and send email to the customer
       var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/AbortCurrentJob";
     
             $.ajax(url,{
@@ -169,7 +166,21 @@ function clearJob()
     var isTrue = confirm('Do you want to clear the job?');
     if(isTrue)
     {
-        alert('Cleared');
+            $.ajax({
+                url:"http://115.115.159.126/ECabs/ECabs4U.asmx/ClearDriverStatus",
+                     type:"POST",
+                     datatype:"json",
+                     data:"{'relatedId':'"+relatedId+"'}",
+                     contentType: "application/json; charset=utf-8",                     
+                     success: function(data){
+                         if(data.d == true)
+                         {
+                            window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                         }
+                         
+                     },
+                     error: function (XMLHttpRequest, textStatus, errorThrown) {}
+            });
     }
     else
     {
@@ -177,6 +188,11 @@ function clearJob()
     }
 }
 
+function engageMe()
+{
+    window.location='CabLaterJobs.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    
+}
 
 //Driver Status
 function myhome(){

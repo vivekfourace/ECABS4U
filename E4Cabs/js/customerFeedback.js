@@ -27,6 +27,7 @@ function cabNow()
       window.location= 'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
     
 }
+
 //Pre Cab
 function preCab()
 {

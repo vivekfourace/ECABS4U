@@ -108,9 +108,7 @@
                         <div style="padding-top:15px">
                             <span style="align:center;color:green;font-size:20px"><b>LOGGED IN</b></span>
                             <!--<label class="font-Label" style="color:blue;float:left;text-decoration:none;font-size:12px" id="lblCurrentStatus"/>-->
-                            
                         </div>
-                        
                     </div>
                     
                 
@@ -121,13 +119,18 @@
                                 <label id="lblEngaged" style="align:center;color:green;font-size:20px;display:none"></label>
                             </td>
                         </tr>
+                       <tr>
+                            <td style="text-align:center;">
+                                <input type="button" class="btn-Common cursor" id="btnEngage" value="ENGAGE" onclick="engageMe();"/>
+                            </td>
+                        </tr>
                         <tr>
                             <td style="text-align:center;">
                                 <input type="button" class="btn-Common cursor" id="btnclear" value="CLEAR" onclick="clearJob();"/>
                             </td>
                         </tr>
                         
-                    <tr>
+                        <tr>
                             <td style="text-align:center;">
                                 <input type="button"  value="ABORT" id="btnabort" class="btn-Common cursor" onclick="AbortJob();"/>
                             </td>
