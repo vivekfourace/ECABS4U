@@ -91,7 +91,7 @@ function login() {
 function CheckMsg(data) {
     if (data.d == "false") {
         $('#imgLoader').hide();
-        $('#lblMsg').text("Incorrect usename or password!");
+        $('#lblMsg').text("Invalid UserName or Password.");
         $('#lblMsg').css("color", "#D70007");
         $('#lblMsg').css("font-size", "13");
     }

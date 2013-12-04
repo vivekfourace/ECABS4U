@@ -266,7 +266,7 @@ function availabledriver() {
                    // alert(isCabNow);
                     window.location = 'customerSearchList.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId + '&reqid=' + reqID;
                 },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                error: function (XMLHttpRequest, textStatus, errorThrown){
                     // alert(errorThrown);
                 }
             });

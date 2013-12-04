@@ -9,8 +9,9 @@ function Registercustomer()
     var txt6 =$('#txtUserName').val();
     var txt7 =$('#txtPassword').val();
     var txt8 =$('#txtConfirmPassword').val();
-    var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
     var phoneno =/^\d{11}$/;
+    var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
+    var pass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}$/;
     
       if(!txt1)
        {
@@ -73,7 +74,17 @@ function Registercustomer()
        }
      if(txt7.length > 0)
        {
-                        $('#lblPassword').text(" ");
+           if(txt7.match(pass))
+           {
+             $('#lblPassword').text(" ");  
+           }
+           else
+                     {
+                            $('#lblMsg').text("Password between 8 to 16 characters which contain at least one numeric digit, one uppercase and one lowercase letter.");
+                            $('#txt7').focus();
+                            return false;
+                     }
+                        
        }
      else if(txt7.length == 0)
        {

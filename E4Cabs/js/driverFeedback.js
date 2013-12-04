@@ -5,7 +5,7 @@ var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
 //back to home
-function backtoDriverhome()
+function backToIndex()
 {
      window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
