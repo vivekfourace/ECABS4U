@@ -539,7 +539,7 @@ function feedBack()
 //Booked History
 function bookedHistory()
  {
-        window.location = 'bookedhistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+        window.location = 'CustomerHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
 }
 
 //Home Button

@@ -58,6 +58,7 @@ $(document).ready(function ()
 //finding duration between two distance
 function Duration()
 {
+    console.log('duration calle');
         var fromloc;
         var isChecked = $('#chkFromLocation').attr('checked') ? true : false;
         if (isChecked == false) {
@@ -176,8 +177,14 @@ function availabledriver() {
     var returnTime = document.getElementById("timepickers").value;
 
     //add Location    
-    var secondLoc = document.getElementById("txt2location").value;
-    var thirdLoc = document.getElementById("txt3location").value;
+   
+    var secondLoc = $('#txt2location').val();
+    var thirdLoc =  $('#txt3location').val();
+    var fourthLoc = $('#txt4location').val();
+    var fifthLoc =  $('#txt5location').val();
+    var sixthLoc =  $('#txt6location').val();
+    var seventhLoc= $('#txt7location').val();
+    var eightLoc =  $('#txt8location').val();
 
     //special
     var weelchairPassangers = document.getElementById("ddlWheelchair");
@@ -189,15 +196,16 @@ function availabledriver() {
     var childB = document.getElementById("ddlChidbooster");
     var childBooster = childB.options[childB.selectedIndex].value;
 
-    var otherSpeRequirement = document.getElementById('txtothereSpecialRequirement').value;
-    var returnfromloc = document.getElementById('txtReturFrom').value;
-    var returntoloc = document.getElementById('txtReturTo').value;
+    var otherSpeRequirement = $("#txtothereSpecialRequirement").val();
+    var returnfromloc = $("#txtReturFrom").val();
+    var returntoloc = $("#txtReturTo").val();
     
     //check Job type(cabnow or cablater)
     
     var isCabNow = $('#RBcabNOW').attr('checked') ? true : false;
     
     var travelTime = $('#TravelTime').val();
+    //alert(travelTime);
     if (!fromloc) {
         $('#lblMessage').text("Enter From location!");
         return false;
@@ -208,6 +216,7 @@ function availabledriver() {
     }
     var IsReturnTrue = $('#chkReturnYes').attr('checked') ? true : false;
     var isCheckedNo = $('#chkNo').attr('checked') ? true : false;
+    
     if (isCheckedNo == true) {
         if (IsReturnTrue == false) {
             var pickD = returnDate;
@@ -229,7 +238,7 @@ function availabledriver() {
                  },
                 type: "POST",
                 dataType: "Json",
-                data: "{'userID':'" + relatedId + "','frompost':'" + toL + "','topost':'" + fromL + "','pickDate':'" + pickD + "','pickTime':'" + pickT + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnFL + "','returntoloc':'" + returnTL + "','returnDate':'" + retunD + "','returnTime':'" + retunT + "','travelTime':'" + travelTime + "','isCabNow':'" + isCabNow + "'}",
+                data: "{'userID':'" + relatedId + "','frompost':'" + toL + "','topost':'" + fromL + "','pickDate':'" + pickD + "','pickTime':'" + pickT + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnFL + "','returntoloc':'" + returnTL + "','returnDate':'" + retunD + "','returnTime':'" + retunT + "','travelTime':'" + travelTime + "','isCabNow':'" + isCabNow + "','fourthLoc':'" + fourthLoc + "','fifthLoc':'" + fifthLoc + "','sixthLoc':'" + sixthLoc + "','seventhLoc':'" + seventhLoc + "','eightLoc':'" + eightLoc + "'}",
                 contentType: "application/json; charset=utf-8",
                 success: moveSearch,
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -258,12 +267,12 @@ function availabledriver() {
                  },
                 type: "POST",
                 dataType: "Json",
-                data: "{'userID':'" + relatedId + "','frompost':'" + fromloc + "','topost':'" + toloc + "','pickDate':'" + pickdate + "','pickTime':'" + picktime + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnfromloc + "','returntoloc':'" + returntoloc + "','returnDate':'" + returnDate + "','returnTime':'" + returnTime + "','travelTime':'" + travelTime + "','isCabNow':'" + isCabNow + "'}",
+                data: "{'userID':'" + relatedId + "','frompost':'" + fromloc + "','topost':'" + toloc + "','pickDate':'" + pickdate + "','pickTime':'" + picktime + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnfromloc + "','returntoloc':'" + returntoloc + "','returnDate':'" + returnDate + "','returnTime':'" + returnTime + "','travelTime':'" + travelTime + "','isCabNow':'" + isCabNow + "','fourthLoc':'" + fourthLoc + "','fifthLoc':'" + fifthLoc + "','sixthLoc':'" + sixthLoc + "','seventhLoc':'" + seventhLoc + "','eightLoc':'" + eightLoc + "'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
                     var reqID = data.d[0];
                     //var isCabNow = data.d[1];
-                   // alert(isCabNow);
+                    alert(isCabNow);
                     window.location = 'customerSearchList.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId + '&reqid=' + reqID;
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown){
