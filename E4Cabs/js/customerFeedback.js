@@ -24,7 +24,7 @@ function CancelComment()
 //cab Now
 function cabNow()
 {
-      window.location= 'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+      window.location='CustomerCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
     
 }
 
@@ -61,8 +61,8 @@ function logout()
               }
          }); 
         $.cookie("remember", false);
-        $.cookie("userName", 'null');
-        $.cookie("userPassword", 'null');
+        //$.cookie("userName", 'null');
+        //$.cookie("userPassword", 'null');
         window.location = "index.html";  
  }
 //Customer Feedback 

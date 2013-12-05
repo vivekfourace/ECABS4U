@@ -2,18 +2,12 @@ var QString = window.location.search.substring(1);
 var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
-
-//Page load function.
 window.onload = getProfile();
 
-
-//Change Password function.
 function changepassword()
-{
-   window.location='changePassword.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-  
+{console.log('dddd');
+   window.location='DriverChangePassword.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-//Display Profile.
 function getProfile()
 {
 var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetDriverDetails";
@@ -33,10 +27,6 @@ function ShowData(data)
 { 
     var nameis = data.d[0]+" "+data.d[1];
     $('#lblname').text(nameis);
-   // var addressis=data.d[0]["Address1"]+","+data.d[0]["Address2"];
-   // $('#lblLocation').text(addressis);
-    //$('#lblname').text(data.d[0]["DriverName"]);
-    //$('#lblLastname').text(data.d[0]["DriverLastName"]);
     $('#lblLocation').text(data.d[2]);
     $('#lblLocation2').text(data.d[3]);
     $('#lblMobileNo').text(data.d[4]);
@@ -49,9 +39,6 @@ function ShowData(data)
     $('#txtLocation2').hide();    
     $('#txtMobileno').hide();    
     $('#txtEmailID').hide();
-   // $('#btnUpdate').hide();
-   // $('#btnCancel').hide();
-    
      document.getElementById("trBtnUpdate").style.display = 'none';
      document.getElementById("trCancel").style.display = 'none';
      document.getElementById("tredit").style.display = 'table-row';

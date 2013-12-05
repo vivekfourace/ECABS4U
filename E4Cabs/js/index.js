@@ -42,14 +42,11 @@ function forgotUser()
 }
 
 function login() {
-    //document.getElementById("txtUserName").focus();
     var name = document.getElementById('txtUserName').value;
     var password = document.getElementById('txtPassword').value;
 
-    //$.cookie('userName', name);
     if (name.length > 0) {
-        //$('#lblMsg').text("");
-
+        $('#lblMsg').text("");
     }
     else if (name.length == 0) {
         $('#lblMsg').text("Please enter username.");
@@ -64,7 +61,6 @@ function login() {
         $('#txtPassword').focus();
         return false;
     }
-
     var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UserLogin";
     $.ajax(url, {
         cache: true,

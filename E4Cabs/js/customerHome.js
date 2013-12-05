@@ -114,51 +114,21 @@ function UpdateProfile()
      });
 }
 
-function ShowCabLaterBooking()
-{
-    window.location='CustomerCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-}
-
-//Cancel update
 function CancelProfile()
 {
     
     getProfile();
 }
 
-
-
-
-
-//Booked history Button
 function bookedHistory()
 {
-  //alert(relatedId);
- 
   window.location='bookedhistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-   
 }
-
-
-
-
-
-//My Profile Button
  function myProfile()
-            {
-                window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-            }
+ {
+     window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+ }
 
-
-
-//Location Button
-//function Location()
-//{
-   // window.location = "Location.html";
-//}
-
-
-//Logout Button
 function logout()
     {
        $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
@@ -180,50 +150,25 @@ function logout()
         window.location = "index.html";  
     }
 
-
-
-
-//Cab Now Button
 function cabNow()
 { 
-   //alert(relatedId);
-   window.location ='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+   window.location='CustomerCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-
-
-
-//Home
 function preCab()
 {
     window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-
-//Back to customer Afterlogin
 function backtoCustomerhome()
 {
-    
-       
     window.location =  'customerAfterLogin.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
- // window.location="customerHome.html";
 }
-
-
-
-//Customer Feedback 
 function feedBack()
 {
     window.location='customerFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-
-
-
-
-
-//Change Password
 function changepassword()
 {
-   window.location='changePassword.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-  
+   window.location='CustomerChangePassword.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
 

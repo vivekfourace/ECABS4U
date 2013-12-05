@@ -44,9 +44,8 @@ function logout()
 }
 //Cab Now Button
 function cabNow()
-{ 
-  
-       window.location ='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+{   
+   window.location='CustomerCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 //Customer Feedback 
 function feedBack()

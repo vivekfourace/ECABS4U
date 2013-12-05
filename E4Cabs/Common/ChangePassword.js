@@ -1,10 +1,8 @@
-//query string
 var QString = window.location.search.substring(1);
 var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
-//change password
 function ChangePaswords()
  {
                 var currentPass=document.getElementById('curentpswd').value;
@@ -133,20 +131,4 @@ function ChangePaswords()
                 
             }
  }
-//Back button
-function backToIndex()
-{
-        if(roleId == 4)
-        {
-            window.location ='customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-        }
-        else if(roleId == 3)
-        {
-            window.location = 'driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-        }
-        
-        else if(roleId == 6)
-        {
-            window.location = 'businessCustomerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-        }
- }
+
