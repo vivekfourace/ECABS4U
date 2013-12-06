@@ -136,6 +136,10 @@ function logout()
         //$.cookie("userPassword", 'null');
         window.location = "index.html";  
  }
+function backtostart()
+{
+     window.location='customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
 function feedBack()
 {
       window.location='customerFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;

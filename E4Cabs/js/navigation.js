@@ -60,18 +60,22 @@ function setLocation(data)
             console.log('In else part');
             initialize2();
          }
- },2000);
+ },1000);
         
       function initialize() {
-            for (var j = 0; j < waypts.length; j++)
-            {
-                console.log(waypts[j]);
-            }
             directionsDisplay = new google.maps.DirectionsRenderer();
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function (position) {
-                     alert('hi2');
-                    var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            var geocoder = new google.maps.Geocoder();
+              var address = locFrom;
+              geocoder.geocode({ 'address': address }, function (results, status) {
+                  if (status == google.maps.GeocoderStatus.OK) {
+                      latitude = results[0].geometry.location.lat();
+                      longitude = results[0].geometry.location.lng();
+                  }
+                  else {
+                      alert("No location found!!")
+                  }
+                  directionsDisplay = new google.maps.DirectionsRenderer();
+                  myLocation = new google.maps.LatLng(latitude, longitude);           
 
                     var mapOptions = {
                         zoom: 5,
@@ -81,60 +85,58 @@ function setLocation(data)
                         zoomControl: true,
                         scaleControl: true,
                         scrollwheel: true,
-                        disableDoubleClickZoom: false,                        
+                        disableDoubleClickZoom: false,                   
                         mapTypeId: google.maps.MapTypeId.ROADMAP
                     };
                                         
                     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
                     directionsDisplay.setMap(map);
 
-                    marker = new google.maps.Marker({
-                        position: pos,
-                        map: map,
-                        draggable: true,
-                        animation: google.maps.Animation.DROP
-                    });
-                    google.maps.event.addListener(marker, 'click', toggleBounce);
-                    map.setCenter(pos);
+                    //marker = new google.maps.Marker({
+                    //    position: myLocation,
+                    //    map: map,
+                    //    draggable: true,
+                    //    animation: google.maps.Animation.DROP
+                    //});
+                    //google.maps.event.addListener(marker, 'click', toggleBounce);
+                    //map.setCenter(myLocation);
                     calcRoute();                    
                 });
             }
-        }
 
       function initialize2() {
-            directionsDisplay = new google.maps.DirectionsRenderer();
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function (position) {
-                    var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-                    var mapOptions = {
-                        zoom: 5,
-                        panControl: true,
-                        navigationControl: true,
-                        draggable: true,
-                        zoomControl: true,
-                        scaleControl: true,
-                        scrollwheel: true,
-                        disableDoubleClickZoom: false,
-
-                        mapTypeId: google.maps.MapTypeId.ROADMAP
-                    };
-                    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-                    directionsDisplay.setMap(map);
-
-                    marker = new google.maps.Marker({
-                        position: pos,
-                        map: map,
-                        draggable: true,
-                        animation: google.maps.Animation.DROP
-                    });
-                    google.maps.event.addListener(marker, 'click', toggleBounce);
-                    map.setCenter(pos);
-                    calcRoute2();
-                });
+              directionsDisplay = new google.maps.DirectionsRenderer();
+              var geocoder = new google.maps.Geocoder();
+              var address = locFrom;
+              geocoder.geocode({ 'address': address }, function (results, status) {
+                  if (status == google.maps.GeocoderStatus.OK) {
+                      latitude = results[0].geometry.location.lat();
+                      longitude = results[0].geometry.location.lng();
+                  }
+                  else {
+                      alert("No location found!!")
+                  }
+            
+              directionsDisplay = new google.maps.DirectionsRenderer();
+              myLocation = new google.maps.LatLng(latitude, longitude);
+                
+              var mapOptions = {
+                zoom:5,
+                center: myLocation,
+                panControl: true,
+                navigationControl: true,
+                draggable: true,
+                zoomControl: true,
+                scaleControl: true,
+                scrollwheel: true,
+                disableDoubleClickZoom: false,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+              }
+              map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+              directionsDisplay.setMap(map);
+              calcRoute2();
+            });
             }
-        }
-      
       function toggleBounce() {
             if (marker.getAnimation() != null) {
                 marker.setAnimation(null);
@@ -144,7 +146,7 @@ function setLocation(data)
         }
 
       function calcRoute2() {
-            console.log("in calcRoute part");
+            console.log("in calcRoute2 part");
             var request = {
                 origin: locFrom,
                 destination: locTo,                
@@ -159,7 +161,7 @@ function setLocation(data)
         }        
       
       function calcRoute() {
-            alert('calrout');
+            console.log('In calc Route');
             var request = {
                 origin: locFrom,
                 destination: locTo,
