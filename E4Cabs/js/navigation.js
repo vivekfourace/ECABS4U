@@ -49,8 +49,17 @@ function setLocation(data)
                 });
             }
         }
-        console.log(waypts.length);    
-        initialize();
+        console.log(waypts.length);
+        if (waypts.length > 0)
+        {
+            console.log('In if part');
+            initialize();
+        }
+        else
+         {
+            console.log('In else part');
+            initialize2();
+         }
  },2000);
         
       function initialize() {
@@ -60,7 +69,6 @@ function setLocation(data)
             }
             directionsDisplay = new google.maps.DirectionsRenderer();
             if (navigator.geolocation) {
-                alert('hi1');
                 navigator.geolocation.getCurrentPosition(function (position) {
                      alert('hi2');
                     var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -93,7 +101,41 @@ function setLocation(data)
             }
         }
 
-        function toggleBounce() {
+      function initialize2() {
+            directionsDisplay = new google.maps.DirectionsRenderer();
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+                    var mapOptions = {
+                        zoom: 5,
+                        panControl: true,
+                        navigationControl: true,
+                        draggable: true,
+                        zoomControl: true,
+                        scaleControl: true,
+                        scrollwheel: true,
+                        disableDoubleClickZoom: false,
+
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    };
+                    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+                    directionsDisplay.setMap(map);
+
+                    marker = new google.maps.Marker({
+                        position: pos,
+                        map: map,
+                        draggable: true,
+                        animation: google.maps.Animation.DROP
+                    });
+                    google.maps.event.addListener(marker, 'click', toggleBounce);
+                    map.setCenter(pos);
+                    calcRoute2();
+                });
+            }
+        }
+      
+      function toggleBounce() {
             if (marker.getAnimation() != null) {
                 marker.setAnimation(null);
             } else {
@@ -101,7 +143,22 @@ function setLocation(data)
             }
         }
 
-        function calcRoute() {
+      function calcRoute2() {
+            console.log("in calcRoute part");
+            var request = {
+                origin: locFrom,
+                destination: locTo,                
+                travelMode: google.maps.TravelMode.DRIVING
+            };
+
+            directionsService.route(request, function (response, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                }
+            });
+        }        
+      
+      function calcRoute() {
             alert('calrout');
             var request = {
                 origin: locFrom,

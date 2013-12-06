@@ -5,6 +5,7 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=true"></script>
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <link rel="stylesheet" type="text/css" href="css/site.css" />
+    <link rel="stylesheet" type="text/css" href="css/append.css" />
     <link rel="stylesheet" type="text/css" href="css/PopUp.css" />
     <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
     <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
@@ -13,7 +14,6 @@
     <script type="text/javascript" src="Common/GpsCurrentLocation.js"></script>
     <script type="text/javascript" src="Common/DriverJobNotification.js"></script>
     <title></title>
-
 </head>
 <body>
     <center>
@@ -35,7 +35,7 @@
                         </td>
                         <td   style="float:right;width:15%;">
                             <div style="float:right;padding-top:1%;">
-                               <img src="img/backk.png" height="35"  onclick="backtoDriverhome();"/>
+                               <img src="img/backk.png" height="35"  onclick="backToIndex();"/>
                             </div>
                         </td>
                     </tr>
@@ -43,6 +43,9 @@
          </div>
             
             </center>
+     <div id="Comments" style="width:100%;padding-top:70px;">
+         
+        </div>
             <center>
                  <div id="msg"></div>
                  <div style="width:100%;height:75%;" id="divDetails">
@@ -85,7 +88,7 @@
                  </div>
              </center>
 
-    <footer>
+    <footer style="padding-top:25px">
         <div style="width: 100%; position: fixed; bottom: 0px; height: 25px; padding-bottom: 10px">
             <table style="width: 98%;" class="btn-tmpFooter">
                 <tr>

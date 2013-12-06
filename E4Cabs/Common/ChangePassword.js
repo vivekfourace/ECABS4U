@@ -127,8 +127,6 @@ function ChangePaswords()
                 $('#txtConform').val("");
                 $('#curentpswd').val("");
                 $('#txtNew').val("");
-                
-                
             }
  }
 

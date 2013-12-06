@@ -162,9 +162,13 @@ function availabledriverLater() {
     var returnTime = document.getElementById("timepickers").value;
 
     //add Location    
-    var secondLoc = document.getElementById("txt2location").value;
-    var thirdLoc = document.getElementById("txt3location").value;
-
+    var secondLoc = $('#txt2location').val();
+    var thirdLoc =  $('#txt3location').val();
+    var fourthLoc = $('#txt4location').val();
+    var fifthLoc =  $('#txt5location').val();
+    var sixthLoc =  $('#txt6location').val();
+    var seventhLoc= $('#txt7location').val();
+    var eightLoc =  $('#txt8location').val();
 
     //special
     var weelchairPassangers = document.getElementById("ddlWheelchair");
@@ -215,7 +219,7 @@ function availabledriverLater() {
                  },
                 type: "POST",
                 dataType: "Json",
-                data: "{'userID':'" + relatedId + "','frompost':'" + toL + "','topost':'" + fromL + "','pickDate':'" + pickD + "','pickTime':'" + pickT + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnFL + "','returntoloc':'" + returnTL + "','returnDate':'" + retunD + "','returnTime':'" + retunT + "','travelTime':'" + travelTime + "','isCabNow':'" + isCabNow + "'}",
+                data: "{'userID':'" + relatedId + "','frompost':'" + toL + "','topost':'" + fromL + "','pickDate':'" + pickD + "','pickTime':'" + pickT + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnFL + "','returntoloc':'" + returnTL + "','returnDate':'" + retunD + "','returnTime':'" + retunT + "','travelTime':'" + travelTime + "','isCabNow':'" + isCabNow + "','fourthLoc':'" + fourthLoc + "','fifthLoc':'" + fifthLoc + "','sixthLoc':'" + sixthLoc + "','seventhLoc':'" + seventhLoc + "','eightLoc':'" + eightLoc + "'}",
                 contentType: "application/json; charset=utf-8",
                 success: moveSearch,
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -244,11 +248,20 @@ function availabledriverLater() {
                  },
                 type: "POST",
                 dataType: "Json",
-                data: "{'userID':'" + relatedId + "','frompost':'" + fromloc + "','topost':'" + toloc + "','pickDate':'" + pickdate + "','pickTime':'" + picktime + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnfromloc + "','returntoloc':'" + returntoloc + "','returnDate':'" + returnDate + "','returnTime':'" + returnTime + "','travelTime':'" + travelTime + "','isCabNow':'" + isCabNow + "'}",
+                data: "{'userID':'" + relatedId + "','frompost':'" + fromloc + "','topost':'" + toloc + "','pickDate':'" + pickdate + "','pickTime':'" + picktime + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnfromloc + "','returntoloc':'" + returntoloc + "','returnDate':'" + returnDate + "','returnTime':'" + returnTime + "','travelTime':'" + travelTime + "','isCabNow':'" + isCabNow + "','fourthLoc':'" + fourthLoc + "','fifthLoc':'" + fifthLoc + "','sixthLoc':'" + sixthLoc + "','seventhLoc':'" + seventhLoc + "','eightLoc':'" + eightLoc + "'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
-                    alert('Booking is under process, please check after sometime.');
-                    window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                    if(data.d[0] != "Error")
+                    {
+                        alert('Booking is under process, please check after sometime.');
+                        window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                    }
+                    else
+                    {
+                        alert('Oops! some erro occurs!');
+                        window.location =  'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                    }
+                    
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                 }

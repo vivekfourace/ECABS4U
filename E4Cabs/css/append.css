@@ -5,8 +5,12 @@
 .header-style{
 font-size:20px;    
 }
+.thead-grid{
+    background-color:#848484;
+    color:white;
+}
 .body-style{
-    background-color:LightBlue;
+    background-color:white;
     word-wrap:break-word;
 }
 /*thead tr{
@@ -15,13 +19,13 @@ font-size:20px;
 
 .altColor tr:nth-child(2n)
 {
- background:#C0C0C0;
+ background:#58D3F7;
     
 }
 
 .altColor tr:nth-child(2n-1)
 {
- background:#FFFAFA;
+ background:#FFFFFF;
     
 }
 
@@ -83,4 +87,9 @@ table-row{
     background: -ms-linear-gradient(top, rgba(30,87,153,1) 0%,rgba(53,134,212,1) 0%,rgba(32,124,202,1) 100%,rgba(28,100,171,1) 100%); /* IE10+ */
     background: linear-gradient(to bottom, rgba(30,87,153,1) 0%,rgba(53,134,212,1) 0%,rgba(32,124,202,1) 100%,rgba(28,100,171,1) 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#1c64ab',GradientType=0 ); /* IE6-8 */
+}
+
+.img-style{
+    width:15px;
+    height:15px;
 }
