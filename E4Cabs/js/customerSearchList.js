@@ -105,17 +105,17 @@ function getData(data) {
         $('#divawait').hide();
         $('#load').hide();
         var html = '<table width="100%" style="border-collapse:collapse;">';
-        html += '<thead style="background-color:#D8DCBB;color:darkblue;">';
+        html += '<thead class="thead-grid">';
         html += '<tr>';
-        html += '<th align="center">Fare</th>';
-        html += '<th >Date</th>';
-        html += '<th >Job</th>';
-        html += '<th >Specs</th>';
-        html += '<th >ETA</th>';
-        html += '<th ></th>';
+        html += '<th>Fare</th>';
+        html += '<th>Date</th>';
+        html += '<th>Job</th>';
+        html += '<th>Specs</th>';
+        html += '<th>ETA</th>';
+        html += '<th></th>';
         html += '</tr>';
         html += '</thead>';
-        html += '<tbody class="body-style">';
+        html += '<tbody class="altColor">';
         for (var i = 0; i < count; i++) {
             var driverID = data.d[i]["DriverID"];
             var customerReqId = data.d[i]["CustomerRequestID"];
@@ -191,14 +191,10 @@ function getData(data) {
                     $('#lblpick').text(bidh + ":" + bidm );
                 }
             }
-
-            // var expTime=searchTime+10;
-            //var pickTime=bidTime+3;lblsearch,lblexp,lblbid,lblpick////*+ data.d[i]["StartDate"] + *
             if (spec != null) {
                 html += '<tr>';
-                html += "<td width='10%' align='center'> &pound" + data.d[i]["Comments"] + '<img src="img/driver.png" onclick="ShowRating()"/>' +"</td>";
+                html += "<td width='10%' align='center'> &pound "+ data.d[i]["Comments"] + '<img src="img/driver.png" onclick="ShowRating()"/>' +"</td>";
                 html += "<td width='25%' align='center'>"+'<a href="#" class="pulse" style="color:blue;" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
-               /* html += "<td width='20%' align='center'>" + data.d[i]["StartTime"] + "</td>";*/
                 html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
                 html += "<td width='10%' align='center'>" + '<img src="img/sc.png" class="pulse" width="15" height="15" style="color:grey;" onclick="SpecShow(\''+spec+'\')"/>' + "</td>";
                 html += "<td width='20%' align='center'>" + bidh + ":" + bidm + "</td>";
@@ -209,7 +205,6 @@ function getData(data) {
                 html += '<tr>';
                 html += "<td width='10%' align='center'> &pound" + data.d[i]["Comments"] + "</td>";
                 html += "<td width='25%' align='center'>" + '<a href="#" style="color:blue;" class="pulse" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
-                /* html += "<td width='20%' align='center'>" + data.d[i]["StartTime"] + "</td>";*/
                 html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
                 html += "<td width='10%' align='center'>" + '<img src="img/spec.png"  width="15" height="15" style="color:grey;" onclick="SpecShow(\''+spec+'\')"/>' + "</td>";
                 html += "<td width='20%' align='center'>" + bidh + ":" + bidm + "</td>";
@@ -221,10 +216,6 @@ function getData(data) {
         html += '</tbody>';
         html += '</table>';
         html += '<br/>'
-        
-        //show the rating of drivers
-        
-           
         
         if(count < getCount)
         {
@@ -360,12 +351,14 @@ function specClose() {
 // hire me response send to driver 
 function Hireme(driID, reqID,spec)
 {
+    console.log(driID +" "+ reqID +" " + spec);
+    
     DisableHiremeBtns();    // Disable all other buttons once cliked on any one 'Hire' button.
-     $('#msg').disabled = true;
-    var getSpec=$('#txtothereSpecialReq').text(spec); 
+    $('#msg').disabled = true;
+    var getSpec= $('#txtothereSpecialReq').text(spec); 
     if(getSpec != "Not Available")
     {
-            var seeSpec=confirm("Please read the special circumstance entry");
+            var seeSpec=confirm("Please read the special circumstance entry !");
             if(seeSpec==true)
             {
                $('#popup_box').show();
@@ -514,9 +507,6 @@ function selectDriver()
             $('#popup_box').hide();
 }
 
-//Menu items--
-
-//Logout Button
 function logout()
  {
             $.cookie("remember", false);
@@ -524,35 +514,24 @@ function logout()
             //$.cookie("userPassword", 'null');
             window.location = "index.html";
 }
-
-//cab Now Button
 function cabNow() {
       window.location='CustomerCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-
-//Customer Feedback 
 function feedBack()
  {
         window.location = 'customerFeedback.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
 }
-
-//Booked History
 function bookedHistory()
  {
         window.location = 'CustomerHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
 }
-
-//Home Button
 function preCab()
 {
         window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
 }
-
-//My Profile Button
 function myProfile() {
         window.location = 'customerHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
 }
-
 function CancelJobRequest()
 {
          var result = confirm("Do you really want to cancel this job ?");    
@@ -578,8 +557,6 @@ function ReInitiateJob()
          return false;
         }
 }
-
-
 
 function DeleteJob(cause)
 {

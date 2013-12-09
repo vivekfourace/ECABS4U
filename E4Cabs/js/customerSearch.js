@@ -168,7 +168,7 @@ function availabledriver() {
 
     var pickdate = document.getElementById('pickUpDate').value;
     var picktime = document.getElementById('pickUpTime').value;
-
+console.log(pickdate + " " + picktime);
     var passenger = document.getElementById("ddlpassenger");
     var totalpassenger = passenger.options[passenger.selectedIndex].value;
     var lcase = document.getElementById("ddllargecase");

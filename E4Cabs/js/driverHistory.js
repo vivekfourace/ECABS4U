@@ -25,17 +25,15 @@ function gethistory()
                                 var count = data.d.length;
                                 if(count > 0)
                                 {
-                                        var html = '<table cellspacing="0"; width="100%"  style="border-collaspe:collaspe;">';
+                                        var html ='<table cellspacing="0"; width="100%"  style="border-collaspe:collaspe;">';
                                         html += '<thead class="thead-grid">';
                                         html += '<tr>';
-                                        html += '<th class="th4 font">JobNo</th>';
-                                        html += '<th class="th4 font"></th>';
-                                        html += '<th class="th4 font">From</th>';
-                                        html += '<th class="th4 font">To</th>';
-                                        html += '<th class="th4 font">Status</th>'; 
+                                        html += '<th>Job no</th>';
+                                        html += '<th>Feedback</th>';
+                                        html += '<th>Status</th>'; 
                                         html += '</tr>';
                                         html += '</thead>';
-                                        html +='<tbody class="body-style altColor"  style="font-size:14px;">';  
+                                        html +='<tbody class="tbody-grid altColor">';  
                                              for(var i=0; i<count; i++)
                                              {
                                                 $('#lbljobFeed').text(data.d[i]["JobNo"]);
@@ -44,16 +42,12 @@ function gethistory()
                                                 html += '<tr>';
                                                 html += "<td width='20%' height='30px' align='center'>" +'<a href="#" onclick="JobDetail(\''+data.d[i]["JobNo"]+'\')" style="color:blue;">'+ data.d[i]["JobNo"]+'</a>'+"</td>"; 
                                                 html += "<td width='5%' height='30px' align='center'>"+'<img src="img/feedbackicon.png" onclick="feedBackDriver(\''+data.d[i]["JobNo"]+'\')"</img>'+"</td>"
-                                                html += "<td width='25%' align='center' style='display:none'>" + data.d[i]["StartDate"] + "</td>";
-                                                html += "<td width='25%' align='center' style='display:none'>" + data.d[i]["StartTime"] +"</td>";
-                                                html += "<td width='25%' align='center'>" + data.d[i]["FromLoc"] +"</td>";
-                                                html += "<td width='25%' align='center'>" + data.d[i]["ToLoc"] +"</td>";                                                
                                                 
                                              if(!isCabNow)
                                              {
                                                  if(isJobAlive == true)
                                                  {
-                                                     html += "<td width='25%' height='30px' align='center'>"+'<input type="button" value="Abort" onclick="AbortJob(\''+data.d[i]["JobNo"]+'\')"/>'+"</td>";   
+                                                     html += "<td width='25%' height='30px' align='center'>"+'<input type="button" class="reject-btn" value="Abort" onclick="AbortJob(\''+data.d[i]["JobNo"]+'\')"/>'+"</td>";   
                                                  }
                                                  else if(isJobAlive == false)
                                                  {

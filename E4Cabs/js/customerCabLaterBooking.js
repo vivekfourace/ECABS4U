@@ -18,17 +18,17 @@ function getCablaterBooking()
                         if(count > 0)
                         {
                                 var html = '<table id="tbhist" cellspacing="0"; width="100%"  style="border-collaspe:collaspe;">';
-                                html += '<thead style="background-color:#0A0A2A;color:#fff;">';
-                                html += '<tr style="height:30px">';
-                                html += '<th class="th4 font">JobNo</th>';
-                                html += '<th class="th4 font">Fare</th>';
-                                html += '<th class="th4 font">From</th>';
-                                html += '<th class="th4 font">To</th>';
-                                html += '<th class="th4 font">Status</th>';                           
+                                html += '<thead class="thead-grid">';
+                                html += '<tr>';
+                                html += '<th>JobNo</th>';
+                                html += '<th>Fare</th>';
+                                html += '<th>From</th>';
+                                html += '<th>To</th>';
+                                html += '<th>Status</th>';                           
                                 
                                 html += '</tr>';
                                 html += '</thead>';
-                                               html +='<tbody class="body-style altColor"  style="font-size:14px;">';  
+                                               html +='<tbody class="altColor"">';  
                                                     for(var i=0; i<count; i++)
                                                     {
                                                        $('#lbljobFeed').text(data.d[i]["CustomerRequestID"]);
@@ -47,7 +47,7 @@ function getCablaterBooking()
                                                        }
                                                        else
                                                         {
-                                                            html += "<td width='10%' height='30px' align='center'>"+'<input type="button" value="Hire" onclick="HireDriver(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["DriverID"]+'\')"/>'+"</td>";
+                                                            html += "<td width='10%' height='30px' align='center'>"+'<input type="button" class="accept-btn" value="Hire" onclick="HireDriver(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["DriverID"]+'\')"/>'+"</td>";
                                                         }
                                                        
                                                        html += '</tr>';

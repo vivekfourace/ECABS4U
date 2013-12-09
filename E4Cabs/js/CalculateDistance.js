@@ -4,7 +4,7 @@ var map;
 directionsDisplay = new google.maps.DirectionsRenderer();
 
 //Distance Calculation
-var dis1, dis2, dis3, dis4, dis5, dis6;
+var dis1, dis2, dis3, dis4, dis5, dis6, dis8,dis9, dis11, dis13, dis14, dis15;
 
 function calcRoute() {
     var start;

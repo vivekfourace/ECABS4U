@@ -4,9 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
-    <script type="text/javascript" src="Scripts/jquery-2.0.3.min.js"></script>
-   
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=places"></script>
+    <script type="text/javascript" src="Scripts/jquery-2.0.3.min.js"></script>   
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
     
     <link rel="stylesheet" type="text/css" href="css/site.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
@@ -28,57 +27,55 @@
     <script type="text/javascript" src="js/customerSearch.js"></script>
 </head>
     <script type="text/javascript">
-        function initialize() {
-             var mapOptions = {              
-                  componentRestrictions: {country: 'UK'}                  
-            };
-           
-            var map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
-            var PickupLocation = (document.getElementById('txtFrom'));
-            var L2Location = (document.getElementById('txt2location'));
-            var L3Location = (document.getElementById('txt3location'));
-            var L4Location = (document.getElementById('txt4location'));
-            var L5Location = (document.getElementById('txt5location'));
-            var L6Location = (document.getElementById('txt6location'));
-            var L7Location = (document.getElementById('txt7location'));
-            var L8Location = (document.getElementById('txt8location'));
-            var ToLocation = (document.getElementById('txtTo'));
-            var types = document.getElementById('type-selector');
-            
-            map.controls[google.maps.ControlPosition.TOP_LEFT].push(PickupLocation);
-            map.controls[google.maps.ControlPosition.TOP_LEFT].push(L2Location);
-            map.controls[google.maps.ControlPosition.TOP_LEFT].push(L3Location);
-            map.controls[google.maps.ControlPosition.TOP_LEFT].push(L4Location);
-            map.controls[google.maps.ControlPosition.TOP_LEFT].push(L5Location);
-            map.controls[google.maps.ControlPosition.TOP_LEFT].push(L6Location);
-            map.controls[google.maps.ControlPosition.TOP_LEFT].push(L7Location);
-            map.controls[google.maps.ControlPosition.TOP_LEFT].push(L8Location);
-            map.controls[google.maps.ControlPosition.TOP_LEFT].push(ToLocation);
-            map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
-            var autocompletePick = new google.maps.places.Autocomplete(PickupLocation);
-            var autocompleteL2 = new google.maps.places.Autocomplete(L2Location);
-            var autocompleteL3 = new google.maps.places.Autocomplete(L3Location);
-            var autocompleteL4 = new google.maps.places.Autocomplete(L4Location);
-            var autocompleteL5 = new google.maps.places.Autocomplete(L5Location);
-            var autocompleteL6 = new google.maps.places.Autocomplete(L6Location);
-            var autocompleteL7 = new google.maps.places.Autocomplete(L7Location);
-            var autocompleteL8 = new google.maps.places.Autocomplete(L8Location);
-            var autocompleteTo = new google.maps.places.Autocomplete(ToLocation);
-            autocompletePick.bindTo('bounds', map);
-            autocompleteL2.bindTo('bounds', map);
-            autocompleteL3.bindTo('bounds', map);
-            autocompleteL4.bindTo('bounds', map);
-            autocompleteL5.bindTo('bounds', map);
-            autocompleteL6.bindTo('bounds', map);
-            autocompleteL7.bindTo('bounds', map);
-            autocompleteL8.bindTo('bounds', map);
-            autocompleteTo.bindTo('bounds', map);           
-        }
-        google.maps.event.addDomListener(window, 'load', initialize);
-   
+    function initialize() {
+         var mapOptions = {              
+              componentRestrictions: {country: 'UK'}                  
+        };
+       
+        var map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
+        var PickupLocation = (document.getElementById('txtFrom'));
+        var L2Location = (document.getElementById('txt2location'));
+        var L3Location = (document.getElementById('txt3location'));
+        var L4Location = (document.getElementById('txt4location'));
+        var L5Location = (document.getElementById('txt5location'));
+        var L6Location = (document.getElementById('txt6location'));
+        var L7Location = (document.getElementById('txt7location'));
+        var L8Location = (document.getElementById('txt8location'));
+        var ToLocation = (document.getElementById('txtTo'));
+        var types = document.getElementById('type-selector');
+        
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(PickupLocation);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(L2Location);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(L3Location);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(L4Location);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(L5Location);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(L6Location);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(L7Location);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(L8Location);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(ToLocation);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
+        var autocompletePick = new google.maps.places.Autocomplete(PickupLocation);
+        var autocompleteL2 = new google.maps.places.Autocomplete(L2Location);
+        var autocompleteL3 = new google.maps.places.Autocomplete(L3Location);
+        var autocompleteL4 = new google.maps.places.Autocomplete(L4Location);
+        var autocompleteL5 = new google.maps.places.Autocomplete(L5Location);
+        var autocompleteL6 = new google.maps.places.Autocomplete(L6Location);
+        var autocompleteL7 = new google.maps.places.Autocomplete(L7Location);
+        var autocompleteL8 = new google.maps.places.Autocomplete(L8Location);
+        var autocompleteTo = new google.maps.places.Autocomplete(ToLocation);
+        autocompletePick.bindTo('bounds', map);
+        autocompleteL2.bindTo('bounds', map);
+        autocompleteL3.bindTo('bounds', map);
+        autocompleteL4.bindTo('bounds', map);
+        autocompleteL5.bindTo('bounds', map);
+        autocompleteL6.bindTo('bounds', map);
+        autocompleteL7.bindTo('bounds', map);
+        autocompleteL8.bindTo('bounds', map);
+        autocompleteTo.bindTo('bounds', map);           
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
     
     function loadDateTime() {
-        //Code For current Time
         var currentTime = new Date()
         var hours = currentTime.getHours()
         var minutes = currentTime.getMinutes()
@@ -90,20 +87,15 @@
         if (hours == 0) {
             hours = 0;
         }
-        $('#pickTime').val('Soonest');
         $('#pickUpTime').val(hours + ":" + minutes);
 
-        //Code For current Date
         var currentDate = new Date()
         var day = currentDate.getDate()
         var month = currentDate.getMonth() + 1
         var year = currentDate.getFullYear()
         $('#pickUpDate').val(day + "/" + month + "/" + year);
-        $('#pickDate').val('Today');
-      // var isChecked = $('#RBcabNOW').attr('checked') ? true : false;      
     }
 
-    //Book Return Journey
     function bookReturn() {
         $('#txtReturFrom').show();
         $('#txtReturTo').show();
@@ -121,7 +113,7 @@
         document.getElementById("txtReturFrom").value = to;
         document.getElementById("txtReturTo").value = from;
     }
-    //Cancel Book Return
+  
     function cancelBookReturn() {
         document.getElementById("txtReturFrom").value = "";
         document.getElementById("txtReturTo").value = "";
@@ -144,7 +136,6 @@
         document.getElementById("chkReturnYes").checked = false;
     }
 
-    //Show Special Requirements
     function showReq() {
         $('#specialreq').hide();
         $('#cancelreq').show();
@@ -155,7 +146,7 @@
         $('#trspecialrequirement').show();
 
     }
-    //Cancel Special Requirements
+    
     function cancelReq() {
         $('#trspecialrequirement').hide();
         $('#specialreq').show();
@@ -165,7 +156,6 @@
         document.getElementById("trChildBooster").style.display = 'none';
     }
 
-    //Add 2Location
     function secoundLocation() {
         $('#2location').show();
         $('#secoundLoc').hide();
@@ -175,7 +165,6 @@
         $('#cancelAddLocation').show();
     }
 
-    //Add 3rdLocation
     function thirdLocation() {
         $('#3location').show();
         $('#thirdLoc').hide();
@@ -184,7 +173,7 @@
         $('#txt3location').css("width", "85%");
         $('#cancelAddLocation').show();
     }
-    //Add 4thLocation
+ 
     function fourthLocation() {
         $('#4location').show();
         $('#fourLoc').hide();
@@ -194,7 +183,7 @@
         $('#txt4location').css("width", "85%");
         $('#cancelAddLocation').show();
     }
-    //Add 5thLocation
+    
     function fifthLocation() {
         $('#5location').show();
         $('#fiveLoc').hide();
@@ -205,7 +194,7 @@
         $('#txt5location').css("width", "85%");
         $('#cancelAddLocation').show();
     }
-    //Add 6thLocation
+   
     function sixthLocation() {
         $('#6location').show();
         $('#sixLoc').hide();
@@ -217,7 +206,7 @@
         $('#txt6location').css("width", "85%");
         $('#cancelAddLocation').show();
     }
-    //Add 7thLocation
+   
     function sevenLocation() {
         $('#7location').show();
         $('#sevenLoc').hide();
@@ -230,7 +219,7 @@
         $('#txt7location').css("width", "85%");
         $('#cancelAddLocation').show();
     }
-    //Add 8thLocation
+   
     function eightLocation() {
         $('#8location').show();
         $('#eightLoc').hide();
@@ -243,7 +232,7 @@
         $('#txt8location').css("width", "100%");
         $('#cancelAddLocation').show();
     }
-    //cancel AddLocation
+   
     function cancelAddLocation() {
         $('#txtTo').css("width", "85%");
         $('#8location').hide();
@@ -264,7 +253,6 @@
         $('#txt8location').val('');
     }
 
-    //Show hide textbox on checkbox select.
     function showLoctxt() {
         var isChecked = $('#chkFromLocation').attr('checked') ? true : false;
         if (isChecked == true) {
@@ -282,15 +270,14 @@
         $('#confirmAnchor').show();
     }
 
-$(document).ready(function () {  
+    $(document).ready(function () {  
  $('#RbFutureBook').click(function () {
-        //alert(relatedId);
         document.getElementById("RBcabNOW").checked = false;
         window.location='customerSearchFuture.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+    });
+ });
 
-    });
-    });
-</script>
+    </script>
 
     <style type="text/css">
         #map-canvas {
@@ -326,7 +313,8 @@ $(document).ready(function () {
                 font-weight: 300;
             }
  </style>
-<body onload="loadDateTime()">
+
+    <body onload="loadDateTime()">
     <center>
         <div id="imgLoader">
                 <img src="jquery-mobile/styles/images/ajax-loader.gif" id="loading-image"/>
@@ -376,13 +364,7 @@ $(document).ready(function () {
                    </tr>
                   </table>
                  </td>
-                       
                    </tr>
-                  <!-- <tr>
-                       <td style="padding-top:20px">
-                           <a href="#" onclick="loc()" style="color:Black !important">Location</a>
-                       </td>
-                   </tr>-->
                    <tr>
                        <td align="center">
                            <label id="lblMessage" style="color:red;font-size:12px"/>
@@ -489,20 +471,22 @@ $(document).ready(function () {
                     <input type="text" id="txtDistance" class="font-style" style="width:100%;float:right;" readonly="true"/>
                 </td>
               </tr>
-                <tr>
+                   <input type="hidden" id="pickUpTime"/>
+                   <input type="hidden" id="pickUpDate"/> 
+                <!--<tr>
                 <td>
-                        <input type="hidden" id="pickUpDate"/>                   
+                                          
                         <label for="pickDate" class="font-style"><b style="font-size:12px">Pick Up Date</b></label>
                         <input name="pickDate" id="pickDate" type="date" data-role="datebox"   data-options='{"mode": "datebox","dateFormat":"%b %d"}'>
                 </td>
             </tr>
                <tr>
                 <td>
-                    <input type="hidden" id="pickUpTime"/>
+                   
                     <label for="pickTime" class="font-style"><b style="font-size:12px">Pick Up Time</b></label>                    
                     <input name="pickTime" type="text" data-role="datebox" id="pickTime" data-options='{"mode": "timebox", "overrideTimeFormat":24}' />
                 </td>
-            </tr>
+            </tr>-->
                
                <tr>
                 <td>

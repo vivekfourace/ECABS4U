@@ -24,17 +24,16 @@ function bindGrid(data)
     if(count > 0)
     {
             var html = '<table id="tbhist" cellspacing="0"; width="100%"  style="border-collaspe:collaspe;">';
-            html += '<thead style="background-color:#0A0A2A;color:#fff;">';
-            html += '<tr style="height:30px">';
-            html += '<th class="th4 font">JobNo</th>';
-            html += '<th class="th4 font">Fare</th>';
-            html += '<th class="th4 font">From</th>';
-            html += '<th class="th4 font">To</th>';
-            html += '<th class="th4 font">Status</th>';                           
-            
+            html += '<thead class="thead-grid">';
+            html += '<tr>';
+            html += '<th>JobNo</th>';
+            html += '<th>Fare</th>';
+            html += '<th>From</th>';
+            html += '<th>To</th>';
+            html += '<th>Status</th>';                      
             html += '</tr>';
             html += '</thead>';
-            html +='<tbody class="body-style altColor"  style="font-size:14px;">';  
+            html +='<tbody class="altColor">';  
                  for(var i=0; i<count; i++)
                  {
                     var isCustomerAccepted = data.d[i]["CustomerResponse"];
@@ -47,8 +46,10 @@ function bindGrid(data)
                      
                     if(isCustomerAccepted == true)
                      {
-                       html += "<td width='5%' height='30px' align='center'>"+'<input type="button" value="Accept" onclick="AcceptJob(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["Fare"]+'\')"/>'+"</td>";'<br/>'
-                       html += "<td width='5%' height='30px' align='center'>"+'<input type="button" value="Reject" onclick="RejectJob(\''+data.d[i]["CustomerRequestID"]+'\')"/>'+"</td>";
+                       html += "<td colspan='2'>"
+                       +'<input type="button" value="Accept" class="accept-btn" onclick="AcceptJob(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["Fare"]+'\')"/><br/>'
+                       +'<input type="button" value="Reject" class="reject-btn" onclick="RejectJob(\''+data.d[i]["CustomerRequestID"]+'\')"/>'
+                       +"</td>";
                      }
                      else if(isCustomerAccepted == false)
                      {
@@ -114,7 +115,7 @@ function ShowDetailBooking(data)
        $.ajax(url, {
           type:"POST",
           datatype:"json",
-          data:"{'customerReqID':'"+jobNo+"'}",
+          data:"{'customerReqID':'"+data+"'}",
           contentType: "application/json; charset=utf-8",
            success: showDetail,
            error: function (XMLHttpRequest, textStatus, errorThrown) 
