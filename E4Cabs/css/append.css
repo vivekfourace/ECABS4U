@@ -15,8 +15,7 @@
 .tbody-grid{
     word-wrap:break-word;
 }
-.tbody-grid td{
-    
+.tbody-grid td{    
     border-bottom:1px solid #848484;
     height:35px;
     font-size:14px;
@@ -26,12 +25,14 @@
 .altColor tr:nth-child(2n)
 {
  background:#58D3F7;
+ border-bottom:1px solid black;
     
 }
 
 .altColor tr:nth-child(2n-1)
 {
  background:#CEECF5;
+ border-bottom:1px solid black;
     
 }
 /*----------------*/

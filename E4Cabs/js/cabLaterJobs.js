@@ -2,6 +2,7 @@ var QString = window.location.search.substring(1);
 var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
+
 window.onload = showCabLaterJobs();
 function showCabLaterJobs()
 {
@@ -23,15 +24,15 @@ function showTodayJobs(data)
     if(count > 0)
     {
             var html = '<table id="tbhist" cellspacing="0"; width="100%"  style="border-collaspe:collaspe;">';
-            html += '<thead style="background-color:#0A0A2A;color:#fff;">';
+            html += '<thead class="thead-grid">';
             html += '<tr>';
-            html += '<th class="th4 font">JobNo</th>';
-            html += '<th class="th4 font">From</th>';
-            html += '<th class="th4 font">To</th>';
-            html += '<th class="th4 font"></th>';                      
+            html += '<th>JobNo</th>';
+            html += '<th>From</th>';
+            html += '<th>To</th>';
+            html += '<th></th>';                      
             html += '</tr>';
             html += '</thead>';
-               html +='<tbody class="body-style altColor"  style="font-size:14px;">';  
+               html +='<tbody class="altColor">';  
                     for(var i=0; i<count; i++)
                     {
                        $('#lbljobFeed').text(data.d[i]["JobNumber"]);
@@ -39,7 +40,7 @@ function showTodayJobs(data)
                        html += "<td width='20%' height='30px' align='center'>" + data.d[i]["JobNumber"] +"</td>"; 
                        html += "<td width='25%' height='30px' align='center'>" + data.d[i]["From"] +"</td>";
                        html += "<td width='25%' height='30px' align='center'>" + data.d[i]["To"] +"</td>";
-                       html += "<td width='25%' height='30px' align='center'>"+'<input type="button" value="Engage me" onclick="Engage(\''+data.d[i]["JobNumber"]+'\')"/>'+"</td>";
+                       html += "<td width='25%' height='30px' align='center'>"+'<input type="button" class="accept-btn" value="Engage me" onclick="Engage(\''+data.d[i]["JobNumber"]+'\')"/>'+"</td>";
                     }
                html +='</tbody>';
                html +='</table>';
