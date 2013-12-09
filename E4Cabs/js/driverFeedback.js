@@ -74,7 +74,7 @@ function UploadCustomerFeedBack()
                         }
                         else
                         {
-                            alert("No history found");
+                            alert("No feedback found.");
                         }
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) 
