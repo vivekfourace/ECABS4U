@@ -58,7 +58,7 @@ $(document).ready(function ()
 //finding duration between two distance
 function Duration()
 {
-    console.log('duration calle');
+        console.log('duration called');
         var fromloc;
         var isChecked = $('#chkFromLocation').attr('checked') ? true : false;
         if (isChecked == false) {
@@ -79,13 +79,11 @@ function CalculateDuration(fromLocation, toLocation)
         };
         var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
         var directionsService = new google.maps.DirectionsService();
-
         
             google.maps.event.addListener(directionsDisplay, 'directions_changed', function () {
                var time =   computeTotalDistance(directionsDisplay.directions);
                 $('#TravelTime').val(time);
-            });
-    
+            });    
             calcRoute();
       
         function calcRoute() {
@@ -147,17 +145,22 @@ function currentlocation() {
 
 function availabledriver() {
     var fromloc;
+    var toloc = document.getElementById('txtTo').value;
+    //alert(fromloc + " " + toloc);
+    
     var isChecked = $('#chkFromLocation').attr('checked') ? true : false;
     if (isChecked == false) {
         fromloc = document.getElementById('txtFrom').value;
+      
     }
     else if (isChecked == true) {
         fromloc = document.getElementById('txtCurrentFrom').value;
+       
     }
     //var fromloc = document.getElementById('txtFrom').value;
-    var toloc = document.getElementById('txtTo').value;
     
-    CalculateDuration(fromloc, toloc);    
+     CalculateDuration(fromloc, toloc);
+        
     
     var distance = document.getElementById('txtDistance').value;
     //var pickdate = document.getElementById('pickDate').value;    

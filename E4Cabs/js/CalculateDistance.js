@@ -7,7 +7,14 @@ directionsDisplay = new google.maps.DirectionsRenderer();
 var dis1, dis2, dis3, dis4, dis5, dis6;
 
 function calcRoute() {
-    var start = document.getElementById("txtFrom").value;
+    var start;
+    var isChecked = $('#chkFromLocation').attr('checked') ? true : false;
+    if (isChecked == false) {
+        start = document.getElementById('txtFrom').value;
+    }
+    else if (isChecked == true) {
+        start = document.getElementById('txtCurrentFrom').value;
+    }
     var loc2 = document.getElementById("txt2location").value;
     var loc3 = document.getElementById("txt3location").value;
     var loc4 = document.getElementById("txt4location").value;

@@ -98,7 +98,7 @@ function AbortJob(data)
 {
     var jobNo = data;
     document.getElementById("lblJobNumber").value = jobNo;
-    var isTrue = confirm("Do you want to abort the current Cab.");
+    var isTrue = confirm("Do you want to cancel the current Cab.");
     if(isTrue)
     {
         
@@ -182,7 +182,7 @@ function SubmitReject()
                               $('#divAbortTask').hide();
                               $('#txtAbortmsg').val("");
                               $('#freezBack').hide();
-                              alert("Job aborted successfully.");
+                              alert("Job cancelled successfully.");
                               window.location='bookedhistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                          }                         
                      },
