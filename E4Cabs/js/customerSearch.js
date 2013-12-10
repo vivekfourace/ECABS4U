@@ -3,6 +3,69 @@ var QString = window.location.search.substring(1);
 var userId = QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
+var requestID = QString.split("=")[4].split("&")[0];
+console.log(requestID);
+if(requestID != null)
+{
+    $.ajax({
+        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/FillJobSearchDetail",
+        type: "POST",
+        dataType: "Json",
+        data: "{'requestID':'" + requestID + "'}",
+        contentType: "application/json; charset=utf-8",
+        success: FillAllData,
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+       }
+     });
+}
+
+function FillAllData(data)
+{
+    console.log(data.d.length);
+    var count = data.d.length;
+    if(count > 0)
+    {
+        for(var i = 0; i < count; i++)
+        {
+            $('#txtFrom').val(data.d[i]["FromPostcode"]);
+            console.log(data.d[i]["FromPostcode"]);
+            $('#txtTo').val(data.d[i]["ToPostcode"]);   
+            console.log(data.d[i]["ToPostcode"]);
+            $('#txt2location').val(data.d[i]["Location2"]);
+            console.log(data.d[i]["Location8"]);
+            $('#txt3location').val(data.d[i]["Location3"]);
+            console.log(data.d[i]["Location3"]);
+            $('#txt4location').val(data.d[i]["Location4"]);
+            console.log(data.d[i]["Location4"]);
+            $('#txt5location').val(data.d[i]["Location5"]);
+            console.log(data.d[i]["Location5"]);
+            $('#txt6location').val(data.d[i]["Location6"]);
+            console.log(data.d[i]["Location6"]);
+            $('#txt7location').val(data.d[i]["Location7"]);
+            console.log(data.d[i]["Location7"]);
+            $('#txt8location').val(data.d[i]["Location8"]); 
+            console.log(data.d[i]["Location8"]);
+            $('#txtDistance').val(data.d[i]["DistanceInMile"]);
+            console.log(data.d[i]["DistanceInMile"]);
+            $('#txtothereSpecialRequirement').val(data.d[i]["OtherSpecReq"]);
+            console.log(data.d[i]["OtherSpecReq"]);
+            
+            document.getElementById('ddlpassenger').value = data.d[i]["LargeLuggage"];
+            console.log(data.d[i]["NumberOfPassenger"]);
+            document.getElementById('ddllargecase').value = data.d[i]["LargeLuggage"];
+            console.log(data.d[i]["LargeLuggage"]);
+            document.getElementById('ddlsmallcase').value = data.d[i]["SmallLuggage"];
+            console.log(data.d[i]["SmallLuggage"]);
+            document.getElementById('ddlWheelchair').value = data.d[i]["WheelChairPassenger"];
+            console.log(data.d[i]["WheelChairPassenger"]);
+            document.getElementById('ddlChidbooster').value = data.d[i]["ChildBooster"];
+            console.log(data.d[i]["ChildBooster"]);
+            document.getElementById('ddlChidseats').value = data.d[i]["ChildCarSeat"];            
+            console.log(data.d[i]["ChildCarSeat"]);
+        }
+    }
+}
+
 $(document).ready(function ()
  {
         if (navigator.geolocation)
@@ -16,7 +79,7 @@ $(document).ready(function ()
                     if (status == google.maps.GeocoderStatus.OK) {
                         if (results[1]) {
                             //alert(results[1].formatted_address);
-                            $('#txtCurrentFrom').val(results[1].formatted_address);
+                            $('#txtCurrentFrom').val(results[0].formatted_address);
                         }
                     }
                     else {
@@ -25,14 +88,14 @@ $(document).ready(function ()
                 });
             });
         }
-        $('.expand').live({
-            focus: function () {
-                $(this).animate({ height: "70" }, 500);
-            },
-            blur: function () {
-                $(this).animate({ height: "50" }, 500);
-            },
-        });
+        //$('.expand').live({
+        //    focus: function () {
+        //        $(this).animate({ height: "70" }, 500);
+        //    },
+        //    blur: function () {
+        //        $(this).animate({ height: "50" }, 500);
+        //    },
+        //});
 
         $('#chkNo').click(function () {
             document.getElementById("chkyes").checked = false;
@@ -157,18 +220,15 @@ function availabledriver() {
         fromloc = document.getElementById('txtCurrentFrom').value;
        
     }
-    //var fromloc = document.getElementById('txtFrom').value;
-    
+        
      CalculateDuration(fromloc, toloc);
         
     
     var distance = document.getElementById('txtDistance').value;
-    //var pickdate = document.getElementById('pickDate').value;    
-    //var picktime = document.getElementById('pickTime').value;
-
+   
     var pickdate = document.getElementById('pickUpDate').value;
     var picktime = document.getElementById('pickUpTime').value;
-console.log(pickdate + " " + picktime);
+    console.log(pickdate + " " + picktime);
     var passenger = document.getElementById("ddlpassenger");
     var totalpassenger = passenger.options[passenger.selectedIndex].value;
     var lcase = document.getElementById("ddllargecase");
@@ -276,7 +336,7 @@ console.log(pickdate + " " + picktime);
                     if(data.d[0] != "Error")
                     {
                         var reqID = data.d[0];
-                        //alert(data.d[2]);
+                        console.log(data.d[2]);
                         window.location = 'customerSearchList.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId + '&reqid=' + reqID;
                     }
                     else

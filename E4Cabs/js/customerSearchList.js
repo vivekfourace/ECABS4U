@@ -3,14 +3,12 @@ var userId = QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 var requestID = QString.split("=")[4].split("&")[0];
-//var iscabnow = QString.split("=")[5].split("&")[0];
 
 $('#load').show();
 function backtosearch() {
     window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
 }
 
-//Job Time out//
 var timeOut;
     $.ajax({
         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetJobTimeOutTime",    //Get Response from driver
@@ -67,18 +65,15 @@ var id = window.setInterval(function () {
         error: function (XMLHttpRequest, textStatus, errorThrown) {
         }
     });
-}, 1000);
+}, 10000);
 
-function getData(data) {
+function getData(data) {    
     var count = data.d.length;
     var isTrue =  CheckJobCount(count);
-    //console.log(isTrue);
-    //alert(isTrue);
     if(isTrue)
     {
         //TODO: send request again from the scratch to next five drivers.
         //window.clearInterval(id);
-        
         SearchDriverAgain();
        
     }
@@ -100,12 +95,13 @@ function getData(data) {
     
     function DisplayDriversData()
     {
+        
         $('#msg').empty();
         $('#divbid').show();
         $('#divawait').hide();
         $('#load').hide();
         var html = '<table width="100%" style="border-collapse:collapse;">';
-        html += '<thead class="thead-grid">';
+        html += '<thead class="header-style">';
         html += '<tr>';
         html += '<th>Fare</th>';
         html += '<th>Date</th>';
@@ -115,7 +111,7 @@ function getData(data) {
         html += '<th></th>';
         html += '</tr>';
         html += '</thead>';
-        html += '<tbody class="altColor">';
+        html += '<tbody>';
         for (var i = 0; i < count; i++) {
             var driverID = data.d[i]["DriverID"];
             var customerReqId = data.d[i]["CustomerRequestID"];
@@ -192,24 +188,210 @@ function getData(data) {
                 }
             }
             if (spec != null) {
+                console.log(driverID);
                 html += '<tr>';
-                html += "<td width='10%' align='center'> &pound "+ data.d[i]["Comments"] + '<img src="img/driver.png" onclick="ShowRating()"/>' +"</td>";
+                html += "<td width='10%' align='center'> &pound"+ data.d[i]["Comments"]+"</td>";
                 html += "<td width='25%' align='center'>"+'<a href="#" class="pulse" style="color:blue;" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
                 html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
                 html += "<td width='10%' align='center'>" + '<img src="img/sc.png" class="pulse" width="15" height="15" style="color:grey;" onclick="SpecShow(\''+spec+'\')"/>' + "</td>";
                 html += "<td width='20%' align='center'>" + bidh + ":" + bidm + "</td>";
-                html += "<td width='15%' align='center'>" + '<input type="button" class="disableBtn" value="Hire" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'' + spec + '\');"/>' + "</td>";
+                html += "<td width='15%' align='center'>" + '<input type="button" class="disableBtn accept-btn" value="Hire" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'' + spec + '\');"/>' + "</td>";
                 html += '</tr>';
-            }
+                html += '<tr>';
+                //var rating = data.d[i]["RatingFiveDayBack"];
+                //var rating1 = data.d[i]["RatingFourDayBack"];
+                //var rating2 = data.d[i]["RatingThreeDayBack"];
+                var rating3 = data.d[i]["RatingTwoDayBack"];
+                var rating4 = data.d[i]["RatingOneDayBack"];
+                var rating5 = data.d[i]["RatingToday"];
+                
+                          if(rating3 != "0")
+                          {
+                                   html += '<td style="width:30%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="img/driver.png" style="width:20px;height:20px"/>'
+                                   if(rating3 == "1")
+                                    {
+                                        
+                                        html += "   <img src='img/1star.PNG' style='width:18%'/></td>";
+                                    }
+                                    else if(rating3 == "2")
+                                    {
+                                     
+                                        html += "   <img src='img/2star.PNG' style='width:33%'/></td>";
+                                    }
+                                    else if(rating3 == "3")
+                                    {
+                                     
+                                        html += "   <img src='img/3star.PNG' style='width:45%'/></td>";
+                                    }
+                                    else if(rating3 == "4")
+                                    {
+                                        
+                                        html += "   <img src='img/4star.PNG' style='width:58%'/></td>";
+                                    }
+                                    else if(rating3 == "5")
+                                    {
+                                        
+                                        html += "   <img src='img/5star.PNG' style='width:70%'/></td>";
+                                    }
+                          }
+                          else
+                           {
+                               html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484; colspan='2'>  --</td>";
+                           }
+                          if(rating4 != "0")
+                          {
+                                   if(rating4 == "1")
+                                    {
+                                        html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/1star.PNG' style='width:18%'/></td>";
+                                    }
+                                    else if(rating4 == "2")
+                                    {
+                                        html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/2star.PNG' style='width:33%'/></td>";
+                                    }
+                                    else if(rating4 == "3")
+                                    {
+                                        html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/3star.PNG' style='width:45%'/></td>";
+                                    }
+                                    else if(rating4 == "4")
+                                    {
+                                        html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/4star.PNG' style='width:58%'/></td>";
+                                    }
+                                    else if(rating4 == "5")
+                                    {
+                                        html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/5star.PNG' style='width:70%'/></td>";
+                                    }
+                          }
+                          else
+                           {
+                               html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484; colspan='2'>  --</td>";
+                           }
+                          if(rating5 != "0")
+                          {
+                                   if(rating5 == "1")
+                                    {
+                                        html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/1star.PNG' style='width:18%'/></td>";
+                                    }
+                                    else if(rating5 == "2")
+                                    {
+                                        html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/2star.PNG' style='width:33%'/></td>";
+                                    }
+                                    else if(rating5 == "3")
+                                    {
+                                        html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/3star.PNG' style='width:45%'/></td>";
+                                    }
+                                    else if(rating5 == "4")
+                                    {
+                                        html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/4star.PNG' style='width:58%'/></td>";
+                                    }
+                                    else if(rating5 == "5")
+                                    {
+                                        html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/5star.PNG' style='width:90%'/></td>";
+                                    }
+                          }
+                          else
+                           {
+                               html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484; colspan='2'>  --</td>";
+                           }                         
+                          html += '</tr>';
+                       
+                }
             else if(spec == null) {
                 html += '<tr>';
                 html += "<td width='10%' align='center'> &pound" + data.d[i]["Comments"] + "</td>";
                 html += "<td width='25%' align='center'>" + '<a href="#" style="color:blue;" class="pulse" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
                 html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
-                html += "<td width='10%' align='center'>" + '<img src="img/spec.png"  width="15" height="15" style="color:grey;" onclick="SpecShow(\''+spec+'\')"/>' + "</td>";
+                html += "<td width='10%' align='center'>" + '<img src="img/spec.png"  width="15" height="15" style="color:grey;" onclick="SpecShow(\'Not Available\')"/>' + "</td>";
                 html += "<td width='20%' align='center'>" + bidh + ":" + bidm + "</td>";
-                html += "<td width='15%' align='center'>" + '<input type="button" class="disableBtn"  value="Hire" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'' + spec + '\');"/>' + "</td>";
+                html += "<td width='15%' align='center'>" + '<input type="button" class="disableBtn accept-btn"  value="Hire" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'' + spec + '\');"/>' + "</td>";
                 html += '</tr>';
+                html += '<tr>';
+                var rating33 = data.d[i]["RatingTwoDayBack"];
+                var rating44 = data.d[i]["RatingOneDayBack"];
+                var rating55 = data.d[i]["RatingToday"];
+                
+                          if(rating33 != "0")
+                          {
+                                  html += '<td style="width:30%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="img/driver.png" style="width:20px;height:20px"/>'
+                                   if(rating33 == "1")
+                                    {
+                                        html += "   <img src='img/1star.PNG' style='width:18%'/></td>";
+                                    }
+                                    else if(rating33 == "2")
+                                    {
+                                        html += "   <img src='img/2star.PNG' style='width:33%'/></td>";
+                                    }
+                                    else if(rating33 == "3")
+                                    {
+                                        html += "   <img src='img/3star.PNG' style='width:45%'/></td>";
+                                    }
+                                    else if(rating33 == "4")
+                                    {
+                                        html += "   <img src='img/4star.PNG' style='width:58%'/></td>";
+                                    }
+                                    else if(rating33 == "5")
+                                    {
+                                        html += "   <img src='img/5star.PNG' style='width:70%'/></td>";
+                                    }
+                          }
+                          else
+                           {
+                               html += '<td style="width:30%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="img/driver.png" style="width:20px;height:20px"/>--</td>'
+                           }
+                          if(rating44 != "0")
+                          {
+                                   if(rating44 == "1")
+                                    {
+                                        html += "<td style='width:30%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/1star.PNG' style='width:18%'/></td>";
+                                    }
+                                    else if(rating44 == "2")
+                                    {
+                                        html += "<td style='width:30%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/2star.PNG' style='width:33%'/></td>";
+                                    }
+                                    else if(rating44 == "3")
+                                    {
+                                        html += "<td style='width:30%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/3star.PNG' style='width:45%'/></td>";
+                                    }
+                                    else if(rating44 == "4")
+                                    {
+                                        html += "<td style='width:30%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/4star.PNG' style='width:58%'/></td>";
+                                    }
+                                    else if(rating44 == "5")
+                                    {
+                                        html += "<td style='width:30%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/5star.PNG' style='width:70%'/></td>";
+                                    }
+                          }
+                          else
+                           {
+                               html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;'  colspan='2'>--</td>";
+                           }
+                          if(rating55 != "0")
+                          {
+                                   if(rating55 == "1")
+                                    {
+                                        html += "<td style='width:30%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/1star.PNG' style='width:18%'/></td>";
+                                    }
+                                    else if(rating55 == "2")
+                                    {
+                                        html += "<td style='width:30%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/2star.PNG' style='width:33%'/></td>";
+                                    }
+                                    else if(rating55 == "3")
+                                    {
+                                        html += "<td style='width:30%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/3star.PNG' style='width:45%'/></td>";
+                                    }
+                                    else if(rating55 == "4")
+                                    {
+                                        html += "<td style='width:30%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/4star.PNG' style='width:58%'/></td>";
+                                    }
+                                    else if(rating55 == "5")
+                                    {
+                                        html += "<td style='width:30%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/5star.PNG' style='width:90%'/></td>";
+                                    }
+                          }
+                          else
+                           {
+                               html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;'  colspan='2'>--</td>";
+                           }                         
+                          html += '</tr>';
                 $('#txtothereSpecialReq').text("Not Available");
             }
         }
@@ -223,7 +405,7 @@ function getData(data) {
             html += '<table>';
             html += '<tr>';
             html += '<td>';
-            html += '<input type="button" id="searchAgain" value="InSufficient Drivers" onclick="SearchDriverAgain()"/>';
+            html += '<input type="button" id="searchAgain" class="reject-btn" value="InSufficient Drivers" onclick="SearchDriverAgain()"/>';
             html += '</td></tr>'; 
             html += '</table>';
             html += '</div>';
@@ -235,9 +417,8 @@ function getData(data) {
 //rating or driver  lbl4star lbl3star lbl2star lbl1star
 function ShowRating()
 {
-    //alert("inside");
     $.ajax({
-        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetDriverRating",    //Get Response from driver 
+        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetDriverRating",
         type: "POST",
         dataType: "Json",
         data: "{'requestID':'" + requestID + "'}",
@@ -549,8 +730,7 @@ function ReInitiateJob()
 {
         var result = confirm("Do you want to Re-Initiate this job ?");    
         if (result==true) {
-          var cause = "ReInitiate";
-          DeleteJob(cause);     
+              window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId + '&reqid=' + requestID;
         }
         else
         {

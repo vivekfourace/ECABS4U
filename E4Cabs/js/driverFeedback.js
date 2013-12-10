@@ -17,11 +17,6 @@ function UploadCustomerFeedBack()
                         if(count > 0)
                         {
                             var html = '<table border="0" id="tbhist" cellspacing="0"; width="100%"  style="border-collaspe:collaspe;">';
-                            //html += '<thead class="thead-grid">';
-                            //html +='<tr>';
-                            //html +='<th colspan="3" class="th4 font">Customer Feedback</th>';
-                            //html +='</tr>';
-                            //html += '</thead>';
                             html +='<tbody class="body-style"  style="font-size:14px;">'; 
                              for(var i=0; i<count; i++)
                             {

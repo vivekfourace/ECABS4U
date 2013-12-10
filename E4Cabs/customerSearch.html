@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
-    <script type="text/javascript" src="Scripts/jquery-2.0.3.min.js"></script>   
+       
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
     
     <link rel="stylesheet" type="text/css" href="css/site.css" />
@@ -14,7 +14,8 @@
     <link type="text/css" href="css/jqm-datebox.min.css" rel="stylesheet" />
 
     <!--key=AIzaSyDAKXfZggeVZMCwQnR-mGebtLCvjuRfZcg-->
-    <script type="text/javascript" src="Scripts/jquery-1.7.1.js"></script>
+    <!--<script type="text/javascript" src="Scripts/jquery-1.7.1.js"></script>-->
+    <script type="text/javascript" src="Scripts/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="Scripts/jquery.mobile.js"></script>
     <script type="text/javascript" src="Scripts/jqm-datebox.core.min.js"></script>
     <script type="text/javascript" src="Scripts/datebox.mode.datebox.min.js"></script>
@@ -29,7 +30,7 @@
     <script type="text/javascript">
     function initialize() {
          var mapOptions = {              
-              componentRestrictions: {country: 'UK'}                  
+              componentRestrictions: {country: 'United Kingdom'},              
         };
        
         var map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
@@ -512,7 +513,7 @@
                         <img src="img/Case.png" style="width:30px;height:25px"/><b style="font-size:12px;">Large</b>
                     </label> 
                    <div style="width:100%;">
-                    <select class="select-choice font-style" id="ddllargecase">
+                    <select class="select-choice font-style" id="ddllargecase" name="ddllargecase">
                           <option value="0" selected="selected">0</option>
                           <option value="1">1</option>
                           <option value="2">2</option>

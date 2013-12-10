@@ -15,6 +15,7 @@
 .tbody-grid{
     word-wrap:break-word;
 }
+
 .tbody-grid td{    
     border-bottom:1px solid #848484;
     height:35px;
@@ -36,17 +37,31 @@
     
 }
 /*----------------*/
+/*---customerSearchList Page*/
+
+.header-style{
+    
+    color:white;
+   
+}
+.header-style th{
+     height:40px;
+    background-color:#0080FF;
+}
+
+.body-style{
+     word-wrap:break-word;
+}
+.body-style td{
+    border:none;
+    height:35px;
+    font-size:12px;
+}
+
+/*----------------*/
 .table-style{
     border:1px solid blue;
     border-collapse:collapse;
-}
-.header-style{
-font-size:20px;    
-}
-
-
-tbody tr{
-    border-bottom:1px solid;
 }
 
 table-row{

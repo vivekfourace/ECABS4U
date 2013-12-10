@@ -32,8 +32,10 @@ setInterval(function(){
                         if (status == google.maps.GeocoderStatus.OK) {
                             if (results[0]) {
                                 var postalCode = extractFromAdress(results[0].address_components, "postal_code");
-                                
+                                var address = results[1].formatted_address;
                                 //alert("Your Postcode is: " + postalCode);
+                                //alert(results[0].formatted_address);
+                               // alert(results[1].formatted_address);
                                 
                                 function extractFromAdress(components, type) {
                                     for (var i = 0; i < components.length; i++)
@@ -42,7 +44,7 @@ setInterval(function(){
                                                 return components[i].long_name;
                                     return "";
                                 }
-                                updatePostCode(postalCode);
+                                updatePostCode(postalCode, address);
                             }
                         }
 
@@ -52,12 +54,12 @@ setInterval(function(){
     }, postCodeFetchTime);
       //  }
 
-       function updatePostCode(postalCode) {
+       function updatePostCode(postalCode, address) {
             $.ajax({
                         url: 'http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateLocationMapping',
                         type: "post",
                         dataType: "json",
-                        data: "{'postalCode':'" + postalCode + "','Id':'" + relatedId + "'}",
+                        data: "{'postalCode':'" + postalCode + "','Id':'" + relatedId + "', 'address':'"+address+"'}",
                         contentType: "application/json; charset=utf-8",
                         success: function (data) {
                         },

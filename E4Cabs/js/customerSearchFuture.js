@@ -16,7 +16,7 @@ $(document).ready(function ()
                     if (status == google.maps.GeocoderStatus.OK) {
                         if (results[1]) {
                             //alert(results[1].formatted_address);
-                            $('#txtCurrentFrom').val(results[1].formatted_address);
+                            $('#txtCurrentFrom').val(results[0].formatted_address);
                         }
                     }
                     else {
@@ -258,7 +258,7 @@ function availabledriverLater() {
                     }
                     else
                     {
-                        alert('Oops! some erro occurs!');
+                        alert('Oops! some error occurs!');
                         window.location =  'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                     }
                     
