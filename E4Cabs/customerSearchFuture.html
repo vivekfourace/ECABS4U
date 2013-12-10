@@ -25,7 +25,7 @@
     <script type="text/javascript" src="js/CalculateDistance.js"></script>
     <script type="text/javascript" src="js/customerSearchFuture.js"></script>
 </head>
-    <script>
+    <script type="text/javascript">
         function initialize() {
             var mapOptions = {
                 componentRestrictions: { country: "UK" }
@@ -71,11 +71,8 @@
             autocompleteTo.bindTo('bounds', map);
         }
         google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
-    
-<script type="text/javascript">
-    
-    function loadDateTime() {
+
+        function loadDateTime() {
         var currentTime = new Date()
         var hours = currentTime.getHours()
         var minutes = currentTime.getMinutes()
@@ -518,7 +515,7 @@ $(document).ready(function () {
                        
                     <div style="width:45%;float:left">
                     <label for="ddllargecase" style="height:30px">
-                        <img src="img/Case.png" style="width:30px;height:25px"/>
+                        <img src="img/Case.png" style="width:30px;height:25px"/><b style="font-size:12px;">Large</b> 
                     </label> 
                    <div style="width:100%;">
                     <select class="select-choice font-style" id="ddllargecase">
@@ -536,7 +533,7 @@ $(document).ready(function () {
                    </div>   
                    <div style="width:45%;float:right">
                     <label for="ddlsmallcase" style="padding-bottom:4px;">
-                        <img src="img/Case.png" style="width:23px;height:20px"/>
+                        <img src="img/Case.png" style="width:23px;height:20px"/><b style="font-size:12px;">Small</b> 
                     </label> 
                    <div style="width:100%;">
                     <select class="select-choice font-style" id="ddlsmallcase">

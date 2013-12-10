@@ -46,7 +46,7 @@ function gethistory()
                                             {
                                                 if(isJobAlive == true)
                                                 {
-                                                    html += "<td width='25%' height='30px' align='center'>"+'<input type="button" class="reject-btn" value="Abort" onclick="AbortJob(\''+data.d[i]["JobNo"]+'\')"/>'+"</td>";   
+                                                    html += "<td width='25%' height='30px' align='center'>"+'<input type="button" class="reject-btn" value="Cancel Job" onclick="AbortJob(\''+data.d[i]["JobNo"]+'\')"/>'+"</td>";   
                                                 }
                                                 else if(isJobAlive == false)
                                                 {
