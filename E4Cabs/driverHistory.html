@@ -102,58 +102,50 @@
                        </td>
                    </tr>
                    <tr class="popup_content">
-                       <td style="width:50%;font-size:13px;">
+                       <td style="width:30%;font-size:11px;">
                            <label class="test"><b> Job No</b></label>
                        </td>
-                       <td style="width:50%;font-size:13px;">
+                       <td style="width:70%;font-size:11px;">
                            <b><label id="lbljobNo" class="test"/></b>
                        </td>
                    </tr>
                    <tr class="popup_content">
-                       <td style="width:50%;font-size:13px;">
+                       <td style="width:30%;font-size:11px;">
                            <label class="test"><b>Date</b></label>
                        </td>
-                       <td style="width:50%;font-size:13px;">
+                       <td style="width:70%;font-size:11px;">
                           <b> <label id="lblFeeddate" class="test"/></b>
                        </td>
                    </tr>
                    <tr class="popup_content">
-                       <td style="width:50%;font-size:13px;">
+                       <td style="width:30%;font-size:11px;">
                            <label class="test"><b>Time</b></label>
                        </td>
-                       <td style="width:50%;font-size:13px;">
+                       <td style="width:70%;font-size:11px;">
                           <b> <label id="lblFeedTime" class="test"/></b>
                        </td>
                    </tr>
                    <tr class="popup_content">
-                       <td style="width:50%;font-size:13px;">
+                       <td style="width:30%;font-size:11px;">
                            <label class="test"><b>From</b></label>
                        </td>
-                       <td style="width:50%;font-size:13px;">
+                       <td style="width:70%;font-size:11px;">
                            <b>  <label id="lblFeedFrom" class="test"/></b>
                        </td>
                    </tr>
                    <tr class="popup_content">
-                       <td style="width:50%;font-size:13px;">
+                       <td style="width:30%;font-size:11px;">
                             <label class="test"><b>To</b></label>
                        </td>
-                       <td style="width:50%;font-size:13px;">
+                       <td style="width:70%;font-size:11px;">
                           <b> <label id="lblFeedTo" class="test"/></b>
                        </td>
                    </tr>
-                   <!--<tr class="popup_content">
-                       <td style="width:50%;font-size:13px;">
-                           <label class="test"><b>Driver Name</b></label>
-                       </td>
-                       <td style="width:50%;font-size:13px;">
-                           <label id="lblFeedDriver"/>
-                       </td>
-                   </tr>-->
                    <tr class="popup_content">
-                       <td style="width:50%;font-size:13px;">
+                       <td style="width:30%;font-size:11px;">
                            <label class="test"><b>Rating </b></label> 
                        </td>
-                       <td style="width:50%;font-size:13px;">
+                       <td style="width:70%;font-size:11px;">
                            <select name="sel" id="sel">
                                <option value="0">--Please Select--</option>
                                <option value="1">1-Poor</option>
@@ -165,21 +157,20 @@
                        </td>
                    </tr>
                    <tr class="popup_content">
-                       <td style="width:50%;font-size:13px;">
+                       <td style="width:100%;font-size:11px;" colspan="2">
                           <label class="test"><b>Comments</b></label>  
                        </td>
-                       <td>
-                           <textarea id="txtarComments"></textarea>
-                       </td>
                    </tr>
+                   <tr>
+                       <td style="width:100%;font-size:13px;" colspan="2">
+                           <textarea placeholder="Put your comments here..." style="width:98%;height:60px" id="txtarComments" maxlength="200"></textarea>
+                       </td>
+                  </tr>
                    <tr class="popup_footer" id="trbtnPopup">
-                       <td style="width:50%;text-align:center">
-                          <input type="button" id="btnFeedCancel" value="Cancel" class="ok" onclick="CancelFeedBack()"/>  
+                       <td style="width:100%;text-align:center" colspan="2">
+                          <input type="button" id="btnFeedCancel" style="width:49%" value="Cancel" class="ok" onclick="CancelFeedBack()"/>  
+                          <input type="button" id="btnFeedPost" style="width:49%" value="Submit" class="ok" onclick="PostFeedBack()"/> 
                        </td>
-                       <td style="width:50%;text-align:center">
-                           <input type="button" id="btnFeedPost" value="Submit" class="ok" onclick="PostFeedBack()"/> 
-                       </td>
-                       
                    </tr>
                    <tr id="trbtnOK" style="display:none">
                        <td style="width:100%;text-align:center;" colspan="2">
@@ -324,7 +315,7 @@
       </div>
 </div>
         
-        <footer style="padding-top:25px" >
+        <footer style="padding-top:35px" >
             <div style="width:100%;position:fixed;bottom:0px;height:20px;padding-bottom:15px;">
                 <table style="width:100%;background-color:black;" class="btn-tmpFooter" >
                     <tr>

@@ -187,13 +187,8 @@ function RegisterDriver()
              }
 function OnValidate(data)
 {
-    if(data.d =="false")
-    {
-        $("#link2").show();
-        $('#lblRequiredField').text("Username already exist, enter another name!");
-        $('#lblRequiredField').css("color","red");
-    }
-    else if(data.d =="true")
+    
+    if(data.d =="true")
     {
         $("#link2").show();
         //$('#lblRequiredField').text("Registration successful,");
@@ -220,7 +215,14 @@ function OnValidate(data)
             }
 
         }, 1000);
-    }    
+    }
+    
+   else
+    {
+        $("#link2").show();
+        $('#lblRequiredField').text(data.d);
+        $('#lblRequiredField').css("color","red");
+    }
 }
 function backToIndex()
 {

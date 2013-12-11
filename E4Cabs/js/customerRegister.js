@@ -135,28 +135,28 @@ function Registercustomer()
 }
 //checking usename exits or not
 function CheckData(data)
-{
-    if(data.d == "false")
+{    
+    if(data.d =="true")
     {
-                     $('#lblMsg').text("Username already exist.");
-                     $('#lblMsg').css("color","#D70007");
-                     $('#lblMsg').css("font-size","13");
-                     $('#txtUserName').val("");
-                     $('#txtUserName').focus();
-    }
-    else if(data.d =="true")
-    {
-                    var timeOut = 5;
-                    setInterval(function() {  
-                        $('#divcustomerreg').hide();
-                         document.getElementById('divSucessfulcustomer').innerHTML= "Registration successful.";
-                        document.getElementById('divMsgcustomer').innerHTML=  "Please wait " + --timeOut + "s for login screen.";  
-                        if(timeOut <= 0)
-                        {
-                            window.location = "index.html";
-                        }
-                    }, 1000);
+       var timeOut = 5;
+       setInterval(function() {  
+           $('#divcustomerreg').hide();
+            document.getElementById('divSucessfulcustomer').innerHTML= "Registration successful.";
+           document.getElementById('divMsgcustomer').innerHTML=  "Please wait " + --timeOut + "s for login screen.";  
+           if(timeOut <= 0)
+           {
+               window.location = "index.html";
+           }
+       }, 1000);
     }    
+    else
+    {
+       $('#lblMsg').text(data.d);
+       $('#lblMsg').css("color","#D70007");
+       $('#lblMsg').css("font-size","13");
+       //$('#txtUserName').val("");
+       //$('#txtUserName').focus();
+    }
 }
 //back to index page
 function backToIndex()

@@ -16,8 +16,8 @@ function UploadCustomerFeedBack()
                         var count = data.d.length;
                         if(count > 0)
                         {
-                            var html = '<table border="0" id="tbhist" cellspacing="0"; width="100%"  style="border-collaspe:collaspe;">';
-                            html +='<tbody class="body-style"  style="font-size:14px;">'; 
+                            var html = '<table style="border-collaspe:collaspe;">';
+                            html +='<tbody>'; 
                              for(var i=0; i<count; i++)
                             {
                                 var comment = data.d[i]["Comment"];
@@ -25,8 +25,8 @@ function UploadCustomerFeedBack()
                                 if(comment != null)
                                 {
                                     html += "<tr>";
-                                    html += "<td  width='30%' height='50px' style='padding-top:15px;' align='center'>" + '<img src="img/brown-man-icon.png"  width="50px" height="50px" style="color:grey;"/>' + "</td>";
-                                    html += "<td width='70%' height='25px' style='padding-top:20px;font-weight:bold;text-decoration:underline' align='left'>" + data.d[i]["Name"] + "</td>";
+                                    html += "<td width='30%' height='50px' style='padding-top:15px;' align='center'>" + '<img src="img/brown-man-icon.png"  width="50px" height="50px" style="color:grey;"/>' + "</td>";
+                                    html += "<td width='70%' rowspan='2' height='50px' style='font-weight:bold;text-decoration:underline' align='left'>" + data.d[i]["Name"] + "</td>";
                                     html +="</tr>";
                                     html += "<tr>";
                                     html +="<td>"+"</td>";

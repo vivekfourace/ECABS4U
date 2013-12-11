@@ -118,7 +118,6 @@ function UpdateProfile()
         contentType: "application/json; charset=utf-8",
         success: ShowData,
         error: function (XMLHttpRequest, textStatus, errorThrown){
-            //alert(errorThrown);
         }
     });
 }

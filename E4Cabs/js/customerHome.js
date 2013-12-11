@@ -34,9 +34,9 @@ function ShowData(data)
           
           $('#txtname').hide();
           $('#txtlastname').hide();    
-          $('#txtLocation').hide();    
-          $('#txtLocation2').hide();    
-          $('#txtMobileno').hide();    
+          $('#txtLocation').hide();   
+          $('#txtLocation2').hide();   
+          $('#txtMobileno').hide();   
           $('#txtEmailID').hide();
           
           document.getElementById("trBtnUpdate").style.display = 'none';
@@ -45,12 +45,13 @@ function ShowData(data)
           
           $('#lblname').show();
           $('#lbllastname').show();
-          $('#lblLocation').show();
-          $('#lblLocation2').show();
           $('#lblMobileNo').show();
           $('#lblEmailID').show();
           $('#btnEdit').show();
           $('hr').show();
+    
+          $('#lblLocation').hide();
+          $('#lblLocation2').hide();
  }
 
 //Edit Customer Profile
