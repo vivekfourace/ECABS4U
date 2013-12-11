@@ -24,14 +24,6 @@ function forgotPassword()
                     $('#lblMsg').css("color","#D70007");                    
                     return false;
                 }
-                
-                //Ajax loader--start
-                //$('#imgLoader').bind('ajaxStart', function(){
-                //    $(this).show();
-                // }).bind('ajaxStop', function(){
-                //    $(this).hide();
-                //});
-              //Ajax loader--ends
                 $.ajax({
                     cache: false,
                     beforeSend: function(){
@@ -40,7 +32,7 @@ function forgotPassword()
                      complete: function(){
                          $('#imgLoader').hide();
                      },
-                    url:"http://115.115.159.126/ECabs/ECabs4U.asmx/forgotMyPwd",
+                    url:"http://115.115.159.126/ECabs/ECabs4U.asmx/ForgotPassword",
                     datatype:"json",
                     type:"POST",                    
                     data:"{'emailid':'"+pass+"'}",
@@ -74,13 +66,6 @@ function forgotPassword()
                 $('#txtEmail').val("");
             }
  }
-
-//function backtologin()
-//{
-  //window.location="login.html";  
-//} 
-
-
 function backToIndex()
 {
     window.location="index.html";

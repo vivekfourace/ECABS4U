@@ -176,7 +176,7 @@ function RegisterDriver()
                      url:"http://115.115.159.126/ECabs/ECabs4U.asmx/RegisterDriver",
                       type:"POST",
                      datatype:"json",
-                     data:"{'fname':'"+name+"','lname':'"+name2+"','email':'"+email+"','userID':'"+User+"','password':'"+password+"','contactNumber':'"+mobNo+"','address1':'"+Add1+"','address2':'"+Add2+"','postcode':'"+post+"','image':'"+img2+"'}",
+                     data:"{'fname':'"+name+"','lname':'"+name2+"','email':'"+email+"','userID':'"+User+"','password':'"+password+"','contactNumber':'"+mobNo+"','address1':'"+Add1+"','address2':'"+Add2+"','postcode':'"+post+"'}",
                      contentType: "application/json; charset=utf-8",
                       success: OnValidate,
                      error: function (XMLHttpRequest, textStatus, errorThrown)

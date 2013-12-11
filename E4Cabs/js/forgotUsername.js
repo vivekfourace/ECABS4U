@@ -33,7 +33,7 @@ function forgotPassword()
                      complete: function(){
                          $('#imgLoader').hide();
                      },
-                    url:"http://115.115.159.126/ECabs/ECabs4U.asmx/forgotUsername",
+                    url:"http://115.115.159.126/ECabs/ECabs4U.asmx/ForgotUsername",
                     datatype:"json",
                     type:"POST",
                     data:"{'emailid':'"+pass+"'}",
@@ -61,18 +61,12 @@ function forgotPassword()
                 $('#txtEmail').val("");
             }
             else {
-                $('#lblMsg').text("Password recovered, please check your mail.");
+                $('#lblMsg').text("Username recovered, please check your mail.");
                 $('#lblMsg').css("color", "#237F0C");
                 $('#lblMsg').css("font-size", "13");
                 $('#txtEmail').val("");
             }
  }
-
-//function backtologin()
-//{
-  //window.location="login.html";  
-//} 
-
 
 function backToIndex()
 {
