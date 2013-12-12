@@ -11,7 +11,7 @@ function backtosearch() {
 
 var timeOut;
     $.ajax({
-        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetJobTimeOutTime",    //Get Response from driver
+        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetJobTimeOutTime",
         type: "POST",
         dataType: "Json",
         data: "{'requestID':'" + requestID + "'}",
@@ -50,7 +50,7 @@ function CheckJobCount()
 {
     a++;
     console.log(a);
-    if(a == 10)
+    if(a == 60)
     {
        console.log("true");
        return true;
@@ -61,7 +61,7 @@ function CheckJobCount()
 function Destroy() {
     window.clearInterval(timer);
     window.clearInterval(id);
-    window.location = "customerSearch.html";
+    window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
 }
 
  $('#load').show();
@@ -80,14 +80,12 @@ var id = window.setInterval(function () {
 
     
 function getData(data) {    
-    var count = data.d.length;
-  
+    var count = data.d.length;  
     if(count > 0)
     {
         window.clearInterval(timer);
         DisplayDriversData();
-    }
-    
+    }    
     function DisplayDriversData()
     {   console.log('in display driver data');
         $('#msg').empty();
@@ -184,7 +182,7 @@ function getData(data) {
                 console.log(driverID);
                 console.log(spec);
                 html += '<tr>';
-                html += "<td width='10%' align='center'> &pound"+ data.d[i]["Comments"]+"</td>";
+                html += "<td width='10%' align='center'> &pound "+ data.d[i]["Comments"]+"</td>";
                 html += "<td width='25%' align='center'>"+'<a href="#" class="pulse" style="color:blue;" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
                 html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
                 html += "<td width='10%' align='center'>" + '<img src="img/sc.png" class="pulse" width="15" height="15" style="color:grey;" onclick="SpecShow(\''+spec+'\')"/>' + "</td>";
@@ -290,7 +288,7 @@ function getData(data) {
             else if(spec == null) {
                 console.log(spec);
                 html += '<tr>';
-                html += "<td width='10%' align='center'> &pound" + data.d[i]["Comments"] + "</td>";
+                html += "<td width='10%' align='center'> &pound " + data.d[i]["Comments"] + "</td>";
                 html += "<td width='25%' align='center'>" + '<a href="#" style="color:blue;" class="pulse" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
                 html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
                 html += "<td width='10%' align='center'>" + '<img src="img/spec.png"  width="15" height="15" style="color:grey;" onclick="SpecShow(\'Not Available\')"/>' + "</td>";
@@ -404,7 +402,7 @@ function getData(data) {
     }
 }
 
-//rating or driver  lbl4star lbl3star lbl2star lbl1star
+
 function ShowRating()
 {
     $.ajax({
@@ -415,7 +413,6 @@ function ShowRating()
         contentType: "application/json; charset=utf-8",
         success: function(data)
         {
-            
             $('#lbl5tar').text(data.d[0]);
             $('#lbl4star').text(data.d[1]);
             $('#lbl3star').text(data.d[2]);
@@ -429,24 +426,21 @@ function ShowRating()
     });
    
 }
-//close rating pop up
 function ratingClose()
 {
    $('#divRating').hide(); 
    $('#popup_box').hide();
-    
 }
-//
- function SearchDriverAgain()
+
+function SearchDriverAgain()
 {
     window.clearInterval(count);
     $('#msg').empty();
      $('#load').show();
     $('#statusMessage').html("Searching for more drivers...");
     $('#statusMessage').css("color","Yellow");
-    //alert("SearchDriverAgain");
      $.ajax({
-        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetNewResponseData",    //Get Response from driver 
+        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetNewResponseData",
         type: "POST",
         dataType: "Json",
         data: "{'requestID':'" + requestID + "'}",
@@ -456,12 +450,12 @@ function ratingClose()
         }
     });
 }
-//getting the more list of driver
+
 function SearchAgain()
 {
     $('#msg').empty();
     $.ajax({
-        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData",    //Get Response from driver 
+        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData",
         type: "POST",
         dataType: "Json",
         data: "{'requestID':'" + requestID + "'}",
@@ -487,7 +481,7 @@ function showBid() {
     $('#popupBoxClose').show();
     $('#divBiding').show();
     $('#divExpiry').hide();
-     $('#divselect').hide();
+    $('#divselect').hide();
     $('#lblbid').text();
     $('#lblpick').text();
     $('#divDealConfirmed').hide();
@@ -501,31 +495,23 @@ function closeBid() {
     $('#popup_box').hide();
     $('#divBiding').hide();
 }
-//specia req pop up divExpiry divBiding closeExpiry closeBid
+
 function SpecShow(a) {
-    //alert(a);
     $('#popup_box').show();
     $('#divspec').show();
     $('#popupBoxClose').show();
     $('#divDealConfirmed').hide();
     $('#txtothereSpecialReq').text(a);
-    
-    
-
 }
-//close the pop up spec 
 function specClose() {
     $('#popup_box').hide();
     $('#divspec').hide();
-    
 }
 
-// hire me response send to driver 
 function Hireme(driID, reqID,spec)
 {
-    console.log(driID +" "+ reqID +" " + spec);
-    
-    DisableHiremeBtns();    // Disable all other buttons once cliked on any one 'Hire' button.
+    console.log(driID +" "+ reqID +" " + spec);    
+    DisableHiremeBtns();
     $('#msg').disabled = true;
     var getSpec= spec; 
     if(getSpec != "Not Available")
@@ -543,8 +529,7 @@ function Hireme(driID, reqID,spec)
                 return false;
             }
     }
-      //$('#load').hide();
-      $('#loading').show();   //Start loader load
+      $('#loading').show();
       var driverId = driID;
       var requestId = reqID;
       $.ajax({
@@ -560,14 +545,12 @@ function Hireme(driID, reqID,spec)
     
 }
 
-//Disable buttons function
 function DisableHiremeBtns()
 {
             $(":button.disableBtn").each(function(){
                this.disabled = true;
             });
 }
-//getting response data from drivers
 function getResponseFromDriver(data)
  {
         var checkDealResp = window.setInterval(function () {
@@ -593,7 +576,7 @@ function getResponseFromDriver(data)
                         contentType: "application/json; charset=utf-8",
                         success: function (data) {
                            
-                            $('#loading').hide(); //Hide loader once deal found.
+                            $('#loading').hide();
 
                             $('#lbldriverId').text(getDriverID);
                             $('#lblconfirmjob').text(data.d[0]);
@@ -607,11 +590,9 @@ function getResponseFromDriver(data)
                             $('#popup_box').show();
                             $('#divDealConfirmed').show();
                             $('#divselect').hide();
-                            
-                            
                         },
                         complete: function () {
-                            destroySetInterval();    //Call destroy                             
+                            destroySetInterval();                          
                         },
                         error: function (XMLHttpRequest, textStatus, errorThrown) {
                         }
@@ -630,12 +611,10 @@ function getResponseFromDriver(data)
         });
 
     }, 1000);
-    //destroy the timer interval
     function destroySetInterval() {
-        window.clearInterval(checkDealResp);    //clear Interval
+        window.clearInterval(checkDealResp);
     }
 }
-//showing map location
 function ShowMap() 
 {
         var from = $('#lblconfirmfrom').val();
@@ -651,8 +630,6 @@ function ShowMap()
             window.location = 'Location.html?id=' + from + '&rid=' + to + '&rrid=' + loc2;
         }
 }
-//
-//saving the data after cab is booked in cab now table
 function calOk() 
 {
             $('#popup_box').hide();
@@ -672,7 +649,6 @@ function calOk()
                 }
             });
 }
-//selection pop
 function selectDriver()
 {
             $('#divselect').hide();
@@ -732,14 +708,14 @@ function ReInitiateJob()
 function DeleteJob(cause)
 {
          $.ajax({
-            url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CancelCurrentJob",    //Cancel Current Job
+            url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CancelCurrentJob",
             type: "POST",
             dataType: "Json",
             data: "{'requestID':'" + requestID + "','relatedId':'" + relatedId + "','cause':'" + cause + "'}",
             contentType: "application/json; charset=utf-8",
             success: function(data)
                 {
-                    alert(data.d); //delete job status
+                    alert(data.d);
                     window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
                 },
             error: function (XMLHttpRequest, textStatus, errorThrown) {

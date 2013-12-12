@@ -1,4 +1,3 @@
-//query string
 var QString = window.location.search.substring(1);
 var userId = QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
@@ -28,41 +27,24 @@ function FillAllData(data)
     {
         for(var i = 0; i < count; i++)
         {
-            $('#txtFrom').val(data.d[i]["FromPostcode"]);
-            console.log(data.d[i]["FromPostcode"]);
-            $('#txtTo').val(data.d[i]["ToPostcode"]);   
-            console.log(data.d[i]["ToPostcode"]);
-            $('#txt2location').val(data.d[i]["Location2"]);
-            console.log(data.d[i]["Location8"]);
-            $('#txt3location').val(data.d[i]["Location3"]);
-            console.log(data.d[i]["Location3"]);
-            $('#txt4location').val(data.d[i]["Location4"]);
-            console.log(data.d[i]["Location4"]);
-            $('#txt5location').val(data.d[i]["Location5"]);
-            console.log(data.d[i]["Location5"]);
-            $('#txt6location').val(data.d[i]["Location6"]);
-            console.log(data.d[i]["Location6"]);
-            $('#txt7location').val(data.d[i]["Location7"]);
-            console.log(data.d[i]["Location7"]);
-            $('#txt8location').val(data.d[i]["Location8"]); 
-            console.log(data.d[i]["Location8"]);
+            $('#txtFrom').val(data.d[i]["FromPostcode"]);            
+            $('#txtTo').val(data.d[i]["ToPostcode"]);           
+            $('#txt2location').val(data.d[i]["Location2"]);         
+            $('#txt3location').val(data.d[i]["Location3"]);          
+            $('#txt4location').val(data.d[i]["Location4"]);         
+            $('#txt5location').val(data.d[i]["Location5"]);         
+            $('#txt6location').val(data.d[i]["Location6"]);          
+            $('#txt7location').val(data.d[i]["Location7"]);      
+            $('#txt8location').val(data.d[i]["Location8"]);        
             $('#txtDistance').val(data.d[i]["DistanceInMile"]);
-            console.log(data.d[i]["DistanceInMile"]);
-            $('#txtothereSpecialRequirement').val(data.d[i]["OtherSpecReq"]);
-            console.log(data.d[i]["OtherSpecReq"]);
+            $('#txtothereSpecialRequirement').val(data.d[i]["OtherSpecReq"]);       
             
-            document.getElementById('ddlpassenger').value = data.d[i]["LargeLuggage"];
-            console.log(data.d[i]["NumberOfPassenger"]);
-            document.getElementById('ddllargecase').value = data.d[i]["LargeLuggage"];
-            console.log(data.d[i]["LargeLuggage"]);
-            document.getElementById('ddlsmallcase').value = data.d[i]["SmallLuggage"];
-            console.log(data.d[i]["SmallLuggage"]);
-            document.getElementById('ddlWheelchair').value = data.d[i]["WheelChairPassenger"];
-            console.log(data.d[i]["WheelChairPassenger"]);
-            document.getElementById('ddlChidbooster').value = data.d[i]["ChildBooster"];
-            console.log(data.d[i]["ChildBooster"]);
-            document.getElementById('ddlChidseats').value = data.d[i]["ChildCarSeat"];            
-            console.log(data.d[i]["ChildCarSeat"]);
+            document.getElementById('ddlpassenger').value = data.d[i]["LargeLuggage"];      
+            document.getElementById('ddllargecase').value = data.d[i]["LargeLuggage"];     
+            document.getElementById('ddlsmallcase').value = data.d[i]["SmallLuggage"];         
+            document.getElementById('ddlWheelchair').value = data.d[i]["WheelChairPassenger"];         
+            document.getElementById('ddlChidbooster').value = data.d[i]["ChildBooster"];         
+            document.getElementById('ddlChidseats').value = data.d[i]["ChildCarSeat"];         
         }
     }
 }
@@ -89,29 +71,24 @@ $(document).ready(function ()
                 });
             });
         }
+       $('#chkNo').click(function () {
+           document.getElementById("chkyes").checked = false;
+           $('#returnJ').fadeIn("slow");
+           $('#termCond').fadeIn("slow");
 
-        $('#chkNo').click(function () {
-            document.getElementById("chkyes").checked = false;
-            $('#returnJ').fadeIn("slow");
-            $('#termCond').fadeIn("slow");
+       });
+       $('#chkyes').click(function () {
+           document.getElementById("chkNo").checked = false;
+           $('#returnJ').fadeOut("slow");
+           $('#termCond').fadeOut("slow");
 
-        });
-        $('#chkyes').click(function () {
-            document.getElementById("chkNo").checked = false;
-            $('#returnJ').fadeOut("slow");
-            $('#termCond').fadeOut("slow");
+       });
 
-        });
-
-        $('#popupBoxClose').click(function () {
-            $('#popup_box').fadeOut("slow");
-        });
-    
-    
-    
-    
+       $('#popupBoxClose').click(function () {
+           $('#popup_box').fadeOut("slow");
+       });
     });
-//finding duration between two distance
+
 function Duration()
 {
         console.log('duration called');
@@ -129,7 +106,6 @@ function Duration()
 
 function CalculateDuration(fromLocation, toLocation)
 {
-    
         var rendererOptions = {
             draggable: true
         };
@@ -177,13 +153,11 @@ function CalculateDuration(fromLocation, toLocation)
             return time;
         }
 }
-//getting location basis of postcode
+
 function loc() {
     var from = $('#txtFrom').val();
     var to = $('#txtTo').val();
     var loc2 = $('#txt2location').val();
-    //alert(from + to);
-    //var dis = "none";
     window.location = 'Location.html?id=' + from + '&rid=' + to + '&rrid=' + loc2;
 }
 function backtoCustomerhome() 
@@ -191,16 +165,10 @@ function backtoCustomerhome()
     window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
 }
 
-function currentlocation() {
-    //window.location =  'Location.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;  
-}
-
 
 function availabledriver() {
     var fromloc;
     var toloc = document.getElementById('txtTo').value;
-    //alert(fromloc + " " + toloc);
-    
     var isChecked = $('#chkFromLocation').attr('checked') ? true : false;
     if (isChecked == false) {
         fromloc = document.getElementById('txtFrom').value;
@@ -208,14 +176,11 @@ function availabledriver() {
     }
     else if (isChecked == true) {
         fromloc = document.getElementById('txtCurrentFrom').value;
-       
     }
         
-     CalculateDuration(fromloc, toloc);
-        
+     CalculateDuration(fromloc, toloc);        
     
-    var distance = document.getElementById('txtDistance').value;
-   
+    var distance = document.getElementById('txtDistance').value;   
     var pickdate = document.getElementById('pickUpDate').value;
     var picktime = document.getElementById('pickUpTime').value;
     console.log(pickdate + " " + picktime);
@@ -229,8 +194,6 @@ function availabledriver() {
     var returnDate = document.getElementById("datepickers").value;
     var returnTime = document.getElementById("timepickers").value;
 
-    //add Location    
-   
     var secondLoc = $('#txt2location').val();
     var thirdLoc =  $('#txt3location').val();
     var fourthLoc = $('#txt4location').val();
@@ -253,12 +216,9 @@ function availabledriver() {
     var returnfromloc = $("#txtReturFrom").val();
     var returntoloc = $("#txtReturTo").val();
     
-    //check Job type(cabnow or cablater)
-    
     var isCabNow = $('#RBcabNOW').attr('checked') ? true : false;
     
     var travelTime = $('#TravelTime').val();
-    //alert(travelTime);
     if (!fromloc) {
         $('#lblMessage').text("Enter From location!");
         return false;
@@ -331,16 +291,15 @@ function availabledriver() {
                     }
                     else
                     {
-                        alert('Oops..please try again.' + data.d[0]);
+                        alert('Oops..please try again.');
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown){
-                    // alert(errorThrown);
                 }
             });
         }
     }
 
-    function homeSearch() {
-        window.location = 'customerHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-    }
+ function homeSearch() {
+     window.location = 'customerHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+ }

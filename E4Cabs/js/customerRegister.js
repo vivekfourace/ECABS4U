@@ -1,4 +1,3 @@
-//registering data
 function Registercustomer()
 {
     var txt1 =$('#txtFirstName').val();
@@ -25,7 +24,6 @@ function Registercustomer()
                      $('#txtLastName').focus();                     
                     return false;
          }
-          //validate Phone number.
         if(txt3.length > 0)
          {
                     if(phoneno.test(txt3))
@@ -46,7 +44,6 @@ function Registercustomer()
                            return false;
          }
     
-         //validate Email address
         if(txt4.length > 0)
          {
                   if(txt4.match(regExpEmail))
@@ -113,27 +110,26 @@ function Registercustomer()
                         $('#txtConfirmPassword').focus();
                         return false;
     }
-   //ajax call for register customer
     $.ajax({
-                        cache: false,
-                                        beforeSend: function(){
-                                             $('#imgLoader').show();
-                                         },
-                                         complete: function(){
-                                             $('#imgLoader').hide();
-                                         },
-                        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RegisterCustomer",
-                        type: "POST",
-                        dataType: "json",
-                        data: "{ 'fname': '" + txt1 + "','lname': '" + txt2 + "','email': '" + txt4 + "','userID': '" + txt6 + "','password': '" + txt7 + "','contactNumber': '" + txt3 + "'}",
-                        contentType: "application/json; charset=utf-8",
-                        success: CheckData,
-                        error: function (XMLHttpRequest, textStatus, errorThrown) 
-                        {
-                       }
-           });    
+             cache: false,
+             beforeSend: function(){
+                  $('#imgLoader').show();
+              },
+              complete: function(){
+                  $('#imgLoader').hide();
+              },
+             url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RegisterCustomer",
+             type: "POST",
+             dataType: "json",
+             data: "{ 'fname': '" + txt1 + "','lname': '" + txt2 + "','email': '" + txt4 + "','userID': '" + txt6 + "','password': '" + txt7 + "','contactNumber': '" + txt3 + "'}",
+             contentType: "application/json; charset=utf-8",
+             success: CheckData,
+             error: function (XMLHttpRequest, textStatus, errorThrown) 
+             {
+           }
+     });    
 }
-//checking usename exits or not
+
 function CheckData(data)
 {    
     if(data.d =="true")
@@ -154,11 +150,8 @@ function CheckData(data)
        $('#lblMsg').text(data.d);
        $('#lblMsg').css("color","#D70007");
        $('#lblMsg').css("font-size","13");
-       //$('#txtUserName').val("");
-       //$('#txtUserName').focus();
     }
 }
-//back to index page
 function backToIndex()
 {
     window.location="index.html";

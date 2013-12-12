@@ -31,6 +31,23 @@ function ShowData(data)
     $('#lblLocation2').text(data.d[3]);
     $('#lblMobileNo').text(data.d[4]);
     $('#lblEmailID').text(data.d[5]);
+    if(data.d[6] != undefined)
+    {
+       $('#vehi-regis').html(":  "+data.d[6]); 
+    }
+    else
+    {
+        $('#vehi-regis').html(":  Not allocated");
+    }
+    if(data.d[7] != undefined)
+    {
+        $('#vehi-plate').html(":  "+data.d[7]);
+    }
+    else
+    {
+        $('#vehi-plate').html(":  Not allocated");
+    }
+    
     
     $('#lblWarning').text("");
     $('#txtname').hide(); 
@@ -52,7 +69,8 @@ function ShowData(data)
     $('#lblEmailID').show();
     $('#btnEdit').show();
     $('#btnBack').show();
-  $('hr').show();
+
+    $('hr').show();
     //$('#mobno').show();
  }
 //Edit The Driver Profile. It Will convert Label To text Box.

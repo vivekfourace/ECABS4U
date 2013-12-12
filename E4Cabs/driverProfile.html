@@ -156,7 +156,7 @@
                 </table>
                 
             </div>
-            <div style="padding-top:75%;padding-bottom:50px">
+            <div style="padding-top:70%;padding-bottom:20px">
                 <table style="width:100%">
                     <tr id="tredit">
                         <td style="width:100%" align="center">
@@ -174,15 +174,25 @@
                     </tr>
                     <tr id="trCancel" style="display:none;">
                         <td align="center"  style="width:100%" >
-                            <input id="btnCancel" type="button" class="btn-tmp cursor" style="width:100%;color:white;" value="Cancel" onclick="CancelProfile();"/>
-                            
-                        </td>
-                        
-                    </tr>
-                    
-                </table>
-                
+                            <input id="btnCancel" type="button" class="btn-tmp cursor" style="width:100%;color:white;" value="Cancel" onclick="CancelProfile();"/>                            
+                        </td>                        
+                    </tr>                    
+                </table>                
             </div>
+            <table style="width: 100%; position:fixed;bottom:0;padding-bottom:35px">
+                <tr>
+                    <th style="width:90%;text-align:left;padding-left:20px;height:25px;background-color:#848484;color:white" colspan="2">Vehicle allocated to you.</th>
+                </tr>
+                <tr>
+                    <td style="width:40%;text-align:left;padding-left:20px;height:20px;">Registration no </td>
+                    <td style="width:60%;text-align:left;height:20px;color:black" id='vehi-regis'></td>                    
+                </tr>
+                <tr>
+                    <td style="width:40%;text-align:left;padding-left:20px;height:20px;">Plate no </td>
+                    <td style="width:60%;text-align:left;height:20px;color:black" id='vehi-plate'></td>
+                    
+                </tr>
+            </table>
             <div data-role="footer" data-position="fixed" style="width:100%;position:fixed;bottom:0px;height:25px;padding-bottom:10px">
                 <table style="width:98%;" class="btn-tmpFooter">
                     <tr>

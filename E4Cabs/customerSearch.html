@@ -4,19 +4,15 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
-       
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
-    
+    <script type="text/javascript" src="Scripts/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>    
     <link rel="stylesheet" type="text/css" href="css/site.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <link rel="stylesheet" type="text/css" href="css/PopUp.css" />
     <link rel="stylesheet" type="text/css" href="css/jquery.mobile.css" />
     <link type="text/css" href="css/jqm-datebox.min.css" rel="stylesheet" />
 
-    <!--key=AIzaSyDAKXfZggeVZMCwQnR-mGebtLCvjuRfZcg-->
-    <!--<script type="text/javascript" src="Scripts/jquery-1.7.1.js"></script>-->
-    <script type="text/javascript" src="Scripts/jquery-2.0.3.min.js"></script>
-    <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script type="text/javascript" src="Scripts/jquery-1.7.1.js"></script>
     <script type="text/javascript" src="Scripts/jquery.mobile.js"></script>
     <script type="text/javascript" src="Scripts/jqm-datebox.core.min.js"></script>
     <script type="text/javascript" src="Scripts/datebox.mode.datebox.min.js"></script>
@@ -24,15 +20,16 @@
     <script type="text/javascript" src="Scripts/jquery.mobile.simpled.min.js"></script>
 
     <script type="text/javascript" src="jquery-mobile/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
     <script type="text/javascript" src="js/CalculateDistance.js"></script>
     <script type="text/javascript" src="js/customerSearch.js"></script>
-    <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
+
     
 </head>
     <script type="text/javascript">
     function initialize() {
          var mapOptions = {              
-              componentRestrictions: {country: 'United Kingdom'},              
+              componentRestrictions: {country: 'UK'},              
         };
        
         var map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
