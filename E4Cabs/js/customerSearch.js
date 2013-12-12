@@ -3,10 +3,11 @@ var QString = window.location.search.substring(1);
 var userId = QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
-var requestID = QString.split("=")[4].split("&")[0];
-console.log(requestID);
-if(requestID != null)
+
+console.log(roleId);
+if(roleId != null)
 {
+    var requestID = roleId;
     $.ajax({
         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/FillJobSearchDetail",
         type: "POST",
@@ -88,14 +89,6 @@ $(document).ready(function ()
                 });
             });
         }
-        //$('.expand').live({
-        //    focus: function () {
-        //        $(this).animate({ height: "70" }, 500);
-        //    },
-        //    blur: function () {
-        //        $(this).animate({ height: "50" }, 500);
-        //    },
-        //});
 
         $('#chkNo').click(function () {
             document.getElementById("chkyes").checked = false;
@@ -193,18 +186,15 @@ function loc() {
     //var dis = "none";
     window.location = 'Location.html?id=' + from + '&rid=' + to + '&rrid=' + loc2;
 }
-//back to 
 function backtoCustomerhome() 
 {
     window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
 }
 
-//current Location
 function currentlocation() {
     //window.location =  'Location.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;  
 }
 
-//Search Available
 
 function availabledriver() {
     var fromloc;
@@ -341,7 +331,7 @@ function availabledriver() {
                     }
                     else
                     {
-                        alert('Oops..please try again.');
+                        alert('Oops..please try again.' + data.d[0]);
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown){
@@ -351,7 +341,6 @@ function availabledriver() {
         }
     }
 
-    // Home Button In Hearder
     function homeSearch() {
         window.location = 'customerHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
     }

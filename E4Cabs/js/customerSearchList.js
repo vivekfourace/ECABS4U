@@ -23,13 +23,13 @@ var timeOut;
 
 function JobExpiryTime(data)
 {
-    timeOut = (data.d)*1000;
-    //alert(timeOut);
+    timeOut = data.d;
+    console.log(timeOut);
 }
 
 var timer = setInterval(function () {
     --timeOut;
-    //document.getElementById('lblMessage').innerHTML = "Your job will expire in " + --timeOut + "s.";
+    console.log(timeOut);
     if (timeOut <= 0) {
         window.clearInterval(id);
         alert('Oops! no driver found, please search again.');
@@ -37,24 +37,35 @@ var timer = setInterval(function () {
     }
 }, 1000);
 
+var count = setInterval(function(){
+    var isTrue = CheckJobCount();
+    if(isTrue)
+    {
+        SearchDriverAgain();
+    }
+}, 1000);
+
 var a = 0;
-function CheckJobCount(count)
+function CheckJobCount()
 {
     a++;
-    if(a == 59 && count==0)
+    console.log(a);
+    if(a == 10)
     {
+       console.log("true");
        return true;
     }
     return false;
 }
+
 function Destroy() {
     window.clearInterval(timer);
     window.clearInterval(id);
     window.location = "customerSearch.html";
 }
+
  $('#load').show();
-var id = window.setInterval(function () {
-   
+var id = window.setInterval(function () {   
     $.ajax({
         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData",    //Get Response from driver
         type: "POST",
@@ -67,35 +78,18 @@ var id = window.setInterval(function () {
     });
 }, 10000);
 
+    
 function getData(data) {    
     var count = data.d.length;
-    var isTrue =  CheckJobCount(count);
-    if(isTrue)
+  
+    if(count > 0)
     {
-        //TODO: send request again from the scratch to next five drivers.
-        //window.clearInterval(id);
-        SearchDriverAgain();
-       
-    }
-    
-    var getCount = data.d[0]["DriverDisplayCount"];
-    if (count < getCount )
-    {
+        window.clearInterval(timer);
         DisplayDriversData();
-    }
-    else if (count  >= getCount )
-    {
-        DisplayDriversData();
-    }
-
-    else {
-        $('#divDriverList').hide();
-        $('#load').show();
     }
     
     function DisplayDriversData()
-    {
-        
+    {   console.log('in display driver data');
         $('#msg').empty();
         $('#divbid').show();
         $('#divawait').hide();
@@ -152,8 +146,7 @@ function getData(data) {
                     $('#lblexp').text(sh + ":" + sm );
                 }
             }
-
-            //
+            
             var bidTime = data.d[i]["BidTime"];
             var bid = bidTime.split(" ");
             var bidmin = bid[1].split(":");
@@ -189,6 +182,7 @@ function getData(data) {
             }
             if (spec != null) {
                 console.log(driverID);
+                console.log(spec);
                 html += '<tr>';
                 html += "<td width='10%' align='center'> &pound"+ data.d[i]["Comments"]+"</td>";
                 html += "<td width='25%' align='center'>"+'<a href="#" class="pulse" style="color:blue;" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
@@ -198,16 +192,14 @@ function getData(data) {
                 html += "<td width='15%' align='center'>" + '<input type="button" class="disableBtn accept-btn" value="Hire" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'' + spec + '\');"/>' + "</td>";
                 html += '</tr>';
                 html += '<tr>';
-                //var rating = data.d[i]["RatingFiveDayBack"];
-                //var rating1 = data.d[i]["RatingFourDayBack"];
-                //var rating2 = data.d[i]["RatingThreeDayBack"];
+               
                 var rating3 = data.d[i]["RatingTwoDayBack"];
                 var rating4 = data.d[i]["RatingOneDayBack"];
                 var rating5 = data.d[i]["RatingToday"];
                 
                           if(rating3 != "0")
                           {
-                                   html += '<td style="width:30%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="img/driver.png" style="width:20px;height:20px"/>'
+                                   html += '<td style="width:100%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="img/driver.png" style="width:20px;height:20px"/>'
                                    if(rating3 == "1")
                                     {
                                         
@@ -236,7 +228,7 @@ function getData(data) {
                           }
                           else
                            {
-                               html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484; colspan='2'>  --</td>";
+                                html += '<td style="width:30%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="img/driver.png" style="width:20px;height:20px"/>  --</td>'
                            }
                           if(rating4 != "0")
                           {
@@ -263,7 +255,7 @@ function getData(data) {
                           }
                           else
                            {
-                               html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484; colspan='2'>  --</td>";
+                               html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;'  colspan='2'>--</td>";
                            }
                           if(rating5 != "0")
                           {
@@ -290,19 +282,20 @@ function getData(data) {
                           }
                           else
                            {
-                               html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484; colspan='2'>  --</td>";
+                               html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'>--</td>";
                            }                         
                           html += '</tr>';
                        
                 }
             else if(spec == null) {
+                console.log(spec);
                 html += '<tr>';
                 html += "<td width='10%' align='center'> &pound" + data.d[i]["Comments"] + "</td>";
                 html += "<td width='25%' align='center'>" + '<a href="#" style="color:blue;" class="pulse" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
                 html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
                 html += "<td width='10%' align='center'>" + '<img src="img/spec.png"  width="15" height="15" style="color:grey;" onclick="SpecShow(\'Not Available\')"/>' + "</td>";
                 html += "<td width='20%' align='center'>" + bidh + ":" + bidm + "</td>";
-                html += "<td width='15%' align='center'>" + '<input type="button" class="disableBtn accept-btn"  value="Hire" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'' + spec + '\');"/>' + "</td>";
+                html += "<td width='15%' align='center'>" + '<input type="button" class="disableBtn accept-btn"  value="Hire" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'Not Available\');"/>' + "</td>";
                 html += '</tr>';
                 html += '<tr>';
                 var rating33 = data.d[i]["RatingTwoDayBack"];
@@ -311,7 +304,7 @@ function getData(data) {
                 
                           if(rating33 != "0")
                           {
-                                  html += '<td style="width:30%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="img/driver.png" style="width:20px;height:20px"/>'
+                                  html += '<td style="width:100%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="img/driver.png" style="width:20px;height:20px"/>'
                                    if(rating33 == "1")
                                     {
                                         html += "   <img src='img/1star.PNG' style='width:18%'/></td>";
@@ -335,29 +328,29 @@ function getData(data) {
                           }
                           else
                            {
-                               html += '<td style="width:30%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="img/driver.png" style="width:20px;height:20px"/>--</td>'
+                               html += '<td style="width:30%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="img/driver.png" style="width:20px;height:20px"/>  --</td>'
                            }
                           if(rating44 != "0")
                           {
                                    if(rating44 == "1")
                                     {
-                                        html += "<td style='width:30%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/1star.PNG' style='width:18%'/></td>";
+                                        html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/1star.PNG' style='width:18%'/></td>";
                                     }
                                     else if(rating44 == "2")
                                     {
-                                        html += "<td style='width:30%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/2star.PNG' style='width:33%'/></td>";
+                                        html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/2star.PNG' style='width:33%'/></td>";
                                     }
                                     else if(rating44 == "3")
                                     {
-                                        html += "<td style='width:30%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/3star.PNG' style='width:45%'/></td>";
+                                        html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/3star.PNG' style='width:45%'/></td>";
                                     }
                                     else if(rating44 == "4")
                                     {
-                                        html += "<td style='width:30%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/4star.PNG' style='width:58%'/></td>";
+                                        html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/4star.PNG' style='width:58%'/></td>";
                                     }
                                     else if(rating44 == "5")
                                     {
-                                        html += "<td style='width:30%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/5star.PNG' style='width:70%'/></td>";
+                                        html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/5star.PNG' style='width:70%'/></td>";
                                     }
                           }
                           else
@@ -368,48 +361,45 @@ function getData(data) {
                           {
                                    if(rating55 == "1")
                                     {
-                                        html += "<td style='width:30%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/1star.PNG' style='width:18%'/></td>";
+                                        html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/1star.PNG' style='width:18%'/></td>";
                                     }
                                     else if(rating55 == "2")
                                     {
-                                        html += "<td style='width:30%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/2star.PNG' style='width:33%'/></td>";
+                                        html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/2star.PNG' style='width:33%'/></td>";
                                     }
                                     else if(rating55 == "3")
                                     {
-                                        html += "<td style='width:30%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/3star.PNG' style='width:45%'/></td>";
+                                        html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/3star.PNG' style='width:45%'/></td>";
                                     }
                                     else if(rating55 == "4")
                                     {
-                                        html += "<td style='width:30%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/4star.PNG' style='width:58%'/></td>";
+                                        html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/4star.PNG' style='width:58%'/></td>";
                                     }
                                     else if(rating55 == "5")
                                     {
-                                        html += "<td style='width:30%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/5star.PNG' style='width:90%'/></td>";
+                                        html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/5star.PNG' style='width:90%'/></td>";
                                     }
                           }
                           else
                            {
-                               html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;'  colspan='2'>--</td>";
+                               html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'>--</td>";
                            }                         
                           html += '</tr>';
-                $('#txtothereSpecialReq').text("Not Available");
             }
         }
         html += '</tbody>';
         html += '</table>';
-        html += '<br/>'
+        html += '<br/>'      
         
-        if(count < getCount)
-        {
-            html += '<div>';
-            html += '<table>';
-            html += '<tr>';
-            html += '<td>';
-            html += '<input type="button" id="searchAgain" class="reject-btn" value="InSufficient Drivers" onclick="SearchDriverAgain()"/>';
-            html += '</td></tr>'; 
-            html += '</table>';
-            html += '</div>';
-        }
+        html += '<div>';
+        html += '<table>';
+        html += '<tr>';
+        html += '<td>';
+        html += '<input type="button" id="searchAgain" class="reject-btn" value="InSufficient Drivers" onclick="SearchDriverAgain()"/>';
+        html += '</td></tr>'; 
+        html += '</table>';
+        html += '</div>';
+        
         $('#msg').append(html);
     }
 }
@@ -449,6 +439,7 @@ function ratingClose()
 //
  function SearchDriverAgain()
 {
+    window.clearInterval(count);
     $('#msg').empty();
      $('#load').show();
     $('#statusMessage').html("Searching for more drivers...");
@@ -536,7 +527,7 @@ function Hireme(driID, reqID,spec)
     
     DisableHiremeBtns();    // Disable all other buttons once cliked on any one 'Hire' button.
     $('#msg').disabled = true;
-    var getSpec= $('#txtothereSpecialReq').text(spec); 
+    var getSpec= spec; 
     if(getSpec != "Not Available")
     {
             var seeSpec=confirm("Please read the special circumstance entry !");
@@ -730,7 +721,7 @@ function ReInitiateJob()
 {
         var result = confirm("Do you want to Re-Initiate this job ?");    
         if (result==true) {
-              window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId + '&reqid=' + requestID;
+              window.location = 'customerSearch.html?id=' + userId + '&rid=' + requestID + '&rrid=' + relatedId;
         }
         else
         {

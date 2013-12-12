@@ -92,7 +92,6 @@ function AbortJob(data)
     var isTrue = confirm("Do you want to cancel the current Cab.");
     if(isTrue)
     {
-        
         //$('#lblJobNumber').text(data);
         $('#freezBack').show();
         $('#popup_box1').show();
@@ -174,7 +173,7 @@ function SubmitReject()
                               $('#txtAbortmsg').val("");
                               $('#freezBack').hide();
                               alert("Job cancelled successfully.");
-                              window.location='bookedhistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                              window.location='CustomerHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                          }                         
                      },
                     
