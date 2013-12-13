@@ -38,8 +38,19 @@
             <div style="margin-bottom:30px;padding-top:30px;">
             <img src="img/LoganCar.png" class="cursor" style="width:170px;height:120px"/>
              </div>
-            <label id="lblMsg"></label>
-            <br />
+            <label id="lblMsg"></label><br/>
+            <div style="width:80%;">
+                
+                <label style="display: inline-block;vertical-align: middle;float:left">
+                    <input type="radio" name="type" class="user" id="typedriver" value="3">
+                    <span>I am a driver</span>
+                </label>
+                <label style="display: inline-block;vertical-align:middle;float:right">
+                    <input type="radio" name="type" class="user" id="customerdriver" value="4">
+                      <span>I am a customer</span>
+                </label>
+            </div>
+            <br/><br/>
             <input type="text" id="txtEmail" style="font-family:Trebuchet MS;width:80%" placeholder="Email id" /> 
                  <div style="margin-top:10px;">
             <input type="button" class="btn-Login cursor" value="Submit" onclick="forgotPassword()" /> 
