@@ -25,7 +25,7 @@ function UploadCustomerFeedBack()
                                 if(comment != null)
                                 {
                                     html += "<tr>";
-                                    html += "<td style='width:30%;text-align:center;height:50px'>" + '<img src="img/brown-man-icon.png"  width="50px" height="50px" style="color:grey;"/>' + "</td>";
+                                    html += "<td style='width:30%;text-align:center;height:50px'>" + '<img src="img/brown-man-icon.png" style="color:grey;height:50px;width:50px;padding-top:5px"/>' + "</td>";
                                     html += "<td rowspan='2' style='height:80px;width:70%;border-bottom:1px solid black;word-break:break-all'>"+'<b><u>' + data.d[i]["Name"] + '</u></b>'+'<br/>'
                                     html += '<span margin-top:"12px">'+ data.d[i]["Comment"] +'</span>';
                                     html += '</td>';
@@ -61,7 +61,7 @@ function UploadCustomerFeedBack()
                             }
                             html +='</tbody>';
                             html +='</table>';
-                            $('#Comments').append(html);
+                            $('#msg').append(html);
                         }
                         else
                         {

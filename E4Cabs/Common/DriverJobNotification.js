@@ -73,7 +73,7 @@ function Check(){
              });
     
 }
-setInterval(Check, 5000);
+setInterval(Check, 10000);
   //cancel the Request.
           function closeRequest()
           {
