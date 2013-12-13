@@ -96,13 +96,47 @@ function EditProfile()
 //upadate customer Profile
 function UpdateProfile()
 {
-      var name = $('#txtname').val();
-      var lastname = $('#txtlastname').val();
-      var address1 = $('#txtLocation').val();
-      var address2 = $('#txtLocation2').val();
-      var email = $('#txtEmailID').val();
-      var phoneno = $('#txtMobileno').val();
-      var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateCustomerDetails";
+     var name = $('#txtname').val();
+     var lastname = $('#txtlastname').val();
+     var address1 = $('#txtLocation').val();
+     var address2 = $('#txtLocation2').val();
+     var email = $('#txtEmailID').val();
+     var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
+     var phoneno = $('#txtMobileno').val();
+    if(name.length == 0)
+    {
+        alert("Please enter your name.");
+        return false;
+    }
+    
+    if(phoneno.length === 0)
+    {
+        alert("Enter contact number.");
+        return false;
+    }
+    else if(phoneno.length < 11)
+    {
+        alert("Enter a valid contact number.");
+        return false;
+    }
+    
+     if(email.length > 0)
+                    {
+                        if(email.match(regExpEmail))
+                        {
+                           
+                        }
+                        else{
+                            alert("Please enter a valid email address.");
+                            return false;
+                        }
+                    }
+                else if(email.length == 0)
+                {
+                   alert("Please enter email address.");
+                    return false;
+                }
+        var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateCustomerDetails";
         $.ajax(url,{
             type:"POST",
             dataType: "Json",

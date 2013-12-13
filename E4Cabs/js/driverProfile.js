@@ -31,6 +31,7 @@ function ShowData(data)
     $('#lblLocation2').text(data.d[3]);
     $('#lblMobileNo').text(data.d[4]);
     $('#lblEmailID').text(data.d[5]);
+    console.log(data.d[6]);
     if(data.d[6] != undefined)
     {
        $('#vehi-regis').html(":  "+data.d[6]); 
@@ -45,10 +46,10 @@ function ShowData(data)
     }
     else
     {
+        console.log('not');
         $('#vehi-plate').html(":  Not allocated");
     }
-    
-    
+        
     $('#lblWarning').text("");
     $('#txtname').hide(); 
     $('#txtLastname').hide();
@@ -56,9 +57,9 @@ function ShowData(data)
     $('#txtLocation2').hide();    
     $('#txtMobileno').hide();    
     $('#txtEmailID').hide();
-     document.getElementById("trBtnUpdate").style.display = 'none';
-     document.getElementById("trCancel").style.display = 'none';
-     document.getElementById("tredit").style.display = 'table-row';
+    $("#trBtnUpdate").hide();
+    $("#trCancel").hide();
+    $("#tredit").show();
     
     $('#divMarquee').show();
     $('#lblname').show();
@@ -92,12 +93,9 @@ function EditProfile()
     $('#lblEmailID').show();
     $('#divMarquee').hide();
     $('hr').hide();
-    //$('#mobno').hide();
-    document.getElementById("trBtnUpdate").style.display = 'table-row';
-     document.getElementById("trCancel").style.display = 'table-row';
-     document.getElementById("tredit").style.display = 'none';
-    //$('#btnUpdate').show();
-    //$('#btnCancel').show();
+    $("#trBtnUpdate").show();
+    $("#trCancel").show();
+    $("#tredit").hide();
     $('#btnEdit').hide();
     var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetDriverDetails";
     $.ajax(url,{
@@ -128,6 +126,42 @@ function UpdateProfile()
       var address2 = $('#txtLocation2').val();
       var email = $('#txtEmailID').val();
       var phoneno = $('#txtMobileno').val();
+      var phonenoval =/^\d{11}$/;
+
+     if(!address1)
+       {
+                     alert("Please enter address line1.");
+                     $('#txtFirstName').focus();                        
+                     return false;
+       }
+       if(!address2)
+        {
+                    alert("Please enter address line2.");
+                     $('#txtLastName').focus();                     
+                    return false;
+         }
+     if(phoneno.length > 0)
+         {
+                    if(phonenoval.test(phoneno))
+                        {
+                            $('#lblMsg').text(" ");
+                        }
+                        else
+                    {
+                           alert("Please enter a valid contact number.");
+                            $('#txtPhone').focus();
+                            return false;
+                    }
+         }
+        else if(phoneno.length == 0)
+         {
+                          alert("Please enter contact number.");
+                           $('#txtPhone').focus();
+                           return false;
+         }
+    
+    
+    
     var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateDriverDetails";
     $.ajax(url,{
         type:"POST",
@@ -165,31 +199,24 @@ function logout()
        //$.cookie("userPassword", 'null');
         window.location = "index.html";  
 }
-//Profile Button In Footer Redirect To Driver Profile.
 function MyProfilePage(){
     window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
-//History button in Footer Redirect to Driver History.
 function bookedHistory()
 {
   window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;  
 }
 
-//Feedback Button in  Footer Redirect to Driver Feedback.
 function feedBack()
 {
     window.location='driverFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-
- //Accepting the Request.    
           function seeRequest()
           {
               window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
           }
           
-          
-          //cancel the Request.
           function closeRequest()
           {
                $.ajax({

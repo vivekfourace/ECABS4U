@@ -8,11 +8,11 @@
         <link rel="stylesheet" type="text/css" href="css/PopUp.css" />
         
         <script src="Scripts/jquery-2.0.3.min.js"></script>
-        <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
-        <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>  
-        <script type="text/javascript" src="js/driverProfile.js"></script>
-        <script type="text/javascript" src="Common/GpsCurrentLocation.js"></script>
+        <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>    
         <script type="text/javascript" src="Common/DriverJobNotification.js"></script>
+        <script type="text/javascript" src="Common/GpsCurrentLocation.js"></script>
+        <script type="text/javascript" src="js/driverProfile.js"></script> 
+         <script type="text/javascript" src="Scripts/jquery.cookie.js"></script> 
         
         <title></title>
     </head>
@@ -116,7 +116,7 @@
                     <tr>
                         <td style="width:100%">
                             <label id="lblLocation" class="font-style"></label>
-                             <input type="text" id="txtLocation" class="font-style" style="display:none;text-align:left;width:90%";/>
+                             <input type="text" id="txtLocation" placeholder="Address line1" class="font-style" style="display:none;text-align:left;width:90%";/>
                             <hr>
                         </td>
                         
@@ -124,7 +124,7 @@
                     <tr>
                         <td style="width:100%">
                             <label id="lblLocation2" class="font-style"></label>
-                            <input type="text" id="txtLocation2" style="display:none;text-align:left;width:90%"/>
+                            <input type="text" id="txtLocation2" placeholder="Address line2" style="display:none;text-align:left;width:90%"/>
                             <hr>
                         </td>
                         
@@ -132,7 +132,7 @@
                     <tr>
                         <td style="width:100%">
                             <label id="lblMobileNo" class="font-style"></label>
-                            <input type="text" id="txtMobileno" class="font-style" maxlength="11" style="display:none;text-align:left;width:90%"/>
+                            <input type="text" id="txtMobileno" placeholder="Contact number" class="font-style" maxlength="11" style="display:none;text-align:left;width:90%"/>
                             <hr id="mobno">
                         </td>
                         

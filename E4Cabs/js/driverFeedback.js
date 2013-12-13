@@ -16,8 +16,8 @@ function UploadCustomerFeedBack()
                         var count = data.d.length;
                         if(count > 0)
                         {
-                            var html = '<table style="border-collaspe:collaspe;">';
-                            html +='<tbody>'; 
+                            var html = '<table border="0" id="tbhist" cellspacing="0"; width="100%"  style="border-collaspe:collaspe;">';
+                            html +='<tbody class="body-style"  style="font-size:14px;">'; 
                              for(var i=0; i<count; i++)
                             {
                                 var comment = data.d[i]["Comment"];
@@ -25,39 +25,35 @@ function UploadCustomerFeedBack()
                                 if(comment != null)
                                 {
                                     html += "<tr>";
-                                    html += "<td width='30%' height='50px' style='padding-top:15px;' align='center'>" + '<img src="img/brown-man-icon.png"  width="50px" height="50px" style="color:grey;"/>' + "</td>";
-                                    html += "<td width='70%' rowspan='2' height='50px' style='font-weight:bold;text-decoration:underline' align='left'>" + data.d[i]["Name"] + "</td>";
+                                    html += "<td style='width:30%;text-align:center;height:50px'>" + '<img src="img/brown-man-icon.png"  width="50px" height="50px" style="color:grey;"/>' + "</td>";
+                                    html += "<td rowspan='2' style='height:80px;width:70%;border-bottom:1px solid black;word-break:break-all'>"+'<b><u>' + data.d[i]["Name"] + '</u></b>'+'<br/>'
+                                    html += '<span margin-top:"12px">'+ data.d[i]["Comment"] +'</span>';
+                                    html += '</td>';
                                     html +="</tr>";
-                                    html += "<tr>";
-                                    html +="<td>"+"</td>";
-                                    html += "<td rowspan='2' width='70%'  align='left' style='padding-left:8px'>"+ data.d[i]["Comment"] + "</td>"
-                                    html +="</tr>";
-                                    html += "<tr>";
+                                     html += "<tr>";
                                     if(rating == 1)
                                     {
-                                        html += "<td width='30%' align='center'><img src='img/1star.PNG' style='width:18%'/></td>";
+                                        html += "<td style='width:30%;height:30px;text-align:center;border-bottom:1px solid black;'><img src='img/1star.PNG' style='width:18%'/></td>";
                                     }
                                     else if(rating == 2)
                                     {
-                                        html += "<td width='30%' align='center'><img src='img/2star.PNG' style='width:32%'/></td>";
+                                        html += "<td style='width:30%;height:30px;text-align:center;border-bottom:1px solid black;'><img src='img/2star.PNG' style='width:32%'/></td>";
                                     }
                                     else if(rating == 3)
                                     {
-                                        html += "<td width='30%' align='center'><img src='img/3star.PNG' style='width:45%'/></td>";
+                                        html += "<td style='width:30%;height:30px;text-align:center;border-bottom:1px solid black;'><img src='img/3star.PNG' style='width:45%'/></td>";
                                     }
                                     else if(rating == 4)
                                     {
-                                        html += "<td width='30%' align='center'><img src='img/4star.PNG' style='width:58%'/></td>";
+                                        html += "<td style='width:30%;height:30px;text-align:center;border-bottom:1px solid black;'><img src='img/4star.PNG' style='width:58%'/></td>";
                                     }
                                     else if(rating == 5)
                                     {
-                                        html += "<td width='30%' align='center'><img src='img/5star.PNG' style='width:70%'/></td>";
+                                        html += "<td style='width:30%;height:30px;text-align:center;border-bottom:1px solid black;'><img src='img/5star.PNG' style='width:100%'/></td>";
                                     }
+                                    //html += "<td rowspan='2' width='70%'  align='left' style='padding-left:8px;'>"+ data.d[i]["Comment"] + "</td>";
                                     
-                                    html += "</tr>";
-                                    html += "<tr>";
-                                    html += "<td colspan='2'>"+'<hr>'+ "</td>";
-                                    html += "</tr>";
+                                    html += "</tr>";                                    
                                 }
                                 else
                                 {                                    
@@ -145,9 +141,3 @@ function seeRequest()
                           }
                 });
  }
-
-
-
-
-
-

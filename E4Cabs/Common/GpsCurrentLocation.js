@@ -3,6 +3,8 @@ var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
+window.onload = UpdateLocation();
+
 var postCodeFetchTime;
     $.ajax({
             url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetGPSTime",    //Get Response from driver
@@ -19,13 +21,19 @@ var postCodeFetchTime;
 
 function UpdatePostCode(data)
 {
-    postCodeFetchTime = (data.d)*1000;  
+    postCodeFetchTime = (data.d)*1000;
+
+    setInterval(function () {
+        
+        UpdateLocation();  
+        
+    },postCodeFetchTime);
+    
 }
 
-setInterval(UpdateLocation, postCodeFetchTime);
-
-function UpdateLocation()
-{
+   function UpdateLocation()
+   {
+    console.log('in update location function');
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
                     var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -36,7 +44,6 @@ function UpdateLocation()
                             if (results[0]) {
                                 var postalCode = extractFromAdress(results[0].address_components, "postal_code");
                                 var address = results[1].formatted_address;                                
-                                
                                 function extractFromAdress(components, type) {
                                     for (var i = 0; i < components.length; i++)
                                         for (var j = 0; j < components[i].types.length; j++)
@@ -51,7 +58,7 @@ function UpdateLocation()
                     });
                 });
             }
- }
+}
 
 function updatePostCode(postalCode, address) {
      
