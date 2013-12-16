@@ -28,7 +28,7 @@ function getCablaterBooking()
                                 
                                 html += '</tr>';
                                 html += '</thead>';
-                                               html +='<tbody class="altColor"">';  
+                                               html +='<tbody class="altColor">';  
                                                     for(var i=0; i<count; i++)
                                                     {
                                                        $('#lbljobFeed').text(data.d[i]["CustomerRequestID"]);

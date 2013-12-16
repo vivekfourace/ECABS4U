@@ -4,8 +4,6 @@ var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
 function Check(){
-    //getCurrentPostCode();
-   // $("body").css({visibility:'none '})
      var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/userStatus";
                 $.ajax(url,{                      
                      type:"POST",
@@ -14,11 +12,10 @@ function Check(){
                      contentType: "application/json; charset=utf-8",                     
                      success: function (data) {
                         
-                        var status=data.d;
-                         if(status==true)
+                        var status = data.d;
+                         if(status == true)
                          {
-                         $('#driverStatusupdate').text("Available");
-                             
+                         $('#driverStatusupdate').text("Available");                             
                               $.ajax({
                                            url:'http://115.115.159.126/ECabs/ECabs4U.asmx/CheckNewJob', 
                                            type:"POST",
@@ -27,9 +24,10 @@ function Check(){
                                            contentType: "application/json; charset=utf-8",                     
                                            success: function (data) 
                                               {
-                                                  var jobType = data.d[1];
-                                                  if(data.d[0]=="True")
+                                                  var isTrue = data.d[0];                                                  
+                                                  if(isTrue == "True")
                                                   {
+                                                     var jobType = data.d[1];
                                                      if(jobType == "True")
                                                       {
                                                           $('#strJobTypeTitle').html("New 'Cab Now' Job Notification");
@@ -43,12 +41,9 @@ function Check(){
                                                           $('#strJobTypeTitle').css('color','#FFFFFF');
                                                           $('#popup_box').show();
                                                           $('#divDealStart').show();
-                                                      }
-                                                      
-                                                     
-                                                     //$('#beep').Play(); //for playing beep sound
+                                                      }                                                
                                                   }
-                                                 if(data.d[0]=="False")
+                                                else if(isTrue == "False")
                                                   {
                                                      $('#popup_box').hide();
                                                      $('#divDealStart').hide();  
@@ -56,7 +51,7 @@ function Check(){
                                              },
                                            error: function (XMLHttpRequest, textStatus, errorThrown)
                                               {
-                                                       $('#popup_box').hide();
+                                                     $('#popup_box').hide();
                                                      $('#divDealStart').hide(); 
                                                }
                                      });

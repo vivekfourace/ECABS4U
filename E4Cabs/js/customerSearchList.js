@@ -19,7 +19,7 @@ var timeOut;
         success: JobExpiryTime,
         error: function (XMLHttpRequest, textStatus, errorThrown) {
        }
-     });   
+     });
 
 function JobExpiryTime(data)
 {
@@ -67,7 +67,7 @@ function Destroy() {
  $('#load').show();
 var id = window.setInterval(function () {   
     $.ajax({
-        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData",    //Get Response from driver
+        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData",
         type: "POST",
         dataType: "Json",
         data: "{'requestID':'" + requestID + "'}",
@@ -513,37 +513,33 @@ function Hireme(driID, reqID,spec)
     console.log(driID +" "+ reqID +" " + spec);    
     DisableHiremeBtns();
     $('#msg').disabled = true;
-    var getSpec= spec; 
-    if(getSpec != "Not Available")
-    {
-            var seeSpec=confirm("Please read the special circumstance entry !");
-            if(seeSpec==true)
+    //var getSpec= spec;  
+            var seeSpec=confirm("Did you read the special circumstance entry ?");
+            if(seeSpec == true)
             {
-               $('#popup_box').show();
-               $('#divspec').show();
-               $('#popupBoxClose').show();              
-               
+               //$('#popup_box').show();
+               //$('#divspec').show();
+               //$('#popupBoxClose').show(); 
+               $('#loading').show();
+               var driverId = driID;
+               var requestId = reqID;
+                   $.ajax({
+                   url: "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse",
+                   type: "POST",
+                   dataType: "Json",
+                   data: "{'driverId':'" + driverId + "','requestId':'" + requestId + "'}",
+                   contentType: "application/json; charset=utf-8",
+                   success: getResponseFromDriver,
+                   error: function (XMLHttpRequest, textStatus, errorThrown) {
+                }
+              }); 
             }
+        
             else
             {
                 return false;
             }
-    }
-      $('#loading').show();
-      var driverId = driID;
-      var requestId = reqID;
-      $.ajax({
-          url: "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse",
-          type: "POST",
-          dataType: "Json",
-          data: "{'driverId':'" + driverId + "','requestId':'" + requestId + "'}",
-          contentType: "application/json; charset=utf-8",
-          success: getResponseFromDriver,
-          error: function (XMLHttpRequest, textStatus, errorThrown) {
-          }
-      }); 
-    
-}
+  }
 
 function DisableHiremeBtns()
 {

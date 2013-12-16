@@ -52,7 +52,6 @@ function UploadFeedBack()
                                     {
                                         html += "<td style='width:30%;height:30px;text-align:center;border-bottom:1px solid black;'><img src='img/5star.PNG' style='width:100%'/></td>";
                                     }
-                                    //html += "<td rowspan='2' width='70%'  align='left' style='padding-left:8px;'>"+ data.d[i]["Comment"] + "</td>";
                                     
                                     html += "</tr>";                                    
                                 }

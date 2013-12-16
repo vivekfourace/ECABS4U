@@ -1,3 +1,4 @@
+
 (function (global) {
     var mobileSkin = "",
         app = global.app = global.app || {};
@@ -18,4 +19,9 @@
 
         app.application.skin(mobileSkin);
     };
+    
+    document.addEventListener("backbutton", function(){
+        alert('back button hit');
+    }, false);
+    
 })(window)
