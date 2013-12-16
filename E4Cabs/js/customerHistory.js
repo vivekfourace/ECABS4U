@@ -92,8 +92,7 @@ function AbortJob(data)
     var isTrue = confirm("Do you want to cancel the current Cab.");
     if(isTrue)
     {
-        //$('#lblJobNumber').text(data);
-        $('#freezBack').show();
+        $('#transparent_div').show();
         $('#popup_box1').show();
         $('#divAbortTask').show();
     }
@@ -130,7 +129,8 @@ function showDetail(data)
     $('#lblTo').text(data.d[5]);
     $('#lblCustomerName').text(data.d[6]);
     $('#lblCustomerContact').text(data.d[7]);
-    $('#lblNoOfPassenger').text(data.d[8]);    
+    $('#lblNoOfPassenger').text(data.d[8]);
+    $('#transparent_div').show();
     $('#popup_box').show();
     $('#divCabLaterBooking').show();
 }
@@ -139,6 +139,7 @@ function Cancel()
 {
     $('#popup_box').hide();
     $('#divCabLaterBooking').hide();
+    $('#transparent_div').hide();
 }
 
 function SubmitReject()
@@ -190,6 +191,7 @@ function CancelReject()
     $('#divAbortTask').hide();
     $('#freezBack').hide();
     $('#txtAbortmsg').val("");
+    $('#transparent_div').hide();
 }
 
 
@@ -226,6 +228,7 @@ function feedBackCustomer(JobNumber )
                                $('#divFeedBack').show();
                                $('#trbtnPopup').hide();
                                $('#trbtnOK').show();
+                               $('#transparent_div').show();
                             
                                $('#lbljobNo').text(JobNumber);
                                $('#lblFeeddate').text(startDate);
@@ -249,6 +252,7 @@ function feedBackCustomer(JobNumber )
                                $('#divFeedBack').show();
                                $('#trbtnPopup').show();                            
                                $('#trbtnOK').hide();
+                               $('#transparent_div').show();
                         }
                       }
                       else
@@ -265,6 +269,7 @@ function CancelFeedBack()
 {
     $('#divFeedBack').hide();
     $('#popup_box').hide();
+    $('#transparent_div').hide();
     document.getElementById('sel').value = 0;
     document.getElementById('txtarComments').value = "";
     
@@ -306,6 +311,7 @@ function PostFeedBack()
                 document.getElementById('sel').value = 0;
                 $('#divFeedBack').hide();
                 $('#popup_box').hide();
+                $('#transparent_div').hide();
                 },
             
             error: function (XMLHttpRequest, textStatus, errorThrown) {

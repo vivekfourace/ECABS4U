@@ -5,6 +5,7 @@ var relatedId = QString.split("=")[3].split("&")[0];
 var requestID = QString.split("=")[4].split("&")[0];
 
 $('#load').show();
+$('#transparent_div').show();
 function backtosearch() {
     window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
 }
@@ -64,7 +65,7 @@ function Destroy() {
     window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
 }
 
- $('#load').show();
+$('#load').show();
 var id = window.setInterval(function () {   
     $.ajax({
         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData",
@@ -92,6 +93,7 @@ function getData(data) {
         $('#divbid').show();
         $('#divawait').hide();
         $('#load').hide();
+        $('#transparent_div').hide();
         var html = '<table width="100%" style="border-collapse:collapse;">';
         html += '<thead class="header-style">';
         html += '<tr>';
@@ -419,7 +421,7 @@ function ShowRating()
             $('#lbl2star').text(data.d[3]);
             $('#lbl1star').text(data.d[4]);
             $('#popup_box').show();
-            $('#divRating').show(); 
+            $('#divRating').show();
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
         }
@@ -437,6 +439,7 @@ function SearchDriverAgain()
     window.clearInterval(count);
     $('#msg').empty();
      $('#load').show();
+    $('#transparent_div').show();
     $('#statusMessage').html("Searching for more drivers...");
     $('#statusMessage').css("color","Yellow");
      $.ajax({
@@ -466,6 +469,7 @@ function SearchAgain()
     });
 }
 function showExpiry() {
+    $('#transparent_div').show();
     $('#popup_box').show();
     $('#popupBoxClose').show();
     $('#divBiding').hide();
@@ -477,6 +481,7 @@ function showExpiry() {
     $('#divspec').hide();
 }
 function showBid() {
+    $('#transparent_div').show();
     $('#popup_box').show();
     $('#popupBoxClose').show();
     $('#divBiding').show();
@@ -488,15 +493,18 @@ function showBid() {
     $('#divspec').hide();
 }
 function closeExpiry() {
+    $('#transparent_div').hide();
     $('#popup_box').hide();
     $('#divExpiry').hide();
 }
 function closeBid() {
+    $('#transparent_div').hide();
     $('#popup_box').hide();
     $('#divBiding').hide();
 }
 
 function SpecShow(a) {
+    $('#transparent_div').show();
     $('#popup_box').show();
     $('#divspec').show();
     $('#popupBoxClose').show();
@@ -504,6 +512,7 @@ function SpecShow(a) {
     $('#txtothereSpecialReq').text(a);
 }
 function specClose() {
+    $('#transparent_div').hide();
     $('#popup_box').hide();
     $('#divspec').hide();
 }
@@ -521,6 +530,7 @@ function Hireme(driID, reqID,spec)
                //$('#divspec').show();
                //$('#popupBoxClose').show(); 
                $('#loading').show();
+               $('#transparent_div').show();
                var driverId = driID;
                var requestId = reqID;
                    $.ajax({
@@ -533,8 +543,7 @@ function Hireme(driID, reqID,spec)
                    error: function (XMLHttpRequest, textStatus, errorThrown) {
                 }
               }); 
-            }
-        
+            }        
             else
             {
                 return false;
@@ -585,6 +594,7 @@ function getResponseFromDriver(data)
                             $('#lblconfirmfare').text(data.d[7]);
                             $('#popup_box').show();
                             $('#divDealConfirmed').show();
+                            $('#transparent_div').show();
                             $('#divselect').hide();
                         },
                         complete: function () {
@@ -596,6 +606,7 @@ function getResponseFromDriver(data)
                 }
                 else {
                     $('#load').hide();
+                    $('#transparent_div').hide();
                     $('#statusMessage').hide();
                     $('#divDeal').hide();
                     $('#loading').show();
@@ -629,6 +640,7 @@ function ShowMap()
 function calOk() 
 {
             $('#popup_box').hide();
+            $('#transparent_div').hide();
             var requestId = $('#lblconfirmjob').text();
             var driverId = $('#lbldriverId').text();
             $.ajax({
@@ -649,6 +661,7 @@ function selectDriver()
 {
             $('#divselect').hide();
             $('#popup_box').hide();
+            $('#transparent_div').hide();
 }
 
 function logout()

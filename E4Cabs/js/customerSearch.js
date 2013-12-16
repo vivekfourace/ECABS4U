@@ -86,6 +86,7 @@ $(document).ready(function ()
 
        $('#popupBoxClose').click(function () {
            $('#popup_box').fadeOut("slow");
+           $('#transparent_div').fadeOut("slow");
        });
     });
 

@@ -266,17 +266,17 @@
     }
 
     function showExpaBox() {
+        $('#transparent_div').fadeIn("slow");
         $('#popup_box').fadeIn("slow");
-        $('#confirmAnchor').show();
+        $('#confirmAnchor').fadeIn("slow");
     }
 
     $(document).ready(function () {  
- $('#RbFutureBook').click(function () {
-        document.getElementById("RBcabNOW").checked = false;
-        window.location='customerSearchFuture.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-    });
- });
-
+         $('#RbFutureBook').click(function () {
+                document.getElementById("RBcabNOW").checked = false;
+                window.location='customerSearchFuture.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+            });
+         });
     </script>
 
     <style type="text/css">
@@ -312,20 +312,22 @@
                 font-size: 13px;
                 font-weight: 300;
             }
+
  </style>
 
-    <body onload="loadDateTime()">
+  <body onload="loadDateTime()">
     <center>
+        <div id="transparent_div" style="display: none"></div>
         <div id="imgLoader">
                 <img src="jquery-mobile/styles/images/ajax-loader.gif" id="loading-image"/>
-            </div>
-         <div style="width:100%;height:70px;"  class="header">
+        </div>        
+         <div style="width:100%;height:70px;" class="header">
                 <table style="width:100%;padding-top:1%;">
                     <input type="hidden" id="TravelTime"/>
                     <tr>
                         <td width="30%" style="float:left;">
                              <div style="float:left;height:48px;width:100px;">
-                                    <img src="img/logo1.png" class="logo"style="float:left;width:100px"/>
+                                    <img src="img/logo1.png" class="logo" style="float:left;width:100px"/>
                              </div>
                               
                         </td>
@@ -382,13 +384,11 @@
                     <input type="text" id="txtCurrentFrom" class="font-style" style="width:100%;float:right;"/>
                     
                 </td>
-               </tr>   
+               </tr>
                    <tr>
-                       <td  style="padding-top:10px">
-                           
-                               <input type="checkbox" id="chkFromLocation" style="width:10%;float:left;height:20px;" onclick="showLoctxt()" />
-                               <label style="height:15px;float:left;padding-top:5px;color:#568bbe;font-family:'Trebuchet MS';"><b>From current position</b></label>
-                          
+                       <td  style="padding-top:10px">                           
+                            <input type="checkbox" id="chkFromLocation" style="width:10%;float:left;height:20px;" onclick="showLoctxt()" />
+                            <label style="height:15px;float:left;padding-top:5px;color:#568bbe;font-family:'Trebuchet MS';"><b>From current position</b></label>
                        </td>
                    </tr>
 
@@ -694,7 +694,7 @@
                     </center>
            </table>
            <div style="padding-bottom:40px;">
-                    <input type="button" value="Search" class="btn-tmp cursor" onclick="availabledriver();" />
+                    <input type="button" value="Search" style="width:80%" class="btn-tmp" onclick="availabledriver();" />
            </div>          
        </div>
        
@@ -717,7 +717,7 @@
                 </tr>
                 <tr>
                     <td class="popup_footer">
-                        <input type="button" class="ok" id="popupBoxClose" style="cursor: pointer;text-align:center;" value="OK"/>
+                        <input type="button" class="ok" id="popupBoxClose" style="text-align:center;" value="OK"/>
                     </td>
                 </tr>
             </table>             

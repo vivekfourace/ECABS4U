@@ -1,5 +1,3 @@
-//query string 
-
 var QString = window.location.search.substring(1);
 var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
@@ -121,6 +119,7 @@ function feedBackDriver(JobNumber )
                                $('#divFeedBack').show();
                                $('#trbtnPopup').hide();
                                $('#trbtnOK').show();
+                               $('#transparent_div').show();
                                
                             
                         }
@@ -137,7 +136,8 @@ function feedBackDriver(JobNumber )
                             
                                $('#popup_box').show();
                                $('#divFeedBack').show();
-                               $('#trbtnPopup').show();                            
+                               $('#trbtnPopup').show();
+                               $('#transparent_div').show();
                                $('#trbtnOK').hide();
                         }
                     }
@@ -155,9 +155,9 @@ function CancelFeedBack()
 {
     $('#divFeedBack').hide();
     $('#popup_box').hide();
+     $('#transparent_div').hide();
     document.getElementById('sel').value = 0;
-    document.getElementById('txtarComments').value = "";
-    
+    document.getElementById('txtarComments').value = "";  
     
 }
 
@@ -189,12 +189,14 @@ function showDetail(data)
     $('#lblNoOfPassenger').text(data.d[8]);    
     $('#popup_box').show();
     $('#divCabLaterBooking').show();
+     $('#transparent_div').show();
 }
 
 function Cancel()
 {
     $('#popup_box').hide();
     $('#divCabLaterBooking').hide();
+     $('#transparent_div').hide();
 }
 
 function SubmitReject()
@@ -227,7 +229,7 @@ function SubmitReject()
                               $('#popup_box1').hide();
                               $('#divAbortTask').hide();
                               $('#txtAbortmsg').val("");
-                              $('#freezBack').hide();
+                               $('#transparent_div').hide();
                               alert("Job aborted successfully.");
                               window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                          }                         
@@ -243,8 +245,9 @@ function CancelReject()
 {
     $('#popup_box1').hide();
     $('#divAbortTask').hide();
-    $('#freezBack').hide();
-    $('#txtAbortmsg').val("");
+    $('#transparent_div').hide();
+    $('#txtAbortmsg').val(""); 
+    $('#transparent_div').hide();
 }
 
 function AbortJob(data)
@@ -256,7 +259,7 @@ function AbortJob(data)
     {
         
         //$('#lblJobNumber').text(data);
-        $('#freezBack').show();
+         $('#transparent_div').show();
         $('#popup_box1').show();
         $('#divAbortTask').show();
     }
@@ -276,12 +279,12 @@ function PostFeedBack()
    var getComments = document.getElementById('txtarComments').value;
     if(getRating == 0)
     {
-        alert("Please select Rating.");
+        alert("Please select rating.");
         return false;
     }
     if(!getComments)
     {
-        alert("Please enter Comments.");
+        alert("Please enter comments.");
         return false;
     }
     
