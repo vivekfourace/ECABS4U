@@ -72,9 +72,9 @@ function ShowData(data)
     $('#btnBack').show();
 
     $('hr').show();
-    //$('#mobno').show();
+   
  }
-//Edit The Driver Profile. It Will convert Label To text Box.
+
 function EditProfile()
 {
     $('#txtname').hide();

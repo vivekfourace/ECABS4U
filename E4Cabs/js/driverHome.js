@@ -25,7 +25,7 @@ function  NavigateToMap()
             else if(data.d == false)
             {
                 $('#lblEngaged').show();
-                $('#lblEngaged').text("No new job");
+                $('#lblEngaged').text("Available");
                 $('#btnabort').hide();
                 $('#btnclear').hide();
                 $('#btnnavigation').hide();
