@@ -292,7 +292,7 @@ function availabledriver() {
                     }
                     else
                     {
-                        alert('Oops..please try again.');
+                        alert('Unknown error. Please try again.');
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown){

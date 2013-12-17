@@ -65,7 +65,7 @@ function bindGrid(data)
      }
      else
      {
-         alert("No Current Cab Later Booking found.");
+         alert("No current booking found.");
      }
 }
 
@@ -147,7 +147,7 @@ function Cancel()
 }
 function RejectJob(data)
 {
-    var isTrue = confirm("Do you want to reject this job offer!");
+    var isTrue = confirm("Confirm you want to reject this job offer?");
     if(isTrue)
     {
             var rid = data;   
@@ -165,7 +165,7 @@ function RejectJob(data)
                 data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
-                     alert("Job Rejected Successfully.");
+                     alert("Job rejected successfully.");
                      window.location = 'DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {

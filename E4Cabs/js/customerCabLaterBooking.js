@@ -58,7 +58,7 @@ function getCablaterBooking()
                          }
                         else
                         {
-                            alert("No Cab Later Booking found.");
+                            alert("No booking found.");
                         }
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) 
@@ -120,7 +120,7 @@ function HireDriver(customerReqID, driverid)
                    data:"{'driverId':'" + driverid + "','requestId':'" + customerReqID + "'}",
                    contentType: "application/json; charset=utf-8",
                     success: function(data){
-                        alert('Cab booking is in process, please check after some time.');
+                        alert('Booking in progress, please check later.');
                         window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) 
@@ -159,7 +159,7 @@ function SubmitReject()
     var abortMessage = $('#txtAbortmsg').val();
     if(!abortMessage)
     {
-        alert('Please enter a reason.');
+        alert('Please enter your reason.');
         return false;
     }
       var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/AbortCurrentJobCustomer";
@@ -182,7 +182,7 @@ function SubmitReject()
                               $('#divAbortTask').hide();
                               $('#txtAbortmsg').val("");
                               $('#freezBack').hide();
-                              alert("Job aborted successfully.");
+                              alert("Job aborted.");
                               window.location='bookedhistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                          }                         
                      },

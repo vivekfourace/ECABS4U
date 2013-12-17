@@ -148,7 +148,7 @@ function SubmitReject()
     var abortMessage = $('#txtAbortmsg').val();
     if(!abortMessage)
     {
-        alert('Please enter a reason.');
+        alert('Please enter your reason.');
         return false;
     }
     
@@ -173,7 +173,7 @@ function SubmitReject()
                               $('#divAbortTask').hide();
                               $('#txtAbortmsg').val("");
                               $('#freezBack').hide();
-                              alert("Job cancelled successfully.");
+                              alert("Job cancelled.");
                               window.location='CustomerHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                          }                         
                      },
@@ -257,7 +257,7 @@ function feedBackCustomer(JobNumber )
                       }
                       else
                       {
-                          alert('Job is not active, you cannot give feedback');
+                          alert('Job not active. You cannot give feedback.');
                       }
        },            
         error: function (XMLHttpRequest, textStatus, errorThrown) {}
@@ -288,7 +288,7 @@ function PostFeedBack()
     }
     if(!getComments)
     {
-        alert("Please enter Comments.");
+        alert("Please enter comments.");
         return false;
     }
     
@@ -306,7 +306,7 @@ function PostFeedBack()
             contentType: "application/json; charset=utf-8",                     
             success: function(data)
             {
-                alert("Feedback comment posted successfully!");
+                alert("Feedback comment posted.");
                 document.getElementById('txtarComments').value ="";
                 document.getElementById('sel').value = 0;
                 $('#divFeedBack').hide();

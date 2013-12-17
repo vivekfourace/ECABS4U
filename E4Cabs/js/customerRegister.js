@@ -14,13 +14,13 @@ function Registercustomer()
     
       if(!txt1)
        {
-                     $('#lblMsg').text("Please enter first name.");
+                     $('#lblMsg').text("Please enter your first name.");
                      $('#txtFirstName').focus();                        
                      return false;
        }
        if(!txt2)
         {
-                     $('#lblMsg').text("Please enter last name.");
+                     $('#lblMsg').text("Please enter your last name.");
                      $('#txtLastName').focus();                     
                     return false;
          }
@@ -32,14 +32,14 @@ function Registercustomer()
                         }
                         else
                     {
-                            $('#lblMsg').text("Please enter valid phone number.");
+                            $('#lblMsg').text("Please enter a valid contact number.");
                             $('#txtPhone').focus();
                             return false;
                     }
          }
         else if(txt3.length == 0)
          {
-                           $('#lblMsg').text("Please enter phone number.");
+                           $('#lblMsg').text("Please enter a contact number.");
                            $('#txtPhone').focus();
                            return false;
          }
@@ -52,14 +52,14 @@ function Registercustomer()
                      }
                   else
                      {
-                            $('#lblMsg').text("Please enter valid email address.");
+                            $('#lblMsg').text("Please enter a valid email address.");
                             $('#txtEmail').focus();
                             return false;
                      }
         }
        else if(txt4.length == 0)
         {
-                    $('#lblMsg').text("Please enter email address.");
+                    $('#lblMsg').text("Please enter a email address.");
                     $('#txtEmail').focus();
                     return false;
        }
@@ -85,7 +85,7 @@ function Registercustomer()
        }
      else if(txt7.length == 0)
        {
-                     $('#lblMsg').text("Please enter password.");
+                     $('#lblMsg').text("Please enter your password.");
                      $('#txtPassword').focus();
                     return false;
        }

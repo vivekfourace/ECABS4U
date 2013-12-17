@@ -7,8 +7,7 @@ function loginUsingCookie() {
 
     if (remMe == "true") {
         $('#txtUserName').val(name);
-        $('#txtPassword').val(password);
-        
+        $('#txtPassword').val(password);        
         return true;
     }
     if (remMe == "false") {
@@ -79,7 +78,7 @@ function login() {
         success: CheckMsg,
 
         error: function (XMLHttpRequest, textStatus, errorThrown) {
-            // alert(errorThrown);
+
         }
     });
 }
@@ -111,7 +110,6 @@ function CheckMsg(data) {
         }
 
         switch (roleID) {
-
             //Role 3 --> Driver
             case 3:
                 window.location = 'driverHome.html?id=' + userID + '&rid=' + roleID + '&rrid=' + relatedID;
@@ -121,11 +119,6 @@ function CheckMsg(data) {
             case 4:
                 window.location = 'customerSearch.html?id=' + userID + '&rid=' + roleID + '&rrid=' + relatedID;
                 break;
-
-                //Role 6 --> Business Customer
-           // case 6:
-          //      window.location = 'businessCustomerSearch.html?id=' + userID + '&rid=' + roleID + '&rrid=' + relatedID;
-         //       break;
         }
     }
 }

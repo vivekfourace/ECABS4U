@@ -143,7 +143,7 @@ function feedBackDriver(JobNumber )
                     }
                     else
                     {
-                        alert('Job is not active, you cannot give feedback');
+                        alert('Job not active. You cannot give feedback.');
                     }
        },            
         error: function (XMLHttpRequest, textStatus, errorThrown) {}
@@ -254,7 +254,7 @@ function AbortJob(data)
 {
     var jobNo = data;
     document.getElementById("lblJobNumber").value = jobNo;
-    var isTrue = confirm("Do you want to abort the current Cab.");
+    var isTrue = confirm("Confirm you want to abort the current cab?");
     if(isTrue)
     {
         
@@ -301,7 +301,7 @@ function PostFeedBack()
             contentType: "application/json; charset=utf-8",                     
             success: function(data)
             {
-                alert("Feedback comment posted successfully!");
+                alert("Feedback comment posted successfully");
                 document.getElementById('txtarComments').value ="";
                 document.getElementById('sel').value = 0;
                 $('#divFeedBack').hide();

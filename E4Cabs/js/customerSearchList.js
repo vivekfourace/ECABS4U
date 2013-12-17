@@ -33,7 +33,7 @@ var timer = setInterval(function () {
     console.log(timeOut);
     if (timeOut <= 0) {
         window.clearInterval(id);
-        alert('Oops! no driver found, please search again.');
+        alert('No driver found Please search again.');
         Destroy();
     }
 }, 1000);

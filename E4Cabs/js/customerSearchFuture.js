@@ -20,7 +20,7 @@ $(document).ready(function ()
                         }
                     }
                     else {
-                        alert("No location found!!")
+                        alert("No location found.")
                     }
                 });
             });
@@ -253,12 +253,12 @@ function availabledriverLater() {
                 success: function (data) {
                     if(data.d[0] != "Error")
                     {
-                        alert('Booking is under process, please check after sometime.');
+                        alert('Booking in progress. Please check later.');
                         window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                     }
                     else
                     {
-                        alert('Oops! some error occurs!');
+                        alert('Unknown error. Please try again.');
                         window.location =  'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                     }
                     

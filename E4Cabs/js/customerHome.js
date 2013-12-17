@@ -111,12 +111,12 @@ function UpdateProfile()
     
     if(phoneno.length === 0)
     {
-        alert("Enter contact number.");
+        alert("Please enter contact number.");
         return false;
     }
     else if(phoneno.length < 11)
     {
-        alert("Enter a valid contact number.");
+        alert("Please enter a valid contact number.");
         return false;
     }
     

@@ -37,7 +37,7 @@ function  NavigateToMap()
 
 function AbortJob()
 {
-    var istrue = confirm("Do you want to abort this job?");
+    var istrue = confirm("Confirm you want to abort this job?");
     if(istrue)
     {
        $('#freezBack').show();
@@ -153,7 +153,7 @@ function cancelAbort()
 
 function clearJob()
 {
-    var isTrue = confirm('Do you want to clear the job?');
+    var isTrue = confirm('Confirm you want to clear the job?');
     if(isTrue)
     {
             $.ajax({
