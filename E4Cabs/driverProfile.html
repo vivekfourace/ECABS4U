@@ -104,73 +104,53 @@
                 <table align="right" style="width:73%">
                     <tr>
                         <td style="width:100%;border-bottom:2px solid #A4A4A4;height:25px">
-                            <label id="lblname" class="font-style" style="font-size:25px;font-weight:bold"></label>
-                                <input type="text" id="txtname" class="font-style" style="display:none;text-align:left;width:90%"/>
+                            <label id="lblname" class="font-style" style="font-size:20px;font-weight:bold"></label>                            
                             <label id="lblLastname" class="font-style"></label>
-                                <input type="text" id="txtLastname" class="font-style" style="display:none;text-align:left;width:90%"/>
-                     
                         </td>
-                        
                     </tr>
                     <tr>
                         <td style="width:100%;border-bottom:2px solid #A4A4A4;height:25px">
                             <label id="lblLocation" class="font-style"></label>
-                             <input type="text" id="txtLocation" placeholder="Address line1" class="font-style" style="display:none;text-align:left;width:90%";/>
-                      
-                        </td>
-                        
+                             <input type="text" id="txtLocation" placeholder="Address line1" style="display:none;text-align:left;width:90%";/>
+                        </td>                        
                     </tr>
                     <tr>
                         <td style="width:100%;border-bottom:2px solid #A4A4A4;height:25px">
                             <label id="lblLocation2" class="font-style"></label>
                             <input type="text" id="txtLocation2" placeholder="Address line2" style="display:none;text-align:left;width:90%"/>
-                           
-                        </td>
-                        
+                        </td>                        
                     </tr>
                     <tr>
                         <td style="width:100%;border-bottom:2px solid #A4A4A4;height:25px">
                             <label id="lblMobileNo" class="font-style"></label>
-                            <input type="text" id="txtMobileno" placeholder="Contact number" class="font-style" maxlength="11" style="display:none;text-align:left;width:90%"/>
-                          
+                            <input type="text" id="txtMobileno" placeholder="Contact number" maxlength="11" style="display:none;text-align:left;width:90%"/>
                         </td>
-                        
+                    </tr>
+                    <tr>
+                        <td style="width:100%;border-bottom:2px solid #A4A4A4;height:25px">
+                            <label id="lblPostcode" class="font-style"></label>
+                            <input type="text" id="txtpostcode" placeholder="Post code" maxlength="12" style="display:none;text-align:left;width:90%"/>
+                        </td>
                     </tr>
                     <tr>
                         <td style="width:100%;border-bottom:2px solid #A4A4A4;height:25px">
                             <label id="lblEmailID" class="font-style" style="color:#639ECD;text-decoration:none;"></label>
-                            <input type="text" id="txtEmailID" class="font-style" style="display:none;text-align:left;width:90%";/>
                         </td>                        
                     </tr>                                   
                 </table> 
             </div>
         
-          <!--  <table style="width:100%;border-collapse:collapse;">
-                <tr>
-                    <td style="width:45%;height:20px;">                        
-                        <label id="lblpost">Cablater Postcode :</label>
-                    </td>
-                    
-                    <td style="width:55%">                        
-                        <input type="text" id="txtcablaterpost" style="width:95%;" />
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width:100%;height:20px;" colspan="2">
-                        <input type="button" id="btnUpdate" style="width:30%;height:25px;float:right"  value="Edit"/>
-                        <input type="button" id="btnUpdate" style="width:30%;height:25px;float:right;display:none"  value="Update"/>
-                    </td>
-                </tr>
-            </table>-->
- 
-        
-            <div style="width: 100%; position: fixed; bottom: 0px;padding-bottom: 35%">
+            <div style="width: 100%; position: fixed; bottom: 0px;padding-bottom: 33%">
                 <table style="width:100%">
                     <tr>
                         <td style="width:90%" align="center" colspan="2">
+                            <marquee behavior="scroll" direction="left" style="color:Blue">Update your postcode regularly to get cablater jobs.</marquee>
+                        </td>                        
+                    </tr>
+                    <tr>
+                        <td style="width:90%" align="center" colspan="2">
                             <input id="btnEdit" type="button" value="Edit" class="btn-tmp" style="width:100%;color:white;" onclick="EditProfile();" />
-                        </td>
-                        
+                        </td>                        
                     </tr>
                     <tr id="trBtnUpdate" style="display:none;" >
                         <td align="center"  style="width:50%">

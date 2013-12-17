@@ -19,18 +19,17 @@ function  NavigateToMap()
             if(data.d == true)
             {
                 $('#lblEngaged').show();
-                $('#lblEngaged').text("Engaged"); 
+                $('#lblEngaged').text("Engaged");
                 $('#btnEngage').hide();
+                $('#btnabort').show();
+                $('#btnclear').show();
+                $('#btnnavigation').show();
             }
             else if(data.d == false)
             {
                 $('#lblEngaged').show();
-                $('#lblEngaged').text("Available");
-                $('#btnabort').hide();
-                $('#btnclear').hide();
-                $('#btnnavigation').hide();
+                $('#lblEngaged').text("Available");               
             }
-            
         },
         
         error: function (XMLHttpRequest, textStatus, errorThrown) {}
@@ -44,6 +43,7 @@ function AbortJob()
        $('#freezBack').show();
        $('#popup_box1').show();
        $('#divAbortTask').show();
+       $('#transparent_div').show();
     }
     else{
        return false;
@@ -128,6 +128,7 @@ function SubmitAbort()
                             
                               $('#popup_box1').hide();
                               $('#divAbortTask').hide();
+                              $('#transparent_div').hide();
                               $('#txtAbortmsg').val("");
                               alert("Job aborted successfully.");
                               window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
@@ -147,6 +148,7 @@ function cancelAbort()
     $('#popup_box1').hide();
     $('#divAbortTask').hide();
     $('#txtAbortmsg').val("");
+    $('#transparent_div').hide();
 }
 
 function clearJob()

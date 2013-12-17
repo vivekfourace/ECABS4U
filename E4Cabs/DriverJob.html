@@ -265,11 +265,7 @@
         function SubmitDealCabLater() {
 
         }
-        //$('#specialReq').on('click', function(){
-        //    $(this).html('Hide');
-        //    showSpecial();
-        //});
-
+      
         function showSpecial() {
             //$('#specialReq').text("hide");
             $("#trfare").toggle();
@@ -562,24 +558,15 @@
                     dataType: "Json",
                     data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
                     contentType: "application/json; charset=utf-8",
-                    success: function (data) {
+                    success: function () {
                         $('#divDetails').hide();
                         $('#btnbid').hide();
                         $('#btnmap').hide();
                         $('#btncancel').hide();
                         $('#btnreject').hide();
                         alert('You have been awarded this job.');
-
-
-                        //RemoveDriverData();
-
-                        // UpdateStatus();  //update when job not booked for other driver...relatedId
-
                         window.location.href = 'driverProfile.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
                     },
-                    error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-                    }
                 });
             }
         }

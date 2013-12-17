@@ -16,11 +16,8 @@ $.ajax(url,{
     dataType: "Json", 
     data:"{'userID':'" +relatedId+"'}",
     contentType: "application/json; charset=utf-8",                     
-    success: ShowData,
-    
-    error: function (XMLHttpRequest, textStatus, errorThrown) {
-   // alert(errorThrown);
-        }
+    success: ShowData   
+   
  });
 }
 function ShowData(data)
@@ -31,113 +28,87 @@ function ShowData(data)
     $('#lblLocation2').text(data.d[3]);
     $('#lblMobileNo').text(data.d[4]);
     $('#lblEmailID').text(data.d[5]);
-    console.log(data.d[6]);
-    if(data.d[6] != undefined)
+    $('#lblPostcode').text(data.d[6]);
+    
+    console.log(data.d[7]);
+    if(data.d[7] != undefined)
     {
-       $('#vehi-regis').html(":  "+data.d[6]); 
+       $('#vehi-regis').html(":  "+data.d[7]); 
     }
     else
     {
         $('#vehi-regis').html(":  Not allocated");
     }
-    if(data.d[7] != undefined)
+    if(data.d[8] != undefined)
     {
-        $('#vehi-plate').html(":  "+data.d[7]);
+        $('#vehi-plate').html(":  "+data.d[8]);
     }
     else
     {
         console.log('not');
         $('#vehi-plate').html(":  Not allocated");
-    }
-        
-    $('#lblWarning').text("");
-    $('#txtname').hide(); 
-    $('#txtLastname').hide();
+    }   
+
     $('#txtLocation').hide();    
     $('#txtLocation2').hide();    
     $('#txtMobileno').hide();    
-    $('#txtEmailID').hide();
-    $("#trBtnUpdate").hide();
-    $("#trCancel").hide();
-    $("#tredit").show();
+    $('#txtpostcode').hide();   
     
-    $('#divMarquee').show();
-    $('#lblname').show();
-    $('#lblLastname').show();
     $('#lblLocation').show();
     $('#lblLocation2').show();
     $('#lblMobileNo').show();
     $('#lblEmailID').show();
+    $('#lblPostcode').show();
+    
+    $("#trBtnUpdate").hide();
     $('#btnEdit').show();
-    $('#btnBack').show();
-
-    $('hr').show();
    
  }
 
 function EditProfile()
-{
-    $('#txtname').hide();
-    $('#lblWarning').hide();
-    $('#txtLastname').hide();
+{   
+    var location =$('#lblLocation').text();
+    var loc2 = $('#lblLocation2').text();
+    var mobile = $('#lblMobileNo').text();
+    var post  = $('#lblPostcode').text();
+    
     $('#txtLocation').show();    
     $('#txtLocation2').show();    
-    $('#txtMobileno').show();    
-    $('#txtEmailID').hide();
-    $('#btnBack').show();
-    $('#lblname').show();
-    $('#lblLastname').show();
+    $('#txtMobileno').show();
+    $('#txtpostcode').show();
+    
+    $('#txtLocation').val(location);
+    $('#txtLocation2').val(loc2);
+    $('#txtMobileno').val(mobile);
+    $('#txtpostcode').val(post);
+  
     $('#lblLocation').hide();
     $('#lblLocation2').hide();
     $('#lblMobileNo').hide();
-    $('#lblEmailID').show();
-    $('#divMarquee').hide();
-    $('hr').hide();
+    $('#lblPostcode').hide();
+  
     $("#trBtnUpdate").show();
-    $("#trCancel").show();
-    $("#tredit").hide();
     $('#btnEdit').hide();
-    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetDriverDetails";
-    $.ajax(url,{
-        type:"POST",
-        dataType: "Json",
-        data:"{'userID':'" +relatedId+"'}",
-        contentType: "application/json; charset=utf-8",                     
-        success: function(data){
-            $('#txtname').val(data.d[0]);
-            $('#txtLastname').val(data.d[1]);
-            $('#txtLocation').val(data.d[2])
-            $('#txtLocation2').val(data.d[3])
-            $('#txtMobileno').val(data.d[4]);    
-            $('#txtEmailID').val(data.d[5]);
-            
-            },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-        //alert(errorThrown);
-        }
- });
 }
-//Upadate the Driver profile and converted it into Label.
+
 function UpdateProfile()
 {
-      var name = $('#txtname').val();
-      var Lastname = $('#txtLastname').val();
       var address1 = $('#txtLocation').val();
       var address2 = $('#txtLocation2').val();
-      var email = $('#txtEmailID').val();
       var phoneno = $('#txtMobileno').val();
+      var postcode = $('#txtpostcode').val();    
       var phonenoval =/^\d{11}$/;
 
      if(!address1)
        {
                      alert("Please enter address line1.");
-                     $('#txtFirstName').focus();                        
+                     $('#txtLocation').focus();                        
                      return false;
        }
        if(!address2)
         {
                     alert("Please enter address line2.");
-                     $('#txtLastName').focus();                     
+                     $('#txtLocation2').focus();                     
                     return false;
          }
      if(phoneno.length > 0)
@@ -149,49 +120,70 @@ function UpdateProfile()
                         else
                     {
                            alert("Please enter a valid contact number.");
-                            $('#txtPhone').focus();
+                            $('#txtMobileno').focus();
                             return false;
                     }
          }
         else if(phoneno.length == 0)
          {
-                          alert("Please enter contact number.");
-                           $('#txtPhone').focus();
+                           alert("Please enter contact number.");
+                           $('#txtMobileno').focus();
                            return false;
          }
-    
-    
+    if(!postcode)
+    {
+        alert('Please enter postcode.');
+        $('#txtpostcode').focus();
+        return false;
+    }
     
     var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateDriverDetails";
     $.ajax(url,{
         type:"POST",
         dataType: "Json",
-        data:"{'userID':'" +relatedId+"','name':'" +name+"','lname':'" +Lastname+"','address1':'" +address1+"','address2':'" +address2+"','contactNumber':'" +phoneno+"','emailID':'" +email+"','postcode':'" +address2+"'}",
+        data:"{'relatedId':'" +relatedId+"','address1':'" +address1+"','address2':'" +address2+"','contactNumber':'" +phoneno+"','postcode':'" +postcode+"'}",
         contentType: "application/json; charset=utf-8",
         success: ShowData,
         error: function (XMLHttpRequest, textStatus, errorThrown){
         }
     });
 }
-//Cancel The Edit Profile Of Driver
+
 function CancelProfile()
 {
-    getProfile();
+    var location =$('#txtLocation').val();
+    var loc2 = $('#txtLocation2').val();
+    var mobile = $('#txtMobileno').val();
+    var post  = $('#txtpostcode').val();
+    
+    $('#txtLocation').hide();    
+    $('#txtLocation2').hide();    
+    $('#txtMobileno').hide();
+    $('#txtpostcode').hide();
+    
+    $('#lblLocation').val(location);
+    $('#lblLocation2').val(loc2);
+    $('#lblMobileNo').val(mobile);
+    $('#lblPostcode').val(post);
+  
+    $('#lblLocation').show();
+    $('#lblLocation2').show();
+    $('#lblMobileNo').show();
+    $('#lblPostcode').show();
+  
+    $("#trBtnUpdate").hide();
+    $('#btnEdit').show();
 }
-//Back button From Header Back to Driver Home Page.
 function backToIndex()
 {
     window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-//Home Button In Footer 
 function HomePage(){
     window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-//My Job Button In footer Redirect To Driver Job Page.
 function MyBookings(){
     window.location='DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-//Logout From button in Footer.
 function logout()
 {
        $.cookie("remember", false);
@@ -227,12 +219,12 @@ function feedBack()
                         contentType: "application/json; charset=utf-8",                     
                         success: function (data) 
                            {
-                               $('#popup_box').hide();
+                                $('#popup_box').hide();
                                 $('#divDealStart').hide();
                           },
-                        error: function (XMLHttpRequest, textStatus, errorThrown)
+                        error: function ()
                            {
-                                  $('#popup_box').hide();
+                                $('#popup_box').hide();
                                 $('#divDealStart').hide(); 
                             }
                   });

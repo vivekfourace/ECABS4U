@@ -28,6 +28,7 @@
 </head>
 <body>
     <center>
+        <div id="transparent_div" style="display: none"></div>
             <div id="imgLoader">
                 <img src="jquery-mobile/styles/images/ajax-loader.gif" id="loading-image"/>
             </div>
@@ -97,29 +98,29 @@
                         </tr>
                        <tr>
                             <td style="text-align:center;">
-                                <input type="button" class="btn-Common cursor" id="btnEngage" value="ENGAGE ME" onclick="engageMe();"/>
+                                <input type="button" style="width:100%;" class="btn-tmp" id="btnEngage" value="ENGAGE ME" onclick="engageMe();"/>
                             </td>
                         </tr>
                         <tr>
                             <td style="text-align:center;">
-                                <input type="button" class="btn-Common cursor" id="btnclear" value="CLEAR" onclick="clearJob();"/>
+                                <input type="button" style="width:100%;display:none" class="btn-tmp" id="btnclear" value="CLEAR" onclick="clearJob();"/>
                             </td>
                         </tr>
                         <tr>
                             <td style="text-align:center;">
-                                <input type="button"  value="ABORT" id="btnabort" class="btn-Common cursor" onclick="AbortJob();"/>
+                                <input type="button" style="width:100%;display:none"  value="ABORT" id="btnabort" class="btn-tmp" onclick="AbortJob();"/>
                             </td>
                         </tr>
                         <tr>
                             <td style="text-align:center;">
-                                <input type="button"  value="NAVIGATION" id="btnnavigation" class="btn-Common cursor" onclick="NavigateToMap();"/>
+                                <input type="button" style="width:100%;display:none"  value="NAVIGATION" id="btnnavigation" class="btn-tmp" onclick="NavigateToMap();"/>
                             </td>
                         </tr>
                  </table>
             </div>           
         </center>
     <center>
-      <div id="freezBack">
+
       <div id="popup_box1">
           <div id="divAbortTask"  style="display:none;"align="center">
               <table align="left" style="width:100%;background-color:#FFFFFF;">
@@ -144,7 +145,7 @@
               </table>
           </div>
       </div>
-      </div>
+
     </center>
     <footer>
         <div style="width: 100%; position: fixed; bottom: 0px; height: 20px; padding-bottom: 15px">
