@@ -271,8 +271,9 @@
     }
 
     function showExpaBox() {
+        $('#transparent_div').fadeIn("slow");
         $('#popup_box').fadeIn("slow");
-        $('#confirmAnchor').show();
+        $('#confirmAnchor').fadeIn("slow");
     }
 
 $(document).ready(function () {  
@@ -321,6 +322,7 @@ $(document).ready(function () {
  </style>
 <body onload="loadDateTime()">
     <center>
+        <div id="transparent_div" style="display: none"></div>
         <div id="imgLoader">
                 <img src="jquery-mobile/styles/images/ajax-loader.gif" id="loading-image"/>
             </div>
@@ -700,7 +702,7 @@ $(document).ready(function () {
                     </center>
            </table>
            <div style="padding-bottom:40px;">
-                    <input type="button" value="Search" class="btn-tmp cursor" onclick="availabledriverLater();" />
+                    <input type="button" style="width:80%" value="Search" class="btn-tmp" onclick="availabledriverLater();" />
            </div>          
        </div>
        

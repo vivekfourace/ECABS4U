@@ -113,12 +113,11 @@
             $('#popupBoxClose').click(function () {
                 $('#popup_box').hide();
             });
-        })
+        });
 
-
-        function showJob() {
+        function showJob() {            
             $("#divDealload").hide();
-            $('#popup_box').fadeIn("slow");
+            $('#popup_box').fadeIn("slow");            
             $('#divDriverPop').show();
             $('#divBid').hide();
             var job = $('#lbljobno').text();
@@ -151,6 +150,7 @@
             $("#Tr2").hide(); $("#Tr3").hide(); $("#Tr4").hide(); $("#Tr5").hide();
 
         }
+        
         var timereOut;
         function SubmitDeal() {
             $("#divDealload").show();
@@ -262,12 +262,7 @@
             }
         }
 
-        function SubmitDealCabLater() {
-
-        }
-      
         function showSpecial() {
-            //$('#specialReq').text("hide");
             $("#trfare").toggle();
             $("#trwheelchair").toggle();
             $("#trchildseats").toggle();
@@ -288,14 +283,17 @@
 
 
         }
+      
         function showBid() {
+            console.log('in showBid');
             $("#wheel").hide(); $("#Tr1").hide(); $("#Tr2").hide(); $("#Tr3").hide(); $("#Tr4").hide();
             $("#childseat").hide(); $("#Tr5").hide();
             $("#booster").hide();
             $("#other").hide();
             $('#divDeal').hide();
             $('#divComplete').hide();
-            $('#popup_box').fadeIn("slow");
+            $('#popup_box').show();
+            $('#transparent_div').show();
             $('#divDriverPop').hide();
             $('#divBid').show();
             var job = $('#lbljobno').text();
@@ -327,7 +325,6 @@
 
         function bidSubmit() {
             var isCabnow = $('#hiddenIsCabnow').val();
-
             if (isCabnow == "True") {
                 var fare = $('#txtbidFare').val();
                 if (fare.length <= 0) {
@@ -450,38 +447,43 @@
         }
 
         function bidCancel() {
-            var job = $('#lbljobno').text();
             $('#popup_box').hide();
             $('#divBid').hide();
-            $('#lblfare').text("");
-            $.ajax({
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/cancelJob",
-                type: "POST",
-                dataType: "Json",
-                data: "{'userID':'" + relatedId + "','reqid':'" + job + "'}",
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
+            $('#transparent_div').hide();
+          //  var job = $('#lbljobno').text();
+          //  $('#popup_box').hide();
+          //  $('#divBid').hide();
+          //  $('#lblfare').text("");
+          //  $.ajax({
+          //      url: "http://115.115.159.126/ECabs/ECabs4U.asmx/cancelJob",
+          //      type: "POST",
+          //      dataType: "Json",
+          //      data: "{'userID':'" + relatedId + "','reqid':'" + job + "'}",
+          //      contentType: "application/json; charset=utf-8",
+          //      success: function (data) {
+          //          window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+          //      },
+          //      error: function (XMLHttpRequest, textStatus, errorThrown) {
 
-                }
-            });
+          //      }
+          //  });
             document.getElementById("trfare").style.display = 'none';
         }
+        
         function reqCancel() {
             $('#divDetails').hide();
         }
+        
         function reqReject() {
-
             $('#popup_box').show();
             $('#divreject').show();
-
+            $('#transparent_div').show();
         }
-        //
-        var requ = $('#lbljobno').text();
-        function rejectJob() {
+        
+        function rejectJob() {           
             $('#popup_box').show();
-            var rid = requ;
+            var rid = $('#hdnJobno').val();
+             console.log(rid);
             $('#divDetails').hide();
             $('#btnbid').hide();
             $('#btnmap').hide();
@@ -504,18 +506,16 @@
                         console.log('Exception in rejectResponse')
                     }
                 },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-                }
+                error: function (XMLHttpRequest, textStatus, errorThrown) {}
             });
         }
-        //
+        
         function cancelReject() {
-
             $('#divreject').hide();
             $('#popup_box').hide();
+            $('#transparent_div').hide();
         }
-        //
+        
         function dealSubmit() {
             window.clearInterval(timereOut);
             console.log('clearing timerout');
@@ -694,12 +694,6 @@
             $('#divComplete').show();
         }
 
-        function abortOk() {
-
-            //var show=document.getElementById("txtreason").value();
-
-        }
-
     </script>
 </head>
 <body>
@@ -709,6 +703,7 @@
         </div>
     </div>
     <center>
+        <div id="transparent_div" style="display: none"></div>
         <input type="hidden" id="hiddenIsCabnow" />
         <input type="hidden" id="hdnJobno" />
         <div id="divDealload" class="loadForall">
@@ -1089,7 +1084,7 @@
                     </td>
                     <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
                         <a href="#" onclick="showJob()" style="color:blue;">
-                            <b style="font-size:13px;" class="">
+                            <b style="font-size:13px;">
                                 <label id="lbljobno"></label>
                             </b>
                         </a>

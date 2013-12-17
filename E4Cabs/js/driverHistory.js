@@ -71,7 +71,7 @@ function gethistory()
                                  }
                                 else
                                 {
-                                    alert("No history found");
+                                    $('#bookingmsg').show();
                                 }
                             },
                             error: function (XMLHttpRequest, textStatus, errorThrown) 

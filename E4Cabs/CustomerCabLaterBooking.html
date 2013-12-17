@@ -17,12 +17,13 @@
                 font-size:13px;
             }
         </style>
-    </head>
-    
+    </head>    
     <body>
+        <div id="transparent_div" style="display: none"></div>
         <div id="imgLoader">
        <img src="jquery-mobile/styles/images/ajax-loader.gif" id="loading-image"/>
      </div>
+        
         <div style="width:100%;height:70px"  class="header">
                 <table style="width:100%;padding-top:1%;">
                     <tr>
@@ -48,6 +49,7 @@
                 </table>
          </div>
         <div id="msg" style="padding-top:70px"></div>
+        <div style="padding-top:50%; color:#0000FF;font-size:20px;text-align:center;display:none" id="bookingmsg">No booking found.</div>
         <input type="hidden" id="lblJobNumber"/>
         <div id="popup_box" >
             <div id="divCabLaterBooking"  style="display:none;"align="center">
@@ -58,88 +60,88 @@
                          </td>
                      </tr>
                      <tr class="popup_content">
-                         <td style="width:50%;">
+                         <td style="width:40%;">
                             <strong class="tdContentstyle">Job Number</strong>
                          </td>
-                         <td style="width:50%;">
+                         <td style="width:60%;">
                             <label id="lblJobNo" class="tdContentstyle"></label>
                          </td>
                          
                      </tr>
                      <tr class="popup_content">
-                         <td style="width:50%;">
+                         <td style="width:40%;">
                              <strong class="tdContentstyle">Fare</strong>
                          </td>
-                         <td style="width:50%;">
+                         <td style="width:60%;">
                              <label id="lblFare" class="tdContentstyle"></label>
                          </td>
                      </tr>
                      <tr class="popup_content">
-                         <td style="width:50%;">
+                         <td style="width:40%;">
                              <strong class="tdContentstyle">Driver Name</strong>
                              
                          </td>
-                         <td style="width:50%;">
+                         <td style="width:60%;">
                              <label id="lblDriverName" class="tdContentstyle"></label>
                              
                          </td>
                      </tr>
                      <tr class="popup_content">
-                         <td style="width:50%;">
+                         <td style="width:40%;">
                              <strong class="tdContentstyle">Start Date</strong>
                              
                          </td>
-                         <td style="width:50%;">
+                         <td style="width:60%;">
                             <label id="lblStartDate" class="tdContentstyle"></label> 
                              
                          </td>
                      </tr>
                      <tr class="popup_content">
-                         <td style="width:50%;">
+                         <td style="width:40%;">
                              <strong class="tdContentstyle">Start Time</strong>
                              
                          </td>
-                         <td style="width:50%;">
+                         <td style="width:60%;">
                              <label id="lblStartTime" class="tdContentstyle"></label>
                              
                          </td>
                      </tr>
                      <tr class="popup_content">
-                         <td style="width:50%;">
+                         <td style="width:40%;">
                              <strong class="tdContentstyle">Search Time</strong>
                              
                          </td>
-                         <td style="width:50%;">
+                         <td style="width:60%;">
                              <label id="lblSearchTime" class="tdContentstyle"></label>
                              
                          </td>
                      </tr>
                      <tr class="popup_content">
-                         <td style="width:50%;">
+                         <td style="width:40%;">
                              <strong class="tdContentstyle">Bid Time</strong>
                              
                          </td>
-                         <td style="width:50%;">
+                         <td style="width:60%;">
                              <label id="lblBidTime" class="tdContentstyle"></label>
                              
                          </td>
                      </tr>
                      <tr class="popup_content">
-                         <td style="width:50%;">
+                         <td style="width:40%;">
                              <strong class="tdContentstyle">Driver Special Requirement</strong>
                              
                          </td>
-                         <td style="width:50%;">
+                         <td style="width:60%;">
                              <label id="lblDSR" class="tdContentstyle"></label>
                              
                          </td>
                      </tr>
                      <tr class="popup_content">
-                         <td style="width:50%;">
+                         <td style="width:40%;">
                              <strong class="tdContentstyle">Driver Rating</strong>
                              
                          </td>
-                         <td style="width:50%;">
+                         <td style="width:60%;">
                              <label id="lblDriverRating" class="tdContentstyle"></label>
                              
                          </td>

@@ -37,9 +37,11 @@ function bindGrid(data)
                  for(var i=0; i<count; i++)
                  {
                     var isCustomerAccepted = data.d[i]["CustomerResponse"];
+                    var customerID = data.d[i]["CustomerID"];
+                    console.log(customerID);
                     console.log(isCustomerAccepted);
                     html += '<tr>';
-                    html += "<td width='25%' height='30px' align='center'>" +'<a href="#" onclick="ShowDetailBooking(\''+data.d[i]["CustomerRequestID"]+'\')" style="color:blue;">'+ data.d[i]["CustomerRequestID"]+'</a>' + "</td>"; 
+                    html += "<td width='25%' height='30px' align='center'>" +'<a href="#" onclick="ShowDetailBooking(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["CustomerID"]+'\')" style="color:blue;">'+ data.d[i]["CustomerRequestID"]+'</a>' + "</td>"; 
                     html += "<td width='15%' height='30px' align='center'>"+'&pound' + data.d[i]["Fare"] +"</td>";
                     html += "<td width='25%' height='30px' align='center'>" + data.d[i]["From"] +"</td>";
                     html += "<td width='25%' height='30px' align='center'>" + data.d[i]["To"] +"</td>";
@@ -65,7 +67,7 @@ function bindGrid(data)
      }
      else
      {
-         alert("No current booking found.");
+         $('#bookingmsg').show();
      }
 }
 
@@ -79,6 +81,7 @@ function AcceptJob(jobno, jobfare)
         $('#lblconfirmjob').text(jobno);
         $('#popup_box').show();
         $('#divComission').show();
+        $('#transparent_div').show();
     }
     else
     {
@@ -109,13 +112,13 @@ function AcceptJob(jobno, jobfare)
     }
 }
 
-function ShowDetailBooking(data)
+function ShowDetailBooking(data, customerid)
 {
-    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetCabLaterBooking";
+    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetDCabLaterBooking";
        $.ajax(url, {
           type:"POST",
           datatype:"json",
-          data:"{'customerReqID':'"+data+"'}",
+          data:"{'customerReqID':'"+data+"', 'customerid':'"+customerid+"', 'relatedId':'"+relatedId+"'}",
           contentType: "application/json; charset=utf-8",
            success: showDetail,
            error: function (XMLHttpRequest, textStatus, errorThrown) 
@@ -127,23 +130,25 @@ function ShowDetailBooking(data)
 
 function showDetail(data)
 {
-    $('#lblJobNo').text(data.d[0]);
-    $('#lblFare').html('&pound'+data.d[1]);
-    $('#lblDriverName').text(data.d[2]);
-    $('#lblStartDate').text(data.d[3]);
-    $('#lblStartTime').text(data.d[4]);
-    $('#lblSearchTime').text(data.d[5]);
-    $('#lblBidTime').text(data.d[6]);
-    $('#lblDSR').text(data.d[7]);
-    $('#lblDriverRating').text(data.d[8]);    
+    $('#lblJobNo').text(": "+data.d[0]);
+    $('#lblFare').html(": "+'&pound'+data.d[1]);
+    $('#lblDriverName').text(": "+data.d[2]);
+    $('#lblStartDate').text(": "+data.d[3]);
+    $('#lblStartTime').text(": "+data.d[4]);
+    $('#lblSearchTime').text(": "+data.d[5]);
+    $('#lblBidTime').text(": "+data.d[6]);
+    $('#lblDSR').text(": "+data.d[7]);  
     $('#popup_box').show();
     $('#divCabLaterBooking').show();
+    $('#transparent_div').show();
+    
 }
 
 function Cancel()
 {
     $('#popup_box').hide();
     $('#divCabLaterBooking').hide();
+    $('#transparent_div').hide();
 }
 function RejectJob(data)
 {
@@ -184,6 +189,7 @@ function RejectComission()
 {
      $('#divDeal').hide();
      $('#popup_box').hide();
+     $('#transparent_div').hide();
 }
 
 function Confirmcomission()
@@ -214,6 +220,7 @@ function Confirmcomission()
      window.location.href = "https://sandbox.gocardless.com/pay/YH0MFHY7"; //for commission 1.2pond
      $('#divDeal').hide();
      $('#popup_box').hide();
+    $('#transparent_div').hide();
 }
 
 

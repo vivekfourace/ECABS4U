@@ -58,7 +58,7 @@ function getCablaterBooking()
                          }
                         else
                         {
-                            alert("No booking found.");
+                            $('#bookingmsg').show();                            
                         }
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) 
@@ -70,7 +70,7 @@ function getCablaterBooking()
 
 function ShowDetailBooking(jobNo, driverid)
 {
-    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetCabLaterBooking";
+    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetCCabLaterBooking";
                 $.ajax(url, {
                    type:"POST",
                    datatype:"json",
@@ -86,17 +86,18 @@ function ShowDetailBooking(jobNo, driverid)
 
 function showDetail(data)
 {
-    $('#lblJobNo').text(data.d[0]);
-    $('#lblFare').html('&pound'+data.d[1]);
-    $('#lblDriverName').text(data.d[2]);
-    $('#lblStartDate').text(data.d[3]);
-    $('#lblStartTime').text(data.d[4]);
-    $('#lblSearchTime').text(data.d[5]);
-    $('#lblBidTime').text(data.d[6]);
-    $('#lblDSR').text(data.d[7]);
-    $('#lblDriverRating').text(data.d[8]);    
+    $('#lblJobNo').text(": "+data.d[0]);
+    $('#lblFare').html(": "+'&pound'+data.d[1]);
+    $('#lblDriverName').text(": "+data.d[2]);
+    $('#lblStartDate').text(": "+data.d[3]);
+    $('#lblStartTime').text(": "+data.d[4]);
+    $('#lblSearchTime').text(": "+data.d[5]);
+    $('#lblBidTime').text(": "+data.d[6]);
+    $('#lblDSR').text(": "+data.d[7]);
+    $('#lblDriverRating').text(": "+data.d[8]);    
     $('#popup_box').show();
     $('#divCabLaterBooking').show();
+    $('#transparent_div').show();
     
 }
 
@@ -104,6 +105,7 @@ function Cancel()
 {
     $('#popup_box').hide();
     $('#divCabLaterBooking').hide();
+    $('#transparent_div').hide();
 }
 function HireDriver(customerReqID, driverid)
 {
@@ -120,7 +122,7 @@ function HireDriver(customerReqID, driverid)
                    data:"{'driverId':'" + driverid + "','requestId':'" + customerReqID + "'}",
                    contentType: "application/json; charset=utf-8",
                     success: function(data){
-                        alert('Booking in progress, please check later.');
+                        alert('Booking in progress. Please check later.');
                         window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) 
@@ -145,6 +147,7 @@ function CancelBookedJob(data)
         $('#freezBack').show();
         $('#popup_box1').show();
         $('#divAbortTask').show();
+        $('#transparent_div').show();
     }
     else
     {
@@ -182,6 +185,7 @@ function SubmitReject()
                               $('#divAbortTask').hide();
                               $('#txtAbortmsg').val("");
                               $('#freezBack').hide();
+                              $('#transparent_div').hide();
                               alert("Job aborted.");
                               window.location='bookedhistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                          }                         
@@ -200,6 +204,7 @@ function CancelReject()
     $('#divAbortTask').hide();
     $('#freezBack').hide();
     $('#txtAbortmsg').val("");
+    $('#transparent_div').hide();
 }
 
 function cabNow()

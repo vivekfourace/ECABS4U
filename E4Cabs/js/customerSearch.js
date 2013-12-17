@@ -221,11 +221,11 @@ function availabledriver() {
     
     var travelTime = $('#TravelTime').val();
     if (!fromloc) {
-        $('#lblMessage').text("Enter From location!");
+        $('#lblMessage').text("Please enter From location.");
         return false;
     }
     if (!toloc) {
-        $('#lblMessage').text("Enter Final Destination!");
+        $('#lblMessage').text("Please enter To location.");
         return false;
     }
     var IsReturnTrue = $('#chkReturnYes').attr('checked') ? true : false;
