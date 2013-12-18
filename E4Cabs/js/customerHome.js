@@ -14,95 +14,68 @@ function getProfile()
             dataType: "Json",
             data:"{'userID':'" +relatedId+"'}",
             contentType: "application/json; charset=utf-8",                     
-            success: ShowData,
-            
+            success: ShowData,            
             error: function (XMLHttpRequest, textStatus, errorThrown) {
            //alert(errorThrown.message);
                 }
          });
 }
 
-
 function ShowData(data)
 { 
-         $('#lblname').text(data.d[0] +"  "+ data.d[1]);
-         // $('#lbllastname').text(data.d[0]["CustomerLastName"]);
-         $('#lblLocation').text(data.d[2]);
-         $('#lblLocation2').text(data.d[3]);
-         $('#lblMobileNo').text(data.d[4]);
-         $('#lblEmailID').text(data.d[5]);
-          
+          $('#lblname').text(data.d[0] +" "+ data.d[1]);    
+          $('#lblMobileNo').text(data.d[2]);
+          $('#lblEmailID').text(data.d[3]);
+    
           $('#txtname').hide();
-          $('#txtlastname').hide();    
-          $('#txtLocation').hide();   
-          $('#txtLocation2').hide();   
+          $('#txtlastname').hide();            
           $('#txtMobileno').hide();   
-          $('#txtEmailID').hide();
-          
+          $('#txtEmailID').hide();          
           document.getElementById("trBtnUpdate").style.display = 'none';
-          document.getElementById("trCancel").style.display = 'none';
-          document.getElementById("tredit").style.display = 'table-row';
           
-          $('#lblname').show();
-          $('#lbllastname').show();
+          $('#lblname').show();         
           $('#lblMobileNo').show();
           $('#lblEmailID').show();
           $('#btnEdit').show();
-          $('hr').show();
-    
-          $('#lblLocation').hide();
-          $('#lblLocation2').hide();
  }
 
-//Edit Customer Profile
 function EditProfile()
 {
-          $('#txtname' ).show(); 
-          $('#txtLocation').show();    
-          $('#txtLocation2').show();    
+          var fullname = $('#lblname').text();
+          var namearray = fullname.split(" ");
+    
+          var name = namearray[0];
+          var lastname = namearray[1];         
+          var mobile = $('#lblMobileNo').text();
+          var email = $('#lblEmailID').text();
+
+          $('#txtname' ).val(name);
+          $('#txtlastname' ).val(lastname);    
+          $('#txtMobileno').val(mobile)
+          $('#txtEmailID').val(email);
+
+          $('#txtname' ).show();         
           $('#txtMobileno').show();    
           $('#txtEmailID').show();
-          $('hr').hide();
-          document.getElementById("trBtnUpdate").style.display = 'table-row';
-          document.getElementById("trCancel").style.display = 'table-row';
-          document.getElementById("tredit").style.display = 'none';
-          $('#lblname').hide();
-          $('#lbllastname').hide();
-          $('#lblLocation').hide();
-          $('#lblLocation2').hide();
+          $('#txtlastname').show();
+    
+          $('#btnEdit').hide();
+          document.getElementById("trBtnUpdate").style.display = 'table-row';     
+     
+          $('#lblname').hide();    
           $('#lblMobileNo').hide();
-          $('#lblEmailID').hide();
-          $('#btnhistory').hide();
-          var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetCustomerrDetails";
-          $.ajax(url,{
-              type:"POST",
-              dataType: "Json",
-              data:"{'userID':'" +relatedId+"'}",
-              contentType: "application/json; charset=utf-8",                     
-              success: function(data){
-                  $('#txtname').val(data.d[0] +"  "+ data.d[1]); 
-                  $('#txtLocation').val(data.d[2])
-                  $('#txtLocation2').val(data.d[3])
-                  $('#txtMobileno').val(data.d[4]);    
-                  $('#txtEmailID').val(data.d[5]);
-                  
-                  },
-              error: function (XMLHttpRequest, textStatus, errorThrown) {
-             
-              }
-          });
+          $('#lblEmailID').hide(); 
 }
 
 //upadate customer Profile
 function UpdateProfile()
 {
-     var name = $('#txtname').val();
-     var lastname = $('#txtlastname').val();
-     var address1 = $('#txtLocation').val();
-     var address2 = $('#txtLocation2').val();
-     var email = $('#txtEmailID').val();
-     var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
-     var phoneno = $('#txtMobileno').val();
+    var name = $('#txtname').val();    
+    var lastname = $('#txtlastname').val();
+    var email = $('#txtEmailID').val();
+    var phoneno = $('#txtMobileno').val();
+    var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
+     
     if(name.length == 0)
     {
         alert("Please enter your name.");
@@ -136,11 +109,11 @@ function UpdateProfile()
                    alert("Please enter email address.");
                     return false;
                 }
-        var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateCustomerDetails";
-        $.ajax(url,{
-            type:"POST",
-            dataType: "Json",
-            data:"{'userID':'" +relatedId+"','name':'" +name+"','lname':'"+lastname+"','address1':'" +address1+"','address2':'" +address2+"','contactNumber':'" +phoneno+"','emailID':'" +email+"'}",
+        $.ajax({
+            url:"http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateCustomerDetails",
+            type:"post",
+            dataType:"Json",
+            data:"{'relatedId':'" +relatedId+"','name':'"+name+"','lastname':'"+lastname+"','email':'" +email+"','phoneno':'" +phoneno+"'}",
             contentType: "application/json; charset=utf-8",                     
             success: ShowData,            
             error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -151,8 +124,25 @@ function UpdateProfile()
 
 function CancelProfile()
 {
+    var name = $('#txtname' ).val();
+    var lastname = $('#txtlastname' ).val()
+    var contact = $('#txtMobileno').val()
+    var email = $('#txtEmailID').val();
+    $('#lblname').val(name+lastname);   
+    $('#lblMobileNo').val(contact);
+    $('#lblEmailID').val(email);
     
-    getProfile();
+    $('#lblname').show();    
+    $('#lblMobileNo').show();
+    $('#lblEmailID').show();
+    
+    $('#txtname' ).hide();         
+    $('#txtMobileno').hide();    
+    $('#txtEmailID').hide();
+    $('#txtlastname').hide();
+    
+    $('#btnEdit').show();    
+    $("#trBtnUpdate").hide();
 }
 
 function bookedHistory()

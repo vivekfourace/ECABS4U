@@ -4,10 +4,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/site.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
-    <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
-    <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
-    <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
+    <script src="Scripts/jquery-2.0.3.min.js"></script>  
+    <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>   
     <script type="text/javascript" src="js/customerHome.js"></script> 
+    <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
 
     <title></title>
 </head>
@@ -34,7 +34,7 @@
         </table>
     </div>
     <div data-role="content" style="padding-top: 76px; width: 100%;">
-        <div style="width:100%;">
+        <div style="width:100%;height:30px">
             <span style="padding-right: 10px; float: right">
                 <a href="#" style="color: #2980CE;" onclick="changepassword()"><i>Change password</i></a>
             </span>
@@ -48,67 +48,49 @@
         </table>
         <table align="right" style="width: 73%">
             <tr>
-                <td>
-                    <label id="lblname" class="font-style" style="font-size: 20px; font-weight: bold;"></label>
-                    <input type="text" id="txtname" placeholder="Name" class="font-style" style="display: none; text-align: left; width: 90%;" />
-                    <label id="lbllastname" class="font-style"></label>
-                    <input type="text" id="txtlastname" class="font-style" style="display: none; text-align: left; width: 90%;" />
-                    <hr>
-                </td>
-            </tr>
-           <!-- <tr>
-                <td>
-                    <label id="lblLocation" class="font-style" style="font-family: Helvetica,Arial,sans-serif"></label>
-                    <input type="text" id="txtLocation" class="font-style" style="display: none; text-align: left; width: 90%" />
-                    <hr>
+                <td style="width:100%;border-bottom:2px solid #A4A4A4;height:25px">
+                    <label id="lblname" class="font-style" style="font-size:20px;font-weight:bold" ></label>
+                        <input type="text" id="txtname" placeholder="First name" class="font-style" style="display: none; text-align: left; width: 98%;" />
+                        <input type="text" id="txtlastname" placeholder="Last name" class="font-style" style="display: none; text-align: left; width: 98%;" />
                 </td>
             </tr>
             <tr>
-                <td>
-                    <label id="lblLocation2" class="font-style" style="font-family: Helvetica,Arial,sans-serif"></label>
-                    <input type="text" id="txtLocation2" style="display: none; text-align: left; width: 90%" />
-                    <hr>
-                </td>
-            </tr>-->
-            <tr>
-                <td>
-                    <label id="lblMobileNo" class="font-style" style="font-family: Helvetica,Arial,sans-serif"></label>
-                    <input type="text" id="txtMobileno" placeholder="Contact number" class="font-style" maxlength="11" style="display: none; text-align: left; width: 90%" />
-                    <hr>
+                <td style="width:100%;border-bottom:2px solid #A4A4A4;height:25px">
+                    <label id="lblMobileNo" class="font-style"></label>
+                    <input type="text" id="txtMobileno" placeholder="Contact number" class="font-style" maxlength="11" style="display: none; text-align: left; width: 98%" />
                 </td>
             </tr>
             <tr>
-                <td>
+                <td style="width:100%;border-bottom:2px solid #A4A4A4;height:25px">
                     <i>
-                        <label id="lblEmailID" class="font-style" style="color: #639ECD" style="font-family: Helvetica,Arial,sans-serif"></label>
+                        <label id="lblEmailID" class="font-style" style="color: #639ECD"></label>
                     </i>
-                    <input type="text" id="txtEmailID" placeholder="Email" class="font-style" style="display: none; text-align: left; width: 90%" />
-                    <hr>
+                    <input type="text" id="txtEmailID" placeholder="Email" class="font-style" style="display: none; text-align: left; width: 98%" />
+ 
                 </td>
             </tr>
         </table>
     </div>
 
-    <div style="padding-top: 75%; padding-bottom: 50px">
+    <div style="width: 100%; position: fixed; bottom: 0px;padding-bottom: 33%">
         <table style="width:100%;">             
-            <tr id="tredit">
-                <td style="width:100%;text-align:center">
-                    <input id="btnEdit" type="button" value="Edit" class="btn-tmp" style="width: 80%; color: white;" onclick="EditProfile();" />
+            <tr>
+                <td style="width:90%;text-align:center" colspan="2">
+                    <input id="btnEdit" type="button" value="Edit" class="btn-tmp" style="width: 100%; color: white;" onclick="EditProfile();" />
                 </td>
             </tr>
            
             <tr id="trBtnUpdate" style="display: none;">
-                <td style="width:100%;text-align:center">
-                    <input id="btnUpdate" type="button" value="Update" class="btn-tmp" style="color: white;width: 80%" onclick="UpdateProfile();" />
-                </td>
-            </tr>
-            <tr id="trCancel" style="display: none;">
-                <td style="width:100%;text-align:center">
-                    <input id="btnCancel" type="button" class="btn-tmp" value="Cancel" style="color: white;width: 80%" onclick="CancelProfile();" />
+                <td style="width:50%;text-align:center">
+                    <input id="btnUpdate" type="button" value="Update" class="btn-tmp" style="color: white;width: 100%" onclick="UpdateProfile();" />
+                </td>           
+                <td style="width:50%;text-align:center">
+                    <input id="btnCancel" type="button" class="btn-tmp" value="Cancel" style="color: white;width: 100%" onclick="CancelProfile();" />
                 </td>
             </tr>
         </table>
     </div>
+    
     <div data-role="footer" data-position="fixed" style="width: 100%; position: fixed; bottom: 0px; height: 25px; padding-bottom: 10px">
         <table style="width: 98%;" class="btn-tmpFooter">
             <tr>

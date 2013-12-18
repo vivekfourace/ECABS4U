@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <link rel="stylesheet" type="text/css" href="css/site.css" />
     <script type="text/javascript" src="js/customerRegister.js"></script>
-    <script type="text/javascript" src="Scripts/jquery-1.8.2.js"></script>
+    <script src="Scripts/jquery-2.0.3.min.js"></script>  
     <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
 
 </head>
@@ -40,8 +40,8 @@
                     </tr>
                 </table>
          </div>
-        <div id="divcustomerreg" style="padding-top:71px">        
-            <label id="lblMsg" style="color:#D70007;font-size:12px"></label><br/>  
+        <div id="divcustomerreg" style="padding-top:35%;">        
+            <label id="lblMsg" style="color:#D70007;font-size:12px;"></label><br/>  
             <input type="text" id="txtFirstName" placeholder="First name"  />
             <input type="text" id="txtLastName" placeholder="Last name" />
             <input type="text" id="txtPhone" placeholder="Phone number" maxlength="11" />
@@ -50,7 +50,7 @@
             <input type="password" id="txtPassword" placeholder="Password" />
             <input type="password" id="txtConfirmPassword" placeholder="Confirm Password" />
             <div style="margin-top:7px;width:100%">
-            <input type="button" class="btn-tmp cursor" value="Register" onclick="Registercustomer();"/>
+            <input type="button" class="btn-tmp" style="width:80%" value="Register" onclick="Registercustomer();"/>
             </div>
         </div>  
             <div id="divSucessfulcustomer" style="width:100%;color:green;font-size:16px;font-weight:bold;position: fixed;top: 45%;left: 0;right: 0;">

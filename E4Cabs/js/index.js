@@ -84,21 +84,17 @@ function login() {
 }
 
 function CheckMsg(data) {
-    if (data.d == "false") {
-        $('#imgLoader').hide();
-        $('#lblMsg').text("Invalid Username or Password.");
-        $('#lblMsg').css("color", "#D70007");
-        $('#lblMsg').css("font-size", "13");
-    }
-    else {
+    console.log(data.d[0]);
+    if(data.d[0] == "true")
+    {
         $('#imgLoader').show();
-        var userID = data.d[0];
-        var roleID = parseInt(data.d[1]);
-        var relatedID = data.d[2];
+        var userID = data.d[1];
+        var roleID = parseInt(data.d[2]);
+        var relatedID = data.d[3];
         var name = document.getElementById('txtUserName').value;
         var password = document.getElementById('txtPassword').value;
         
-        //creating Cookie
+        //creating Cookie        
         var isChecked = $('#chkRem').attr('checked') ? true : false;
         if (isChecked == true) {
             $.cookie('userName', name);
@@ -110,15 +106,22 @@ function CheckMsg(data) {
         }
 
         switch (roleID) {
-            //Role 3 --> Driver
+                //Role 3 --> Driver
             case 3:
                 window.location = 'driverHome.html?id=' + userID + '&rid=' + roleID + '&rrid=' + relatedID;
                 break;
-
                 //Role 4 --> Customer
             case 4:
                 window.location = 'customerSearch.html?id=' + userID + '&rid=' + roleID + '&rrid=' + relatedID;
                 break;
         }
+    }
+    else 
+    {
+        $('#imgLoader').hide();
+        $('#lblMsg').text(data.d);
+        $('#lblMsg').css("color", "#D70007");
+        $('#lblMsg').css("font-size", "13");
+        $('#txtPassword').val("");
     }
 }
