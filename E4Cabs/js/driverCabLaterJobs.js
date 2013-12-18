@@ -48,8 +48,8 @@ function showTodayJobs(data)
      }
     else
     {
-        alert("No Job found");
-        window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+        $('#bookingmsg').show();
+        //window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
     }
 }
 
