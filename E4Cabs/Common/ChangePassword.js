@@ -89,44 +89,45 @@ function ChangePaswords()
                      datatype:"JSON",
                      type:"POST",
                      data:"{'userid':'"+userId+"','oldpassword':'"+currentPass+"','newpassword':'"+newPass+"'}",
-                     contentType: "application/json; charset=utf-8",
-                     
-                     success: ShowStatus,
-                     
+                     contentType:"application/json; charset=utf-8",                     
+                     success: ShowStatus,                     
                      error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    // alert(errorThrown);
                 }
-                 });
-                 
+            });
  }
+
 //status after submitting you emailid
  function ShowStatus(data)
 {
-            if(data.d == "Incorrect current password!")
+            console.log(data.d);
+            
+            if(data.d === "False")
             {
-                $('#lblMsg').text("Incorrect current password!");
-                $('#lblMsg').css("color","#D70007");
-                $('#lblMsg').css("font-size","13");
+                $('#lblMsg').text("Incorrect current password.");
+                $('#lblMsg').css("color", "#FE2E2E");
+                $('#lblMsg').css("font-size", "13");
                 $('#curentpswd').val("");
-                
-                
+                $('#txtNew').val("");
+                $('#txtConform').val(""); 
             }
-            else if (data.d == "Error occurs!") {
-                $('#lblMsg').text("Oops!! error occurs, please try again.");
-                $('#lblMsg').css("color", "#D70007");
+            else if(data.d === "Error")
+            {
+                $('#lblMsg').text("Error occurs, please try again.");
+                $('#lblMsg').css("color", "#FE2E2E");
                 $('#lblMsg').css("font-size", "13");
                 $('#curentpswd').val("");
                 $('#txtNew').val("");
                 $('#txtConform').val("");
                 
             }
-            else {
-                $('#lblMsg').text("Password changed successfully.");
-                $('#lblMsg').css("color", "#237F0C");
+            else
+            {
+                $('#lblMsg').text(data.d);
+                $('#lblMsg').css("color", "#0B610B");
                 $('#lblMsg').css("font-size", "13");
                 $('#txtConform').val("");
                 $('#curentpswd').val("");
-                $('#txtNew').val("");
+                $('#txtNew').val(""); 
             }
  }
 
