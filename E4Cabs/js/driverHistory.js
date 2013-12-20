@@ -2,7 +2,7 @@ var QString = window.location.search.substring(1);
 var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
-//back to index
+
 function backToIndex()
 {
      window.location =  'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
@@ -78,11 +78,9 @@ function gethistory()
                             {
                                 alert(errorThrown);
                             }
-                        });
-                
+                        });                
 }
 
-//feedback
 function feedBackDriver(JobNumber )
 {
      $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/GetCabNowDataForDriver",
@@ -103,7 +101,7 @@ function feedBackDriver(JobNumber )
                 
                    if(isJobAlive == "True")
                     {
-                        if(isDriverRatingLocked == "True") //show read only
+                        if(isDriverRatingLocked == "True")
                         {
                                document.getElementById('sel').value = rating;
                                document.getElementById('txtarComments').value = custFeed;
@@ -119,13 +117,11 @@ function feedBackDriver(JobNumber )
                                $('#divFeedBack').show();
                                $('#trbtnPopup').hide();
                                $('#trbtnOK').show();
-                               $('#transparent_div').show();
-                               
+                               $('#transparent_div').show();                               
                             
                         }
                         else if(isDriverRatingLocked == "False")
-                        {
-                           
+                        {                           
                                $('#lbljobNo').text(JobNumber);
                                $('#lblFeeddate').text(startDate);
                                $('#lblFeedTime').text(startTime);
@@ -150,7 +146,6 @@ function feedBackDriver(JobNumber )
   });  
 }
 
-//cancel feedback
 function CancelFeedBack()
 {
     $('#divFeedBack').hide();
@@ -171,8 +166,7 @@ function JobDetail(data)
                    contentType: "application/json; charset=utf-8",
                     success: showDetail,
                     error: function (XMLHttpRequest, textStatus, errorThrown) 
-                    {
-                        
+                    {                        
                     }
                 });
 }
@@ -208,10 +202,7 @@ function SubmitReject()
         alert('Please enter a reason.');
         return false;
     }
-    
-    //TODO: write service to abort the job and send email to the customer
-      var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/AbortCurrentJobDriver";
-    
+      var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/AbortCurrentJobDriver";    
             $.ajax(url,{
                      beforeSend: function(){
                         $('#imgLoader').show();
@@ -233,8 +224,7 @@ function SubmitReject()
                               alert("Job aborted successfully.");
                               window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                          }                         
-                     },
-                    
+                     },                    
                      error: function (XMLHttpRequest, textStatus, errorThrown) {
                     // alert(errorThrown);
                 }
@@ -246,8 +236,7 @@ function CancelReject()
     $('#popup_box1').hide();
     $('#divAbortTask').hide();
     $('#transparent_div').hide();
-    $('#txtAbortmsg').val(""); 
-    $('#transparent_div').hide();
+    $('#txtAbortmsg').val("");
 }
 
 function AbortJob(data)
@@ -256,10 +245,8 @@ function AbortJob(data)
     document.getElementById("lblJobNumber").value = jobNo;
     var isTrue = confirm("Confirm you want to abort the current cab?");
     if(isTrue)
-    {
-        
-        //$('#lblJobNumber').text(data);
-         $('#transparent_div').show();
+    {       
+        $('#transparent_div').show();
         $('#popup_box1').show();
         $('#divAbortTask').show();
     }
@@ -270,8 +257,6 @@ function AbortJob(data)
     
 }
 
-
-//feedback post
 function PostFeedBack()
 {
    var requestID= $('#lbljobNo').text();
@@ -340,36 +325,26 @@ function logout()
             data:"{'userID':'" +userId+"'}",
             contentType: "application/json; charset=utf-8",                     
             success: function(data)
-            {
-                },
+            {},
             
             error: function (XMLHttpRequest, textStatus, errorThrown) {
             //alert(errorThrown);
                 }
          }); 
-          $.cookie("remember", false);
-          //$.cookie("userName", 'null');
-          //$.cookie("userPassword", 'null');
-          window.location = "index.html";  
+    $.cookie("remember", false);          
+    window.location = "index.html";  
 }
-//Customer Feedback 
+ 
 function feedBack()
 {
        window.location='driverFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-
-//back to index
-function backtostart()
-{
-        window.location="index.html";
-}
-
-//Accepting the Request.    
+  
 function seeRequest()
 {
         window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
- //cancel the Request.
+
 function closeRequest()
 {
          $.ajax({
@@ -381,12 +356,14 @@ function closeRequest()
                   success: function (data) 
                      {
                          $('#popup_box').hide();
-                          $('#divDealStart').hide();
+                         $('#divDealStart').hide();
+                         $('#transparent_div').hide();
                     },
                   error: function (XMLHttpRequest, textStatus, errorThrown)
                      {
-                            $('#popup_box').hide();
-                          $('#divDealStart').hide(); 
+                         $('#popup_box').hide();
+                         $('#divDealStart').hide();
+                         $('#transparent_div').hide();
                       }
             });
     

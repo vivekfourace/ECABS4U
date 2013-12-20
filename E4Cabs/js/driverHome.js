@@ -1,4 +1,3 @@
-//query string
 var QString = window.location.search.substring(1);
 var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
@@ -40,7 +39,6 @@ function AbortJob()
     var istrue = confirm("Confirm you want to abort this job?");
     if(istrue)
     {
-       $('#freezBack').show();
        $('#popup_box1').show();
        $('#divAbortTask').show();
        $('#transparent_div').show();
@@ -50,23 +48,6 @@ function AbortJob()
     }
 }
 
-//Driver status 
- function DriverStatus(){
-   window.location = 'driverStatusUpdate.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-}
-
-
-//diver Profile
-function DriverProfile()
-{
-    window.location = 'driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-}
-
-//Driver Jobs
-function Jobs()
-{
-    //window.location = 'pop.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-}
 
 //diver Profile from menu
 function myProfile()
@@ -95,8 +76,6 @@ function logout(){
                 }
          }); 
         $.cookie("remember", false);
-        //$.cookie("userName", 'null');
-        //$.cookie("userPassword", 'null');
         window.location = "index.html";  
 }
 
@@ -124,8 +103,7 @@ function SubmitAbort()
                      contentType: "application/json; charset=utf-8",                     
                      success: function(data){
                          if(data.d == "true")
-                         {
-                            
+                         {                            
                               $('#popup_box1').hide();
                               $('#divAbortTask').hide();
                               $('#transparent_div').hide();
@@ -144,7 +122,6 @@ function SubmitAbort()
 
 function cancelAbort()
 {
-    $('#freezBack').hide();
     $('#popup_box1').hide();
     $('#divAbortTask').hide();
     $('#txtAbortmsg').val("");
@@ -189,8 +166,6 @@ function myhome(){
     window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
-
-//Driver Feedback
 function feedBack()
 {
     window.location='driverFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
@@ -202,11 +177,35 @@ function bookedHistory()
   window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;  
 }
 
- //Accepting the Request.    
+    
  function seeRequest()
  {
      window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
  }
+
+function closeRequest()
+{
+         $.ajax({
+                  url:'http://115.115.159.126/ECabs/ECabs4U.asmx/CancelNewJob', 
+                  type:"POST",
+                  datatype:"json",
+                  data:"{'userID':'" +relatedId+ "'}",
+                  contentType: "application/json; charset=utf-8",                     
+                  success: function (data) 
+                     {
+                         $('#popup_box').hide();
+                         $('#divDealStart').hide();
+                         $('#transparent_div').hide();
+                    },
+                  error: function (XMLHttpRequest, textStatus, errorThrown)
+                     {
+                         $('#popup_box').hide();
+                         $('#divDealStart').hide();
+                         $('#transparent_div').hide();
+                      }
+            });
+    
+}
           
           
         

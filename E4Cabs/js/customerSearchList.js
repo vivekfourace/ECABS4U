@@ -11,6 +11,7 @@ function backtosearch() {
 }
 
 var timeOut;
+
     $.ajax({
         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetJobTimeOutTime",
         type: "POST",
@@ -38,7 +39,7 @@ var timer = setInterval(function () {
     }
 }, 1000);
 
-var count = setInterval(function(){
+var reinitiateCounter = setInterval(function(){
     var isTrue = CheckJobCount();
     if(isTrue)
     {
@@ -53,7 +54,7 @@ function CheckJobCount()
     console.log(a);
     if(a == 60)
     {
-       console.log("true");
+       console.log("true timer for 60s auto initiation");
        return true;
     }
     return false;
@@ -62,6 +63,7 @@ function CheckJobCount()
 function Destroy() {
     window.clearInterval(timer);
     window.clearInterval(id);
+    window.clearInterval(reinitiateCounter);
     window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
 }
 
@@ -85,10 +87,14 @@ function getData(data) {
     if(count > 0)
     {
         window.clearInterval(timer);
+        window.clearInterval(reinitiateCounter);
         DisplayDriversData();
     }    
     function DisplayDriversData()
-    {   console.log('in display driver data');
+    {   
+        window.clearInterval(timer);
+        window.clearInterval(reinitiateCounter);
+        console.log('in display driver data');
         $('#msg').empty();
         $('#divbid').show();
         $('#divawait').hide();
@@ -389,8 +395,7 @@ function getData(data) {
         }
         html += '</tbody>';
         html += '</table>';
-        html += '<br/>'      
-        
+        html += '<br/>';    
         html += '<div>';
         html += '<table>';
         html += '<tr>';
@@ -398,47 +403,15 @@ function getData(data) {
         html += '<input type="button" id="searchAgain" class="reject-btn" value="InSufficient Drivers" onclick="SearchDriverAgain()"/>';
         html += '</td></tr>'; 
         html += '</table>';
-        html += '</div>';
-        
+        html += '</div>';        
         $('#msg').append(html);
     }
 }
 
-
-function ShowRating()
-{
-    $.ajax({
-        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetDriverRating",
-        type: "POST",
-        dataType: "Json",
-        data: "{'requestID':'" + requestID + "'}",
-        contentType: "application/json; charset=utf-8",
-        success: function(data)
-        {
-            $('#lbl5tar').text(data.d[0]);
-            $('#lbl4star').text(data.d[1]);
-            $('#lbl3star').text(data.d[2]);
-            $('#lbl2star').text(data.d[3]);
-            $('#lbl1star').text(data.d[4]);
-            $('#popup_box').show();
-            $('#divRating').show();
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-        }
-    });
-   
-}
-function ratingClose()
-{
-   $('#divRating').hide(); 
-   $('#popup_box').hide();
-}
-
 function SearchDriverAgain()
 {
-    window.clearInterval(count);
-    $('#msg').empty();
-     $('#load').show();
+    $('#msg').remove(); //empty()
+    $('#load').show();
     $('#transparent_div').show();
     $('#statusMessage').html("Searching for more drivers...");
     $('#statusMessage').css("color","Yellow");
@@ -454,20 +427,22 @@ function SearchDriverAgain()
     });
 }
 
-function SearchAgain()
-{
-    $('#msg').empty();
-    $.ajax({
-        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData",
-        type: "POST",
-        dataType: "Json",
-        data: "{'requestID':'" + requestID + "'}",
-        contentType: "application/json; charset=utf-8",
-        success: getData,
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-        }
-    });
-}
+//function SearchAgain()
+//{
+//    $('#msg').empty();
+//    $.ajax({
+//        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData",
+//        type: "POST",
+//        dataType: "Json",
+//        data: "{'requestID':'" + requestID + "'}",
+//        contentType: "application/json; charset=utf-8",
+//        success: getData,
+//        error: function (XMLHttpRequest, textStatus, errorThrown) {
+//        }
+//    });
+//}
+
+
 function showExpiry() {
     $('#transparent_div').show();
     $('#popup_box').show();
@@ -521,14 +496,10 @@ function Hireme(driID, reqID,spec)
 {
     console.log(driID +" "+ reqID +" " + spec);    
     DisableHiremeBtns();
-    $('#msg').disabled = true;
-    //var getSpec= spec;  
+    $('#msg').disabled = true; 
             var seeSpec=confirm("Did you read the special circumstance entry ?");
             if(seeSpec == true)
-            {
-               //$('#popup_box').show();
-               //$('#divspec').show();
-               //$('#popupBoxClose').show(); 
+            {            
                $('#loading').show();
                $('#transparent_div').show();
                var driverId = driID;
@@ -552,9 +523,9 @@ function Hireme(driID, reqID,spec)
 
 function DisableHiremeBtns()
 {
-            $(":button.disableBtn").each(function(){
-               this.disabled = true;
-            });
+   $(":button.disableBtn").each(function(){
+      this.disabled = true;
+   });
 }
 function getResponseFromDriver(data)
  {
@@ -582,6 +553,7 @@ function getResponseFromDriver(data)
                         success: function (data) {
                            
                             $('#loading').hide();
+                            $('#transparent_div').hide();
 
                             $('#lbldriverId').text(getDriverID);
                             $('#lblconfirmjob').text(data.d[0]);
@@ -605,11 +577,11 @@ function getResponseFromDriver(data)
                     });
                 }
                 else {
-                    $('#load').hide();
-                    $('#transparent_div').hide();
+                    $('#load').hide();                    
                     $('#statusMessage').hide();
                     $('#divDeal').hide();
                     $('#loading').show();
+                    $('#transparent_div').show();
                     
                 }
             },

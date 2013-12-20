@@ -21,7 +21,6 @@ if(roleId != null)
 
 function FillAllData(data)
 {
-    console.log(data.d.length);
     var count = data.d.length;
     if(count > 0)
     {
@@ -184,7 +183,7 @@ function availabledriver() {
     var distance = document.getElementById('txtDistance').value;   
     var pickdate = document.getElementById('pickUpDate').value;
     var picktime = document.getElementById('pickUpTime').value;
-    console.log(pickdate + " " + picktime);
+    
     var passenger = document.getElementById("ddlpassenger");
     var totalpassenger = passenger.options[passenger.selectedIndex].value;
     var lcase = document.getElementById("ddllargecase");
@@ -292,7 +291,8 @@ function availabledriver() {
                     }
                     else
                     {
-                        alert('Unknown error. Please try again.');
+                        console.log(data.d[1]);
+                        alert(data.d[1]);
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown){

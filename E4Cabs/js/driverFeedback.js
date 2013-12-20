@@ -133,11 +133,13 @@ function seeRequest()
                          {
                              $('#popup_box').hide();
                               $('#divDealStart').hide();
+                             $('#transparent_div').hide();
                         },
                       error: function (XMLHttpRequest, textStatus, errorThrown)
                          {
                                 $('#popup_box').hide();
-                              $('#divDealStart').hide(); 
+                              $('#divDealStart').hide();
+                             $('#transparent_div').hide();
                           }
                 });
  }

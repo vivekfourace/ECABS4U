@@ -34,6 +34,7 @@ function Check(){
                                                           $('#strJobTypeTitle').css('color','#FFFFFF');
                                                           $('#popup_box').show();
                                                           $('#divDealStart').show();
+                                                          $('#transparent_div').show();
                                                       }
                                                       else if(jobType == "False")
                                                       {
@@ -41,18 +42,21 @@ function Check(){
                                                           $('#strJobTypeTitle').css('color','#FFFFFF');
                                                           $('#popup_box').show();
                                                           $('#divDealStart').show();
+                                                          $('#transparent_div').show();
                                                       }                                                
                                                   }
                                                 else if(isTrue == "False")
                                                   {
                                                      $('#popup_box').hide();
-                                                     $('#divDealStart').hide();  
+                                                     $('#divDealStart').hide();
+                                                     $('#transparent_div').hide();
                                                   }
                                              },
                                            error: function (XMLHttpRequest, textStatus, errorThrown)
                                               {
                                                      $('#popup_box').hide();
-                                                     $('#divDealStart').hide(); 
+                                                     $('#divDealStart').hide();
+                                                      $('#transparent_div').hide();
                                                }
                                      });
                              }
@@ -69,11 +73,9 @@ function Check(){
     
 }
 setInterval(Check, 10000);
-  //cancel the Request.
           function closeRequest()
-          {
-              //alert("del");
-              var getResponse=confirm("Cancel job ?")
+          {             
+              var getResponse=confirm("Do you want to cancel this job?")
               if( getResponse==true)
               {
                 $.ajax({
@@ -86,11 +88,13 @@ setInterval(Check, 10000);
                            {
                                $('#popup_box').hide();
                                 $('#divDealStart').hide();
+                               $('#transparent_div').hide();
                           },
                         error: function (XMLHttpRequest, textStatus, errorThrown)
                            {
                                   $('#popup_box').hide();
                                 $('#divDealStart').hide(); 
+                               $('#transparent_div').hide();
                             }
                   });  
               }

@@ -5,7 +5,8 @@ var relatedId = QString.split("=")[3].split("&")[0];
 window.onload = getProfile();
 
 function changepassword()
-{console.log('dddd');
+{
+   console.log('dddd');
    window.location='DriverChangePassword.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 function getProfile()
@@ -221,11 +222,13 @@ function feedBack()
                            {
                                 $('#popup_box').hide();
                                 $('#divDealStart').hide();
+                               $('#transparent_div').hide();
                           },
                         error: function ()
                            {
                                 $('#popup_box').hide();
-                                $('#divDealStart').hide(); 
+                                $('#divDealStart').hide();
+                               $('#transparent_div').hide();
                             }
                   });
               
