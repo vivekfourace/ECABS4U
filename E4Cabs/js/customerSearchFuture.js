@@ -257,8 +257,8 @@ function availabledriverLater() {
                     }
                     else
                     {
-                        alert('Unknown error. Please try again.');
-                        window.location =  'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                        console.log(data.d[1]);
+                        alert(data.d[1]);
                     }
                     
                 },

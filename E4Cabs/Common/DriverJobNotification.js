@@ -13,7 +13,7 @@ function Check(){
                      success: function (data) {
                         
                         var status = data.d;
-                         if(status == true)
+                         if(status == true || status == false)
                          {
                          $('#driverStatusupdate').text("Available");                             
                               $.ajax({

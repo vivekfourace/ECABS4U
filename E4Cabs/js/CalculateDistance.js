@@ -37,7 +37,7 @@ function CalculateTotalDistance() {
     
     var distanceInput = document.getElementById("txtDistance");
         
-    if (loc2 == 0 && loc3 == 0 && loc4 == 0 && loc5 == 0 && loc6 == 0 && loc7 == 0 && loc8 == 0) {
+    if (loc2 == "" && loc3 == "" && loc4 == "" && loc5 == "" && loc6 == "" && loc7 == "" && loc8 == "") {
         var request = {
             origin: start,
             destination: end,
@@ -51,8 +51,8 @@ function CalculateTotalDistance() {
             }
         });
     }
-        //if only from, 1st and to location are present
-    else if (loc2 != 0 && loc3 == 0 && loc4 == 0 && loc5 == 0 && loc6 == 0 && loc7 == 0 && loc8 == 0) {
+    //if only from, 1st and to location are present
+    else if (loc2 != "" && loc3 == "" && loc4 == "" && loc5 == "" && loc6 == "" && loc7 == "" && loc8 == "") {
         var request1 = {
             origin: start,
             destination: loc2,
