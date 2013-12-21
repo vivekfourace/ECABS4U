@@ -3,31 +3,40 @@ var directionsService = new google.maps.DirectionsService();
 var map;
 directionsDisplay = new google.maps.DirectionsRenderer();
 
-//Distance Calculation
 var dis1, dis2, dis3, dis4, dis5, dis6, dis8,dis9, dis11, dis13, dis14, dis15;
 
-function calcRoute() {
+function CalculateTotalDistance() {
+    console.log('Inside the calculate dis');
     var start;
     var isChecked = $('#chkFromLocation').attr('checked') ? true : false;
     if (isChecked == false) {
-        start = document.getElementById('txtFrom').value;
+        start = $('#locfrom').val();
     }
     else if (isChecked == true) {
         start = document.getElementById('txtCurrentFrom').value;
     }
-    var loc2 = document.getElementById("txt2location").value;
-    var loc3 = document.getElementById("txt3location").value;
-    var loc4 = document.getElementById("txt4location").value;
-    var loc5 = document.getElementById("txt5location").value;
-    var loc6 = document.getElementById("txt6location").value;
-    var loc7 = document.getElementById("txt7location").value;
-    var loc8 = document.getElementById("txt8location").value;
-    var end = document.getElementById("txtTo").value;
-    //console.log(start);
+
+    var loc2 = $("#locone").val();
+    var loc3 = $("#loctwo").val();
+    var loc4 = $("#locthree").val();
+    var loc5 = $("#locfour").val();
+    var loc6 = $("#locfive").val();
+    var loc7 = $("#locsix").val();
+    var loc8 = $("#locseven").val();
+    var end =  $("#locto").val();
+    
+    console.log(start);
+    console.log(loc2);
+    console.log(loc3);
+    console.log(loc4);
+    console.log(loc5);
+    console.log(loc6);
+    console.log(loc7);
+    console.log(loc8);
+    console.log(end);
+    
     var distanceInput = document.getElementById("txtDistance");
-
-
-    //if only from and to location are present. --1st Case:       
+        
     if (loc2 == 0 && loc3 == 0 && loc4 == 0 && loc5 == 0 && loc6 == 0 && loc7 == 0 && loc8 == 0) {
         var request = {
             origin: start,
@@ -42,7 +51,6 @@ function calcRoute() {
             }
         });
     }
-
         //if only from, 1st and to location are present
     else if (loc2 != 0 && loc3 == 0 && loc4 == 0 && loc5 == 0 && loc6 == 0 && loc7 == 0 && loc8 == 0) {
         var request1 = {
@@ -709,5 +717,6 @@ function calcRoute() {
                 }
             }
         }
-    }
+    }    
 }
+

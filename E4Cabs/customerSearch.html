@@ -54,15 +54,79 @@
         map.controls[google.maps.ControlPosition.TOP_LEFT].push(L8Location);
         map.controls[google.maps.ControlPosition.TOP_LEFT].push(ToLocation);
         map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
-        var autocompletePick = new google.maps.places.Autocomplete(PickupLocation);
-        var autocompleteL2 = new google.maps.places.Autocomplete(L2Location);
-        var autocompleteL3 = new google.maps.places.Autocomplete(L3Location);
-        var autocompleteL4 = new google.maps.places.Autocomplete(L4Location);
-        var autocompleteL5 = new google.maps.places.Autocomplete(L5Location);
-        var autocompleteL6 = new google.maps.places.Autocomplete(L6Location);
-        var autocompleteL7 = new google.maps.places.Autocomplete(L7Location);
-        var autocompleteL8 = new google.maps.places.Autocomplete(L8Location);
-        var autocompleteTo = new google.maps.places.Autocomplete(ToLocation);
+        
+            var autocompletePick = new google.maps.places.Autocomplete(PickupLocation);
+                google.maps.event.addListener(autocompletePick, 'place_changed', function () {              
+                    var place = autocompletePick.getPlace();
+                    console.log(place.formatted_address);
+                    $('#locfrom').val(place.formatted_address);
+                    CalculateTotalDistance();
+                });           
+           
+            var autocompleteL2 = new google.maps.places.Autocomplete(L2Location);
+                google.maps.event.addListener(autocompleteL2, 'place_changed', function () {              
+                        var place = autocompleteL2.getPlace();
+                        console.log(place.formatted_address);
+                    $('#locone').val(place.formatted_address);
+                    CalculateTotalDistance();                    
+                });   
+            
+            var autocompleteL3 = new google.maps.places.Autocomplete(L3Location);
+                google.maps.event.addListener(autocompleteL3, 'place_changed', function () {              
+                        var place = autocompleteL3.getPlace();
+                        console.log(place.formatted_address);
+                    $('#loctwo').val(place.formatted_address);
+                    CalculateTotalDistance();
+                });  
+            
+            var autocompleteL4 = new google.maps.places.Autocomplete(L4Location);
+                google.maps.event.addListener(autocompleteL4, 'place_changed', function () {              
+                        var place = autocompleteL4.getPlace();
+                        console.log(place.formatted_address);
+                    $('#locthree').val(place.formatted_address);
+                    CalculateTotalDistance();
+                });
+            
+            var autocompleteL5 = new google.maps.places.Autocomplete(L5Location);
+                google.maps.event.addListener(autocompleteL5, 'place_changed', function () {              
+                        var place = autocompleteL5.getPlace();
+                        console.log(place.formatted_address);
+                    $('#locfour').val(place.formatted_address);
+                    CalculateTotalDistance();
+                });
+            
+            var autocompleteL6 = new google.maps.places.Autocomplete(L6Location);
+                google.maps.event.addListener(autocompleteL6, 'place_changed', function () {              
+                        var place = autocompleteL6.getPlace();
+                        console.log(place.formatted_address);
+                    $('#locfive').val(place.formatted_address);
+                    CalculateTotalDistance();
+                });
+            
+            var autocompleteL7 = new google.maps.places.Autocomplete(L7Location);
+                google.maps.event.addListener(autocompleteL7, 'place_changed', function () {              
+                        var place = autocompleteL7.getPlace();
+                        console.log(place.formatted_address);
+                    $('#locsix').val(place.formatted_address);
+                    CalculateTotalDistance();
+                });                
+            
+            var autocompleteL8 = new google.maps.places.Autocomplete(L8Location);
+                google.maps.event.addListener(autocompleteL8, 'place_changed', function () {              
+                        var place = autocompleteL8.getPlace();
+                        console.log(place.formatted_address);
+                    $('#locseven').val(place.formatted_address);
+                    CalculateTotalDistance();
+                });
+            
+            var autocompleteTo = new google.maps.places.Autocomplete(ToLocation);
+                google.maps.event.addListener(autocompleteTo, 'place_changed', function () {              
+                        var place = autocompleteTo.getPlace();
+                        console.log(place.formatted_address);
+                    $('#locto').val(place.formatted_address);
+                    CalculateTotalDistance();
+                });
+        
         autocompletePick.bindTo('bounds', map);
         autocompleteL2.bindTo('bounds', map);
         autocompleteL3.bindTo('bounds', map);
@@ -234,6 +298,8 @@
     }
    
     function cancelAddLocation() {
+        
+        ClearAllLocationValues(); 
         $('#txtTo').css("width", "85%");
         $('#8location').hide();
         $('#7location').hide();
@@ -251,8 +317,21 @@
         $('#txt6location').val('');
         $('#txt7location').val('');
         $('#txt8location').val('');
+        
+        CalculateTotalDistance();
     }
-
+        
+    function ClearAllLocationValues()
+    {
+       $("#locone").val("");
+       $("#loctwo").val("");
+       $("#locthree").val("");
+       $("#locfour").val("");
+       $("#locfive").val("");
+       $("#locsix").val("");
+       $("#locseven").val("");        
+       console.log('location value cleared');
+    }
     function showLoctxt() {
         var isChecked = $('#chkFromLocation').attr('checked') ? true : false;
         if (isChecked == true) {
@@ -317,6 +396,17 @@
 
   <body onload="loadDateTime()">
     <center>
+        
+                   <input type="hidden" id="locfrom"/>
+                   <input type="hidden" id="locone"/>
+                   <input type="hidden" id="loctwo"/>
+                   <input type="hidden" id="locthree"/>
+                   <input type="hidden" id="locfour"/>
+                   <input type="hidden" id="locfive"/>
+                   <input type="hidden" id="locsix"/>
+                   <input type="hidden" id="locseven"/>
+                   <input type="hidden" id="locto"/>
+        
         <div id="transparent_div" style="display: none"></div>
         <div id="imgLoader">
                 <img src="jquery-mobile/styles/images/ajax-loader.gif" id="loading-image"/>
@@ -375,7 +465,7 @@
                 <tr id="Fromloc">
                     <td>
                         <label for="txtFrom" class="font-style"><b style="font-size:12px">From</b></label> 
-                        <input type="text" id="txtFrom" name="txtFrom" class="font-style" onclick ="calcRoute();" style="width:100%;float:right;"/>
+                        <input type="text" id="txtFrom" name="txtFrom" class="font-style" style="width:100%;float:right;"/>
                     </td>
                 </tr>
                 <tr id="currentPos" style="display:none">
@@ -396,14 +486,14 @@
                <tr  id="2location" style="display:none">
                 <td>
                     <label for="txt2location" class="font-style"><b style="font-size:12px">Destination 1</b></label> 
-                    <input type="text" id="txt2location" name="txt2location" onclick ="calcRoute();" class="font-style" style="width:85%;float:left;"/>
+                    <input type="text" id="txt2location" name="txt2location" class="font-style" style="width:85%;float:left;"/>
                     <img src="img/Addlocation.png" id="thirdLoc" width="25" height="25" style="float:right;cursor:pointer" onclick="thirdLocation()"/>
                 </td>
              </tr>
              <tr  id="3location" style="display:none">
                 <td>
                     <label for="txt3location" class="font-style"><b style="font-size:12px">Destination 2</b></label> 
-                    <input type="text" id="txt3location" name="txt3location" onclick ="calcRoute();" class="font-style" style="width:85%;float:left;"/>
+                    <input type="text" id="txt3location" name="txt3location" class="font-style" style="width:85%;float:left;"/>
                     <img src="img/Addlocation.png" id="fourLoc" width="25" height="25" style="float:right;cursor:pointer" onclick="fourthLocation()"/>
                 </td>
                        
@@ -411,7 +501,7 @@
                <tr  id="4location" style="display:none">
                 <td>
                     <label for="txt4location" class="font-style"><b style="font-size:12px">Destination 3</b></label> 
-                    <input type="text" id="txt4location" name="txt4location" onclick ="calcRoute();" class="font-style" style="width:85%;float:left;"/>
+                    <input type="text" id="txt4location" name="txt4location" class="font-style" style="width:85%;float:left;"/>
                     <img src="img/Addlocation.png" id="fiveLoc" width="25" height="25" style="float:right;cursor:pointer" onclick="fifthLocation()"/>
                 </td>
                        
@@ -419,7 +509,7 @@
                <tr  id="5location" style="display:none">
                 <td>
                     <label for="txt5location" class="font-style"><b style="font-size:12px">Destination 4</b></label> 
-                    <input type="text" id="txt5location" name="txt5location" onclick ="calcRoute();" class="font-style" style="width:85%;float:left;"/>
+                    <input type="text" id="txt5location" name="txt5location" class="font-style" style="width:85%;float:left;"/>
                     <img src="img/Addlocation.png" id="sixLoc" width="25" height="25" style="float:right;cursor:pointer" onclick="sixthLocation()"/>
                 </td>
                        
@@ -427,7 +517,7 @@
              <tr  id="6location" style="display:none">
                 <td>
                     <label for="txt6location" class="font-style"><b style="font-size:12px">Destination 5</b></label> 
-                    <input type="text" id="txt6location" name="txt6location" onclick ="calcRoute();" class="font-style" style="width:85%;float:left;"/>
+                    <input type="text" id="txt6location" name="txt6location" class="font-style" style="width:85%;float:left;"/>
                     <img src="img/Addlocation.png" id="sevenLoc" width="25" height="25" style="float:right;cursor:pointer" onclick="sevenLocation()"/>
                 </td>
                        
@@ -435,7 +525,7 @@
              <tr  id="7location" style="display:none">
                 <td>
                     <label for="txt7location" class="font-style"><b style="font-size:12px">Destination 6</b></label> 
-                    <input type="text" id="txt7location" name="txt7location" onclick ="calcRoute();" class="font-style" style="width:85%;float:left;"/>
+                    <input type="text" id="txt7location" name="txt7location" class="font-style" style="width:85%;float:left;"/>
                     <img src="img/Addlocation.png" id="eightLoc" width="25" height="25" style="float:right;cursor:pointer" onclick="eightLocation()"/>
                 </td>
                        
@@ -443,7 +533,7 @@
             <tr  id="8location" style="display:none">
                 <td>
                     <label for="txt8location" class="font-style"><b style="font-size:12px">Destination 7</b></label> 
-                    <input type="text" id="txt8location" name="txt8location" onclick ="calcRoute();" class="font-style" style="width:85%;float:left;"/>
+                    <input type="text" id="txt8location" name="txt8location" class="font-style" style="width:85%;float:left;"/>
                    
                 </td>
                        
@@ -459,7 +549,7 @@
              <tr>
                 <td>
                     <label for="txtTo" class="font-style"><b style="font-size:12px">Final Destination</b></label> 
-                    <input type="text" id="txtTo" class="font-style" style="width:85%;float:left;" onclick ="calcRoute();" oninput="calcRoute();" onchange="Duration();"/>
+                    <input type="text" id="txtTo" class="font-style" style="width:85%;float:left;" onchange="Duration();" onblur=" Duration();"/>
                     <img src="img/Addlocation.png" id="secoundLoc" width="25" height="25" style="float:right;cursor:pointer" onclick="secoundLocation()"/>
                 </td>
              </tr>
@@ -468,26 +558,11 @@
               <tr>
                 <td>
                     <label for="txtDistance" class="font-style"><b style="font-size:12px">Distance In Miles</b></label> 
-                    <input type="text" id="txtDistance" class="font-style" style="width:100%;float:right;" readonly="true"/>
+                    <input type="text" id="txtDistance" style="width:100%;float:right;background-color:#D8D8D8;color:black" readonly="true"/>
                 </td>
               </tr>
                    <input type="hidden" id="pickUpTime"/>
                    <input type="hidden" id="pickUpDate"/> 
-                <!--<tr>
-                <td>
-                                          
-                        <label for="pickDate" class="font-style"><b style="font-size:12px">Pick Up Date</b></label>
-                        <input name="pickDate" id="pickDate" type="date" data-role="datebox"   data-options='{"mode": "datebox","dateFormat":"%b %d"}'>
-                </td>
-            </tr>
-               <tr>
-                <td>
-                   
-                    <label for="pickTime" class="font-style"><b style="font-size:12px">Pick Up Time</b></label>                    
-                    <input name="pickTime" type="text" data-role="datebox" id="pickTime" data-options='{"mode": "timebox", "overrideTimeFormat":24}' />
-                </td>
-            </tr>-->
-               
                <tr>
                 <td>
                     <label for="ddlpassenger" class="font-style"><b style="font-size:12px">Passenger</b></label> 
