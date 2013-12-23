@@ -77,7 +77,7 @@ function Registercustomer()
            }
            else
                      {
-                            $('#lblMsg').text("Password between 8 to 16 characters which contain at least one numeric digit, one uppercase and one lowercase letter.");
+                            $('#lblMsg').text("Password must in between 8 to 16 characters which contain at least one numeric digit, one uppercase and one lowercase letter.");
                             $('#txt7').focus();
                             return false;
                      }
