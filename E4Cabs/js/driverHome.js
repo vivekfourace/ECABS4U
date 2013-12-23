@@ -176,36 +176,3 @@ function bookedHistory()
 {
   window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;  
 }
-
-    
- function seeRequest()
- {
-     window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
- }
-
-function closeRequest()
-{
-         $.ajax({
-                  url:'http://115.115.159.126/ECabs/ECabs4U.asmx/CancelNewJob', 
-                  type:"POST",
-                  datatype:"json",
-                  data:"{'userID':'" +relatedId+ "'}",
-                  contentType: "application/json; charset=utf-8",                     
-                  success: function (data) 
-                     {
-                         $('#popup_box').hide();
-                         $('#divDealStart').hide();
-                         $('#transparent_div').hide();
-                    },
-                  error: function (XMLHttpRequest, textStatus, errorThrown)
-                     {
-                         $('#popup_box').hide();
-                         $('#divDealStart').hide();
-                         $('#transparent_div').hide();
-                      }
-            });
-    
-}
-          
-          
-        

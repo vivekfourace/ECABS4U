@@ -36,18 +36,18 @@ function getCablaterBooking()
                                                        var driverID = data.d[i]["DriverID"];
                                                        console.log(driverID);
                                                        html += '<tr>';
-                                                       html += "<td width='25%' height='30px' align='center'>" +'<a href="#" onclick="ShowDetailBooking(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["DriverID"]+'\')" style="color:blue;">'+ data.d[i]["CustomerRequestID"]+'</a>' + "</td>"; 
-                                                       html += "<td width='15%' height='30px' align='center'>"+'&pound' + data.d[i]["Fare"] +"</td>";
-                                                       html += "<td width='25%' height='30px' align='center'>" + data.d[i]["From"] +"</td>";
-                                                       html += "<td width='25%' height='30px' align='center'>" + data.d[i]["To"] +"</td>";
+                                                       html += "<td style='width:25%;height:35px;text-align:center;border-bottom:1px solid #0080FF'>" +'<a href="#" onclick="ShowDetailBooking(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["DriverID"]+'\')" style="color:blue;">'+ data.d[i]["CustomerRequestID"]+'</a>' + "</td>"; 
+                                                       html += "<td style='width:15%;height:35px;text-align:center;border-bottom:1px solid #0080FF'>"+'&pound' + data.d[i]["Fare"] +"</td>";
+                                                       html += "<td style='width:25%;height:35px;text-align:center;border-bottom:1px solid #0080FF'>" + data.d[i]["From"] +"</td>";
+                                                       html += "<td style='width:25%;height:35px;text-align:center;border-bottom:1px solid #0080FF'>" + data.d[i]["To"] +"</td>";
                                                        if(isJobBooked == "True")
                                                        {
-                                                           html += "<td width='25%' height='30px' align='center'>Cab Booked</td>";
-                                                           html += "<td width='10%' height='30px' align='center'>"+'<input type="button" value="Abort" onclick="CancelBookedJob(\''+data.d[i]["CustomerRequestID"]+'\')"/>'+"</td>";
+                                                           html += "<td style='width:25%;height:35px;text-align:center;border-bottom:1px solid #0080FF''>Cab Booked</td>";
+                                                           html += "<td style='width:10%;height:35px;text-align:center;border-bottom:1px solid #0080FF'>"+'<input type="button" value="Abort" onclick="CancelBookedJob(\''+data.d[i]["CustomerRequestID"]+'\')"/>'+"</td>";
                                                        }
                                                        else
                                                         {
-                                                            html += "<td width='10%' height='30px' align='center'>"+'<input type="button" class="accept-btn" value="Hire" onclick="HireDriver(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["DriverID"]+'\')"/>'+"</td>";
+                                                            html += "<td style='width:15%;height:35px;text-align:center;border-bottom:1px solid #0080FF'>"+'<input type="button" class="accept-btn" value="Hire" onclick="HireDriver(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["DriverID"]+'\')"/>'+"</td>";
                                                         }
                                                        
                                                        html += '</tr>';

@@ -37,10 +37,10 @@ function showTodayJobs(data)
                     {
                        $('#lbljobFeed').text(data.d[i]["JobNumber"]);
                        html += '<tr>';
-                       html += "<td width='20%' height='30px' align='center'>" + data.d[i]["JobNumber"] +"</td>"; 
-                       html += "<td width='25%' height='30px' align='center'>" + data.d[i]["From"] +"</td>";
-                       html += "<td width='25%' height='30px' align='center'>" + data.d[i]["To"] +"</td>";
-                       html += "<td width='25%' height='30px' align='center'>"+'<input type="button" class="accept-btn" value="Engage me" onclick="Engage(\''+data.d[i]["JobNumber"]+'\')"/>'+"</td>";
+                       html += "<td style='width:20%;height:35px;text-align:center;border-bottom:1px solid #0080FF'>" + data.d[i]["JobNumber"] +"</td>"; 
+                       html += "<td style='width:25%;height:35px;text-align:center;border-bottom:1px solid #0080FF'>" + data.d[i]["From"] +"</td>";
+                       html += "<td style='width:25%;height:35px;text-align:center;border-bottom:1px solid #0080FF'>" + data.d[i]["To"] +"</td>";
+                       html += "<td style='width:25%;height:35px;text-align:center;border-bottom:1px solid #0080FF'>"+'<input type="button" class="accept-btn" value="Engage me" onclick="Engage(\''+data.d[i]["JobNumber"]+'\')"/>'+"</td>";
                     }
                html +='</tbody>';
                html +='</table>';
@@ -49,7 +49,6 @@ function showTodayJobs(data)
     else
     {
         $('#bookingmsg').show();
-        //window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
     }
 }
 

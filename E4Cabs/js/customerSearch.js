@@ -38,12 +38,12 @@ function FillAllData(data)
             $('#txtDistance').val(data.d[i]["DistanceInMile"]);
             $('#txtothereSpecialRequirement').val(data.d[i]["OtherSpecReq"]);       
             
-            document.getElementById('ddlpassenger').value = data.d[i]["LargeLuggage"];      
-            document.getElementById('ddllargecase').value = data.d[i]["LargeLuggage"];     
-            document.getElementById('ddlsmallcase').value = data.d[i]["SmallLuggage"];         
-            document.getElementById('ddlWheelchair').value = data.d[i]["WheelChairPassenger"];         
-            document.getElementById('ddlChidbooster').value = data.d[i]["ChildBooster"];         
-            document.getElementById('ddlChidseats').value = data.d[i]["ChildCarSeat"];         
+            //document.getElementById('ddlpassenger').value = data.d[i]["LargeLuggage"];      
+            //document.getElementById('ddllargecase').value = data.d[i]["LargeLuggage"];     
+            //document.getElementById('ddlsmallcase').value = data.d[i]["SmallLuggage"];         
+            //document.getElementById('ddlWheelchair').value = data.d[i]["WheelChairPassenger"];         
+            //document.getElementById('ddlChidbooster').value = data.d[i]["ChildBooster"];         
+            //document.getElementById('ddlChidseats').value = data.d[i]["ChildCarSeat"];         
         }
     }
 }

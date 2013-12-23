@@ -17,8 +17,6 @@ var postCodeFetchTime;
             }
         });
 
-
-
 function UpdatePostCode(data)
 {
     postCodeFetchTime = (data.d)*1000;
@@ -28,12 +26,11 @@ function UpdatePostCode(data)
         UpdateLocation();  
         
     },postCodeFetchTime);
-    
 }
 
    function UpdateLocation()
    {
-    console.log('in update location function');
+    console.log('In update location function');
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
                     var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -61,7 +58,7 @@ function UpdatePostCode(data)
 }
 
 function updatePostCode(postalCode, address) {
-     
+     console.log('Updating location..updated');
      $.ajax({
              url: 'http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateLocationMapping',
              type: "post",

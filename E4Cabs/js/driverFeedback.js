@@ -13,12 +13,13 @@ function UploadCustomerFeedBack()
                     data:"{'relatedId':'"+relatedId+"'}",
                    contentType: "application/json; charset=utf-8",
                     success: function (data) {                   
-                        var count = data.d.length;
-                        if(count > 0)
+                        var count = data.d.length;                        
+                        console.log(count);
+                        if(count > 0 && rating != "")
                         {
                             var html = '<table border="0" id="tbhist" cellspacing="0"; width="100%"  style="border-collaspe:collaspe;">';
                             html +='<tbody class="body-style"  style="font-size:14px;">'; 
-                             for(var i=0; i<count; i++)
+                            for(var i=0; i<count; i++)
                             {
                                 var comment = data.d[i]["Comment"];
                                 var rating = data.d[i]["Rating"];
@@ -56,7 +57,8 @@ function UploadCustomerFeedBack()
                                     html += "</tr>";                                    
                                 }
                                 else
-                                {                                    
+                                {
+                                    
                                 }
                             }
                             html +='</tbody>';
@@ -116,30 +118,3 @@ function bookedHistory()
 {
           window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;  
 }
-
-function seeRequest()
-{
-   window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-}
- function closeRequest()
- {
-             $.ajax({
-                      url:'http://115.115.159.126/ECabs/ECabs4U.asmx/CancelNewJob', 
-                      type:"POST",
-                      datatype:"json",
-                      data:"{'userID':'" +relatedId+ "'}",
-                      contentType: "application/json; charset=utf-8",                     
-                      success: function (data) 
-                         {
-                             $('#popup_box').hide();
-                              $('#divDealStart').hide();
-                             $('#transparent_div').hide();
-                        },
-                      error: function (XMLHttpRequest, textStatus, errorThrown)
-                         {
-                                $('#popup_box').hide();
-                              $('#divDealStart').hide();
-                             $('#transparent_div').hide();
-                          }
-                });
- }
