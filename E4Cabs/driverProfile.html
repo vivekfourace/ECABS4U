@@ -7,12 +7,15 @@
         <link rel="stylesheet" type="text/css" href="css/site.css" />
         <link rel="stylesheet" type="text/css" href="css/PopUp.css" />
         
+        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        
         <script src="Scripts/jquery-2.0.3.min.js"></script>
         <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>    
         <script type="text/javascript" src="Common/DriverJobNotification.js"></script>
         <script type="text/javascript" src="Common/GpsCurrentLocation.js"></script>
         <script type="text/javascript" src="js/driverProfile.js"></script> 
-         <script type="text/javascript" src="Scripts/jquery.cookie.js"></script> 
+         <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
         
         <script type="text/javascript">
             $(function(){
@@ -137,11 +140,6 @@
         
             <div style="width: 100%; position: fixed; bottom: 0px;padding-bottom: 33%">
                 <table style="width:100%">
-                    <tr>
-                        <td style="width:90%" align="center" colspan="2">
-                            <marquee behavior="scroll" direction="left" style="color:Blue">Update your postcode regularly to get cablater jobs.</marquee>
-                        </td>                        
-                    </tr>
                     <tr>
                         <td style="width:90%" align="center" colspan="2">
                             <input id="btnEdit" type="button" value="Edit" class="btn-tmp" style="width:100%;color:white;" onclick="EditProfile();" />
