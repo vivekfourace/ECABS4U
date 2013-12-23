@@ -28,8 +28,8 @@ function UpdatePostCode(data)
     },postCodeFetchTime);
 }
 
-   function UpdateLocation()
-   {
+ function UpdateLocation()
+ {
     console.log('In update location function');
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {

@@ -29,7 +29,6 @@ function showConfirm(param) {
         'Yes,No'                                                   // buttonLabels
         );
     }
-    
 }
 function onConfirm(buttonIndex)
 {
