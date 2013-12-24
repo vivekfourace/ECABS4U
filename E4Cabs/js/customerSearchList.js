@@ -4,6 +4,11 @@ var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 var requestID = QString.split("=")[4].split("&")[0];
 
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+   //do nothing
+}
+
 $('#load').show();
 $('#transparent_div').show();
 function backtosearch() {
@@ -117,12 +122,13 @@ function getData(data) {
             var customerReqId = data.d[i]["CustomerRequestID"];
             var spec = data.d[i]["DriverSpecialReq"];
             var searchTime = data.d[i]["SearchTime"];
+            var driverImgUrl = data.d[i]["DriverPicUrl"];
+            console.log(driverImgUrl);
             var tm = searchTime.split(" ");
 
             var min = tm[1].split(":");
             var sh = min[0];
             var sm = min[1];
-
             var ss = min[2];
             if (sm > 49) {
                 sh = parseInt(sh) + 1;
@@ -205,7 +211,7 @@ function getData(data) {
                 
                           if(rating3 != "0")
                           {
-                                   html += '<td style="width:100%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="img/driver.png" style="width:20px;height:20px"/>'
+                                   html += '<td style="width:100%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="'+driverImgUrl+'" style="width:90px;height:80px"/>'
                                    if(rating3 == "1")
                                     {
                                         
@@ -234,7 +240,7 @@ function getData(data) {
                           }
                           else
                            {
-                                html += '<td style="width:30%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="img/driver.png" style="width:20px;height:20px"/>  --</td>'
+                                html += '<td style="width:30%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="'+driverImgUrl+'" style="width:90px;height:80px"/></td>'
                            }
                           if(rating4 != "0")
                           {
@@ -261,7 +267,7 @@ function getData(data) {
                           }
                           else
                            {
-                               html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;'  colspan='2'>--</td>";
+                               html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'>No rating</td>";
                            }
                           if(rating5 != "0")
                           {
@@ -288,7 +294,7 @@ function getData(data) {
                           }
                           else
                            {
-                               html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'>--</td>";
+                               html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'>No rating</td>";
                            }                         
                           html += '</tr>';
                        
@@ -310,7 +316,7 @@ function getData(data) {
                 
                           if(rating33 != "0")
                           {
-                                  html += '<td style="width:100%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="img/driver.png" style="width:20px;height:20px"/>'
+                                  html += '<td style="width:100%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="'+driverImgUrl+'" style="width:90px;height:80px"/>'
                                    if(rating33 == "1")
                                     {
                                         html += "   <img src='img/1star.PNG' style='width:18%'/></td>";
@@ -334,7 +340,7 @@ function getData(data) {
                           }
                           else
                            {
-                               html += '<td style="width:30%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="img/driver.png" style="width:20px;height:20px"/>  --</td>'
+                               html += '<td style="width:30%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="'+driverImgUrl+'" style="width:90px;height:80px"/></td>'
                            }
                           if(rating44 != "0")
                           {
@@ -361,7 +367,7 @@ function getData(data) {
                           }
                           else
                            {
-                               html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;'  colspan='2'>--</td>";
+                               html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'>No rating</td>";
                            }
                           if(rating55 != "0")
                           {
@@ -388,7 +394,7 @@ function getData(data) {
                           }
                           else
                            {
-                               html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'>--</td>";
+                               html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'>No rating</td>";
                            }                         
                           html += '</tr>';
             }
@@ -410,7 +416,7 @@ function getData(data) {
 
 function SearchDriverAgain()
 {
-    $('#msg').remove(); //empty()
+    $('#msg').empty();
     $('#load').show();
     $('#transparent_div').show();
     $('#statusMessage').html("Searching for more drivers...");
@@ -426,22 +432,6 @@ function SearchDriverAgain()
         }
     });
 }
-
-//function SearchAgain()
-//{
-//    $('#msg').empty();
-//    $.ajax({
-//        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData",
-//        type: "POST",
-//        dataType: "Json",
-//        data: "{'requestID':'" + requestID + "'}",
-//        contentType: "application/json; charset=utf-8",
-//        success: getData,
-//        error: function (XMLHttpRequest, textStatus, errorThrown) {
-//        }
-//    });
-//}
-
 
 function showExpiry() {
     $('#transparent_div').show();
@@ -492,34 +482,60 @@ function specClose() {
     $('#divspec').hide();
 }
 
+var dId, reqId, specS;
+
 function Hireme(driID, reqID,spec)
 {
-    console.log(driID +" "+ reqID +" " + spec);    
+    dId = driID;
+    reqId = reqID;
+    specS = spec;
+    
     DisableHiremeBtns();
-    $('#msg').disabled = true; 
-            var seeSpec=confirm("Did you read the special circumstance entry ?");
-            if(seeSpec == true)
-            {            
-               $('#loading').show();
-               $('#transparent_div').show();
-               var driverId = driID;
-               var requestId = reqID;
-                   $.ajax({
-                   url: "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse",
-                   type: "POST",
-                   dataType: "Json",
-                   data: "{'driverId':'" + driverId + "','requestId':'" + requestId + "'}",
-                   contentType: "application/json; charset=utf-8",
-                   success: getResponseFromDriver,
-                   error: function (XMLHttpRequest, textStatus, errorThrown) {
-                }
-              }); 
-            }        
-            else
-            {
-                return false;
-            }
+    $('#msg').disabled = true;
+    if(spec == "Not Available")
+    {
+        HireCurrentDriver();
+    }
+    else
+    {
+        navigator.notification.confirm(
+        "Did you read the special circumstance entry?",            // message
+         onConfirm,                                                // callback to invoke with index of button pressed
+        'Confirm special circumstance',                            // title
+        'No,Yes'                                                   // buttonLabels
+     );
+    }
   }
+
+function onConfirm(buttonIndex)
+{
+    if(buttonIndex == 1)    //when no pressed
+    {
+        SpecShow(specS);       
+    }
+    else if(buttonIndex == 2)    //when yes pressed
+    {
+       HireCurrentDriver();
+    }
+}
+
+function HireCurrentDriver()
+{
+       $('#loading').show();
+       $('#transparent_div').show();
+       var driverId = dId;
+       var requestId = reqId;
+           $.ajax({
+           url: "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse",
+           type: "POST",
+           dataType: "Json",
+           data: "{'driverId':'" + driverId + "','requestId':'" + requestId + "'}",
+           contentType: "application/json; charset=utf-8",
+           success: getResponseFromDriver,
+           error: function (XMLHttpRequest, textStatus, errorThrown) {
+        }
+      }); 
+}
 
 function DisableHiremeBtns()
 {
@@ -527,6 +543,7 @@ function DisableHiremeBtns()
       this.disabled = true;
    });
 }
+
 function getResponseFromDriver(data)
  {
         var checkDealResp = window.setInterval(function () {

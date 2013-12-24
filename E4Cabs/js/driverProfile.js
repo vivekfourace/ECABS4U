@@ -31,24 +31,31 @@ function ShowData(data)
     $('#lblEmailID').text(data.d[5]);
     $('#lblPostcode').text(data.d[6]);
     
-    console.log(data.d[7]);
-    if(data.d[7] != undefined)
+    var driverImgUrl = data.d[7];
+    console.log(driverImgUrl);
+    
+    $('#imgDriver').attr("src",driverImgUrl);
+    
+    console.log(data.d[8]);
+    if(data.d[8] != undefined)
     {
-       $('#vehi-regis').html(":  "+data.d[7]); 
+       $('#vehi-regis').html(":  "+data.d[8]); 
     }
     else
     {
         $('#vehi-regis').html(":  Not allocated");
     }
-    if(data.d[8] != undefined)
+    if(data.d[9] != undefined)
     {
-        $('#vehi-plate').html(":  "+data.d[8]);
+        $('#vehi-plate').html(":  "+data.d[9]);
     }
     else
     {
         console.log('not');
         $('#vehi-plate').html(":  Not allocated");
-    }   
+    }
+    
+    
 
     $('#txtLocation').hide();    
     $('#txtLocation2').hide();    

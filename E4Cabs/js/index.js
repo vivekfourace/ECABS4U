@@ -1,3 +1,9 @@
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+   navigator.splashscreen.hide();
+   console.log('device is ready');   
+}
+
 window.onload = loginUsingCookie();
 
 function loginUsingCookie() {
@@ -17,19 +23,6 @@ function loginUsingCookie() {
     }
 }
 
-var app = {
-    initialize: function () {
-        this.bindEvents();
-    },
-    bindEvents: function () {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    onDeviceReady: function() {
-        navigator.splashscreen.hide();
-    },
-
-};
-
 function forgotPass()
 {
     window.location ="forgotPassword.html";
@@ -41,8 +34,8 @@ function forgotUser()
 }
 
 function login() {
-    var name = document.getElementById('txtUserName').value;
-    var password = document.getElementById('txtPassword').value;
+    var name = $('#txtUserName').val();
+    var password = $('#txtPassword').val();
 
     if (name.length > 0) {
         $('#lblMsg').text("");
@@ -67,10 +60,10 @@ function login() {
         {
             $('#imgLoader').show();
         },
-        complete: function () 
-        {
-            $('#imgLoader').hide();
-        },
+        //complete: function () 
+        //{
+        //    $('#imgLoader').hide();
+        //},
         type: "POST",
         datatype: "json",
         data: "{'username':'" + name + "','userpassword':'" + password + "'}",
@@ -91,8 +84,9 @@ function CheckMsg(data) {
         var userID = data.d[1];
         var roleID = parseInt(data.d[2]);
         var relatedID = data.d[3];
-        var name = document.getElementById('txtUserName').value;
-        var password = document.getElementById('txtPassword').value;
+        
+        var name = $('#txtUserName').val();
+        var password = $('#txtPassword').val();       
         
         //creating Cookie        
         var isChecked = $('#chkRem').attr('checked') ? true : false;

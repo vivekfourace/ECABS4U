@@ -284,10 +284,10 @@ input[type="password"]:focus {
 }
 
 
-.font-style {
-    font-family: 'HelveticaNeue', Helvetica, Arial, sans-serif;
+.label-font {
+    font-family: 'Calibri';
     font-weight: bold;
-    font-size: 12px;
+    font-size: 14px;
     color: Black;
 }
 

@@ -17,7 +17,7 @@ function showConfirm(param) {
         'You have got a new job request. Do you want to see it?',  // message
          onConfirm,                                                // callback to invoke with index of button pressed
         'New Cab Now job notification.',                            // title
-        'Yes,No'                                                   // buttonLabels
+        'No,Yes'                                                   // buttonLabels
         );
     }
     else if(param == later)
@@ -26,31 +26,30 @@ function showConfirm(param) {
         'You have got a new job request. Do you want to see it?',  // message
          onConfirm,                                                // callback to invoke with index of button pressed
         'New Cab Later job notification.',                          // title
-        'Yes,No'                                                   // buttonLabels
+        'No,Yes'                                                   // buttonLabels
         );
     }
 }
 function onConfirm(buttonIndex)
 {
-    if(buttonIndex == 1)
-    {
-        seeRequest();
-    }
-    else if(buttonIndex == 2)
+    if(buttonIndex == 1)    //when no pressed
     {
         closeRequest();
+        setInterval(Check, 10000);        
+    }
+    else if(buttonIndex == 2)    //when yes pressed
+    {
+        seeRequest();
     }
 }
 
 function playBeep() {
-    navigator.notification.beep(4);
+    navigator.notification.beep(1);
+    //navigator.notification.vibrate(2000);
+    return;
 }
 
-function vibrate() {
-    navigator.notification.vibrate(2000);
-}
-
-function Check() {
+function Check() {    
     var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/userStatus";
     $.ajax(url, {
         type: "POST",
@@ -60,7 +59,6 @@ function Check() {
         success: function (data) {
             var status = data.d;
             if (status == true || status == false) {
-                //$('#driverStatusupdate').text("Available");
                 $.ajax({
                     url: 'http://115.115.159.126/ECabs/ECabs4U.asmx/CheckNewJob',
                     type: "POST",
@@ -76,32 +74,24 @@ function Check() {
                                 var cabnow = 1;
                                 showConfirm(cabnow);
                                 playBeep();
-                                vibrate();
+                                window.clearInterval(jobCheckTime);
                             }
                             else if (jobType == "False") {
-                                cabnow = 2;
-                                showConfirm(cabnow);
+                                var cablater = 2;
+                                showConfirm(cablater);
                                 playBeep();
-                                vibrate();
+                                window.clearInterval(jobCheckTime);
                             }
                         }
-                       // else if (isTrue == "False") {
-                       //     $('#popup_box').hide();
-                       //     $('#divDealStart').hide();
-                       //     $('#transparent_div').hide();
-                       // }
                     },
                 });
             }
-           // else {
-           //     $('#driverStatusupdate').text("Soon to clear");
-           // }
         },
 
         error: function (XMLHttpRequest, textStatus, errorThrown) {}
     });
 }
-setInterval(Check, 10000);
+var jobCheckTime = setInterval(Check, 10000);
 
 
 function seeRequest()

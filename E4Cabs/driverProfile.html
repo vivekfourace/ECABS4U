@@ -17,11 +17,7 @@
         
         <script type="text/javascript" src="Common/GpsCurrentLocation.js"></script>
         
-        <script type="text/javascript">
-            $(function(){
-              
-            });
-        </script>
+       
         <title></title>
     </head>
     <body>
@@ -53,54 +49,52 @@
                 <div style="width:100%" >
                     <span style="padding-right:10px;float:right">
                         <a href="#" style="color:#2980CE" onclick="changepassword()"><i>Change password</i></a>                        
-                    </span>
-                    
+                    </span>                    
                 </div>
-                <table align="left" style="width:25%;height:100px;">
+                <div style="width:100%; margin-top:15px">
+                <table style="width:100%;border-collapse:collapse">
                     <tr>
-                        <td rowspan="2">
-                            <img style="height:80px" src="img/brown-man-icon.png"/>                            
-                        </td>                        
-                    </tr>                   
-                </table>
-                <table align="right" style="width:73%">
-                    <tr>
-                        <td style="width:100%;border-bottom:2px solid #A4A4A4;height:25px">
-                            <label id="lblname" class="font-style" style="font-size:20px;font-weight:bold"></label>                            
-                            <label id="lblLastname" class="font-style"></label>
+                        <td style="width:70%;height:30px">
+                            <label id="lblname" style="font-size:22px;font-weight:bold; font-family:Calibri"></label>                            
+                            <label id="lblLastname"></label>
+                        </td>
+                        <td rowspan="3">
+                            <img style="height:90px;width:90px;border:1px solid #2A81CF" id="imgDriver"/>                            
                         </td>
                     </tr>
                     <tr>
-                        <td style="width:100%;border-bottom:2px solid #A4A4A4;height:25px">
-                            <label id="lblLocation" class="font-style"></label>
-                             <input type="text" id="txtLocation" placeholder="Address line1" style="display:none;text-align:left;width:90%";/>
-                        </td>                        
-                    </tr>
-                    <tr>
-                        <td style="width:100%;border-bottom:2px solid #A4A4A4;height:25px">
-                            <label id="lblLocation2" class="font-style"></label>
-                            <input type="text" id="txtLocation2" placeholder="Address line2" style="display:none;text-align:left;width:90%"/>
-                        </td>                        
-                    </tr>
-                    <tr>
-                        <td style="width:100%;border-bottom:2px solid #A4A4A4;height:25px">
-                            <label id="lblMobileNo" class="font-style"></label>
-                            <input type="text" id="txtMobileno" placeholder="Contact number" maxlength="11" style="display:none;text-align:left;width:90%"/>
+                        <td style="width:70%;height:30px">
+                            <label id="lblMobileNo" class="label-font"></label>
+                            <input type="text" id="txtMobileno" placeholder="Contact number" maxlength="11" style="display:none;text-align:left;width:95%"/>
                         </td>
                     </tr>
                     <tr>
-                        <td style="width:100%;border-bottom:2px solid #A4A4A4;height:25px">
-                            <label id="lblPostcode" class="font-style"></label>
-                            <input type="text" id="txtpostcode" placeholder="Post code" maxlength="12" style="display:none;text-align:left;width:90%"/>
+                        <td style="width:80%;height:20px">
+                            <label id="lblEmailID" class="label-font" maxlength="30" style="color:#237DCB;text-decoration:underline;width:95%"></label>
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <td style="width:100%;height:30px" colspan="2">
+                            <label id="lblLocation" class="label-font"></label>
+                             <input type="text" id="txtLocation" placeholder="Address line1" maxlength="50" style="display:none;text-align:left;width:95%";/>
                         </td>
                     </tr>
                     <tr>
-                        <td style="width:100%;border-bottom:2px solid #A4A4A4;height:25px">
-                            <label id="lblEmailID" class="font-style" style="color:#639ECD;text-decoration:none;"></label>
-                        </td>                        
+                        <td style="width:100%;height:30px" colspan="2">
+                            <label id="lblLocation2" class="label-font"></label>
+                            <input type="text" id="txtLocation2" placeholder="Address line2" maxlength="50" style="display:none;text-align:left;width:95%"/>
+                        </td>
+                    </tr>
+                    <tr>
+                          <td style="width:100%;height:30px" colspan="2">
+                            <label id="lblPostcode" class="label-font"></label>
+                            <input type="text" id="txtpostcode" placeholder="Post code" maxlength="12" style="display:none;text-align:left;width:95%"/>
+                        </td>                     
                     </tr>                                   
                 </table> 
             </div>
+           </div>
         
             <div style="width: 100%; position: fixed; bottom: 0px;padding-bottom: 33%">
                 <table style="width:100%">
