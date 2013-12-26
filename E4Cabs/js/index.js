@@ -1,8 +1,33 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
    navigator.splashscreen.hide();
-   console.log('device is ready');   
+   console.log('device is ready');
+   document.addEventListener("backbutton",confirmExit, false);
+   
 }
+
+function confirmExit()
+{
+    navigator.notification.confirm(
+      'Do you want to close the app?',
+      onCallback,
+      'Confirm exit from Ecabs4u',
+      'No, Yes'    
+    );
+}
+function onCallback(buttonIndex)
+{
+    if(buttonIndex == 1)
+    {
+        return false   
+    }
+    else if(buttonIndex == 2)
+    {
+        navigator.app.exitApp();
+    }
+}
+
+
 
 window.onload = loginUsingCookie();
 

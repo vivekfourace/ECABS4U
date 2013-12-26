@@ -3,6 +3,13 @@ var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady()
+{
+    console.log("Device ready");
+}
+
+
 $('#imgLoader').hide();
 
 function  NavigateToMap()
@@ -10,7 +17,8 @@ function  NavigateToMap()
     window.location = 'Navigation.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
- $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/DriverAvaibalility",
+ $.ajax({
+        url:"http://115.115.159.126/ECabs/ECabs4U.asmx/DriverAvaibalility",
         type:"POST",
         dataType: "Json",
         data:"{'relatedId':'"+relatedId+"'}",
@@ -38,25 +46,33 @@ function  NavigateToMap()
 
 function AbortJob()
 {
-    var istrue = confirm("Confirm you want to abort this job?");
-    if(istrue)
+    navigator.notification.confirm(
+    "Confirm you want to abort this job?",
+    onAbortCallback,
+    "Confirm",
+    "No, Yes"    
+    );
+}
+
+function onAbortCallback(buttonIndex)
+{
+    if(buttonIndex == 1)
+    {
+        return false;
+    }
+    else if(buttonIndex == 2)
     {
        $('#popup_box1').show();
        $('#divAbortTask').show();
        $('#transparent_div').show();
     }
-    else{
-       return false;
-    }
 }
 
-//diver Profile from menu
 function myProfile()
 {
     window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
-//Driver Jobs from menu
 function MyBookings(){
     window.location='DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
@@ -68,13 +84,7 @@ function logout(){
             dataType: "Json",
             data:"{'userID':'" +userId+"'}",
             contentType: "application/json; charset=utf-8",                     
-            success: function(data)
-            {
-                },
-            
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-            //alert(errorThrown);
-                }
+            success: {},
          }); 
         $.cookie("remember", false);
         window.location = "index.html";  
@@ -113,12 +123,7 @@ function SubmitAbort()
                               window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                          }                         
                      },
-                    
-                     error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    // alert(errorThrown);
-                }
              });
-    
 }
 
 function cancelAbort()
@@ -131,10 +136,23 @@ function cancelAbort()
 
 function clearJob()
 {
-    var isTrue = confirm('Confirm you want to clear the job?');
-    if(isTrue)
+    navigator.notification.confirm(
+    "Confirm you want to clear the job?",
+    onClearCallback,
+    "Confirm",
+    "No, Yes"  
+    );
+}
+
+function onClearCallback(buttonIndex)
+{
+    if(buttonIndex == 1)
     {
-            $.ajax({
+        return false;
+    }
+    else if(buttonIndex == 2)
+    {
+        $.ajax({
                 url:"http://115.115.159.126/ECabs/ECabs4U.asmx/ClearDriverStatus",
                      type:"POST",
                      datatype:"json",
@@ -145,24 +163,17 @@ function clearJob()
                          {
                             window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                          }
-                         
                      },
-                     error: function (XMLHttpRequest, textStatus, errorThrown) {}
             });
     }
-    else
-    {
-        return false;
-    }
 }
+
 
 function engageMe()
 {
     window.location='DriverCabLaterJobs.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-    
 }
 
-//Driver Status
 function myhome(){
     window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
@@ -172,7 +183,6 @@ function feedBack()
     window.location='driverFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
-//History
 function bookedHistory()
 {
   window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;  

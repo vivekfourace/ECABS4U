@@ -449,70 +449,7 @@
             $('#popup_box').hide();
             $('#divBid').hide();
             $('#transparent_div').hide();
-          //  var job = $('#lbljobno').text();
-          //  $('#popup_box').hide();
-          //  $('#divBid').hide();
-          //  $('#lblfare').text("");
-          //  $.ajax({
-          //      url: "http://115.115.159.126/ECabs/ECabs4U.asmx/cancelJob",
-          //      type: "POST",
-          //      dataType: "Json",
-          //      data: "{'userID':'" + relatedId + "','reqid':'" + job + "'}",
-          //      contentType: "application/json; charset=utf-8",
-          //      success: function (data) {
-          //          window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-          //      },
-          //      error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-          //      }
-          //  });
             document.getElementById("trfare").style.display = 'none';
-        }
-        
-        function reqCancel() {
-            $('#divDetails').hide();
-        }
-        
-        function reqReject() {
-            $('#popup_box').show();
-            $('#divreject').show();
-            $('#transparent_div').show();
-        }
-        
-        function rejectJob() {           
-            $('#popup_box').show();
-            var rid = $('#hdnJobno').val();
-             console.log(rid);
-            $('#divDetails').hide();
-            $('#btnbid').hide();
-            $('#btnmap').hide();
-            $('#btnreject').hide();
-            var status = "Rejected";
-            $.ajax({
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/rejectResponse",
-                type: "POST",
-                dataType: "Json",
-                data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "'}",
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
-                    if(data.d == true)
-                    {
-                      console.log('rej')
-                      window.location = 'driverProfile.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-                    }
-                    else
-                    {
-                        console.log('Exception in rejectResponse')
-                    }
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {}
-            });
-        }
-        
-        function cancelReject() {
-            $('#divreject').hide();
-            $('#popup_box').hide();
-            $('#transparent_div').hide();
         }
         
         function dealSubmit() {
@@ -676,17 +613,14 @@
         function dealCancel() {
             $('#divDeal').hide();
             $('#popup_box').hide();
-
         }
 
         function btnAbort() {
-
             $('#popup_box').show();
             $('#divabort').show();
-
-
             $('#divComplete').hide();
         }
+        
         function abortcancel() {
             $('#popup_box').hide();
             $('#divabort').hide();
@@ -1048,29 +982,6 @@
                             <td style="width:50%">
                                 <input type="button" class="ok" value="Cancel" style="width:80%;" onclick="abortcancel()" />
                             </td>
-                        </tr>
-                    </table>
-                </div>
-
-                <div id="divreject" style="display:none;" align="center">
-                    <table align="left" style="width:100%;background-color:#FFFFFF;">
-                        <tr>
-                            <td class="popup_header" style="width:50%" colspan="2">
-                                <strong style="padding-left:5px;width:100%;text-align:left">Cancel Job</strong>
-                            </td>
-                        </tr>
-                        <tr class="popup_content">
-                            <td style="width:100%" colspan="2">
-                                <strong style="padding-left:5px;width:100%;text-align:left">Are you sure to reject the job?</strong>
-                            </td>
-                        </tr>
-                        <tr class="popup_footer">
-                            <td style="width:50%">
-                                <input type="button" class="ok" value="Confirm" style="width:100%;" onclick="rejectJob()" />
-                            </td>
-                            <td style="width:50%">
-                                <input type="button" class="ok" value="Cancel" style="width:100%;" onclick="cancelReject()" />
-                            </td>                           
                         </tr>
                     </table>
                 </div>

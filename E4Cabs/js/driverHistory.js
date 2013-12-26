@@ -3,6 +3,12 @@ var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
+document.addEventListener("deviceready",onDeviceReady, false);
+function onDeviceReady()
+{
+    console.log("ready");
+}
+
 function backToIndex()
 {
      window.location =  'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
@@ -243,18 +249,26 @@ function AbortJob(data)
 {
     var jobNo = data;
     document.getElementById("lblJobNumber").value = jobNo;
-    var isTrue = confirm("Confirm you want to abort the current cab?");
-    if(isTrue)
-    {       
+    navigator.notification.confirm(
+    "Confirm you want to abort the current cab?",
+    onAbortCallback,
+    "Confirm",
+    "No, Yes"
+    );
+}
+
+function onAbortCallback(buttonIndex)
+{
+    if(buttonIndex == 1)
+    {
+        return false;
+    }
+    else if(buttonIndex == 2)
+    {
         $('#transparent_div').show();
         $('#popup_box1').show();
         $('#divAbortTask').show();
     }
-    else
-    {
-        return false;
-    }
-    
 }
 
 function PostFeedBack()
@@ -293,10 +307,6 @@ function PostFeedBack()
                 $('#popup_box').hide();
                 $('#transparent_div').hide();
                 },
-            
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-            //alert(errorThrown);
-                }
          });  
  }
 

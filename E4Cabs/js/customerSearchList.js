@@ -203,46 +203,42 @@ function getData(data) {
                 html += "<td width='20%' align='center'>" + bidh + ":" + bidm + "</td>";
                 html += "<td width='15%' align='center'>" + '<input type="button" class="disableBtn accept-btn" value="Hire" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'' + spec + '\');"/>' + "</td>";
                 html += '</tr>';
-                html += '<tr>';
-               
-                var rating3 = data.d[i]["RatingTwoDayBack"];
-                var rating4 = data.d[i]["RatingOneDayBack"];
-                var rating5 = data.d[i]["RatingToday"];
+                html += '<tr>';           
+                var rating3 = data.d[i]["RatingPast"];
+                var rating4 = data.d[i]["RatingPresent"];
                 
-                          if(rating3 != "0")
+                                        html += '<td style="width:100%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="'+driverImgUrl+'" style="width:90px;height:80px"/>'
+                          if(rating3 != "")
                           {
-                                   html += '<td style="width:100%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="'+driverImgUrl+'" style="width:90px;height:80px"/>'
                                    if(rating3 == "1")
                                     {
                                         
-                                        html += "   <img src='img/1star.PNG' style='width:18%'/></td>";
+                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/1star.PNG" style="width:18%"/></td>';
                                     }
                                     else if(rating3 == "2")
                                     {
                                      
-                                        html += "   <img src='img/2star.PNG' style='width:33%'/></td>";
+                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/2star.PNG" style="width:33%"/></td>';
                                     }
                                     else if(rating3 == "3")
-                                    {
-                                     
-                                        html += "   <img src='img/3star.PNG' style='width:45%'/></td>";
+                                    {                                     
+                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/3star.PNG" style="width:45%"/></td>';
                                     }
                                     else if(rating3 == "4")
                                     {
                                         
-                                        html += "   <img src='img/4star.PNG' style='width:58%'/></td>";
+                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/4star.PNG" style="width:58%"/></td>';
                                     }
                                     else if(rating3 == "5")
                                     {
-                                        
-                                        html += "   <img src='img/5star.PNG' style='width:70%'/></td>";
+                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/5star.PNG" style="width:70%"/></td>';
                                     }
                           }
                           else
                            {
-                                html += '<td style="width:30%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="'+driverImgUrl+'" style="width:90px;height:80px"/></td>'
+                                html += '<td style="width:30%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/5star.PNG" style="width:70%"/></td>'
                            }
-                          if(rating4 != "0")
+                          if(rating4 != "")
                           {
                                    if(rating4 == "1")
                                     {
@@ -267,37 +263,9 @@ function getData(data) {
                           }
                           else
                            {
-                               html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'>No rating</td>";
+                               html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/5star.PNG' style='width:70%'/></td>";
                            }
-                          if(rating5 != "0")
-                          {
-                                   if(rating5 == "1")
-                                    {
-                                        html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/1star.PNG' style='width:18%'/></td>";
-                                    }
-                                    else if(rating5 == "2")
-                                    {
-                                        html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/2star.PNG' style='width:33%'/></td>";
-                                    }
-                                    else if(rating5 == "3")
-                                    {
-                                        html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/3star.PNG' style='width:45%'/></td>";
-                                    }
-                                    else if(rating5 == "4")
-                                    {
-                                        html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/4star.PNG' style='width:58%'/></td>";
-                                    }
-                                    else if(rating5 == "5")
-                                    {
-                                        html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/5star.PNG' style='width:90%'/></td>";
-                                    }
-                          }
-                          else
-                           {
-                               html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'>No rating</td>";
-                           }                         
                           html += '</tr>';
-                       
                 }
             else if(spec == null) {
                 console.log(spec);
@@ -310,39 +278,41 @@ function getData(data) {
                 html += "<td width='15%' align='center'>" + '<input type="button" class="disableBtn accept-btn"  value="Hire" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'Not Available\');"/>' + "</td>";
                 html += '</tr>';
                 html += '<tr>';
-                var rating33 = data.d[i]["RatingTwoDayBack"];
-                var rating44 = data.d[i]["RatingOneDayBack"];
-                var rating55 = data.d[i]["RatingToday"];
+                var rating33 = data.d[i]["RatingPast"];
+                var rating44 = data.d[i]["RatingPresent"];
                 
-                          if(rating33 != "0")
+                                html += '<td style="width:100%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="'+driverImgUrl+'" style="width:90px;height:80px"/>'
+                          if(rating33 != "")
                           {
-                                  html += '<td style="width:100%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="'+driverImgUrl+'" style="width:90px;height:80px"/>'
                                    if(rating33 == "1")
                                     {
-                                        html += "   <img src='img/1star.PNG' style='width:18%'/></td>";
+                                        
+                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/1star.PNG" style="width:18%"/></td>';
                                     }
                                     else if(rating33 == "2")
                                     {
-                                        html += "   <img src='img/2star.PNG' style='width:33%'/></td>";
+                                     
+                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/2star.PNG" style="width:33%"/></td>';
                                     }
                                     else if(rating33 == "3")
-                                    {
-                                        html += "   <img src='img/3star.PNG' style='width:45%'/></td>";
+                                    {                                     
+                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/3star.PNG" style="width:45%"/></td>';
                                     }
                                     else if(rating33 == "4")
                                     {
-                                        html += "   <img src='img/4star.PNG' style='width:58%'/></td>";
+                                        
+                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/4star.PNG" style="width:58%"/></td>';
                                     }
                                     else if(rating33 == "5")
                                     {
-                                        html += "   <img src='img/5star.PNG' style='width:70%'/></td>";
+                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/5star.PNG" style="width:70%"/></td>';
                                     }
                           }
                           else
                            {
-                               html += '<td style="width:30%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="'+driverImgUrl+'" style="width:90px;height:80px"/></td>'
+                               html += '<td style="width:30%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/5star.PNG" style="width:70%"/></td>'
                            }
-                          if(rating44 != "0")
+                          if(rating44 != "")
                           {
                                    if(rating44 == "1")
                                     {
@@ -367,35 +337,8 @@ function getData(data) {
                           }
                           else
                            {
-                               html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'>No rating</td>";
+                               html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/5star.PNG' style='width:70%'/></td>";
                            }
-                          if(rating55 != "0")
-                          {
-                                   if(rating55 == "1")
-                                    {
-                                        html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/1star.PNG' style='width:18%'/></td>";
-                                    }
-                                    else if(rating55 == "2")
-                                    {
-                                        html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/2star.PNG' style='width:33%'/></td>";
-                                    }
-                                    else if(rating55 == "3")
-                                    {
-                                        html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/3star.PNG' style='width:45%'/></td>";
-                                    }
-                                    else if(rating55 == "4")
-                                    {
-                                        html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/4star.PNG' style='width:58%'/></td>";
-                                    }
-                                    else if(rating55 == "5")
-                                    {
-                                        html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'><img src='img/5star.PNG' style='width:90%'/></td>";
-                                    }
-                          }
-                          else
-                           {
-                               html += "<td style='width:100%;text-align:center;border-bottom:1px solid #848484;' colspan='2'>No rating</td>";
-                           }                         
                           html += '</tr>';
             }
         }

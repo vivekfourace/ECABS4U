@@ -10,7 +10,6 @@ function ChangePaswords()
                 var confirm=document.getElementById('txtConform').value;
                 var pass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}$/;
      
-     //Current password validation.
                 if(currentPass.length > 0)
                 {
                     $('#lblMsg').text("");
@@ -22,19 +21,15 @@ function ChangePaswords()
                  return false;
                 }
                 
-     
-     //New password validation.
                 if(newPass.length > 0)
                 {
-                    
-                    
                     if(newPass.match(pass))
                     {
                       $('#lblMsg').text(" ");  
                     }
                     else
                     {
-                      $('#lblMsg').text("Password between 8 to 16 characters which contain at least one numeric digit, one uppercase and one lowercase letter.");
+                      $('#lblMsg').text("Password must be in between 8 to 16 characters which contain at least one numeric digit, one uppercase and one lowercase letter.");
                       $('#newPass').focus();
                       return false;
                     }
@@ -45,7 +40,7 @@ function ChangePaswords()
                 $('#txtNew').focus();
                  return false;
                 }
-      //Current password and Confirm password validation.           
+     
                 if(confirm.length > 0)
                     {
                         if(newPass == confirm)
@@ -63,29 +58,15 @@ function ChangePaswords()
                         $('#lblMsg').text("Please re-enter confirm password.");
                         return false;
                     }
-                 
-                 //Ajax loader--start
-                $('#imgLoader').bind('ajaxStart', function(){
-                    $(this).show();
-                    showDisableLayer();
-                 }).bind('ajaxStop', function(){
-                    $(this).hide();
-                     hideDisableLayer();
-                });
-                
-                  showDisableLayer = function() {
-                  $('<div id="loading" style="position:fixed; z-index: 2147483647; top:0; left:0; background-color: #7B7F86; opacity:0.4;filter:alpha(opacity=0);"></div>').appendTo(document.body);
-                  $("#loading").height($(document).height());
-                  $("#loading").width($(document).width());
-                };
-
-                    hideDisableLayer = function() {
-                    $("#loading").remove();
-                };
-              //Ajax loader--ends               
-
+              
                 var  url = "http://115.115.159.126/ECabs/ECabs4U.asmx/ChangePassword";
                  $.ajax(url,{
+                     beforeSend: function(){
+                        $('#imgLoader').show();
+                     },
+                     complete: function(){
+                        $('#imgLoader').hide();
+                     },
                      datatype:"JSON",
                      type:"POST",
                      data:"{'userid':'"+userId+"','oldpassword':'"+currentPass+"','newpassword':'"+newPass+"'}",
@@ -96,11 +77,9 @@ function ChangePaswords()
             });
  }
 
-//status after submitting you emailid
  function ShowStatus(data)
 {
-            console.log(data.d);
-            
+            console.log(data.d);            
             if(data.d === "False")
             {
                 $('#lblMsg').text("Incorrect current password.");
@@ -117,8 +96,7 @@ function ChangePaswords()
                 $('#lblMsg').css("font-size", "13");
                 $('#curentpswd').val("");
                 $('#txtNew').val("");
-                $('#txtConform').val("");
-                
+                $('#txtConform').val("");                
             }
             else
             {
@@ -130,4 +108,3 @@ function ChangePaswords()
                 $('#txtNew').val(""); 
             }
  }
-

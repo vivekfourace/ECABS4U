@@ -16,7 +16,7 @@
     <iOSBackgroundMode>audio;location;bluetooth-central;bluetooth-peripheral</iOSBackgroundMode>
     <AndroidVersionCode>1</AndroidVersionCode>
     <FrameworkVersion>3.2.0</FrameworkVersion>
-    <CorePlugins>org.apache.cordova.device;org.apache.cordova.device-motion;org.apache.cordova.geolocation;org.apache.cordova.keyboard;org.apache.cordova.media;org.apache.cordova.dialogs;org.apache.cordova.splashscreen;org.apache.cordova.vibration</CorePlugins>
+    <CorePlugins>org.apache.cordova.camera;org.apache.cordova.device;org.apache.cordova.device-motion;org.apache.cordova.geolocation;org.apache.cordova.inappbrowser;org.apache.cordova.keyboard;org.apache.cordova.media;org.apache.cordova.network-information;org.apache.cordova.dialogs;org.apache.cordova.splashscreen;org.apache.cordova.vibration</CorePlugins>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Telerik\ICE\Tools\Mobile\MobileTools.targets" />
 </Project>
