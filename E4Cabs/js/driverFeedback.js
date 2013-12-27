@@ -79,42 +79,35 @@ function backToIndex()
 {
      window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-function myProfile()
-{
-     window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+function HomePage(){
+    window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-
 function MyBookings(){
     window.location='DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-function logout()
-{
-         $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
-                type:"POST",
-                dataType: "Json",
-                data:"{'userID':'" +userId+"'}",
-                contentType: "application/json; charset=utf-8",                     
-                success: function(data)
-                {
-                    },
-                
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                //alert(errorThrown);
-                    }
+function logout(){
+          
+        $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
+            type:"POST",
+            dataType: "Json",
+            data:"{'userID':'" +userId+"'}",
+            contentType: "application/json; charset=utf-8",                     
+            success: {},
          }); 
-            $.cookie("remember", false);
-            //$.cookie("userName", 'null');
-            //$.cookie("userPassword", 'null');
-            window.location = "index.html";  
+        $.cookie("remember", false);
+        window.location = "index.html";  
 }
-function MyHome(){
-            window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+function MyProfilePage(){
+    window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-function feedBack()
-{
-            window.location='driverFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-}
+
 function bookedHistory()
 {
-          window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;  
+  window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;  
 }
+
+function feedBack()
+{
+    window.location='driverFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
+

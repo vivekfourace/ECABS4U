@@ -626,11 +626,22 @@
     </script>
 </head>
 <body>
-    <div class="header" style="background-color: #242424; height: 70px">
-        <div style="float: left; height: 48px; width: 122px; padding-top: 3px;">
-            <img src="img/logo1.png" class="logo" />
-        </div>
-    </div>
+    <div style="width:100%;height:70px;"  class="header">
+                <table style="width:100%;padding-top:1%;">
+                    <tr>
+                        <td style="float:left;width:30%">
+                             <div style="float:left;height:48px;width:100px;">
+                                    <img src="img/logo1.png" class="logo"/>
+                             </div>                              
+                        </td>                        
+                        <td style="float:left;padding-left:3%;width:50%">                           
+                            <div style="padding-top:13px;">
+                                <b class="header-font" style="color:white;font-size:16px;">Job detail</b>
+                            </div>                           
+                        </td>
+                    </tr>
+                </table>
+         </div>
     <center>
         <div id="transparent_div" style="display: none"></div>
         <input type="hidden" id="hiddenIsCabnow" />
@@ -769,19 +780,18 @@
 
                         <tr class="popup_content">
                             <td style="width:30%">
-                                <b style="font-size:11px;">Fare</b>
+                                <b style="font-size:11px;">Fare in (&pound;)</b>
                             </td>
                             <td style="width:70%">
-                                <b>&pound;<input type="text" id="txtbidFare" maxlength="3" style="font-size:11px;width:90%;" /></b>
+                                <b><input type="text" id="txtbidFare" maxlength="3" style="font-size:11px;width:95%;" /></b>
                             </td>
                         </tr>
                         <tr class="popup_footer">
                             <td style="width:50%">
-                                <input type="button" class="ok" value="Cancel" style="width:100%;" onclick="bidCancel()" />
-
+                                <input type="button" class="ok" value="Accept" style="width:100%;" onclick="bidSubmit()" />
                             </td>
                             <td style="width:50%">
-                                <input type="button" class="ok" value="Accept" style="width:100%;" onclick="bidSubmit()" />
+                                <input type="button" class="ok" value="Cancel" style="width:100%;" onclick="bidCancel()" />
                             </td>
                         </tr>
                     </table>
@@ -906,10 +916,10 @@
                         </tr>
                         <tr class="popup_footer">
                             <td style="width: 50%">
-                                <input type="button" value="Reject" class="ok" onclick="RejectComission()" />
+                                <input type="button" value="Proceed" class="ok" onclick="Confirmcomission()" />                                
                             </td>
                             <td style="width:50%">
-                                <input type="button" value="Proceed" class="ok" onclick="Confirmcomission()" />
+                                <input type="button" value="Reject" class="ok" onclick="RejectComission()" />
                             </td>
                         </tr>
                     </table>
@@ -948,10 +958,10 @@
                         </tr>
                         <tr class="popup_footer">
                             <td style="width:50%">
-                                <input type="button" value="Reject" class="ok" onclick="RejectComission()" />
+                                <input type="button" value="Proceed" class="ok" onclick="Confirmcomission2()" />
                             </td>
                             <td style="width:50%">
-                                <input type="button" value="Proceed" class="ok" onclick="Confirmcomission2()" />
+                                <input type="button" value="Reject" class="ok" onclick="RejectComission()" />
                             </td>
                         </tr>
                     </table>
@@ -1074,11 +1084,6 @@
                     </td>
                 </tr>
 
-                <!--<tr id="fare" style="display:none">
-                    <td colspan="2">
-                        <hr>
-                    </td>
-                </tr>-->
                 <tr id="trfare" style="display:none">
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
                         <label><b style="font-size:11px" class="">Fare </b></label>
@@ -1096,11 +1101,7 @@
                         <b style="font-size:11px" class=""> <label id="specialReq"><a href="#" onclick="showSpecial()" style="color:blue;">Show</a> </label></b>
                     </td>
                 </tr>
-                <!--<tr id="wheel" style="display:none;">
-                    <td colspan="2">
-                        <hr>
-                    </td>
-                </tr>-->
+               
                 <tr id="trwheelchair" style="display:none;">
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
                         <label><b style="font-size:11px" class="">Wheelchair Passengers </b></label>
@@ -1109,11 +1110,7 @@
                         <label> <b style="font-size:11px" class=""><label id="lblwheelchair" /></b></label>
                     </td>
                 </tr>
-                <!--<tr id="childseat" style="display:none;">
-                    <td colspan="2">
-                        <hr>
-                    </td>
-                </tr>-->
+              
                 <tr id="trchildseats" style="display:none;">
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
                         <label><b style="font-size:11px" class="">Child Seats</b></label>
@@ -1122,11 +1119,7 @@
                         <b style="font-size:11px" class=""><label id="lblchildseat" />  </b>
                     </td>
                 </tr>
-                <!--<tr id="booster" style="display:none;">
-                    <td colspan="2">
-                        <hr>
-                    </td>
-                </tr>-->
+               
                 <tr id="trchildbooster" style="display:none;">
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
                         <label><b style="font-size:11px" class="">Child Booster </b></label>
@@ -1138,11 +1131,7 @@
                         </b>
                     </td>
                 </tr>
-                <!--<tr id="Tr1" style="display:none;">
-                    <td colspan="2">
-                        <hr>
-                    </td>
-                </tr>-->
+               
                 <tr id="returnFrom" style="display:none;">
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
                         <label><b style="font-size:11px" class="">Return From </b></label>
@@ -1153,11 +1142,7 @@
                         </b>
                     </td>
                 </tr>
-                <!--<tr id="Tr3" style="display:none;">
-                    <td colspan="2">
-                        <hr>
-                    </td>
-                </tr>-->
+              
                 <tr id="returnTo" style="display:none;">
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
                         <label class="font-style"><b style="font-size:13px" class="test">Return To </b></label>
@@ -1168,11 +1153,7 @@
                         </b>
                     </td>
                 </tr>
-                <!--<tr id="Tr4" style="display:none;">
-                    <td colspan="2">
-                        <hr>
-                    </td>
-                </tr>-->
+              
                 <tr id="returnDate" style="display:none;">
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
                         <label><b style="font-size:11px" class="">Return Date </b></label>
@@ -1183,11 +1164,7 @@
                         </b>
                     </td>
                 </tr>
-                <!-- <tr id="Tr5" style="display:none;">
-                    <td colspan="2">
-                        <hr>
-                    </td>
-                </tr>-->
+               
                 <tr id="returnTime" style="display:none;">
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
                         <label><b style="font-size:11px" class="">Return Time </b></label>
@@ -1199,11 +1176,6 @@
                     </td>
                 </tr>
 
-                <!-- <tr id="other" style="display:none;" >
-                    <td colspan="2">
-                        <hr>
-                    </td>
-                </tr>-->
                 <tr id="trOtherspec" style="display:none;">
                     <td style="width:100%;border-bottom:1px solid #848484;padding-bottom:4px" colspan="2">
                         <label><b style="font-size:11px" class="">Other Requirements</b></label>
@@ -1218,7 +1190,7 @@
         </div>
     </center>
 
-    <table style="width: 100%; position: fixed; bottom: 0px;padding-bottom: 35px">
+    <table style="width: 100%; position: fixed; bottom: 0px;padding-bottom: 15%">
         <tr>
             <td style="width:25%">
                 <input type="button" id="btnbid" class="specialBtn" onclick="showBid()" style="width: 100%; display: none" value="Bid" />
@@ -1232,50 +1204,43 @@
         </tr>
     </table>
 
-    <footer>
-        <div style="width: 100%; position: fixed; bottom: 0px; height: 20px; padding-bottom: 15px">
-
-            <table style="width: 100%;" class="btn-tmpFooter">
-                <tr>
-                    <td style="width: 20%;">
-                        <div>
-                            <img src="img/User.png" style="float: left; cursor: pointer; width:25px" title="Profile" onclick="myProfile()" />
-                        </div>
-
-                    </td>
-                    <td style="width: 20%;">
-                        <div>
-                            <img src="img/Home.png" style="float: left; cursor: pointer; width:25px" title="Home" onclick="myhome()" />
-                        </div>
-
-                    </td>
-                    <td style="width: 20%;">
-                        <div>
-                            <img src="img/Cab.png" style="float: left; cursor: pointer; width:25px" title="My Jobs" onclick="MyBookings()" />
-                        </div>
-
-                    </td>
-                    <td style="width: 20%;">
-                        <div>
-                            <img src="img/History1.png" style="float: left; cursor: pointer; width:25px" title="Booking History" onclick="bookedHistory()" />
-
-                        </div>
-
-                    </td>
-                    <td style="width: 20%;">
-                        <div>
-                            <img src="img/feedback.png" style="float: left; cursor: pointer; width:25px" title="Feedback" onclick="feedBack()" />
-                        </div>
-
-                    </td>
-                    <td style="width: 20%;">
-                        <div>
-                            <img src="img/logout.png" style="float: left; cursor: pointer; width:25px" title="Logout" onclick="logout()" />
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </footer>
-</body>
+        <div class="btn-tmpFooter">                
+               <table style="width:100%;border-collapse:collapse" >
+                    <tr>
+                        <td style="width:17%">
+                            <div style="padding-top:5px">
+                                <img src="img/Home.png" style="height:20px;" onclick="HomePage()"/><br/>Home
+                            </div>
+                        </td>
+                        <td style="width:17%">
+                             <div style="padding-top:5px">
+                                <img src="img/User.png" style="height:20px;" onclick="MyProfilePage()"/><br/>Profile
+                            </div>
+                        </td>
+                        <td style="width:17%">
+                            <div style="padding-top:5px">
+                                <img src="img/Cab.png" style="height:20px;" onclick="MyBookings()"/><br/>Bookings
+                            </div>
+                            
+                        </td>
+                        <td style="width:17%">
+                            <div style="padding-top:5px">
+                                <img src="img/History1.png" style="height:20px;" onclick="bookedHistory()"/><br/>History
+                            </div>
+                            
+                        </td>
+                        <td style="width:17%">
+                            <div style="padding-top:5px">
+                                <img src="img/feedback.png" style="height:20px;" onclick="feedBack()"/><br/>Feedback
+                            </div>
+                        </td>
+                        <td style="width:17%">
+                            <div style="padding-top:5px">
+                                <img src="img/logout.png" style="height:20px;" onclick="logout()"/><br/>Logout
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+    </body>
 </html>

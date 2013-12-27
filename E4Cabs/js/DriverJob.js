@@ -79,21 +79,6 @@ function MyBookings(){
     window.location='DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
-//function bid()
-//{
-//    var rid = relatedId ;
-//    var status = true; 
-//    var price = 50;
-//     $.ajax({
-//           url: "http://115.115.159.126/ECabs/ECabs4U.asmx/setDriverResponse",
-//           type:"POST",
-//           dataType: "Json",
-//           data:"{'userID':'" + relatedId +"','reqid':'"+ rid +"','status':'"+ status  +"','price':'"+ price +"'}",
-//           contentType: "application/json; charset=utf-8",  
-//           success: {},
-//       });
-//    }
-
 function logout()
 {
     $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",

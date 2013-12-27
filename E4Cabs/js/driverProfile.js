@@ -186,17 +186,23 @@ function backToIndex()
 {
     window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
+
 function HomePage(){
     window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 function MyBookings(){
     window.location='DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-function logout()
-{
-       $.cookie("remember", false);
-       //$.cookie("userName", 'null');
-       //$.cookie("userPassword", 'null');
+function logout(){
+          
+        $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
+            type:"POST",
+            dataType: "Json",
+            data:"{'userID':'" +userId+"'}",
+            contentType: "application/json; charset=utf-8",                     
+            success: {},
+         }); 
+        $.cookie("remember", false);
         window.location = "index.html";  
 }
 function MyProfilePage(){

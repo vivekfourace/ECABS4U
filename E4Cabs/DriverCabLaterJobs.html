@@ -6,9 +6,10 @@
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <link rel="stylesheet" type="text/css" href="css/append.css" />
     <script src="Scripts/jquery-2.0.3.min.js"></script>
-    <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>    
-    <script type="text/javascript" src="js/driverCabLaterJobs.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/driverCabLaterJobs.js"></script>
+    
     <title>Engage me</title>
 </head>
 <body>
@@ -44,59 +45,44 @@
     </div>
     <div id="msg" style="padding-top:70px"></div>
     <div style="padding-top:50%; color:#0000FF;font-size:20px;text-align:center;display:none" id="bookingmsg">No jobs found.</div>    
-    <footer style="padding-top:25px" >
-            <div style="width:100%;position:fixed;bottom:0px;height:20px;padding-bottom:15px;">
-                <table style="width:100%;background-color:black;" class="btn-tmpFooter" >
+   
+        <div class="btn-tmpFooter">                
+               <table style="width:100%;border-collapse:collapse" >
                     <tr>
-                        <td style="width:20%;">
-                            <div>
-                                <img src="img/User.png"  style="float:left;width:25px; cursor:pointer" title="Profile" onclick="myProfile()"/>
-                                
+                        <td style="width:17%">
+                            <div style="padding-top:5px">
+                                <img src="img/Home.png" style="height:20px;" onclick="HomePage()"/><br/>Home
+                            </div>
+                        </td>
+                        <td style="width:17%">
+                             <div style="padding-top:5px">
+                                <img src="img/User.png" style="height:20px;" onclick="MyProfilePage()"/><br/>Profile
+                            </div>
+                        </td>
+                        <td style="width:17%">
+                            <div style="padding-top:5px">
+                                <img src="img/Cab.png" style="height:20px;" onclick="MyBookings()"/><br/>Bookings
                             </div>
                             
                         </td>
-                        <td style="width:20%;">
-                            <div>
-                                <img src="img/Home.png"  style="float:left;width:25px; cursor:pointer" title="Home" onclick="myhome()"/>
-                                
+                        <td style="width:17%">
+                            <div style="padding-top:5px">
+                                <img src="img/History1.png" style="height:20px;" onclick="bookedHistory()"/><br/>History
                             </div>
                             
                         </td>
-                        <td style="width:20%;">
-                            <div>
-                                <img src="img/Cab.png"  style="float:left;width:25px; cursor:pointer" title="My Jobs" onclick="MyBookings()"/>
-                                
+                        <td style="width:17%">
+                            <div style="padding-top:5px">
+                                <img src="img/feedback.png" style="height:20px;" onclick="feedBack()"/><br/>Feedback
                             </div>
-                            
                         </td>
-                        <td style="width:20%;">
-                            <div>
-                                <img src="img/History1.png" width="25px;" style="float:left;cursor:pointer" title="Booking History" onclick="bookedHistory()"/>
-                                
+                        <td style="width:17%">
+                            <div style="padding-top:5px">
+                                <img src="img/logout.png" style="height:20px;" onclick="logout()"/><br/>Logout
                             </div>
-                            
                         </td>
-                        <td style="width:20%;">
-                            <div>
-                                <img src="img/feedback.png" style="float:left;width:25px; cursor:pointer" title="Feedback" onclick="feedBack()"/>
-                                
-                            </div>
-                            
-                        </td>
-                        <td style="width:20%;">
-                            <div>
-                                <img src="img/logout.png"  style="float:left;width:25px; cursor:pointer" title="Logout" onclick="logout()"/>
-                                
-                            </div>
-                            
-                        </td>
-                        
                     </tr>
-                    
                 </table>
-                
             </div>
-            
-        </footer>
-</body>
+    </body>
 </html>
