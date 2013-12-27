@@ -285,42 +285,42 @@
                     </tr>
                 </table>
             </div>
-             <div style="width:100%;position:fixed;bottom:0px;">
-            <table style="width:100%;" class="btn-tmpFooter">
-                <tr>
-                    <td style="width:20%;">
-                        <div>
-                            <img src="img/Home.png" style="float:left;cursor:pointer;width:27px" title="Home" onclick="preCab()"/>
-                        </div>
-                    </td>
-                     <td style="width:20%;">
-                        <div>
-                            <img src="img/Cab.png" style="float:left;cursor:pointer;width:27px" title="CabNow" onclick="cabNow()"/>
-                        </div>
-                    </td>
-                    <td style="width:20%;">
-                        <div>
-                            <img src="img/User.png" style="float:left; cursor:pointer;width:27px" title="Profile" onclick="myProfile()"/>
-                        </div>
-                    </td>
-                    <td style="width:20%;">
-                        <div>
-                            <img src="img/History1.png" style="float:left;cursor:pointer;width:27px" title="History" onclick="bookedHistory()"/>
-                        </div>
-                    </td>
-                    <td style="width:20%;">
-                        <div>
-                            <img src="img/feedback.png" style="float:left;cursor:pointer;width:27px" title="Feedback" onclick="feedBack()"/>
-                        </div>
-                    </td>
-                    <td style="width:20%;">
-                        <div>
-                            <img src="img/logout.png" style="float:left;cursor:pointer;width:27px" title="Logout" onclick="logout()"/>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
+            <div class="btn-tmpFooter">
+        <table style="width: 100%;border-collapse:collapse">
+            <tr>
+                <td style="width:17%">
+                    <div style="padding-top:5px">
+                        <img src="img/Home.png" style="height:20px;" onclick="searchpage()"/><br/>Search
+                    </div>
+                </td>
+                <td style="width:17%">
+                    <div style="padding-top:5px">
+                        <img src="img/User.png" style="height:20px;" onclick="myProfile()" /><br/>Profile
+                    </div>
+                </td>
+                <td style="width:17%">
+                    <div style="padding-top:5px">
+                         <img src="img/Cab.png" style="height:20px;" onclick="myBooking()" /><br/>Bookings
+                    </div>
+                </td>
+                <td style="width:17%">
+                    <div style="padding-top:5px">
+                        <img src="img/History1.png" style="height:20px;" onclick="bookedHistory()" /><br/>History
+                    </div>
+                </td>
+                <td style="width:17%">
+                    <div style="padding-top:5px">
+                        <img src="img/feedback.png" style="height:20px;" onclick="feedBack()" /><br/>Feedback
+                    </div>
+                </td>
+                <td style="width:17%">
+                    <div style="padding-top:5px">
+                        <img src="img/logout.png" style="height:20px;" onclick="logout()" /><br/>Logout
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
     </center>
     <script src="Scripts/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>

@@ -250,7 +250,7 @@ function AbortJob(data)
     var jobNo = data;
     document.getElementById("lblJobNumber").value = jobNo;
     navigator.notification.confirm(
-    "Confirm you want to abort the current cab?",
+    "Do you want to abort the current job?",
     onAbortCallback,
     "Confirm",
     "No, Yes"

@@ -253,7 +253,7 @@ function availabledriverLater() {
                     if(data.d[0] != "Error")
                     {
                         alert('Booking in progress. Please check later.');
-                        window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                        window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                     }
                     else
                     {
@@ -269,5 +269,5 @@ function availabledriverLater() {
     }
 
     function homeSearch() {
-        window.location = 'customerHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+        window.location = 'customerProfile.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
     }

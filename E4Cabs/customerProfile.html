@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <script src="Scripts/jquery-2.0.3.min.js"></script>  
     <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>   
-    <script type="text/javascript" src="js/customerHome.js"></script> 
+    <script type="text/javascript" src="js/customerProfile.js"></script> 
     <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
 
     <title></title>
@@ -92,39 +92,37 @@
         </table>
     </div>
     
-    <div data-role="footer" data-position="fixed" style="width: 100%; position: fixed; bottom: 0px; height: 25px; padding-bottom: 10px">
-        <table style="width: 98%;" class="btn-tmpFooter">
+    <div class="btn-tmpFooter">
+        <table style="width: 100%;border-collapse:collapse">
             <tr>
-                <td style="width: 20%;">
-                    <div>
-                        <img src="img/Home.png" width="27px;" style="float: left; cursor: pointer" title="Home" onclick="preCab()" />
+                <td style="width:17%">
+                    <div style="padding-top:5px">
+                        <img src="img/Home.png" style="height:20px;" onclick="searchpage()"/><br/>Search
                     </div>
                 </td>
-                <td style="width: 20%;">
-                    <div>
-                        <img src="img/Cab.png" width="27px;" style="float: left; cursor: pointer" title="CabLater" onclick="cabNow()" />
+                <td style="width:17%">
+                    <div style="padding-top:5px">
+                        <img src="img/User.png" style="height:20px;" onclick="myProfile()" /><br/>Profile
                     </div>
                 </td>
-                <td style="width: 20%;">
-                    <div>
-                        <img src="img/User.png" width="27px;" style="float: left; cursor: pointer" title="Profile" onclick="myProfile()" />
+                <td style="width:17%">
+                    <div style="padding-top:5px">
+                         <img src="img/Cab.png" style="height:20px;" onclick="myBooking()" /><br/>Bookings
                     </div>
                 </td>
-
-
-                <td style="width: 20%;">
-                    <div>
-                        <img src="img/History1.png" width="27px;" style="float: left; cursor: pointer" title="History" onclick="bookedHistory()" />
+                <td style="width:17%">
+                    <div style="padding-top:5px">
+                        <img src="img/History1.png" style="height:20px;" onclick="bookedHistory()" /><br/>History
                     </div>
                 </td>
-                <td style="width: 20%;">
-                    <div>
-                        <img src="img/feedback.png" width="27px;" style="float: left; cursor: pointer" title="Feedback" onclick="feedBack()" />
+                <td style="width:17%">
+                    <div style="padding-top:5px">
+                        <img src="img/feedback.png" style="height:20px;" onclick="feedBack()" /><br/>Feedback
                     </div>
                 </td>
-                <td style="width: 20%;">
-                    <div>
-                        <img src="img/logout.png" width="27px;" style="float: left; cursor: pointer" title="Logout" onclick="logout()" />
+                <td style="width:17%">
+                    <div style="padding-top:5px">
+                        <img src="img/logout.png" style="height:20px;" onclick="logout()" /><br/>Logout
                     </div>
                 </td>
             </tr>

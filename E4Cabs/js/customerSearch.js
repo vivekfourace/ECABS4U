@@ -302,5 +302,5 @@ function availabledriver() {
     }
 
  function homeSearch() {
-     window.location = 'customerHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+     window.location = 'customerProfile.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
  }

@@ -123,7 +123,7 @@ function HireDriver(customerReqID, driverid)
                    contentType: "application/json; charset=utf-8",
                     success: function(data){
                         alert('Booking in progress. Please check later.');
-                        window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                        window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) 
                     {
@@ -134,14 +134,14 @@ function HireDriver(customerReqID, driverid)
 
 function backtostart()
 {
-    window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
 function CancelBookedJob(data)
 {
     var jobNo = data;
     document.getElementById("lblJobNumber").value = jobNo;
-    var isTrue = confirm("Do you want to abort the current Cab.");
+    var isTrue = confirm("Do you want to abort the current cab.");
     if(isTrue)
     {
         $('#freezBack').show();
@@ -207,43 +207,35 @@ function CancelReject()
     $('#transparent_div').hide();
 }
 
-function cabNow()
+function searchpage()
 {
-      window.location='CustomerCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-function preCab()
-{
-     window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+function myProfile()
+ {
+     window.location = 'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+ }
+function myBooking()
+{ 
+   window.location='CustomerCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 function bookedHistory()
 {
-      window.location = 'CustomerHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+  window.location = 'CustomerHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
 }
-function myProfile()
-{
-     window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
- }
 function feedBack()
 {
     window.location='customerFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 function logout()
- {
-          $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
-                type:"POST",
-                dataType: "Json",
-                data:"{'userID':'" +userId+"'}",
-                contentType: "application/json; charset=utf-8",                     
-                success: function(data)
-                {
-                    },
-                
-                error: function (XMLHttpRequest, textStatus, errorThrown)
-              {
-              }
-          });          
-          $.cookie("remember", false);
-          //$.cookie("userName", 'null');
-          //$.cookie("userPassword", 'null');
-          window.location = "index.html";  
-  }
+    {
+       $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
+            type:"POST",
+            dataType: "Json",
+            data:"{'userID':'" +userId+"'}",
+            contentType: "application/json; charset=utf-8",                     
+            success: {},
+     }); 
+        $.cookie("remember", false);  
+        window.location = "index.html";  
+}

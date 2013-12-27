@@ -596,34 +596,9 @@ function selectDriver()
             $('#transparent_div').hide();
 }
 
-function logout()
- {
-            $.cookie("remember", false);
-            //$.cookie("userName", 'null');
-            //$.cookie("userPassword", 'null');
-            window.location = "index.html";
-}
-function cabNow() {
-      window.location='CustomerCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-}
-function feedBack()
- {
-        window.location = 'customerFeedback.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-}
-function bookedHistory()
- {
-        window.location = 'CustomerHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-}
-function preCab()
-{
-        window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-}
-function myProfile() {
-        window.location = 'customerHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-}
 function CancelJobRequest()
 {
-         var result = confirm("Do you really want to cancel this job ?");    
+         var result = confirm("Do you really want to cancel this job?");    
          if (result==true) {
            var cause = "Cancelled";
            DeleteJob(cause);
@@ -636,7 +611,7 @@ function CancelJobRequest()
 
 function ReInitiateJob()
 {
-        var result = confirm("Do you want to Re-Initiate this job ?");    
+        var result = confirm("Do you want to Re-initiate this job?");    
         if (result==true) {
               window.location = 'customerSearch.html?id=' + userId + '&rid=' + requestID + '&rrid=' + relatedId;
         }
@@ -662,4 +637,37 @@ function DeleteJob(cause)
             error: function (XMLHttpRequest, textStatus, errorThrown) {
             }
         });
+}
+
+function searchpage()
+{
+    window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
+function myProfile()
+ {
+     window.location = 'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+ }
+function myBooking()
+{ 
+   window.location='CustomerCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
+function bookedHistory()
+{
+  window.location = 'CustomerHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+}
+function feedBack()
+{
+    window.location='customerFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
+function logout()
+    {
+       $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
+            type:"POST",
+            dataType: "Json",
+            data:"{'userID':'" +userId+"'}",
+            contentType: "application/json; charset=utf-8",                     
+            success: {},
+     }); 
+        $.cookie("remember", false);  
+        window.location = "index.html";  
 }

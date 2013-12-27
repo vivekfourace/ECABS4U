@@ -25,7 +25,7 @@ function showMap()
 
 function reqReject() {            
     navigator.notification.confirm(
-    "Are you sure to reject the job?",
+    "Do you want to reject the job?",
     onRejectCallback,
     "Confirm",
     "No, Yes"   

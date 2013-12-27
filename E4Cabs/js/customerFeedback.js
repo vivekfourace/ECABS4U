@@ -73,7 +73,10 @@ function UploadFeedBack()
                     }
                 });
 }
-
+function backtostart()
+{
+     window.location='customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
 function backtostart()
 {
    window.location=  'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
@@ -87,50 +90,35 @@ function CancelComment()
     $('#txtPostComment').val("");
     $('#divPostComment').fadeOut("slow");  
 }
-function cabNow()
+function searchpage()
 {
-      window.location='CustomerCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-    
+    window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-
-function preCab()
-{
-       window.location = 'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+function myProfile()
+ {
+     window.location = 'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+ }
+function myBooking()
+{ 
+   window.location='CustomerCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 function bookedHistory()
 {
-      window.location='CustomerHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+  window.location = 'CustomerHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
 }
-
- function myProfile()
+function feedBack()
 {
-     window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    window.location='customerFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 function logout()
-{   
-         $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
+    {
+       $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
             type:"POST",
             dataType: "Json",
             data:"{'userID':'" +userId+"'}",
             contentType: "application/json; charset=utf-8",                     
-            success: function(data)
-            {
-             },
-            
-            error: function (XMLHttpRequest, textStatus, errorThrown) 
-             {
-              }
-         }); 
-        $.cookie("remember", false);
-        //$.cookie("userName", 'null');
-        //$.cookie("userPassword", 'null');
+            success: {},
+     }); 
+        $.cookie("remember", false);  
         window.location = "index.html";  
- }
-function backtostart()
-{
-     window.location='customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-}
-function feedBack()
-{
-      window.location='customerFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }

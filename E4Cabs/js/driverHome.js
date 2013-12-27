@@ -47,7 +47,7 @@ function  NavigateToMap()
 function AbortJob()
 {
     navigator.notification.confirm(
-    "Confirm you want to abort this job?",
+    "Do you want to abort this job?",
     onAbortCallback,
     "Confirm",
     "No, Yes"    
@@ -128,7 +128,7 @@ function cancelAbort()
 function clearJob()
 {
     navigator.notification.confirm(
-    "Confirm you want to clear the job?",
+    "Do you want to clear this job?",
     onClearCallback,
     "Confirm",
     "No, Yes"  

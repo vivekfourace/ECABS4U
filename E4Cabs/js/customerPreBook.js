@@ -19,7 +19,7 @@ function availabledriver()
 //My Profile Button
  function myProfile()
 {
-   window.location =  'customerHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+   window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 //Logout Button
 function logout()
