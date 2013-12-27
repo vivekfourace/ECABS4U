@@ -119,8 +119,8 @@ function feedBackDriver(JobNumber )
                                $('#lblFeedFrom').text(fromLoc);
                                $('#lblFeedTo').text(toLoc);
                             
-                               $('#popup_box').show();
-                               $('#divFeedBack').show();
+                               $('#popup_box').fadeIn("fast");
+                               $('#divFeedBack').fadeIn("fast");
                                $('#trbtnPopup').hide();
                                $('#trbtnOK').show();
                                $('#transparent_div').show();                               
@@ -136,8 +136,8 @@ function feedBackDriver(JobNumber )
                                $('#sel').attr('disabled',false);
                                $('#txtarComments').attr("readOnly",false);
                             
-                               $('#popup_box').show();
-                               $('#divFeedBack').show();
+                               $('#popup_box').fadeIn("fast");
+                               $('#divFeedBack').fadeIn("fast");
                                $('#trbtnPopup').show();
                                $('#transparent_div').show();
                                $('#trbtnOK').hide();
@@ -154,8 +154,8 @@ function feedBackDriver(JobNumber )
 
 function CancelFeedBack()
 {
-    $('#divFeedBack').hide();
-    $('#popup_box').hide();
+    $('#divFeedBack').hide("fast");
+    $('#popup_box').hide("fast");
      $('#transparent_div').hide();
     document.getElementById('sel').value = 0;
     document.getElementById('txtarComments').value = "";  
@@ -178,15 +178,15 @@ function JobDetail(data)
 }
 function showDetail(data)
 {
-    $('#lblJobNo').text(data.d[0]);
-    $('#lblFare').html('&pound'+data.d[1]);
-    $('#lbltDate').text(data.d[2]);
-    $('#lblTime').text(data.d[3]);
-    $('#lblFrom').text(data.d[4]);
-    $('#lblTo').text(data.d[5]);
-    $('#lblCustomerName').text(data.d[6]);
-    $('#lblCustomerContact').text(data.d[7]);
-    $('#lblNoOfPassenger').text(data.d[8]);    
+    $('#lblJobNo').text(": "+data.d[0]);
+    $('#lblFare').html(": "+'&pound'+data.d[1]);
+    $('#lbltDate').text(": "+data.d[2]);
+    $('#lblTime').text(": "+data.d[3]);
+    $('#lblFrom').text(": "+data.d[4]);
+    $('#lblTo').text(": "+data.d[5]);
+    $('#lblCustomerName').text(": "+data.d[6]);
+    $('#lblCustomerContact').text(": "+data.d[7]);
+    $('#lblNoOfPassenger').text(": "+data.d[8]);    
     $('#popup_box').show();
     $('#divCabLaterBooking').show();
      $('#transparent_div').show();
@@ -194,8 +194,8 @@ function showDetail(data)
 
 function Cancel()
 {
-    $('#popup_box').hide();
-    $('#divCabLaterBooking').hide();
+    $('#popup_box').fadeOut("fast");
+    $('#divCabLaterBooking').fadeOut("fast");
      $('#transparent_div').hide();
 }
 
@@ -223,8 +223,8 @@ function SubmitReject()
                      success: function(data){
                          if(data.d == "true")
                          {
-                              $('#popup_box1').hide();
-                              $('#divAbortTask').hide();
+                              $('#popup_box1').fadeOut("fast");
+                              $('#divAbortTask').fadeOut("fast");
                               $('#txtAbortmsg').val("");
                                $('#transparent_div').hide();
                               alert("Job aborted successfully.");
@@ -239,8 +239,8 @@ function SubmitReject()
 }
 function CancelReject()
 {
-    $('#popup_box1').hide();
-    $('#divAbortTask').hide();
+    $('#popup_box1').fadeOut("fast");
+    $('#divAbortTask').fadeOut("fast");
     $('#transparent_div').hide();
     $('#txtAbortmsg').val("");
 }
@@ -266,8 +266,8 @@ function onAbortCallback(buttonIndex)
     else if(buttonIndex == 2)
     {
         $('#transparent_div').show();
-        $('#popup_box1').show();
-        $('#divAbortTask').show();
+        $('#popup_box1').fadeIn("fast");
+        $('#divAbortTask').fadeIn("fast");
     }
 }
 
@@ -303,13 +303,12 @@ function PostFeedBack()
                 alert("Feedback comment posted successfully");
                 document.getElementById('txtarComments').value ="";
                 document.getElementById('sel').value = 0;
-                $('#divFeedBack').hide();
-                $('#popup_box').hide();
+                $('#divFeedBack').fadeOut("fast");
+                $('#popup_box').fadeOut("fast");
                 $('#transparent_div').hide();
                 },
          });  
  }
-
 
 function HomePage(){
     window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;

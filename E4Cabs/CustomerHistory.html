@@ -46,9 +46,10 @@
     </div>
 
     <div style="padding-top: 70px">
-        <div id="msg" style="width:100%">
+        <div id="msg" style="width:100%;overflow:auto">
             <label id="lbljobFeed" style="display: none;" />
         </div>
+        <div style="padding-top:50%; color:#0000FF;font-size:20px;text-align:center;display:none" id="bookingmsg">No history found.</div>
         <div id="popup_box">
             <div id="divFeedBack" style="display:none;" align="center">
                <table align="left" style="width:100%;background-color:#FFFFFF;">
@@ -124,8 +125,8 @@
                    </tr>
                    <tr class="popup_footer" id="trbtnPopup">
                        <td style="width:100%;text-align:center" colspan="2">
-                          <input type="button" id="btnFeedCancel" style="width:49%" value="Cancel" class="ok" onclick="CancelFeedBack()"/>  
-                          <input type="button" id="btnFeedPost" style="width:49%" value="Submit" class="ok" onclick="PostFeedBack()"/> 
+                           <input type="button" id="btnFeedPost" style="width:49%" value="Submit" class="ok" onclick="PostFeedBack()"/> 
+                          <input type="button" id="btnFeedCancel" style="width:49%" value="Cancel" class="ok" onclick="CancelFeedBack()"/>                          
                        </td>
                        
                    </tr>
@@ -144,89 +145,89 @@
                          </td>
                      </tr>
                      <tr class="popup_content">
-                         <td style="width:50%;">
+                         <td style="width:40%;">
                             <strong class="tdContentstyle">Job Number</strong>
                          </td>
-                         <td style="width:50%;">
+                         <td style="width:60%;">
                             <label id="lblJobNo" class="tdContentstyle"></label>
                          </td>
                          
                      </tr>
                      <tr class="popup_content">
-                         <td style="width:50%;">
+                         <td style="width:40%;">
                              <strong class="tdContentstyle">Fare</strong>
                          </td>
-                         <td style="width:50%;">
+                         <td style="width:60%;">
                              <label id="lblFare" class="tdContentstyle"></label>
                          </td>
                      </tr>                     
                      <tr class="popup_content">
-                         <td style="width:50%;">
+                         <td style="width:40%;">
                              <strong class="tdContentstyle">Date</strong>
                              
                          </td>
-                         <td style="width:50%;">
+                         <td style="width:60%;">
                             <label id="lbltDate" class="tdContentstyle"></label> 
                              
                          </td>
                      </tr>
                      <tr class="popup_content">
-                         <td style="width:50%;">
+                         <td style="width:40%;">
                              <strong class="tdContentstyle">Time</strong>
                              
                          </td>
-                         <td style="width:50%;">
+                         <td style="width:60%;">
                              <label id="lblTime" class="tdContentstyle"></label>
                              
                          </td>
                      </tr>
                      <tr class="popup_content">
-                         <td style="width:50%;">
+                         <td style="width:40%;">
                              <strong class="tdContentstyle">From</strong>
                              
                          </td>
-                         <td style="width:50%;">
+                         <td style="width:60%;">
                              <label id="lblFrom" class="tdContentstyle"></label>
                              
                          </td>
                      </tr>
                      <tr class="popup_content">
-                         <td style="width:50%;">
+                         <td style="width:40%;">
                              <strong class="tdContentstyle">To</strong>
                              
                          </td>
-                         <td style="width:50%;">
+                         <td style="width:60%;">
                              <label id="lblTo" class="tdContentstyle"></label>
                              
                          </td>
                      </tr>
                      <tr class="popup_content">
-                         <td style="width:50%;">
+                         <td style="width:40%;">
                              <strong class="tdContentstyle">Driver Name</strong>
                              
                          </td>
-                         <td style="width:50%;">
+                         <td style="width:60%;">
                              <label id="lblCustomerName" class="tdContentstyle"></label>
                              
                          </td>
                      </tr>
                      
                      <tr class="popup_content">
-                         <td style="width:50%;">
+                         <td style="width:40%;">
                              <strong class="tdContentstyle">Driver Contact</strong>
                              
                          </td>
-                         <td style="width:50%;">
+                         <td style="width:60%;">
                              <label id="lblCustomerContact" class="tdContentstyle"></label>
                              
                          </td>
                      </tr>
                      <tr class="popup_content">
-                         <td style="width:50%;">
+                         <td style="width:40%;">
                              <strong class="tdContentstyle">No of Passengers</strong>
                              
                          </td>
-                         <td style="width:50%;">
+                         <td style="width:60%;">
                              <label id="lblNoOfPassenger" class="tdContentstyle"></label>
                              
                          </td>

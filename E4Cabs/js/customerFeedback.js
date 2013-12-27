@@ -65,7 +65,7 @@ function UploadFeedBack()
                         }
                         else
                         {
-                            alert("No feedback found.");
+                            $('#bookingmsg').show();
                         }
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) 
