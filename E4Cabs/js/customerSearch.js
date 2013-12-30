@@ -229,6 +229,7 @@ function availabledriver() {
     }
     var IsReturnTrue = $('#chkReturnYes').attr('checked') ? true : false;
     var isCheckedNo = $('#chkNo').attr('checked') ? true : false;
+    var isRetJourAllOperator = $('#chkyes').attr('checked') ? true : false;
     
     if (isCheckedNo == true) {
         if (IsReturnTrue == false) {
@@ -269,6 +270,7 @@ function availabledriver() {
     }
         function moveSearch()
         {
+            IsReturnTrue = isRetJourAllOperator;
             $.ajax({
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerSearchRequest",
                 cache: false,

@@ -21,43 +21,50 @@ function availabledriver()
 {
    window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-//Logout Button
-function logout()
+function logout(){
+    navigator.notification.confirm(
+    "Do you want to logout?",
+    onLogoutCallback,
+    "Confirm",
+    "No, Yes"
+    );
+}
+
+function onLogoutCallback(buttonIndex)
 {
-         $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
+    if(buttonIndex == 1)
+    {
+        return false;
+    }
+    else if(buttonIndex == 2)
+    {
+        $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
             type:"POST",
             dataType: "Json",
             data:"{'userID':'" +userId+"'}",
             contentType: "application/json; charset=utf-8",                     
-            success: function(data)
-            {
-                },
-            
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-            //alert(errorThrown);
-                }
+            success: {},
          }); 
         $.cookie("remember", false);
-        //$.cookie("userName", 'null');
-        //$.cookie("userPassword", 'null');        
-        window.location="login.html";
+        window.location = "index.html";
+    }
 }
-//Cab Now Button
+
 function cabNow()
 {   
    window.location='CustomerCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-//Customer Feedback 
+
 function feedBack()
 {
         window.location='customerFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-//Booked History
+
 function bookedHistory()
 {
        window.location = 'CustomerHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
 }
-//from Menu
+
 function preCab()
 {
        window.location='customerPreBook.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;

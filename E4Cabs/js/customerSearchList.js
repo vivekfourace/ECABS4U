@@ -73,7 +73,12 @@ function Destroy() {
 }
 
 $('#load').show();
-var id = window.setInterval(function () {   
+
+var id;
+id = window.setInterval(getResponse, 10000);
+
+function getResponse()
+{
     $.ajax({
         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData",
         type: "POST",
@@ -84,8 +89,7 @@ var id = window.setInterval(function () {
         error: function (XMLHttpRequest, textStatus, errorThrown) {
         }
     });
-}, 10000);
-
+}
     
 function getData(data) {    
     var count = data.d.length;  
@@ -201,13 +205,13 @@ function getData(data) {
                 html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
                 html += "<td width='10%' align='center'>" + '<img src="img/sc.png" class="pulse" width="15" height="15" style="color:grey;" onclick="SpecShow(\''+spec+'\')"/>' + "</td>";
                 html += "<td width='20%' align='center'>" + bidh + ":" + bidm + "</td>";
-                html += "<td width='15%' align='center'>" + '<input type="button" class="disableBtn accept-btn" value="Hire" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'' + spec + '\');"/>' + "</td>";
+                html += "<td width='15%' align='center'>" + '<input type="button" class="disableBtn accept-btn" value="Hire" id= "' + driverID + '" onclick = "Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'' + spec + '\');"/>' + "</td>";
                 html += '</tr>';
                 html += '<tr>';           
                 var rating3 = data.d[i]["RatingPast"];
                 var rating4 = data.d[i]["RatingPresent"];
                 
-                                        html += '<td style="width:100%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="'+driverImgUrl+'" style="width:90px;height:80px"/>'
+                                        html += '<td style="width:100%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="'+driverImgUrl+'" style="width:40px;height:40px"/>'
                           if(rating3 != "")
                           {
                                    if(rating3 == "1")
@@ -281,7 +285,7 @@ function getData(data) {
                 var rating33 = data.d[i]["RatingPast"];
                 var rating44 = data.d[i]["RatingPresent"];
                 
-                                html += '<td style="width:100%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="'+driverImgUrl+'" style="width:90px;height:80px"/>'
+                                html += '<td style="width:100%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="'+driverImgUrl+'" style="width:40px;height:40px"/>'
                           if(rating33 != "")
                           {
                                    if(rating33 == "1")
@@ -418,6 +422,7 @@ function SpecShow(a) {
     $('#popupBoxClose').show();
     $('#divDealConfirmed').hide();
     $('#txtothereSpecialReq').text(a);
+    id = window.setInterval(getResponse, 10000);
 }
 function specClose() {
     $('#transparent_div').hide();
@@ -428,36 +433,39 @@ function specClose() {
 var dId, reqId, specS;
 
 function Hireme(driID, reqID,spec)
-{
+{       
     dId = driID;
     reqId = reqID;
-    specS = spec;
-    
-    DisableHiremeBtns();
-    $('#msg').disabled = true;
+    specS = spec;    
+
     if(spec == "Not Available")
     {
-        HireCurrentDriver();
+        window.clearInterval(id);
+        DisableHiremeBtns();
+        HireCurrentDriver();     
     }
     else
-    {
+    {   
+        window.clearInterval(id);
         navigator.notification.confirm(
-        "Did you read the special circumstance entry?",            // message
-         onConfirm,                                                // callback to invoke with index of button pressed
-        'Confirm special circumstance',                            // title
-        'No,Yes'                                                   // buttonLabels
+        "Did you read the special circumstance entry?",
+         onConfirm,
+        'Confirm',
+        'No,Yes'
      );
     }
   }
 
 function onConfirm(buttonIndex)
 {
-    if(buttonIndex == 1)    //when no pressed
-    {
-        SpecShow(specS);       
+    if(buttonIndex == 1)
+    {        
+        SpecShow(specS);     
     }
-    else if(buttonIndex == 2)    //when yes pressed
+    else if(buttonIndex == 2)
     {
+       DisableHiremeBtns();
+       window.clearInterval(id);
        HireCurrentDriver();
     }
 }
@@ -483,7 +491,9 @@ function HireCurrentDriver()
 function DisableHiremeBtns()
 {
    $(":button.disableBtn").each(function(){
-      this.disabled = true;
+      $(this).css("background-color","#BDBDBD");
+      $(this).css("border","1px solid #BDBDBD");
+      $(this).disabled = true;
    });
 }
 
@@ -659,15 +669,31 @@ function feedBack()
 {
     window.location='customerFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-function logout()
+function logout(){
+    navigator.notification.confirm(
+    "Do you want to logout?",
+    onLogoutCallback,
+    "Confirm",
+    "No, Yes"
+    );
+}
+
+function onLogoutCallback(buttonIndex)
+{
+    if(buttonIndex == 1)
     {
-       $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
+        return false;
+    }
+    else if(buttonIndex == 2)
+    {
+        $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
             type:"POST",
             dataType: "Json",
             data:"{'userID':'" +userId+"'}",
             contentType: "application/json; charset=utf-8",                     
             success: {},
-     }); 
-        $.cookie("remember", false);  
-        window.location = "index.html";  
+         }); 
+        $.cookie("remember", false);
+        window.location = "index.html";
+    }
 }

@@ -70,40 +70,52 @@ function backToIndex()
     window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
-function myProfile()
-{
-    window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+function HomePage(){
+    window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-
 function MyBookings(){
     window.location='DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
-function logout()
+function logout(){
+    navigator.notification.confirm(
+    "Do you want to logout?",
+    onLogoutCallback,
+    "Confirm",
+    "No, Yes"
+    );
+}
+
+function onLogoutCallback(buttonIndex)
 {
-    $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
+    if(buttonIndex == 1)
+    {
+        return false;
+    }
+    else if(buttonIndex == 2)
+    {
+        $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
             type:"POST",
             dataType: "Json",
             data:"{'userID':'" +userId+"'}",
             contentType: "application/json; charset=utf-8",                     
-            success: {},           
-         });
-    
+            success: {},
+         }); 
         $.cookie("remember", false);
-        //$.cookie("userName", 'null');
-        //$.cookie("userPassword", 'null');
-        window.location = "index.html";    
+        window.location = "index.html";
+    }
 }
 
-function myhome(){
-    window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+function MyProfilePage(){
+    window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-function feedBack()
-{
-    window.location='driverFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-}
+
 function bookedHistory()
 {
   window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;  
 }
 
+function feedBack()
+{
+    window.location='driverFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
