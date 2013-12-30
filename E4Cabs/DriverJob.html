@@ -235,22 +235,6 @@
                 $('#popup_box').hide();
             });
         });
-
-       // function showJob() {            
-       //     $("#divDealload").hide();
-       //     $('#popup_box').fadeIn("slow");            
-       //     $('#divBid').hide();
-       //     var job = $('#lbljobno').text();
-       //     var from = $('#lblFromLoc').text();
-       //     var to = $('#lblToLoc').text();
-       //     var third = $('#lblpopthird').text();
-       //     var four = $('#lblpopfour').text();
-       //     $('#lblpopjob').text(job);
-       //     $('#lblcustomer').text("abc");
-       //     $('#lblpopfrom').text(from);
-       //     $('#lblpopto').text(to);
-       //     $('#lblpopthird').text(third);            
-       // }
         
         var timereOut;
         function SubmitDeal() {
@@ -431,12 +415,6 @@
                     }
                 });
 
-                document.getElementById("returnFrom").style.display = 'none';
-                
-                document.getElementById("returnDate").style.display = 'none';
-                document.getElementById("returnTime").style.display = 'none';
-                document.getElementById("trOtherspec").style.display = 'none';
-                document.getElementById("trSpecialtxt").style.display = 'none';
                 $('#popup_box').hide();
                 if (fare.length > 0) {
                     SubmitDeal();
@@ -449,13 +427,6 @@
                     alert('Please enter fare.');
                     return false;
                 }
-                $("#wheel").hide(); $("#Tr1").hide(); $("#Tr2").hide(); $("#Tr3").hide(); $("#Tr4").hide(); $("#Tr5").hide();
-                $("#childseat").hide();
-                $("#booster").hide();
-                $("#other").hide();
-                $("#fare").hide();
-                $('#divBid').hide();
-
                 $('#lblbidjob').text(job);
 
                 $('#lblfare').text(fare2);
@@ -485,14 +456,6 @@
 
                     }
                 });
-                
-                
-                document.getElementById("returnFrom").style.display = 'none';
-                
-                document.getElementById("returnDate").style.display = 'none';
-                document.getElementById("returnTime").style.display = 'none';
-                document.getElementById("trOtherspec").style.display = 'none';
-                document.getElementById("trSpecialtxt").style.display = 'none';
                 $('#popup_box').hide();
             }
         }
@@ -759,7 +722,7 @@
                             </td>
                             <td style="width:70%">
                                 <b>
-                                    <textarea id="txtSpecialReq" style="font-family:sans-serif;width:93%" maxlength="100"></textarea>
+                                    <textarea id="txtSpecialReq" style="font-family:sans-serif;width:95%" maxlength="100"></textarea>
                                 </b>
                             </td>
                         </tr>
@@ -769,13 +732,13 @@
                                 <b style="font-size:11px;">Fare in (&pound;)</b>
                             </td>
                             <td style="width:70%">
-                                <b><input type="text" id="txtbidFare" maxlength="3" style="font-size:11px;width:95%;" /></b>
+                                <b><input type="text" id="txtbidFare" maxlength="3" style="font-size:11px;width:98%;" /></b>
                             </td>
                         </tr>
                         <tr class="popup_footer">
-                            <td style="width:100%">
-                                <input type="button" class="ok" value="Make Bid" style="width:100%;" onclick="bidSubmit()" />
-                                <input type="button" class="ok" value="Cancel" style="width:100%;" onclick="bidCancel()" />
+                            <td style="width:100%" colspan="2">
+                                <input type="button" class="ok" value="Make Bid" style="width:49%;" onclick="bidSubmit()" />
+                                <input type="button" class="ok" value="Cancel" style="width:49%;" onclick="bidCancel()" />
                             </td>
                         </tr>
                     </table>

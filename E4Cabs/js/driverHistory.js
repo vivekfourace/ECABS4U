@@ -6,6 +6,7 @@ var relatedId = QString.split("=")[3].split("&")[0];
 document.addEventListener("deviceready",onDeviceReady, false);
 function onDeviceReady()
 {
+    //document.addEventListener("startcallbutton", onStartCallKeyDown, false);
     console.log("ready");
 }
 
@@ -47,7 +48,11 @@ function gethistory()
                                                 html += "<td width='20%' height='30px' align='center'>" +'<a href="#" onclick="JobDetail(\''+data.d[i]["JobNo"]+'\')" style="color:blue;">'+ data.d[i]["JobNo"]+'</a>'+"</td>"; 
                                                 html += "<td width='5%' height='30px' align='center'>"+'<img src="img/feedbackicon.png" onclick="feedBackDriver(\''+data.d[i]["JobNo"]+'\')"</img>'+"</td>"
                                                 
-                                             if(!isCabNow)
+                                             if(data.d[i]["isJobCompleted"] == true)
+                                                {
+                                                    html += "<td width='25%' height='30px' align='center'>"+'<label style="color:green">Completed</label>'+"</td>";
+                                                }
+                                             else if(!isCabNow || isCabNow)
                                              {
                                                  if(isJobAlive == true)
                                                  {
@@ -56,17 +61,6 @@ function gethistory()
                                                  else if(isJobAlive == false)
                                                  {
                                                       html += "<td width='25%' height='30px' align='center'>"+'<label style="color:red">Aborted</label>'+"</td>";
-                                                 }
-                                             }
-                                             else if(isCabNow)
-                                             {
-                                                 if(isJobAlive == true)
-                                                 {
-                                                     html += "<td width='25%' height='30px' align='center'style='color:green'>Cab Now</td>"; 
-                                                 }
-                                                 else if(isJobAlive == false)
-                                                 {
-                                                     html += "<td width='25%' height='30px' align='center'>"+'<label style="color:red">Aborted</label>'+"</td>";
                                                  }
                                              }
                                              html += '</tr>';    
@@ -176,6 +170,14 @@ function JobDetail(data)
                     }
                 });
 }
+
+function makeCall()
+{
+    var number = $('#lblCustomerContact').text();
+    console.log(number);
+    window.location.href = "tel:" + number;    
+}
+
 function showDetail(data)
 {
     $('#lblJobNo').text(": "+data.d[0]);
@@ -185,7 +187,10 @@ function showDetail(data)
     $('#lblFrom').text(": "+data.d[4]);
     $('#lblTo').text(": "+data.d[5]);
     $('#lblCustomerName').text(": "+data.d[6]);
-    $('#lblCustomerContact').text(": "+data.d[7]);
+    
+    $('#lblCustomerContact').text(data.d[7]);
+    $('#lblCustomerContact').css("font-weight", 900);
+    
     $('#lblNoOfPassenger').text(": "+data.d[8]);    
     $('#popup_box').show();
     $('#divCabLaterBooking').show();

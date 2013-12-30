@@ -3,7 +3,18 @@ function onDeviceReady() {
    navigator.splashscreen.hide();
    console.log('device is ready');
    document.addEventListener("backbutton",confirmExit, false);
-   
+    var devicename = device.name;
+    var platform = device.platform
+    var deviceuuid = device.uuid    
+    var model = device.model   
+    var version = device.version 
+       $.ajax({
+           url:"http://115.115.159.126/ECabs/ECabs4U.asmx/RegisterDevice",
+           type:"post",
+           datatype: "json",
+           data:"{'devicename':'"+devicename+"', 'platform':'"+platform+"', 'deviceuuid':'"+deviceuuid+"', 'model':'"+model+"', 'version':'"+version+"'}",
+           contentType: "application/json; charset=utf-8",
+       });
 }
 
 function confirmExit()
