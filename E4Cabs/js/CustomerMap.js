@@ -3,46 +3,54 @@ var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
-var locFrom, loc2, loc3, loc4, loc5, loc6, loc7, loc8, locTo;
+var locFrom, locTo;
 var arrLoc = new Array();
 var waypts = [];
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
 var map;
 
-window.onload = getLocation();
-function getLocation()
+function showMap()
 {
- console.log('getloc');
- $.ajax({
-        url:"http://115.115.159.126/ECabs/ECabs4U.asmx/GetLocations",
-        type:"POST",
-        dataType: "Json",
-        data:"{'relatedId':'"+relatedId+"'}",
-        contentType: "application/json; charset=utf-8",                     
-        success: setLocation,               
-        error: function (XMLHttpRequest, textStatus, errorThrown) {},
- });
-}
-function setLocation(data)
+    var locf = $('#locfrom').val();
+    if(!locf)
     {
-       console.log('setloc');
-       locFrom   = data.d[0];
-       arrLoc[0] = data.d[1];
-       arrLoc[1] = data.d[2];
-       arrLoc[2] = data.d[3];
-       arrLoc[3] = data.d[4];
-       arrLoc[4] = data.d[5];
-       arrLoc[5] = data.d[6];
-       arrLoc[6] = data.d[7];
-       locTo = data.d[8];
+        $('#lblMessage').text("Please enter From location.");
+        return false;
     }
+    var loc2 = $('#locto').val();
+    if(!loc2)
+    {
+        $('#lblMessage').text("Please enter To location.");
+        return false;
+    }
+    $('#popup_box').show();
+    $('#mapContainer').show();
+    $('#transparent_div').show();
+    console.log('setloc');
+    locFrom   = $('#locfrom').val();
+    arrLoc[0] = $('#locone').val();
+    arrLoc[1] = $('#loctwo').val();
+    arrLoc[2] = $('#locthree').val();
+    arrLoc[3] = $('#locfour').val();
+    arrLoc[4] = $('#locfive').val();
+    arrLoc[5] = $('#locsix').val();
+    arrLoc[6] = $('#locseven').val();
+    locTo = $('#locto').val();
+    for (var k = 0; k < arrLoc.length; k++)
+    {
+       console.log(arrLoc[k]);
+    }
+    InitializeWaypoints();    
+}
 
- window.setTimeout(function(){
+ function InitializeWaypoints()
+{
         console.log(arrLoc.length);
+    
         for (var i = 0; i < arrLoc.length; i++)
         {
-            if (arrLoc[i] != null) {
+            if (arrLoc[i] != "") {
                 waypts.push({
                     location: arrLoc[i],
                     stopover: true
@@ -53,16 +61,17 @@ function setLocation(data)
         if (waypts.length > 0)
         {
             console.log('In if part');
-            initialize();
+            ShowMapWithWaypoints();
         }
         else
          {
             console.log('In else part');
             initialize2();
          }
- },1000);
+ }
         
-      function initialize() {
+      function ShowMapWithWaypoints() {
+          console.log('In initialize');
             directionsDisplay = new google.maps.DirectionsRenderer();
             var geocoder = new google.maps.Geocoder();
               var address = locFrom;
@@ -89,7 +98,7 @@ function setLocation(data)
                         mapTypeId: google.maps.MapTypeId.ROADMAP
                     };
                                         
-                    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+                    map = new google.maps.Map(document.getElementById('mapCanvas'), mapOptions);
                     directionsDisplay.setMap(map);
                     calcRoute();                    
                 });
@@ -123,18 +132,11 @@ function setLocation(data)
                 disableDoubleClickZoom: false,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
               }
-              map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+              map = new google.maps.Map(document.getElementById('mapCanvas'), mapOptions);
               directionsDisplay.setMap(map);
               calcRoute2();
             });
             }
-      function toggleBounce() {
-            if (marker.getAnimation() != null) {
-                marker.setAnimation(null);
-            } else {
-                marker.setAnimation(google.maps.Animation.BOUNCE);
-            }
-        }
 
       function calcRoute2() {
             console.log("in calcRoute2 part");
@@ -167,8 +169,3 @@ function setLocation(data)
                 }
             });
         }
-
-function backToMap()
-{
-    window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-}

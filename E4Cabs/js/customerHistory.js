@@ -1,10 +1,16 @@
-//Query String
 var QString = window.location.search.substring(1);
 var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
+var jobNo;
+var btnarray = ["No","Yes"];
 
-//back to index page
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady()
+{
+    console.log("ready");
+}
+
 function backToIndex()
 {
    window.location =  'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
@@ -12,7 +18,6 @@ function backToIndex()
 }
 window.onload = gethistory();
 
-//getting the history details of booked cab
 function gethistory()
 {
    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerHistoryDetails";
@@ -78,23 +83,33 @@ function gethistory()
                 });
                 
             }
-
+ 
 function AbortJob(data)
 {
-    var jobNo = data;
+   
+    console.log('in abort');
+    jobNo = data;
     document.getElementById("lblJobNumber").value = jobNo;
-    var isTrue = confirm("Do you want to cancel the current cab order.");
-    if(isTrue)
-    {
-        $('#transparent_div').show();
-        $('#popup_box1').fandeIn("fast");
-        $('#divAbortTask').fandeIn("fast");
-    }
-    else
+    navigator.notification.confirm(
+    "Do you want to cancel the current cab order.",
+    onAbortCallback,
+    "Confirm",
+    btnarray
+    );
+}
+
+function onAbortCallback(btnIndex)
+{
+    if(btnIndex == 1)
     {
         return false;
     }
-    
+    else if(btnIndex == 2)
+    {
+        $('#popup_box1').fadeIn("fast");
+        $('#divAbortTask').fadeIn("fast");
+        $('#transparent_div').show();
+    }
 }
 
 function JobDetail(data)
@@ -209,17 +224,18 @@ function feedBackCustomer(JobNumber )
             {
 
                     var isCustomerRatingLocked = data.d[1];
-                    var isJobAlive = data.d[2];
+                    var isJobCompleted = data.d[2];
                     var custrating = data.d[3];
                     var custFeed = data.d[4];
                     var startDate = data.d[5]; 
                     var startTime = data.d[6];
                     var fromLoc = data.d[7];
                     var toLoc = data.d[8];
+                    var isJobAlive = data.d[9];
                 
-                    if(isJobAlive == "True")
+                    if(isJobCompleted == "True")
                      {
-                        console.log(isJobAlive);
+                        console.log(isJobCompleted);
                         if(isCustomerRatingLocked == "True") //show read only
                         {
                                document.getElementById('sel').value = custrating;
@@ -256,10 +272,14 @@ function feedBackCustomer(JobNumber )
                                $('#transparent_div').show();
                         }
                       }
-                      else
+                      else if(isJobAlive == "False")
                       {
-                          alert('Job not active. You cannot give feedback.');
+                          alert('This job has been cancelled. You cannot give feedback.');
                       }
+                      else if(isJobAlive == "True")
+                     {
+                         alert('Feedback will be accepted after the cab ride.');
+                     }
        },            
         error: function (XMLHttpRequest, textStatus, errorThrown) {}
   });  

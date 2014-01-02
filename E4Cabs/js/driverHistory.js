@@ -3,10 +3,9 @@ var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
-document.addEventListener("deviceready",onDeviceReady, false);
+document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady()
 {
-    //document.addEventListener("startcallbutton", onStartCallKeyDown, false);
     console.log("ready");
 }
 
@@ -18,67 +17,66 @@ function backToIndex()
 window.onload = gethistory();
 function gethistory()
 {
-                        var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/DriverHistoryDetails";
-                        $.ajax(url, 
-                        {
-                            
-                           type:"POST",
-                           datatype:"json",
-                           data:"{'relatedId':'"+relatedId+"'}",
-                           contentType: "application/json; charset=utf-8",
-                            success: function (data) {
-                                var count = data.d.length;
-                                if(count > 0)
+        var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/DriverHistoryDetails";
+        $.ajax(url, 
+        {
+           type:"POST",
+           datatype:"json",
+           data:"{'relatedId':'"+relatedId+"'}",
+           contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                var count = data.d.length;
+                if(count > 0)
+                {
+                        var html ='<table cellspacing="0"; width="100%"  style="border-collaspe:collaspe;">';
+                        html += '<thead class="thead-grid">';
+                        html += '<tr>';
+                        html += '<th>Job no</th>';
+                        html += '<th>Feedback</th>';
+                        html += '<th>Status</th>'; 
+                        html += '</tr>';
+                        html += '</thead>';
+                        html +='<tbody class="tbody-grid altColor">';  
+                             for(var i=0; i<count; i++)
+                             {
+                                $('#lbljobFeed').text(data.d[i]["JobNo"]);
+                                var isCabNow = data.d[i]["isCabNow"];
+                                var isJobAlive = data.d[i]["isJobAlive"];
+                                html += '<tr>';
+                                html += "<td width='20%' height='30px' align='center'>" +'<a href="#" onclick="JobDetail(\''+data.d[i]["JobNo"]+'\')" style="color:blue;">'+ data.d[i]["JobNo"]+'</a>'+"</td>"; 
+                                html += "<td width='5%' height='30px' align='center'>"+'<img src="img/feedbackicon.png" onclick="feedBackDriver(\''+data.d[i]["JobNo"]+'\')"</img>'+"</td>"
+                                
+                             if(data.d[i]["isJobCompleted"] == true)
                                 {
-                                        var html ='<table cellspacing="0"; width="100%"  style="border-collaspe:collaspe;">';
-                                        html += '<thead class="thead-grid">';
-                                        html += '<tr>';
-                                        html += '<th>Job no</th>';
-                                        html += '<th>Feedback</th>';
-                                        html += '<th>Status</th>'; 
-                                        html += '</tr>';
-                                        html += '</thead>';
-                                        html +='<tbody class="tbody-grid altColor">';  
-                                             for(var i=0; i<count; i++)
-                                             {
-                                                $('#lbljobFeed').text(data.d[i]["JobNo"]);
-                                                var isCabNow = data.d[i]["isCabNow"];
-                                                var isJobAlive = data.d[i]["isJobAlive"];
-                                                html += '<tr>';
-                                                html += "<td width='20%' height='30px' align='center'>" +'<a href="#" onclick="JobDetail(\''+data.d[i]["JobNo"]+'\')" style="color:blue;">'+ data.d[i]["JobNo"]+'</a>'+"</td>"; 
-                                                html += "<td width='5%' height='30px' align='center'>"+'<img src="img/feedbackicon.png" onclick="feedBackDriver(\''+data.d[i]["JobNo"]+'\')"</img>'+"</td>"
-                                                
-                                             if(data.d[i]["isJobCompleted"] == true)
-                                                {
-                                                    html += "<td width='25%' height='30px' align='center'>"+'<label style="color:green">Completed</label>'+"</td>";
-                                                }
-                                             else if(!isCabNow || isCabNow)
-                                             {
-                                                 if(isJobAlive == true)
-                                                 {
-                                                     html += "<td width='25%' height='30px' align='center'>"+'<input type="button" class="reject-btn" value="Abort" onclick="AbortJob(\''+data.d[i]["JobNo"]+'\')"/>'+"</td>";   
-                                                 }
-                                                 else if(isJobAlive == false)
-                                                 {
-                                                      html += "<td width='25%' height='30px' align='center'>"+'<label style="color:red">Aborted</label>'+"</td>";
-                                                 }
-                                             }
-                                             html += '</tr>';    
-                                             }
-                                        html +='</tbody>';
-                                           html +='</table>';
-                                        $('#msg').append(html);
-                                 }
-                                else
-                                {
-                                    $('#bookingmsg').show();
+                                    html += "<td width='25%' height='30px' align='center'>"+'<label style="color:green">Completed</label>'+"</td>";
                                 }
-                            },
-                            error: function (XMLHttpRequest, textStatus, errorThrown) 
-                            {
-                                alert(errorThrown);
-                            }
-                        });                
+                             else if(!isCabNow || isCabNow)
+                             {
+                                 if(isJobAlive == true)
+                                 {
+                                     html += "<td width='25%' height='30px' align='center'>"+'<input type="button" class="reject-btn" value="Abort" onclick="AbortJob(\''+data.d[i]["JobNo"]+'\')"/>'+"</td>";   
+                                 }
+                                 else if(isJobAlive == false)
+                                 {
+                                      html += "<td width='25%' height='30px' align='center'>"+'<label style="color:red">Aborted</label>'+"</td>";
+                                 }
+                             }
+                             html += '</tr>';    
+                             }
+                        html +='</tbody>';
+                           html +='</table>';
+                        $('#msg').append(html);
+                 }
+                else
+                {
+                    $('#bookingmsg').show();
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) 
+            {
+                alert(errorThrown);
+            }
+        });                
 }
 
 function feedBackDriver(JobNumber )
@@ -98,8 +96,9 @@ function feedBackDriver(JobNumber )
                     var startTime = data.d[6];
                     var fromLoc = data.d[7];
                     var toLoc = data.d[8];
+                    var isJobCompleted = data.d[9];
                 
-                   if(isJobAlive == "True")
+                   if(isJobCompleted == "True")
                     {
                         if(isDriverRatingLocked == "True")
                         {
@@ -117,7 +116,7 @@ function feedBackDriver(JobNumber )
                                $('#divFeedBack').fadeIn("fast");
                                $('#trbtnPopup').hide();
                                $('#trbtnOK').show();
-                               $('#transparent_div').show();                               
+                               $('#transparent_div').show();               
                             
                         }
                         else if(isDriverRatingLocked == "False")
@@ -137,10 +136,14 @@ function feedBackDriver(JobNumber )
                                $('#trbtnOK').hide();
                         }
                     }
-                    else
-                    {
-                        alert('Job not active. You cannot give feedback.');
-                    }
+                    else if(isJobAlive == "False")
+                      {
+                          alert('This job has been aborted. You cannot give feedback.');
+                      }
+                     else if(isJobAlive == "True")
+                     {
+                         alert('Feedback will be accepted after the cab ride.');
+                     }
        },            
         error: function (XMLHttpRequest, textStatus, errorThrown) {}
   });  

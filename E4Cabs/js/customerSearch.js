@@ -306,3 +306,10 @@ function availabledriver() {
  function homeSearch() {
      window.location = 'customerProfile.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
  }
+function hideMap()
+{
+    console.log('hit');
+    $('#popup_box').hide();
+    $('#mapContainer').hide();
+    $('#transparent_div').hide();
+}

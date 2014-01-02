@@ -23,13 +23,14 @@
     <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
     <script type="text/javascript" src="js/CalculateDistance.js"></script>
     <script type="text/javascript" src="js/customerSearch.js"></script>
+    <script type="text/javascript" src="js/CustomerMap.js"></script>
 
     
 </head>
     <script type="text/javascript">
-    function initialize() {
+    function initialize(){
          var mapOptions = {              
-              //componentRestrictions: {country: 'UK'},              
+              componentRestrictions: {country: 'UK'},              
         };
        
         var map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
@@ -58,63 +59,55 @@
             var autocompletePick = new google.maps.places.Autocomplete(PickupLocation);
                 google.maps.event.addListener(autocompletePick, 'place_changed', function () {              
                     var place = autocompletePick.getPlace();
-                    console.log(place.formatted_address);
                     $('#locfrom').val(place.formatted_address);
                     CalculateTotalDistance();
                 });           
            
             var autocompleteL2 = new google.maps.places.Autocomplete(L2Location);
                 google.maps.event.addListener(autocompleteL2, 'place_changed', function () {              
-                        var place = autocompleteL2.getPlace();
-                        console.log(place.formatted_address);
+                        var place = autocompleteL2.getPlace();           
                     $('#locone').val(place.formatted_address);
                     CalculateTotalDistance();                    
                 });   
             
             var autocompleteL3 = new google.maps.places.Autocomplete(L3Location);
                 google.maps.event.addListener(autocompleteL3, 'place_changed', function () {              
-                        var place = autocompleteL3.getPlace();
-                        console.log(place.formatted_address);
+                        var place = autocompleteL3.getPlace();            
                     $('#loctwo').val(place.formatted_address);
                     CalculateTotalDistance();
                 });  
             
             var autocompleteL4 = new google.maps.places.Autocomplete(L4Location);
                 google.maps.event.addListener(autocompleteL4, 'place_changed', function () {              
-                        var place = autocompleteL4.getPlace();
-                        console.log(place.formatted_address);
+                        var place = autocompleteL4.getPlace();            
                     $('#locthree').val(place.formatted_address);
                     CalculateTotalDistance();
                 });
             
             var autocompleteL5 = new google.maps.places.Autocomplete(L5Location);
                 google.maps.event.addListener(autocompleteL5, 'place_changed', function () {              
-                        var place = autocompleteL5.getPlace();
-                        console.log(place.formatted_address);
+                        var place = autocompleteL5.getPlace();            
                     $('#locfour').val(place.formatted_address);
                     CalculateTotalDistance();
                 });
             
             var autocompleteL6 = new google.maps.places.Autocomplete(L6Location);
                 google.maps.event.addListener(autocompleteL6, 'place_changed', function () {              
-                        var place = autocompleteL6.getPlace();
-                        console.log(place.formatted_address);
+                        var place = autocompleteL6.getPlace();                        
                     $('#locfive').val(place.formatted_address);
                     CalculateTotalDistance();
                 });
             
             var autocompleteL7 = new google.maps.places.Autocomplete(L7Location);
                 google.maps.event.addListener(autocompleteL7, 'place_changed', function () {              
-                        var place = autocompleteL7.getPlace();
-                        console.log(place.formatted_address);
+                        var place = autocompleteL7.getPlace();            
                     $('#locsix').val(place.formatted_address);
                     CalculateTotalDistance();
                 });                
             
             var autocompleteL8 = new google.maps.places.Autocomplete(L8Location);
                 google.maps.event.addListener(autocompleteL8, 'place_changed', function () {              
-                        var place = autocompleteL8.getPlace();
-                        console.log(place.formatted_address);
+                        var place = autocompleteL8.getPlace();                        
                     $('#locseven').val(place.formatted_address);
                     CalculateTotalDistance();
                 });
@@ -122,7 +115,6 @@
             var autocompleteTo = new google.maps.places.Autocomplete(ToLocation);
                 google.maps.event.addListener(autocompleteTo, 'place_changed', function () {              
                         var place = autocompleteTo.getPlace();
-                        console.log(place.formatted_address);
                     $('#locto').val(place.formatted_address);
                     CalculateTotalDistance();
                 });
@@ -347,6 +339,7 @@
     function showExpaBox() {
         $('#transparent_div').fadeIn("slow");
         $('#popup_box').fadeIn("slow");
+        $('#Commentbox').fadeIn("slow");
         $('#confirmAnchor').fadeIn("slow");
     }
 
@@ -391,6 +384,10 @@
                 font-size: 13px;
                 font-weight: 300;
             }
+        #mapCanvas{
+          height: 350px;
+          border:none;
+      }
 
  </style>
 
@@ -533,32 +530,29 @@
             <tr  id="8location" style="display:none">
                 <td>
                     <label for="txt8location" class="font-style"><b style="font-size:12px">Destination 7</b></label> 
-                    <input type="text" id="txt8location" name="txt8location" class="font-style" style="width:85%;float:left;"/>
-                   
-                </td>
-                       
+                    <input type="text" id="txt8location" name="txt8location" class="font-style" style="width:85%;float:left;"/>                   
+                </td>                       
              </tr>  
-              <tr>
+                  <tr>
                        <td style="height:5px"></td>
-                   </tr>
-                    <tr>
+                  </tr>
+                  <tr>
                    <td>
                        <input type="button" id="cancelAddLocation" class="specialBtn" onclick="cancelAddLocation()" style="display:none;float:right;" value="Cancel"/>
                    </td>
                </tr>     
              <tr>
                 <td>
-                    <label for="txtTo" class="font-style"><b style="font-size:12px">Final Destination</b></label> 
+                    <label for="txtTo" class="font-style"><b style="font-size:12px">Final destination</b></label> 
                     <input type="text" id="txtTo" class="font-style" style="width:85%;float:left;" onchange="Duration();" onblur=" Duration();"/>
-                    <img src="img/Addlocation.png" id="secoundLoc" width="25" height="25" style="float:right;cursor:pointer" onclick="secoundLocation()"/>
+                    <img src="img/Addlocation.png" id="secoundLoc" width="25px" height="25px" style="float:right;cursor:pointer" onclick="secoundLocation()"/>
                 </td>
-             </tr>
-               
-                  
+             </tr>              
               <tr>
                 <td>
-                    <label for="txtDistance" class="font-style"><b style="font-size:12px">Distance In Miles</b></label> 
-                    <input type="text" id="txtDistance" style="width:100%;float:right;background-color:#D8D8D8;color:black" readonly="true"/>
+                    <label for="txtDistance" class="font-style"><b style="font-size:12px">Distance</b></label> 
+                    <input type="text" id="txtDistance" style="width:50%;float:left;background-color:#D8D8D8;color:black" readonly="true"/>
+                    <input type="button" value="Show map" style="width:49%;float:right;height:32px" class="specialBtn" onclick="showMap()"/>
                 </td>
               </tr>
                    <input type="hidden" id="pickUpTime"/>
@@ -573,8 +567,8 @@
                           <option value="4">4</option>
                           <option value="5">5</option>
                           <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
                     </select>
                 </td>
             </tr>
@@ -631,7 +625,7 @@
                
                <tr id="trboundChair" style="display: none;">
                    <td>
-                       <label for="#" class="font-style"><b style="font-size:12px">Wheelchair Passengers</b></label>
+                       <label for="#" class="font-style"><b style="font-size:12px">Wheelchair passengers</b></label>
                         <select class="select-choice font-style" data-shadow="false" id="ddlWheelchair" style="width:100%;float:right;">
                           <option value="0" selected="selected">0</option>
                           <option value="1" >1</option>
@@ -643,7 +637,7 @@
                </tr>
                <tr id="trchildSeats" style="display: none;">
                    <td>
-                       <label for="#" class="font-style"><b style="font-size:12px">Child Seats</b></label>
+                       <label for="#" class="font-style"><b style="font-size:12px">Child seats</b></label>
                        <select class="select-choice font-style" id="ddlChidseats" style="width:100%;float:right;">
                           <option value="0" selected="selected">0</option>
                           <option value="1" >1</option>
@@ -658,7 +652,7 @@
                    </td>
                </tr>
                <tr id="trChildBooster" style="display: none;">
-                   <td><label for="#" class="font-style"><b style="font-size:12px">Child Booster</b></label>
+                   <td><label for="#" class="font-style"><b style="font-size:12px">Child booster</b></label>
                        <select class="select-choice font-style" id="ddlChidbooster"  style="width:100%;float:right;color:black">
                           <option value="0" selected="selected">0</option>
                            <option value="1">1</option>
@@ -674,7 +668,7 @@
                </tr>
                <tr id="trspecialrequirement" style="display: none;">
                 <td>
-                    <label for="txtothereSpecialRequirement" class="font-style"><b style="font-size:12px">Other Special Requirements</b></label> 
+                    <label for="txtothereSpecialRequirement" class="font-style"><b style="font-size:12px">Other special requirements</b></label> 
                     <textarea id="txtothereSpecialRequirement" rows="3" cols="10" class="font-style expand" style="width:100%;float:right;"></textarea>
                 </td>
                </tr>
@@ -738,25 +732,25 @@
                    
                <tr id="trfrom" style="display: none;">
                   <td>
-                      <label for="txtFrom" id="lblreturnfrom" class="font-style"><b style="font-size:12px;">Return From</b></label>
+                      <label for="txtFrom" id="lblreturnfrom" class="font-style"><b style="font-size:12px;">Return from</b></label>
                        <input type="text" id="txtReturFrom" class="font-style"  style="width:100%;float:right;"/>
                   </td>
               </tr>
                <tr id="trto" style="display: none;">
                   <td>
-                      <label for="txtFrom" id="Label1" class="font-style"><b style="font-size:12px;">Return To</b></label>
+                      <label for="txtFrom" id="Label1" class="font-style"><b style="font-size:12px;">Return to</b></label>
                        <input type="text" id="txtReturTo" class="font-style" style="width:100%;float:right;display:none;"/>
                   </td>
               </tr>
                 <tr id="trDate" style="display: none;">
                     <td>
-                        <label for="datepickers"  class="font-style"><b style="font-size:12px">Return Date</b></label>
+                        <label for="datepickers"  class="font-style"><b style="font-size:12px">Return date</b></label>
                         <input name="mydate" id="datepickers" type="date" data-role="datebox"   data-options='{"mode": "datebox"}'>
                     </td>
             </tr>
                <tr id="trTime" style="display: none;">
                 <td>
-                     <label for="timepickers" class="font-style"><b style="font-size:12px">Return Time</b></label>
+                     <label for="timepickers" class="font-style"><b style="font-size:12px">Return time</b></label>
                     <input name="linked2" type="text" data-role="datebox" id="timepickers" data-options='{"mode": "timebox", "overrideTimeFormat":24}' />
                     </td>
             </tr>
@@ -774,6 +768,7 @@
        
         <!--Popup div-->
        <div id="popup_box">
+           <div id="Commentbox"  style="display:none">
             <table style="width:100%; border-collapse:collapse; background-color:#FFFFFF;">
                 <tr>
                     <td class="popup_header">
@@ -794,8 +789,15 @@
                         <input type="button" class="ok" id="popupBoxClose" style="text-align:center;" value="OK"/>
                     </td>
                 </tr>
-            </table>             
-        </div> 
+            </table>
+           </div>
+           
+        <div id="mapContainer" style="display:none;height:100%;width:100%;border:none">
+           <div id="mapCanvas"></div>        
+            <input type="button" value="Close" style="width:100%;height:30px" class="btn-tmp" onclick="hideMap()"/>
+        </div>
+           
+       </div> 
       </center>
 </body>
 </html>
