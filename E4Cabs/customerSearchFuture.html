@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <title></title>
     <script type="text/javascript" src="Scripts/jquery-2.0.3.min.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=places"></script>
     <link rel="stylesheet" type="text/css" href="css/site.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <link rel="stylesheet" type="text/css" href="css/PopUp.css" />
@@ -25,6 +25,7 @@
     
     <script type="text/javascript" src="js/customerSearchFuture.js"></script>
     <script type="text/javascript" src="js/CalculateDistance.js"></script>
+    <script type="text/javascript" src="js/CustomerMap.js"></script>
 </head>
     <script type="text/javascript">
         function initialize() {
@@ -350,6 +351,7 @@ function ClearAllLocationValues()
     function showExpaBox() {
         $('#transparent_div').fadeIn("slow");
         $('#popup_box').fadeIn("slow");
+        $('#Commentbox').fadeIn("slow");
         $('#confirmAnchor').fadeIn("slow");
     }
 
@@ -396,6 +398,10 @@ $(document).ready(function () {
                 font-size: 13px;
                 font-weight: 300;
             }
+         #mapCanvas{
+          height: 350px;
+          border:none;
+      }
  </style>
 <body onload="loadDateTime()">
     <center>
@@ -564,7 +570,8 @@ $(document).ready(function () {
               <tr>
                 <td>
                     <label for="txtDistance" class="font-style"><b style="font-size:12px">Distance In Miles</b></label> 
-                    <input type="text" id="txtDistance" class="font-style" style="width:100%;float:right;;background-color:#D8D8D8;color:black" readonly="true"/>
+                    <input type="text" id="txtDistance" style="width:50%;float:left;background-color:#D8D8D8;color:black" readonly="true"/>
+                    <input type="button" value="Show map" style="width:49%;float:right;height:32px" class="specialBtn" onclick="showMap()"/>
                 </td>
               </tr>
                 <tr>
@@ -794,6 +801,7 @@ $(document).ready(function () {
        
         <!--Popup div-->
        <div id="popup_box">
+           <div id="Commentbox"  style="display:none">
             <table style="width:100%; border-collapse:collapse; background-color:#FFFFFF;">
                 <tr>
                     <td class="popup_header">
@@ -814,7 +822,12 @@ $(document).ready(function () {
                         <input type="button" class="ok" id="popupBoxClose" style="cursor: pointer;text-align:center;" value="OK"/>
                     </td>
                 </tr>
-            </table>             
+            </table>
+           </div>
+         <div id="mapContainer" style="display:none;height:100%;width:100%;border:none">
+           <div id="mapCanvas"></div>        
+           <input type="button" value="Close" style="width:100%;height:30px" class="btn-tmp" onclick="hideMap()"/>
+        </div>
         </div> 
       </center>
 </body>

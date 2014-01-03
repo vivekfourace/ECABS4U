@@ -14,10 +14,10 @@ function showConfirm(param) {
     if(param == now)
     {
         navigator.notification.confirm(
-        'You have got a new job request. Do you want to see it?',  // message
-         onConfirm,                                                // callback to invoke with index of button pressed
-        'New Cab Now job notification.',                            // title
-        'No,Yes'                                                   // buttonLabels
+        'You have got a new job request. Do you want to see it?',
+         onConfirm,
+        'New Cab Now job notification',
+        'No,Yes'
         );
     }
     else if(param == later)

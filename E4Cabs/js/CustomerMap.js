@@ -5,13 +5,14 @@ var relatedId = QString.split("=")[3].split("&")[0];
 
 var locFrom, locTo;
 var arrLoc = new Array();
-var waypts = [];
+var waypts;
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
 var map;
 
 function showMap()
 {
+    waypts = [];
     var locf = $('#locfrom').val();
     if(!locf)
     {
@@ -27,8 +28,8 @@ function showMap()
     $('#popup_box').show();
     $('#mapContainer').show();
     $('#transparent_div').show();
-    console.log('setloc');
-    locFrom   = $('#locfrom').val();
+    
+    locFrom   = locf;
     arrLoc[0] = $('#locone').val();
     arrLoc[1] = $('#loctwo').val();
     arrLoc[2] = $('#locthree').val();
@@ -36,18 +37,21 @@ function showMap()
     arrLoc[4] = $('#locfive').val();
     arrLoc[5] = $('#locsix').val();
     arrLoc[6] = $('#locseven').val();
-    locTo = $('#locto').val();
+    locTo = loc2;
     for (var k = 0; k < arrLoc.length; k++)
     {
        console.log(arrLoc[k]);
+    }
+    for (var kk = 0; kk < waypts.length; kk++)
+    {
+       console.log(waypts[kk]);
     }
     InitializeWaypoints();    
 }
 
  function InitializeWaypoints()
 {
-        console.log(arrLoc.length);
-    
+        console.log("ArrayList = "+arrLoc.length);    
         for (var i = 0; i < arrLoc.length; i++)
         {
             if (arrLoc[i] != "") {
@@ -57,21 +61,18 @@ function showMap()
                 });
             }
         }
-        console.log(waypts.length);
+        console.log("Waypoints = "+waypts.length);
         if (waypts.length > 0)
         {
-            console.log('In if part');
             ShowMapWithWaypoints();
         }
         else
          {
-            console.log('In else part');
             initialize2();
          }
  }
         
       function ShowMapWithWaypoints() {
-          console.log('In initialize');
             directionsDisplay = new google.maps.DirectionsRenderer();
             var geocoder = new google.maps.Geocoder();
               var address = locFrom;
@@ -139,7 +140,6 @@ function showMap()
             }
 
       function calcRoute2() {
-            console.log("in calcRoute2 part");
             var request = {
                 origin: locFrom,
                 destination: locTo,                
@@ -154,7 +154,6 @@ function showMap()
         }        
       
       function calcRoute() {
-            console.log('In calc Route');
             var request = {
                 origin: locFrom,
                 destination: locTo,
@@ -169,3 +168,10 @@ function showMap()
                 }
             });
         }
+function hideMap()
+{
+    console.log('hit');
+    $('#popup_box').hide();
+    $('#mapContainer').hide();
+    $('#transparent_div').hide();
+}
