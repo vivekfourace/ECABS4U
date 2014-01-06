@@ -41,7 +41,10 @@ function displayResult(data)
                   html += "<td width='15%' height='30px' align='center'>"+jobno+"</td>"; 
                   html += "<td width='25%' height='30px' align='center'>"+from+"</td>";
                   html += "<td width='25%' height='30px' align='center'>"+to+"</td>";
-                  html += "<td width='30%' height='30px' align='center'>"+'<input type="button" class="reject-btn" value="Re-initialize" onclick="InitiateJob(\''+jobno+'\')"/>'+"</td>";
+                  html += "<td width='30%' height='30px' align='center'>"
+                       +'<input type="button" class="accept-btn" value="Re-initialize" onclick="InitiateJob(\''+jobno+'\')"/>'+'<br/>'
+                       +'<input type="button" class="reject-btn" value="Cancel" onclick="CancelJob(\''+jobno+'\')"/>'
+                   +"</td>";
                   html += '</tr>';
                }
           html +='</tbody>';
@@ -52,6 +55,23 @@ function displayResult(data)
 function InitiateJob(reqID)
 {
     window.location = 'customerSearchList.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId + '&reqid=' + reqID;
+}
+
+function CancelJob(jobno)
+{
+    var cause = "Not opted for re-initiate";
+    $.ajax({
+       url:"http://115.115.159.126/ECabs/ECabs4U.asmx/CancelCurrentJob",
+       type:"POST",
+        datatype:"json",
+        data:"{'requestID':'" +jobno+"', 'relatedId':'" +relatedId+"', 'cause':'" +cause+"'}",
+        contentType:"application/json;charset=utf-8",
+        success:function(data)
+        {
+            alert(data.d);
+            window.location = 'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+        },
+    });
 }
 
 function searchpage()
