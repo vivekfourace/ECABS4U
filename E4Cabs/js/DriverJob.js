@@ -23,48 +23,6 @@ function showMap()
    window.location =  'Location.html?from='+from+'&to='+to+'&dist='+dis+'&id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
-function reqReject() {            
-    navigator.notification.confirm(
-    "Do you want to reject the job?",
-    onRejectCallback,
-    "Confirm",
-    "No, Yes"   
-    );
-}
-
-function onRejectCallback(buttonIndex)
-{
-    if(buttonIndex == 1)
-    {
-        return false;
-    }
-    else if(buttonIndex == 2)
-    {
-           
-            var rid = $('#hdnJobno').val();
-            console.log(rid);
-            var status = "Rejected";
-            $.ajax({
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/rejectResponse",
-                type: "POST",
-                dataType: "Json",
-                data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "'}",
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
-                    if(data.d == true)
-                    {
-                      console.log('rej')
-                      window.location = 'driverProfile.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-                    }
-                    else
-                    {
-                        console.log('Exception in rejectResponse')
-                    }
-                },
-            });
-    }
-}
-
 function backToIndex()
 {
     window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;

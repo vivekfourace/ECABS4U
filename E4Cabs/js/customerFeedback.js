@@ -73,10 +73,7 @@ function UploadFeedBack()
                     }
                 });
 }
-function backtostart()
-{
-     window.location='customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-}
+
 function backtostart()
 {
    window.location=  'customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;

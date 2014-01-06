@@ -6,14 +6,15 @@ var btnArray = ['No','Yes'];
 
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
-   console.log('device ready');
+   console.log('device ready in failed booking');
 }
 window.setTimeout(function(){
-$.ajax({
+    console.log('in ajax');
+$.ajax({    
     url:"http://115.115.159.126/ECabs/ECabs4U.asmx/GetFailedJobs",
     datatype:"JSON",
     type:"POST",
-    data:"{'relatedId':'"+relatedId+"'}",
+    data:"{'relatedId':'"+relatedId+"','role':'"+roleId+"'}",
     contentType:"application/json; charset=utf-8",                    
     success:function (data) {
           if(data.d.length > 0)
@@ -37,6 +38,14 @@ function onCallback(buttonIndex)
     }
     else if(buttonIndex == 2)
     {
-        window.location='CustomerFailedBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+        if(roleId == 4) //Customer page
+        {
+            window.location='CustomerFailedBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+        }
+        else if(roleId == 3) //Driver page
+        {
+            window.location='DriverFailedBookings.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+        }
+        
     }
 }

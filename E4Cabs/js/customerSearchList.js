@@ -40,6 +40,7 @@ var timer = setInterval(function () {
     if (timeOut <= 0) {
         window.clearInterval(id);
         alert('No driver found Please search again.');
+        DeleteJob("Cancelled due to no driver found");
         Destroy();
     }
 }, 1000);
@@ -59,7 +60,7 @@ function CheckJobCount()
     console.log(a);
     if(a == 60)
     {
-       console.log("true timer for 60s auto initiation");
+       console.log("timer for 60s auto initiation");
        return true;
     }
     return false;
@@ -213,8 +214,8 @@ function getData(data) {
                 var rating3 = data.d[i]["RatingPast"];
                 var rating4 = data.d[i]["RatingPresent"];
                 
-                          html += '<td style="width:100%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="'+driverImgUrl+'" style="width:50px;height:50px"/>'
-                          html += '<img src="'+vehicleImgUrl+'" style="width:50px;height:50px"/>'
+                          html += '<td style="width:100%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="'+driverImgUrl+'" style="width:50px;height:50px" onclick=\"ShowLargeImage(this)\"/>'
+                          html += '<img src="'+vehicleImgUrl+'" style="width:50px;height:50px" onclick=\"ShowLargeImage(this)\"/>'
                           if(rating3 != "")
                           {
                                    if(rating3 == "1")
@@ -288,8 +289,8 @@ function getData(data) {
                 var rating33 = data.d[i]["RatingPast"];
                 var rating44 = data.d[i]["RatingPresent"];
                 
-                                html += '<td style="width:100%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="'+driverImgUrl+'" style="width:50px;height:50px"/>'
-                                html += '<img src="'+vehicleImgUrl+'" style="width:50px;height:50px"/>'
+                                html += '<td style="width:100%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="'+driverImgUrl+'" style="width:50px;height:50px" onclick=\"ShowLargeImage(this)\"/>'
+                                html += '<img src="'+vehicleImgUrl+'" style="width:50px;height:50px" onclick=\"ShowLargeImage(this)\"/>'
                           if(rating33 != "")
                           {
                                    if(rating33 == "1")
@@ -365,11 +366,31 @@ function getData(data) {
     }
 }
 
+function ShowLargeImage(imgUrl)
+{
+    var imageUrl = imgUrl.src;
+    console.log(imgUrl.src);    
+    $('#imgDV').attr("src",imageUrl);
+    $('#popup_box').fadeIn("fast");
+    $('#imgDiv').fadeIn("fast");
+    $('#transparent_div').fadeIn("fast");
+    window.clearInterval(id);
+}
+
+function hideImage()
+{
+    $('#transparent_div').hide();
+    $('#popup_box').hide("fast");
+    $('#imgDiv').hide("fast");
+    id = window.setInterval(getResponse, 10000);
+}
+
 function SearchDriverAgain()
 {
     $('#msg').empty();
     $('#load').show();
     $('#transparent_div').show();
+    window.clearInterval(reinitiateCounter);
     $('#statusMessage').html("Searching for more drivers...");
     $('#statusMessage').css("color","Yellow");
      $.ajax({
@@ -379,8 +400,7 @@ function SearchDriverAgain()
         data: "{'requestID':'" + requestID + "'}",
         contentType: "application/json; charset=utf-8",
         success: getData,
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-        }
+        error: function (XMLHttpRequest, textStatus, errorThrown) {}
     });
 }
 

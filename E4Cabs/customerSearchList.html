@@ -24,16 +24,16 @@
          <div id="transparent_div" style="display: none"></div>
         
          <div id="load" class="load">
-              <span style="font-family:'Trebuchet MS';color:white;" id="statusMessage"> Locating suitable vehicles...</span><br>
-              <img src="jquery-mobile/styles/images/ajax-loader-hor.gif" style="width:140px;height:10px;padding-top:10px"/><br>
+              <span style="color:white;" id="statusMessage"> Locating suitable vehicles...</span><br/>
+              <img src="jquery-mobile/styles/images/ajax-loader-hor.gif" style="width:80%;height:12px;padding-top:5px"/><br/>
               <input type="button" value="Cancel Job" onclick="CancelJobRequest()"/>
               <input type="button" value="Re-Initiate Job" onclick="ReInitiateJob()"/>
          </div>
 
         
         <div id="loading" class="loadForall">            
-                <span style="font-family:'Trebuchet MS';color:white">Transmitting job request to drivers...</span><br>
-                <img src="jquery-mobile/styles/images/ajax-loader-hor.gif" style="width:140px;height:10px"/>
+                <span style="color:white">Transmitting job request to drivers...</span><br/>
+                <img src="jquery-mobile/styles/images/ajax-loader-hor.gif" style="width:80%;height:12px"/>
          </div>
             <div id="imgLoader">
                <img src="img/ajax-loader.gif" id="loading-image" /><br/>             
@@ -260,7 +260,11 @@
                              </tr>
                         </table>
                     </div> 
-               
+                    
+                    <div id="imgDiv" style="display:none;width:100%;">
+                        <img id="imgDV" style="width:100%;height:250px"/>       
+                        <input type="button" value="Close" style="width:100%;height:30px" class="btn-tmp" onclick="hideImage()"/>
+                    </div>
                     
                 </div>
                  

@@ -11,6 +11,7 @@
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
     <script type="text/javascript" src="js/DriverJob.js"></script>
+    <script type="text/javascript" src="Common/DriverJobBooking.js"></script>
 
     <script type="text/javascript">
         var QString = window.location.search.substring(1);
@@ -234,413 +235,8 @@
             $('#popupBoxClose').click(function () {
                 $('#popup_box').hide();
             });
-        });
-        
-        var timereOut;
-        function SubmitDeal() {
-            $("#divDealload").show();
-             timereOut = window.setInterval(function () {
-                $("#divDealload").show();
-                $('#popup_box').hide();
-                $('#divDeal').hide();
-                var jobNo = $('#hdnJobno').val();
-                $.ajax({
-                    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/dealResponse",
-                    type: "POST",
-                    dataType: "Json",
-                    data: "{'userID':'" + relatedId + "', 'jobNo':'" + jobNo + "'}",
-                    contentType: "application/json; charset=utf-8",
-                    success: function (data) {
-                        var getResID = data.d[0];
-                        var getResponse = data.d[1];
-                        var dataStatus = data.d[2];
-                        var statusInfo = data.d[3];
-
-                        if (getResponse == "False" && statusInfo == "False") {
-                            $.ajax({
-                                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetDealData",
-                                type: "POST",
-                                dataType: "Json",
-                                data: "{'userID':'" + getResID + "','driverId':'" + relatedId + "'}",
-                                contentType: "application/json; charset=utf-8",
-                                success: function (data) {
-                                    if (data.d[0] != "Error") {
-                                        //count = 1;
-                                        $("#divDealload").hide();
-                                        $('#popup_box').show();
-                                        $('#divDeal').show();
-                                        $('#lbldealjob').text(data.d[0]);
-                                        $('#lbldealfrom').text(data.d[1]);
-                                        $('#lbldealto').text(data.d[2]);
-                                        $('#lbldealdistance').text(data.d[3]);
-                                        $('#lbldealdate').text(data.d[4]);
-                                        $('#lbldealtime').text(data.d[5]);
-                                        $('#lbldealfare').text(data.d[6]);
-                                        $('#isReturnJourney').val(data.d[7]);
-                                        //DestroyMe();
-                                    }
-                                    else if (data.d[0] == "Error") {
-
-                                        $('#popup_box').hide();
-                                        $('#divDeal').hide();
-                                        $("#divDealload").show();
-                                    }
-                                },
-                                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                                }
-                            });
-
-                        }
-                        else if (getResponse == "False" && statusInfo == "True") {
-                            $('#divDealload').hide();
-                            $('#divDetails').hide();
-                            $('#btnbid').hide();
-                            $('#btnmap').hide();
-                            $('#btncancel').hide();
-                            $('#btnreject').hide();
-                            DestroyMe();
-                        }
-                        else if (data.d[0] == "True") {
-                            DestroyMe();
-                            $('#divDealload').hide();
-                            $('#divDetails').hide();
-                            $('#btnbid').hide();
-                            $('#btnmap').hide();
-                            $('#btncancel').hide();
-                            $('#btnreject').hide();
-                            alert('You have not been selected for this job.');
-                            //UpdateStatus();
-
-                            $.ajax({
-                                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateDriverStatus",
-                                type: "POST",
-                                dataType: "Json",
-                                data: "",
-                                contentType: "application/json; charset=utf-8",
-                                success: function (data) {
-                                    //alert(data.d);
-                                },
-                                error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-                                }
-                            });
-                            window.location = 'driverProfile.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-                        }
-                    },
-                    error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-                        $('#divDeal').hide();
-                        $('#divDealload').hide();
-                        $('#divDetails').hide();
-
-                        deleteDriver();
-                    }
-                });
-            }, 10000);
-
-            function DestroyMe() {
-
-                window.clearInterval(timereOut);
-            }
-        }
-
-        //function showSpecial() {
-        //    $("#returnFrom").toggle();
-        //    $("#returnTo").toggle();
-        //    $("#returnDate").toggle();
-        //    $("#returnTime").toggle();
-        //    $("#trOtherspec").toggle();
-        //    $("#trSpecialtxt").toggle();
-        //    $("#other").toggle();
-        //    $("#fare").toggle();
-        //}
-      
-        function showBid() {
-            console.log('in showBid');
-            $("#other").hide();
-            $('#divDeal').hide();
-            $('#divComplete').hide();
-            $('#popup_box').show();
-            $('#transparent_div').show();
-            $('#divBid').show();
-            var job = $('#lbljobno').text();
-            var distance = $('#lblDistance').text();
-            var from = $('#lblFromLoc').text();
-            var to = $('#lblToLoc').text();
-            $('#lblbidjob').text(job);
-            $('#lblbiddistance').text(distance);
-            $('#lblbidfrom').text(from);
-            $('#lblbidto').text(to);
-            var fare = $('#txtbidFare').val()
-            $('#lblfare').text(fare);
-      }
-
-        function bidSubmit() {
-            var isCabnow = $('#hiddenIsCabnow').val();
-            if (isCabnow == "True") {
-                var fare = $('#txtbidFare').val();
-                if (fare.length <= 0) {
-                    alert('Please enter fare.');
-                    return false;
-                }
-                $("#divDealload").show();
-                $("#other").hide();
-                $("#fare").hide();
-                $('#divBid').hide();
-                var job = $('#lbljobno').text();
-                var distance = $('#lblDistance').text();
-                var from = $('#lblFromLoc').text();
-                var to = $('#lblToLoc').text();
-                var specialReq = $('#txtSpecialReq').val();
-
-                $('#lblbidjob').text(job);
-                $('#lblbiddistance').text(distance);
-                $('#lblbidfrom').text(from);
-                $('#lblbidto').text(to);
-
-                $('#lblfare').text(fare);
-                var rid = $('#lblbidjob').text();
-                var status = true;
-                var price = fare;
-
-                $.ajax({
-                    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/setDriverResponse",
-                    type: "POST",
-                    dataType: "Json",
-                    data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "','price':'" + price + "','specialReq':'" + specialReq + "'}",
-                    contentType: "application/json; charset=utf-8",
-                    success: {},
-                    error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-                    }
-                });
-
-                $('#popup_box').hide();
-                if (fare.length > 0) {
-                    SubmitDeal();
-                }
-            }
-
-            else if (isCabnow == "False") {
-                var fare2 = $('#txtbidFare').val();
-                if (fare2.length <= 0) {
-                    alert('Please enter fare.');
-                    return false;
-                }
-                $('#lblbidjob').text(job);
-
-                $('#lblfare').text(fare2);
-                var reqid = $('#lblbidjob').text();
-                var statuS = true;
-                var pricE = fare2;
-                var specialreq = $('#txtSpecialReq').val();
-
-                $.ajax({
-                    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/SetDriverResponseCabLater",
-                    type: "POST",
-                    dataType: "Json",
-                    data: "{'userID':'" + relatedId + "','reqid':'" + reqid + "','status':'" + statuS + "','price':'" + pricE + "','specialReq':'" + specialreq + "'}",
-                    contentType: "application/json; charset=utf-8",
-                    success: function (data) {
-                        if (data.d == "true") {
-                            alert('In progress. Awaiting customer response.');
-                            window.location = 'driverProfile.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-
-                        }
-                        else if (data.d == "false") {
-                            alert('Unknown error. Please try again.');
-                        }
-
-                    },
-                    error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-                    }
-                });
-                $('#popup_box').hide();
-            }
-        }
-
-        function bidCancel() {
-            $('#popup_box').hide();
-            $('#divBid').hide();
-            $('#transparent_div').hide();
-        }
-        
-        function dealSubmit() {
-            window.clearInterval(timereOut);
-            console.log('clearing timerout');
-            $('#divDeal').hide();
-            var getIsReturnJourney = $('#isReturnJourney').val();
-            var getFare = $('#lbldealfare').text();
-            var reqID = $('#lbldealjob').text();
-            
-            if (getFare == 15 || getFare > 15) {             
-                if (getIsReturnJourney == "True") {
-                    var _avgFare = getFare / 2;
-                    if (_avgFare == 15 || _avgFare > 15) {
-
-                        $('#divComission2').show();
-                        $('#lblconfirmjob2').text(reqID);
-                        $('#lblconfirmfare2').text(getFare);
-                    }
-                    else {
-                        $('#divComission').show();
-                        $('#lblconfirmjob').text(reqID);
-                        $('#lblconfirmfare').text(getFare);
-                        //Destroy();
-                        $('#divDeal').hide();
-                        $('#popup_box').hide();
-                    }
-                }
-                else if (getIsReturnJourney == "False") {
-                    $('#divDeal').hide();
-                    $('#divComission').show();
-                    $('#lblconfirmjob').text(reqID);
-                    $('#lblconfirmfare').text(getFare);
-                }
-            }
-            else {
-                $('#divComission').hide();
-                $('#divComission2').hide();
-                $.ajax({
-                    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/jobBooked",
-                    type: "POST",
-                    dataType: "Json",
-                    data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
-                    contentType: "application/json; charset=utf-8",
-                    success: function () {
-                        $('#divDetails').hide();
-                        $('#btnbid').hide();
-                        $('#btnmap').hide();
-                        $('#btncancel').hide();
-                        $('#btnreject').hide();
-                        alert('You have been selected for this job.');
-                        window.location.href = 'driverProfile.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-                    },
-                });
-            }
-        }
-        function RemoveDriverData() {
-            $.ajax({
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RemoveDriverResponse",
-                type: "POST",
-                dataType: "Json",
-                data: "{'driverID':'" + relatedId + "'}",
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
-
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-                }
-            });
-        }
-        function UpdateStatus() {
-            $.ajax({
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateDriverStatus",
-                type: "POST",
-                dataType: "Json",
-                data: "",
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
-                    alert(data.d);
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-                }
-            });
-        }
-
-        function Confirmcomission() {
-            var reqID = $('#lblconfirmjob').text();
-            //var comission = 1.2;
-
-            $.ajax({
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/jobBooked",
-                type: "POST",
-                dataType: "Json",
-                data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
-
-
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-                }
-            });
-            window.location.href = "https://sandbox.gocardless.com/pay/YH0MFHY7"; //for commission 1.2pond
-
-            $('#divDeal').hide();
-            $('#popup_box').hide();
-        }
-
-        function Confirmcomission2() {
-            var reqID = $('#lblconfirmjob2').text();
-            //var comission = 2.4;
-
-            $.ajax({
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/jobBooked",
-                type: "POST",
-                dataType: "Json",
-                data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-                }
-            });
-            window.location.href = "https://sandbox.gocardless.com/pay/GAP5Y6VH"; //for commission 2.4pond
-            $('#divDeal').hide();
-            $('#popup_box').hide();
-        }
-
-        function RejectComission() {
-            $('#divComission').hide();
-            $('#divComission2').hide();            
-            var rid = $('#hdnJobno').val();
-            var status = "Rejected at commission time";
-            $.ajax({
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/rejectResponse",
-                type: "POST",
-                dataType: "Json",
-                data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "'}",
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
-                    if(data.d == true)
-                    {
-                      console.log('rej');
-                        alert('rej');
-                      window.location = 'driverProfile.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-                    }
-                    else
-                    {
-                        console.log('Exception in rejectResponse')
-                    }
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-                }
-            });
-        }
-        function dealCancel() {
-            $('#divDeal').hide();
-            $('#popup_box').hide();
-        }
-
-        function btnAbort() {
-            $('#popup_box').show();
-            $('#divabort').show();
-            $('#divComplete').hide();
-        }
-        
-        function abortcancel() {
-            $('#popup_box').hide();
-            $('#divabort').hide();
-            $('#divComplete').show();
-        }
-
+        });       
+  
     </script>
 </head>
 <body>
@@ -650,7 +246,7 @@
                         <td style="float:left;width:30%">
                              <div style="float:left;height:48px;width:100px;">
                                     <img src="img/logo1.png" class="logo"/>
-                             </div>                              
+                             </div>
                         </td>                        
                         <td style="float:left;padding-left:3%;width:50%">                           
                             <div style="padding-top:13px;">
@@ -666,13 +262,12 @@
         <input type="hidden" id="hdnJobno" />
          
      <div id="divDealload" class="loadForall">
-         <span style="font-family:'Trebuchet MS';color:white">Waiting for customer response...</span><br>
-         <img src="jquery-mobile/styles/images/ajax-loader-hor.gif" style="width:140px;height:10px" /><br/>
+         <span style="color:white">Waiting for customer response...</span><br/>
+         <img src="jquery-mobile/styles/images/ajax-loader-hor.gif" style="width:80%;height:12px" /><br/>
          <input type="button" value="Cancel" onclick="reqReject()"/>
      </div>
         <div style="width:100%;height:75%;padding-top:25%;display:none;" id="divDetails">
             <div id="popup_box">
-
                 <div id="divBid" style="display:none;" align="center">
                     <table style="width:100%;background-color:#FFFFFF;">
                         <tr>
@@ -941,6 +536,7 @@
             </div>    
         </div>
        </center>
+    
   <div id="tbdetails" style="padding-bottom:30%">
     <table style="border-collapse:collapse;padding-bottom:50px;width:100%">
                 <tr>
@@ -1091,19 +687,7 @@
                         <b style="font-size:11px"><label id="lblisReturnJourney"/> </b>
                     </td>
                 </tr>
-                <!--<tr>
-                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:11px">Special Requirement </b></label>
-
-                    </td>
-                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:11px"> 
-                            <label id="specialReq">
-                                <a href="#" onclick="showSpecial()" style="color:blue;">Show</a>
-                            </label>
-                        </b>
-                    </td>
-                </tr>-->
+               
                 <tr>
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
                         <label><b style="font-size:11px">Wheelchair passengers </b></label>
@@ -1186,7 +770,7 @@
                         <label id="otherReq"></label>
                     </td>
                 </tr>
-            </table>
+         </table>
   </div>
       <table style="width: 100%; position: fixed; bottom: 0px;padding-bottom: 15%;background-color:white">
         <tr>
