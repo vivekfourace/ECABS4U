@@ -40,7 +40,7 @@ function UpdatePostCode(data)
                         if (status == google.maps.GeocoderStatus.OK) {
                             if (results[0]) {
                                 var postalCode = extractFromAdress(results[0].address_components, "postal_code");
-                                var address = results[1].formatted_address;                                
+                                var address = results[1].formatted_address;                            
                                 function extractFromAdress(components, type) {
                                     for (var i = 0; i < components.length; i++)
                                         for (var j = 0; j < components[i].types.length; j++)

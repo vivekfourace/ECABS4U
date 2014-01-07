@@ -96,10 +96,6 @@ function login() {
         {
             $('#imgLoader').show();
         },
-        //complete: function () 
-        //{
-        //    $('#imgLoader').hide();
-        //},
         type: "POST",
         datatype: "json",
         data: "{'username':'" + name + "','userpassword':'" + password + "'}",

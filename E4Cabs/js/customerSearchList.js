@@ -604,9 +604,10 @@ function ShowMap()
         }
 }
 function calOk() 
-{
+{    
+            $('#imgLoader').show();
             $('#popup_box').hide();
-            $('#transparent_div').hide();
+            $('#transparent_div').hide();            
             var requestId = $('#lblconfirmjob').text();
             var driverId = $('#lbldriverId').text();
             $.ajax({
@@ -616,8 +617,13 @@ function calOk()
                 data: "{'driverId':'" + driverId + "','requestId':'" + requestId + "'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
-                    alert("Cab booked successfully.");
-                    myProfile();
+                    if(data.d == true)
+                    {
+                        alert("Cab booked successfully.");
+                        $('#imgLoader').hide();
+                        myProfile();
+                        
+                    }                    
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                 }
