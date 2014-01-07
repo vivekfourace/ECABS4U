@@ -525,7 +525,7 @@ function getResponseFromDriver(data)
  {
         var checkDealResp = window.setInterval(function () {
         $.ajax({
-            url: "http://115.115.159.126/ECabs/ECabs4U.asmx/checkdealResponse",
+            url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CheckdealResponse",
             type: "POST",
             dataType: "Json",
             data: "{'userID':'" + relatedId + "'}",

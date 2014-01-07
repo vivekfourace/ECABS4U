@@ -14,7 +14,7 @@ var timereOut;
                 $('#divDeal').hide();
                 var jobNo = $('#hdnJobno').val();
                 $.ajax({
-                    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/dealResponse",
+                    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/DealResponse",
                     type: "POST",
                     dataType: "Json",
                     data: "{'userID':'" + relatedId + "', 'jobNo':'" + jobNo + "'}",
@@ -257,7 +257,7 @@ var timereOut;
                 $('#divComission').hide();
                 $('#divComission2').hide();
                 $.ajax({
-                    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/jobBooked",
+                    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/JobBooked",
                     type: "POST",
                     dataType: "Json",
                     data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
@@ -310,7 +310,7 @@ var timereOut;
             //var comission = 1.2;
 
             $.ajax({
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/jobBooked",
+                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/JobBooked",
                 type: "POST",
                 dataType: "Json",
                 data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
@@ -329,7 +329,7 @@ var timereOut;
             //var comission = 2.4;
 
             $.ajax({
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/jobBooked",
+                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/JobBooked",
                 type: "POST",
                 dataType: "Json",
                 data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
@@ -348,7 +348,7 @@ var timereOut;
             var rid = $('#hdnJobno').val();
             var status = "Rejected at commission time";
             $.ajax({
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/rejectResponse",
+                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RejectResponse",
                 type: "POST",
                 dataType: "Json",
                 data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "'}",
@@ -362,7 +362,7 @@ var timereOut;
                     }
                     else
                     {
-                        console.log('Exception in rejectResponse')
+                        console.log('Exception in RejectResponse')
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {}
@@ -407,7 +407,7 @@ function onRejectCallback(buttonIndex)
             console.log(rid);
             var status = "Rejected";
             $.ajax({
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/rejectResponse",
+                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RejectResponse",
                 type: "POST",
                 dataType: "Json",
                 data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "'}",
@@ -420,7 +420,7 @@ function onRejectCallback(buttonIndex)
                     }
                     else
                     {
-                        console.log('Exception in rejectResponse')
+                        console.log('Exception in RejectResponse')
                     }
                 },
             });

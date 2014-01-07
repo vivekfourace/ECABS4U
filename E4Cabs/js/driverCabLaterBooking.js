@@ -164,7 +164,7 @@ function RejectJob(data)
                 complete: function(){
                    $('#imgLoader').hide();
                 },
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/rejectResponse",
+                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RejectResponse",
                 type: "POST",
                 dataType: "Json",
                 data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "'}",
