@@ -16,10 +16,10 @@ function showMap()
     var locf;
     var isChecked = $('#chkFromLocation').attr('checked') ? true : false;
     if (isChecked == false) {
-        locf = document.getElementById('locfrom').value;      
+        locf = $('#locfrom').val();      
     }
     else if (isChecked == true) {
-        locf = document.getElementById('txtCurrentFrom').value;
+        locf = $('#txtCurrentFrom').val();
     }
     
     if(!locf)

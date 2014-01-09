@@ -76,6 +76,8 @@ center {
     left: 0px;
     background: #2A81CF;
     position: fixed !important;
+    height:70px;
+    z-index:2;
 }
 
 .header-font {
