@@ -23,37 +23,42 @@ function UploadFeedBack()
                             {
                                 var comment = data.d[i]["Comment"];
                                 var rating = data.d[i]["Rating"];
+                                console.log(rating);
+                                var driverImgUrl = data.d[i]["ImageUrl"];
                                 if(comment != null)
                                 {
                                     html += "<tr>";
-                                    html += "<td style='width:30%;text-align:center;height:50px'>" + '<img src="img/TaxiDriver_Male_Dark.png" style="color:grey;height:50px;width:50px;padding-top:5px"/>' + "</td>";
-                                    html += "<td rowspan='2' style='height:80px;width:70%;border-bottom:1px solid black;word-break:break-all'>"+'<b><u>' + data.d[i]["Name"] + '</u></b>'+'<br/>'
-                                    html += '<span margin-top:"12px">'+ data.d[i]["Comment"] +'</span>';
-                                    html += '</td>';
-                                    html +="</tr>";
-                                     html += "<tr>";
+                                    html += "<td rowspan='2' style='width:25%;border-bottom:1px solid black;'>"+'<img src="'+driverImgUrl+'" style="width:70px;height:65px;border-radius:4px"/>'+ "</td>";
+                                    html += "<td style='width:75%;word-break:break-all;vertical-align:top;text-align:left'>"
+                                         +  '<b><u>' + data.d[i]["Name"] + '</u></b>'+'<br/>'
+                                         +  '<span margin-top:"12px">'+ data.d[i]["Comment"] +'</span>'+'<br/>'; 
+                                    html += '</td>'; 
+                                    html += '<tr>';
+                                    html += '<td style="border-bottom:1px solid black;text-overflow:ellipsis">';
                                     if(rating == 1)
                                     {
-                                        html += "<td style='width:30%;height:30px;text-align:center;border-bottom:1px solid black;'><img src='img/1star.PNG' style='width:18%'/></td>";
+                                        html += "<img src='img/1star.PNG' style='width:6%'/>";
                                     }
                                     else if(rating == 2)
                                     {
-                                        html += "<td style='width:30%;height:30px;text-align:center;border-bottom:1px solid black;'><img src='img/2star.PNG' style='width:32%'/></td>";
+                                        html += "<img src='img/2star.PNG' style='width:10%'/>";
                                     }
                                     else if(rating == 3)
                                     {
-                                        html += "<td style='width:30%;height:30px;text-align:center;border-bottom:1px solid black;'><img src='img/3star.PNG' style='width:45%'/></td>";
+                                        html += "<img src='img/3star.PNG' style='width:15%'/>";
                                     }
                                     else if(rating == 4)
                                     {
-                                        html += "<td style='width:30%;height:30px;text-align:center;border-bottom:1px solid black;'><img src='img/4star.PNG' style='width:58%'/></td>";
+                                        html += "<img src='img/4star.PNG' style='width:19%'/>";
                                     }
                                     else if(rating == 5)
                                     {
-                                        html += "<td style='width:30%;height:30px;text-align:center;border-bottom:1px solid black;'><img src='img/5star.PNG' style='width:100%'/></td>";
+                                        html += "<img src='img/5star.PNG' style='width:25%'/>";
                                     }
                                     
-                                    html += "</tr>";                                    
+                                    
+                                    html +="</tr>";
+                                                                       
                                 }
                                 else
                                 {                                    

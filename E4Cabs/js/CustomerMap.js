@@ -13,7 +13,15 @@ var map;
 function showMap()
 {
     waypts = [];
-    var locf = $('#locfrom').val();
+    var locf;
+    var isChecked = $('#chkFromLocation').attr('checked') ? true : false;
+    if (isChecked == false) {
+        locf = document.getElementById('locfrom').value;      
+    }
+    else if (isChecked == true) {
+        locf = document.getElementById('txtCurrentFrom').value;
+    }
+    
     if(!locf)
     {
         $('#lblMessage').text("Please enter From location.");
