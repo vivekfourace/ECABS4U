@@ -37,7 +37,7 @@ function CalculateTotalDistance() {
     
     var distanceInput = document.getElementById("txtDistance");
         
-    if (loc2 == "" && loc3 == "" && loc4 == "" && loc5 == "" && loc6 == "" && loc7 == "" && loc8 == "") {
+    if (loc2 == 0 && loc3 == 0 && loc4 == 0 && loc5 == 0 && loc6 == 0 && loc7 == 0 && loc8 == 0) {
         var request = {
             origin: start,
             destination: end,
@@ -52,7 +52,7 @@ function CalculateTotalDistance() {
         });
     }
     //if only from, 1st and to location are present
-    else if (loc2 != "" && loc3 == "" && loc4 == "" && loc5 == "" && loc6 == "" && loc7 == "" && loc8 == "") {
+    else if (loc2 != 0 && loc3 == 0 && loc4 == 0 && loc5 == 0 && loc6 == 0 && loc7 == 0 && loc8 == 0) {
         var request1 = {
             origin: start,
             destination: loc2,
@@ -68,9 +68,6 @@ function CalculateTotalDistance() {
         });
 
         function calcRoute4() {
-            var end = document.getElementById("txtTo").value;
-            var distanceInput = document.getElementById("txtDistance");
-
             var request = {
                 origin: loc2,
                 destination: end,
@@ -105,9 +102,6 @@ function CalculateTotalDistance() {
         });
 
         function calcRoute5() {
-            var loc2 = document.getElementById("txt2location").value;
-            var loc3 = document.getElementById("txt3location").value;
-
             var request = {
                 origin: loc2,
                 destination: loc3,
@@ -124,10 +118,6 @@ function CalculateTotalDistance() {
             });
 
             function calcRoute6(dist7) {
-
-                var loc3 = document.getElementById("txt3location").value;
-                var end = document.getElementById("txtTo").value;
-                var distanceInput = document.getElementById("txtDistance");
 
                 var request = {
                     origin: loc3,
@@ -162,8 +152,7 @@ function CalculateTotalDistance() {
         });
 
         function calcRoute7() {
-            var loc2 = document.getElementById("txt2location").value;
-            var loc3 = document.getElementById("txt3location").value;
+           
             var request = {
                 origin: loc2,
                 destination: loc3,
@@ -180,8 +169,7 @@ function CalculateTotalDistance() {
             });
 
             function calcRoute8(dist7) {
-                var loc3 = document.getElementById("txt3location").value;
-                var loc4 = document.getElementById("txt4location").value;
+                
                 var request = {
                     origin: loc3,
                     destination: loc4,
@@ -197,9 +185,6 @@ function CalculateTotalDistance() {
                 });
 
                 function calcRoute9(dist8) {
-                    var loc4 = document.getElementById("txt4location").value;
-                    var end = document.getElementById("txtTo").value;
-                    var distanceInput = document.getElementById("txtDistance");
 
                     var request = {
                         origin: loc4,
@@ -236,8 +221,7 @@ function CalculateTotalDistance() {
         });
 
         function calcRoute10() {
-            var loc2 = document.getElementById("txt2location").value;
-            var loc3 = document.getElementById("txt3location").value;
+           
             var request = {
                 origin: loc2,
                 destination: loc3,
@@ -254,8 +238,7 @@ function CalculateTotalDistance() {
             });
 
             function calcRoute11(dist7) {
-                var loc3 = document.getElementById("txt3location").value;
-                var loc4 = document.getElementById("txt4location").value;
+                
                 var request = {
                     origin: loc3,
                     destination: loc4,
@@ -271,8 +254,6 @@ function CalculateTotalDistance() {
                 });
 
                 function calcRoute12(dist8) {
-                    var loc4 = document.getElementById("txt4location").value;
-                    var loc5 = document.getElementById("txt5location").value;
                     var request = {
                         origin: loc4,
                         destination: loc5,
@@ -289,8 +270,7 @@ function CalculateTotalDistance() {
                     });
 
                     function calcRoute13(dist10) {
-                        var loc5 = document.getElementById("txt5location").value;
-                        var end = document.getElementById("txtTo").value;
+                        
                         var request = {
                             origin: loc5,
                             destination: end,
@@ -328,9 +308,6 @@ function CalculateTotalDistance() {
         });
 
         function calcRoute14() {
-            var loc2 = document.getElementById("txt2location").value;
-            var loc3 = document.getElementById("txt3location").value;
-
             var request = {
                 origin: loc2,
                 destination: loc3,
@@ -346,8 +323,7 @@ function CalculateTotalDistance() {
             });
 
             function calcRoute15(dist7) {
-                var loc3 = document.getElementById("txt3location").value;
-                var loc4 = document.getElementById("txt4location").value;
+                
                 var request = {
                     origin: loc3,
                     destination: loc4,
@@ -363,8 +339,7 @@ function CalculateTotalDistance() {
                 });
 
                 function calcRoute16(dist8) {
-                    var loc4 = document.getElementById("txt4location").value;
-                    var loc5 = document.getElementById("txt5location").value;
+                    
                     var request = {
                         origin: loc4,
                         destination: loc5,
@@ -381,8 +356,7 @@ function CalculateTotalDistance() {
                     });
 
                     function calcRoute17(dist10) {
-                        var loc5 = document.getElementById("txt5location").value;
-                        var loc6 = document.getElementById("txt6location").value;
+                       
                         var request = {
                             origin: loc5,
                             destination: loc6,
@@ -400,9 +374,7 @@ function CalculateTotalDistance() {
                         });
 
                         function calcRoute18(dist12) {
-                            var loc6 = document.getElementById("txt6location").value;
-                            var end = document.getElementById("txtTo").value;
-                            var distanceInput = document.getElementById("txtDistance");
+                            
 
                             var request = {
                                 origin: loc6,
@@ -442,8 +414,7 @@ function CalculateTotalDistance() {
         });
 
         function calcRoute19() {
-            var loc2 = document.getElementById("txt2location").value;
-            var loc3 = document.getElementById("txt3location").value;
+            
             var request = {
                 origin: loc2,
                 destination: loc3,
@@ -460,8 +431,7 @@ function CalculateTotalDistance() {
             });
 
             function calcRoute20(dist7) {
-                var loc3 = document.getElementById("txt3location").value;
-                var loc4 = document.getElementById("txt4location").value;
+                
                 var request = {
                     origin: loc3,
                     destination: loc4,
@@ -478,8 +448,7 @@ function CalculateTotalDistance() {
                 });
 
                 function calcRoute21(dist8) {
-                    var loc4 = document.getElementById("txt4location").value;
-                    var loc5 = document.getElementById("txt5location").value;
+                    
                     var request = {
                         origin: loc4,
                         destination: loc5,
@@ -496,8 +465,7 @@ function CalculateTotalDistance() {
                     });
 
                     function calcRoute22(dist10) {
-                        var loc5 = document.getElementById("txt5location").value;
-                        var loc6 = document.getElementById("txt6location").value;
+                        
                         var request = {
                             origin: loc5,
                             destination: loc6,
@@ -515,9 +483,6 @@ function CalculateTotalDistance() {
                         });
 
                         function calcRoute23(dist12) {
-                            var loc6 = document.getElementById("txt6location").value;
-                            var loc7 = document.getElementById("txt7location").value;
-                            var distanceInput = document.getElementById("txtDistance");
 
                             var request = {
                                 origin: loc6,
@@ -536,10 +501,6 @@ function CalculateTotalDistance() {
                             });
 
                             function calcRoute24(dist13) {
-                                var loc7 = document.getElementById("txt7location").value;
-                                var end = document.getElementById("txtTo").value;
-                                var distanceInput = document.getElementById("txtDistance");
-
                                 var request = {
                                     origin: loc7,
                                     destination: end,
@@ -579,8 +540,7 @@ function CalculateTotalDistance() {
         });
 
         function calcRoute25() {
-            var loc2 = document.getElementById("txt2location").value;
-            var loc3 = document.getElementById("txt3location").value;
+            
             var request = {
                 origin: loc2,
                 destination: loc3,
@@ -597,8 +557,6 @@ function CalculateTotalDistance() {
             });
 
             function calcRoute26(dist7) {
-                var loc3 = document.getElementById("txt3location").value;
-                var loc4 = document.getElementById("txt4location").value;
                 var request = {
                     origin: loc3,
                     destination: loc4,
@@ -616,8 +574,6 @@ function CalculateTotalDistance() {
 
                 function calcRoute27(dist8) {
 
-                    var loc4 = document.getElementById("txt4location").value;
-                    var loc5 = document.getElementById("txt5location").value;
                     var request = {
                         origin: loc4,
                         destination: loc5,
@@ -634,8 +590,6 @@ function CalculateTotalDistance() {
                     });
 
                     function calcRoute28(dist10) {
-                        var loc5 = document.getElementById("txt5location").value;
-                        var loc6 = document.getElementById("txt6location").value;
                         var request = {
                             origin: loc5,
                             destination: loc6,
@@ -653,9 +607,6 @@ function CalculateTotalDistance() {
                         });
 
                         function calcRoute29(dist12) {
-                            var loc6 = document.getElementById("txt6location").value;
-                            var loc7 = document.getElementById("txt7location").value;
-
                             var request = {
                                 origin: loc6,
                                 destination: loc7,
@@ -672,9 +623,6 @@ function CalculateTotalDistance() {
                             });
 
                             function calcRoute30(dist13) {
-                                var loc7 = document.getElementById("txt7location").value;
-                                var loc8 = document.getElementById("txt8location").value;
-
                                 var request = {
                                     origin: loc7,
                                     destination: loc8,
@@ -691,10 +639,6 @@ function CalculateTotalDistance() {
                                 });
 
                                 function calcRoute31(dist14) {
-                                    var loc8 = document.getElementById("txt8location").value;
-                                    var end = document.getElementById("txtTo").value;
-                                    var distanceInput = document.getElementById("txtDistance");
-
                                     var request = {
                                         origin: loc8,
                                         destination: end,
