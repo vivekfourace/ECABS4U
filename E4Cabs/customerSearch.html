@@ -25,7 +25,8 @@
     <script type="text/javascript" src="js/CalculateDistance.js"></script>
     <script type="text/javascript" src="js/customerSearch.js"></script>
     <script type="text/javascript" src="js/CustomerMap.js"></script>
-    <script type="text/javascript" src="Common/FailedBookings.js"></script>   
+    <script type="text/javascript" src="Common/FailedBookings.js"></script>
+    <script type="text/javascript" src="js/FindPostcode.js"></script>
     
 </head>
     <script type="text/javascript">
@@ -62,6 +63,7 @@
                     var place = autocompletePick.getPlace();
                     $('#locfrom').val(place.formatted_address);
                     CalculateTotalDistance();
+                    GetPostCode(place.formatted_address);
                 });           
            
             var autocompleteL2 = new google.maps.places.Autocomplete(L2Location);
@@ -396,15 +398,16 @@
   <body onload="loadDateTime()">
     <center>
         
-                   <input type="hidden" id="locfrom"/>
-                   <input type="hidden" id="locone"/>
-                   <input type="hidden" id="loctwo"/>
-                   <input type="hidden" id="locthree"/>
-                   <input type="hidden" id="locfour"/>
-                   <input type="hidden" id="locfive"/>
-                   <input type="hidden" id="locsix"/>
-                   <input type="hidden" id="locseven"/>
-                   <input type="hidden" id="locto"/>
+        <input type="hidden" id="locfrom"/>
+        <input type="hidden" id="locone"/>
+        <input type="hidden" id="loctwo"/>
+        <input type="hidden" id="locthree"/>
+        <input type="hidden" id="locfour"/>
+        <input type="hidden" id="locfive"/>
+        <input type="hidden" id="locsix"/>
+        <input type="hidden" id="locseven"/>
+        <input type="hidden" id="locto"/>
+        <input type="hidden" id="locfrom_postcode"/>
         
         <div id="transparent_div" style="display: none"></div>
         <div id="imgLoader">

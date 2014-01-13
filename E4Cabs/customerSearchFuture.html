@@ -26,6 +26,7 @@
     <script type="text/javascript" src="js/customerSearchFuture.js"></script>
     <script type="text/javascript" src="js/CalculateDistance.js"></script>
     <script type="text/javascript" src="js/CustomerMap.js"></script>
+    <script type="text/javascript" src="js/FindPostcode.js"></script>
 </head>
     <script type="text/javascript">
         function initialize() {
@@ -60,6 +61,7 @@
                     console.log(place.formatted_address);
                     $('#locfrom').val(place.formatted_address);
                     CalculateTotalDistance();
+                    GetPostCode(place.formatted_address);
                 });           
            
             var autocompleteL2 = new google.maps.places.Autocomplete(L2Location);
@@ -436,9 +438,7 @@ $(document).ready(function () {
          </div>   
        <div style="padding-top:71px">
            <table style="width:80%;border-collapse:collapse">
-               <center>                   
-                   <div id="map-canvas"></div>
-                   
+                   <div id="map-canvas"></div>                   
                    <input type="hidden" id="locfrom"/>
                    <input type="hidden" id="locone"/>
                    <input type="hidden" id="loctwo"/>
@@ -448,6 +448,8 @@ $(document).ready(function () {
                    <input type="hidden" id="locsix"/>
                    <input type="hidden" id="locseven"/>
                    <input type="hidden" id="locto"/>
+                   <input type="hidden" id="locfrom_postcode"/>                   
+                   
                  <tr>
                        <td style="padding-top:15px">
                            <table style="border-collapse:collapse;width:100%;height:41px" border="0" >
@@ -792,7 +794,6 @@ $(document).ready(function () {
                        <input type="button" id="cancelreturn" class="specialBtn" onclick="cancelBookReturn()" style="display:none;float:right;" value="Cancel"/>
                    </td>
                </tr>
-                    </center>
            </table>
            <div style="padding-bottom:40px;">
                     <input type="button" style="width:80%" value="Search" class="btn-tmp" onclick="availabledriverLater();" />

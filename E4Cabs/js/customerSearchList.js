@@ -214,8 +214,8 @@ function getData(data) {
                 var rating3 = data.d[i]["RatingPast"];
                 var rating4 = data.d[i]["RatingPresent"];
                 
-                          html += '<td style="width:100%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="'+driverImgUrl+'" style="width:50px;height:50px" onclick=\"ShowLargeImage(this)\"/>'
-                          html += '<img src="'+vehicleImgUrl+'" style="width:50px;height:50px" onclick=\"ShowLargeImage(this)\"/>'
+                          html += '<td style="width:100%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="'+driverImgUrl+'" style="width:50px;height:50px;border-radius:4px" onclick=\"ShowLargeImage(this)\"/>'
+                          html += '<img src="'+vehicleImgUrl+'" style="width:50px;height:50px;border-radius:4px" onclick=\"ShowLargeImage(this)\"/>'
                           if(rating3 != "")
                           {
                                    if(rating3 == "1")
@@ -289,8 +289,8 @@ function getData(data) {
                 var rating33 = data.d[i]["RatingPast"];
                 var rating44 = data.d[i]["RatingPresent"];
                 
-                                html += '<td style="width:100%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="'+driverImgUrl+'" style="width:50px;height:50px" onclick=\"ShowLargeImage(this)\"/>'
-                                html += '<img src="'+vehicleImgUrl+'" style="width:50px;height:50px" onclick=\"ShowLargeImage(this)\"/>'
+                                html += '<td style="width:100%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="'+driverImgUrl+'" style="width:50px;height:50px;border-radius:4px" onclick=\"ShowLargeImage(this)\"/>'
+                                html += '<img src="'+vehicleImgUrl+'" style="width:50px;height:50px;border-radius:4px" onclick=\"ShowLargeImage(this)\"/>'
                           if(rating33 != "")
                           {
                                    if(rating33 == "1")
@@ -653,7 +653,9 @@ function ReInitiateJob()
 {
         var result = confirm("Do you want to Re-initiate this job?");    
         if (result==true) {
-              window.location = 'customerSearch.html?id=' + userId + '&rid=' + requestID + '&rrid=' + relatedId;
+              //window.location = 'customerSearch.html?id=' + userId + '&rid=' + requestID + '&rrid=' + relatedId;
+            
+            window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId+ '&rid=' + requestID;
         }
         else
         {

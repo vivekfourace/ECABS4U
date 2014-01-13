@@ -2,11 +2,14 @@ var QString = window.location.search.substring(1);
 var userId = QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
+var requestID = QString.split("=")[4].split("&")[0];
+
 $('#imgLoader').hide();
-console.log(roleId);
-if(roleId != null)
+
+
+if(requestID != null)
 {
-    var requestID = roleId;
+    //var requestID = roleId;
     $.ajax({
         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/FillJobSearchDetail",
         type: "POST",
@@ -222,7 +225,10 @@ function availabledriver() {
     }
     var IsReturnTrue = $('#chkReturnYes').attr('checked') ? true : false;
     var isCheckedNo = $('#chkNo').attr('checked') ? true : false;
-    var isRetJourAllOperator = $('#chkyes').attr('checked') ? true : false;
+    var isRetJourAllOperator = $('#chkyes').attr('checked') ? true : false;    
+    
+    var laterpostcode = $('#locfrom_postcode').val();
+    console.log(laterpostcode);
     
     if (isCheckedNo == true) {
         if (IsReturnTrue == false) {
@@ -245,9 +251,21 @@ function availabledriver() {
                  },
                 type: "POST",
                 dataType: "Json",
-                data: "{'userID':'" + relatedId + "','frompost':'" + toL + "','topost':'" + fromL + "','pickDate':'" + pickD + "','pickTime':'" + pickT + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnFL + "','returntoloc':'" + returnTL + "','returnDate':'" + retunD + "','returnTime':'" + retunT + "','travelTime':'" + travelTime + "','isCabNow':'" + isCabNow + "','fourthLoc':'" + fourthLoc + "','fifthLoc':'" + fifthLoc + "','sixthLoc':'" + sixthLoc + "','seventhLoc':'" + seventhLoc + "','eightLoc':'" + eightLoc + "'}",
+                data: "{'userID':'" + relatedId + "','frompost':'" + toL + "','topost':'" + fromL + "','pickDate':'" + pickD + "','pickTime':'" + pickT + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnFL + "','returntoloc':'" + returnTL + "','returnDate':'" + retunD + "','returnTime':'" + retunT + "','travelTime':'" + travelTime + "','isCabNow':'" + isCabNow + "','fourthLoc':'" + fourthLoc + "','fifthLoc':'" + fifthLoc + "','sixthLoc':'" + sixthLoc + "','seventhLoc':'" + seventhLoc + "','eightLoc':'" + eightLoc + "', 'laterpostcode':'"+laterpostcode+"'}",
                 contentType: "application/json; charset=utf-8",
-                success: moveSearch,
+                success: function (data) {
+                    if(data.d[0] != "Error")
+                    {   
+                        var reqID = data.d[0];
+                        console.log(data.d[2]);
+                        window.location = 'customerSearchList.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId + '&reqid=' + reqID;
+                    }
+                    else
+                    {
+                        console.log(data.d[1]);
+                        alert(data.d[1]);
+                    }
+                },                
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                 }
             });
@@ -275,11 +293,11 @@ function availabledriver() {
                  },
                 type: "POST",
                 dataType: "Json",
-                data: "{'userID':'" + relatedId + "','frompost':'" + fromloc + "','topost':'" + toloc + "','pickDate':'" + pickdate + "','pickTime':'" + picktime + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnfromloc + "','returntoloc':'" + returntoloc + "','returnDate':'" + returnDate + "','returnTime':'" + returnTime + "','travelTime':'" + travelTime + "','isCabNow':'" + isCabNow + "','fourthLoc':'" + fourthLoc + "','fifthLoc':'" + fifthLoc + "','sixthLoc':'" + sixthLoc + "','seventhLoc':'" + seventhLoc + "','eightLoc':'" + eightLoc + "'}",
+                data: "{'userID':'" + relatedId + "','frompost':'" + fromloc + "','topost':'" + toloc + "','pickDate':'" + pickdate + "','pickTime':'" + picktime + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnfromloc + "','returntoloc':'" + returntoloc + "','returnDate':'" + returnDate + "','returnTime':'" + returnTime + "','travelTime':'" + travelTime + "','isCabNow':'" + isCabNow + "','fourthLoc':'" + fourthLoc + "','fifthLoc':'" + fifthLoc + "','sixthLoc':'" + sixthLoc + "','seventhLoc':'" + seventhLoc + "','eightLoc':'" + eightLoc + "', 'laterpostcode':'"+laterpostcode+"'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
                     if(data.d[0] != "Error")
-                    {
+                    {   
                         var reqID = data.d[0];
                         console.log(data.d[2]);
                         window.location = 'customerSearchList.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId + '&reqid=' + reqID;

@@ -54,11 +54,8 @@ function UploadFeedBack()
                                     else if(rating == 5)
                                     {
                                         html += "<img src='img/5star.PNG' style='width:25%'/>";
-                                    }
-                                    
-                                    
-                                    html +="</tr>";
-                                                                       
+                                    }                                                                        
+                                    html +="</tr>";                                                                       
                                 }
                                 else
                                 {                                    
