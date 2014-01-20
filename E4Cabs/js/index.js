@@ -1,4 +1,5 @@
 document.addEventListener("deviceready", onDeviceReady, false);
+
 function onDeviceReady() {
    navigator.splashscreen.hide();
    console.log('device is ready');
@@ -8,6 +9,7 @@ function onDeviceReady() {
     var deviceuuid = device.uuid    
     var model = device.model   
     var version = device.version 
+    
        $.ajax({
            url:"http://115.115.159.126/ECabs/ECabs4U.asmx/RegisterDevice",
            type:"post",
@@ -15,6 +17,7 @@ function onDeviceReady() {
            data:"{'devicename':'"+devicename+"', 'platform':'"+platform+"', 'deviceuuid':'"+deviceuuid+"', 'model':'"+model+"', 'version':'"+version+"'}",
            contentType: "application/json; charset=utf-8",
        });
+    loginUsingCookie();
 }
 
 function confirmExit()
@@ -38,23 +41,22 @@ function onCallback(buttonIndex)
     }
 }
 
-
-
-window.onload = loginUsingCookie();
+//window.onload = loginUsingCookie();
 
 function loginUsingCookie() {
     var name = $.cookie('userName');
     var password= $.cookie('userPassword');
     var remMe = $.cookie('remember');
-
-    if (remMe == "true") {
+    console.log(remMe);
+    
+    if (remMe === "true") {
         $('#txtUserName').val(name);
         $('#txtPassword').val(password);        
-        return true;
     }
-    if (remMe == "false") {
-        $('#txtUserName').val(name);
-        $('#txtPassword').val(password);
+    else
+    {
+        $('#txtUserName').val("");
+        $('#txtPassword').val("");
         return true;
     }
 }
@@ -108,46 +110,57 @@ function login() {
     });
 }
 
-function CheckMsg(data) {
-    console.log(data.d[0]);
-    if(data.d[0] == "true")
-    {
-        $('#imgLoader').show();
-        var userID = data.d[1];
-        var roleID = parseInt(data.d[2]);
-        var relatedID = data.d[3];
-        
-        var name = $('#txtUserName').val();
-        var password = $('#txtPassword').val();       
-        
-        //creating Cookie        
-        var isChecked = $('#chkRem').attr('checked') ? true : false;
-        if (isChecked == true) {
-            $.cookie('userName', name);
-            $.cookie('userPassword', password);
-            $.cookie('remember', true);
-        }
-        else {
-            $.cookie('remember', false);
-        }
+ function CheckMsg(data) {
+      var isloggedin = data.d[4];
+      var userID = data.d[1];
+      if (isloggedin == "True") {
+          window.location = 'SessionError.html?id=' + userID;
+      }
+      else {
+          if (data.d[0] == "true") {
+              $('#imgLoader').show();
 
-        switch (roleID) {
-                //Role 3 --> Driver
-            case 3:
-                window.location = 'driverHome.html?id=' + userID + '&rid=' + roleID + '&rrid=' + relatedID;
-                break;
-                //Role 4 --> Customer
-            case 4:
-                window.location = 'customerSearch.html?id=' + userID + '&rid=' + roleID + '&rrid=' + relatedID;
-                break;
-        }
-    }
-    else 
-    {
-        $('#imgLoader').hide();
-        $('#lblMsg').text(data.d);
-        $('#lblMsg').css("color", "#D70007");
-        $('#lblMsg').css("font-size", "13");
-        $('#txtPassword').val("");
-    }
-}
+              var roleID = parseInt(data.d[2]);
+              var relatedID = data.d[3];
+
+              var name = $('#txtUserName').val();
+              var password = $('#txtPassword').val();
+
+              //creating Cookie        
+              var isChecked = $('#chkRem').attr('checked') ? true : false;
+              alert(isChecked);
+              if (isChecked == true) {
+                  $.cookie('userName', name);
+                  $.cookie('userPassword', password);
+                  $.cookie('remember', true);
+              }
+              else {
+                  alert('in else');
+                  $.cookie('userName', '');
+                  $.cookie('userPassword', '');
+                  $.cookie('remember', false);
+              }
+
+              switch (roleID) {
+                  //Role 3 --> Driver
+                  case 3:
+                      window.location = 'driverHome.html?id=' + userID + '&rid=' + roleID + '&rrid=' + relatedID;
+                      break;
+                      //Role 4 --> Customer
+                  case 4:
+                      window.location = 'customerSearch.html?id=' + userID + '&rid=' + roleID + '&rrid=' + relatedID;
+                      break;
+              }
+          }
+          else {
+              $('#imgLoader').hide();
+              $('#lblMsg').text(data.d);
+              $('#lblMsg').css("color", "#D70007");
+              $('#lblMsg').css("font-size", "13");
+              $('#txtPassword').val("");
+          }
+      }
+ }
+
+
+

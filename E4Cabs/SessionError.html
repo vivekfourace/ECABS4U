@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Session error</title>
+        <link rel="stylesheet" type="text/css" href="css/site.css" />
+        <script src="Scripts/jquery-2.0.3.min.js"></script> 
+        <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        
+        <script>
+            var QString = window.location.search.substring(1);
+            var userID =  QString.split("=")[1].split("&")[0];    
+            
+            $(function(){
+                $('#btnClearsession').on('click',function(){
+                    
+                    $.ajax({
+                        url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
+                        type:"POST",
+                        dataType:"json",
+                        data:"{'userID':'"+userID+"'}",
+                        contentType: "application/json; charset=utf-8",
+                        success:function(){
+                             var me = $('#lblMsg');
+                             me.show();
+                             me.text('Session cleared successfully.');
+                             me.css("color","green");
+                             $('#btnbacktologin').show();
+                             $('#btnClearsession').hide();
+                            $('#lblSessionmsg').hide();
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {}
+                    });                   
+                });
+                
+                $('#btnbacktologin').on('click',function(){
+                    window.location = 'index.html';
+                });
+                
+            });
+        </script>
+    </head>
+    <body>
+        <div style="width:100%;height:70px;"  class="header">
+                <table style="width:100%;padding-top:1%;">
+                    <tr>
+                        <td style="float:left;width:30%">
+                             <div style="float:left;height:48px;width:100px;">
+                                    <img src="img/logo1.png" class="logo">
+                             </div>
+                        </td>
+                             <td style="float:left;padding-left:3%;width:50%;">
+                              <div style="padding-top:13px;">
+                                   <b class="header-font" style="color:white;font-size:16px;">Home</b>
+                              </div>
+                        </td>
+                    </tr>
+                </table>
+           </div>
+         <div style="padding-top:25%;">
+            <h2>
+                Activity on this account
+            </h2>
+            <h3>
+                <label id="lblMsg" style="display:none"/>
+            </h3>
+            <p>
+               <label id="lblSessionmsg">This account seems to be openend in some other location. Please sign out all other session to proceed.</label>
+            </p>
+            <p>
+                <input type="button" id="btnClearsession" value="Sign out all other sessions"/>
+            </p>
+            <p>
+                <input type="button" id="btnbacktologin" style="display:none" value="Back to login"/>
+            </p>
+        </div>
+    </body>
+</html>
