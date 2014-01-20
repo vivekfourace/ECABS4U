@@ -21,34 +21,7 @@ function availabledriver()
 {
    window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-function logout(){
-    navigator.notification.confirm(
-    "Do you want to logout?",
-    onLogoutCallback,
-    "Confirm",
-    "No, Yes"
-    );
-}
 
-function onLogoutCallback(buttonIndex)
-{
-    if(buttonIndex == 1)
-    {
-        return false;
-    }
-    else if(buttonIndex == 2)
-    {
-        $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
-            type:"POST",
-            dataType: "Json",
-            data:"{'userID':'" +userId+"'}",
-            contentType: "application/json; charset=utf-8",                     
-            success: {},
-         }); 
-        $.cookie("remember", false);
-        window.location = "index.html";
-    }
-}
 
 function cabNow()
 {   
