@@ -113,6 +113,7 @@ function login() {
  function CheckMsg(data) {
       var isloggedin = data.d[4];
       var userID = data.d[1];
+      var isChecked = $('#chkRem').prop('checked') ? true : false;
       if (isloggedin == "True") {
           window.location = 'SessionError.html?id=' + userID;
       }
@@ -126,16 +127,14 @@ function login() {
               var name = $('#txtUserName').val();
               var password = $('#txtPassword').val();
 
-              //creating Cookie        
-              var isChecked = $('#chkRem').attr('checked') ? true : false;
-              alert(isChecked);
+              //creating Cookie       
+              
               if (isChecked == true) {
                   $.cookie('userName', name);
                   $.cookie('userPassword', password);
                   $.cookie('remember', true);
               }
               else {
-                  alert('in else');
                   $.cookie('userName', '');
                   $.cookie('userPassword', '');
                   $.cookie('remember', false);

@@ -2,14 +2,14 @@ var QString = window.location.search.substring(1);
 var userId = QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
-var requestID = QString.split("=")[4].split("&")[0];
+var requestID = QString.split("=")[4];
 
-$('#imgLoader').hide();
+console.log(requestID);
 
-
-if(requestID != null)
+if(requestID != undefined)
 {
-    //var requestID = roleId;
+    requestID = QString.split("=")[4].split("&")[0];
+    
     $.ajax({
         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/FillJobSearchDetail",
         type: "POST",
@@ -21,6 +21,8 @@ if(requestID != null)
        }
      });
 }
+
+$('#imgLoader').hide();
 
 function FillAllData(data)
 {
@@ -66,10 +68,11 @@ $(document).ready(function ()
                 });
             });
         }
+     
        $('#chkNo').click(function () {
            document.getElementById("chkyes").checked = false;
-           $('#returnJ').fadeIn("slow");
-           $('#termCond').fadeIn("slow");
+           $('#returnJ').fadeIn("fast");
+           $('#termCond').fadeIn("fast");
 
        });
        $('#chkyes').click(function () {
