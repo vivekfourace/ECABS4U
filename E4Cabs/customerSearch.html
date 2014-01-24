@@ -622,12 +622,27 @@
             </tr>
                <tr>
                    <td>
+                       <table style="width:100%;border-collapse:collapse;height:40px">
+                           <tr>
+                               <td style="width:20%;height:30px"><b style="font-size:12px;">Pay by :</b> </td>
+                               <td style="width:40%;height:30px">
+                                   <input type="radio" id="radCrditcard" style="float:left" value="1" name="payment"/>
+                                   <label style="text-align:left;float:left;padding-top:2px;"><b>Credit card</b></label>                                   
+                               </td>
+                               <td style="width:40%;height:30px">
+                                   <input type="radio" id="radcash" style="float:left" name="payment" value="2" checked="checked"/>
+                                   <label style="text-align:left;float:left;padding-top:2px;"><b>Cash</b></label>
+                               </td>
+                           </tr>
+                       </table>                      
+                   </td>
+               </tr>
+               <tr>
+                   <td>
                        <input type="button" id="specialreq" class="specialBtn" onclick="showReq()" style="width:58%;float:left;" value="Special Requirement" />
                        <input type="button" id="bookreturn" class="specialBtn" onclick="bookReturn()" style="width:40%;float:right;" value="Book a Return"/>
                    </td>
-               </tr>
-                   
-               
+               </tr>                  
                <tr id="trboundChair" style="display: none;">
                    <td>
                        <label for="#" class="font-style"><b style="font-size:12px">Wheelchair passengers</b></label>
