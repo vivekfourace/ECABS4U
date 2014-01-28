@@ -42,7 +42,7 @@ function setLocation(data)
         console.log(arrLoc.length);
         for (var i = 0; i < arrLoc.length; i++)
         {
-            if (arrLoc[i] != null) {
+            if (arrLoc[i] !== null) {
                 waypts.push({
                     location: arrLoc[i],
                     stopover: true
@@ -67,7 +67,7 @@ function setLocation(data)
             var geocoder = new google.maps.Geocoder();
               var address = locFrom;
               geocoder.geocode({ 'address': address }, function (results, status) {
-                  if (status == google.maps.GeocoderStatus.OK) {
+                  if (status === google.maps.GeocoderStatus.OK) {
                       latitude = results[0].geometry.location.lat();
                       longitude = results[0].geometry.location.lng();
                   }
@@ -78,7 +78,7 @@ function setLocation(data)
                   myLocation = new google.maps.LatLng(latitude, longitude);           
 
                     var mapOptions = {
-                        zoom: 5,
+                        zoom: 8,
                         //navigationControl: true,
                         //draggable: true,
                         //zoomControl: true,
@@ -90,7 +90,7 @@ function setLocation(data)
                                         
                     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
                     directionsDisplay.setMap(map);
-                  directionsDisplay.setPanel(document.getElementById('directions-panel'));
+                    directionsDisplay.setPanel(document.getElementById('directions-panel'));
                     calcRoute();                    
                 });
             }
@@ -100,7 +100,7 @@ function setLocation(data)
               var geocoder = new google.maps.Geocoder();
               var address = locFrom;
               geocoder.geocode({ 'address': address }, function (results, status) {
-                  if (status == google.maps.GeocoderStatus.OK) {
+                  if (status === google.maps.GeocoderStatus.OK) {
                       latitude = results[0].geometry.location.lat();
                       longitude = results[0].geometry.location.lng();
                   }
@@ -125,12 +125,12 @@ function setLocation(data)
               }
               map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
               directionsDisplay.setMap(map);
-                  directionsDisplay.setPanel(document.getElementById('directions-panel'));
+              directionsDisplay.setPanel(document.getElementById('directions-panel'));
               calcRoute2();
             });
             }
       function toggleBounce() {
-            if (marker.getAnimation() != null) {
+            if (marker.getAnimation() !== null) {
                 marker.setAnimation(null);
             } else {
                 marker.setAnimation(google.maps.Animation.BOUNCE);
@@ -146,7 +146,7 @@ function setLocation(data)
             };
 
             directionsService.route(request, function (response, status) {
-                if (status == google.maps.DirectionsStatus.OK) {
+                if (status === google.maps.DirectionsStatus.OK) {
                     directionsDisplay.setDirections(response);
                 }
             });
@@ -163,7 +163,7 @@ function setLocation(data)
             };
 
             directionsService.route(request, function (response, status) {
-                if (status == google.maps.DirectionsStatus.OK) {
+                if (status === google.maps.DirectionsStatus.OK) {
                     directionsDisplay.setDirections(response);
                 }
             });
