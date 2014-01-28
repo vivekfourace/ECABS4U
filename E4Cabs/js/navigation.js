@@ -79,18 +79,18 @@ function setLocation(data)
 
                     var mapOptions = {
                         zoom: 5,
-                        panControl: true,
-                        navigationControl: true,
-                        draggable: true,
-                        zoomControl: true,
-                        scaleControl: true,
-                        scrollwheel: true,
-                        disableDoubleClickZoom: false,                   
+                        //navigationControl: true,
+                        //draggable: true,
+                        //zoomControl: true,
+                        //scaleControl: true,
+                        //scrollwheel: true,
+                        //disableDoubleClickZoom: false,                   
                         mapTypeId: google.maps.MapTypeId.ROADMAP
                     };
                                         
                     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
                     directionsDisplay.setMap(map);
+                  directionsDisplay.setPanel(document.getElementById('directions-panel'));
                     calcRoute();                    
                 });
             }
@@ -112,19 +112,20 @@ function setLocation(data)
               myLocation = new google.maps.LatLng(latitude, longitude);
                 
               var mapOptions = {
-                zoom:5,
+                zoom:8,
                 center: myLocation,
-                panControl: true,
-                navigationControl: true,
-                draggable: true,
-                zoomControl: true,
-                scaleControl: true,
-                scrollwheel: true,
-                disableDoubleClickZoom: false,
+                //panControl: true,
+                //navigationControl: true,
+                //draggable: true,
+                //zoomControl: true,
+                //scaleControl: true,
+                //scrollwheel: true,
+                //disableDoubleClickZoom: false,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
               }
               map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
               directionsDisplay.setMap(map);
+                  directionsDisplay.setPanel(document.getElementById('directions-panel'));
               calcRoute2();
             });
             }
