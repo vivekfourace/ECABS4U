@@ -25,16 +25,16 @@ function  NavigateToMap()
         contentType: "application/json; charset=utf-8",                     
         success: function(data)
         {
-            if(data.d == true)
+            if(data.d === true)
             {
                 $('#lblEngaged').show();
-                $('#lblEngaged').text("Unavailable");
+                $('#lblEngaged').text("Engaged");
                 $('#btnEngage').hide();
                 $('#btnabort').show();
                 $('#btnclear').show();
                 $('#btnnavigation').show();
             }
-            else if(data.d == false)
+            else if(data.d === false)
             {
                 $('#lblEngaged').show();
                 $('#lblEngaged').text("Available");               
@@ -42,7 +42,7 @@ function  NavigateToMap()
         },
         
         error: function (XMLHttpRequest, textStatus, errorThrown) {}
-     }); 
+     });
 
 function AbortJob()
 {
@@ -56,11 +56,11 @@ function AbortJob()
 
 function onAbortCallback(buttonIndex)
 {
-    if(buttonIndex == 1)
+    if(buttonIndex === 1)
     {
         return false;
     }
-    else if(buttonIndex == 2)
+    else if(buttonIndex === 2)
     {
        $('#popup_box1').show();
        $('#divAbortTask').show();
@@ -91,7 +91,7 @@ function SubmitAbort()
                      data:"{'relatedId':'" +relatedId+ "','abortMessage':'"+abortMessage+"'}",
                      contentType: "application/json; charset=utf-8",                     
                      success: function(data){
-                         if(data.d == "true")
+                         if(data.d === "true")
                          {                            
                               $('#popup_box1').hide();
                               $('#divAbortTask').hide();
@@ -124,11 +124,11 @@ function clearJob()
 
 function onClearCallback(buttonIndex)
 {
-    if(buttonIndex == 1)
+    if(buttonIndex === 1)
     {
         return false;
     }
-    else if(buttonIndex == 2)
+    else if(buttonIndex === 2)
     {
         $.ajax({
                 url:"http://115.115.159.126/ECabs/ECabs4U.asmx/ClearDriverStatus",
@@ -137,9 +137,11 @@ function onClearCallback(buttonIndex)
                      data:"{'relatedId':'"+relatedId+"'}",
                      contentType: "application/json; charset=utf-8",                     
                      success: function(data){
-                         if(data.d == true)
-                         {
+                         if(data.d === true)
+                         {                            
                             window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                            $('#lblEngaged').show();
+                            $('#lblEngaged').text("Available");
                          }
                      },
             });

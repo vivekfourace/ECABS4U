@@ -27,7 +27,7 @@ var timereOut;
                         
  console.log("JobNO:"+getResID+"PopUpDisplay:"+popUpDisplay+"DriverStatus:"+driverStatus+"customerResponse:"+customerResponse);
 
-                        if (popUpDisplay == "False" && driverStatus == "False") {
+                        if (popUpDisplay === "False" && driverStatus === "False") {
                             $.ajax({
                                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetDealData",
                                 type: "POST",
@@ -35,7 +35,7 @@ var timereOut;
                                 data: "{'userID':'" + getResID + "','driverId':'" + relatedId + "'}",
                                 contentType: "application/json; charset=utf-8",
                                 success: function (data) {
-                                    if (data.d[0] != "Error") {
+                                    if (data.d[0] !== "Error") {
                                         $("#divDealload").hide();
                                         $('#popup_box').show();
                                         $('#divDeal').show();
@@ -49,7 +49,7 @@ var timereOut;
                                         $('#isReturnJourney').val(data.d[7]);
                                         $('#transparent_div').show();
                                     }
-                                    else if (data.d[0] == "Error") {
+                                    else if (data.d[0] === "Error") {
 
                                         $('#popup_box').hide();
                                         $('#divDeal').hide();
@@ -61,7 +61,7 @@ var timereOut;
                             });
 
                         }
-                        else if (popUpDisplay == "False" && driverStatus == "True") {
+                        else if (popUpDisplay === "False" && driverStatus === "True") {
                             $('#divDealload').hide();
                             $('#divDetails').hide();
                             $('#btnbid').hide();
@@ -70,7 +70,7 @@ var timereOut;
                             $('#btnreject').hide();
                             DestroyMe();
                         }
-                        else if (data.d[0] == "True") {
+                        else if (data.d[0] === "True") {
                             DestroyMe();
                             $('#divDealload').hide();
                             $('#divDetails').hide();
@@ -132,7 +132,7 @@ var timereOut;
 
         function bidSubmit() {
             var isCabnow = $('#hiddenIsCabnow').val();
-            if (isCabnow == "True") {
+            if (isCabnow === "True") {
                 var fare = $('#txtbidFare').val();
                 if (fare.length <= 0) {
                     alert('Please enter fare.');
@@ -176,7 +176,7 @@ var timereOut;
                 }
             }
 
-            else if (isCabnow == "False") {
+            else if (isCabnow === "False") {
                 var fare2 = $('#txtbidFare').val();
                 if (fare2.length <= 0) {
                     alert('Please enter fare.');
@@ -197,12 +197,12 @@ var timereOut;
                     data: "{'userID':'" + relatedId + "','reqid':'" + reqid + "','status':'" + statuS + "','price':'" + pricE + "','specialReq':'" + specialreq + "'}",
                     contentType: "application/json; charset=utf-8",
                     success: function (data) {
-                        if (data.d == "true") {
+                        if (data.d === "true") {
                             alert('In progress. Awaiting customer response.');
                             window.location = 'driverProfile.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
 
                         }
-                        else if (data.d == "false") {
+                        else if (data.d === "false") {
                             alert('Unknown error. Please try again.');
                         }
 
@@ -229,10 +229,10 @@ var timereOut;
             var getFare = $('#lbldealfare').text();
             var reqID = $('#lbldealjob').text();
             
-            if (getFare == 15 || getFare > 15) {             
-                if (getIsReturnJourney == "True") {
+            if (getFare === 15 || getFare > 15) {             
+                if (getIsReturnJourney === "True") {
                     var _avgFare = getFare / 2;
-                    if (_avgFare == 15 || _avgFare > 15) {
+                    if (_avgFare === 15 || _avgFare > 15) {
 
                         $('#divComission2').show();
                         $('#lblconfirmjob2').text(reqID);
@@ -246,7 +246,7 @@ var timereOut;
                         $('#popup_box').hide();
                     }
                 }
-                else if (getIsReturnJourney == "False") {
+                else if (getIsReturnJourney === "False") {
                     $('#divDeal').hide();
                     $('#divComission').show();
                     $('#lblconfirmjob').text(reqID);
@@ -268,8 +268,8 @@ var timereOut;
                         $('#btnmap').hide();
                         $('#btncancel').hide();
                         $('#btnreject').hide();
-                        alert('You have been selected for this job.');
-                        window.location.href = 'driverProfile.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+                        alert('Congratulations. We recommend you contact the customer by phone to confirm pickup location.');
+                        window.location = 'driverHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
                     },
                 });
             }
@@ -354,7 +354,7 @@ var timereOut;
                 data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
-                    if(data.d == true)
+                    if(data.d === true)
                     {
                       console.log('rej');
                         alert('rej');
@@ -396,11 +396,11 @@ function reqReject() {
 
 function onRejectCallback(buttonIndex)
 {
-    if(buttonIndex == 1)
+    if(buttonIndex === 1)
     {
         return false;
     }
-    else if(buttonIndex == 2)
+    else if(buttonIndex === 2)
     {
            
             var rid = $('#hdnJobno').val();
@@ -413,7 +413,7 @@ function onRejectCallback(buttonIndex)
                 data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
-                    if(data.d == true)
+                    if(data.d === true)
                     {
                       console.log('rej')
                       window.location = 'driverProfile.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;

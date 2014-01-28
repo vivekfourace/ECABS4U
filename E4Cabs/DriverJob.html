@@ -21,7 +21,7 @@
 
         $(function () {
             $('#txtbidFare').bind('keypress', function (e) {
-                if ((e.keyCode < 48 || e.keyCode > 57) && e.keyCode != 46) {
+                if ((e.keyCode < 48 || e.keyCode > 57) && e.keyCode !== 46) {
                     e.stopPropagation();
                     return false;
                 }
@@ -550,218 +550,218 @@
                 </tr>
                 <tr>
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:11px;">From</b></label>
+                        <label><b style="font-size:13px;">From</b></label>
                     </td>
                     <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:11px;"> <label id="lblFromLoc" /></b>
+                        <b style="font-size:13px;"> <label id="lblFromLoc" /></b>
                     </td>
                 </tr>
                 <tr id="loc1" style="display:none">
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:11px;"> Location 1st</b></label>
+                        <label><b style="font-size:13px;"> Location 1st</b></label>
 
                     </td>
                     <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:11px"> <label id="lblLoc1"></label></b>
+                        <b style="font-size:13px"> <label id="lblLoc1"></label></b>
                     </td>
                 </tr>
                 <tr id="loc2" style="display:none">
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:11px;"> Location 2th</b></label>
+                        <label><b style="font-size:13px;"> Location 2th</b></label>
 
                     </td>
                     <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:11px"> <label id="lblLoc2"></label></b>
+                        <b style="font-size:13px"> <label id="lblLoc2"></label></b>
                     </td>
                 </tr>
                 <tr id="loc3" style="display:none">
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:11px;"> Location 3th</b></label>
+                        <label><b style="font-size:13px;"> Location 3th</b></label>
 
                     </td>
                     <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:11px"> <label id="lblLoc3"></label></b>
+                        <b style="font-size:13px"> <label id="lblLoc3"></label></b>
                     </td>
                 </tr>
                 <tr id="loc4" style="display:none">
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:11px;"> Location 4th</b></label>
+                        <label><b style="font-size:13px;"> Location 4th</b></label>
 
                     </td>
                     <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:11px"> <label id="lblLoc4"></label></b>
+                        <b style="font-size:13px"> <label id="lblLoc4"></label></b>
                     </td>
                 </tr>
                 <tr id="loc5" style="display:none">
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:11px;"> Location 5th</b></label>
+                        <label><b style="font-size:13px;"> Location 5th</b></label>
 
                     </td>
                     <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:11px"> <label id="lblLoc5"></label></b>
+                        <b style="font-size:13px"> <label id="lblLoc5"></label></b>
                     </td>
                 </tr>
                 <tr id="loc6" style="display:none">
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:11px;"> Location 6th</b></label>
+                        <label><b style="font-size:13px;"> Location 6th</b></label>
 
                     </td>
                     <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:11px"> <label id="lblLoc6"></label></b>
+                        <b style="font-size:13px"> <label id="lblLoc6"></label></b>
                     </td>
                 </tr>
                 <tr id="loc7" style="display:none">
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:11px;"> Location 7th</b></label>
+                        <label><b style="font-size:13px;"> Location 7th</b></label>
 
                     </td>
                     <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:11px"> <label id="lblLoc7"></label></b>
+                        <b style="font-size:13px"> <label id="lblLoc7"></label></b>
                     </td>
                 </tr>
                 <tr>
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:11px;">To </b></label>
+                        <label><b style="font-size:13px;">To </b></label>
 
                     </td>
                     <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:11px"> <label id="lblToLoc"></label></b>
+                        <b style="font-size:13px"> <label id="lblToLoc"></label></b>
                     </td>
                 </tr>
                 <tr>
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:11px;">Distance</b></label>
+                        <label><b style="font-size:13px;">Distance</b></label>
 
                     </td>
                     <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:11px;">  <label id="lblDistance" /></b>
+                        <b style="font-size:13px;">  <label id="lblDistance"></label></b>
                     </td>
                 <tr>
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:11px;">Pick up date</b></label>
+                        <label><b style="font-size:13px;">Pick up date</b></label>
 
                     </td>
                     <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:11px; "><label id="lblpickDateDriver" /></b>
+                        <b style="font-size:13px; "><label id="lblpickDateDriver"></label></b>
                     </td>
                 <tr>
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:11px;">Pick up time</b></label>
+                        <label><b style="font-size:13px;">Pick up time</b></label>
                     </td>
                     <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:11px;"><label id="lblpickTime" /></b>
-                    </td>
-
-                <tr>
-                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:11px;">Total passenger</b></label>
-
-                    </td>
-                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:13px;"><label id="lblpassengercount" /></b>
-                    </td>
-                <tr>
-                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:11px;">Large case</b></label>
-                    </td>
-                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:11px;"> <label id="lbllargecase" /> </b>
-
+                        <b style="font-size:13px;"><label id="lblpickTime"></label></b>
                     </td>
 
                 <tr>
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:11px">Small case</b></label>
+                        <label><b style="font-size:13px;">Total passenger</b></label>
 
                     </td>
                     <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:11px"><label id="lblsmallcase"/></b>
+                        <b style="font-size:13px;"><label id="lblpassengercount"></label></b>
+                    </td>
+                <tr>
+                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <label><b style="font-size:13px;">Large case</b></label>
+                    </td>
+                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px;"> <label id="lbllargecase"></label> </b>
+
+                    </td>
+
+                <tr>
+                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <label><b style="font-size:13px">Small case</b></label>
+
+                    </td>
+                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px"><label id="lblsmallcase"></label></b>
                     </td>
                 </tr>
                 <tr>
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:11px;">Is return journey</b></label>
+                        <label><b style="font-size:13px;">Return journey</b></label>
                     </td>
                     <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:11px"><label id="lblisReturnJourney"/> </b>
+                        <b style="font-size:13px"><label id="lblisReturnJourney"></label> </b>
                     </td>
                 </tr>
                
                 <tr>
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:11px">Wheelchair passengers </b></label>
+                        <label><b style="font-size:13px">Wheelchair passengers </b></label>
                     </td>
                     <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label> <b style="font-size:11px"><label id="lblwheelchair" /></b></label>
+                        <label> <b style="font-size:13px"><label id="lblwheelchair"></label></b></label>
                     </td>
                 </tr>              
                 <tr>
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:11px">Child seats</b></label>
+                        <label><b style="font-size:13px">Child seats</b></label>
                     </td>
                     <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:11px"><label id="lblchildseat" />  </b>
+                        <b style="font-size:13px"><label id="lblchildseat"></label>  </b>
                     </td>
                 </tr>
                
                 <tr>
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:11px">Child booster </b></label>
+                        <label><b style="font-size:13px">Child booster </b></label>
                     </td>
                     <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:11px">
-                            <label id="lblchildbooster"/>
+                        <b style="font-size:13px">
+                            <label id="lblchildbooster"></label>
                         </b>
                     </td>
                 </tr>
                
                 <tr id="returnFrom" style="display:none;">
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:11px">Return from</b></label>
+                        <label><b style="font-size:13px">Return from</b></label>
                     </td>
                     <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:11px">
-                            <label id="lblreturnFrom"/>
+                        <b style="font-size:13px">
+                            <label id="lblreturnFrom"></label>
                         </b>
                     </td>
                 </tr>
               
                 <tr id="returnTo" style="display:none;">
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label class="font-style"><b style="font-size:11px">Return to</b></label>
+                        <label class="font-style"><b style="font-size:13px">Return to</b></label>
                     </td>
                     <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:11px">
-                            <label id="lblreturnTo"/>
+                        <b style="font-size:13px">
+                            <label id="lblreturnTo"></label>
                         </b>
                     </td>
                 </tr>
               
                 <tr id="returnDate" style="display:none;">
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:11px">Return date </b></label>
+                        <label><b style="font-size:13px">Return date </b></label>
                     </td>
                     <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:11px">
-                            <label id="lblreturnDate"/>
+                        <b style="font-size:13px">
+                            <label id="lblreturnDate"></label>
                         </b>
                     </td>
                 </tr>
                
                 <tr id="returnTime" style="display:none;">
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:11px">Return time </b></label>
+                        <label><b style="font-size:13px">Return time </b></label>
                     </td>
                     <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:11px">
-                            <label id="lblreturnTime"/>
+                        <b style="font-size:13px">
+                            <label id="lblreturnTime"></label>
                         </b>
                     </td>
                 </tr>
 
                 <tr id="trOtherspec" style="display:none;">
                     <td style="width:100%;border-bottom:1px solid #848484;padding-bottom:4px" colspan="2">
-                        <label><b style="font-size:11px">Other special requirements :</b></label>
+                        <label><b style="font-size:13px">Other special requirements :</b></label>
                     </td>
                 </tr>
                 <tr id="trSpecialtxt" style="display:none;">

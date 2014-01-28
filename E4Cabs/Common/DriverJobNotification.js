@@ -11,33 +11,33 @@ function onDeviceReady() {
 function showConfirm(param) {
     var now = 1;
     var later = 2;
-    if(param == now)
+    if(param === now)
     {
         navigator.notification.confirm(
-        'You have got a new job request. Do you want to see it?',
+        'You have got a new "Cab now" job request. Do you want to see it?',
          onConfirm,
-        'New Cab Now job notification',
+        'NEW JOB',
         'No,Yes'
         );
     }
-    else if(param == later)
+    else if(param === later)
     {
         navigator.notification.confirm(
-        'You have got a new job request. Do you want to see it?',
+        'You have got a new "Cab later" job request. Do you want to see it?',
          onConfirm,
-        'New Cab Later job notification.',
+        'NEW JOB',
         'No,Yes'
         );
     }
 }
 function onConfirm(buttonIndex)
 {
-    if(buttonIndex == 1)
+    if(buttonIndex === 1)
     {
         closeRequest();
         jobCheckTime = setInterval(Check, 10000);        
     }
-    else if(buttonIndex == 2)
+    else if(buttonIndex === 2)
     {
         seeRequest();
     }
@@ -61,15 +61,15 @@ function Check() {
               success: function (data) {
                   var isTrue = data.d[0];
                   
-                  if (isTrue == "True") {
+                  if (isTrue === "True") {
                       var jobType = data.d[1];
-                      if (jobType == "True") {
+                      if (jobType === "True") {
                           var cabnow = 1;
                           showConfirm(cabnow);
                           playBeep();
                           clearInterval(jobCheckTime);
                       }
-                      else if (jobType == "False") {
+                      else if (jobType === "False") {
                           var cablater = 2;
                           showConfirm(cablater);
                           playBeep();

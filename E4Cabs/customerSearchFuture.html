@@ -31,7 +31,7 @@
     <script type="text/javascript">
         function initialize() {
             var mapOptions = {
-                componentRestrictions: { country: "UK" }
+                componentRestrictions: { country: 'UK' }
             };
             var map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
             var PickupLocation = (document.getElementById('txtFrom'));
@@ -55,7 +55,7 @@
             map.controls[google.maps.ControlPosition.TOP_LEFT].push(ToLocation);
             map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
             
-            var autocompletePick = new google.maps.places.Autocomplete(PickupLocation);
+            var autocompletePick = new google.maps.places.Autocomplete(PickupLocation, mapOptions);
                 google.maps.event.addListener(autocompletePick, 'place_changed', function () {              
                     var place = autocompletePick.getPlace();
                     console.log(place.formatted_address);
@@ -64,7 +64,7 @@
                     GetPostCode(place.formatted_address);
                 });           
            
-            var autocompleteL2 = new google.maps.places.Autocomplete(L2Location);
+            var autocompleteL2 = new google.maps.places.Autocomplete(L2Location, mapOptions);
                 google.maps.event.addListener(autocompleteL2, 'place_changed', function () {              
                         var place = autocompleteL2.getPlace();
                         console.log(place.formatted_address);
@@ -72,7 +72,7 @@
                     CalculateTotalDistance();                    
                 });   
             
-            var autocompleteL3 = new google.maps.places.Autocomplete(L3Location);
+            var autocompleteL3 = new google.maps.places.Autocomplete(L3Location, mapOptions);
                 google.maps.event.addListener(autocompleteL3, 'place_changed', function () {              
                         var place = autocompleteL3.getPlace();
                         console.log(place.formatted_address);
@@ -80,7 +80,7 @@
                     CalculateTotalDistance();
                 });  
             
-            var autocompleteL4 = new google.maps.places.Autocomplete(L4Location);
+            var autocompleteL4 = new google.maps.places.Autocomplete(L4Location, mapOptions);
                 google.maps.event.addListener(autocompleteL4, 'place_changed', function () {              
                         var place = autocompleteL4.getPlace();
                         console.log(place.formatted_address);
@@ -88,7 +88,7 @@
                     CalculateTotalDistance();
                 });
             
-            var autocompleteL5 = new google.maps.places.Autocomplete(L5Location);
+            var autocompleteL5 = new google.maps.places.Autocomplete(L5Location, mapOptions);
                 google.maps.event.addListener(autocompleteL5, 'place_changed', function () {              
                         var place = autocompleteL5.getPlace();
                         console.log(place.formatted_address);
@@ -96,7 +96,7 @@
                     CalculateTotalDistance();
                 });
             
-            var autocompleteL6 = new google.maps.places.Autocomplete(L6Location);
+            var autocompleteL6 = new google.maps.places.Autocomplete(L6Location, mapOptions);
                 google.maps.event.addListener(autocompleteL6, 'place_changed', function () {              
                         var place = autocompleteL6.getPlace();
                         console.log(place.formatted_address);
@@ -104,7 +104,7 @@
                     CalculateTotalDistance();
                 });
             
-            var autocompleteL7 = new google.maps.places.Autocomplete(L7Location);
+            var autocompleteL7 = new google.maps.places.Autocomplete(L7Location, mapOptions);
                 google.maps.event.addListener(autocompleteL7, 'place_changed', function () {              
                         var place = autocompleteL7.getPlace();
                         console.log(place.formatted_address);
@@ -112,7 +112,7 @@
                     CalculateTotalDistance();
                 });                
             
-            var autocompleteL8 = new google.maps.places.Autocomplete(L8Location);
+            var autocompleteL8 = new google.maps.places.Autocomplete(L8Location, mapOptions);
                 google.maps.event.addListener(autocompleteL8, 'place_changed', function () {              
                         var place = autocompleteL8.getPlace();
                         console.log(place.formatted_address);
@@ -120,7 +120,7 @@
                     CalculateTotalDistance();
                 });
             
-            var autocompleteTo = new google.maps.places.Autocomplete(ToLocation);
+            var autocompleteTo = new google.maps.places.Autocomplete(ToLocation, mapOptions);
                 google.maps.event.addListener(autocompleteTo, 'place_changed', function () {              
                         var place = autocompleteTo.getPlace();
                         console.log(place.formatted_address);

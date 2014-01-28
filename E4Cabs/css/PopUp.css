@@ -35,20 +35,20 @@
 }
 
 .popup_header {
-    height: 30px;
+    height: 35px;
     width: 100%;
     background-color: #2A81CF;
     border-bottom: 1px solid #FFF200;
-    text-align: center;
+    text-align: left;
     vertical-align: middle; 
     z-index: 1000;
     color:#FFF200;
     font-family:'Trebuchet MS';
-    font-size: 16px;
+    font-size: 20px;
 }
 
 .popup_content {
-    text-align: left;
+    text-align: justify;
     background-color: white;
     font-family:'Trebuchet MS';
     padding:3px 3px 3px 3px;
@@ -75,6 +75,7 @@
     color: #FFF200;
     border:#2A81CF;
     background-color: #2A81CF;
+    
 }
 
 #transparent_div {
