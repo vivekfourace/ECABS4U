@@ -14,11 +14,11 @@ function logout(){
 
 function onLogoutCallback(buttonIndex)
 {
-    if(buttonIndex == 1)
+    if(buttonIndex === 1)
     {
         return false;
     }
-    else if(buttonIndex == 2)
+    else if(buttonIndex === 2)
     {
         $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
             type:"POST",

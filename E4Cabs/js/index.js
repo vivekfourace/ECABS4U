@@ -2,8 +2,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
    navigator.splashscreen.hide();
-   console.log('device is ready');
    document.addEventListener("backbutton",confirmExit, false);
+    
     var devicename = device.name;
     var platform = device.platform
     var deviceuuid = device.uuid    
@@ -18,6 +18,7 @@ function onDeviceReady() {
            contentType: "application/json; charset=utf-8",
        });
     loginUsingCookie();
+    checkConnection();
 }
 
 function confirmExit()
@@ -31,11 +32,11 @@ function confirmExit()
 }
 function onCallback(buttonIndex)
 {
-    if(buttonIndex == 1)
+    if(buttonIndex === 1)
     {
         return false   
     }
-    else if(buttonIndex == 2)
+    else if(buttonIndex === 2)
     {
         navigator.app.exitApp();
     }
@@ -78,7 +79,7 @@ function login() {
     if (name.length > 0) {
         $('#lblMsg').text("");
     }
-    else if (name.length == 0) {
+    else if (name.length === 0) {
         $('#lblMsg').text("Please enter username.");
         $('#txtUserName').focus();
         return false;
@@ -86,39 +87,40 @@ function login() {
     if (password.length > 0) {
         $('#lblMsg').text("");
     }
-    else if (password.length == 0) {
+    else if (password.length === 0) {
         $('#lblMsg').text("Please enter password.");
         $('#txtPassword').focus();
         return false;
     }
-    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UserLogin";
-    $.ajax(url, {
-        cache: true,
-        beforeSend: function() 
-        {
-            $('#imgLoader').show();
-        },
-        type: "POST",
-        datatype: "json",
-        data: "{'username':'" + name + "','userpassword':'" + password + "'}",
-        contentType: "application/json; charset=utf-8",
-        success: CheckMsg,
-
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-        }
-    });
+    var isTrue = checkConnection();
+    if(isTrue)
+    {        
+        var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UserLogin";
+        $.ajax(url, {
+            beforeSend: function() 
+            {
+                $('#imgLoader').show();
+            },
+            type: "POST",
+            datatype: "json",
+            data: "{'username':'" + name + "','userpassword':'" + password + "'}",
+            contentType: "application/json; charset=utf-8",
+            success: CheckMsg,
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            }
+        });
+    }
 }
 
  function CheckMsg(data) {
       var isloggedin = data.d[4];
       var userID = data.d[1];
       var isChecked = $('#chkRem').prop('checked') ? true : false;
-      if (isloggedin == "True") {
+      if (isloggedin === "True") {
           window.location = 'SessionError.html?id=' + userID;
       }
       else {
-          if (data.d[0] == "true") {
+          if (data.d[0] === "true") {
               $('#imgLoader').show();
 
               var roleID = parseInt(data.d[2]);
@@ -129,7 +131,7 @@ function login() {
 
               //creating Cookie       
               
-              if (isChecked == true) {
+              if (isChecked === true) {
                   $.cookie('userName', name);
                   $.cookie('userPassword', password);
                   $.cookie('remember', true);

@@ -5,14 +5,15 @@ var relatedId = QString.split("=")[3].split("&")[0];
 
 var timereOut;
         function SubmitDeal() {
-            console.log('inSubmitjob');
             $("#divDealload").show();
             $('#transparent_div').show();
+            
              timereOut = window.setInterval(function () {
                 $("#divDealload").show();
                 $('#popup_box').hide();
                 $('#divDeal').hide();
                 var jobNo = $('#hdnJobno').val();
+                 
                 $.ajax({
                     url: "http://115.115.159.126/ECabs/ECabs4U.asmx/DealResponse",
                     type: "POST",
@@ -23,19 +24,20 @@ var timereOut;
                         var getResID = data.d[0];
                         var popUpDisplay = data.d[1];
                         var customerResponse = data.d[2];
-                        var driverStatus = data.d[3];
+                        var isJobAlive = data.d[3];
                         
- console.log("JobNO:"+getResID+"PopUpDisplay:"+popUpDisplay+"DriverStatus:"+driverStatus+"customerResponse:"+customerResponse);
+ console.log("JobNO:"+jobNo+"PopUpDisplay:"+popUpDisplay+"isJobAlive:"+isJobAlive+"customerResponse:"+customerResponse);
 
-                        if (popUpDisplay === "False" && driverStatus === "False") {
+                        if (popUpDisplay === "False") {
                             $.ajax({
                                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetDealData",
                                 type: "POST",
                                 dataType: "Json",
-                                data: "{'userID':'" + getResID + "','driverId':'" + relatedId + "'}",
+                                data: "{'JobNo':'" + getResID + "','driverId':'" + relatedId + "'}",
                                 contentType: "application/json; charset=utf-8",
                                 success: function (data) {
-                                    if (data.d[0] !== "Error") {
+                                    
+                                    if (data.d[0] !== "Error" && isJobAlive === "True") {
                                         $("#divDealload").hide();
                                         $('#popup_box').show();
                                         $('#divDeal').show();
@@ -50,7 +52,6 @@ var timereOut;
                                         $('#transparent_div').show();
                                     }
                                     else if (data.d[0] === "Error") {
-
                                         $('#popup_box').hide();
                                         $('#divDeal').hide();
                                         $("#divDealload").show();
@@ -61,60 +62,47 @@ var timereOut;
                             });
 
                         }
-                        else if (popUpDisplay === "False" && driverStatus === "True") {
-                            $('#divDealload').hide();
-                            $('#divDetails').hide();
-                            $('#btnbid').hide();
-                            $('#btnmap').hide();
-                            $('#btncancel').hide();
-                            $('#btnreject').hide();
-                            DestroyMe();
-                        }
-                        else if (data.d[0] === "True") {
-                            DestroyMe();
-                            $('#divDealload').hide();
-                            $('#divDetails').hide();
-                            $('#btnbid').hide();
-                            $('#btnmap').hide();
-                            $('#btncancel').hide();
-                            $('#btnreject').hide();
-                            alert('You have not been selected for this job.');
-
-                            $.ajax({
-                                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateDriverStatus",
+                        else
+                        {
+                            console.log(jobNo)
+                             $.ajax({
+                                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/JobStatus",
                                 type: "POST",
                                 dataType: "Json",
-                                data: "",
+                                data: "{'JobNo':'" + jobNo + "','driverId':'" + relatedId + "'}",
                                 contentType: "application/json; charset=utf-8",
-                                success: function (data) {},
-                                error: function (XMLHttpRequest, textStatus, errorThrown) {}
+                                success: function (data) {
+                                    console.log(data.d)
+                                    if(data.d === "False")
+                                    {
+                                        DestroyMe();
+                                        $('#divDealload').hide();
+                                        $('#button-table').hide();
+                                        alert('Sorry, you have not been selected for this job.');
+                                        $('#tbdetails').hide();
+                                        $('#button-table').hide();
+                                        $('#transparent_div').hide();
+                                        window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+                                    }
+                                },
                             });
-                            
-                            window.location = 'driverProfile.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
                         }
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
 
                         $('#divDeal').hide();
                         $('#divDealload').hide();
-                        $('#divDetails').hide();
-
                         deleteDriver();
                     }
                 });
             }, 10000);
 
             function DestroyMe() {
-
                 window.clearInterval(timereOut);
             }
         }
 
         function showBid() {
-            console.log('in showBid');
-            $("#other").hide();
-            $('#divDeal').hide();
-            $('#divComplete').hide();
             $('#popup_box').show();
             $('#transparent_div').show();
             $('#divBid').show();
@@ -132,15 +120,17 @@ var timereOut;
 
         function bidSubmit() {
             var isCabnow = $('#hiddenIsCabnow').val();
+            
             if (isCabnow === "True") {
                 var fare = $('#txtbidFare').val();
                 if (fare.length <= 0) {
                     alert('Please enter fare.');
                     return false;
                 }
+                
                 $("#divDealload").show();
-                $("#other").hide();
-                $("#fare").hide();
+                //$("#other").hide();
+                //$("#fare").hide();
                 $('#divBid').hide();
                 var job = $('#lbljobno').text();
                 var distance = $('#lblDistance').text();
@@ -200,15 +190,12 @@ var timereOut;
                         if (data.d === "true") {
                             alert('In progress. Awaiting customer response.');
                             window.location = 'driverProfile.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-
                         }
                         else if (data.d === "false") {
                             alert('Unknown error. Please try again.');
                         }
-
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
-
                     }
                 });
                 $('#popup_box').hide();
@@ -263,11 +250,7 @@ var timereOut;
                     data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
                     contentType: "application/json; charset=utf-8",
                     success: function () {
-                        $('#divDetails').hide();
-                        $('#btnbid').hide();
-                        $('#btnmap').hide();
-                        $('#btncancel').hide();
-                        $('#btnreject').hide();
+                        $('#button-table').hide();                        
                         alert('Congratulations. We recommend you contact the customer by phone to confirm pickup location.');
                         window.location = 'driverHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
                     },
@@ -289,21 +272,6 @@ var timereOut;
                 }
             });
         }
-        function UpdateStatus() {
-            $.ajax({
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateDriverStatus",
-                type: "POST",
-                dataType: "Json",
-                data: "",
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
-                    alert(data.d);
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-                }
-            });
-        }
 
         function Confirmcomission() {
             var reqID = $('#lblconfirmjob').text();
@@ -318,7 +286,7 @@ var timereOut;
                 success: function (data) {},
                 error: function (XMLHttpRequest, textStatus, errorThrown) {}
             });
-            window.location.href = "https://sandbox.gocardless.com/pay/YH0MFHY7"; //for commission 1.2pond
+            window.location.href = "https://dashboard-sandbox.gocardless.com/api/template_plans/0HSKYST0BP/paylink"; //for commission 1.2pond
 
             $('#divDeal').hide();
             $('#popup_box').hide();
@@ -337,7 +305,7 @@ var timereOut;
                 success: function (data) {},
                 error: function (XMLHttpRequest, textStatus, errorThrown) {}
             });
-            window.location.href = "https://sandbox.gocardless.com/pay/GAP5Y6VH"; //for commission 2.4pond
+            window.location.href = "https://dashboard-sandbox.gocardless.com/api/template_plans/0HSKG9HPET/paylink"; //for commission 2.4pond
             $('#divDeal').hide();
             $('#popup_box').hide();
         }
@@ -376,13 +344,13 @@ var timereOut;
         function btnAbort() {
             $('#popup_box').show();
             $('#divabort').show();
-            $('#divComplete').hide();
+            //$('#divComplete').hide();
         }
         
         function abortcancel() {
             $('#popup_box').hide();
             $('#divabort').hide();
-            $('#divComplete').show();
+            //$('#divComplete').show();
         }
 
 function reqReject() {            

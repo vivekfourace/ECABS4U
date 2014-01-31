@@ -38,7 +38,7 @@
                     $('#hdnJobno').val(getID);
                     var getValue = data.d[1];
                     
-                    if (getValue == "False") {
+                    if (getValue === "False") {
                         $.ajax({
                             url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetData",
                             type: "POST",
@@ -46,13 +46,10 @@
                             data: "{'userID':'" + getID + "', 'driverID':'" + relatedId + "'}",
                             contentType: "application/json; charset=utf-8",
                             success: function (data) {
-                                if (data.d[0] != null) {
-                                    $('#divDetails').show();
-                                    $('#btnbid').show();
-                                    $('#btnmap').show();
-                                    $('#btncancel').show();
-                                    $('#btnreject').show();
-                                    
+                                if (data.d[0] !== null) {
+                                    $('#tbdetails').show();
+                                    $('#button-table').show();
+                                                                        
                                     $('#lbljobno').text(data.d[0]);
                                     $('#lblFromLoc').text(": "+data.d[1]);                                    
                                     $('#lblToLoc').text(": "+data.d[2]);
@@ -66,7 +63,7 @@
                                     $('#lblchildseat').text(": "+data.d[12]);
                                     $('#lblchildbooster').text(": "+data.d[13]);
                                     
-                                    if(data.d[3] != null)
+                                    if(data.d[3] !== null)
                                     {
                                         $('#loc1').show();
                                         $('#lblLoc1').text(": "+data.d[3]);
@@ -75,7 +72,7 @@
                                     {
                                         $('#lblLoc7').text(null);
                                     }
-                                     if(data.d[4] != null)
+                                     if(data.d[4] !== null)
                                     {
                                         $('#loc2').show();
                                         $('#lblLoc2').text(": "+data.d[4]);
@@ -84,7 +81,7 @@
                                     {
                                         $('#lblLoc7').text(null);
                                     }
-                                     if(data.d[21] != null)
+                                     if(data.d[21] !== null)
                                     {
                                         $('#loc3').show();
                                         $('#lblLoc3').text(": "+data.d[21]);
@@ -93,7 +90,7 @@
                                     {
                                         $('#lblLoc7').text(null);
                                     }
-                                     if(data.d[22] != null)
+                                     if(data.d[22] !== null)
                                     {
                                         $('#loc4').show();
                                         $('#lblLoc4').text(": "+data.d[22]);
@@ -102,7 +99,7 @@
                                     {
                                         $('#lblLoc7').text(null);
                                     }
-                                     if(data.d[23] != null)
+                                     if(data.d[23] !== null)
                                     {
                                         $('#loc5').show();
                                         $('#lblLoc5').text(": "+data.d[23]);
@@ -111,7 +108,7 @@
                                     {
                                         $('#lblLoc7').text(null);
                                     }
-                                     if(data.d[24] != null)
+                                     if(data.d[24] !== null)
                                     {
                                         $('#loc6').show();
                                         $('#lblLoc6').text(": "+data.d[24]);
@@ -120,7 +117,7 @@
                                     {
                                         $('#lblLoc7').text(null);
                                     }
-                                     if(data.d[25] != null)
+                                     if(data.d[25] !== null)
                                     {
                                         $('#loc7').show();
                                         $('#lblLoc7').text(": "+data.d[25]);
@@ -130,11 +127,11 @@
                                         $('#lblLoc7').text(null);
                                     }
                                     
-                                    if(data.d[14] == "True")
+                                    if(data.d[14] === "True")
                                     {
                                         console.log('ha');
                                         $('#lblisReturnJourney').text(": "+"Yes");
-                                        if(data.d[15] != null)
+                                        if(data.d[15] !== null)
                                             {
                                                 $('#returnTo').show();
                                                 $('#lblreturnTo').text(": "+data.d[15]);
@@ -143,7 +140,7 @@
                                             {
                                                 $('#returnTo').hide();
                                             }
-                                            if(data.d[16] != null)
+                                            if(data.d[16] !== null)
                                             {
                                                 $('#returnFrom').show();
                                                 $('#lblreturnFrom').text(": "+data.d[16]);
@@ -152,7 +149,7 @@
                                             {
                                                 $('#returnFrom').hide();
                                             }
-                                            if(data.d[17] != null)
+                                            if(data.d[17] !== null)
                                             {
                                                 $('#returnDate').show();
                                                 $('#lblreturnDate').text(": "+data.d[17]);    
@@ -161,7 +158,7 @@
                                             {
                                                 $('#returnDate').hide();
                                             }
-                                            if(data.d[18] != null)
+                                            if(data.d[18] !== null)
                                             {
                                                 $('#returnTime').show();                                                
                                                 $('#lblreturnTime').text(": "+data.d[18]);
@@ -171,12 +168,12 @@
                                                 $('#returnTime').hide();                                                
                                             }
                                     }
-                                    else if(data.d[14] == "False")
+                                    else if(data.d[14] === "False")
                                     {
                                         $('#lblisReturnJourney').text(": "+"No");
                                     }
                                     
-                                    if(data.d[19] != null)
+                                    if(data.d[19] !== null)
                                     {
                                         $('#trSpecialtxt').show();
                                         $('#trOtherspec').show();
@@ -190,11 +187,11 @@
                                     
                                     $('#hiddenIsCabnow').val(data.d[20]);
 
-                                    if (data.d[3] != null) {
+                                    if (data.d[3] !== null) {
                                         var sec = data.d[3];
                                         $('#lblpopthird').text(sec);
                                         $('#otherLoc').show();
-                                        if (data.d[4] != null) {
+                                        if (data.d[4] !== null) {
                                             var third = data.d[4];
                                             $('#lblpopfour').text(third);
                                             $('#otherLoc').show();
@@ -205,35 +202,23 @@
                                     }
                                 }
                                 else {
-                                    $('#divDetails').hide();
+                                    $('#tbdetails').hide();
                                 }
                             },
                             error: function (XMLHttpRequest, textStatus, errorThrown) {
-                                $('#divDetails').hide();
-
+                                $('#tbdetails').hide();
                             }
                         });
                     }
-                    else if (data.d[0] == "Error") {
-                        $('#btnRow').hide();
+                    else if (data.d[0] === "Error") {
                         $('#tbdetails').hide();
-                        $('#divDetails').hide();
-                        $('#divComplete').hide();
-                        $('#btnbid').hide();
-                        $('#btnmap').hide();
-                        $('#btncancel').hide();
-                        $('#btnreject').hide();
                         alert("You have no any job request.");
                         window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    $('#divDetails').hide();
                     $('#tbdetails').hide();
                 }
-            });
-            $('#popupBoxClose').click(function () {
-                $('#popup_box').hide();
             });
         });       
   
@@ -267,7 +252,242 @@
          <img src="jquery-mobile/styles/images/ajax-loader-hor.gif" style="width:80%;height:12px" /><br/>
          <input type="button" value="Cancel" onclick="reqReject()"/>
      </div>
-        <div style="width:100%;height:75%;padding-top:25%;display:none;" id="divDetails">
+        
+     <div id="tbdetails" style="width:100%;padding-top:25%;display:none;">
+    <table style="border-collapse:collapse;width:100%;">
+                <tr>
+                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <label><b style="font-size:13px;color:blue">Job number</b></label>
+                    </td>
+                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">                        
+                            <b style="font-size:13px;;color:blue">
+                                <label id="lbljobno"></label>
+                            </b>                      
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <label><b style="font-size:13px;">From</b></label>
+                    </td>
+                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px;"> <label id="lblFromLoc"></label></b>
+                    </td>
+                </tr>
+                <tr id="loc1" style="display:none">
+                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px;"><label> Location 1st</label></b>
+                    </td>
+                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px"> <label id="lblLoc1"></label></b>
+                    </td>
+                </tr>
+                <tr id="loc2" style="display:none">
+                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px;"><label> Location 2th</label></b>
+
+                    </td>
+                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px"> <label id="lblLoc2"></label></b>
+                    </td>
+                </tr>
+                <tr id="loc3" style="display:none">
+                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px;"><label> Location 3th</label></b>
+
+                    </td>
+                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px"> <label id="lblLoc3"></label></b>
+                    </td>
+                </tr>
+                <tr id="loc4" style="display:none">
+                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px;"><label> Location 4th</label></b>
+
+                    </td>
+                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px"> <label id="lblLoc4"></label></b>
+                    </td>
+                </tr>
+                <tr id="loc5" style="display:none">
+                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px;"><label> Location 5th</label></b>
+
+                    </td>
+                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px"> <label id="lblLoc5"></label></b>
+                    </td>
+                </tr>
+                <tr id="loc6" style="display:none">
+                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px;"><label> Location 6th</label></b>
+
+                    </td>
+                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px"> <label id="lblLoc6"></label></b>
+                    </td>
+                </tr>
+                <tr id="loc7" style="display:none">
+                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px;"><label> Location 7th</label></b>
+
+                    </td>
+                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px"> <label id="lblLoc7"></label></b>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px;"><label>To </label></b>
+
+                    </td>
+                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px"> <label id="lblToLoc"></label></b>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px;"><label>Distance</label></b>
+
+                    </td>
+                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px;">  <label id="lblDistance"></label></b>
+                    </td>
+                <tr>
+                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px;"><label>Pick up date</label></b>
+
+                    </td>
+                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px; "><label id="lblpickDateDriver"></label></b>
+                    </td>
+                <tr>
+                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px;"><label>Pick up time</label></b>
+                    </td>
+                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px;"><label id="lblpickTime"></label></b>
+                    </td>
+
+                <tr>
+                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px;"><label>Total passenger</label></b>
+
+                    </td>
+                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px;"><label id="lblpassengercount"></label></b>
+                    </td>
+                <tr>
+                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px;"><label>Large case</label></b>
+                    </td>
+                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px;"> <label id="lbllargecase"></label> </b>
+
+                    </td>
+
+                <tr>
+                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px"><label>Small case</label></b>
+
+                    </td>
+                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px"><label id="lblsmallcase"></label></b>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px;"><label>Return journey</label></b>
+                    </td>
+                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px"><label id="lblisReturnJourney"></label> </b>
+                    </td>
+                </tr>
+               
+                <tr>
+                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px"><label>Wheelchair passengers </label></b>
+                    </td>
+                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <label> <b style="font-size:13px"><label id="lblwheelchair"></label></b></label>
+                    </td>
+                </tr>              
+                <tr>
+                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px"><label>Child seats</label></b>
+                    </td>
+                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px"><label id="lblchildseat"></label></b>
+                    </td>
+                </tr>
+               
+                <tr>
+                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px"><label>Child booster </label></b>
+                    </td>
+                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px">
+                            <label id="lblchildbooster"></label>
+                        </b>
+                    </td>
+                </tr>
+               
+                <tr id="returnFrom" style="display:none;">
+                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px"><label>Return from</label></b>
+                    </td>
+                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px">
+                            <label id="lblreturnFrom"></label>
+                        </b>
+                    </td>
+                </tr>
+              
+                <tr id="returnTo" style="display:none;">
+                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px"><label>Return to</label></b>
+                    </td>
+                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px">
+                            <label id="lblreturnTo"></label>
+                        </b>
+                    </td>
+                </tr>
+              
+                <tr id="returnDate" style="display:none;">
+                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px"><label>Return date</label></b>
+                    </td>
+                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px">
+                            <label id="lblreturnDate"></label>
+                        </b>
+                    </td>
+                </tr>
+               
+                <tr id="returnTime" style="display:none;">
+                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px"><label>Return time</label></b>
+                    </td>
+                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
+                        <b style="font-size:13px">
+                            <label id="lblreturnTime"></label>
+                        </b>
+                    </td>
+                </tr>
+
+                <tr id="trOtherspec" style="display:none;">
+                    <td style="width:100%;border-bottom:1px solid #848484;padding-bottom:4px" colspan="2">
+                        <b style="font-size:13px"><label>Other special requirements :</label></b>
+                    </td>
+                </tr>
+                <tr id="trSpecialtxt" style="display:none;">
+                    <td style="width:100%;border-bottom:1px solid #848484;padding-bottom:4px;color:blue" colspan="2">
+                        <label id="otherReq"></label>
+                    </td>
+                </tr>
+         </table>
+  </div>
+
             <div id="popup_box">
                 <div id="divBid" style="display:none;">
                     <table style="width:100%;background-color:#FFFFFF; border-collapse:collapse;">
@@ -281,7 +501,7 @@
                                 <b style="font-size:11px;">Job number</b>
                             </td>
                             <td style="width:70%">
-                                <b><label id="lblbidjob" style="font-size:11px;"/></b>
+                                <b><label id="lblbidjob" style="font-size:11px;"></label></b>
                             </td>
                         </tr>
 
@@ -290,7 +510,7 @@
                                 <b style="font-size:11px; ">From</b>
                             </td>
                             <td style="width:70%">
-                                <b>  <label id="lblbidfrom" style="font-size:11px;"/></b>
+                                <b>  <label id="lblbidfrom" style="font-size:11px;"></label></b>
                             </td>
                         </tr>
 
@@ -299,7 +519,7 @@
                                 <b style="font-size:11px;">To</b>
                             </td>
                             <td style="width:70%">
-                                <b> <label id="lblbidto" style="font-size:11px;" /></b>
+                                <b> <label id="lblbidto" style="font-size:11px;"></label></b>
                             </td>
                         </tr>
 
@@ -308,7 +528,7 @@
                                 <b style="font-size:11px; ">Distance</b>
                             </td>
                             <td style="width:70%">
-                                <b> <label id="lblbiddistance" style="font-size:11px;" /></b>
+                                <b> <label id="lblbiddistance" style="font-size:11px;"></label></b>
                             </td>
                         </tr>
 
@@ -360,7 +580,7 @@
                                 <b style="font-size:11px;">Job number</b>
                             </td>
                             <td style="width:70%">
-                                <b> <label id="lbldealjob" style="font-size:11px;" /></b>
+                                <b> <label id="lbldealjob" style="font-size:11px;"></label></b>
                             </td>
                         </tr>
 
@@ -369,7 +589,7 @@
                                 <b style="font-size:11px;">From</b>
                             </td>
                             <td style="width:70%">
-                                <b>  <label id="lbldealfrom" style="font-size:11px;" /></b>
+                                <b>  <label id="lbldealfrom" style="font-size:11px;"></label></b>
                             </td>
                         </tr>
 
@@ -378,7 +598,7 @@
                                 <b style="font-size:11px;">To</b>
                             </td>
                             <td style="width:70%">
-                                <b> <label id="lbldealto" style="font-size:11px;" /></b>
+                                <b> <label id="lbldealto" style="font-size:11px;"></label></b>
                             </td>
                         </tr>
 
@@ -387,7 +607,7 @@
                                 <b style="font-size:11px;">Pick date</b>
                             </td>
                             <td style="width:70%">
-                                <b> <label id="lbldealdate" style="font-size:11px;" /></b>
+                                <b> <label id="lbldealdate" style="font-size:11px;"></label></b>
                             </td>
                         </tr>
 
@@ -396,7 +616,7 @@
                                 <b style="font-size:11px;">Pick time</b>
                             </td>
                             <td style="width:70%">
-                                <b> <label id="lbldealtime" style="font-size:11px;" /></b>
+                                <b> <label id="lbldealtime" style="font-size:11px;"></label></b>
                             </td>
                         </tr>
 
@@ -405,7 +625,7 @@
                                 <b style="font-size:11px;">Distance</b>
                             </td>
                             <td style="width:70%">
-                                <b> <label id="lbldealdistance" style="font-size:11px;" /></b>
+                                <b> <label id="lbldealdistance" style="font-size:11px;"></label></b>
                             </td>
                         </tr>
 
@@ -414,7 +634,7 @@
                                 <b style="font-size:11px;">Fare in (&pound;)</b>
                             </td>
                             <td style="width:70%">
-                                <b><label id="lbldealfare" style="font-size:11px;" /></b>
+                                <b><label id="lbldealfare" style="font-size:11px;"></label></b>
                             </td>
                         </tr>
 
@@ -444,7 +664,7 @@
                                 <b style="font-size:11px;">Job number</b>
                             </td>
                             <td style="width:70%">
-                                <b> <label id="lblconfirmjob" style="font-size:11px;" /></b>
+                                <b> <label id="lblconfirmjob" style="font-size:11px;"></label></b>
                             </td>
                         </tr>
                         <tr class="popup_content">
@@ -454,7 +674,7 @@
                             <td style="width:70%">
                                 <b>
                                     <img src="img/euro.png" width="10" height="10"/>
-                                    <label id="lblconfirmfare" style="font-size:11px; " />
+                                    <label id="lblconfirmfare" style="font-size:11px; "></label>
                                 </b>
                             </td>
                         </tr>
@@ -489,7 +709,7 @@
                                 <b style="font-size:11px;">Job number</b>
                             </td>
                             <td style="width:70%">
-                                <b> <label id="lblconfirmjob2" style="font-size:11px;" /></b>
+                                <b> <label id="lblconfirmjob2" style="font-size:11px;"></label></b>
                             </td>
                         </tr>
                         <tr class="popup_content">
@@ -497,7 +717,8 @@
                                 <b style="font-size:11px;">Fare</b>
                             </td>
                             <td style="width:70%">
-                                <b><img src="img/euro.png" width="10" height="10"/><label id="lblconfirmfare2" style="font-size:11px;"/></b>
+                                <b><img src="img/euro.png" width="10" height="10"/>
+                                  <label id="lblconfirmfare2" style="font-size:11px;"></label></b>
                             </td>
                         </tr>
                         <tr class="popup_footer">
@@ -535,257 +756,23 @@
                     </table>
                 </div>
             </div>    
-        </div>
-  <div id="tbdetails" style="padding-bottom:30%">
-    <table style="border-collapse:collapse;padding-bottom:50px;width:100%">
-                <tr>
-                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:13px;color:blue">Job Number</b></label>
-                    </td>
-                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">                        
-                            <b style="font-size:13px;;color:blue">
-                                <label id="lbljobno"></label>
-                            </b>                      
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:13px;">From</b></label>
-                    </td>
-                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:13px;"> <label id="lblFromLoc" /></b>
-                    </td>
-                </tr>
-                <tr id="loc1" style="display:none">
-                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:13px;"> Location 1st</b></label>
-
-                    </td>
-                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:13px"> <label id="lblLoc1"></label></b>
-                    </td>
-                </tr>
-                <tr id="loc2" style="display:none">
-                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:13px;"> Location 2th</b></label>
-
-                    </td>
-                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:13px"> <label id="lblLoc2"></label></b>
-                    </td>
-                </tr>
-                <tr id="loc3" style="display:none">
-                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:13px;"> Location 3th</b></label>
-
-                    </td>
-                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:13px"> <label id="lblLoc3"></label></b>
-                    </td>
-                </tr>
-                <tr id="loc4" style="display:none">
-                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:13px;"> Location 4th</b></label>
-
-                    </td>
-                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:13px"> <label id="lblLoc4"></label></b>
-                    </td>
-                </tr>
-                <tr id="loc5" style="display:none">
-                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:13px;"> Location 5th</b></label>
-
-                    </td>
-                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:13px"> <label id="lblLoc5"></label></b>
-                    </td>
-                </tr>
-                <tr id="loc6" style="display:none">
-                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:13px;"> Location 6th</b></label>
-
-                    </td>
-                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:13px"> <label id="lblLoc6"></label></b>
-                    </td>
-                </tr>
-                <tr id="loc7" style="display:none">
-                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:13px;"> Location 7th</b></label>
-
-                    </td>
-                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:13px"> <label id="lblLoc7"></label></b>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:13px;">To </b></label>
-
-                    </td>
-                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:13px"> <label id="lblToLoc"></label></b>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:13px;">Distance</b></label>
-
-                    </td>
-                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:13px;">  <label id="lblDistance"></label></b>
-                    </td>
-                <tr>
-                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:13px;">Pick up date</b></label>
-
-                    </td>
-                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:13px; "><label id="lblpickDateDriver"></label></b>
-                    </td>
-                <tr>
-                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:13px;">Pick up time</b></label>
-                    </td>
-                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:13px;"><label id="lblpickTime"></label></b>
-                    </td>
-
-                <tr>
-                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:13px;">Total passenger</b></label>
-
-                    </td>
-                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:13px;"><label id="lblpassengercount"></label></b>
-                    </td>
-                <tr>
-                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:13px;">Large case</b></label>
-                    </td>
-                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:13px;"> <label id="lbllargecase"></label> </b>
-
-                    </td>
-
-                <tr>
-                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:13px">Small case</b></label>
-
-                    </td>
-                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:13px"><label id="lblsmallcase"></label></b>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:13px;">Return journey</b></label>
-                    </td>
-                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:13px"><label id="lblisReturnJourney"></label> </b>
-                    </td>
-                </tr>
-               
-                <tr>
-                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:13px">Wheelchair passengers </b></label>
-                    </td>
-                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label> <b style="font-size:13px"><label id="lblwheelchair"></label></b></label>
-                    </td>
-                </tr>              
-                <tr>
-                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:13px">Child seats</b></label>
-                    </td>
-                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:13px"><label id="lblchildseat"></label>  </b>
-                    </td>
-                </tr>
-               
-                <tr>
-                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:13px">Child booster </b></label>
-                    </td>
-                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:13px">
-                            <label id="lblchildbooster"></label>
-                        </b>
-                    </td>
-                </tr>
-               
-                <tr id="returnFrom" style="display:none;">
-                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:13px">Return from</b></label>
-                    </td>
-                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:13px">
-                            <label id="lblreturnFrom"></label>
-                        </b>
-                    </td>
-                </tr>
-              
-                <tr id="returnTo" style="display:none;">
-                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label class="font-style"><b style="font-size:13px">Return to</b></label>
-                    </td>
-                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:13px">
-                            <label id="lblreturnTo"></label>
-                        </b>
-                    </td>
-                </tr>
-              
-                <tr id="returnDate" style="display:none;">
-                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:13px">Return date </b></label>
-                    </td>
-                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:13px">
-                            <label id="lblreturnDate"></label>
-                        </b>
-                    </td>
-                </tr>
-               
-                <tr id="returnTime" style="display:none;">
-                    <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <label><b style="font-size:13px">Return time </b></label>
-                    </td>
-                    <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
-                        <b style="font-size:13px">
-                            <label id="lblreturnTime"></label>
-                        </b>
-                    </td>
-                </tr>
-
-                <tr id="trOtherspec" style="display:none;">
-                    <td style="width:100%;border-bottom:1px solid #848484;padding-bottom:4px" colspan="2">
-                        <label><b style="font-size:13px">Other special requirements :</b></label>
-                    </td>
-                </tr>
-                <tr id="trSpecialtxt" style="display:none;">
-                    <td style="width:100%;border-bottom:1px solid #848484;padding-bottom:4px;color:blue" colspan="2">
-                        <label id="otherReq"></label>
-                    </td>
-                </tr>
-         </table>
-  </div>
-      <table style="width: 100%; position: fixed; bottom: 0px;padding-bottom: 15%;background-color:white">
+     
+   
+      <table style="width: 100%; position: fixed; bottom: 0px;padding-bottom: 15%;background-color:white;display:none" id="button-table">
         <tr>
             <td style="width:25%">
-                <input type="button" id="btnbid" class="specialBtn" onclick="showBid()" style="width: 100%; display: none" value="Bid" />
+                <input type="button" id="btnbid" class="specialBtn" onclick="showBid()" style="width: 100%;" value="Bid" />
             </td>
             <td style="width:25%">
-                <input type="button" id="btnmap" class="specialBtn" onclick="showMap()" style="width: 100%; display: none" value="Map" />
+                <input type="button" id="btnmap" class="specialBtn" onclick="showMap()" style="width: 100%;" value="Map" />
             </td>
             <td style="width:25%">
-                <input type="button" id="btnreject" class="specialBtn" onclick="reqReject()" style="width: 100%; display: none" value="Reject" />
+                <input type="button" id="btnreject" class="specialBtn" onclick="reqReject()" style="width: 100%;" value="Reject" />
             </td>
         </tr>
     </table>
 
-        <div class="btn-tmpFooter">                
+      <div class="btn-tmpFooter">                
                <table style="width:100%;border-collapse:collapse" >
                     <tr>
                         <td style="width:17%">
