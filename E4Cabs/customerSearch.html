@@ -119,6 +119,7 @@
                 google.maps.event.addListener(autocompleteTo, 'place_changed', function () {              
                         var place = autocompleteTo.getPlace();
                     $('#locto').val(place.formatted_address);
+                    GetPostCodeTo(place.formatted_address);
                     CalculateTotalDistance();
                 });
         
@@ -408,6 +409,7 @@
         <input type="hidden" id="locseven"/>
         <input type="hidden" id="locto"/>
         <input type="hidden" id="locfrom_postcode"/>
+        <input type="hidden" id="locto_postcode"/>
         
         <div id="transparent_div" style="display: none"></div>
         <div id="imgLoader">

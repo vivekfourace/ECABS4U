@@ -6,7 +6,7 @@ var requestID = QString.split("=")[4];
 
 console.log(requestID);
 
-if(requestID != undefined)
+if(requestID !== undefined)
 {
     requestID = QString.split("=")[4].split("&")[0];
     
@@ -56,7 +56,7 @@ $(document).ready(function ()
                 var latLng = pos;
                 geocoder.geocode({ 'latLng': latLng }, function (results, status) 
                     {
-                    if (status == google.maps.GeocoderStatus.OK) {
+                    if (status === google.maps.GeocoderStatus.OK) {
                         if (results[1]) {
                             //alert(results[1].formatted_address);
                             $('#txtCurrentFrom').val(results[0].formatted_address);
@@ -93,10 +93,10 @@ function Duration()
         console.log('duration called');
         var fromloc;
         var isChecked = $('#chkFromLocation').attr('checked') ? true : false;
-        if (isChecked == false) {
+        if (isChecked === false) {
             fromloc = document.getElementById('txtFrom').value;
         }
-        else if (isChecked == true) {
+        else if (isChecked === true) {
             fromloc = document.getElementById('txtCurrentFrom').value;
         }
         var toloc = document.getElementById('txtTo').value;
@@ -126,30 +126,20 @@ function CalculateDuration(fromLocation, toLocation)
                 travelMode: google.maps.DirectionsTravelMode.DRIVING
             };
             directionsService.route(request, function (response, status) {
-                if (status == google.maps.DirectionsStatus.OK) {
+                if (status === google.maps.DirectionsStatus.OK) {
                    directionsDisplay.setDirections(response);
                 }
             });
         }
 
         function computeTotalDistance(result) {
-            var total = 0;
             var time = 0;
-            var from = 0;
-            var to = 0;
             var myroute = result.routes[0];
             for (var i = 0; i < myroute.legs.length; i++) {
-                total += myroute.legs[i].distance.value;
-                time += myroute.legs[i].duration.text;
-                from = myroute.legs[i].start_address;
-                to = myroute.legs[i].end_address;
+                time += myroute.legs[i].duration.value;
             }
-            time = time.replace('hours', 'H');
-            time = time.replace('mins', 'M');
-            time = time.replace('saat', 'Saat');
-            time = time.replace('dakika', 'dk');
-            total = total / 1000; //distance in KM
-            return time;
+            total = parseInt(time / 60); //time in minutes
+            return total;            
         }
 }
 
@@ -169,11 +159,10 @@ function availabledriver() {
     var fromloc;
     var toloc = document.getElementById('txtTo').value;
     var isChecked = $('#chkFromLocation').attr('checked') ? true : false;
-    if (isChecked == false) {
-        fromloc = document.getElementById('txtFrom').value;
-      
+    if (isChecked === false) {
+        fromloc = document.getElementById('txtFrom').value;      
     }
-    else if (isChecked == true) {
+    else if (isChecked === true) {
         fromloc = document.getElementById('txtCurrentFrom').value;
     }
         
@@ -228,6 +217,7 @@ function availabledriver() {
     var isCabNow = $('#RBcabNOW').attr('checked') ? true : false;
     
     var travelTime = $('#TravelTime').val();
+    
     if (!fromloc) {
         $('#lblMessage').text("Please enter From location.");
         return false;
@@ -241,6 +231,7 @@ function availabledriver() {
     var isRetJourAllOperator = $('#chkyes').attr('checked') ? true : false;    
     
     var laterpostcode = $('#locfrom_postcode').val();
+    var latertopostcode = $('#locto_postcode').val();
     console.log(laterpostcode);
     
     if (isCheckedNo == true) {
@@ -264,7 +255,7 @@ function availabledriver() {
                  },
                 type: "POST",
                 dataType: "Json",
-                data: "{'userID':'" + relatedId + "','frompost':'" + toL + "','topost':'" + fromL + "','pickDate':'" + pickD + "','pickTime':'" + pickT + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnFL + "','returntoloc':'" + returnTL + "','returnDate':'" + retunD + "','returnTime':'" + retunT + "','travelTime':'" + travelTime + "','isCabNow':'" + isCabNow + "','fourthLoc':'" + fourthLoc + "','fifthLoc':'" + fifthLoc + "','sixthLoc':'" + sixthLoc + "','seventhLoc':'" + seventhLoc + "','eightLoc':'" + eightLoc + "', 'laterpostcode':'"+laterpostcode+"', 'isCreditCard':'"+isCreditCard+"'}",
+                data: "{'userID':'" + relatedId + "','frompost':'" + toL + "','topost':'" + fromL + "','pickDate':'" + pickD + "','pickTime':'" + pickT + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnFL + "','returntoloc':'" + returnTL + "','returnDate':'" + retunD + "','returnTime':'" + retunT + "','travelTime':'" + travelTime + "','isCabNow':'" + isCabNow + "','fourthLoc':'" + fourthLoc + "','fifthLoc':'" + fifthLoc + "','sixthLoc':'" + sixthLoc + "','seventhLoc':'" + seventhLoc + "','eightLoc':'" + eightLoc + "', 'laterpostcode':'"+laterpostcode+"', 'isCreditCard':'"+isCreditCard+"', 'latertopostcode':'"+latertopostcode+"'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
                     if(data.d[0] != "Error")
@@ -306,7 +297,7 @@ function availabledriver() {
                  },
                 type: "POST",
                 dataType: "Json",
-                data: "{'userID':'" + relatedId + "','frompost':'" + fromloc + "','topost':'" + toloc + "','pickDate':'" + pickdate + "','pickTime':'" + picktime + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnfromloc + "','returntoloc':'" + returntoloc + "','returnDate':'" + returnDate + "','returnTime':'" + returnTime + "','travelTime':'" + travelTime + "','isCabNow':'" + isCabNow + "','fourthLoc':'" + fourthLoc + "','fifthLoc':'" + fifthLoc + "','sixthLoc':'" + sixthLoc + "','seventhLoc':'" + seventhLoc + "','eightLoc':'" + eightLoc + "', 'laterpostcode':'"+laterpostcode+"', 'isCreditCard':'"+isCreditCard+"'}",
+                data: "{'userID':'" + relatedId + "','frompost':'" + fromloc + "','topost':'" + toloc + "','pickDate':'" + pickdate + "','pickTime':'" + picktime + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnfromloc + "','returntoloc':'" + returntoloc + "','returnDate':'" + returnDate + "','returnTime':'" + returnTime + "','travelTime':'" + travelTime + "','isCabNow':'" + isCabNow + "','fourthLoc':'" + fourthLoc + "','fifthLoc':'" + fifthLoc + "','sixthLoc':'" + sixthLoc + "','seventhLoc':'" + seventhLoc + "','eightLoc':'" + eightLoc + "', 'laterpostcode':'"+laterpostcode+"', 'isCreditCard':'"+isCreditCard+"', 'latertopostcode':'"+latertopostcode+"'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
                     if(data.d[0] != "Error")
