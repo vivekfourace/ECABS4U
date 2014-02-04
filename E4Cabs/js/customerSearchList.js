@@ -367,7 +367,7 @@ function getData(data) {
 
 function showRatingBox(driverId,jobNo)
 {
-    alert(driverId+" "+jobNo);
+    //alert(driverId+" "+jobNo);
 }
 
 function ShowLargeImage(imgUrl)
