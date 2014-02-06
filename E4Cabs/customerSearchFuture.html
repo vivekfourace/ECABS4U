@@ -125,6 +125,7 @@
                         var place = autocompleteTo.getPlace();
                         console.log(place.formatted_address);
                     $('#locto').val(place.formatted_address);
+                    GetPostCodeTo(place.formatted_address);
                     CalculateTotalDistance();
                 });
             
@@ -448,7 +449,8 @@ $(document).ready(function () {
                    <input type="hidden" id="locsix"/>
                    <input type="hidden" id="locseven"/>
                    <input type="hidden" id="locto"/>
-                   <input type="hidden" id="locfrom_postcode"/>                   
+                   <input type="hidden" id="locfrom_postcode"/>    
+                   <input type="hidden" id="locto_postcode "/>
                    
                  <tr>
                        <td style="padding-top:15px">
@@ -563,7 +565,7 @@ $(document).ready(function () {
              <tr>
                 <td>
                     <label for="txtTo" class="font-style"><b style="font-size:12px">Final Destination</b></label> 
-                    <input type="text" id="txtTo" class="font-style" style="width:85%;float:left;" onblur=" Duration();" onchange="Duration();"/>
+                    <input type="text" id="txtTo" class="font-style" style="width:85%;float:left;"/>
                     <img src="img/Addlocation.png" id="secoundLoc" width="25" height="25" style="float:right;cursor:pointer" onclick="secoundLocation()"/>
                 </td>
              </tr>
@@ -815,7 +817,7 @@ $(document).ready(function () {
                </tr>
            </table>
            <div style="padding-bottom:40px;">
-                    <input type="button" style="width:80%" value="Search" class="btn-tmp" onclick="availabledriverLater();" />
+                    <input type="button" style="width:80%" value="Search" class="btn-tmp" onclick="Duration();" />
            </div>          
        </div>
        

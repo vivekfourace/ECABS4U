@@ -58,12 +58,11 @@ $(document).ready(function ()
                     {
                     if (status === google.maps.GeocoderStatus.OK) {
                         if (results[1]) {
-                            //alert(results[1].formatted_address);
                             $('#txtCurrentFrom').val(results[0].formatted_address);
                         }
                     }
                     else {
-                        alert("No location found!!")
+                        alert("No location found.")
                     }
                 });
             });
@@ -100,7 +99,12 @@ function Duration()
             fromloc = document.getElementById('txtCurrentFrom').value;
         }
         var toloc = document.getElementById('txtTo').value;
+        console.log(fromloc+toloc);
         CalculateDuration(fromloc, toloc);
+    
+        //availabledriver();
+    
+        window.setTimeout(availabledriver, 500);
 }
 
 function CalculateDuration(fromLocation, toLocation)
@@ -115,7 +119,7 @@ function CalculateDuration(fromLocation, toLocation)
                var time =   computeTotalDistance(directionsDisplay.directions);
                 $('#TravelTime').val(time);
             });    
-            calcRoute();
+        calcRoute();
       
         function calcRoute() {
             var start = fromLocation;
@@ -138,8 +142,8 @@ function CalculateDuration(fromLocation, toLocation)
             for (var i = 0; i < myroute.legs.length; i++) {
                 time += myroute.legs[i].duration.value;
             }
-            total = parseInt(time / 60); //time in minutes
-            return total;            
+            var total = parseInt(time / 60); //time in minutes
+            return total;          
         }
 }
 
@@ -165,9 +169,7 @@ function availabledriver() {
     else if (isChecked === true) {
         fromloc = document.getElementById('txtCurrentFrom').value;
     }
-        
-     CalculateDuration(fromloc, toloc);
-    
+         
     var isCreditCard = null;
     if($('#radCrditcard:checked').val() == 1)
     {
