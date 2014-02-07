@@ -11,5 +11,5 @@ function loadjscssfile(filename, filetype)
     {
          document.getElementsByTagName("head")[0].appendChild(fileref);
          console.log(fileref);
-    } 
+    }
 }
