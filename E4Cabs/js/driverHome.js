@@ -33,6 +33,7 @@ function  NavigateToMap()
                 $('#btnabort').show();
                 $('#btnclear').show();
                 $('#btnnavigation').show();
+                loadjscssfile("Common/UpdatePostcode.js", "js");
             }
             else if(data.d === false)
             {
