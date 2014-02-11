@@ -298,6 +298,7 @@ function SaveDataOfCurrentJob()
         }
 
         function Confirmcomission() {
+            $('#imgLoader').show();
             var reqID = $('#lblconfirmjob').text();
             //var comission = 1.2;
             console.log("saving current job data");
@@ -335,9 +336,10 @@ function SaveDataOfCurrentJob()
         }
 
         function Confirmcomission2() {
+            $('#imgLoader').show();
             var reqID = $('#lblconfirmjob2').text();
             //var comission = 2.4;
-            console.log("saving current job data");
+            
             $.ajax({
                     url: "http://115.115.159.126/ECabs/ECabs4U.asmx/SaveData",
                     type: "POST",
