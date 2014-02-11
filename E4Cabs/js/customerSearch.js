@@ -180,7 +180,7 @@ function availabledriver() {
         isCreditCard = false;
     }
     
-    var distance = document.getElementById('txtDistance').value;   
+    var distance = document.getElementById('txtDistance').value; 
     var pickdate = document.getElementById('pickUpDate').value;
     var picktime = document.getElementById('pickUpTime').value;
     

@@ -607,15 +607,15 @@ function ShowMap()
             window.location = 'Location.html?id=' + from + '&rid=' + to + '&rrid=' + loc2;
         }
 }
-function calOk() 
+function calOk()
 {    
-            $('#imgLoader').show();
+            $('#imgLoader').hide();
             $('#popup_box').hide();
-            $('#transparent_div').hide();            
+            $('#transparent_div').hide();             
             var requestId = $('#lblconfirmjob').text();
             var driverId = $('#lbldriverId').text();
             $.ajax({
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/SaveData",
+                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RemoveCurrentRequest",
                 type: "POST",
                 dataType: "Json",
                 data: "{'driverId':'" + driverId + "','requestId':'" + requestId + "'}",
@@ -625,9 +625,8 @@ function calOk()
                     {
                         alert("Cab booked successfully.");
                         $('#imgLoader').hide();
-                        myProfile();
-                        
-                    }                    
+                        window.location = 'CustomerHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;                       
+                    }               
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                 }
@@ -635,9 +634,9 @@ function calOk()
 }
 function selectDriver()
 {
-            $('#divselect').hide();
-            $('#popup_box').hide();
-            $('#transparent_div').hide();
+    $('#divselect').hide();
+    $('#popup_box').hide();
+    $('#transparent_div').hide();
 }
 
 function CancelJobRequest()

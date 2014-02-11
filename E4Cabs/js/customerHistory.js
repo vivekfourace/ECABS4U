@@ -48,18 +48,18 @@ function gethistory()
                                            html += "<td width='20%' height='30px' align='center'>" +'<a href="#" onclick="JobDetail(\''+data.d[i]["JobNo"]+'\')" style="color:blue;">'+ data.d[i]["JobNo"]+'</a>'+"</td>"; 
                                            html += "<td width='5%' height='30px' align='center'>"+'<img src="img/feedbackicon.png" onclick="feedBackCustomer(\''+data.d[i]["JobNo"]+'\')"</img>'+"</td>"
                                            
-                                             if(data.d[i]["isJobCompleted"] == true)
+                                             if(data.d[i]["isJobCompleted"] === true)
                                                 {
                                                     html += "<td width='25%' height='30px' align='center'>"+'<label style="color:green">Completed</label>'+"</td>";
                                                 }
                                             
                                             else if(isCabNow || !isCabNow)
                                              {
-                                                if(isJobAlive == true)
+                                                if(isJobAlive === true)
                                                 {
                                                     html += "<td width='25%' height='30px' align='center'>"+'<input type="button" class="reject-btn" value="Cancel Job" onclick="AbortJob(\''+data.d[i]["JobNo"]+'\')"/>'+"</td>";   
                                                 }
-                                                else if(isJobAlive == false)
+                                                else if(isJobAlive === false)
                                                 {
                                                      html += "<td width='25%' height='30px' align='center'>"+'<label style="color:red">Cancelled</label>'+"</td>";
                                                 }
@@ -85,8 +85,7 @@ function gethistory()
             }
  
 function AbortJob(data)
-{
-   
+{   
     console.log('in abort');
     jobNo = data;
     document.getElementById("lblJobNumber").value = jobNo;
@@ -100,11 +99,11 @@ function AbortJob(data)
 
 function onAbortCallback(btnIndex)
 {
-    if(btnIndex == 1)
+    if(btnIndex === 1)
     {
         return false;
     }
-    else if(btnIndex == 2)
+    else if(btnIndex === 2)
     {
         $('#popup_box1').fadeIn("fast");
         $('#divAbortTask').fadeIn("fast");
@@ -186,7 +185,7 @@ function SubmitReject()
                      data:"{'relatedId':'" +relatedId+ "','abortMessage':'"+abortMessage+"','jobNumber':'"+jobNumber+"'}",
                      contentType: "application/json; charset=utf-8",                     
                      success: function(data){
-                         if(data.d == "true")
+                         if(data.d === "true")
                          {
                               $('#popup_box1').fadeOut("fast");
                               $('#divAbortTask').fadeOut("fast");
@@ -233,10 +232,10 @@ function feedBackCustomer(JobNumber )
                     var toLoc = data.d[8];
                     var isJobAlive = data.d[9];
                 
-                    if(isJobCompleted == "True")
+                    if(isJobCompleted === "True")
                      {
                         console.log(isJobCompleted);
-                        if(isCustomerRatingLocked == "True") //show read only
+                        if(isCustomerRatingLocked === "True") //show read only
                         {
                                document.getElementById('sel').value = custrating;
                                document.getElementById('txtarComments').value = custFeed;
@@ -255,7 +254,7 @@ function feedBackCustomer(JobNumber )
                                $('#lblFeedTo').text(toLoc);                              
                             
                         }
-                        else if(isCustomerRatingLocked == "False")
+                        else if(isCustomerRatingLocked === "False")
                         {
                                $('#lbljobNo').text(JobNumber);
                                $('#lblFeeddate').text(startDate);
@@ -272,11 +271,11 @@ function feedBackCustomer(JobNumber )
                                $('#transparent_div').show();
                         }
                       }
-                      else if(isJobAlive == "False")
+                      else if(isJobAlive === "False")
                       {
                           alert('This job has been cancelled. You cannot give feedback.');
                       }
-                      else if(isJobAlive == "True")
+                      else if(isJobAlive === "True")
                      {
                          alert('Feedback will be accepted after the cab ride.');
                      }
@@ -302,7 +301,7 @@ function PostFeedBack()
    var requestID= $('#lbljobNo').text();
    var getRating = document.getElementById('sel').value;
    var getComments = document.getElementById('txtarComments').value;
-    if(getRating == 0)
+    if(getRating === 0)
     {
         alert("Please select rating.");
         return false;

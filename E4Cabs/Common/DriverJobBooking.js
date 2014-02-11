@@ -208,15 +208,14 @@ var timereOut;
             $('#transparent_div').hide();
         }
         
-        function dealSubmit() {
+        function dealSubmit() {            
             window.clearInterval(timereOut);
-            console.log('clearing timerout');
             $('#divDeal').hide();
             var getIsReturnJourney = $('#isReturnJourney').val();
             var getFare = $('#lbldealfare').text();
             var reqID = $('#lbldealjob').text();
             
-            if (getFare === 15 || getFare > 15) {             
+            if (getFare === 15 || getFare > 15) {
                 if (getIsReturnJourney === "True") {
                     var _avgFare = getFare / 2;
                     if (_avgFare === 15 || _avgFare > 15) {
@@ -240,23 +239,48 @@ var timereOut;
                     $('#lblconfirmfare').text(getFare);
                 }
             }
+            
             else {
                 $('#divComission').hide();
                 $('#divComission2').hide();
-                $.ajax({
+                $('#transparent_div').show();
+                $('#imgLoader').show();
+                SaveDataOfCurrentJob();
+            }
+        }
+
+function SaveDataOfCurrentJob()
+{
+    console.log("saving current job data");
+    var requestId = $('#hdnJobno').val();
+    $.ajax({
+            url: "http://115.115.159.126/ECabs/ECabs4U.asmx/SaveData",
+            type: "POST",
+            dataType: "Json",
+            data: "{'driverId':'" + relatedId + "','requestId':'" + requestId + "'}",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                if(data.d === true)
+                {
+                    $.ajax({
                     url: "http://115.115.159.126/ECabs/ECabs4U.asmx/JobBooked",
                     type: "POST",
                     dataType: "Json",
-                    data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
+                    data: "{'userID':'" + relatedId + "','reqid':'" + requestId + "'}",
                     contentType: "application/json; charset=utf-8",
-                    success: function () {
-                        $('#button-table').hide();                        
+                    success: function () {                        
+                        $('#button-table').hide();                                                
                         alert('Congratulations. We recommend you contact the customer by phone to confirm pickup location.');
-                        window.location = 'driverHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+                        $("#divDealload").show();
+                        $('#transparent_div').show();
+                        window.location = 'driverHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;               
                     },
                 });
-            }
-        }
+              }                    
+          },
+     });
+}
+
         function RemoveDriverData() {
             $.ajax({
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RemoveDriverResponse",
@@ -276,38 +300,74 @@ var timereOut;
         function Confirmcomission() {
             var reqID = $('#lblconfirmjob').text();
             //var comission = 1.2;
-
+            console.log("saving current job data");
             $.ajax({
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/JobBooked",
-                type: "POST",
-                dataType: "Json",
-                data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {},
-                error: function (XMLHttpRequest, textStatus, errorThrown) {}
-            });
-            window.location.href = "https://dashboard-sandbox.gocardless.com/api/template_plans/0HSKYST0BP/paylink"; //for commission 1.2pond
-
-            $('#divDeal').hide();
-            $('#popup_box').hide();
+                    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/SaveData",
+                    type: "POST",
+                    dataType: "Json",
+                    data: "{'driverId':'" + relatedId + "','requestId':'" + reqID + "'}",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        if(data.d === true)
+                        {
+                            $.ajax({
+                            url: "http://115.115.159.126/ECabs/ECabs4U.asmx/JobBooked",
+                            type: "POST",
+                            dataType: "Json",
+                            data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
+                            contentType: "application/json; charset=utf-8",
+                            success: function () { 
+                                window.location.href = "https://dashboard-sandbox.gocardless.com/api/template_plans/0HSKYST0BP/paylink"; //for commission 1.2pond
+                                $('#divDeal').hide();
+                                $('#popup_box').hide();
+                                //$('#button-table').hide();                                
+                                //alert('Congratulations. We recommend you contact the customer by phone to confirm pickup location.');
+                                //$("#divDealload").show();
+                                //$('#transparent_div').show();
+                                //window.location = 'driverHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;               
+                            },
+                        });
+                        
+                      }                    
+                  },
+             });
+            
         }
 
         function Confirmcomission2() {
             var reqID = $('#lblconfirmjob2').text();
             //var comission = 2.4;
-
+            console.log("saving current job data");
             $.ajax({
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/JobBooked",
-                type: "POST",
-                dataType: "Json",
-                data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {},
-                error: function (XMLHttpRequest, textStatus, errorThrown) {}
-            });
-            window.location.href = "https://dashboard-sandbox.gocardless.com/api/template_plans/0HSKG9HPET/paylink"; //for commission 2.4pond
-            $('#divDeal').hide();
-            $('#popup_box').hide();
+                    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/SaveData",
+                    type: "POST",
+                    dataType: "Json",
+                    data: "{'driverId':'" + relatedId + "','requestId':'" + reqID + "'}",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        if(data.d === true)
+                        {
+                            $.ajax({
+                            url: "http://115.115.159.126/ECabs/ECabs4U.asmx/JobBooked",
+                            type: "POST",
+                            dataType: "Json",
+                            data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
+                            contentType: "application/json; charset=utf-8",
+                            success: function () {                        
+                                //$('#button-table').hide();
+                                 window.location.href = "https://dashboard-sandbox.gocardless.com/api/template_plans/0HSKG9HPET/paylink"; //for commission 2.4pond
+                                $('#divDeal').hide();
+                                $('#popup_box').hide();
+                                //alert('Congratulations. We recommend you contact the customer by phone to confirm pickup location.');
+                                //$("#divDealload").show();
+                                //$('#transparent_div').show();
+                                //window.location = 'driverHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;               
+                            },
+                        });
+                        
+                      }                    
+                  },
+             });           
         }
 
         function RejectComission() {
@@ -325,7 +385,6 @@ var timereOut;
                     if(data.d === true)
                     {
                       console.log('rej');
-                        alert('rej');
                       window.location = 'driverProfile.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
                     }
                     else
@@ -336,6 +395,7 @@ var timereOut;
                 error: function (XMLHttpRequest, textStatus, errorThrown) {}
             });
         }
+
         function dealCancel() {
             $('#divDeal').hide();
             $('#popup_box').hide();
@@ -344,13 +404,11 @@ var timereOut;
         function btnAbort() {
             $('#popup_box').show();
             $('#divabort').show();
-            //$('#divComplete').hide();
         }
         
         function abortcancel() {
             $('#popup_box').hide();
             $('#divabort').hide();
-            //$('#divComplete').show();
         }
 
 function reqReject() {            

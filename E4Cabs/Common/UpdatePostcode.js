@@ -17,7 +17,6 @@ $.ajax({
 function DeviationTime(data)
 {
   var deviationTime = (data.d)*1000;
-  alert(deviationTime);
   window.setInterval(UpdateCurrentDistrictCode, deviationTime);    
 }
 
