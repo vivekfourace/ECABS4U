@@ -43,7 +43,6 @@ function GetPostCodeTo(address) {
                                 if (results[0]) {
                                     var postalCode = extractFromAdress(results[0].address_components, "postal_code");
                                     $('#locto_postcode').val(postalCode);
-                                    console.log(postalCode);
                                 }
                             }
                         });

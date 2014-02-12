@@ -203,7 +203,7 @@ function availabledriverLater() {
     var isCheckedNo = $('#chkNo').attr('checked') ? true : false;
     var laterpostcode = $('#locfrom_postcode').val();
     var latertopostcode = $('#locto_postcode').val();
-    console.log(laterpostcode);
+    //alert(latertopostcode);
     
     if (isCheckedNo == true) {
         if (IsReturnTrue == false) {
