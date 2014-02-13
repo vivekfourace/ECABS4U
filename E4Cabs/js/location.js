@@ -24,7 +24,7 @@ function initialize() {
           longitude = results[0].geometry.location.lng();
       }
       else {
-          alert("No location found!!")
+          alert("No location found.")
       }
 
   directionsDisplay = new google.maps.DirectionsRenderer();
