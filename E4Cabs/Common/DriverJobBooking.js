@@ -320,12 +320,7 @@ function SaveDataOfCurrentJob()
                             success: function () { 
                                 window.location.href = "https://dashboard-sandbox.gocardless.com/api/template_plans/0HSKYST0BP/paylink"; //for commission 1.2pond
                                 $('#divDeal').hide();
-                                $('#popup_box').hide();
-                                //$('#button-table').hide();                                
-                                //alert('Congratulations. We recommend you contact the customer by phone to confirm pickup location.');
-                                //$("#divDealload").show();
-                                //$('#transparent_div').show();
-                                //window.location = 'driverHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;               
+                                $('#popup_box').hide();                                
                             },
                         });
                         
@@ -356,20 +351,14 @@ function SaveDataOfCurrentJob()
                             data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
                             contentType: "application/json; charset=utf-8",
                             success: function () {                        
-                                //$('#button-table').hide();
                                  window.location.href = "https://dashboard-sandbox.gocardless.com/api/template_plans/0HSKG9HPET/paylink"; //for commission 2.4pond
                                 $('#divDeal').hide();
-                                $('#popup_box').hide();
-                                //alert('Congratulations. We recommend you contact the customer by phone to confirm pickup location.');
-                                //$("#divDealload").show();
-                                //$('#transparent_div').show();
-                                //window.location = 'driverHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;               
+                                $('#popup_box').hide();                               
                             },
-                        });
-                        
+                        });                        
                       }                    
                   },
-             });           
+             });       
         }
 
         function RejectComission() {
