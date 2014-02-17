@@ -15,14 +15,6 @@ function goToHome() {
     //window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
-function showMap()
-{
-   var from = $('#lblFromLoc').text();
-   var to = $('#lblToLoc').text();   
-   var dis = "loc";
-   window.location =  'Location.html?from='+from+'&to='+to+'&dist='+dis+'&id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-}
-
 function backToIndex()
 {
     window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;

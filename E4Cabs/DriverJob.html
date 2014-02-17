@@ -5,13 +5,16 @@
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <link rel="stylesheet" type="text/css" href="css/site.css" />
     <link rel="stylesheet" type="text/css" href="css/PopUp.css" />
-
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=places"></script>
+    
     <script src="Scripts/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
     <script type="text/javascript" src="js/DriverJob.js"></script>
     <script type="text/javascript" src="Common/DriverJobBooking.js"></script>
+    <script type="text/javascript" src="js/DriverJobMap.js"></script>
+    
 
     <script type="text/javascript">
         var QString = window.location.search.substring(1);
@@ -51,8 +54,8 @@
                                     $('#button-table').show();
                                                                         
                                     $('#lbljobno').text(data.d[0]);
-                                    $('#lblFromLoc').text(": "+data.d[1]);                                    
-                                    $('#lblToLoc').text(": "+data.d[2]);
+                                    $('#lblFromLoc').text(data.d[1]);                                    
+                                    $('#lblToLoc').text(data.d[2]);
                                     $('#lblDistance').text(": "+data.d[5]);
                                     $('#lblpickDateDriver').text(": "+data.d[6]);
                                     $('#lblpickTime').text(": "+data.d[7]);
@@ -66,7 +69,7 @@
                                     if(data.d[3] !== null)
                                     {
                                         $('#loc1').show();
-                                        $('#lblLoc1').text(": "+data.d[3]);
+                                        $('#lblLoc1').text(data.d[3]);
                                     }
                                     else
                                     {
@@ -75,7 +78,7 @@
                                      if(data.d[4] !== null)
                                     {
                                         $('#loc2').show();
-                                        $('#lblLoc2').text(": "+data.d[4]);
+                                        $('#lblLoc2').text(data.d[4]);
                                     }
                                     else
                                     {
@@ -84,7 +87,7 @@
                                      if(data.d[21] !== null)
                                     {
                                         $('#loc3').show();
-                                        $('#lblLoc3').text(": "+data.d[21]);
+                                        $('#lblLoc3').text(data.d[21]);
                                     }
                                     else
                                     {
@@ -93,7 +96,7 @@
                                      if(data.d[22] !== null)
                                     {
                                         $('#loc4').show();
-                                        $('#lblLoc4').text(": "+data.d[22]);
+                                        $('#lblLoc4').text(data.d[22]);
                                     }
                                     else
                                     {
@@ -102,7 +105,7 @@
                                      if(data.d[23] !== null)
                                     {
                                         $('#loc5').show();
-                                        $('#lblLoc5').text(": "+data.d[23]);
+                                        $('#lblLoc5').text(data.d[23]);
                                     }
                                     else
                                     {
@@ -111,7 +114,7 @@
                                      if(data.d[24] !== null)
                                     {
                                         $('#loc6').show();
-                                        $('#lblLoc6').text(": "+data.d[24]);
+                                        $('#lblLoc6').text(data.d[24]);
                                     }
                                     else
                                     {
@@ -120,7 +123,7 @@
                                      if(data.d[25] !== null)
                                     {
                                         $('#loc7').show();
-                                        $('#lblLoc7').text(": "+data.d[25]);
+                                        $('#lblLoc7').text(data.d[25]);
                                     }
                                     else
                                     {
@@ -128,8 +131,7 @@
                                     }
                                     
                                     if(data.d[14] === "True")
-                                    {
-                                        console.log('ha');
+                                    {                                        
                                         $('#lblisReturnJourney').text(": "+"Yes");
                                         if(data.d[15] !== null)
                                             {
@@ -223,6 +225,12 @@
         });       
   
     </script>
+    <style type="text/css">
+      #mapCanvas{
+          height: 300px;
+          border:none;
+      }
+    </style>
 </head>
 <body>
     <center>
@@ -757,6 +765,11 @@
                         </tr>
                     </table>
                 </div>
+            
+                <div id="mapContainer" style="display:none;height:100%;width:100%;border:none;border-collapse:collapse">
+           <div id="mapCanvas"></div>        
+            <input type="button" value="Close" style="width:100%;height:30px" class="btn-tmp" onclick="hideMap()"/>
+        </div>
             </div>    
      
    
@@ -766,7 +779,7 @@
                 <input type="button" id="btnbid" class="specialBtn" onclick="showBid()" style="width: 100%;" value="Bid" />
             </td>
             <td style="width:25%">
-                <input type="button" id="btnmap" class="specialBtn" onclick="showMap()" style="width: 100%;" value="Map" />
+                <input type="button" id="btnmap" class="specialBtn" onclick="showMapDriver()" style="width: 100%;" value="Map" />
             </td>
             <td style="width:25%">
                 <input type="button" id="btnreject" class="specialBtn" onclick="reqReject()" style="width: 100%;" value="Reject" />
@@ -812,6 +825,7 @@
                     </tr>
                 </table>
             </div>
+       
     </center>
 </body>
 </html>

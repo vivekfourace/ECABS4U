@@ -353,7 +353,8 @@
                 document.getElementById("RBcabNOW").checked = false;
                 window.location='customerSearchFuture.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
             });
-         });
+        document.getElementById("chkyes").checked = true;
+      });
     </script>
 
     <style type="text/css">
@@ -389,6 +390,7 @@
                 font-size: 13px;
                 font-weight: 300;
             }
+        
         #mapCanvas{
           height: 350px;
           border:none;
