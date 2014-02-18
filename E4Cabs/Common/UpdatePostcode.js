@@ -55,9 +55,7 @@ function UpdateThis(postalCode) {
              dataType: "json",
              data: "{'postalCode':'" + postalCode + "','relatedId':'"+relatedId+"'}",
              contentType: "application/json; charset=utf-8",
-             success: function (data) {
-             },
-             error: function (XMLHttpRequest, textStatus, errorThrown) {
-             }
+             success: function (data) {},
+             error: function (XMLHttpRequest, textStatus, errorThrown) {}
      });
  }

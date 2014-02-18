@@ -1,5 +1,6 @@
 function Registercustomer()
 {
+    console.log("I am in Register");
     var txt1 =$('#txtFirstName').val();
     var txt2 =$('#txtLastName').val();
     var txt3 =$('#txtPhone').val();

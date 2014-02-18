@@ -301,7 +301,7 @@ function PostFeedBack()
    var requestID= $('#lbljobNo').text();
    var getRating = document.getElementById('sel').value;
    var getComments = document.getElementById('txtarComments').value;
-    if(getRating === 0)
+    if(getRating == 0)
     {
         alert("Please select rating.");
         return false;
