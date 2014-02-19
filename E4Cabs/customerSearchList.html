@@ -105,7 +105,7 @@
                                     <label id="">Searched Time</label>
                                 </td>
                                 <td style="width:50%">
-                                    <label id="lblsearch"/>
+                                    <label id="lblsearch"></label>
                                 </td>
                             </tr>
                             <tr class="popup_content">
@@ -113,7 +113,7 @@
                                      <label id="Label1">Expiry  Time</label>
                                 </td>
                                 <td style="width:50%">
-                                     <label id="lblexp"/>
+                                     <label id="lblexp"></label>
                                 </td>
                             </tr>
                             <tr>
@@ -135,7 +135,7 @@
                                     <label >Bid Time</label>
                                 </td>
                                 <td style="width:50%">
-                                    <label id="lblbid"/>
+                                    <label id="lblbid"></label>
                                 </td>
                             </tr>
                             <tr class="popup_content">
@@ -143,7 +143,7 @@
                                      <label >Pick Up Time</label>
                                 </td>
                                 <td style="width:50%">
-                                     <label id="lblpick"/>
+                                     <label id="lblpick"></label>
                                 </td>
                             </tr>
                             <tr style="width:100%;" class="popup_footer">
@@ -184,7 +184,7 @@
                              <tr style="display:none;">
                                        <td colspan="2">
                                            <b style="font-size:11px;color:red">Driver Id</b>
-                                           <label id="lbldriverId" style="font-size:13px;padding-left:10%;"/>
+                                           <label id="lbldriverId" style="font-size:13px;padding-left:10%;"></label>
                                        </td>
                                    </tr>
                              <tr class="popup_content">
@@ -192,7 +192,7 @@
                                         <b style="font-size:11px;">Job Number</b>
                                        </td>
                                        <td style="width:70%">
-                                          <b> <label id="lblconfirmjob" style="font-size:11px;"/></b>
+                                          <b> <label id="lblconfirmjob" style="font-size:11px;"></label></b>
                                        </td>
                                    </tr>
                              <tr class="popup_content">
@@ -200,7 +200,7 @@
                                         <b style="font-size:11px;">Driver Name</b>
                                        </td>
                                        <td style="width:70%">
-                                         <b>  <label id="lblconfirmdrivername" style="font-size:11px;"/></b>
+                                         <b>  <label id="lblconfirmdrivername" style="font-size:11px;"></label></b>
                                        </td>
                                    </tr>
                              <tr class="popup_content">
@@ -208,7 +208,7 @@
                                         <b style="font-size:11px;">From</b>
                                        </td>
                                        <td style="width:70%">
-                                         <b>  <label id="lblconfirmfrom" style="font-size:11px;"/></b>
+                                         <b>  <label id="lblconfirmfrom" style="font-size:11px;"></label></b>
                                        </td>
                                    </tr>
                              <tr class="popup_content">
@@ -216,7 +216,7 @@
                                           <b style="font-size:11px;">To</b>  
                                        </td>
                                        <td style="width:70%">
-                                          <b> <label id="lblconfirmto" style="font-size:11px;"/></b>
+                                          <b> <label id="lblconfirmto" style="font-size:11px;"></label></b>
                                        </td>
                                    </tr>
                              <tr class="popup_content">
@@ -224,7 +224,7 @@
                                           <b style="font-size:11px;">Pick Date</b>  
                                        </td>
                                        <td style="width:70%">
-                                          <b> <label id="lblconfirmdate" style="font-size:11px;"/></b>
+                                          <b> <label id="lblconfirmdate" style="font-size:11px;"></label></b>
                                        </td>
                                    </tr>
                              <tr class="popup_content">
@@ -232,7 +232,7 @@
                                           <b style="font-size:11px;">Pick Time</b>  
                                        </td>
                                        <td style="width:70%">
-                                          <b> <label id="lblconfirmtime" style="font-size:11px;"/></b>
+                                          <b> <label id="lblconfirmtime" style="font-size:11px;"></label></b>
                                        </td>
                                    </tr>
                              <tr class="popup_content">
@@ -240,7 +240,7 @@
                                           <b style="font-size:11px;">Distance In Mile</b>  
                                        </td>
                                        <td style="width:70%">
-                                          <b> <label id="lblconfirmdistance" style="font-size:11px;"/></b>
+                                          <b> <label id="lblconfirmdistance" style="font-size:11px;"></label></b>
                                        </td>
                                    </tr>
                              <tr class="popup_content">
@@ -248,7 +248,7 @@
                                           <b style="font-size:11px;">Fare</b>  
                                        </td>
                                        <td style="width:70%">
-                                        <b><img src="img/euro.png"width="10" height="10"/><label id="lblconfirmfare" style="font-size:11px;"/></b>
+                                        <b><img src="img/euro.png"width="10" height="10"/><label id="lblconfirmfare" style="font-size:11px;"></label></b>
                                        </td>
                                    </tr>
                              <tr>
@@ -264,6 +264,24 @@
                         <input type="button" value="Close" style="width:100%;height:30px" class="btn-tmp" onclick="hideImage()"/>
                     </div>
                     
+                    <div id="divRatingFeedback" style="display:none;width:100%;">
+                        <table style="width:100%; border-collapse:collapse;">
+                            <tr>
+                                  <td class="popup_header" colspan="2" width="100%">
+                                      <strong style="padding-left:5px">Feedback</strong>
+                                  </td>
+                             </tr>
+                            <tr class="popup_content">
+                                <td id='feedback-content'>                                  
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                   <input type="button" class="ok" value="Ok" style="cursor: pointer;text-align:center;" onclick="selectDriver()"/>
+                                </td>
+                            </tr>
+                        </table>
+                   </div>
                 </div>
                  
              </div>

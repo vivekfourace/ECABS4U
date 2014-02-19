@@ -11,7 +11,7 @@ function Registercustomer()
     var txt8 =$('#txtConfirmPassword').val();
     var phoneno =/^\d{11}$/;
     var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
-    var pass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}$/;
+    //var pass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}$/;
     
       if(!txt1)
        {
@@ -72,38 +72,37 @@ function Registercustomer()
        }
      if(txt7.length > 0)
        {
-           if(txt7.match(pass))
+           if(txt7.length >= 8 && txt7.length <= 20)
            {
-             $('#lblPassword').text(" ");  
+              return true;
            }
            else
-                     {
-                            $('#lblMsg').text("Password must in between 8 to 16 characters which contain at least one numeric digit, one uppercase and one lowercase letter.");
-                            $('#txt7').focus();
-                            return false;
-                     }
-                        
+           {
+               $('#lblMsg').text("Password must be in between 8 to 20 characters.");
+               $('#txt7').focus();
+               return false;
+           }                        
        }
-     else if(txt7.length == 0)
+     else
        {
-                     $('#lblMsg').text("Please enter your password.");
-                     $('#txtPassword').focus();
-                    return false;
+           $('#lblMsg').text("Please enter your password.");
+           $('#txtPassword').focus();
+           return false;
        }
      if(txt8.length > 0)
       {
-                        if(txt7 == txt8)
-                        {
-                            $('#lblMsg').text(" ");
-                        }
-                        else
-                        {
-                            $('#lblMsg').text("Password mismatch.");
-                            $('#txtPassword').focus();
-                            $('#txtPassword').val("");
-                            $('#txtConfirmPassword').val("");
-                            return false;
-                        }
+           if(txt7 == txt8)
+           {
+               $('#lblMsg').text(" ");
+           }
+           else
+           {
+               $('#lblMsg').text("Password mismatch.");
+               $('#txtPassword').focus();
+               $('#txtPassword').val("");
+               $('#txtConfirmPassword').val("");
+               return false;
+           }
      }
     else if(txt8.length == 0)
     {
@@ -133,7 +132,7 @@ function Registercustomer()
 
 function CheckData(data)
 {    
-    if(data.d =="true")
+    if(data.d == "true")
     {
        var timeOut = 5;
        setInterval(function() {  

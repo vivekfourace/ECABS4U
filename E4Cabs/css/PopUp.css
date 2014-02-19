@@ -1,28 +1,29 @@
 #popup_box {
     display: none;
-    width: 89%;
+    width: 99%;
     z-index: 2000;
     -moz-box-shadow: 2px 2px 2px #A4A4A4;
     -webkit-box-shadow: 2px 2px 2px #A4A4A4;
     box-shadow: 2px 2px 2px #A4A4A4;
     position: fixed;
-    margin:0 5% 0 5%;
+    /*margin:0 5% 0 5%;*/
     top:20%;    
     color: white;
-    height:auto;
+    height:100%;
     border: 1px double #FFF200;
     outline: 2px solid #2A81CF;
+    height:100%;
 }
 
 #popup_box1 {
     display: none;
-    width: 89%;
+    width: 100%;
     z-index: 2000;
     -moz-box-shadow: 2px 2px 2px #A4A4A4;
     -webkit-box-shadow: 2px 2px 2px #A4A4A4;
     box-shadow: 2px 2px 2px #A4A4A4;
     position: fixed;
-    margin:0 5% 0 5%;
+    /*margin:0 5% 0 5%;*/
     top:20%;    
     color: white;
     height:auto;

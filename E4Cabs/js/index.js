@@ -34,32 +34,31 @@ function onCallback(buttonIndex)
 {
     if(buttonIndex === 1)
     {
-        return false   
+        return false;
     }
     else if(buttonIndex === 2)
     {
         navigator.app.exitApp();
+        return true;
     }
 }
 
-//window.onload = loginUsingCookie();
+//login using cookie
 
 function loginUsingCookie() {
-    var name = $.cookie('userName');
-    var password= $.cookie('userPassword');
-    var remMe = $.cookie('remember');
-    console.log(remMe);
+    console.log('in login using cookie');
+    var name = window.localStorage.getItem('userName');
+    var password= window.localStorage.getItem('userPassword');
+    var remMe = window.localStorage.getItem('remember');
+    
+    //alert(name+password+remMe);
     
     if (remMe === "true") {
+        console.log('in true');
         $('#txtUserName').val(name);
-        $('#txtPassword').val(password);        
-    }
-    else
-    {
-        $('#txtUserName').val("");
-        $('#txtPassword').val("");
-        return true;
-    }
+        $('#txtPassword').val(password);
+        login();
+    }    
 }
 
 function forgotPass()
@@ -113,13 +112,14 @@ function login() {
 }
 
  function CheckMsg(data) {
-      var isloggedin = data.d[4];
+      //var isloggedin = data.d[4];
       var userID = data.d[1];
       var isChecked = $('#chkRem').prop('checked') ? true : false;
-      if (isloggedin === "True") {
-          window.location = 'SessionError.html?id=' + userID;
-      }
-      else {
+      //if (isloggedin === "True") {
+      //    //window.location = 'SessionError.html?id=' + userID;
+      //    
+      //}
+      //else {
           if (data.d[0] === "true") {
               $('#imgLoader').show();
 
@@ -132,14 +132,14 @@ function login() {
               //creating Cookie       
               
               if (isChecked === true) {
-                  $.cookie('userName', name);
-                  $.cookie('userPassword', password);
-                  $.cookie('remember', true);
+                  window.localStorage.setItem('userName',name);
+                  window.localStorage.setItem('userPassword',password);
+                  window.localStorage.setItem('remember',true);                 
               }
               else {
-                  $.cookie('userName', '');
-                  $.cookie('userPassword', '');
-                  $.cookie('remember', false);
+                  window.localStorage.setItem('userName','');
+                  window.localStorage.setItem('userPassword','');
+                  window.localStorage.setItem('remember',false);                  
               }
 
               switch (roleID) {
@@ -160,7 +160,7 @@ function login() {
               $('#lblMsg').css("font-size", "13");
               $('#txtPassword').val("");
           }
-      }
+     // }
  }
 
 

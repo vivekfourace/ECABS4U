@@ -9,9 +9,7 @@
     
     <script src="Scripts/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>    
-    <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
-    
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>   
     
 </head>
 <body>
@@ -47,17 +45,10 @@
                 <label id="lblMsg" style="color:#D70007;font-size:12px"></label><br/>
                 <input type="text" id="txtUserName" style=" font-family: MS;" placeholder="Username" />
                 <input type="password" id="txtPassword" style="font-family: MS;" placeholder="Password"/><br/>
-                <table style="width:100%">
-                    <tr>
-                        <td  style="padding-top:5px;padding-left:7.2%">
-                            <label>
-                                <input type="checkbox" id="chkRem" style="width:7%;float:left;height:20px;outline:none"/>
-                                <label style="font-size:12px;float:left;padding-top:6px;color:#568bbe"><em>Remember me</em></label>
-                            </label>                           
-                       </td>
-                    </tr>
-                </table>
-                <div style="margin-top:1px;">
+                
+                <input type="checkbox" id="chkRem" style="display:none" checked="true"/>
+                
+                <div style="margin-top:8%;">
                     <input type="button" class="btn-tmp" style="width:80%" value="Log In" onclick="login()" />
                 </div>
                 <div style="text-align:center">

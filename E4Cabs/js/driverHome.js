@@ -69,6 +69,66 @@ function onAbortCallback(buttonIndex)
     }
 }
 
+function Offline()
+{
+    navigator.notification.confirm(
+    "Making unavailable yourself will loose new job notification.",
+    onAbortCallback,
+    "Warning",
+    "No, Yes"    
+    );
+}
+
+function onAbortCallback(buttonIndex)
+{
+    if(buttonIndex === 1)
+    {
+        return false;
+    }
+    else if(buttonIndex === 2)
+    {
+       $.ajax({
+        url:"http://115.115.159.126/ECabs/ECabs4U.asmx/MakeOffline",
+        type:"POST",
+        dataType: "Json",
+        data:"{'relatedId':'"+relatedId+"'}",
+        contentType: "application/json; charset=utf-8",                     
+        success: function(data)
+        {
+           $('#btnOffline').hide();
+           $('#btnOnline').show();
+           $('#lblStaus').show();
+           $('#lblStaus').text("Away");
+           $('#lblStaus').css("color", "red");
+           $('#lblEngaged').hide();
+        },
+        
+        error: function (XMLHttpRequest, textStatus, errorThrown) {}
+     });
+    }
+}
+
+function Online()
+{
+    $.ajax({
+     url:"http://115.115.159.126/ECabs/ECabs4U.asmx/MakeOnline",
+        type:"POST",
+        dataType: "Json",
+        data:"{'relatedId':'"+relatedId+"'}",
+        contentType: "application/json; charset=utf-8",                     
+        success: function(data)
+        {
+           $('#btnOffline').show();
+           $('#btnOnline').hide();
+           $('#lblStaus').hide();
+           $('#lblEngaged').show();
+        },
+        
+        error: function (XMLHttpRequest, textStatus, errorThrown) {}
+     });
+}
+
+
 function SubmitAbort()
 {
     var abortMessage = $('#txtAbortmsg').val();
@@ -116,7 +176,7 @@ function cancelAbort()
 function clearJob()
 {
     navigator.notification.confirm(
-    "Do you want to clear this job?",
+    "Do you have completed this job?",
     onClearCallback,
     "Confirm",
     "No, Yes"  

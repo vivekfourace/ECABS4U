@@ -69,9 +69,24 @@
                                 <label id="lblEngaged" style="align:center;color:green;font-size:25px;display:none"></label>
                             </td>
                         </tr>
+                        <tr >
+                            <td style="text-align:center;">
+                                <label id="lblStaus" style="align:center;color:green;font-size:25px;display:none"></label>
+                            </td>
+                        </tr>
                        <tr>
                             <td style="text-align:center;">
-                                <input type="button" style="width:100%;" class="btn-tmp" id="btnEngage" value="Show me unavailable" onclick="engageMe();"/>
+                                <input type="button" style="width:100%;" class="btn-tmp" id="btnEngage" value="Show me jobs" onclick="engageMe();"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:center;">
+                                <input type="button" style="width:100%;" class="btn-tmp" id="btnOffline" value="Show me unavilable" onclick="Offline();"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:center;">
+                                <input type="button" style="width:100%;display:none" class="btn-tmp" id="btnOnline" value="Show me available" onclick="Online();"/>
                             </td>
                         </tr>
                         <tr>
@@ -86,7 +101,7 @@
                         </tr>
                         <tr>
                             <td style="text-align:center;">
-                                <input type="button" style="width:100%;display:none"  value="Navigation" id="btnnavigation" class="btn-tmp" onclick="NavigateToMap();"/>
+                                <input type="button" style="width:100%;display:none"  value="Route details" id="btnnavigation" class="btn-tmp" onclick="NavigateToMap();"/>
                             </td>
                         </tr>
                  </table>

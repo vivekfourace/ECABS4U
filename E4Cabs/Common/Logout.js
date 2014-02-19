@@ -26,7 +26,8 @@ function onLogoutCallback(buttonIndex)
             data:"{'userID':'" +userId+"'}",
             contentType: "application/json; charset=utf-8",                     
             success: function(){
-                $.cookie("remember", false);
+                window.localStorage.setItem('remember',false);
+                window.localStorage.clear();
                 window.location = "index.html";
             },
          });         
