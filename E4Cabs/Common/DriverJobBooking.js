@@ -189,7 +189,7 @@ var timereOut;
                     success: function (data) {
                         if (data.d === "true") {
                             alert('In progress. Awaiting customer response.');
-                            window.location = 'driverProfile.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+                            window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
                         }
                         else if (data.d === "false") {
                             alert('Unknown error. Please try again.');
@@ -376,7 +376,7 @@ function SaveDataOfCurrentJob()
                     if(data.d === true)
                     {
                       console.log('rej');
-                      window.location = 'driverProfile.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+                      window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
                     }
                     else
                     {
@@ -433,7 +433,7 @@ function onRejectCallback(buttonIndex)
                     if(data.d === true)
                     {
                       console.log('rej')
-                      window.location = 'driverProfile.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+                      window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
                     }
                     else
                     {

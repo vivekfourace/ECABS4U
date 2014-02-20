@@ -709,6 +709,12 @@ function selectDriver()
     $('#transparent_div').hide();
 }
 
+function HideDisplay()
+{
+    $('#divRatingFeedback').hide();
+    $('#popup_box').hide();    
+}
+
 function CancelJobRequest()
 {
          var result = confirm("Do you really want to cancel this job?");    
