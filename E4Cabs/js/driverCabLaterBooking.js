@@ -46,14 +46,14 @@ function bindGrid(data)
                     html += "<td width='25%' height='30px' align='center'>" + data.d[i]["From"] +"</td>";
                     html += "<td width='25%' height='30px' align='center'>" + data.d[i]["To"] +"</td>";
                      
-                    if(isCustomerAccepted == true)
+                    if(isCustomerAccepted === true)
                      {
                        html += "<td colspan='2'>"
                        +'<input type="button" value="Accept" class="accept-btn" onclick="AcceptJob(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["Fare"]+'\')"/><br/>'
                        +'<input type="button" value="Reject" class="reject-btn" onclick="RejectJob(\''+data.d[i]["CustomerRequestID"]+'\')"/>'
                        +"</td>";
                      }
-                     else if(isCustomerAccepted == false)
+                     else if(isCustomerAccepted === false)
                      {
                          html += "<td width='10%' height='30px' align='center'>No Response</td>";
                      }
@@ -75,7 +75,7 @@ function AcceptJob(jobno, jobfare)
 {
     $('#hidJobNo').val(jobno);
     var fare = jobfare;
-    if(fare == 15 || fare > 15)
+    if(fare === 15 || fare > 15)
     {
         $('#lblconfirmfare').html('&pound'+jobfare);
         $('#lblconfirmjob').text(jobno);
@@ -99,7 +99,7 @@ function AcceptJob(jobno, jobfare)
                 data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
-                    if(data.d == true)
+                    if(data.d === true)
                     {
                        alert('Job booked successfully.');
                        window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
