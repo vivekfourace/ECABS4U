@@ -57,10 +57,10 @@
                 </table>
            </div>
         
-            <div style="padding-top:30%;">
-                    <div style="height:40px">
+            <div style="padding-top:22%;">
+                    <div style="height:20px">
                         <div style="padding-top:15px">
-                            <span style="align:center;color:green;font-size:30px"><b>Logged In</b></span>
+                            <span style="align:center;color:green;font-size:20px"><b>Logged In</b></span>
                         </div>
                     </div>
                 <table style="padding-top:10%;width:85%;">
@@ -88,7 +88,7 @@
                             <td style="text-align:center;">
                                 <input type="button" style="width:100%;display:none" class="btn-tmp" id="btnOnline" value="Show me available" onclick="Online();"/>
                             </td>
-                        </tr>
+                        </tr>                    
                         <tr>
                             <td style="text-align:center;">
                                 <input type="button" style="width:100%;display:none" class="btn-tmp" id="btnclear" value="Job completed" onclick="clearJob();"/>
@@ -102,6 +102,16 @@
                         <tr>
                             <td style="text-align:center;">
                                 <input type="button" style="width:100%;display:none"  value="Route details" id="btnnavigation" class="btn-tmp" onclick="NavigateToMap();"/>
+                            </td>
+                        </tr>
+                    <tr>
+                             <td style="text-align:center;">
+                                <input type="button" style="width:100%;background-color:#D4D4D4 !important;color:white;font:bold;border:none" class="btn-tmp" id="btnNormal" value="Job Offers" onclick="ShowLaterJobOffers()"/>
+                            </td>
+                        </tr>
+                    <tr>
+                            <td style="text-align:center;">
+                                <input type="button" style="width:100%;background-color:#FE2E2E !important;display:none" class="btn-tmp pulsating" id="btnPulsating" value="Job Offers" onclick="ShowLaterJobOffers();"/>
                             </td>
                         </tr>
                  </table>

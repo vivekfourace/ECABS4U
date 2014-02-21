@@ -13,7 +13,7 @@ var timereOut;
                 $('#popup_box').hide();
                 $('#divDeal').hide();
                 var jobNo = $('#hdnJobno').val();
-                 
+                
                 $.ajax({
                     url: "http://115.115.159.126/ECabs/ECabs4U.asmx/DealResponse",
                     type: "POST",
@@ -24,9 +24,7 @@ var timereOut;
                         var getResID = data.d[0];
                         var popUpDisplay = data.d[1];
                         var customerResponse = data.d[2];
-                        var isJobAlive = data.d[3];
-                        
- console.log("JobNO:"+jobNo+"PopUpDisplay:"+popUpDisplay+"isJobAlive:"+isJobAlive+"customerResponse:"+customerResponse);
+                        var isJobAlive = data.d[3];                       
 
                         if (popUpDisplay === "False") {
                             $.ajax({

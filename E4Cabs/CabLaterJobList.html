@@ -1,18 +1,33 @@
 <!DOCTYPE html>
 
 <html>
-<head>
+<head>    
+    <title></title>    
     <link rel="stylesheet" type="text/css" href="css/site.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
-    <link rel="stylesheet" type="text/css" href="css/append.css" />
-    <script src="Scripts/jquery-2.0.3.min.js"></script>
-    <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-    <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
-    <script type="text/javascript" src="js/driverCabLaterJobs.js"></script>
-    <script type="text/javascript" src="Common/Logout.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/append.css" />    
     
-    <title></title>
+    <script src="Scripts/jquery-2.0.3.min.js"></script>    
+    <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>    
+    
+    <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="Common/Logout.js"></script>
+    <script type="text/javascript" src="js/cabLaterJobList.js"></script>
+    <script type="text/javascript" src="Common/DriverJobBooking.js"></script>
+    <script type="text/javascript" src="Common/DriverJobNotification.js"></script>
+
+    <style type="text/css">
+        body.js.nojs
+        {
+            display: none;
+        }
+    </style>
+    
+    <script type="text/javascript">
+        var relId = relatedId;       
+        console.log(relId);
+    </script>
 </head>
 <body>
     <div id="transparent_div" style="display: none"></div>
@@ -33,7 +48,7 @@
                 <td  style="float: left; padding-left: 3%;width:50%;">
 
                     <div style="padding-top: 13px;">
-                        <b class="header-font" style="color: white; font-size: 16px;">Cab later jobs</b>
+                        <b class="header-font" style="color: white; font-size: 16px;">Job offered</b>
                     </div>
 
                 </td>
@@ -45,9 +60,9 @@
             </tr>
         </table>
     </div>
+    <input type="hidden" id="hdnJobno"/>
     <div id="msg" style="padding-top:70px"></div>
-    <div style="padding-top:50%; color:#0000FF;font-size:20px;text-align:center;display:none" id="bookingmsg">You should have a job to make yourself engage.</div>    
-   
+    <div style="padding-top:40%; color:#0000FF;font-size:20px;text-align:center;display:none" id="bookingmsg">No history found.</div>
         <div class="btn-tmpFooter">                
                <table style="width:100%;border-collapse:collapse" >
                     <tr>

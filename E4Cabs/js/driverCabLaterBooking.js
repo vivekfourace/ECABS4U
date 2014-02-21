@@ -40,26 +40,27 @@ function bindGrid(data)
                     var customerID = data.d[i]["CustomerID"];
                     console.log(customerID);
                     console.log(isCustomerAccepted);
-                    html += '<tr>';
-                    html += "<td width='25%' height='30px' align='center'>" +'<a href="#" onclick="ShowDetailBooking(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["CustomerID"]+'\')" style="color:blue;">'+ data.d[i]["CustomerRequestID"]+'</a>' + "</td>"; 
-                    html += "<td width='15%' height='30px' align='center'>"+'&pound' + data.d[i]["Fare"] +"</td>";
-                    html += "<td width='25%' height='30px' align='center'>" + data.d[i]["From"] +"</td>";
-                    html += "<td width='25%' height='30px' align='center'>" + data.d[i]["To"] +"</td>";
-                     
                     if(isCustomerAccepted === true)
                      {
-                       html += "<td colspan='2'>"
-                       +'<input type="button" value="Accept" class="accept-btn" onclick="AcceptJob(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["Fare"]+'\')"/><br/>'
-                       +'<input type="button" value="Reject" class="reject-btn" onclick="RejectJob(\''+data.d[i]["CustomerRequestID"]+'\')"/>'
-                       +"</td>";
-                     }
-                     else if(isCustomerAccepted === false)
-                     {
-                         html += "<td width='10%' height='30px' align='center'>No Response</td>";
-                     }
+                        html += '<tr>';
+                        html += "<td width='25%' height='30px' align='center'>" +'<a href="#" onclick="ShowDetailBooking(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["CustomerID"]+'\')" style="color:blue;">'+ data.d[i]["CustomerRequestID"]+'</a>' + "</td>"; 
+                        html += "<td width='15%' height='30px' align='center'>"+'&pound' + data.d[i]["Fare"] +"</td>";
+                        html += "<td width='25%' height='30px' align='center'>" + data.d[i]["From"] +"</td>";
+                        html += "<td width='25%' height='30px' align='center'>" + data.d[i]["To"] +"</td>";
+                     
+                   
+                        html += "<td colspan='2'>"
+                        +'<input type="button" value="Accept" class="accept-btn" onclick="AcceptJob(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["Fare"]+'\')"/><br/>'
+                        +'<input type="button" value="Reject" class="reject-btn" onclick="RejectJob(\''+data.d[i]["CustomerRequestID"]+'\')"/>'
+                        +"</td>";
+                     
+                     //else if(isCustomerAccepted === false)
+                     //{
+                     //    html += "<td width='10%' height='30px' align='center'>Awaiting customer response</td>";
+                     //}
                     
-                    html += '</tr>';
-                    
+                        html += '</tr>';
+                    }                    
                  }
             html +='</tbody>';
             html +='</table>';
@@ -99,7 +100,7 @@ function AcceptJob(jobno, jobfare)
                 data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
-                    if(data.d === true)
+                    if(data.d === "true")
                     {
                        alert('Job booked successfully.');
                        window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
@@ -208,9 +209,10 @@ function Confirmcomission()
                 data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
-                    if(data.d == true)
+                    if(data.d === "true")
                     {
-                       //alert('Job booked successfully.');
+                       alert('Job booked successfully.');
+                       window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {

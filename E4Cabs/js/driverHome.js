@@ -33,6 +33,7 @@ function  NavigateToMap()
                 $('#btnabort').show();
                 $('#btnclear').show();
                 $('#btnnavigation').show();
+                $('#btnOffline').hide();
                 loadjscssfile("Common/UpdatePostcode.js", "js");
             }
             else if(data.d === false)
@@ -63,6 +64,7 @@ function onAbortCallback(buttonIndex)
     }
     else if(buttonIndex === 2)
     {
+        $('#btnOffline').show();
        $('#popup_box1').show();
        $('#divAbortTask').show();
        $('#transparent_div').show();
@@ -98,7 +100,7 @@ function onAbortCallback(buttonIndex)
            $('#btnOffline').hide();
            $('#btnOnline').show();
            $('#lblStaus').show();
-           $('#lblStaus').text("Away");
+           $('#lblStaus').text("Unavailable");
            $('#lblStaus').css("color", "red");
            $('#lblEngaged').hide();
         },
@@ -191,6 +193,7 @@ function onClearCallback(buttonIndex)
     }
     else if(buttonIndex === 2)
     {
+        $('#btnOffline').show();
         $.ajax({
                 url:"http://115.115.159.126/ECabs/ECabs4U.asmx/ClearDriverStatus",
                      type:"POST",
@@ -207,6 +210,11 @@ function onClearCallback(buttonIndex)
                      },
             });
     }
+}
+
+function ShowLaterJobOffers()
+{
+    window.location='CabLaterJobList.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
 

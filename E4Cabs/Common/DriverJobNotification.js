@@ -10,7 +10,8 @@ function onDeviceReady() {
 
 function showConfirm(param) {
     var now = 1;
-    var later = 2;
+    alert(param);
+    //var later = 2;
     if(param === now)
     {
         navigator.notification.confirm(
@@ -20,15 +21,15 @@ function showConfirm(param) {
         'No,Yes'
         );
     }
-    else if(param === later)
-    {
-        navigator.notification.confirm(
-        'You have got a new "Cab later" job request. Do you want to see it?',
-         onConfirm,
-        'NEW JOB',
-        'No,Yes'
-        );
-    }
+    //else if(param === later)
+    //{
+    //    navigator.notification.confirm(
+    //    'You have got a new "Cab later" job request. Do you want to see it?',
+    //     onConfirm,
+    //    'NEW JOB',
+    //    'No,Yes'
+    //    );
+    //}
 }
 function onConfirm(buttonIndex)
 {
@@ -70,10 +71,17 @@ function Check() {
                           clearInterval(jobCheckTime);
                       }
                       else if (jobType === "False") {
-                          var cablater = 2;
-                          showConfirm(cablater);
-                          playBeep();
-                          clearInterval(jobCheckTime);
+                          var isnotvisited = data.d[2];                          
+                          console.log(isnotvisited);
+                          if(isnotvisited === "True")
+                          {
+                              $('#btnPulsating').show();
+                              $('#btnNormal').hide();
+                              //var cablater = 2;
+                              //showConfirm(cablater);
+                              //playBeep();
+                              clearInterval(jobCheckTime);
+                          }
                       }
                   }
            },
