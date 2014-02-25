@@ -1,6 +1,6 @@
 function Registercustomer()
 {
-    console.log("I am in Register");
+   
     var txt1 =$('#txtFirstName').val();
     var txt2 =$('#txtLastName').val();
     var txt3 =$('#txtPhone').val();
@@ -72,12 +72,9 @@ function Registercustomer()
        }
      if(txt7.length > 0)
        {
-           if(txt7.length >= 8 && txt7.length <= 20)
+           if(txt7.length < 8 && txt7.length > 20)
            {
-              return true;
-           }
-           else
-           {
+          
                $('#lblMsg').text("Password must be in between 8 to 20 characters.");
                $('#txt7').focus();
                return false;
@@ -89,11 +86,20 @@ function Registercustomer()
            $('#txtPassword').focus();
            return false;
        }
+    
+    
+    if(!txt8)
+    {
+                        $('#lblMsg').text("Please enter confirm password.");
+                        $('#txtConfirmPassword').focus();
+                        return false;
+    }
+    
      if(txt8.length > 0)
       {
            if(txt7 == txt8)
            {
-               $('#lblMsg').text(" ");
+               $('#lblMsg').text("");
            }
            else
            {
@@ -104,12 +110,7 @@ function Registercustomer()
                return false;
            }
      }
-    else if(txt8.length == 0)
-    {
-                        $('#lblMsg').text("Please enter confirm password.");
-                        $('#txtConfirmPassword').focus();
-                        return false;
-    }
+    
     $.ajax({
              cache: false,
              beforeSend: function(){
