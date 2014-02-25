@@ -32,7 +32,7 @@ function gethistory()
                         html += '<thead class="thead-grid">';
                         html += '<tr>';
                         html += '<th>Job no</th>';
-                        html += '<th>Feedback</th>';
+                      //  html += '<th>Feedback</th>';
                         html += '<th>Status</th>'; 
                         html += '</tr>';
                         html += '</thead>';
@@ -43,8 +43,8 @@ function gethistory()
                                 var isCabNow = data.d[i]["isCabNow"];
                                 var isJobAlive = data.d[i]["isJobAlive"];
                                 html += '<tr>';
-                                html += "<td width='20%' height='30px' align='center'>" +'<a href="#" onclick="JobDetail(\''+data.d[i]["JobNo"]+'\')" style="color:blue;">'+ data.d[i]["JobNo"]+'</a>'+"</td>"; 
-                                html += "<td width='5%' height='30px' align='center'>"+'<img src="img/feedbackicon.png" onclick="feedBackDriver(\''+data.d[i]["JobNo"]+'\')"</img>'+"</td>"
+                               html += "<td width='20%' height='30px' align='center'>" +'<a href="#" onclick="JobDetail(\''+data.d[i]["JobNo"]+'\')" style="color:blue;">'+ data.d[i]["JobNo"]+'</a>'+"</td>"; 
+                              //html += "<td width='5%' height='30px' align='center'>"+'<img src="img/feedbackicon.png" onclick="feedBackDriver(\''+data.d[i]["JobNo"]+'\')"</img>'+"</td>"
                                 
                              if(data.d[i]["isJobCompleted"] == true)
                                 {
