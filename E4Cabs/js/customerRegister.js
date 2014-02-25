@@ -1,6 +1,7 @@
 function Registercustomer()
 {
-    console.log("I am in Register");
+   // alert('Ritij');
+   //console.log("I am in Register");
     var txt1 =$('#txtFirstName').val();
     var txt2 =$('#txtLastName').val();
     var txt3 =$('#txtPhone').val();
@@ -72,6 +73,7 @@ function Registercustomer()
        }
      if(txt7.length > 0)
        {
+           
            if(txt7.length >= 8 && txt7.length <= 20)
            {
               return true;
@@ -90,9 +92,12 @@ function Registercustomer()
            return false;
        }
      if(txt8.length > 0)
+    
       {
+          alert('vikas');
            if(txt7 == txt8)
            {
+              
                $('#lblMsg').text(" ");
            }
            else
@@ -126,14 +131,17 @@ function Registercustomer()
              success: CheckData,
              error: function (XMLHttpRequest, textStatus, errorThrown) 
              {
+                 
            }
      });    
 }
 
 function CheckData(data)
-{    
+{   
+     //alert('hi');
     if(data.d == "true")
     {
+       
        var timeOut = 5;
        setInterval(function() {  
            $('#divcustomerreg').hide();
