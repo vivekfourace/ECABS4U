@@ -1,6 +1,6 @@
 function Registercustomer()
 {
-    console.log("I am in Register");
+    //console.log("I am in Register");
     var txt1 =$('#txtFirstName').val();
     var txt2 =$('#txtLastName').val();
     var txt3 =$('#txtPhone').val();
@@ -12,7 +12,7 @@ function Registercustomer()
     var phoneno =/^\d{11}$/;
     var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
     //var pass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}$/;
-    
+   
       if(!txt1)
        {
                      $('#lblMsg').text("Please enter your first name.");
@@ -89,27 +89,7 @@ function Registercustomer()
            $('#txtPassword').focus();
            return false;
        }
-     if(txt8.length > 0)
-      {
-           if(txt7 == txt8)
-           {
-               $('#lblMsg').text(" ");
-           }
-           else
-           {
-               $('#lblMsg').text("Password mismatch.");
-               $('#txtPassword').focus();
-               $('#txtPassword').val("");
-               $('#txtConfirmPassword').val("");
-               return false;
-           }
-     }
-    else if(txt8.length == 0)
-    {
-                        $('#lblMsg').text("Please enter confirm password.");
-                        $('#txtConfirmPassword').focus();
-                        return false;
-    }
+     
     $.ajax({
              cache: false,
              beforeSend: function(){
@@ -126,6 +106,8 @@ function Registercustomer()
              success: CheckData,
              error: function (XMLHttpRequest, textStatus, errorThrown) 
              {
+                 
+              
            }
      });    
 }
@@ -135,7 +117,8 @@ function CheckData(data)
     if(data.d == "true")
     {
        var timeOut = 5;
-       setInterval(function() {  
+       setInterval(function() {
+           
            $('#divcustomerreg').hide();
             document.getElementById('divSucessfulcustomer').innerHTML= "Registration successful.";
            document.getElementById('divMsgcustomer').innerHTML=  "Please wait " + --timeOut + "s for login screen.";  
