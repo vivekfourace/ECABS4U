@@ -289,6 +289,7 @@ function availabledriver() {
     }
         function moveSearch()
         {
+           
             IsReturnTrue = isRetJourAllOperator;
             $.ajax({
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerSearchRequest",
@@ -313,6 +314,7 @@ function availabledriver() {
                     else
                     {
                         console.log(data.d[1]);
+
                         alert(data.d[1]);
                     }
                 },
