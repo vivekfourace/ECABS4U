@@ -161,6 +161,8 @@
         $('#txtReturTo').show();
         $('#cancelreturn').show();
         $('#bookreturn').hide();
+        document.getElementById("chkNo").checked = false;
+        document.getElementById("chkyes").checked = false;
 
         document.getElementById("trfrom").style.display = 'table-row';
         document.getElementById("trto").style.display = 'table-row';
@@ -192,7 +194,7 @@
         $('#termCond').hide();
         $('#returnJ').hide();
         document.getElementById("chkNo").checked = false;
-        document.getElementById("chkyes").checked = true;
+        document.getElementById("chkyes").checked = false;
         document.getElementById("chkReturnYes").checked = false;
     }
 

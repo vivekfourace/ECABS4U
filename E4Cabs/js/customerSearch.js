@@ -70,12 +70,14 @@ $(document).ready(function ()
      
        $('#chkNo').click(function () {
            document.getElementById("chkyes").checked = false;
+           document.getElementById("chkReturnYes").checked = true;
            $('#returnJ').fadeIn("fast");
            $('#termCond').fadeIn("fast");
 
        });
        $('#chkyes').click(function () {
            document.getElementById("chkNo").checked = false;
+            document.getElementById("chkReturnYes").checked = false;
            $('#returnJ').fadeOut("slow");
            $('#termCond').fadeOut("slow");
 
