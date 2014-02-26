@@ -161,8 +161,11 @@
         $('#txtReturTo').show();
         $('#cancelreturn').show();
         $('#bookreturn').hide();
-        document.getElementById("chkNo").checked = false;
+        document.getElementById("chkNo").checked = true;
         document.getElementById("chkyes").checked = false;
+         document.getElementById("chkReturnYes").checked = true;
+         $('#returnJ').fadeIn("fast");
+           $('#termCond').fadeIn("fast");
 
         document.getElementById("trfrom").style.display = 'table-row';
         document.getElementById("trto").style.display = 'table-row';
