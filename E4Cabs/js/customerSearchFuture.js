@@ -204,20 +204,22 @@ function availabledriverLater() {
     }
     var IsReturnTrue = $('#chkReturnYes').attr('checked') ? true : false;
     var isCheckedNo = $('#chkNo').attr('checked') ? true : false;
+    var isRetJourAllOperator = $('#chkyes').attr('checked') ? true : false;    
     var laterpostcode = $('#locfrom_postcode').val();
     var latertopostcode = $('#locto_postcode').val();
     //alert(latertopostcode);
-    
+    //alert(IsReturnTrue);
     if (isCheckedNo == true) {
-        if (IsReturnTrue == false) {
-            var pickD = returnDate;
-            var pickT = returnTime;
-            var fromL = returntoloc;
-            var toL = returnfromloc;
-            var retunD = "";
-            var retunT = "";
-            var returnFL = "";
-            var returnTL = "";
+        if (IsReturnTrue == true) {
+            alert('samedriverCablater');
+            var pickD = pickdateP;
+            var pickT = picktime;
+            var fromL = fromloc;
+            var toL = toloc;
+            var retunD = returnDate;
+            var retunT = returnTime;
+            var returnFL = returnfromloc;
+            var returnTL = returntoloc;
             $.ajax({
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerSearchRequest",
                 cache: false,
@@ -258,6 +260,8 @@ function availabledriverLater() {
     }
         function moveSearch()
         {
+            IsReturnTrue = isRetJourAllOperator;
+            alert(IsReturnTrue);
             $.ajax({
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerSearchRequest",
                 cache: false,
