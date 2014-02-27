@@ -10,7 +10,7 @@ function onDeviceReady() {
 
 function showConfirm(param) {
     var now = 1;
-    alert(param);
+    //alert(param);
     //var later = 2;
     if(param === now)
     {
@@ -18,7 +18,7 @@ function showConfirm(param) {
         'You have got a new "Cab now" job request. Do you want to see it?',
          onConfirm,
         'NEW JOB',
-        'No,Yes'
+        'No,Yes' 
         );
     }
     //else if(param === later)
