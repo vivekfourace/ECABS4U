@@ -236,16 +236,17 @@ function availabledriver() {
     var latertopostcode = $('#locto_postcode').val();
     console.log(laterpostcode);
     
-    if (isCheckedNo == true) {
-        if (IsReturnTrue == false) {
-            var pickD = returnDate;
-            var pickT = returnTime;
-            var fromL = returntoloc;
-            var toL = returnfromloc;
-            var retunD = "";
-            var retunT = "";
-            var returnFL = "";
-            var returnTL = "";
+    if (isCheckedNo == true && IsReturnTrue==true )
+    {
+      
+            var pickD = pickdate;
+            var pickT = picktime;
+            var fromL = fromloc;
+            var toL = toloc;
+            var retunD =returnDate ;
+            var retunT = returnTime;
+            var returnFL = returnfromloc;
+            var returnTL = returntoloc;
             $.ajax({
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerSearchRequest",
                 cache: false,
@@ -276,18 +277,16 @@ function availabledriver() {
                 }
             });
         }
-        else
+        else if(isRetJourAllOperator==true)
         {
             moveSearch();
         }
     }
-    else
-    {
-        moveSearch();
-    }
+    
         function moveSearch()
         {
-            IsReturnTrue = isRetJourAllOperator;
+            //IsReturnTrue = isRetJourAllOperator;
+            var yesfordiffrentdriver= isRetJourAllOperator;
             $.ajax({
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerSearchRequest",
                 cache: false,
@@ -299,7 +298,7 @@ function availabledriver() {
                  },
                 type: "POST",
                 dataType: "Json",
-                data: "{'userID':'" + relatedId + "','frompost':'" + fromloc + "','topost':'" + toloc + "','pickDate':'" + pickdate + "','pickTime':'" + picktime + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnfromloc + "','returntoloc':'" + returntoloc + "','returnDate':'" + returnDate + "','returnTime':'" + returnTime + "','travelTime':'" + travelTime + "','isCabNow':'" + isCabNow + "','fourthLoc':'" + fourthLoc + "','fifthLoc':'" + fifthLoc + "','sixthLoc':'" + sixthLoc + "','seventhLoc':'" + seventhLoc + "','eightLoc':'" + eightLoc + "', 'laterpostcode':'"+laterpostcode+"', 'isCreditCard':'"+isCreditCard+"', 'latertopostcode':'"+latertopostcode+"'}",
+                data: "{'userID':'" + relatedId + "','frompost':'" + fromloc + "','topost':'" + toloc + "','pickDate':'" + pickdate + "','pickTime':'" + picktime + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + yesfordiffrentdriver + "','returnfromloc':'" + returnfromloc + "','returntoloc':'" + returntoloc + "','returnDate':'" + returnDate + "','returnTime':'" + returnTime + "','travelTime':'" + travelTime + "','isCabNow':'" + isCabNow + "','fourthLoc':'" + fourthLoc + "','fifthLoc':'" + fifthLoc + "','sixthLoc':'" + sixthLoc + "','seventhLoc':'" + seventhLoc + "','eightLoc':'" + eightLoc + "', 'laterpostcode':'"+laterpostcode+"', 'isCreditCard':'"+isCreditCard+"', 'latertopostcode':'"+latertopostcode+"'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
                     if(data.d[0] !== "Error")
