@@ -357,6 +357,11 @@
             });
         document.getElementById("chkyes").checked = true;
       });
+        
+     $(document).ready(function ()
+     {
+        document.getElementById("chkyes").checked = false;
+     });
     </script>
 
     <style type="text/css">
@@ -743,7 +748,7 @@
                            </tr>
                             <tr style="background-color:#FAAC58">
                         <td style="width:50%"> 
-                            <input type="checkbox" id="chkyes" style="float:left"/>
+                            <input type="checkbox" checked="false" id="chkyes" style="float:left"/>
                             <label style="font-size:12px;text-align:left;float:left;padding-top:2px"><b>Yes</b></label>
                          </td>
                        <td>

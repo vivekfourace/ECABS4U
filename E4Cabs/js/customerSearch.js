@@ -232,7 +232,8 @@ function availabledriver() {
     }
     var IsReturnTrue = $('#chkReturnYes').attr('checked') ? true : false;
     var isCheckedNo = $('#chkNo').attr('checked') ? true : false;
-    var isRetJourAllOperator = $('#chkyes').attr('checked') ? true : false;    
+    var isRetJourAllOperator = $('#chkyes').attr('checked') ? true : false; 
+    
     
     var laterpostcode = $('#locfrom_postcode').val();
     var latertopostcode = $('#locto_postcode').val();
@@ -241,6 +242,7 @@ function availabledriver() {
     if (isCheckedNo == true) {
         
         if (IsReturnTrue == true) {
+            alert(IsReturnTrue);
             alert('samedriver Cabnow');
             var pickD = pickdate;
             var pickT = picktime;
@@ -292,9 +294,10 @@ function availabledriver() {
     }
         function moveSearch()
         {
-           
+          
             IsReturnTrue = isRetJourAllOperator;
-             alert(IsReturnTrue);
+            alert('differentdriver Cabnow');
+            alert(IsReturnTrue);
             $.ajax({
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerSearchRequest",
                 cache: false,
