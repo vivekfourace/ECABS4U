@@ -13,7 +13,7 @@ jQuery.extend(jQuery.mobile.datebox.prototype.options.lang, {
 		monthsOfYearShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
 		durationLabel: ["Days", "Hours", "Minutes", "Seconds"],
 		durationDays: ["Day", "Days"],
-		tooltip: "Open Date Picker",
+		tooltip: "Please Select",
 		nextMonth: "Next Month",
 		prevMonth: "Previous Month",
 		timeFormat: 24,

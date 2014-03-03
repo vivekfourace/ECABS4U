@@ -68,7 +68,8 @@ $(document).ready(function ()
             });
         }
      
-       $('#chkNo').click(function () {
+       $('#chkNo').click(function ()
+     {
            document.getElementById("chkyes").checked = false;
            document.getElementById("chkReturnYes").checked = true;
            $('#returnJ').fadeIn("fast");
@@ -195,7 +196,8 @@ function availabledriver() {
 
     var returnDate = document.getElementById("datepickers").value;
     var returnTime = document.getElementById("timepickers").value;
-
+    
+   
     var secondLoc = $('#txt2location').val();
     var thirdLoc =  $('#txt3location').val();
     var fourthLoc = $('#txt4location').val();
@@ -237,6 +239,33 @@ function availabledriver() {
     var laterpostcode = $('#locfrom_postcode').val();
     var latertopostcode = $('#locto_postcode').val();
     console.log(laterpostcode);
+    
+    
+    
+    
+    //compare datetime 
+    
+    if(isCheckedNo == true || isRetJourAllOperator == true)
+    {
+       
+        if(pickdate>returnDate)
+    {
+        alert("Please select currect date.");
+        return false; 
+    }
+    
+    if(picktime>returnTime)
+    {
+        alert("Please select currect time.");
+        return false;  
+    }
+    
+   
+     }
+    else
+    {
+    
+    }
     
     
     //With same driver and want to return

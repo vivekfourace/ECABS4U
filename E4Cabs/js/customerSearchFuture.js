@@ -34,23 +34,26 @@ $(document).ready(function ()
             },
         });
 
-        $('#chkNo').click(function () {
-            document.getElementById("chkyes").checked = false;
-            $('#returnJ').fadeIn("slow");
-            $('#termCond').fadeIn("slow");
+        $('#chkNo').click(function ()
+     {
+           document.getElementById("chkyes").checked = false;
+           document.getElementById("chkReturnYes").checked = true;
+           $('#returnJ').fadeIn("fast");
+           $('#termCond').fadeIn("fast");
 
-        });
-        $('#chkyes').click(function () {
-            document.getElementById("chkNo").checked = false;
-            $('#returnJ').fadeOut("slow");
-            $('#termCond').fadeOut("slow");
+       });
+       $('#chkyes').click(function () {
+           document.getElementById("chkNo").checked = false;
+            document.getElementById("chkReturnYes").checked = false;
+           $('#returnJ').fadeOut("slow");
+           $('#termCond').fadeOut("slow");
 
-        });
+       });
 
-        $('#popupBoxClose').click(function () {
-            $('#popup_box').fadeOut("slow");
-            $('#transparent_div').fadeOut("slow");
-        });  
+       $('#popupBoxClose').click(function () {
+           $('#popup_box').fadeOut("slow");
+           $('#transparent_div').fadeOut("slow");
+       });
        
     
     });
@@ -156,6 +159,38 @@ function availabledriverLater() {
 
     var returnDate = document.getElementById("datepickers").value;
     var returnTime = document.getElementById("timepickers").value;
+    
+    
+    
+    //compare date time
+    
+    if(isCheckedNo == true || isRetJourAllOperator == true)
+    {
+        
+    if(pickdateP<=returnDate)
+    {
+        
+    }
+    else
+    {
+       alert("Please select currect date.");
+        return false;
+    }
+    
+    if(picktime<returnTime)
+    {
+        
+    }
+    else
+    {
+      alert("Please select currect time.");
+        return false;   
+    }
+        }
+    else
+    {
+        
+    }
 
     var isCreditCard = null;
     if($('#radCrditcard:checked').val() == 1)
