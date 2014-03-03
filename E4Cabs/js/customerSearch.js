@@ -242,8 +242,7 @@ function availabledriver() {
     
     
     
-    
-    //compare datetime 
+    //compare return datetime 
     
     if(isCheckedNo == true || isRetJourAllOperator == true)
     {

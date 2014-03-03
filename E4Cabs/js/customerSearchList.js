@@ -730,7 +730,7 @@ function CancelJobRequest()
 
 function ReInitiateJob()
 {
-        var result = confirm("Do you want to Re-initiate this job?");    
+        var result = confirm("Do you want to reinitiate this job?");    
         if (result===true) {
               //window.location = 'customerSearch.html?id=' + userId + '&rid=' + requestID + '&rrid=' + relatedId;
             

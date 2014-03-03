@@ -603,14 +603,14 @@ $(document).ready(function () {
                 </td>
               </tr>
                 <tr>
-                <td>
+                <td>   <input type="hidden" id="pickcurrentdate"/>
                         <input type="hidden" id="pickUpDate"/>                   
                         <label for="pickDate" class="font-style"><b style="font-size:12px">Pick Up Date</b></label>
                         <input name="pickDate" id="pickDate" type="date" data-role="datebox"   data-options='{"mode": "datebox","dateFormat":"%b %d"}'>
                 </td>
             </tr>
                <tr>
-                <td>
+                <td><input type="hidden" id="pickcurrenttime"/>
                     <input type="hidden" id="pickUpTime"/>
                     <label for="pickTime" class="font-style"><b style="font-size:12px">Pick Up Time</b></label>                    
                     <input name="pickTime" type="text" data-role="datebox" id="pickTime" data-options='{"mode": "timebox", "overrideTimeFormat":24}' />

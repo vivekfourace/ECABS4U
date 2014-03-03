@@ -162,35 +162,7 @@ function availabledriverLater() {
     
     
     
-    //compare date time
-    
-    if(isCheckedNo == true || isRetJourAllOperator == true)
-    {
-        
-    if(pickdateP<=returnDate)
-    {
-        
-    }
-    else
-    {
-       alert("Please select currect date.");
-        return false;
-    }
-    
-    if(picktime<returnTime)
-    {
-        
-    }
-    else
-    {
-      alert("Please select currect time.");
-        return false;   
-    }
-        }
-    else
-    {
-        
-    }
+   
 
     var isCreditCard = null;
     if($('#radCrditcard:checked').val() == 1)
@@ -246,6 +218,70 @@ function availabledriverLater() {
      var IsReturnTrue = $('#chkReturnYes').attr('checked') ? true : false;
     var isCheckedNo = $('#chkNo').attr('checked') ? true : false;
     var isRetJourAllOperator = $('#chkyes').attr('checked') ? true : false;    
+    
+    //compare present datetime  
+    
+     var currentTime = new Date()
+        var hours = currentTime.getHours()
+        var minutes = currentTime.getMinutes()
+        if (minutes < 10)
+            minutes = "0" + minutes
+        if (hours >= 24) {
+            hours = hours - 24;
+        }
+        if (hours == 0) {
+            hours = 0;
+        }
+        $('#pickcurrenttime').val(hours + ":" + minutes);
+    
+    
+    var currentDate = new Date()
+        var day = currentDate.getDate()
+        var month = currentDate.getMonth() + 1
+        var year = currentDate.getFullYear()
+   
+        $('#pickcurrentdate').val(day + "/" + month + "/" + year);
+    
+        var picktimecurrentTIME = document.getElementById('pickcurrenttime').value;
+        var picktimecurrentDate = document.getElementById('pickcurrentdate').value;
+    
+      
+    
+      if(pickdateP < picktimecurrentDate)
+      {
+        alert("Please Enter correct Pick Up Date.");
+          return false;
+      }
+    
+    if(picktime < picktimecurrentTIME)
+      {
+        alert("Please Enter correct Pick Up time,Pick Up time should be greater than Current time. ");
+          return false;
+      }
+    
+     //compare datetime 
+    
+    if(isCheckedNo == true || isRetJourAllOperator == true)
+    {
+       
+        if(pickdateP>returnDate)
+    {
+        alert("Please Enter correct Return Pick Up Date.");
+        return false; 
+    }
+    
+    if(picktime>returnTime)
+    {
+        alert("Please Enter correct Return Pick Up time,Pick Up time should be greater than Current time.");
+        return false;  
+    }
+    
+   
+     }
+    else
+    {
+    
+    }
     
     var laterpostcode = $('#locfrom_postcode').val();
     var latertopostcode = $('#locto_postcode').val();
