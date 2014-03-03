@@ -268,7 +268,7 @@ function SaveDataOfCurrentJob()
                     contentType: "application/json; charset=utf-8",
                     success: function () {                        
                         $('#button-table').hide();                                                
-                        alert('Congratulations. We recommend you contact the customer by phone to confirm pickup location.');
+                        alert('Congratulations! We recommend you to please contact the customer by phone and confirm the pickup location.');
                         $("#divDealload").show();
                         $('#transparent_div').show();
                         window.location = 'driverHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;               

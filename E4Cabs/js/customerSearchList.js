@@ -546,7 +546,7 @@ function Hireme(driID, reqID,spec)
     {   
         window.clearInterval(id);
         navigator.notification.confirm(
-        "Did you read the special circumstance entry?",
+        "Have you read special circumstance?",
          onConfirm,
         'Confirm',
         'No,Yes'
