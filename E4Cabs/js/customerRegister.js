@@ -33,14 +33,14 @@ function Registercustomer()
                         }
                         else
                     {
-                            $('#lblMsg').text("Please enter a valid contact number.");
+                            $('#lblMsg').text("Please enter a valid Mobile number.");
                             $('#txtPhone').focus();
                             return false;
                     }
          }
         else if(txt3.length == 0)
          {
-                           $('#lblMsg').text("Please enter a contact number.");
+                           $('#lblMsg').text("Please enter a Mobile number.");
                            $('#txtPhone').focus();
                            return false;
          }

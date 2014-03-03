@@ -79,7 +79,7 @@ function login() {
         $('#lblMsg').text("");
     }
     else if (name.length === 0) {
-        $('#lblMsg').text("Please enter username.");
+        $('#lblMsg').text("Please Enter Username.");
         $('#txtUserName').focus();
         return false;
     }
@@ -87,7 +87,7 @@ function login() {
         $('#lblMsg').text("");
     }
     else if (password.length === 0) {
-        $('#lblMsg').text("Please enter password.");
+        $('#lblMsg').text("Please Enter Password.");
         $('#txtPassword').focus();
         return false;
     }
