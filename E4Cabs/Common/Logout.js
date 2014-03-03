@@ -8,17 +8,17 @@ function logout(){
     "Do you want to logout?",
     onLogoutCallback,
     "Confirm",
-    "No, Yes"
+    "Yes, No"
     );
 }
 
 function onLogoutCallback(buttonIndex)
 {
-    if(buttonIndex === 1)
+    if(buttonIndex === 2)
     {
         return false;
     }
-    else if(buttonIndex === 2)
+    else if(buttonIndex === 1)
     {
         $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
             type:"POST",
