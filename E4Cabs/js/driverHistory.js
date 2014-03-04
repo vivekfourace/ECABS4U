@@ -261,17 +261,17 @@ function AbortJob(data)
     "Do you want to abort the current job?",
     onAbortCallback,
     "Confirm",
-    "No, Yes"
+    "Yes,No"
     );
 }
 
 function onAbortCallback(buttonIndex)
 {
-    if(buttonIndex == 1)
+    if(buttonIndex == 2)
     {
         return false;
     }
-    else if(buttonIndex == 2)
+    else if(buttonIndex == 1)
     {
         $('#transparent_div').show();
         $('#popup_box1').fadeIn("fast");

@@ -18,7 +18,7 @@ function showConfirm(param) {
         'You have got a new "Cab now" job request. Do you want to see it?',
          onConfirm,
         'NEW JOB',
-        'No,Yes' 
+        'Yes,No'
         );
     }
     //else if(param === later)
@@ -27,18 +27,18 @@ function showConfirm(param) {
     //    'You have got a new "Cab later" job request. Do you want to see it?',
     //     onConfirm,
     //    'NEW JOB',
-    //    'No,Yes'
+    //    'Yes,No'
     //    );
     //}
 }
 function onConfirm(buttonIndex)
 {
-    if(buttonIndex === 1)
+    if(buttonIndex === 2)
     {
         closeRequest();
         jobCheckTime = setInterval(Check, 10000);        
     }
-    else if(buttonIndex === 2)
+    else if(buttonIndex === 1)
     {
         seeRequest();
     }

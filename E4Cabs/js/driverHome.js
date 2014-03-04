@@ -52,17 +52,17 @@ function AbortJob()
     "Do you want to abort this job?",
     onAbortCallback,
     "Confirm",
-    "No, Yes"    
+    "Yes,No"   
     );
 }
 
 function onAbortCallback(buttonIndex)
 {
-    if(buttonIndex === 1)
+    if(buttonIndex === 2)
     {
         return false;
     }
-    else if(buttonIndex === 2)
+    else if(buttonIndex === 1)
     {
         $('#btnOffline').show();
        $('#popup_box1').show();
@@ -77,17 +77,17 @@ function Offline()
     "Making unavailable yourself will loose new job notification.",
     onAbortCallback,
     "Warning",
-    "No, Yes"    
+    'Yes,No'   
     );
 }
 
 function onAbortCallback(buttonIndex)
 {
-    if(buttonIndex === 1)
+    if(buttonIndex === 2)
     {
         return false;
     }
-    else if(buttonIndex === 2)
+    else if(buttonIndex === 1)
     {
        $.ajax({
         url:"http://115.115.159.126/ECabs/ECabs4U.asmx/MakeOffline",
@@ -181,17 +181,17 @@ function clearJob()
     "Do you have completed this job?",
     onClearCallback,
     "Confirm",
-    "No, Yes"  
+    "Yes,No" 
     );
 }
 
 function onClearCallback(buttonIndex)
 {
-    if(buttonIndex === 1)
+    if(buttonIndex === 2)
     {
         return false;
     }
-    else if(buttonIndex === 2)
+    else if(buttonIndex === 1)
     {
         $('#btnOffline').show();
         $.ajax({

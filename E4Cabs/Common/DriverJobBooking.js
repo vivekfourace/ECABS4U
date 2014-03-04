@@ -405,17 +405,17 @@ function reqReject() {
     "Do you want to reject the job?",
     onRejectCallback,
     "Confirm",
-    "No, Yes"   
+    "Yes,No"  
     );
 }
 
 function onRejectCallback(buttonIndex)
 {
-    if(buttonIndex === 1)
+    if(buttonIndex === 2)
     {
         return false;
     }
-    else if(buttonIndex === 2)
+    else if(buttonIndex === 1)
     {
            
             var rid = $('#hdnJobno').val();

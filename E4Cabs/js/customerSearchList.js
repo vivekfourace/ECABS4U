@@ -549,18 +549,18 @@ function Hireme(driID, reqID,spec)
         "Have you read special circumstance?",
          onConfirm,
         'Confirm',
-        'No,Yes'
+        'Yes,No'
      );
     }
   }
 
 function onConfirm(buttonIndex)
 {
-    if(buttonIndex === 1)
+    if(buttonIndex === 2)
     {        
         SpecShow(specS);     
     }
-    else if(buttonIndex === 2)
+    else if(buttonIndex === 1)
     {
        DisableHiremeBtns();
        window.clearInterval(id);

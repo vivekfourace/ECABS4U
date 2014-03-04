@@ -2,7 +2,7 @@ var QString = window.location.search.substring(1);
 var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
-var btnArray = ['No','Yes'];
+var btnArray = ['Yes','NO'];
 
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
@@ -32,11 +32,11 @@ $.ajax({
 
 function onCallback(buttonIndex)
 {
-    if(buttonIndex == 1)
+    if(buttonIndex == 2)
     {
         return false;
     }
-    else if(buttonIndex == 2)
+    else if(buttonIndex == 1)
     {
         if(roleId == 4) //Customer page
         {

@@ -3,7 +3,7 @@ var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 var jobNo;
-var btnarray = ["No","Yes"];
+var btnarray = ["Yes","No"];
 
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady()
@@ -99,11 +99,11 @@ function AbortJob(data)
 
 function onAbortCallback(btnIndex)
 {
-    if(btnIndex === 1)
+    if(btnIndex === 2)
     {
         return false;
     }
-    else if(btnIndex === 2)
+    else if(btnIndex === 1)
     {
         $('#popup_box1').fadeIn("fast");
         $('#divAbortTask').fadeIn("fast");
