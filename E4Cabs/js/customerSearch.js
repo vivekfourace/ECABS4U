@@ -275,8 +275,7 @@ function availabledriver() {
         {
            // alert(IsReturnTrue);
            // alert('samedriver Cabnow');
-            alert(fromL);
-            alert(toL);
+            
             var pickD = pickdate;
             var pickT = picktime;
             var fromL = fromloc;

@@ -17,9 +17,11 @@ $.ajax({
         contentType: "application/json; charset=utf-8",                     
         success: function(data)
         {
+          
             var count = data.d.length;
     if(count > 0)
     {
+        
             var html = '<table id="tbhist" cellspacing="0"; width="100%"  style="border-collaspe:collaspe;">';
             html += '<thead class="thead-grid">';
             html += '<tr>';
