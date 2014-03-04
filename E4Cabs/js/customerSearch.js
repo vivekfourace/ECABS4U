@@ -241,7 +241,10 @@ function availabledriver() {
     console.log(laterpostcode);
     
     
-    
+    //alert(pickdate+picktime);
+   // alert(returnDate+returnTime);
+    //alert(picktime);
+    //alert(returnTime);
     //compare return datetime 
     
     if(isCheckedNo == true || isRetJourAllOperator == true)
@@ -249,23 +252,20 @@ function availabledriver() {
        
         if(pickdate>returnDate)
     {
-        alert("Please select currect date.");
+        alert("Please select correct date.");
         return false; 
     }
-    
-    if(picktime>returnTime)
-    {
-        alert("Please select currect time.");
-        return false;  
-    }
-    
-   
+       else if(pickdate==returnDate)
+        {
+            if(picktime>returnTime)
+            {
+                alert("Please select correct time.");
+                return false;  
+            }
+        }
      }
-    else
-    {
     
-    }
-    
+    //alert(fromloc+toloc+returnfromloc+returntoloc);
     
     //With same driver and want to return
     if (isCheckedNo == true)
@@ -275,6 +275,8 @@ function availabledriver() {
         {
            // alert(IsReturnTrue);
            // alert('samedriver Cabnow');
+            alert(fromL);
+            alert(toL);
             var pickD = pickdate;
             var pickT = picktime;
             var fromL = fromloc;
@@ -284,6 +286,7 @@ function availabledriver() {
             var retunT = returnTime;
             var returnFL = returnfromloc;
             var returnTL =returntoloc;
+            
             $.ajax({
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerSearchRequest",
                 cache: false,
@@ -295,7 +298,7 @@ function availabledriver() {
                  },
                 type: "POST",
                 dataType: "Json",
-                data: "{'userID':'" + relatedId + "','frompost':'" + toL + "','topost':'" + fromL + "','pickDate':'" + pickD + "','pickTime':'" + pickT + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnFL + "','returntoloc':'" + returnTL + "','returnDate':'" + retunD + "','returnTime':'" + retunT + "','travelTime':'" + travelTime + "','isCabNow':'" + isCabNow + "','fourthLoc':'" + fourthLoc + "','fifthLoc':'" + fifthLoc + "','sixthLoc':'" + sixthLoc + "','seventhLoc':'" + seventhLoc + "','eightLoc':'" + eightLoc + "', 'laterpostcode':'"+laterpostcode+"', 'isCreditCard':'"+isCreditCard+"', 'latertopostcode':'"+latertopostcode+"', 'samedriver':' "+isCheckedNo+"'}",
+                data: "{'userID':'" + relatedId + "','frompost':'" +fromL  + "','topost':'" + toL + "','pickDate':'" + pickD + "','pickTime':'" + pickT + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnFL + "','returntoloc':'" + returnTL + "','returnDate':'" + retunD + "','returnTime':'" + retunT + "','travelTime':'" + travelTime + "','isCabNow':'" + isCabNow + "','fourthLoc':'" + fourthLoc + "','fifthLoc':'" + fifthLoc + "','sixthLoc':'" + sixthLoc + "','seventhLoc':'" + seventhLoc + "','eightLoc':'" + eightLoc + "', 'laterpostcode':'"+laterpostcode+"', 'isCreditCard':'"+isCreditCard+"', 'latertopostcode':'"+latertopostcode+"', 'samedriver':' "+isCheckedNo+"'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
                     if(data.d[0] != "Error")
@@ -327,6 +330,8 @@ function availabledriver() {
         {
           
             IsReturnTrue = isRetJourAllOperator;
+           
+            
            // alert('differentdriver Cabnow');
           //  alert(IsReturnTrue);
             $.ajax({

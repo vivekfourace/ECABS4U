@@ -269,13 +269,15 @@ function availabledriverLater() {
         alert("Please Enter correct Return Pick Up Date.");
         return false; 
     }
+        else if(pickdateP==returnDate)
+        {
     
-    if(picktime>returnTime)
-    {
+         if(picktime>returnTime)
+          {
         alert("Please Enter correct Return Pick Up time,Pick Up time should be greater than Current time.");
         return false;  
-    }
-    
+          }
+       }
    
      }
     else
