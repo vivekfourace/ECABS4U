@@ -74,8 +74,9 @@ $.ajax({
 
 function AcceptJob(jobnumber)
 {
+   
     $('#hdnJobno').val(jobnumber);
-    window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;    
+    window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId+'&Jobid='+jobnumber;    
 }
 
 function CancelJob(jobnumber)

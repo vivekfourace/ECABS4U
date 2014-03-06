@@ -26,14 +26,17 @@ var timereOut;
                         var customerResponse = data.d[2];
                         var isJobAlive = data.d[3];                       
 
-                        if (popUpDisplay === "False") {
+                      
+                         
+                        if ( popUpDisplay === "False") {
                             $.ajax({
                                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetDealData",
                                 type: "POST",
                                 dataType: "Json",
                                 data: "{'JobNo':'" + getResID + "','driverId':'" + relatedId + "'}",
                                 contentType: "application/json; charset=utf-8",
-                                success: function (data) {
+                                success: function (data)
+                                {
                                     
                                     if (data.d[0] !== "Error" && isJobAlive === "True") {
                                         $("#divDealload").hide();

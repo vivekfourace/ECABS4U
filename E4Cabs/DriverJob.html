@@ -21,7 +21,7 @@
         var userId = QString.split("=")[1].split("&")[0];
         var roleId = QString.split("=")[2].split("&")[0];
         var relatedId = QString.split("=")[3].split("&")[0];
-
+        var Jobid = QString.split("=")[4].split("&")[0]; 
         $(function () {
             $('#txtbidFare').bind('keypress', function (e) {
                 if ((e.keyCode < 48 || e.keyCode > 57) && e.keyCode !== 46) {
@@ -34,7 +34,7 @@
                 url: 'http://115.115.159.126/ECabs/ECabs4U.asmx/CheckResponse',
                 type: "POST",
                 datatype: "json",
-                data: "{'userID':'" + relatedId + "'}",
+                data: "{'userID':'" + relatedId + "', 'jobID':'" + Jobid + "'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
                     var getID = data.d[0];

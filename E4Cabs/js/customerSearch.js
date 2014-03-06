@@ -273,7 +273,7 @@ function availabledriver() {
         
         if (IsReturnTrue == true) 
         {
-           // alert(IsReturnTrue);
+           //alert("No");
            // alert('samedriver Cabnow');
             
             var pickD = pickdate;
@@ -332,7 +332,7 @@ function availabledriver() {
            
             
            // alert('differentdriver Cabnow');
-          //  alert(IsReturnTrue);
+          // alert('Yes');
             $.ajax({
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerSearchRequest",
                 cache: false,
