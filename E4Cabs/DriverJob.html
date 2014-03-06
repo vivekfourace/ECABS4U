@@ -21,7 +21,10 @@
         var userId = QString.split("=")[1].split("&")[0];
         var roleId = QString.split("=")[2].split("&")[0];
         var relatedId = QString.split("=")[3].split("&")[0];
-        var Jobid = QString.split("=")[4].split("&")[0]; 
+        var JobId = "";
+        if(QString.split("=")[3].search("&")>=0){
+            JobId = QString.split("=")[4].split("&")[0];
+        }
         $(function () {
             $('#txtbidFare').bind('keypress', function (e) {
                 if ((e.keyCode < 48 || e.keyCode > 57) && e.keyCode !== 46) {
@@ -29,19 +32,22 @@
                     return false;
                 }
             });
-
             $.ajax({
                 url: 'http://115.115.159.126/ECabs/ECabs4U.asmx/CheckResponse',
                 type: "POST",
                 datatype: "json",
-                data: "{'userID':'" + relatedId + "', 'jobID':'" + Jobid + "'}",
+                data: "{'userID':'" + relatedId + "'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
                     var getID = data.d[0];
                     $('#hdnJobno').val(getID);
+                    if(JobId !== "")
+                    {
+                       getID = JobId;
+                    }
                     var getValue = data.d[1];
-                    
                     if (getValue === "False") {
+                       
                         $.ajax({
                             url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetData",
                             type: "POST",
