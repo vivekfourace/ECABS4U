@@ -50,6 +50,7 @@ $(document).ready(function ()
  {
         if (navigator.geolocation)
         {
+            //alert('geolocation');
                 navigator.geolocation.getCurrentPosition(function (position) {
                 var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
                 var geocoder = new google.maps.Geocoder();
@@ -92,6 +93,7 @@ $(document).ready(function ()
 
 function Duration()
 {
+    //alert('duration');
         console.log('duration called');
         var fromloc;
         var isChecked = $('#chkFromLocation').attr('checked') ? true : false;
