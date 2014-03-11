@@ -174,7 +174,7 @@
         var from = document.getElementById("txtFrom").value;
         document.getElementById("txtReturFrom").value = to;
         document.getElementById("txtReturTo").value = from;
-        
+        $('#returnJ2').fadeIn("fast");
         
         var currentTime = new Date()
         var hours = currentTime.getHours()+2
@@ -219,6 +219,7 @@
         $('#bookreturn').show();
         $('#termCond').hide();
         $('#returnJ').hide();
+        $('#returnJ2').hide();
         document.getElementById("chkNo").checked = false;
         document.getElementById("chkyes").checked = false;
         document.getElementById("chkReturnYes").checked = false;
@@ -756,7 +757,7 @@
                                    <b>I want both journeys carried out by the same operator</b>
                                </td>
                                <td>
-                                   <input type="checkbox" id="chkReturnYes" disabled="disabled"/>
+                                   <input type="checkbox" id="chkReturnYes" />
                                </td>
                                <td>
                                    <span style="font-size:12px;text-align:left;float:left;"><b>Confirm</b></span>   
@@ -765,12 +766,32 @@
                        </table>
                    </td>
                </tr>
+                   
+                   
+                   <tr id="returnJ2" style="display:none">
+                   <td style="background-color:orange;font-family:'Trebuchet MS';">
+                       <table >
+                           <tr>
+                               <td>
+                                   <b>I want separate bids from all operators for my return journey.</b>
+                               </td>
+                               <td>
+                                   <input type="checkbox" id="chkReturnYes2" />
+                               </td>
+                               <td>
+                                   <span style="font-size:12px;text-align:left;float:left;"><b>Confirm</b></span>   
+                               </td>
+                           </tr>
+                       </table>
+                   </td>
+               </tr>
+                   
                <tr id="trRequrementReturn" style="display:none;">                      
                        <td>
-                         <table style="border-collapse:collapse;font-family:'Trebuchet MS';width:100%">
-                           <tr style="background-color:#F6E3CE;">
-                               <td colspan="2">
-                                 <b>I want separate bids from all operators for my return journey.</b>
+                         <table style="border-collapse:collapse;font-family:'Trebuchet MS';width:100%;">
+                           <tr style="background-color:#F6E3CE;display:none;" >
+                               <td colspan="2" >
+                                 <b></b>
                                </td>
                            </tr>
                             <tr style="background-color:#FAAC58">

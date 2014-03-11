@@ -72,16 +72,50 @@ $(document).ready(function ()
        $('#chkNo').click(function ()
      {
            document.getElementById("chkyes").checked = false;
-           document.getElementById("chkReturnYes").checked = true;
+         
+         //Confirm
+           document.getElementById("chkReturnYes").checked = false;
            $('#returnJ').fadeIn("fast");
            $('#termCond').fadeIn("fast");
+          $('#returnJ2').fadeOut("slow");
 
        });
+     
+     //confirm click fuction
+      $('#chkReturnYes').click(function ()
+     {
+          navigator.notification.confirm(
+         "Do you want to confirm this job?",
+           onAbortCallback1,
+             "Confirm",
+            "Confirm,Cancel"   
+    );
+         
+         
+ function onAbortCallback1(buttonIndex)
+{
+    if(buttonIndex === 1)
+    {
+        return false;
+    }
+    else if(buttonIndex === 2)
+    {
+       document.getElementById("chkyes").checked = false;
+        document.getElementById("chkReturnYes").checked = false;
+        document.getElementById("chkNo").checked = false;
+         $('#returnJ').fadeOut("slow");
+           $('#termCond').fadeOut("slow");
+    }
+}
+         
+         });
+     
        $('#chkyes').click(function () {
            document.getElementById("chkNo").checked = false;
             document.getElementById("chkReturnYes").checked = false;
            $('#returnJ').fadeOut("slow");
            $('#termCond').fadeOut("slow");
+           $('#returnJ2').fadeIn("fast");
 
        });
 
@@ -236,7 +270,8 @@ function availabledriver() {
     }
     var IsReturnTrue = $('#chkReturnYes').attr('checked') ? true : false;
     var isCheckedNo = $('#chkNo').attr('checked') ? true : false;
-    var isRetJourAllOperator = $('#chkyes').attr('checked') ? true : false;    
+    var isRetJourAllOperator = $('#chkyes').attr('checked') ? true : false;  
+    var IsReturnTrue2 = $('#chkReturnYes2').attr('checked') ? true : false;
     
     var laterpostcode = $('#locfrom_postcode').val();
     var latertopostcode = $('#locto_postcode').val();
@@ -247,11 +282,37 @@ function availabledriver() {
    // alert(returnDate+returnTime);
     //alert(picktime);
     //alert(returnTime);
-    //compare return datetime 
+    
+    if(isCheckedNo == true)
+    {
+     //confirm checkbox validation
+        
+        if(IsReturnTrue == false)
+        {
+            alert("PLease check confirm box.");
+            return false; 
+        }  
+       
+    }
+    if(isRetJourAllOperator == true)
+    {
+     //confirm checkbox validation
+        
+       if(IsReturnTrue2 == false)
+        {
+           alert("PLease check confirm box.");
+            return false; 
+       }  
+       
+   }
+    
+    
+  //compare return datetime 
     
     if(isCheckedNo == true || isRetJourAllOperator == true)
     {
-       
+        
+    
         if(pickdate>returnDate)
     {
         alert("Please select correct date.");
