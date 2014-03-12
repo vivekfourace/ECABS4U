@@ -75,6 +75,7 @@ $(document).ready(function ()
          
          //Confirm
            document.getElementById("chkReturnYes").checked = false;
+         document.getElementById("chkReturnYes2").checked = false;
            $('#returnJ').fadeIn("fast");
            $('#termCond').fadeIn("fast");
           $('#returnJ2').fadeOut("slow");
@@ -90,7 +91,7 @@ $(document).ready(function ()
              "Confirm",
             "Confirm,Cancel"   
     );
-         
+     });    
          
  function onAbortCallback1(buttonIndex)
 {
@@ -102,13 +103,14 @@ $(document).ready(function ()
     {
        document.getElementById("chkyes").checked = false;
         document.getElementById("chkReturnYes").checked = false;
+         //document.getElementById("chkReturnYes2").checked = false;
         document.getElementById("chkNo").checked = false;
          $('#returnJ').fadeOut("slow");
            $('#termCond').fadeOut("slow");
     }
 }
          
-         });
+         
      
        $('#chkyes').click(function () {
            document.getElementById("chkNo").checked = false;
@@ -289,7 +291,7 @@ function availabledriver() {
         
         if(IsReturnTrue == false)
         {
-            alert("PLease check confirm box.");
+            alert("Please check confirm box.");
             return false; 
         }  
        
@@ -300,7 +302,7 @@ function availabledriver() {
         
        if(IsReturnTrue2 == false)
         {
-           alert("PLease check confirm box.");
+           alert("Please check confirm box.");
             return false; 
        }  
        

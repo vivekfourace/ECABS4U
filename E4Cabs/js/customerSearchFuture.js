@@ -37,22 +37,58 @@ $(document).ready(function ()
         $('#chkNo').click(function ()
      {
            document.getElementById("chkyes").checked = false;
-           document.getElementById("chkReturnYes").checked = true;
+         document.getElementById("chkReturnYes2").checked = false;
+           document.getElementById("chkReturnYes").checked = false;
            $('#returnJ').fadeIn("fast");
            $('#termCond').fadeIn("fast");
+         $('#returnJ2').fadeOut("slow");
 
        });
+     
+     
+      //confirm click fuction
+      $('#chkReturnYes').click(function ()
+     {
+         
+          navigator.notification.confirm(
+          "Do you want to confirm this job?",
+           onconfirm2,
+           "Confirm",
+           "Confirm,Cancel" 
+    );
+   });      
+         
+ function onconfirm2(buttonIndex)
+{
+    if(buttonIndex === 1)
+    {
+        return false;
+    }
+    else if(buttonIndex === 2)
+    {
+       document.getElementById("chkyes").checked = false;
+        document.getElementById("chkReturnYes").checked = false;
+        document.getElementById("chkNo").checked = false;
+         $('#returnJ').fadeOut("slow");
+           $('#termCond').fadeOut("slow");
+    }
+}
+         
+         
+     
        $('#chkyes').click(function () {
            document.getElementById("chkNo").checked = false;
             document.getElementById("chkReturnYes").checked = false;
            $('#returnJ').fadeOut("slow");
            $('#termCond').fadeOut("slow");
+           $('#returnJ2').fadeIn("fast");
 
        });
 
        $('#popupBoxClose').click(function () {
            $('#popup_box').fadeOut("slow");
            $('#transparent_div').fadeOut("slow");
+           
        });
        
     
@@ -217,7 +253,34 @@ function availabledriverLater() {
     
      var IsReturnTrue = $('#chkReturnYes').attr('checked') ? true : false;
     var isCheckedNo = $('#chkNo').attr('checked') ? true : false;
-    var isRetJourAllOperator = $('#chkyes').attr('checked') ? true : false;    
+    var isRetJourAllOperator = $('#chkyes').attr('checked') ? true : false; 
+    var IsReturnTrue2 = $('#chkReturnYes2').attr('checked') ? true : false;
+    
+    
+    
+    
+    if(isCheckedNo == true)
+    {
+     //confirm checkbox validation
+        
+        if(IsReturnTrue == false)
+        {
+            alert("Please check confirm box.");
+            return false; 
+        }  
+       
+    }
+    if(isRetJourAllOperator == true)
+    {
+     //confirm checkbox validation
+        
+       if(IsReturnTrue2 == false)
+        {
+           alert("Please check confirm box.");
+            return false; 
+       }  
+       
+   }
     
     //compare present datetime  
     
