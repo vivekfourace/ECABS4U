@@ -178,7 +178,7 @@ function cancelAbort()
 function clearJob()
 {
     navigator.notification.confirm(
-    "Do you have completed this job?",
+    "Can you confirm you have completed this job?",
     onClearCallback,
     "Confirm",
     "Yes,No" 
