@@ -74,7 +74,7 @@ function onAbortCallback(buttonIndex)
 function Offline()
 {
     navigator.notification.confirm(
-    "Making unavailable yourself will loose new job notification.",
+    "Whilst unavailable you will not receive any 'Cab Now' job offers. Do you wish to continue?",
     onAbortCallback,
     "Warning",
     'Yes,No'   

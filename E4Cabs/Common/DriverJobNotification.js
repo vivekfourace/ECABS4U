@@ -53,7 +53,7 @@ function playBeep() {
     
 }
 
-jobCheckTime = setInterval(Check, 10000);
+jobCheckTime = setInterval(Check, 5000);
 
 function Check() {    
           $.ajax({
