@@ -236,9 +236,11 @@
           height: 300px;
           border:none;
       }
+        
+       
     </style>
 </head>
-<body>
+<body >
     <center>
     <div style="width:100%;height:70px;"  class="header">
                 <table style="width:100%;padding-top:1%;">
@@ -269,7 +271,7 @@
      <div id="imgLoader">
          <img src="img/ajax-loader.gif" id="loading-image" /><br/>             
      </div>   
-     <div id="tbdetails" style="width:100%;padding-top:25%;display:none;">
+     <div id="tbdetails"  style="width:100%;padding-top:25%;display:none;overflow:auto;padding-bottom:40%; ">
     <table style="border-collapse:collapse;width:100%;">
                 <tr>
                     <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
@@ -586,7 +588,7 @@
                         </tr>
                         <tr class="popup_content">
                             <td style="width:100%" colspan="2">
-                                <b style="font-size:11px;text-align:justify;color:blue;">Customer has accepted your request, please see details.</b>
+                                <b style="font-size:11px;text-align:justify;color:blue;">The customer has accepted your bid. Please accept this job below.</b>
                                 <hr>
                             </td>
 
@@ -656,7 +658,7 @@
 
                         <tr class="popup_footer">
                             <td style="width:100%" colspan="2">
-                                <input type="button" class="ok" value="Accept" style="width:100%;" onclick="dealSubmit()" />
+                                <input type="button" class="ok" value="Accept this job" style="width:100%;" onclick="dealSubmit()" />
                             </td>
                         </tr>
                     </table>
