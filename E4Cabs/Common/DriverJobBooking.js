@@ -111,6 +111,33 @@ var timereOut;
             var distance = $('#lblDistance').text();
             var from = $('#lblFromLoc').text();
             var to = $('#lblToLoc').text();
+            
+            
+            
+            //Return data 
+            //Bid popup
+            var returnfrom=$('#lblreturnFrom').text();
+           var returnto=$('#lblreturnTo').text();
+            
+            if(!returnfrom)
+           {
+              $('#rtnfrom').hide();  
+            }
+            else
+           {
+               $('#lblbidreturnfrom').text(returnfrom);
+            }
+           if(!returnto)
+           {
+             $('#rtnto').hide();   
+          
+        }
+            else
+           {
+                $('#lblbidreturnto').text(returnto);
+            }
+            
+            
             $('#lblbidjob').text(job);
             $('#lblbiddistance').text(distance);
             $('#lblbidfrom').text(from);
@@ -439,6 +466,56 @@ function onRejectCallback(buttonIndex)
                     else
                     {
                         console.log('Exception in RejectResponse')
+                    }
+                },
+            });
+    }
+}
+
+
+
+//Reject this Job 
+//alert 
+function dealReject()
+{
+   
+     navigator.notification.confirm(
+    "Do you want to reject the job?",
+    onDealRejectCallback,
+    "Confirm",
+    "Yes,No"  
+    );
+}
+
+//deal reject 
+function onDealRejectCallback(buttonIndex)
+{
+    if(buttonIndex === 2)
+    {  
+        return false;
+    }
+    else if(buttonIndex === 1)
+    {
+        
+           
+            var rid = $('#hdnJobno').val();
+            console.log(rid);
+            var status = "Rejected";
+            $.ajax({
+                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/DealReject",
+                type: "POST",
+                dataType: "Json",
+                data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "'}",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if(data.d === true)
+                    {
+                      console.log('rej')
+                      window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+                    }
+                    else
+                    {
+                        console.log('Exception in RejectResponse');
                     }
                 },
             });

@@ -12,9 +12,28 @@ function onDeviceReady()
 
 $('#imgLoader').hide();
 
-function  NavigateToMap()
+//function  NavigateToMap()ShowLaterJobOffers
+function  ShowLaterJobOffers2()
 {
-    window.location = 'Navigation.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+     var networkState = navigator.connection.type;
+
+    var states = {};
+    states[Connection.NONE] = 'No network connection';
+
+    if(states[networkState] === 'No network connection')
+    {
+        alert("No network connection found.");
+        $('#txtPassword').val("");
+        return false;
+    }
+    else
+    {
+        //return true;
+        window.location = 'Navigation.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    }
+    
+    
+    
 }
 
  $.ajax({
