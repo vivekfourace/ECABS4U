@@ -33,6 +33,8 @@ function gethistory()
                         html += '<tr>';
                         html += '<th>Job no</th>';
                         html += '<th>Job Date</th>';
+                        html += '<th>Feedback</th>';
+                    
                         html += '<th>Status</th>'; 
                         html += '</tr>';
                         html += '</thead>';
@@ -45,7 +47,7 @@ function gethistory()
                                 html += '<tr>';
                                 html += "<td width='20%' height='30px' align='center'>" +'<a href="#" onclick="JobDetail(\''+data.d[i]["JobNo"]+'\')" style="color:blue;">'+ data.d[i]["JobNo"]+'</a>'+"</td>"; 
                                 html += "<td width='30%' height='30px' align='center'>" + data.d[i]["StartDate"] + "</td>"; 
-                               // html += "<td width='5%' height='30px' align='center'>"+'<img src="img/feedbackicon.png" onclick="feedBackDriver(\''+data.d[i]["JobNo"]+'\')"</img>'+"</td>"
+                               html += "<td width='5%' height='30px' align='center'>"+'<img src="img/feedbackicon.png" onclick="feedBackDriver(\''+data.d[i]["JobNo"]+'\')"</img>'+"</td>"
                                 
                              if(data.d[i]["isJobCompleted"] == true)
                                 {
@@ -82,6 +84,7 @@ function gethistory()
 
 function feedBackDriver(JobNumber )
 {
+    //alert('IN');
      $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/GetCabNowDataForDriver",
             type:"POST",
             dataType: "Json",
@@ -112,7 +115,6 @@ function feedBackDriver(JobNumber )
                                $('#lblFeedTime').text(startTime);
                                $('#lblFeedFrom').text(fromLoc);
                                $('#lblFeedTo').text(toLoc);
-                            
                                $('#popup_box').fadeIn("fast");
                                $('#divFeedBack').fadeIn("fast");
                                $('#trbtnPopup').hide();
@@ -195,7 +197,8 @@ function showDetail(data)
     $('#lblCustomerContact').text(data.d[7]);
     $('#lblCustomerContact').css("font-weight", 900);
     
-    $('#lblNoOfPassenger').text(": "+data.d[8]);    
+    $('#lblNoOfPassenger').text(": "+data.d[8]);
+    $('#lblCustomerFeedback').text(": "+data.d[9]); 
     $('#popup_box').show();
     $('#divCabLaterBooking').show();
      $('#transparent_div').show();

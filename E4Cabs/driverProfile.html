@@ -19,7 +19,7 @@
         <script type="text/javascript" src="Common/GpsCurrentLocation.js"></script>
         
         
-       
+      
         <title></title>
     </head>
     <body>
@@ -52,7 +52,7 @@
                         <a href="#" style="color:#2980CE" onclick="changepassword()"><i>Change password</i></a>                        
                     </span>                    
                 </div>
-                <div style="width:100%; margin-top:15px">
+                <div style="width:100%; margin-top:15px;">
                 <table style="width:100%;border-collapse:collapse">
                     <tr>
                         <td style="width:70%;height:30px">
@@ -95,10 +95,10 @@
                     </tr>                                   
                 </table> 
             </div>
-           </div>
+         
         
-            <div style="width: 100%; position: fixed; bottom: 0px;padding-bottom: 38%;overflow:auto">
-                <table style="width:100%">
+            <div style="width: 100%; height:40%;">
+                <table style="width:100%;">
                     <tr>
                         <td style="width:90%" align="center" colspan="2">
                             <input id="btnEdit" type="button" value="Edit" class="btn-tmp" style="width:100%;color:white;" onclick="EditProfile();" />
@@ -113,23 +113,30 @@
                         </td>                        
                     </tr>                    
                 </table>                
-            </div>
            
-            <table style="width: 100%; position:fixed;bottom:0;padding-bottom:15%;overflow:auto">
+           <div style="padding-left:10px;background-color:#848484;color:white;" colspan="4">Allocated Vehicles - <label id="vehiclecount"></label></div>
+            <table id="tblvehicle" style="border-spacing: 0; text-align:left;  width: 100%;bottom:0;height:50%;">
                 <tr>
-                    <th style="width:90%;text-align:left;padding-left:20px;height:25px;background-color:#848484;color:white" colspan="2">Vehicle allocated to you.</th>
+                    <th style="width:20%;text-align:center; font-weight:bold; border-bottom:solid thin;">S. No.</th>
+                    <th style="width:30%;  font-weight:bold; border-bottom:solid thin;">Registration No.</th>
+                    <th style="width:25%; font-weight:bold; border-bottom:solid thin;">Plate No.</th>  
+                    <th style="width:25%; font-weight:bold; border-bottom:solid thin;">Max. Capacity</th>                 
+                </tr>
+                
+                <tr>
+                   <td colspan="4">
+                       <div style="overflow:auto;height:55px">
+                       <table id="trallvehicle"></table>
+                           </div>
+                   </td>             
                 </tr>
                 <tr>
-                    <td style="width:40%;text-align:left;padding-left:20px;height:20px;">Registration no </td>
-                    <td style="width:60%;text-align:left;height:20px;color:black" id='vehi-regis'></td>                    
-                </tr>
-                <tr>
-                    <td style="width:40%;text-align:left;padding-left:20px;height:20px;">Plate no </td>
-                    <td style="width:60%;text-align:left;height:20px;color:black" id='vehi-plate'></td>
-                    
+                    <td colspan="4" width="100%">
+                    </td>
                 </tr>
             </table>
-           
+                
+             </div>
         
             <div class="btn-tmpFooter">                
                <table style="width:100%;border-collapse:collapse;">
@@ -169,5 +176,5 @@
                     </tr>
                 </table>
             </div>
-    </body>
+</div>    </body>
 </html>

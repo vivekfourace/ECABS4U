@@ -28,40 +28,26 @@ $.ajax(url,{
 }
 function ShowData(data)
 { 
-    var nameis = data.d[0]+" "+data.d[1];
-    $('#lblname').text(nameis);
-    $('#lblLocation').text(data.d[2]);
-    $('#lblLocation2').text(data.d[3]);
-    $('#lblMobileNo').text(data.d[4]);
-    $('#lblEmailID').text(data.d[5]);
-    $('#lblPostcode').text(data.d[6]);
-    
-    var driverImgUrl = data.d[7];
-    console.log(driverImgUrl);
-    
+    $('#vehiclecount').text(data.d.length);
+    $('#trallvehicle').replaceWith("<table  id='trallvehicle' width='100%'></table>");
+  for ( var i = 0; i < data.d.length; i++ ) {
+    $('#lblname').text(data.d[0][0] + " " + data.d[0][1]);
+    $('#lblLocation').text(data.d[0][2]);
+    $('#lblLocation2').text(data.d[0][3]);
+    $('#lblMobileNo').text(data.d[0][4]);
+    $('#lblEmailID').text(data.d[0][5]);
+    $('#lblPostcode').text(data.d[0][6]);
+    var driverImgUrl = data.d[0][7];
     $('#imgDriver').attr("src",driverImgUrl);
-    
-    console.log(data.d[8]);
-    if(data.d[8] != undefined)
-    {
-       $('#vehi-regis').html(":  "+data.d[8]); 
-    }
+    if(data.d[i][8] !== undefined || data.d[i][9] !== undefined)
+		{
+		   $('#trallvehicle').append("<tr><td style='text-align:center;width:20%;'>" + (i+1) + "</td><td style='width:30%;text-align:left;height:20px;color:black'>" + data.d[i][8] + "</td><td style='width:25%;text-align:left;height:20px;color:black'>" + data.d[i][9] + "</td><td style='width:25%;text-align:center;height:20px;color:black'>" + data.d[i][10] + "</td></tr>"); 
+		}
     else
-    {
-        $('#vehi-regis').html(":  Not allocated");
-    }
-    if(data.d[9] != undefined)
-    {
-        $('#vehi-plate').html(":  "+data.d[9]);
-    }
-    else
-    {
-        console.log('not');
-        $('#vehi-plate').html(":  Not allocated");
-    }
-    
-    
-
+		{
+			$('#trallvehicle').html("<br/>No Vehicle Allocated.");
+		}
+	}
     $('#txtLocation').hide();    
     $('#txtLocation2').hide();    
     $('#txtMobileno').hide();    
@@ -72,7 +58,7 @@ function ShowData(data)
     $('#lblMobileNo').show();
     $('#lblEmailID').show();
     $('#lblPostcode').show();
-    
+   
     $("#trBtnUpdate").hide();
     $('#btnEdit').show();
    

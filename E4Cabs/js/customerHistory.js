@@ -232,7 +232,7 @@ function feedBackCustomer(JobNumber )
                     var toLoc = data.d[8];
                     var isJobAlive = data.d[9];
                 
-                    if(isJobCompleted === "True")
+                     if(isJobCompleted === "True" || isJobAlive === "False")
                      {
                         console.log(isJobCompleted);
                         if(isCustomerRatingLocked === "True") //show read only
@@ -271,10 +271,10 @@ function feedBackCustomer(JobNumber )
                                $('#transparent_div').show();
                         }
                       }
-                      else if(isJobAlive === "False")
-                      {
-                          alert('This job has been cancelled. You cannot give feedback.');
-                      }
+                      //else if(isJobAlive === "False")
+                      //{
+                         // alert('This job has been cancelled. You cannot give feedback.');
+                      //}
                       else if(isJobAlive === "True")
                      {
                          alert('Feedback will be accepted after the cab ride.');

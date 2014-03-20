@@ -12,28 +12,39 @@ function onDeviceReady()
 
 $('#imgLoader').hide();
 
-//function  NavigateToMap()ShowLaterJobOffers
-function  ShowLaterJobOffers2()
+function  NavigateToMap()
 {
-     var networkState = navigator.connection.type;
+    
+    var networkState = navigator.connection.type;
 
     var states = {};
-    states[Connection.NONE] = 'No network connection';
+    states[Connection.NONE] = 'Please enable your mobile network connection.';
+    
+    
+      // states[Connection.UNKNOWN] = 'Unknown connection';
+      // states[Connection.ETHERNET] = 'Ethernet connection';
+      // states[Connection.WIFI] = 'WiFi connection';
+      // states[Connection.CELL_2G] = 'Cell 2G connection';
+      // states[Connection.CELL_3G] = 'Cell 3G connection';
+      // states[Connection.CELL_4G] = 'Cell 4G connection';
+     //states[Connection.CELL] = 'Cell generic connection';
+    
 
-    if(states[networkState] === 'No network connection')
+   if(states[networkState] === 'Please enable your mobile network connection.')
     {
-        alert("No network connection found.");
-        $('#txtPassword').val("");
+        
+        
+        $('#lblInternetconnection').text(states[networkState]);
+        
+     // alert('No network connection found.');
         return false;
     }
-    else
+   else
     {
-        //return true;
+    
         window.location = 'Navigation.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+       
     }
-    
-    
-    
 }
 
  $.ajax({
