@@ -198,7 +198,29 @@ function showDetail(data)
     $('#lblCustomerContact').css("font-weight", 900);
     
     $('#lblNoOfPassenger').text(": "+data.d[8]);
-    $('#lblCustomerFeedback').text(": "+data.d[9]); 
+    $('#lblCustomerFeedback').text(": "+data.d[9]); //
+    
+    if(data.d[10]!== null)
+    {
+        $('#rtnfrom').show();
+        $('#lblreturnfrom').text(": "+data.d[10]);
+    }
+    else
+    {
+        $('#rtnfrom').hide();
+       
+    }
+    if(data.d[11]!== null)
+    {
+        $('#rtnto').show();
+        $('#lblreturnto').text(": "+data.d[11]);
+    }
+    else
+    {
+       //$('#rtnto').hide();
+        $('#rtnto').hide();
+    }
+    
     $('#popup_box').show();
     $('#divCabLaterBooking').show();
      $('#transparent_div').show();
