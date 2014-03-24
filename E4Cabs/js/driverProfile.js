@@ -39,6 +39,11 @@ function ShowData(data)
     $('#lblPostcode').text(data.d[0][6]);
     var driverImgUrl = data.d[0][7];
     $('#imgDriver').attr("src",driverImgUrl);
+     // var check=data.d[i][8];
+      //appendString = "<option value=''>"+data.d[i][9]+"</option>";
+      //$("#ddlselectedvehicle").append(appendString);
+     
+      //$('#ddlselectedvehicle').text(data.d[i][9]);
     if(data.d[i][8] !== undefined || data.d[i][9] !== undefined)
 		{
 		   $('#trallvehicle').append("<tr><td style='text-align:center;width:20%;'>" + (i+1) + "</td><td style='width:30%;text-align:left;height:20px;color:black'>" + data.d[i][8] + "</td><td style='width:25%;text-align:left;height:20px;color:black'>" + data.d[i][9] + "</td><td style='width:25%;text-align:center;height:20px;color:black'>" + data.d[i][10] + "</td></tr>"); 

@@ -113,6 +113,8 @@ var timereOut;
             var to = $('#lblToLoc').text();
             
             
+             
+           
             
             //Return data 
             //Bid popup
@@ -144,6 +146,9 @@ var timereOut;
             $('#lblbidto').text(to);
             var fare = $('#txtbidFare').val()
             $('#lblfare').text(fare);
+            appendString = "<option value=''>"+data.d[26]+" "+data.d[27]+"</option>";
+             $("#ddlselectedvehicle").append(appendString);
+           
       }
 
         function bidSubmit() {
@@ -156,6 +161,8 @@ var timereOut;
                     return false;
                 }
                 
+                
+                
                 $("#divDealload").show();
                 //$("#other").hide();
                 //$("#fare").hide();
@@ -165,6 +172,8 @@ var timereOut;
                 var from = $('#lblFromLoc').text();
                 var to = $('#lblToLoc').text();
                 var specialReq = $('#txtSpecialReq').val();
+                 var selectedvehicle = document.getElementById("ddlselectedvehicle");
+                 var selectedoneNow = lcase.options[selectedvehicle.selectedIndex].value;
 
                 $('#lblbidjob').text(job);
                 $('#lblbiddistance').text(distance);
@@ -201,12 +210,15 @@ var timereOut;
                     return false;
                 }
                 $('#lblbidjob').text(job);
+                var selectedvehicle2 = document.getElementById("ddlselectedvehicle");
+                 var selectedonelater = lcase.options[selectedvehicle2.selectedIndex].value;
 
                 $('#lblfare').text(fare2);
                 var reqid = $('#lblbidjob').text();
                 var statuS = true;
                 var pricE = fare2;
                 var specialreq = $('#txtSpecialReq').val();
+                 
 
                 $.ajax({
                     url: "http://115.115.159.126/ECabs/ECabs4U.asmx/SetDriverResponseCabLater",

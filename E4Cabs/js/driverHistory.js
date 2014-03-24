@@ -198,9 +198,9 @@ function showDetail(data)
     $('#lblCustomerContact').css("font-weight", 900);
     
     $('#lblNoOfPassenger').text(": "+data.d[8]);
-    $('#lblCustomerFeedback').text(": "+data.d[9]); //
+    $('#lblCustomerFeedback').text(": "+data.d[9]); 
     
-    if(data.d[10]!== null)
+    if(data.d[10]!== undefined)
     {
         $('#rtnfrom').show();
         $('#lblreturnfrom').text(": "+data.d[10]);
@@ -210,7 +210,7 @@ function showDetail(data)
         $('#rtnfrom').hide();
        
     }
-    if(data.d[11]!== null)
+    if(data.d[11]!== undefined)
     {
         $('#rtnto').show();
         $('#lblreturnto').text(": "+data.d[11]);
