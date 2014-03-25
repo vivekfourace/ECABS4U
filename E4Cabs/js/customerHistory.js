@@ -61,7 +61,7 @@ function gethistory()
                                                 }
                                                 else if(isJobAlive === false)
                                                 {
-                                                     html += "<td width='25%' height='30px' align='center'>"+'<label style="color:red">Cancelled</label>'+"</td>";
+                                                     html += "<td width='25%' height='30px' align='center'>"+'<label style="color:red">Aborted</label>'+"</td>";
                                                 }
                                             }
                                             

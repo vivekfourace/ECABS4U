@@ -606,11 +606,11 @@ function getResponseFromDriver(data)
             contentType: "application/json; charset=utf-8",
             success: function (data) {
 
-                var getDriverID = data.d[0];
-                var getResponse = data.d[1];
                 var getBooked = data.d[2];
-
+console.log(getBooked);
                 if (getBooked === "True") {
+                    var getDriverID = data.d[0];
+                    var getResponse = data.d[1];
                     DisableHiremeBtns()
                     $.ajax({
                         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetConfirmData",

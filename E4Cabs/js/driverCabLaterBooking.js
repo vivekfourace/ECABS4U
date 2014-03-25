@@ -23,12 +23,23 @@ function bindGrid(data)
     var count = data.d.length;
     if(count > 0)
     {
-            var html = '<table id="tbhist" cellspacing="0"; width="100%"  style="border-collaspe:collaspe;">';
+          var isCustomerAccepted ="";
+        for(var i=0; i<count; i++)
+        {
+             if(data.d[i]["CustomerResponse"] === true)
+             {
+                  isCustomerAccepted = true;
+             }
+        }
+        var html = '<table id="tbhist" cellspacing="0"; width="100%"  style="border-collaspe:collaspe;">';
             html += '<thead class="thead-grid">';
             html += '<tr>';
             html += '<th>JobNo</th>';
+        if(isCustomerAccepted === true)
+        {
             html += '<th>Fare</th>';
-            html += '<th>From</th>';
+        }
+		html += '<th>From</th>';
             html += '<th>To</th>';
             html += '<th>Status</th>';                      
             html += '</tr>';
@@ -36,31 +47,32 @@ function bindGrid(data)
             html +='<tbody class="altColor">';  
                  for(var i=0; i<count; i++)
                  {
-                    var isCustomerAccepted = data.d[i]["CustomerResponse"];
+                    isCustomerAccepted = data.d[i]["CustomerResponse"];
                     var customerID = data.d[i]["CustomerID"];
-                    console.log(customerID);
-                    console.log(isCustomerAccepted);
                     if(isCustomerAccepted === true)
-                     {
+                     { 
                         html += '<tr>';
                         html += "<td width='25%' height='30px' align='center'>" +'<a href="#" onclick="ShowDetailBooking(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["CustomerID"]+'\')" style="color:blue;">'+ data.d[i]["CustomerRequestID"]+'</a>' + "</td>"; 
-                        html += "<td width='15%' height='30px' align='center'>"+'&pound' + data.d[i]["Fare"] +"</td>";
-                        html += "<td width='25%' height='30px' align='center'>" + data.d[i]["From"] +"</td>";
+                        if(isCustomerAccepted === true)
+                     {   html += "<td width='15%' height='30px' align='center'>"+'&pound' + data.d[i]["Fare"] +"</td>";
+                       } html += "<td width='25%' height='30px' align='center'>" + data.d[i]["From"] +"</td>";
                         html += "<td width='25%' height='30px' align='center'>" + data.d[i]["To"] +"</td>";
                      
                    
-                        html += "<td colspan='2'>"
+                    if(isCustomerAccepted === true)
+                     {  
+                         html += "<td colspan='2'>"
                         +'<input type="button" value="Accept" class="accept-btn" onclick="AcceptJob(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["Fare"]+'\')"/><br/>'
                         +'<input type="button" value="Reject" class="reject-btn" onclick="RejectJob(\''+data.d[i]["CustomerRequestID"]+'\')"/>'
                         +"</td>";
-                     
-                     //else if(isCustomerAccepted === false)
-                     //{
-                     //    html += "<td width='10%' height='30px' align='center'>Awaiting customer response</td>";
-                     //}
+                     }
+                     else if(isCustomerAccepted === false)
+                     {
+                         html += "<td  colspan='2' width='10%' height='30px' align='center'>Awaiting customer response</td>";
+                     }
                     
                         html += '</tr>';
-                    }                    
+                     }                   
                  }
             html +='</tbody>';
             html +='</table>';

@@ -200,7 +200,7 @@ function showDetail(data)
     $('#lblNoOfPassenger').text(": "+data.d[8]);
     $('#lblCustomerFeedback').text(": "+data.d[9]); 
     
-    if(data.d[10]!== undefined)
+    if(data.d[10]!== "No Return")
     {
         $('#rtnfrom').show();
         $('#lblreturnfrom').text(": "+data.d[10]);
@@ -210,7 +210,7 @@ function showDetail(data)
         $('#rtnfrom').hide();
        
     }
-    if(data.d[11]!== undefined)
+    if(data.d[11]!== "No Return")
     {
         $('#rtnto').show();
         $('#lblreturnto').text(": "+data.d[11]);

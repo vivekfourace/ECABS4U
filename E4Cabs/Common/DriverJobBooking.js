@@ -112,7 +112,12 @@ var timereOut;
             var from = $('#lblFromLoc').text();
             var to = $('#lblToLoc').text();
             
-            
+           $('#lblbidjob').text(job);
+           $('#lblbiddistance').text(distance);
+           $('#lblbidfrom').text(from);
+           $('#lblbidto').text(to);
+            var fare = $('#txtbidFare').val()
+           $('#lblfare').text(fare);
              
            
             
@@ -146,21 +151,24 @@ var timereOut;
             $('#lblbidto').text(to);
             var fare = $('#txtbidFare').val()
             $('#lblfare').text(fare);
-            appendString = "<option value=''>"+data.d[26]+" "+data.d[27]+"</option>";
-             $("#ddlselectedvehicle").append(appendString);
+            
+           
            
       }
 
         function bidSubmit() {
             var isCabnow = $('#hiddenIsCabnow').val();
-            
+             var selectedvehicle = document.getElementById("ddlselectedvehicle");
+                 var selectedcab = selectedvehicle.options[selectedvehicle.selectedIndex].value;
+        // alert(selectedcab);
+            console.log(selectedcab);
             if (isCabnow === "True") {
                 var fare = $('#txtbidFare').val();
                 if (fare.length <= 0) {
                     alert('Please enter fare.');
                     return false;
                 }
-                
+                 
                 
                 
                 $("#divDealload").show();
@@ -172,8 +180,7 @@ var timereOut;
                 var from = $('#lblFromLoc').text();
                 var to = $('#lblToLoc').text();
                 var specialReq = $('#txtSpecialReq').val();
-                 var selectedvehicle = document.getElementById("ddlselectedvehicle");
-                 var selectedoneNow = lcase.options[selectedvehicle.selectedIndex].value;
+               
 
                 $('#lblbidjob').text(job);
                 $('#lblbiddistance').text(distance);
@@ -184,12 +191,11 @@ var timereOut;
                 var rid = $('#lblbidjob').text();
                 var status = true;
                 var price = fare;
-
                 $.ajax({
                     url: "http://115.115.159.126/ECabs/ECabs4U.asmx/setDriverResponse",
                     type: "POST",
                     dataType: "Json",
-                    data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "','price':'" + price + "','specialReq':'" + specialReq + "'}",
+                    data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "','price':'" + price + "','specialReq':'" + specialReq + "','selectedVehicle':'" + selectedcab + "'}",
                     contentType: "application/json; charset=utf-8",
                     success: {},
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -210,21 +216,21 @@ var timereOut;
                     return false;
                 }
                 $('#lblbidjob').text(job);
-                var selectedvehicle2 = document.getElementById("ddlselectedvehicle");
-                 var selectedonelater = lcase.options[selectedvehicle2.selectedIndex].value;
+                //var selectedvehicle2 = document.getElementById("ddlselectedvehicle");
+               //  var selectedonelater = selectedvehicle2.options[selectedvehicle2.selectedIndex].value;
 
                 $('#lblfare').text(fare2);
                 var reqid = $('#lblbidjob').text();
                 var statuS = true;
                 var pricE = fare2;
                 var specialreq = $('#txtSpecialReq').val();
-                 
+                 //alert(selectedcab);
 
                 $.ajax({
                     url: "http://115.115.159.126/ECabs/ECabs4U.asmx/SetDriverResponseCabLater",
                     type: "POST",
                     dataType: "Json",
-                    data: "{'userID':'" + relatedId + "','reqid':'" + reqid + "','status':'" + statuS + "','price':'" + pricE + "','specialReq':'" + specialreq + "'}",
+                    data: "{'userID':'" + relatedId + "','reqid':'" + reqid + "','status':'" + statuS + "','price':'" + pricE + "','specialReq':'" + specialreq + "','selectedVehicle':'" + selectedcab + "'}",
                     contentType: "application/json; charset=utf-8",
                     success: function (data) {
                         if (data.d === "true") {

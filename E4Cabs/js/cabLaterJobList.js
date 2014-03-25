@@ -28,7 +28,7 @@ $.ajax({
             html += '<th>JobNo</th>';
             html += '<th>From</th>';
             html += '<th>To</th>';
-            html += '<th></th>';                      
+            html += '<th>Status</th>';                      
             html += '</tr>';
             html += '</thead>';
                html +='<tbody class="altColor">';  
