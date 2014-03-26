@@ -214,8 +214,8 @@ function getData(data) {
                 var rating3 = data.d[i]["RatingPast"];
                 var rating4 = data.d[i]["RatingPresent"];
                 
-                          html += '<td style="width:100%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="'+driverImgUrl+'" style="width:50px;height:50px;border-radius:4px" onclick=\"ShowLargeImage(this)\"/>'
-                          html += '<img src="'+vehicleImgUrl+'" style="width:50px;height:50px;border-radius:4px" onclick=\"ShowLargeImage(this)\"/>'
+                          html += '<td style="width:100%;text-align:left;border-bottom:1px solid #848484;" colspan="2"><img src="'+driverImgUrl+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImage(this)\"/>'
+                          html += '<img src="'+vehicleImgUrl+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImage(this)\"/>'
                           if(rating3 !== "")
                           {
                                    if(rating3 === "1")
