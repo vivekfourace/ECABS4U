@@ -94,7 +94,7 @@ function feedBackDriver(JobNumber )
             {
                     var isDriverRatingLocked = data.d[1];
                     var isJobAlive = data.d[2];
-                    var rating = data.d[3];
+                   // var rating = data.d[3];
                     var custFeed = data.d[4];
                     var startDate = data.d[5]; 
                     var startTime = data.d[6];
@@ -106,9 +106,9 @@ function feedBackDriver(JobNumber )
                     {
                         if(isDriverRatingLocked == "True")
                         {
-                               document.getElementById('sel').value = rating;
+                             //  document.getElementById('sel').value = rating;
                                document.getElementById('txtarComments').value = custFeed;
-                               $('#sel').attr('disabled',true);
+                              // $('#sel').attr('disabled',true);
                                $('#txtarComments').attr("readOnly",true);
                                $('#lbljobNo').text(JobNumber);
                                $('#lblFeeddate').text(startDate);
@@ -129,7 +129,7 @@ function feedBackDriver(JobNumber )
                                $('#lblFeedTime').text(startTime);
                                $('#lblFeedFrom').text(fromLoc);
                                $('#lblFeedTo').text(toLoc);  
-                               $('#sel').attr('disabled',false);
+                              // $('#sel').attr('disabled',false);
                                $('#txtarComments').attr("readOnly",false);
                             
                                $('#popup_box').fadeIn("fast");
@@ -157,7 +157,7 @@ function CancelFeedBack()
     $('#divFeedBack').hide("fast");
     $('#popup_box').hide("fast");
      $('#transparent_div').hide();
-    document.getElementById('sel').value = 0;
+    //document.getElementById('sel').value = 0;
     document.getElementById('txtarComments').value = "";  
     
 }
@@ -198,7 +198,18 @@ function showDetail(data)
     $('#lblCustomerContact').css("font-weight", 900);
     
     $('#lblNoOfPassenger').text(": "+data.d[8]);
-    $('#lblCustomerFeedback').text(": "+data.d[9]); 
+    
+    if(data.d[9]!=="No Customer Feedback")
+    {
+         $('#custFeedback').show();
+      $('#lblCustomerFeedback').text(": "+data.d[9] + " (Rating- "+data.d[13]+")");  
+    }
+    else
+    {
+        $('#custFeedback').hide();
+        $('#MyFeedback').hide();
+    }
+   
     
     if(data.d[10]!== "No Return")
     {
@@ -219,6 +230,15 @@ function showDetail(data)
     {
        //$('#rtnto').hide();
         $('#rtnto').hide();
+    }
+    if(data.d[12]!=="No Driver Comments")
+    {
+         $('#MyFeedback').show();
+      $('#lblMyFeedback').text(": "+data.d[12]);  
+    }
+    else
+    {
+        $('#MyFeedback').hide();
     }
     
     $('#popup_box').show();
@@ -308,13 +328,13 @@ function onAbortCallback(buttonIndex)
 function PostFeedBack()
 {
    var requestID= $('#lbljobNo').text();
-   var getRating = document.getElementById('sel').value;
+   //var getRating = document.getElementById('sel').value;
    var getComments = document.getElementById('txtarComments').value;
-    if(getRating == 0)
-    {
-        alert("Please select rating.");
-        return false;
-    }
+    //if(getRating == 0)
+    //{
+       // alert("Please select rating.");
+       // return false;
+   // }
     if(!getComments)
     {
         alert("Please enter comments.");
@@ -330,13 +350,13 @@ function PostFeedBack()
              },
             type:"POST",
             dataType: "Json",
-            data:"{'userID':'" +relatedId+"','reqID':'" +requestID+"','rating':'" +getRating+"','feedback':'" +getComments+"'}",
+            data:"{'userID':'" +relatedId+"','reqID':'" +requestID+"','feedback':'" +getComments+"'}",
             contentType: "application/json; charset=utf-8",                     
             success: function(data)
             {
                 alert("Feedback comment posted successfully");
                 document.getElementById('txtarComments').value ="";
-                document.getElementById('sel').value = 0;
+                //document.getElementById('sel').value = 0;
                 $('#divFeedBack').fadeOut("fast");
                 $('#popup_box').fadeOut("fast");
                 $('#transparent_div').hide();

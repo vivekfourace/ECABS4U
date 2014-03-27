@@ -28,34 +28,34 @@ function UploadFeedBack()
                                 if(comment != null)
                                 {
                                     html += "<tr>";
-                                    html += "<td rowspan='2' style='width:25%;border-bottom:1px solid black;'>"+'<img src="'+driverImgUrl+'" style="width:70px;height:65px;border-radius:4px"/>'+ "</td>";
+                                    html += "<td rowspan='2' style='width:25%;'>"+'<img src="'+driverImgUrl+'" style="width:70px;height:65px;border-radius:4px"/>'+ "</td>";
                                     html += "<td style='width:75%;word-break:break-all;vertical-align:top;text-align:left'>"
                                          +  '<b><u>' + data.d[i]["Name"] + '</u></b>'+'<br/>'
                                          +  '<span margin-top:"12px">'+ data.d[i]["Comment"] +'</span>'+'<br/>'; 
                                     html += '</td>'; 
                                     html += '<tr>';
-                                    html += '<td style="border-bottom:1px solid black;text-overflow:ellipsis">';
-                                    if(rating == 1)
-                                    {
-                                        html += "<img src='img/1star.PNG' style='width:6%'/>";
-                                    }
-                                    else if(rating == 2)
-                                    {
-                                        html += "<img src='img/2star.PNG' style='width:10%'/>";
-                                    }
-                                    else if(rating == 3)
-                                    {
-                                        html += "<img src='img/3star.PNG' style='width:15%'/>";
-                                    }
-                                    else if(rating == 4)
-                                    {
-                                        html += "<img src='img/4star.PNG' style='width:19%'/>";
-                                    }
-                                    else if(rating == 5)
-                                    {
-                                        html += "<img src='img/5star.PNG' style='width:25%'/>";
-                                    }                                                                        
-                                    html +="</tr>";                                                                       
+                                   // html += '<td style="border-bottom:1px solid black;text-overflow:ellipsis">';
+                                    //if(rating == 1)
+                                   // {
+                                     //   html += "<img src='img/1star.PNG' style='width:6%'/>";
+                                    //}
+                                   // else if(rating == 2)
+                                   // {
+                                   //     html += "<img src='img/2star.PNG' style='width:10%'/>";
+                                   // }
+                                   // else if(rating == 3)
+                                   // {
+                                   //     html += "<img src='img/3star.PNG' style='width:15%'/>";
+                                   // }
+                                   // else if(rating == 4)
+                                   // {
+                                  //      html += "<img src='img/4star.PNG' style='width:19%'/>";
+                                  //  }
+                                  //  else if(rating == 5)
+                                  //  {
+                                  //      html += "<img src='img/5star.PNG' style='width:25%'/>";
+                                  //  }                                                                        
+                                 //   html +="</tr>";                                                                       
                                 }
                                 else
                                 {                                    

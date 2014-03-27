@@ -148,6 +148,48 @@ function showDetail(data)
     $('#lblDriverContact').css("font-weight", 900);
     
     $('#lblNoOfPassenger').text(": "+data.d[8]);
+    if(data.d[9]!=="No Driver Comments")
+    {
+    $('#driverFeedback').show();
+    $('#lblDriverFeedback').text(": "+data.d[9]);
+    }
+    else
+    {
+        $('#driverFeedback').hide();
+    }
+    
+    
+     if(data.d[10]!== "No Return")
+    {
+        $('#rtnfrom').show();
+        $('#lblreturnfrom2').text(": "+data.d[10]);
+    }
+    else
+    {
+        $('#rtnfrom').hide();
+       
+    }
+    if(data.d[11]!== "No Return")
+    {
+        $('#rtnto').show();
+        $('#lblreturnto2').text(": "+data.d[11]);
+    }
+    else
+    {
+       //$('#rtnto').hide();
+        $('#rtnto').hide();
+    }
+    
+     if(data.d[12]!=="No Customer Feedback")
+    {
+    $('#customerFeedback').show();
+    $('#lblmyFeedback').text(": "+data.d[12]);
+    }
+    else
+    {
+        $('#customerFeedback').hide();
+    }
+    
     $('#transparent_div').show();
     $('#popup_box').fadeIn("fast");
     $('#divCabLaterBooking').fadeIn("fast");

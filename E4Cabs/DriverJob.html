@@ -201,6 +201,13 @@
                                     }
                                     
                                     $('#hiddenIsCabnow').val(data.d[0][20]);
+                                    var hiddin=$('#hiddenIsCabnow').val();
+                                   
+                                   console.log($('#hiddenIsCabnow').val());
+                                    if(hiddin == "True")
+                                    {
+                                        $('#trselectvehicle').hide();
+                                    }
 
                                     if (data.d[0][3] !== null) {
                                         var sec = data.d[0][3];
@@ -574,7 +581,7 @@
                             </td>
                         </tr>
                         
-                       <tr class="popup_content">
+                       <tr class="popup_content" id="trselectvehicle">
                             <td style="width:30%">
                                 <b style="font-size:11px;" id="rtnto">Select vehicles</b>
                             </td>

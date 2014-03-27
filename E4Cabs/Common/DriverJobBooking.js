@@ -195,7 +195,7 @@ var timereOut;
                     url: "http://115.115.159.126/ECabs/ECabs4U.asmx/setDriverResponse",
                     type: "POST",
                     dataType: "Json",
-                    data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "','price':'" + price + "','specialReq':'" + specialReq + "','selectedVehicle':'" + selectedcab + "'}",
+                    data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "','price':'" + price + "','specialReq':'" + specialReq + "'}",
                     contentType: "application/json; charset=utf-8",
                     success: {},
                     error: function (XMLHttpRequest, textStatus, errorThrown) {

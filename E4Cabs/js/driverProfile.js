@@ -5,7 +5,8 @@ var relatedId = QString.split("=")[3].split("&")[0];
 window.onload = getProfile();
 
 document.addEventListener("deviceready",onDeviceReady, false);
-function onDeviceReady(){
+function onDeviceReady()
+{
     console.log("device is ready");
 }
 

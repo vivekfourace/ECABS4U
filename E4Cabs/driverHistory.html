@@ -102,7 +102,7 @@
                           <b> <label id="lblFeedTo" class="test"></label></b>
                        </td>
                    </tr>
-                   <tr class="popup_content">
+                  <!-- <tr class="popup_content">
                        <td style="width:30%;font-size:11px;">
                            <label class="test"><b>Rating </b></label> 
                        </td>
@@ -116,7 +116,7 @@
                                <option value="5">5-Excellent</option>
                            </select>
                        </td>
-                   </tr>
+                   </tr>-->
                    <tr class="popup_content">
                        <td style="width:100%;font-size:11px;" colspan="2">
                           <label class="test"><b>Comments</b></label>  
@@ -259,13 +259,23 @@
                              
                          </td>
                      </tr>
-                      <tr class="popup_content">
+                      <tr class="popup_content" id="custFeedback" style="display:none;">
                          <td style="width:40%;">
                              <strong class="tdContentstyle">Customer Feedback</strong>
                              
                          </td>
                          <td style="width:60%;">
                              <label id="lblCustomerFeedback" class="tdContentstyle"></label>
+                             
+                         </td>
+                     </tr>
+                     <tr class="popup_content" id="MyFeedback" style="display:none;">
+                         <td style="width:40%;">
+                             <strong class="tdContentstyle">My Comments</strong>
+                             
+                         </td>
+                         <td style="width:60%;">
+                             <label id="lblMyFeedback" class="tdContentstyle"></label>
                              
                          </td>
                      </tr>
