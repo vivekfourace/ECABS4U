@@ -221,57 +221,57 @@ function getData(data) {
                                    if(rating3 === "1")
                                     {
                                         
-                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/1star.PNG" style="width:18%" onclick="showRatingBox(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
+                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/1star.PNG" style="width:18%" onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
                                     }
                                     else if(rating3 === "2")
                                     {
                                      
-                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/2star.PNG" style="width:33%" onclick="showRatingBox(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
+                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/2star.PNG" style="width:33%" onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
                                     }
                                     else if(rating3 === "3")
                                     {                                     
-                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/3star.PNG" style="width:45%" onclick="showRatingBox(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
+                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/3star.PNG" style="width:45%" onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
                                     }
                                     else if(rating3 === "4")
                                     {
                                         
-                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/4star.PNG" style="width:58%" onclick="showRatingBox(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
+                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/4star.PNG" style="width:58%" onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
                                     }
                                     else if(rating3 === "5")
                                     {
-                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/5star.PNG" style="width:70%" onclick="showRatingBox(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
+                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/5star.PNG" style="width:70%" onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
                                     }
                           }
                           else
                            {
-                                html += '<td style="width:30%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/5star.PNG" style="width:70%" onclick="showRatingBox(\''+driverImgUrl+'\', \''+driverID+'\')"></td>'
+                                html += '<td style="width:30%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/5star.PNG" style="width:70%" onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>'
                            }
                           if(rating4 !== "")
                           {
                                    if(rating4 === "1")
                                     {
-                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/1star.PNG" style="width:18%" onclick="showRatingBox(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
+                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/1star.PNG" style="width:18%" onclick="showRatingBoxLaterPresent(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
                                     }
                                     else if(rating4 === "2")
                                     {
-                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/2star.PNG" style="width:33%" onclick="showRatingBox(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
+                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/2star.PNG" style="width:33%" onclick="showRatingBoxLaterPresent(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
                                     }
                                     else if(rating4 === "3")
                                     {
-                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/3star.PNG" style="width:45%" onclick="showRatingBox(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
+                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/3star.PNG" style="width:45%" onclick="showRatingBoxLaterPresent(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
                                     }
                                     else if(rating4 === "4")
                                     {
-                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/4star.PNG" style="width:58%" onclick="showRatingBox(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
+                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/4star.PNG" style="width:58%" onclick="showRatingBoxLaterPresent(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
                                     }
                                     else if(rating4 === "5")
                                     {
-                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/5star.PNG" style="width:70%" onclick="showRatingBox(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
+                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/5star.PNG" style="width:70%" onclick="showRatingBoxLaterPresent(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
                                     }
                           }
                           else
                            {
-                               html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/5star.PNG" style="width:70%" onclick="showRatingBox(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
+                               html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/5star.PNG" style="width:70%" onclick="showRatingBoxLaterPresent(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
                            }
                           html += '</tr>';
                 }
@@ -295,57 +295,57 @@ function getData(data) {
                                    if(rating33 === "1")
                                     {
                                         
-                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/1star.PNG" style="width:18%" onclick="showRatingBox(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
+                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/1star.PNG" style="width:18%" onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
                                     }
                                     else if(rating33 === "2")
                                     {
                                      
-                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/2star.PNG" style="width:33%" onclick="showRatingBox(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
+                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/2star.PNG" style="width:33%" onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
                                     }
                                     else if(rating33 === "3")
                                     {                                     
-                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/3star.PNG" style="width:45%" onclick="showRatingBox(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
+                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/3star.PNG" style="width:45%" onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
                                     }
                                     else if(rating33 === "4")
                                     {
                                         
-                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/4star.PNG" style="width:58%" onclick="showRatingBox(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
+                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/4star.PNG" style="width:58%" onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
                                     }
                                     else if(rating33 === "5")
                                     {
-                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/5star.PNG" style="width:70%" onclick="showRatingBox(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
+                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/5star.PNG" style="width:70%" onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
                                     }
                           }
                           else
                            {
-                               html += '<td style="width:30%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/5star.PNG" style="width:70%" onclick="showRatingBox(\''+driverImgUrl+'\', \''+driverID+'\')"></td>'
+                               html += '<td style="width:30%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/5star.PNG" style="width:70%" onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>'
                            }
                           if(rating44 !== "")
                           {
                                    if(rating44 === "1")
                                     {
-                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/1star.PNG" style="width:18%" onclick="showRatingBox(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
+                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/1star.PNG" style="width:18%" onclick="showRatingBoxLaterPresent(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
                                     }
                                     else if(rating44 === "2")
                                     {
-                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/2star.PNG" style="width:33%" onclick="showRatingBox(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
+                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/2star.PNG" style="width:33%" onclick="showRatingBoxLaterPresent(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
                                     }
                                     else if(rating44 === "3")
                                     {
-                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/3star.PNG" style="width:45%" onclick="showRatingBox(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
+                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/3star.PNG" style="width:45%" onclick="showRatingBoxLaterPresent(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
                                     }
                                     else if(rating44 === "4")
                                     {
-                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/4star.PNG" style="width:58%" onclick="showRatingBox(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
+                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/4star.PNG" style="width:58%" onclick="showRatingBoxLaterPresent(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
                                     }
                                     else if(rating44 === "5")
                                     {
-                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/5star.PNG" style="width:70%" onclick="showRatingBox(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
+                                        html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/5star.PNG" style="width:70%" onclick="showRatingBoxLaterPresent(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
                                     }
                           }
                           else
                            {
-                               html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/5star.PNG" style="width:70%" onclick="showRatingBox(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
+                               html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/5star.PNG" style="width:70%" onclick="showRatingBoxLaterPresent(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
                            }
                           html += '</tr>';
             }
@@ -365,7 +365,8 @@ function getData(data) {
     }
 }
 
-function showRatingBox(driverImgUrl, driverID)
+
+function showRatingBoxLaterpast(driverImgUrl, driverID)
 {    
     $.ajax({
         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetRatingFeedback",
@@ -375,6 +376,7 @@ function showRatingBox(driverImgUrl, driverID)
         contentType: "application/json; charset=utf-8",
         success: function(data)
         {    
+          // alert(data.d);
             $('#feedback-content').empty();
             if(data.d["0"] === null && data.d["1"] === null && data.d["2"] === null && data.d["3"] === null)
             {
@@ -382,6 +384,7 @@ function showRatingBox(driverImgUrl, driverID)
             }
             else
             {   
+                
                 if(data.d["0"] !== null)
                 {
                     var table1 = '<table width="99%" style="border-collapse:collapse;">';
@@ -405,6 +408,44 @@ function showRatingBox(driverImgUrl, driverID)
                     }
                     table1 += '</table>';
                 }
+                else{
+                    var table1 = '<table width="99%" style="border-collapse:collapse;">';
+                    table1 += '<tr><td style="width:80%">No Feedback available.';
+                    table1 += '</td></tr>';
+                    table1 += '</table>';
+                }
+                
+                $('#feedback-content').append(table1);
+              //  $('#feedback-content').append(table2);
+                $('#popup_box').fadeIn("fast");
+                $('#divRatingFeedback').fadeIn("fast");                
+           }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+        }
+    });
+}
+
+
+function showRatingBoxLaterPresent(driverImgUrl, driverID)
+{    
+    $.ajax({
+        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetRatingFeedback",
+        type: "POST",
+        dataType: "Json",
+        data: "{'driverID':'" + driverID + "'}",
+        contentType: "application/json; charset=utf-8",
+        success: function(data)
+        {    
+          // alert(data.d);
+            $('#feedback-content').empty();
+            if(data.d["0"] === null && data.d["1"] === null && data.d["2"] === null && data.d["3"] === null)
+            {
+                alert('No comments found');
+            }
+            else
+            {   
+                
                 if(data.d["2"] !== null)
                 {
                     var table2 = '<table width="99%" style="border-collapse:collapse;margin-top:5px">';
@@ -415,7 +456,7 @@ function showRatingBox(driverImgUrl, driverID)
                     if(data.d["3"] === null)
                     {                       
                         table2 += '<tr>';
-                        table2 += '<td style="width:20%;border-bottom:1px solid black"><img src="img/man.png" style="height:50px;border-radius:4px;"/></td>';
+                     table2 += '<td style="width:20%;border-bottom:1px solid black"><img src="img/man.png" style="height:50px;border-radius:4px;"/></td>';
                         table2 += '<td style="text-align:left;width:80%;border-bottom:1px solid black">'+'Driver: (No any reply)'+'</td>';                    
                         table2 += '</tr>';
                     }
@@ -428,9 +469,16 @@ function showRatingBox(driverImgUrl, driverID)
                     }
                     table2 += '</table>';
                 }
+                else{
+                    var table2 = '<table width="99%" style="border-collapse:collapse;">';
+                    table2 += '<tr><td style="width:80%">No Feedback available.';
+                    table2 += '</td></tr>';
+                    table2 += '</table>';
+                }
                 
-                $('#feedback-content').append(table1);
-                $('#feedback-content').append(table2);
+                
+               // $('#feedback-content').append(table1);
+               $('#feedback-content').append(table2);
                 $('#popup_box').fadeIn("fast");
                 $('#divRatingFeedback').fadeIn("fast");                
            }
@@ -439,6 +487,7 @@ function showRatingBox(driverImgUrl, driverID)
         }
     });
 }
+
 
 function ShowLargeImage(imgUrl)
 {
