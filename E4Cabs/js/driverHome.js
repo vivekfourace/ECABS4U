@@ -10,6 +10,9 @@ function onDeviceReady()
 }
 
 
+
+
+
 $('#imgLoader').hide();
 
 function  NavigateToMap()

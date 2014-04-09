@@ -242,7 +242,7 @@ function availabledriverLater() {
         return false;
     }
     if (!toloc) {
-        $('#lblMessage').text("Please enter To location.");
+        $('#lblMessage').text("Please enter Final destination.");
         return false;
     }
    // var IsReturnTrue = $('#chkReturnYes').attr('checked') ? true : false;
@@ -255,6 +255,7 @@ function availabledriverLater() {
     var isCheckedNo = $('#chkNo').attr('checked') ? true : false;
     var isRetJourAllOperator = $('#chkyes').attr('checked') ? true : false; 
     var IsReturnTrue2 = $('#chkReturnYes2').attr('checked') ? true : false;
+   // alert(isRetJourAllOperator);
     
     
     
@@ -306,15 +307,27 @@ function availabledriverLater() {
         $('#pickcurrentdate').val(day + "/" + month + "/" + year);
     
         var picktimecurrentTIME = document.getElementById('pickcurrenttime').value;
-        var picktimecurrentDate = document.getElementById('pickcurrentdate').value;
+       // var picktimecurrentDate = document.getElementById('pickcurrentdate').value;
     
-      
     
-      if(pickdateP < picktimecurrentDate)
-      {
-        alert("Please Enter correct Pick Up Date.");
-          return false;
-      }
+    
+       var begD = $.datepicker.parseDate('dd/mm/yy', $('#pickcurrentdate').val());
+    var endD = $.datepicker.parseDate('dd/mm/yy', $('#pickDate').val());
+    if (begD > endD) {
+            alert('Please Enter correct Pick Up Date.');
+           // $('#BeginDate').focus();
+            return false;
+    }    
+     // alert(picktimecurrentDate);
+      //alert(pickdateP);
+    //var pickdatePday=pickdateP.getDate()
+   // alert(pickdatePday);
+    
+     // if( picktimecurrentDate > pickdateP)
+     // {
+     // alert("Please Enter correct Pick Up Date1.");
+      //    return false;
+     // }
     
     if(picktime < picktimecurrentTIME)
       {

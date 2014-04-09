@@ -45,10 +45,10 @@ function onConfirm(buttonIndex)
 }
 
 function playBeep() {
-    
-     
+ 
     navigator.notification.beep(1);
     navigator.notification.vibrate(1000);
+    
     return;
     
 }
