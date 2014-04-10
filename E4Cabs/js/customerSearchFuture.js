@@ -313,6 +313,7 @@ function availabledriverLater() {
     
        var begD = $.datepicker.parseDate('dd/mm/yy', $('#pickcurrentdate').val());
     var endD = $.datepicker.parseDate('dd/mm/yy', $('#pickDate').val());
+    var retun = $.datepicker.parseDate('dd/mm/yy', $('#datepickers').val());
     if (begD > endD) {
             alert('Please Enter correct Pick Up Date.');
            // $('#BeginDate').focus();
@@ -340,12 +341,12 @@ function availabledriverLater() {
     if(isCheckedNo == true || isRetJourAllOperator == true)
     {
        
-        if(pickdateP>returnDate)
+        if(endD>retun)
     {
         alert("Please Enter correct Return Pick Up Date.");
         return false; 
     }
-        else if(pickdateP==returnDate)
+        else if(endD==retun)
         {
     
          if(picktime>returnTime)
