@@ -13,6 +13,7 @@
     
 </head>
 <body>
+    <input type="hidden" id="myInputhidden">
     <div>
         <center>
             <div id="imgLoader">
@@ -43,6 +44,13 @@
             </div>
             <div style="padding-top:0">
                 <label id="lblMsg" style="color:#D70007;font-size:12px"></label><br/>
+                <label id="lblMess1" style="color:#D70007; font-size:12px; display:none;">The email address for this account has not been verified. Please check your email and follow the instructions contained therein or </label>
+                <a id="aEmailResndVerificationLink" style="color:#0000FF; font-size:12px; font-weight:600; text-decoration:underline; cursor:pointer; display:none;" onclick="resendEmailVerification()">Click here</a>
+                <label id="lblMess2" style="color:#D70007; font-size:12px; display:none;"> and we will resend the verification request email.</label>
+                <label id="lblResMess1" style="color:#D70007; font-size:12px; display:none;">Your account is currently inactive. Please </label>
+                <a id="aresendResendpwdlink" style="color:#0000FF; font-size:12px; font-weight:600; text-decoration:underline; cursor:pointer; display:none;" onclick="resetpwdlnk()">Click here</a>
+                <label id="lblResMess2" style="color:#D70007; font-size:12px; display:none;"> . A password reset link will send to your registered email address.</label>
+                <br />
                 <input type="text" id="txtUserName" style=" font-family: MS;" placeholder="Username" />
                 <input type="password" id="txtPassword" style="font-family: MS;" placeholder="Password"/><br/>
                 

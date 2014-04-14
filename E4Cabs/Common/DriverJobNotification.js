@@ -101,7 +101,7 @@ function seeRequest()
 function closeRequest()
 {
      $.ajax({
-              url:'http://115.115.159.126/ECabs/ECabs4U.asmx/CancelNewJob', 
+              url:'http://115.115.159.126/ECabs/ECabs4U.asmx/CancelNewJobDNotification', 
               type:"POST",
               datatype:"json",
               data:"{'relatedId':'" +relatedId+ "'}",

@@ -155,13 +155,122 @@ function login() {
           }
           else {
               $('#imgLoader').hide();
-              $('#lblMsg').text(data.d);
-              $('#lblMsg').css("color", "#D70007");
-              $('#lblMsg').css("font-size", "13");
-              $('#txtPassword').val("");
+              var unauthorised = data.d[0];
+              if(unauthorised == "EmailNotVerified")
+              {
+                  $('#myInputhidden').val(data.d[1]);
+                  $('#txtPassword').val("");
+                  $('#lblMess1').show();
+                  $('#aEmailResndVerificationLink').show();
+                  $('#lblMess2').show();
+              }
+              else if(unauthorised == "BlockedLoginAttempt")
+              {
+                  $('#myInputhidden').val(data.d[1]);
+                  $('#txtPassword').val("");
+                  $('#lblResMess1').show();
+                  $('#aresendResendpwdlink').show();
+                  $('#lblResMess2').show();
+              }
+              else
+              {
+                  $('#lblMsg').text(data.d);
+                  $('#lblMsg').css("color", "#D70007");
+                  $('#lblMsg').css("font-size", "13");
+                  $('#txtPassword').val("");
+              }              
           }
      // }
  }
+
+function resendEmailVerification(){
+    $('#imgLoader').hide();
+    $('#lblResMess1').hide();
+    $('#aresendResendpwdlink').hide();
+    $('#lblResMess2').hide();
+    $('#lblMess1').hide();
+    $('#aEmailResndVerificationLink').hide();
+    $('#lblMess2').hide();
+    
+    var userid = $('#myInputhidden').val();    
+    var intsOnly = /^\d+$/;    
+    if(intsOnly.test(userid)) {
+        if(userid != "" || userid != " "){    
+            var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/lnkbtnresendVerificationLink";
+            $.ajax(url, {
+                beforeSend: function() 
+                {
+                    $('#imgLoader').show();
+                },
+                type: "POST",
+                datatype: "json",
+                data: "{'useridfromPage':'" + userid + "'}",
+                contentType: "application/json; charset=utf-8",
+                success: successEmailSend,
+                error: function (XMLHttpRequest, textStatus, errorThrown) {                    
+                }
+            });
+        }
+    }
+}
+
+function successEmailSend(data)
+{
+    $('#imgLoader').hide();
+    $('#lblResMess1').hide();
+    $('#aresendResendpwdlink').hide();
+    $('#lblResMess2').hide();
+    $('#lblMess1').hide();
+    $('#aEmailResndVerificationLink').hide();
+    $('#lblMess2').hide();
+    $('#lblMsg').text(data.d[1]);
+    $('#lblMsg').css("color", "#D70007");
+    $('#lblMsg').css("font-size", "13");
+    $('#myInputhidden').val("");
+}
+
+function resetpwdlnk(){
+    $('#imgLoader').hide();
+    $('#lblMess1').hide();
+    $('#aEmailResndVerificationLink').hide();
+    $('#lblMess2').hide();
+    $('#lblResMess1').hide();
+    $('#aresendResendpwdlink').hide();
+    $('#lblResMess2').hide();
+    
+    var username = $('#myInputhidden').val();
+    if(username !="" || username != " ")
+    {
+        var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/lnkbtnResendpwdlink";
+        $.ajax(url, {
+            beforeSend: function() {
+                $('#imgLoader').show();
+            },
+            type: "POST",
+            datatype: "json",
+            data: "{'usernamefrompage':'" + username + "'}",
+            contentType: "application/json; charset=utf-8",
+            success: successPWDLink,
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            }
+        });
+    }
+}
+
+function successPWDLink(data)
+{
+    $('#imgLoader').hide();
+    $('#lblResMess1').hide();
+    $('#aresendResendpwdlink').hide();
+    $('#lblResMess2').hide();
+    $('#lblMess1').hide();
+    $('#aEmailResndVerificationLink').hide();
+    $('#lblMess2').hide();
+    $('#lblMsg').text(data.d[1]);
+    $('#lblMsg').css("color", "#D70007");
+    $('#lblMsg').css("font-size", "13");
+    $('#myInputhidden').val("");
+}
 
 
 

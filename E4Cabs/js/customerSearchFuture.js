@@ -316,9 +316,24 @@ function availabledriverLater() {
     var retun = $.datepicker.parseDate('dd/mm/yy', $('#datepickers').val());
     if (begD > endD) {
             alert('Please Enter correct Pick Up Date.');
+        
            // $('#BeginDate').focus();
             return false;
-    }    
+    }   
+    else
+    {
+         var a = picktimecurrentTIME.split(":");
+        var b = picktime.split(":");
+        begD.setHours(a[0]);
+        endD.setHours(b[0]);
+        begD.setMinutes(a[1]);
+        endD.setMinutes(b[1]);
+        if(begD > endD)
+        {
+            alert("Please Enter correct Pick Up time,Pick Up time should be greater than Current time. ");
+            return false; 
+        } 
+    }
      // alert(picktimecurrentDate);
       //alert(pickdateP);
     //var pickdatePday=pickdateP.getDate()
@@ -330,11 +345,13 @@ function availabledriverLater() {
       //    return false;
      // }
     
-    if(picktime < picktimecurrentTIME)
-      {
-        alert("Please Enter correct Pick Up time,Pick Up time should be greater than Current time. ");
-          return false;
-      }
+    
+    //old
+    //if(picktime < picktimecurrentTIME)
+     // {
+     //   alert("Please Enter correct Pick Up time,Pick Up time should be greater than Current time. ");
+     //     return false;
+     // }
     
      //compare datetime 
     
@@ -348,7 +365,7 @@ function availabledriverLater() {
     }
         else if(endD==retun)
         {
-    
+             
          if(picktime>returnTime)
           {
         alert("Please Enter correct Return Pick Up time,Pick Up time should be greater than Current time.");
@@ -359,6 +376,8 @@ function availabledriverLater() {
      }
     else
     {
+      
+        
     
     }
     
