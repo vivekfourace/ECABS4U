@@ -48,8 +48,8 @@ $.ajax({
                        
                       
                            html += "<td colspan='2' style='width:25%;height:35px;text-align:center;border-bottom:1px solid #0080FF'>"
-                           +'<input type="button" value="View" class="accept-btn" onclick="AcceptJob(\''+data.d[i]["JobNumber"]+'\')"/><br/>'
-                           +'<input type="button" value="Reject" class="reject-btn" onclick="CancelJob(\''+data.d[i]["JobNumber"]+'\')"/>'
+                           +'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="View" class="accept-btn" onclick="AcceptJob(\''+data.d[i]["JobNumber"]+'\')"/><br/>'
+                           +'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Reject" class="reject-btn" onclick="CancelJob(\''+data.d[i]["JobNumber"]+'\')"/>'
                            +"</td>";
                        }
                      else if(isCustomerAccepted === "False")

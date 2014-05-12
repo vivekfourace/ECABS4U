@@ -280,7 +280,7 @@
      <div id="divDealload" class="loadForall">
          <span style="color:white">Waiting for customer response...</span><br/>
          <img src="jquery-mobile/styles/images/ajax-loader-hor.gif" style="width:80%;height:12px" /><br/>
-         <input type="button" value="Cancel" onclick="reqReject()"/>
+         <input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Cancel" onclick="reqReject()"/>
      </div>
      <div id="imgLoader">
          <img src="img/ajax-loader.gif" id="loading-image" /><br/>             
@@ -611,8 +611,8 @@
                         </tr>
                         <tr class="popup_footer">
                             <td style="width:100%" colspan="2">
-                                <input type="button" class="ok" value="Make Bid" style="width:49%;" onclick="bidSubmit()" />
-                                <input type="button" class="ok" value="Cancel" style="width:49%;" onclick="bidCancel()" />
+                                <input type="button" class="ok" value="Make Bid" style="width:49%;-webkit-appearance:none;-moz-appearance:none;" onclick="bidSubmit()" />
+                                <input type="button" class="ok" value="Cancel" style="width:49%;-webkit-appearance:none;-moz-appearance:none;" onclick="bidCancel()" />
                             </td>
                         </tr>
                     </table>
@@ -698,11 +698,11 @@
 
                         <tr class="popup_footer">
                             <td style="width:50%">
-                                <input type="button" class="ok" value="Accept this job" style="width:100%;" onclick="dealSubmit()" />
+                                <input type="button" class="ok" value="Accept this job" style="width:100%;-webkit-appearance:none;-moz-appearance:none;" onclick="dealSubmit()" />
                                  
                             </td>
                             <td style="width:50%">
-                                <input type="button" class="ok" value="Reject this job" style="width:100%;" onclick="reqReject()" />
+                                <input type="button" class="ok" value="Reject this job" style="width:100%;-webkit-appearance:none;-moz-appearance:none;" onclick="reqReject()" />
                             </td>
                         </tr>
                     </table>
@@ -742,10 +742,10 @@
                         </tr>
                         <tr class="popup_footer">
                             <td style="width: 50%">
-                                <input type="button" value="Proceed" class="ok" onclick="Confirmcomission()" />                                
+                                <input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Proceed" class="ok" onclick="Confirmcomission()" />                                
                             </td>
                             <td style="width:50%">
-                                <input type="button" value="Reject" class="ok" onclick="RejectComission()" />
+                                <input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Reject" class="ok" onclick="RejectComission()" />
                             </td>
                         </tr>
                     </table>
@@ -785,10 +785,10 @@
                         </tr>
                         <tr class="popup_footer">
                             <td style="width:50%">
-                                <input type="button" value="Proceed" class="ok" onclick="Confirmcomission2()" />
+                                <input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Proceed" class="ok" onclick="Confirmcomission2()" />
                             </td>
                             <td style="width:50%">
-                                <input type="button" value="Reject" class="ok" onclick="RejectComission()" />
+                                <input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Reject" class="ok" onclick="RejectComission()" />
                             </td>
                         </tr>
                     </table>
@@ -808,11 +808,11 @@
                         </tr>
                         <tr class="popup_footer">
                             <td style="width:50%">
-                                <input type="button" id="ok" class="ok" value="OK" style="width:80%;" onclick="abortOk()" />
+                                <input type="button" id="ok" class="ok" value="OK" style="width:80%;-webkit-appearance:none;-moz-appearance:none;" onclick="abortOk()" />
 
                             </td>
                             <td style="width:50%">
-                                <input type="button" class="ok" value="Cancel" style="width:80%;" onclick="abortcancel()" />
+                                <input type="button" class="ok" value="Cancel" style="width:80%;-webkit-appearance:none;-moz-appearance:none;" onclick="abortcancel()" />
                             </td>
                         </tr>
                     </table>
@@ -820,7 +820,7 @@
             
                 <div id="mapContainer" style="display:none;height:100%;width:100%;border:none;border-collapse:collapse">
            <div id="mapCanvas"></div>        
-            <input type="button" value="Close" style="width:100%;height:30px" class="btn-tmp" onclick="hideMap()"/>
+            <input type="button" value="Close" style="width:100%;height:30px;-webkit-appearance:none;-moz-appearance:none;" class="btn-tmp" onclick="hideMap()"/>
         </div>
             </div>    
      
@@ -828,13 +828,13 @@
       <table style="width: 100%; position: fixed; bottom: 0px;padding-bottom: 15%;background-color:white;display:none" id="button-table">
         <tr>
             <td style="width:25%">
-                <input type="button" id="btnbid" class="specialBtn" onclick="showBid()" style="width: 100%;" value="Bid" />
+                <input type="button" id="btnbid" class="specialBtn" onclick="showBid()" style="width: 100%;-webkit-appearance:none;-moz-appearance:none;" value="Bid" />
             </td>
             <td style="width:25%">
-                <input type="button" id="btnmap" class="specialBtn" onclick="showMapDriver()" style="width: 100%;" value="Map" />
+                <input type="button" id="btnmap" class="specialBtn" onclick="showMapDriver()" style="width: 100%;-webkit-appearance:none;-moz-appearance:none;" value="Map" />
             </td>
             <td style="width:25%">
-                <input type="button" id="btnreject" class="specialBtn" onclick="reqReject()" style="width: 100%;" value="Reject" />
+                <input type="button" id="btnreject" class="specialBtn" onclick="reqReject()" style="width: 100%;-webkit-appearance:none;-moz-appearance:none;" value="Reject" />
             </td>
         </tr>
     </table>

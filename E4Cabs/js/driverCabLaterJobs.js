@@ -40,7 +40,7 @@ function showTodayJobs(data)
                        html += "<td style='width:20%;height:35px;text-align:center;border-bottom:1px solid #0080FF'>" + data.d[i]["JobNumber"] +"</td>"; 
                        html += "<td style='width:25%;height:35px;text-align:center;border-bottom:1px solid #0080FF'>" + data.d[i]["From"] +"</td>";
                        html += "<td style='width:25%;height:35px;text-align:center;border-bottom:1px solid #0080FF'>" + data.d[i]["To"] +"</td>";
-                       html += "<td style='width:25%;height:35px;text-align:center;border-bottom:1px solid #0080FF'>"+'<input type="button" class="accept-btn" value="Engage me" onclick="Engage(\''+data.d[i]["JobNumber"]+'\')"/>'+"</td>";
+                       html += "<td style='width:25%;height:35px;text-align:center;border-bottom:1px solid #0080FF'>"+'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" class="accept-btn" value="Engage me" onclick="Engage(\''+data.d[i]["JobNumber"]+'\')"/>'+"</td>";
                     }
                html +='</tbody>';
                html +='</table>';

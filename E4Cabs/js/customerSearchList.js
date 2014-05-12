@@ -208,7 +208,7 @@ function getData(data) {
                 html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
                 html += "<td width='10%' align='center'>" + '<img src="img/sc.png" class="pulse" width="15" height="15" style="color:grey;" onclick="SpecShow(\''+spec+'\')"/>' + "</td>";
                 html += "<td width='20%' align='center'>" + bidh + ":" + bidm + "</td>";
-                html += "<td width='15%' align='center'>" + '<input type="button" class="disableBtn accept-btn" value="Hire" id= "' + driverID + '" onclick = "Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'' + spec + '\');"/>' + "</td>";
+                html += "<td width='15%' align='center'>" + '<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" class="disableBtn accept-btn" value="Hire" id= "' + driverID + '" onclick = "Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'' + spec + '\');"/>' + "</td>";
                 html += '</tr>';
                 html += '<tr>';           
                 var rating3 = data.d[i]["RatingPast"];
@@ -282,7 +282,7 @@ function getData(data) {
                 html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
                 html += "<td width='10%' align='center'>" + '<img src="img/spec.png"  width="15" height="15" style="color:grey;" onclick="SpecShow(\'Not Available\')"/>' + "</td>";
                 html += "<td width='20%' align='center'>" + bidh + ":" + bidm + "</td>";
-                html += "<td width='15%' align='center'>" + '<input type="button" class="disableBtn accept-btn"  value="Hire" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'Not Available\');"/>' + "</td>";
+                html += "<td width='15%' align='center'>" + '<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" class="disableBtn accept-btn"  value="Hire" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'Not Available\');"/>' + "</td>";
                 html += '</tr>';
                 html += '<tr>';
                 var rating33 = data.d[i]["RatingPast"];
@@ -357,7 +357,7 @@ function getData(data) {
         html += '<table>';
         html += '<tr>';
         html += '<td>';
-        html += '<input type="button" id="searchAgain" class="reject-btn" value="InSufficient Drivers" onclick="SearchDriverAgain()"/>';
+        html += '<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" id="searchAgain" class="reject-btn" value="InSufficient Drivers" onclick="SearchDriverAgain()"/>';
         html += '</td></tr>'; 
         html += '</table>';
         html += '</div>';        

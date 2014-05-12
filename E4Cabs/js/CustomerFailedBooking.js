@@ -42,8 +42,8 @@ function displayResult(data)
                   html += "<td width='25%' height='30px' align='center'>"+from+"</td>";
                   html += "<td width='25%' height='30px' align='center'>"+to+"</td>";
                   html += "<td width='30%' height='30px' align='center'>"
-                       +'<input type="button" class="accept-btn" value="Re-initialize" onclick="InitiateJob(\''+jobno+'\')"/>'+'<br/>'
-                       +'<input type="button" class="reject-btn" value="Cancel" onclick="CancelJob(\''+jobno+'\')"/>'
+                       +'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" class="accept-btn" value="Re-initialize" onclick="InitiateJob(\''+jobno+'\')"/>'+'<br/>'
+                       +'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" class="reject-btn" value="Cancel" onclick="CancelJob(\''+jobno+'\')"/>'
                    +"</td>";
                   html += '</tr>';
                }

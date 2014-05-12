@@ -54,11 +54,11 @@ function getCablaterBooking()
                                                             if(isJobBooked == "True")
                                                             {
                                                              	html += "<td style='width:25%;height:35px;text-align:center;'>Cab Booked</td>";
-                                                                 html += "<td style='width:10%;height:35px;text-align:center;'>"+'<input type="button" value="Abort" onclick="CancelBookedJob(\''+data.d[i]["CustomerRequestID"]+'\')"/>'+"</td>";
+                                                                 html += "<td style='width:10%;height:35px;text-align:center;'>"+'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Abort" onclick="CancelBookedJob(\''+data.d[i]["CustomerRequestID"]+'\')"/>'+"</td>";
                                                             }
                                                             else
                                                             {
-                                                                 html += "<td style='width:15%;height:35px;text-align:center;'>"+'<input type="button" class="accept-btn" value="Hire" onclick="HireDriver(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["DriverID"]+'\')"/>'+"</td>";
+                                                                 html += "<td style='width:15%;height:35px;text-align:center;'>"+'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" class="accept-btn" value="Hire" onclick="HireDriver(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["DriverID"]+'\')"/>'+"</td>";
                                                             }
                                                         }
                                                         else
