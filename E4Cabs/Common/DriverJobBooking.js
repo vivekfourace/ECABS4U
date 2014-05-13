@@ -261,38 +261,65 @@ var timereOut;
             var getFare = $('#lbldealfare').text();
             var reqID = $('#lbldealjob').text();
             
-            if (getFare === 15 || getFare > 15) {
-                if (getIsReturnJourney === "True") {
-                    var _avgFare = getFare / 2;
-                    if (_avgFare === 15 || _avgFare > 15) {
-
-                        $('#divComission2').show();
-                        $('#lblconfirmjob2').text(reqID);
-                        $('#lblconfirmfare2').text(getFare);
-                    }
-                    else {
-                        $('#divComission').show();
-                        $('#lblconfirmjob').text(reqID);
-                        $('#lblconfirmfare').text(getFare);
-                        $('#divDeal').hide();
-                        $('#popup_box').hide();
-                    }
-                }
-                else if (getIsReturnJourney === "False") {
-                    $('#divDeal').hide();
-                    $('#divComission').show();
-                    $('#lblconfirmjob').text(reqID);
-                    $('#lblconfirmfare').text(getFare);
-                }
+//if (getFare === 15 || getFare > 15) {
+//    if (getIsReturnJourney === "True") {
+//        var _avgFare = getFare / 2;
+//        if (_avgFare === 15 || _avgFare > 15) {
+//
+//            $('#divComission2').show();
+//            $('#lblconfirmjob2').text(reqID);
+//            $('#lblconfirmfare2').text(getFare);
+//        }
+//        else {
+//            $('#divComission').show();
+//            $('#lblconfirmjob').text(reqID);
+//            $('#lblconfirmfare').text(getFare);
+//            $('#divDeal').hide();
+//            $('#popup_box').hide();
+//        }
+//    }
+//    else if (getIsReturnJourney === "False") {
+//        $('#divDeal').hide();
+//        $('#divComission').show();
+//        $('#lblconfirmjob').text(reqID);
+//        $('#lblconfirmfare').text(getFare);
+//    }
+//}
+//
+//else {
+//    $('#divComission').hide();
+//    $('#divComission2').hide();
+//    $('#transparent_div').show();
+//    $('#imgLoader').show();
+//    SaveDataOfCurrentJob();
+//}
+            
+            if(getFare>=11 && getFare<= 20)
+            {
+              $('#divDeal').hide();
+              $('#divComission').show();
+              $('#lblconfirmjob').text(reqID);
+              $('#lblconfirmfare').text(getFare);
+                
             }
             
-            else {
-                $('#divComission').hide();
-                $('#divComission2').hide();
-                $('#transparent_div').show();
-                $('#imgLoader').show();
-                SaveDataOfCurrentJob();
+           else if(getFare >= 21)
+            {
+              $('#divComission2').show();
+              $('#lblconfirmjob2').text(reqID);
+              $('#lblconfirmfare2').text(getFare); 
+                
             }
+            else
+            {
+                 $('#divComission').hide();
+                 $('#divComission2').hide();
+                 $('#transparent_div').show();
+                 $('#imgLoader').show();
+                 SaveDataOfCurrentJob();
+                
+            }
+            
         }
 
 function SaveDataOfCurrentJob()

@@ -88,13 +88,31 @@ function AcceptJob(jobno, jobfare)
 {
     $('#hidJobNo').val(jobno);
     var fare = jobfare;
-    if(fare === 15 || fare > 15)
+   // if(fare === 15 || fare > 15)
+    //{
+      //  $('#lblconfirmfare').html('&pound'+jobfare);
+      //  $('#lblconfirmjob').text(jobno);
+     //   $('#popup_box').show();
+    //    $('#divComission').show();
+    //    $('#transparent_div').show();
+   // }
+    if(fare >= 11 && fare <=20)
     {
         $('#lblconfirmfare').html('&pound'+jobfare);
         $('#lblconfirmjob').text(jobno);
         $('#popup_box').show();
         $('#divComission').show();
         $('#transparent_div').show();
+        
+    }
+    else if(fare >=21)
+    {
+        $('#lblconfirmfare2').html('&pound'+jobfare);
+        $('#lblconfirmjob2').text(jobno);
+        $('#popup_box').show();
+        $('#divComission2').show();
+        $('#transparent_div').show();
+        
     }
     else
     {
