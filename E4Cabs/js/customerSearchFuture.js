@@ -241,9 +241,14 @@ function availabledriverLater() {
         $('#lblMessage').text("Please enter From location.");
         return false;
     }
-    if (!toloc) {
+   else if (!toloc) {
         $('#lblMessage').text("Please enter Final destination.");
         return false;
+    }
+    else
+    {
+        $('#lblMessage').text("");
+        
     }
    // var IsReturnTrue = $('#chkReturnYes').attr('checked') ? true : false;
    // var isCheckedNo = $('#chkNo').attr('checked') ? true : false;
@@ -312,10 +317,10 @@ function availabledriverLater() {
     
     
        var begD = $.datepicker.parseDate('dd/mm/yy', $('#pickcurrentdate').val());
-    var endD = $.datepicker.parseDate('dd/mm/yy', $('#pickDate').val());
-    var retun = $.datepicker.parseDate('dd/mm/yy', $('#datepickers').val());
+       var endD = $.datepicker.parseDate('dd/mm/yy', $('#pickDate').val());
+       var retun = $.datepicker.parseDate('dd/mm/yy', $('#datepickers').val());
     if (begD > endD) {
-            alert('Please Enter correct Pick Up Date.');
+            alert('Please Enter correct Pick Up Date.Pick Up Date should be greater than or Equal to Current Date.');
         
            // $('#BeginDate').focus();
             return false;
@@ -356,19 +361,20 @@ function availabledriverLater() {
      //compare datetime 
     
     if(isCheckedNo == true || isRetJourAllOperator == true)
-    {
-       
-        if(endD>retun)
-    {
-        alert("Please Enter correct Return Pick Up Date.");
+    { var pickdate2 = $.datepicker.parseDate('dd/mm/yy', $('#pickDate').val());
+       var retundate2 = $.datepicker.parseDate('dd/mm/yy', $('#datepickers').val());
+        
+        if(pickdate2>retundate2)
+        {
+        alert("Please Enter correct Return  Date.Return Date should be greater than or Equal to Pick Up Date.");
         return false; 
-    }
-        else if(endD==retun)
+         }
+        else if(pickdateP == returnDate)
         {
              
-         if(picktime>returnTime)
+         if(picktime>=returnTime)
           {
-        alert("Please Enter correct Return Pick Up time,Pick Up time should be greater than Current time.");
+        alert("Please Enter correct Return time,Return time should be greater than Pick Up time.");
         return false;  
           }
        }

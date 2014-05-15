@@ -266,10 +266,16 @@ function availabledriver() {
         $('#lblMessage').text("Please enter From location.");
         return false;
     }
-    if (!toloc) {
+    else if (!toloc) {
         $('#lblMessage').text("Please enter Final destination.");
         return false;
     }
+     else
+    {
+      $('#lblMessage').text("");
+       
+    }
+    
     var IsReturnTrue = $('#chkReturnYes').attr('checked') ? true : false;
     var isCheckedNo = $('#chkNo').attr('checked') ? true : false;
     var isRetJourAllOperator = $('#chkyes').attr('checked') ? true : false;  
@@ -313,18 +319,19 @@ function availabledriver() {
     
     if(isCheckedNo == true || isRetJourAllOperator == true)
     {
-        
+        var pickdate2 = $.datepicker.parseDate('dd/mm/yy', $('#pickUpDate').val());
+       var retundate2 = $.datepicker.parseDate('dd/mm/yy', $('#datepickers').val());
     
-        if(pickdate>returnDate)
+        if(pickdate2>retundate2)
     {
-        alert("Please select correct date.");
+        alert("Please Enter correct Return date,Return date should be greater than or Equal to Pick Up date.");
         return false; 
     }
        else if(pickdate==returnDate)
         {
-            if(picktime>returnTime)
+            if(picktime>=returnTime)
             {
-                alert("Please select correct time.");
+                alert("Please Enter correct Return time,Return time should be greater than Pick Up time.");
                 return false;  
             }
         }

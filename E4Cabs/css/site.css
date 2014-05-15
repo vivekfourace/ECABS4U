@@ -19,9 +19,9 @@
     text-align: center;
     background-position: center;
     background-repeat: no-repeat;
-    box-shadow: 2px 2px 2px #A4A4A4;
+   /* box-shadow: 2px 2px 2px #A4A4A4;*/
     position: fixed;
-    top: 45%;
+    top: 41%;
     left: 0;
     right: 0;
     margin: auto;
@@ -32,16 +32,16 @@
 }
 
 .loadForall {
-    width: 82%;
+    width: 100%;
     border-radius: 2px;
     z-index: 1000;
-    background-color: #267FCD;
+   /* background-color: #267FCD;*/
     text-align: center;
     background-position: center;
     background-repeat: no-repeat;
-    box-shadow: 2px 2px 2px #A4A4A4;
+   /* box-shadow: 2px 2px 2px #A4A4A4;*/
     position: fixed;
-    top: 45%;
+    top: 43%;
     left: 0;
     right: 0;
     margin: auto;
@@ -128,6 +128,28 @@ center {
 }
 
     .specialBtn:active {
+        background: #FE9A2E;
+        color: #2980CE;
+        border: 1px solid #2980CE;
+    }
+
+.specialBtnpopup {
+    border-radius: 1px;
+    outline: none;
+    width: 50%;
+    height: 35px;
+    text-align: center;
+    font-size: 14px;
+    margin: auto;
+    vertical-align: middle;
+    font-style: normal;
+    font-family: Calibri;
+    /*color: white;
+    border: 1px solid #2D82D0;
+    background-color: #2D82D0;*/
+}
+
+    .specialBtnpopup:active {
         background: #FE9A2E;
         color: #2980CE;
         border: 1px solid #2980CE;
