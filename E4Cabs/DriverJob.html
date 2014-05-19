@@ -25,13 +25,22 @@
         if(QString.split("=")[3].search("&")>=0){
             JobId = QString.split("=")[4].split("&")[0];
         }
-        $(function () {
+        
+        $(function ()
+        {
             $('#txtbidFare').bind('keypress', function (e) {
                 if ((e.keyCode < 48 || e.keyCode > 57) && e.keyCode !== 46) {
                     e.stopPropagation();
                     return false;
                 }
             });
+        	$('.sourceValidation').keyup(function () 
+        {
+   		 if (!this.value.match(/^([0-9]{0,3})$/)) 
+            {
+        		this.value = this.value.replace(/[^0-9]/g, '').substring(0,2);
+    		}
+		});
             $.ajax({
                 url: 'http://115.115.159.126/ECabs/ECabs4U.asmx/CheckResponse',
                 type: "POST",
@@ -609,7 +618,7 @@
                                 <b style="font-size:11px;">Fare in (&pound;)</b>
                             </td>
                             <td style="width:70%">
-                                <b><input type="text" id="txtbidFare" maxlength="3" style="font-size:11px;width:98%;" /></b>
+                                <b><input type="text" class="sourceValidation" id="txtbidFare" maxlength="3" style="font-size:11px;width:98%;" /></b>
                             </td>
                         </tr>
                         <tr class="popup_footer">

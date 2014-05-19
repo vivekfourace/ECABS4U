@@ -18,6 +18,16 @@ function backToIndex()
 }
 window.onload = gethistory();
 
+  $(function() {
+      $.fn.raty.defaults.path = 'lib/img';
+
+     /* $('#default-demo').raty({
+        click: function(score, evt) {
+          alert('ID: ' + $(this).attr('id') + "\nscore: " + score + "\nevent: " + evt.type);
+        }
+      });*/
+    });
+
 function gethistory()
 {
    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerHistoryDetails";
@@ -70,10 +80,14 @@ function gethistory()
                                    html +='</tbody>';
                                    html +='</table>';
                                 $('#msg').append(html);
+                            
+                            
                          }
                         else
                         {
                             $('#bookingmsg').show();
+                            
+                            
                         }
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) 
@@ -151,11 +165,16 @@ function showDetail(data)
     if(data.d[9]!=="No Driver Comments")
     {
     $('#driverFeedback').show();
+   // $('#driverFeedback2').show();    
+    $('#labelline').show();
     $('#lblDriverFeedback').text(": "+data.d[9]);
+    //$('#lblDriverFeedback2').text(": "+data.d[9]);
     }
     else
     {
         $('#driverFeedback').hide();
+      //  $('#driverFeedback2').hide();
+        $('#labelline').hide();
     }
     
     
@@ -171,7 +190,9 @@ function showDetail(data)
     }
     if(data.d[11]!== "No Return")
     {
-        $('#rtnto').show();
+        
+         $('#rtnto').show();
+        
         $('#lblreturnto2').text(": "+data.d[11]);
     }
     else
@@ -183,11 +204,16 @@ function showDetail(data)
      if(data.d[12]!=="No Customer Feedback")
     {
     $('#customerFeedback').show();
+   // $('#customerFeedback2').show();
+    $('#labelline').show();
     $('#lblmyFeedback').text(": "+data.d[12]);
+    //$('#lblmyFeedback2').text(": "+data.d[12]);
     }
     else
     {
         $('#customerFeedback').hide();
+        //$('#customerFeedback2').hide();
+         $('#labelline').hide();
     }
     
     $('#transparent_div').show();
@@ -274,6 +300,40 @@ function feedBackCustomer(JobNumber )
                     var toLoc = data.d[8];
                     var isJobAlive = data.d[9];
                 
+                
+                if(data.d[10]!== null)
+                  {
+                 
+                      $('#horizontalline').show();
+                      $('#commenttext').show();
+                    $('#driverFeedback2').show();    
+                    $('#lblDriverFeedback2').text(": "+data.d[10]);
+     			 }
+    			else
+   			 {
+        
+   		         $('#driverFeedback2').hide();
+                     $('#horizontalline').hide();
+                      $('#commenttext').hide();
+        
+    			}
+                if(custFeed!== null)
+                  {
+                    $('#horizontalline').show();
+                    $('#commenttext').show();
+                    $('#customerFeedback2').show();    
+                    $('#lblmyFeedback2').text(": "+data.d[4]);
+     			 }
+    			else
+   			 {
+        
+   		         $('#customerFeedback2').hide();
+                    $('#horizontalline').hide();
+                      $('#commenttext').hide();
+        
+    			}
+                   
+                
                      if(isJobCompleted === "True" || isJobAlive === "False")
                      {
                         console.log(isJobCompleted);
@@ -283,6 +343,7 @@ function feedBackCustomer(JobNumber )
                                document.getElementById('txtarComments').value = custFeed;
                                $('#sel').attr('disabled',true);
                                $('#txtarComments').attr("readOnly",true);
+                            	$('#txtarComments').hide();
                                $('#popup_box').fadeIn("fast");
                                $('#divFeedBack').fadeIn("fast");
                                $('#trbtnPopup').hide();
@@ -293,7 +354,8 @@ function feedBackCustomer(JobNumber )
                                $('#lblFeeddate').text(startDate);
                                $('#lblFeedTime').text(startTime);
                                $('#lblFeedFrom').text(fromLoc);
-                               $('#lblFeedTo').text(toLoc);                              
+                               $('#lblFeedTo').text(toLoc); 
+                           
                             
                         }
                         else if(isCustomerRatingLocked === "False")
@@ -306,6 +368,7 @@ function feedBackCustomer(JobNumber )
                          
                                $('#sel').attr('disabled',false);
                                $('#txtarComments').attr("readOnly",false);
+                            	$('#txtarComments').show();
                                $('#popup_box').fadeIn("fast");
                                $('#divFeedBack').fadeIn("fast");
                                $('#trbtnPopup').show();                            
@@ -317,10 +380,10 @@ function feedBackCustomer(JobNumber )
                       //{
                          // alert('This job has been cancelled. You cannot give feedback.');
                       //}
-                      else if(isJobAlive === "True")
-                     {
-                         alert('Feedback will be accepted after the cab ride.');
-                     }
+                else if(isJobAlive === "True")
+               {
+               alert('Feedback will be accepted after the cab ride.');
+                }
        },            
         error: function (XMLHttpRequest, textStatus, errorThrown) {}
   });  
@@ -334,16 +397,19 @@ function CancelFeedBack()
     $('#transparent_div').hide();
     document.getElementById('sel').value = 0;
     document.getElementById('txtarComments').value = "";
-    
+    $('#txtarComments').show();
     
 }
 //feedback post
 function PostFeedBack()
 {
+    
+    
    var requestID= $('#lbljobNo').text();
    var getRating = document.getElementById('sel').value;
+    //alert(getRating);
    var getComments = document.getElementById('txtarComments').value;
-    if(getRating == 0)
+    if(getRating === 0)
     {
         alert("Please select rating.");
         return false;
@@ -369,7 +435,7 @@ function PostFeedBack()
             contentType: "application/json; charset=utf-8",                     
             success: function(data)
             {
-                alert("Feedback comment posted.");
+                alert("Feedback has been added successfully.");
                 document.getElementById('txtarComments').value ="";
                 document.getElementById('sel').value = 0;
                 $('#divFeedBack').fadeOut("fast");

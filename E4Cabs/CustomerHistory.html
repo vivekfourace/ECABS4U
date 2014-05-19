@@ -12,8 +12,33 @@
     <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
     <script type="text/javascript" src="js/customerHistory.js"></script>
     <script type="text/javascript" src="Common/Logout.js"></script>
+    <script type="text/javascript" src="jquery/jquery.js"></script>
+    <!--<script type="text/javascript" src="jquery/jRating.jquery.js"></script>
+     <link rel="stylesheet" href="jquery/jRating.jquery.css" type="text/css" />
+    <link type="text/css" rel="stylesheet" href="demo/css/application.css">-->
+
+  <script type="text/javascript" src="demo/js/jquery.min.js"></script>
+  <script type="text/javascript" src="lib/jquery.raty.min.js"></script>
+   
     <title></title>
 </head>
+    <script type="text/javascript">
+      /*  $(document).ready(function(){
+            $(".basic").jRating({
+                length:5,
+                decimalLength:0,
+                onClick : function(element,rate){
+                    $('#sel').val(rate);
+                    alert(rate);
+                },
+                onError : function(){
+                    alert('Error : please retry');
+                }
+            });
+        });*/
+      
+    
+    </script>
 <body>
     <center>
          <div id="imgLoader">
@@ -105,6 +130,10 @@
                            <label><b>Rating </b></label> 
                        </td>
                     <td style="width:70%;font-size:11px;">
+                         <!--<div class="demo">
+							 <div id="default-demo"></div>
+                          </div>
+                       <div class="basic" data-average="0" data-id="1" id="sel"></div>-->
                            <select name="sel" id="sel">
                                <option value="0">--Please Select--</option>
                                <option value="1">1-Poor</option>
@@ -115,11 +144,40 @@
                            </select>
                        </td>
                    </tr>
-                   <tr class="popup_content">
-                       <td style="width:100%;font-size:11px;" colspan="2">
-                          <label><b>Comments</b></label>  
+                   <tr class="popup_content" id="horizontalline" style="display:none;">
+                       <td style="width:100%;font-size:11px;text-align:center" colspan="2">
+                          <hr>
                        </td>
                       </tr>
+                   <tr class="popup_content" id="commenttext" style="display:none;">
+                       <td style="width:100%;font-size:11px;text-align:center" colspan="2">
+                          <label style="font-size:14px;font-weight:bold"><b>Comments</b></label>  
+                       </td>
+                      </tr>
+                   
+                    <tr class="popup_content" id="customerFeedback2" style="display:none;">
+                         <td style="width:40%;">
+                             <strong class="tdContentstyle">My Comments</strong>
+                             
+                         </td>
+                         <td style="width:60%;">
+                             <label id="lblmyFeedback2" class="tdContentstyle"></label>
+                             
+                         </td>
+                     </tr>
+                      <tr class="popup_content" id="driverFeedback2" style="display:none;">
+                         <td style="width:40%;">
+                             <strong class="tdContentstyle">Driver Comments</strong>
+                             
+                         </td>
+                         <td style="width:60%;">
+                             <label id="lblDriverFeedback2" class="tdContentstyle"></label>
+                             
+                         </td>
+                     </tr>
+                   
+                   
+                   
                    <tr>
                        <td style="width:100%;font-size:13px;" colspan="2">
                            <textarea placeholder="Put your comments here..." style="width:98%;height:60px" maxlength="200" id="txtarComments"></textarea>
@@ -254,6 +312,14 @@
                              <label id="lblreturnto2" class="tdContentstyle"></label>
                              
                          </td>
+                     </tr>
+                     <tr class="popup_content" id="labelline" style="display:none;">
+                         <td style="width:100%;text-align:center" colspan="2">
+                             <hr>
+                             <label id="lblFeedback"  class="tdContentstyle" style="text-align:center;font-size:14px;font-weight:bold">Feedback</label>
+                             
+                         </td>
+                         
                      </tr>
                       <tr class="popup_content" id="customerFeedback" style="display:none;">
                          <td style="width:40%;">

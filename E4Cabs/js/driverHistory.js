@@ -102,6 +102,39 @@ function feedBackDriver(JobNumber )
                     var toLoc = data.d[8];
                     var isJobCompleted = data.d[9];
                 
+                
+                if(data.d[10]!== null)
+                  {
+                 
+                      $('#horizontalline').show();
+                      $('#commenttext').show();
+                    $('#driverFeedback2').show();    
+                    $('#lblDriverFeedback2').text(": "+data.d[10]);
+     			 }
+    			else
+   			 {
+        
+   		         $('#driverFeedback2').hide();
+                     $('#horizontalline').hide();
+                      $('#commenttext').hide();
+        
+    			}
+                 if(custFeed!== null)
+                  {
+                    $('#horizontalline').show();
+                    $('#commenttext').show();
+                    $('#customerFeedback2').show();    
+                    $('#lblmyFeedback2').text(": "+data.d[4]);
+     			 }
+    			else
+   			 {
+        
+   		         $('#customerFeedback2').hide();
+                   // $('#horizontalline').hide();
+                    //  $('#commenttext').hide();
+        
+    			}
+                
                    if(isJobCompleted == "True")
                     {
                         if(isDriverRatingLocked == "True")
@@ -201,6 +234,7 @@ function showDetail(data)
     
     if(data.d[9]!=="No Customer Feedback")
     {
+        $('#labelline').show();
          $('#custFeedback').show();
       $('#lblCustomerFeedback').text(": "+data.d[9] + " (Rating- "+data.d[13]+")");  
     }
@@ -208,6 +242,7 @@ function showDetail(data)
     {
         $('#custFeedback').hide();
         $('#MyFeedback').hide();
+        $('#labelline').hide();
     }
    
     
@@ -234,11 +269,13 @@ function showDetail(data)
     if(data.d[12]!=="No Driver Comments")
     {
          $('#MyFeedback').show();
+        $('#labelline').show();
       $('#lblMyFeedback').text(": "+data.d[12]);  
     }
     else
     {
         $('#MyFeedback').hide();
+       // $('#labelline').hide();
     }
     
     $('#popup_box').show();

@@ -376,6 +376,39 @@ function SaveDataOfCurrentJob()
             //var comission = 1.2;
             console.log("saving current job data");
             $.ajax({
+                beforeSend: function(){
+                   $('#imgLoader').show();
+                },
+                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CabLaterJobBooked",
+                type: "POST",
+                dataType: "Json",
+                data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                   if(data.d !== "")
+                    {
+                        console.log(data.d);
+                        var returnvalue = data.d;
+                        if (returnvalue.match(/"Error:"/g) > 0) {
+                            alert(returnvalue);
+                        }
+                        else{
+                            console.log("HI");
+                            window.location.href=data.d;
+                            //alert('Job booked successfully.');
+                            //window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                        }
+                    }
+                    else{
+                        alert("Nothing returned from service.");
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                            console.log("hierror");
+                }
+            });
+            /* $.ajax({
                     url: "http://115.115.159.126/ECabs/ECabs4U.asmx/SaveData",
                     type: "POST",
                     dataType: "Json",
@@ -399,16 +432,49 @@ function SaveDataOfCurrentJob()
                         
                       }                    
                   },
-             });
+             });*/
             
         }
 
         function Confirmcomission2() {
             $('#imgLoader').show();
             var reqID = $('#lblconfirmjob2').text();
+             $.ajax({
+                beforeSend: function(){
+                   $('#imgLoader').show();
+                },               
+                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CabLaterJobBooked",
+                type: "POST",
+                dataType: "Json",
+                data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                   if(data.d !== "")
+                    {
+                        console.log(data.d);
+                        var returnvalue = data.d;
+                        if (returnvalue.match(/"Error:"/g) > 0) {
+                            alert(returnvalue);
+                        }
+                        else{
+                            window.location.href=data.d;
+                            //alert('Job booked successfully.');
+                            //window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                        }
+                    }
+                    else{
+                        alert("Nothing returned from service.");
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                            console.log("hierror");
+                }
+            });
+            
             //var comission = 2.4;
             
-            $.ajax({
+          /*  $.ajax({
                     url: "http://115.115.159.126/ECabs/ECabs4U.asmx/SaveData",
                     type: "POST",
                     dataType: "Json",
@@ -431,7 +497,7 @@ function SaveDataOfCurrentJob()
                         });                        
                       }                    
                   },
-             });       
+             });*/       
         }
 
         function RejectComission() {

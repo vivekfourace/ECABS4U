@@ -137,7 +137,7 @@ function AcceptJob(jobno, jobfare)
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
-
+                    alert("Some error occurred during booking and payment. Please try again.");
                 }
             });
     }
@@ -201,7 +201,7 @@ function RejectJob(data)
                 data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
-                     alert("Job rejected successfully.");
+                    alert("Job rejected successfully.");
                      window.location = 'DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -229,27 +229,37 @@ function Confirmcomission()
             $.ajax({
                 beforeSend: function(){
                    $('#imgLoader').show();
-                },
-                complete: function(){
-                   $('#imgLoader').hide();
-                },
+                },                
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CabLaterJobBooked",
                 type: "POST",
                 dataType: "Json",
                 data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
-                    if(data.d === "true")
+                   if(data.d !== "")
                     {
-                       alert('Job booked successfully.');
-                       window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                        console.log(data.d);
+                        var returnvalue = data.d;
+                        if (returnvalue.match(/"Error:"/g) > 0) {
+                            alert(returnvalue);
+                        }
+                        else{
+                            console.log("HI");
+                            window.location.href=data.d;
+                            //alert('Job booked successfully.');
+                            //window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                        }
+                    }
+                    else{
+                        alert("Nothing returned from service.");
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
 
+                            console.log("hierror");
                 }
             });
-     window.location.href = "https://sandbox.gocardless.com/pay/YH0MFHY7"; //for commission 1.2pond
+    // window.location.href = "https://sandbox.gocardless.com/pay/YH0MFHY7"; //for commission 1.2pond
      $('#divDeal').hide();
      $('#popup_box').hide();
     $('#transparent_div').hide();
