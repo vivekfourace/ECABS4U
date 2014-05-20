@@ -422,7 +422,7 @@ function availabledriverLater() {
                 success:function (data) {
                     if(data.d[0] != "Error")
                     {
-                        alert('Booking in progress. Please check later.');
+                        jAlert('Booking in progress. Please check later.','HI');
                         window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                     }
                     else
