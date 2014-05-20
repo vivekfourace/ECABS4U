@@ -168,7 +168,7 @@ function showDetail(data)
     $('#lblStartTime').text(": "+data.d[4]);
     $('#lblSearchTime').text(": "+data.d[5]);
     $('#lblBidTime').text(": "+data.d[6]);
-    $('#lblDSR').text(": "+data.d[7]);  
+    //$('#lblDSR').text(": "+data.d[7]);  
     $('#popup_box').show();
     $('#divCabLaterBooking').show();
     $('#transparent_div').show();
