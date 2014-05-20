@@ -742,8 +742,11 @@ function calOk()
                 success: function (data) {
                     if(data.d === true)
                     {
+                       // jAlert('Cab booked successfully.', 'jquery basic alert box');
                         alert("Cab booked successfully.");
+                      
                         $('#imgLoader').hide();
+                        
                         window.location = 'CustomerHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;                       
                     }               
                 },
