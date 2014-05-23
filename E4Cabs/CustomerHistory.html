@@ -8,16 +8,16 @@
     <link rel="stylesheet" type="text/css" href="css/PopUp.css" />
     <script src="Scripts/jquery-2.0.3.min.js"></script> 
     <script type="text/javascript" src="Scripts/jquery.unobtrusive-ajax.min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>    
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
     <script type="text/javascript" src="js/customerHistory.js"></script>
     <script type="text/javascript" src="Common/Logout.js"></script>
     <script type="text/javascript" src="jquery/jquery.js"></script>
     <!--<script type="text/javascript" src="jquery/jRating.jquery.js"></script>
-     <link rel="stylesheet" href="jquery/jRating.jquery.css" type="text/css" />
-    <link type="text/css" rel="stylesheet" href="demo/css/application.css">-->
+     <link rel="stylesheet" href="jquery/jRating.jquery.css" type="text/css" />-->
+    <link type="text/css" rel="stylesheet" href="demo/css/application.css">
 
-  <script type="text/javascript" src="demo/js/jquery.min.js"></script>
+  
   <script type="text/javascript" src="lib/jquery.raty.min.js"></script>
    
     <title></title>
@@ -36,8 +36,9 @@
                 }
             });
         });*/
-      
+      //document.ontouchmove = function(e) {e.preventDefault()};
     
+       
     </script>
 <body>
     <center>
@@ -73,7 +74,7 @@
     </div>
 
     <div style="padding-top: 70px">
-        <div id="msg" style="width:100%;padding-bottom:15%;overflow:auto">
+        <div id="msg" style="width:100%;padding-bottom:15%;overflow-y:scroll">
             <label id="lbljobFeed" style="display: none;"></label>
         </div>
         <div style="padding-top:50%; color:#0000FF;font-size:20px;text-align:center;display:none" id="bookingmsg">No history found.</div>
@@ -130,10 +131,11 @@
                            <label><b>Rating </b></label> 
                        </td>
                     <td style="width:70%;font-size:11px;">
-                         <!--<div class="demo">
-							 <div id="default-demo"></div>
+                        <div class="demo">
+							 <div id="starrating"></div>
                           </div>
-                       <div class="basic" data-average="0" data-id="1" id="sel"></div>-->
+                        <input type="text" id="hiddenstar" style="display:none;" />
+                       <!-- <div class="basic" data-average="0" data-id="1" id="sel"></div>
                            <select name="sel" id="sel">
                                <option value="0">--Please Select--</option>
                                <option value="1">1-Poor</option>
@@ -141,7 +143,7 @@
                                <option value="3">3-Average</option>
                                <option value="4">4-Good</option>
                                <option value="5">5-Excellent</option>
-                           </select>
+                           </select>-->
                        </td>
                    </tr>
                    <tr class="popup_content" id="horizontalline" style="display:none;">
@@ -327,7 +329,11 @@
                              
                          </td>
                          <td style="width:60%;">
-                             <label id="lblmyFeedback" class="tdContentstyle"></label>
+                             <label id="lblmyFeedback" class="tdContentstyle" style="float:left"></label>
+                             <div class="demo" style="float:right;padding-right:41px">
+							 <div id="starrating2"></div>
+                          </div>
+                        <input type="text" id="hiddenstar2" style="display:none;" />
                              
                          </td>
                      </tr>

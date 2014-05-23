@@ -15,13 +15,14 @@
     <preference name="ShowSplashScreenSpinner" value="true" />
     <preference name="SuppressesIncrementalRendering" value="false" />
     <preference name="TopActivityIndicator" value="gray" />
-    
+ 
     <!-- legacy preferences -->
     <!--
     <preference name="UIWebViewBounce" value="true" />
     -->
 
     <content src="index.html" />
+    
 
     <plugins>
         <plugin name="Device" value="CDVDevice" />

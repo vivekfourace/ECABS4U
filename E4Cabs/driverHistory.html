@@ -17,6 +17,10 @@
         <script type="text/javascript" src="Common/Logout.js"></script>
         <script type="text/javascript" src="js/driverHistory.js"></script>
         
+        <link type="text/css" rel="stylesheet" href="demo/css/application.css">
+
+  <script type="text/javascript" src="lib/jquery.raty.min.js"></script>
+        
         <title></title>
     </head>
     <body>
@@ -300,10 +304,16 @@
                              
                          </td>
                          <td style="width:60%;">
-                             <label id="lblCustomerFeedback" class="tdContentstyle"></label>
+                             <label id="lblCustomerFeedback" class="tdContentstyle" style="float:left"></label>
+                             
+                             <div class="demo" style="float:right;padding-right:41px">
+							 <div id="starrating"></div>
+                          </div>
+                        <input type="text" id="hiddenstar" style="display:none;" />
                              
                          </td>
                      </tr>
+                     
                      <tr class="popup_content" id="MyFeedback" style="display:none;">
                          <td style="width:40%;">
                              <strong class="tdContentstyle">My Comments</strong>

@@ -742,12 +742,26 @@ function calOk()
                 success: function (data) {
                     if(data.d === true)
                     {
-                       // jAlert('Cab booked successfully.', 'jquery basic alert box');
                         alert("Cab booked successfully.");
-                      
-                        $('#imgLoader').hide();
+                       // jAlert('Cab booked successfully.', 'jquery basic alert box');
+                         $('#imgLoader').hide();
                         
-                        window.location = 'CustomerHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;                       
+                        window.location = 'CustomerHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;    
+                        
+                       // alert("Cab booked successfully.");
+                        //window.alert('Cab booked successfully.','Success');
+                       // var timeOut = 5;
+               //  setInterval(function() {  
+              //   jAlert('Cab booked successfully.', 'jquery basic alert box');
+              // if(timeOut <= 0)
+             //  {
+             //  $('#imgLoader').hide();
+             //           
+              //          window.location = 'CustomerHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;  
+              //  }
+              // }, 1000);
+                      
+                                          
                     }               
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {

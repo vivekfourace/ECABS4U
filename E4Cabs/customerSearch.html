@@ -390,6 +390,27 @@
      {
         document.getElementById("chkyes").checked = false;
      });
+        
+        
+        
+        
+        //added for disable scroling
+         //$(document).bind(
+         //'touchmove',
+  	//	function(e) {
+  	 // e.preventDefault();
+ 	//	 }
+	//	);
+        
+      //  scrollableDiv.ontouchmove = function(e) {e.stopPropagation()};
+     // document.ontouchmove = function(e) {e.preventDefault()};
+       
+        
+        
+ 
+//$('body').on('touchmove', function (e) {
+      //   if (!$('.scrollable').has($(e.target)).length) e.preventDefault();
+ //});
     </script>
 
     <style type="text/css">
@@ -477,8 +498,8 @@
                     </tr>
                 </table>
          </div>   
-       <div style="padding-top:71px">
-           <table style="width:80%;border-collapse:collapse">
+       <div style="padding-top:71px;overflow-y:scroll"  >
+           <table style="width:80%;border-collapse:collapse" >
                <center>
                    
                    <div id="map-canvas"></div>

@@ -15,6 +15,11 @@ function backToIndex()
 }
 
 window.onload = gethistory();
+
+$(function() {
+      $.fn.raty.defaults.path = 'lib/img';  
+  });
+
 function gethistory()
 {
         var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/DriverHistoryDetails";
@@ -140,9 +145,13 @@ function feedBackDriver(JobNumber )
                         if(isDriverRatingLocked == "True")
                         {
                              //  document.getElementById('sel').value = rating;
+                            if(custFeed!== null)
+                  {
                                document.getElementById('txtarComments').value = custFeed;
                               // $('#sel').attr('disabled',true);
                                $('#txtarComments').attr("readOnly",true);
+                               $('#txtarComments').hide();
+                      }
                                $('#lbljobNo').text(JobNumber);
                                $('#lblFeeddate').text(startDate);
                                $('#lblFeedTime').text(startTime);
@@ -164,12 +173,13 @@ function feedBackDriver(JobNumber )
                                $('#lblFeedTo').text(toLoc);  
                               // $('#sel').attr('disabled',false);
                                $('#txtarComments').attr("readOnly",false);
-                            
+                               $('#txtarComments').show();
                                $('#popup_box').fadeIn("fast");
                                $('#divFeedBack').fadeIn("fast");
                                $('#trbtnPopup').show();
                                $('#transparent_div').show();
                                $('#trbtnOK').hide();
+                            $('#txtarComments').val("");
                         }
                     }
                     else if(isJobAlive == "False")
@@ -232,11 +242,23 @@ function showDetail(data)
     
     $('#lblNoOfPassenger').text(": "+data.d[8]);
     
+    
+     if(data.d[13] !== ""){
+                    $('#starrating').raty({ score: data.d[13], readOnly: true });
+                }
+                
+                console.log("stars=" + $('#hiddenstar').val());
+    
+    
     if(data.d[9]!=="No Customer Feedback")
     {
         $('#labelline').show();
+        //$('#idName').show();
          $('#custFeedback').show();
-      $('#lblCustomerFeedback').text(": "+data.d[9] + " (Rating- "+data.d[13]+")");  
+    // $('#lblCustomerFeedback').text(": "+data.d[9] + " (Rating- "+data.d[13]+")"); 
+       $('#lblCustomerFeedback').text(": "+data.d[9]);
+       
+        
     }
     else
     {

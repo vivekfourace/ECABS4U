@@ -422,9 +422,11 @@ function availabledriverLater() {
                 success:function (data) {
                     if(data.d[0] != "Error")
                     {
-                      // jAlert('Booking in progress. Please check later.','Confirm');
+                        
+                        alert('Booking in progress. Please check later.','alert');
+                      //jAlert('Booking in progress. Please check later.','Confirm');
                         //jAlert('Example of a basic alert box in jquery', 'jquery basic alert box');
-                    alert('Booking in progress. Please check later.');
+                      //window.alert('Booking in progress. Please check later.','alert');
                         window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                     }
                     else

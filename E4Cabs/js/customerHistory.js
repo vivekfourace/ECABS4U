@@ -19,14 +19,8 @@ function backToIndex()
 window.onload = gethistory();
 
   $(function() {
-      $.fn.raty.defaults.path = 'lib/img';
-
-     /* $('#default-demo').raty({
-        click: function(score, evt) {
-          alert('ID: ' + $(this).attr('id') + "\nscore: " + score + "\nevent: " + evt.type);
-        }
-      });*/
-    });
+      $.fn.raty.defaults.path = 'lib/img';  
+  });
 
 function gethistory()
 {
@@ -201,6 +195,12 @@ function showDetail(data)
         $('#rtnto').hide();
     }
     
+    
+    if(data.d[14] !== ""){
+                    $('#starrating2').raty({ score: data.d[14], readOnly: true });
+                }
+                
+                console.log("stars=" + $('#hiddenstar').val());
      if(data.d[12]!=="No Customer Feedback")
     {
     $('#customerFeedback').show();
@@ -278,7 +278,7 @@ function CancelReject()
     $('#transparent_div').hide();
 }
 
-
+var finalrating ="";
 //feedback
 function feedBackCustomer(JobNumber )
 {
@@ -299,7 +299,20 @@ function feedBackCustomer(JobNumber )
                     var fromLoc = data.d[7];
                     var toLoc = data.d[8];
                     var isJobAlive = data.d[9];
-                
+                if(custrating !== ""){
+                    $('#starrating').raty({ score: custrating, readOnly: true });
+                }
+                else{
+                    $('#starrating').raty({
+                        target : '#hiddenstar',
+                        targetType : 'number',
+                        score: 0,
+                      click: function(score, evt) {
+                          finalrating = score;
+                          //alert(finalrating);
+                      }});
+                }
+                console.log("stars=" + $('#hiddenstar').val());
                 
                 if(data.d[10]!== null)
                   {
@@ -339,11 +352,13 @@ function feedBackCustomer(JobNumber )
                         console.log(isJobCompleted);
                         if(isCustomerRatingLocked === "True") //show read only
                         {
-                               document.getElementById('sel').value = custrating;
+                               //document.getElementById('sel').value = custrating;
+                            if(custFeed!== null)
                                document.getElementById('txtarComments').value = custFeed;
                                $('#sel').attr('disabled',true);
                                $('#txtarComments').attr("readOnly",true);
                             	$('#txtarComments').hide();
+                            
                                $('#popup_box').fadeIn("fast");
                                $('#divFeedBack').fadeIn("fast");
                                $('#trbtnPopup').hide();
@@ -374,6 +389,7 @@ function feedBackCustomer(JobNumber )
                                $('#trbtnPopup').show();                            
                                $('#trbtnOK').hide();
                                $('#transparent_div').show();
+                            $('#txtarComments').val("");
                         }
                       }
                       //else if(isJobAlive === "False")
@@ -406,7 +422,11 @@ function PostFeedBack()
     
     
    var requestID= $('#lbljobNo').text();
-   var getRating = document.getElementById('sel').value;
+    if(finalrating === "")
+    {finalrating = 0;}
+    //alert(finalrating);
+   var getRating = finalrating;//document.getElementById('sel').value;
+    console.log(getRating);
     //alert(getRating);
    var getComments = document.getElementById('txtarComments').value;
     if(getRating === 0)
@@ -437,7 +457,7 @@ function PostFeedBack()
             {
                 alert("Feedback has been added successfully.");
                 document.getElementById('txtarComments').value ="";
-                document.getElementById('sel').value = 0;
+                //document.getElementById('sel').value = 0;
                 $('#divFeedBack').fadeOut("fast");
                 $('#popup_box').fadeOut("fast");
                 $('#transparent_div').hide();
