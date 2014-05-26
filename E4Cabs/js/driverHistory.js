@@ -243,11 +243,19 @@ function showDetail(data)
     $('#lblNoOfPassenger').text(": "+data.d[8]);
     
     
-     if(data.d[13] !== ""){
-                    $('#starrating').raty({ score: data.d[13], readOnly: true });
-                }
+     if(data.d[13] !== "")
+    {
+        $('#driverrating').show();
+        $('#starrating').raty({ score: data.d[13], readOnly: true });
+         console.log("stars=" + $('#hiddenstar').val());
+     }
+    else
+    {
+        $('#driverrating').hide();
+        
+    }
                 
-                console.log("stars=" + $('#hiddenstar').val());
+     
     
     
     if(data.d[9]!=="No Customer Feedback")

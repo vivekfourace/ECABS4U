@@ -196,11 +196,20 @@ function showDetail(data)
     }
     
     
-    if(data.d[14] !== ""){
-                    $('#starrating2').raty({ score: data.d[14], readOnly: true });
-                }
+    if(data.d[13] !== "")
+    {
+        $('#driverRating').show();
+        $('#starrating2').raty({ score: data.d[13], readOnly: true });
+        console.log("stars=" + $('#hiddenstar').val());
+    }
+    else
+    {
+        $('#driverRating').hide();
+        
+    }
                 
-                console.log("stars=" + $('#hiddenstar').val());
+        
+    
      if(data.d[12]!=="No Customer Feedback")
     {
     $('#customerFeedback').show();
