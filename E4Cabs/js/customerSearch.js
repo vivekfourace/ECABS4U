@@ -270,6 +270,10 @@ function availabledriver() {
         $('#lblMessage').text("Please enter Final destination.");
         return false;
     }
+    else if($('#TravelTime').val() === '') {
+        $('#lblMessage').text("Please select proper locations so as to calculate distance between them.");
+        return false;
+    }
      else
     {
       $('#lblMessage').text("");

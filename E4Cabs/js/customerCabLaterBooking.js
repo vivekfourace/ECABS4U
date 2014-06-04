@@ -361,14 +361,14 @@ function showRatingBoxLaterpast(driverImgUrl, driverID)
             else
             {   
                 
-                if(data.d["0"] !== null)
+                if(data.d["1"] !== null)
                 {
                     var table1 = '<table width="99%" style="border-collapse:collapse;">';
                     table1 += '<tr><td style="width:20%">';
                     table1 += '<img src="'+driverImgUrl+'" style="width:50px;height:50px;border-radius:4px;text-align:left"/>';
                     table1 += '</td>';
-                    table1 += '<td style="text-align:left;width:80%">'+'Customer :'+data.d["0"]+'</td></tr>';
-                    if(data.d["1"] === null)
+                    table1 += '<td style="text-align:left;width:80%">'+'Customer :'+data.d["1"]+'</td></tr>';
+                    if(data.d["0"] === null)
                     {
                         table1 += '<tr>';
                         table1 += '<td style="width:20%;border-bottom:1px solid black"><img src="img/man.png" style="height:50px;border-radius:4px;"/></td>';
@@ -379,7 +379,7 @@ function showRatingBoxLaterpast(driverImgUrl, driverID)
                     {
                         table1 += '<tr>';
                         table1 += '<td style="width:20%;border-bottom:1px solid black"><img src="img/man.png" style="height:50px;border-radius:4px;"/></td>';
-                        table1 += '<td style="text-align:left;width:80%;border-bottom:1px solid black">'+'Driver :'+data.d["1"]+'</td>';                    
+                        table1 += '<td style="text-align:left;width:80%;border-bottom:1px solid black">'+'Driver :'+data.d["0"]+'</td>';                    
                         table1 += '</tr>';
                     }
                     table1 += '</table>';
@@ -421,14 +421,14 @@ function showRatingBoxLaterPresent(driverImgUrl, driverID)
             else
             {   
                 
-                if(data.d["2"] !== null)
+                if(data.d["3"] !== null)
                 {
                     var table2 = '<table width="99%" style="border-collapse:collapse;margin-top:5px">';
                     table2 += '<tr><td style="width:20%">';
                     table2 += '<img src="'+driverImgUrl+'" style="height:50px;border-radius:4px;text-align:left"/>';
                     table2 += '</td>';
-                    table2 += '<td style="text-align:left;width:80%">'+'Customer :'+data.d["2"]+'</td></tr>';
-                    if(data.d["3"] === null)
+                    table2 += '<td style="text-align:left;width:80%">'+'Customer :'+data.d["3"]+'</td></tr>';
+                    if(data.d["2"] === null)
                     {                       
                         table2 += '<tr>';
                      table2 += '<td style="width:20%;border-bottom:1px solid black"><img src="img/man.png" style="height:50px;border-radius:4px;"/></td>';
@@ -439,7 +439,7 @@ function showRatingBoxLaterPresent(driverImgUrl, driverID)
                     {
                         table2 += '<tr>';
                         table2 += '<td style="width:20%;"><img src="img/man.png" style="height:50px;border-radius:4px;"/></td>';
-                        table2 += '<td style="text-align:left;width:80%;">'+'Driver: '+data.d["3"]+'</td>';                    
+                        table2 += '<td style="text-align:left;width:80%;">'+'Driver: '+data.d["2"]+'</td>';                    
                         table2 += '</tr>';
                     }
                     table2 += '</table>';
