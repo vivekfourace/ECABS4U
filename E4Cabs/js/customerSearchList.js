@@ -651,46 +651,43 @@ function getResponseFromDriver(data)
             url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CheckdealResponse",
             type: "POST",
             dataType: "Json",
-            data: "{'userID':'" + relatedId + "'}",
+            data: "{'requestID':'" + requestID + "'}",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
 
                 var getBooked = data.d[2];
-console.log(getBooked);
                 if (getBooked === "True") {
-                    var getDriverID = data.d[0];
-                    var getResponse = data.d[1];
                     DisableHiremeBtns()
                     $.ajax({
                         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetConfirmData",
                         type: "POST",
                         dataType: "Json",
-                        data: "{'driverID':'" + getDriverID + "','requestID':'" + getResponse + "'}",
+                        data: "{'requestID':'" + requestID + "'}",
                         contentType: "application/json; charset=utf-8",
                         success: function (data) {
-                           
-                            $('#loading').hide();
-                            $('#transparent_div').hide();
-
-                            $('#lbldriverId').text(getDriverID);
-                            $('#lblconfirmjob').text(data.d[0]);
-                            $('#lblconfirmdrivername').text(data.d[1]);
-                            $('#lblconfirmfrom').text(data.d[2]);
-                            $('#lblconfirmto').text(data.d[3]);
-                            $('#lblconfirmdistance').text(data.d[4]);
-                            $('#lblconfirmdate').text(data.d[5]);
-                            $('#lblconfirmtime').text(data.d[6]);
-                            $('#lblconfirmfare').text(data.d[7]);
-                            $('#popup_box').show();
-                            $('#divDealConfirmed').show();
-                            $('#transparent_div').show();
-                            $('#divselect').hide();
+                           console.log("in GetConfirmData");
+                           $('#loading').hide();
+                    $('#transparent_div').hide();                   
+                    $('#lblconfirmjob').text(data.d[0]);
+                    $('#lblconfirmdrivername').text(data.d[1]);
+                    $('#lblconfirmfrom').text(data.d[2]);
+                    $('#lblconfirmto').text(data.d[3]);
+                    $('#lblconfirmdistance').text(data.d[4]);
+                    $('#lblconfirmdate').text(data.d[5]);
+                    $('#lblconfirmtime').text(data.d[6]);
+                    $('#lblconfirmfare').text(data.d[7]);
+                    $('#lbldriverId').text(data.d[8]);
+                    $('#popup_box').show();
+                    $('#divDealConfirmed').show();
+                    $('#transparent_div').show();
+                    $('#divselect').hide();
                         },
                         complete: function () {
                             destroySetInterval();                          
                         },
                         error: function (XMLHttpRequest, textStatus, errorThrown) {
-                        }
+                        
+                           console.log("in GetConfirmData error");}
                     });
                 }
                 else {
@@ -731,9 +728,9 @@ function calOk()
             $('#imgLoader').hide();
             $('#popup_box').hide();
             $('#transparent_div').hide();             
-            var requestId = $('#lblconfirmjob').text();
+           /*  var requestId = $('#lblconfirmjob').text();
             var driverId = $('#lbldriverId').text();
-            $.ajax({
+           $.ajax({
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RemoveCurrentRequest",
                 type: "POST",
                 dataType: "Json",
@@ -741,7 +738,7 @@ function calOk()
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
                     if(data.d === true)
-                    {
+                    {*/
                         alert("Cab booked successfully.");
                        // jAlert('Cab booked successfully.', 'jquery basic alert box');
                          $('#imgLoader').hide();
@@ -762,11 +759,11 @@ function calOk()
               // }, 1000);
                       
                                           
-                    }               
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                }
-            });
+                   // }               
+                //},
+                //error: function (XMLHttpRequest, textStatus, errorThrown) {
+                //}
+            //});
 }
 function selectDriver()
 {

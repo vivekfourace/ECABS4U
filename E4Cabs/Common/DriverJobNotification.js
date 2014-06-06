@@ -64,10 +64,11 @@ function Check() {
               contentType: "application/json; charset=utf-8",
               success: function (data) {
                   var isTrue = data.d[0];
-                  
+                   console.log(data.d[0]+","+data.d[1]+","+data.d[2]);
                   if (isTrue === "True") {
                       var jobType = data.d[1];
-                      if (jobType === "True") {
+                      if (jobType === "True") {                        
+                         
                           var cabnow = 1;
                           showConfirm(cabnow);
                           playBeep();

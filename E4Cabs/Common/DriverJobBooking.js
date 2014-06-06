@@ -260,39 +260,7 @@ var timereOut;
             var getIsReturnJourney = $('#isReturnJourney').val();
             var getFare = $('#lbldealfare').text();
             var reqID = $('#lbldealjob').text();
-            
-//if (getFare === 15 || getFare > 15) {
-//    if (getIsReturnJourney === "True") {
-//        var _avgFare = getFare / 2;
-//        if (_avgFare === 15 || _avgFare > 15) {
-//
-//            $('#divComission2').show();
-//            $('#lblconfirmjob2').text(reqID);
-//            $('#lblconfirmfare2').text(getFare);
-//        }
-//        else {
-//            $('#divComission').show();
-//            $('#lblconfirmjob').text(reqID);
-//            $('#lblconfirmfare').text(getFare);
-//            $('#divDeal').hide();
-//            $('#popup_box').hide();
-//        }
-//    }
-//    else if (getIsReturnJourney === "False") {
-//        $('#divDeal').hide();
-//        $('#divComission').show();
-//        $('#lblconfirmjob').text(reqID);
-//        $('#lblconfirmfare').text(getFare);
-//    }
-//}
-//
-//else {
-//    $('#divComission').hide();
-//    $('#divComission2').hide();
-//    $('#transparent_div').show();
-//    $('#imgLoader').show();
-//    SaveDataOfCurrentJob();
-//}
+  
             
             if(getFare>=11 && getFare<= 20)
             {
@@ -408,31 +376,6 @@ function SaveDataOfCurrentJob()
                             console.log("hierror");
                 }
             });
-            /* $.ajax({
-                    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/SaveData",
-                    type: "POST",
-                    dataType: "Json",
-                    data: "{'driverId':'" + relatedId + "','requestId':'" + reqID + "'}",
-                    contentType: "application/json; charset=utf-8",
-                    success: function (data) {
-                        if(data.d === true)
-                        {
-                            $.ajax({
-                            url: "http://115.115.159.126/ECabs/ECabs4U.asmx/JobBooked",
-                            type: "POST",
-                            dataType: "Json",
-                            data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
-                            contentType: "application/json; charset=utf-8",
-                            success: function () { 
-                                window.location.href = "https://dashboard-sandbox.gocardless.com/api/template_plans/0HSKYST0BP/paylink"; //for commission 1.2pond
-                                $('#divDeal').hide();
-                                $('#popup_box').hide();                                
-                            },
-                        });
-                        
-                      }                    
-                  },
-             });*/
             
         }
 
@@ -458,8 +401,6 @@ function SaveDataOfCurrentJob()
                         }
                         else{
                             window.location.href=data.d;
-                            //alert('Job booked successfully.');
-                            //window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                         }
                     }
                     else{
@@ -471,33 +412,6 @@ function SaveDataOfCurrentJob()
                             console.log("hierror");
                 }
             });
-            
-            //var comission = 2.4;
-            
-          /*  $.ajax({
-                    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/SaveData",
-                    type: "POST",
-                    dataType: "Json",
-                    data: "{'driverId':'" + relatedId + "','requestId':'" + reqID + "'}",
-                    contentType: "application/json; charset=utf-8",
-                    success: function (data) {
-                        if(data.d === true)
-                        {
-                            $.ajax({
-                            url: "http://115.115.159.126/ECabs/ECabs4U.asmx/JobBooked",
-                            type: "POST",
-                            dataType: "Json",
-                            data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
-                            contentType: "application/json; charset=utf-8",
-                            success: function () {                        
-                                 window.location.href = "https://dashboard-sandbox.gocardless.com/api/template_plans/0HSKG9HPET/paylink"; //for commission 2.4pond
-                                $('#divDeal').hide();
-                                $('#popup_box').hide();                               
-                            },
-                        });                        
-                      }                    
-                  },
-             });*/       
         }
 
         function RejectComission() {

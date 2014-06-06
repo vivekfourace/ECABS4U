@@ -88,14 +88,6 @@ function AcceptJob(jobno, jobfare)
 {
     $('#hidJobNo').val(jobno);
     var fare = jobfare;
-   // if(fare === 15 || fare > 15)
-    //{
-      //  $('#lblconfirmfare').html('&pound'+jobfare);
-      //  $('#lblconfirmjob').text(jobno);
-     //   $('#popup_box').show();
-    //    $('#divComission').show();
-    //    $('#transparent_div').show();
-   // }
     if(fare >= 11 && fare <=20)
     {
         $('#lblconfirmfare').html('&pound'+jobfare);
@@ -246,8 +238,6 @@ function Confirmcomission()
                         else{
                             console.log("HI");
                             window.location.href=data.d;
-                            //alert('Job booked successfully.');
-                            //window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                         }
                     }
                     else{
