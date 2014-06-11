@@ -124,6 +124,7 @@ function AcceptJob(jobno, jobfare)
                 success: function (data) {
                     if(data.d === "true")
                     {
+                        //jAlert('Job booked successfully.','Success');
                        alert('Job booked successfully.');
                        window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                     }
@@ -193,6 +194,9 @@ function RejectJob(data)
                 data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
+                    
+                   // jAlert('Job rejected successfully.', 'Success');
+                    
                     alert("Job rejected successfully.");
                      window.location = 'DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                 },
@@ -240,9 +244,9 @@ function Confirmcomission()
                             window.location.href=data.d;
                         }
                     }
-                    else{
-                        alert("Nothing returned from service.");
-                    }
+                   // else{
+                    //    alert("Nothing returned from service.");
+                   // }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
 

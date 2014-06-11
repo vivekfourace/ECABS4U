@@ -88,6 +88,7 @@ function CancelJob(jobnumber)
               data:"{'relatedId':'" +relatedId+ "', 'jobnumber':'" +jobnumber+ "'}",
               contentType: "application/json; charset=utf-8",                     
               success: function (data) {
+                  //jAlert('Job cancelled successfully.', 'Alert');
                   alert('Job cancelled successfully.');
                   window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
             }

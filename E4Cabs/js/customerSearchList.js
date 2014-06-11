@@ -39,7 +39,8 @@ var timer = setInterval(function () {
     console.log(timeOut);
     if (timeOut <= 0) {
         window.clearInterval(id);
-        alert('No driver found Please search again.');
+        jAlert('No driver found Please search again.', 'ECabs4U-Booking');
+        //alert('No driver found Please search again.');
         DeleteJob("Cancelled due to no driver found");
         Destroy();
     }
@@ -380,6 +381,7 @@ function showRatingBoxLaterpast(driverImgUrl, driverID)
             $('#feedback-content').empty();
             if(data.d["0"] === null && data.d["1"] === null && data.d["2"] === null && data.d["3"] === null)
             {
+                 //jAlert('No comments found.', 'ECabs4U-Comments');
                 alert('No comments found');
             }
             else
@@ -441,6 +443,7 @@ function showRatingBoxLaterPresent(driverImgUrl, driverID)
             $('#feedback-content').empty();
             if(data.d["0"] === null && data.d["1"] === null && data.d["2"] === null && data.d["3"] === null)
             {
+               // jAlert('No comments found.', 'ECabs4U-Comments');
                 alert('No comments found');
             }
             else
@@ -793,16 +796,36 @@ function CancelJobRequest()
 
 function ReInitiateJob()
 {
-        var result = confirm("Do you want to reinitiate this job?");    
-        if (result===true) {
+        //var result = confirm("Do you want to reinitiate this job?");    
+        //if (result===true) {
               //window.location = 'customerSearch.html?id=' + userId + '&rid=' + requestID + '&rrid=' + relatedId;
             
-            window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId+ '&rid=' + requestID;
-        }
-        else
-        {
-         return false;
-        }
+         //   window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId+ '&rid=' + requestID;
+      //  }
+       // else
+      //  {
+      //   return false;
+      //  }
+    
+     navigator.notification.confirm(
+    "Do you want to reinitiate this job?",
+    onreinitiateCallback,
+    "Confirm",
+    "Yes,No" 
+    );
+}
+
+function onreinitiateCallback(buttonIndex)
+{
+    if(buttonIndex === 2)
+    {
+        return false;
+    }
+    else if(buttonIndex === 1)
+    {
+        window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId+ '&rid=' + requestID;
+      
+    }
 }
 
 function DeleteJob(cause)

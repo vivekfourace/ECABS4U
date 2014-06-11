@@ -143,8 +143,9 @@ function login() {
               }
 
               switch (roleID) {
-                  //Role 3 --> Driver
+                  //Role 3 --> Driver OR Role 7 --> OperatorCumDriver
                   case 3:
+                  case 7:
                       window.location = 'driverHome.html?id=' + userID + '&rid=' + roleID + '&rrid=' + relatedID;
                       break;
                       //Role 4 --> Customer

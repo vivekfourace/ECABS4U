@@ -184,11 +184,14 @@ function feedBackDriver(JobNumber )
                     }
                     else if(isJobAlive == "False")
                       {
-                          alert('This job has been aborted. You cannot give feedback.');
+                          jAlert('This job has been aborted. You cannot give feedback.', 'ECabs4U-Feedback');
+                          //alert('This job has been aborted. You cannot give feedback.');
                       }
                      else if(isJobAlive == "True")
                      {
-                         alert('Feedback will be accepted after the cab ride.');
+                       jAlert('Feedback will be accepted after the cab ride.', 'ECabs4U-Feedback');
+                     //  alert('Feedback will be accepted after the cab ride.');
+                        
                      }
        },            
         error: function (XMLHttpRequest, textStatus, errorThrown) {}
@@ -326,7 +329,8 @@ function SubmitReject()
     var abortMessage = $('#txtAbortmsg').val();
     if(!abortMessage)
     {
-        alert('Please enter a reason.');
+        jAlert('Please enter a reason.', 'ECabs4U-Abort Job');
+        //alert('Please enter a reason.');
         return false;
     }
       var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/AbortCurrentJobDriver";    
@@ -347,10 +351,12 @@ function SubmitReject()
                               $('#popup_box1').fadeOut("fast");
                               $('#divAbortTask').fadeOut("fast");
                               $('#txtAbortmsg').val("");
-                               $('#transparent_div').hide();
+                              $('#transparent_div').hide();
+                             //jAlert('Job aborted successfully.', 'ECabs4U-Abort Job');
                               alert("Job aborted successfully.");
-                              window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-                         }                         
+                              window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;  
+                         } 
+                         
                      },                    
                      error: function (XMLHttpRequest, textStatus, errorThrown) {
                     // alert(errorThrown);
@@ -404,7 +410,8 @@ function PostFeedBack()
    // }
     if(!getComments)
     {
-        alert("Please enter comments.");
+        jAlert('Please enter comments.', 'ECabs4U-alert');
+        //alert("Please enter comments.");
         return false;
     }
     
@@ -421,7 +428,8 @@ function PostFeedBack()
             contentType: "application/json; charset=utf-8",                     
             success: function(data)
             {
-                alert("Feedback comment posted successfully");
+                jAlert('Feedback comment posted successfully.', 'Alert');
+                //alert("Feedback comment posted successfully");
                 document.getElementById('txtarComments').value ="";
                 //document.getElementById('sel').value = 0;
                 $('#divFeedBack').fadeOut("fast");

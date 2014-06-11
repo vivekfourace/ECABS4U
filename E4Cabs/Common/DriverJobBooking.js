@@ -367,9 +367,9 @@ function SaveDataOfCurrentJob()
                             //window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                         }
                     }
-                    else{
-                        alert("Nothing returned from service.");
-                    }
+                    //else{
+                   //     alert("Nothing returned from service.");
+                   // }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
 
@@ -404,7 +404,7 @@ function SaveDataOfCurrentJob()
                         }
                     }
                     else{
-                        alert("Nothing returned from service.");
+                        //alert("Nothing returned from service.");
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
