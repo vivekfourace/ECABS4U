@@ -58,7 +58,7 @@ function getCablaterBooking()
                                                             }
                                                             else
                                                             {
-                                                                 html += "<td style='width:15%;height:35px;text-align:center;'>"+'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" class="accept-btn" value="Hire" onclick="HireDriver(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["DriverID"]+'\')"/>'+"</td>";
+                                                                 html += "<td style='width:15%;height:35px;text-align:center;'>"+'<input type="button" id="check" style="-webkit-appearance:none;-moz-appearance:none;" class="accept-btn" value="Hire" onclick="HireDriver(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["DriverID"]+'\')"/>'+"</td>";
                                                             }
                                                         }
                                                         else
@@ -76,12 +76,11 @@ function getCablaterBooking()
                 
                                       html += '<td style="width:100%;text-align:left;" colspan="2"><img src="'+driverImgUrl+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImageLater(this)\"/>'
                                      if(fare !== "0" )
-                                                       {
-                                                        
-                                                        html += '<img src="'+vehicleImgUrl+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImageLater(this)\"/>'
-                                                        }
-                                                           if(rating3 !== "")
-                          {
+                                       {
+                                        
+                                        html += '<img src="'+vehicleImgUrl+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImageLater(this)\"/>'
+                                        }
+                         
                                    if(rating3 === "1")
                                     {
                                         
@@ -104,14 +103,12 @@ function getCablaterBooking()
                                     else if(rating3 === "5")
                                     {
                                         html += '<td style="width:100%;text-align:center;" colspan=""><img src="img/5star.PNG" style="width:70%" onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
-                                    }
-                          }
-                          else
-                           {
-                                html += '<td style="width:30%;text-align:center;" colspan=""><img src="img/5star.PNG" style="width:70%" onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>'
-                           }
-                          if(rating4 !== "")
-                          {
+                                    }                          
+                                  else
+                                   {
+                                        html += '<td style="width:30%;text-align:center;" colspan="">No Rating</td>'
+                                   }
+                         
                                    if(rating4 === "1")
                                     {
                                         html += '<td style="width:100%;text-align:center;" colspan=""><img src="img/1star.PNG" style="width:18%" onclick="showRatingBoxLaterPresent(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
@@ -131,12 +128,11 @@ function getCablaterBooking()
                                     else if(rating4 === "5")
                                     {
                                         html += '<td style="width:100%;text-align:center;" colspan="2"><img src="img/5star.PNG" style="width:70%" onclick="showRatingBoxLaterPresent(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
-                                    }
-                          }
-                          else
-                           {
-                               html += '<td style="width:100%;text-align:center;" colspan=""><img src="img/5star.PNG" style="width:70%" onclick="showRatingBoxLaterPresent(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
-                           }
+                                    }                         
+                              else
+                               {
+                                   html += '<td style="width:100%;text-align:center;" colspan="">No Rating</td>';
+                               }
                           html += '</tr>';
                                                         //border-bottom:1px solid #0080FF
                                                         html += '<tr style="background-color:white">';
@@ -233,6 +229,7 @@ function HireDriver(customerReqID, driverid)
                    data:"{'driverId':'" + driverid + "','requestId':'" + customerReqID + "'}",
                    contentType: "application/json; charset=utf-8",
                     success: function(data){
+                       // $('#check').hide();
                         alert('Booking in progress. Please check later.');
                         window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                     },
@@ -365,9 +362,13 @@ function showRatingBoxLaterpast(driverImgUrl, driverID)
                 {
                     var table1 = '<table width="99%" style="border-collapse:collapse;">';
                     table1 += '<tr><td style="width:20%">';
+                    table1 += '</td>';
+                    table1 += '<td style="text-align:left;width:80%">'+'Date :'+data.d["2"]+'</td></tr>';
+                    table1 += '<tr><td style="width:20%">';
                     table1 += '<img src="'+driverImgUrl+'" style="width:50px;height:50px;border-radius:4px;text-align:left"/>';
                     table1 += '</td>';
                     table1 += '<td style="text-align:left;width:80%">'+'Customer :'+data.d["1"]+'</td></tr>';
+                    
                     if(data.d["0"] === null)
                     {
                         table1 += '<tr>';
@@ -378,9 +379,10 @@ function showRatingBoxLaterpast(driverImgUrl, driverID)
                     else
                     {
                         table1 += '<tr>';
-                        table1 += '<td style="width:20%;border-bottom:1px solid black"><img src="img/man.png" style="height:50px;border-radius:4px;"/></td>';
-                        table1 += '<td style="text-align:left;width:80%;border-bottom:1px solid black">'+'Driver :'+data.d["0"]+'</td>';                    
+                        table1 += '<td style="width:20%;"><img src="img/man.png" style="height:50px;border-radius:4px;"/></td>';
+                        table1 += '<td style="text-align:left;width:80%;">'+'Driver :'+data.d["0"]+'</td>';                    
                         table1 += '</tr>';
+                       
                     }
                     table1 += '</table>';
                 }
@@ -421,14 +423,20 @@ function showRatingBoxLaterPresent(driverImgUrl, driverID)
             else
             {   
                 
-                if(data.d["3"] !== null)
+                if(data.d["4"] !== null)
                 {
                     var table2 = '<table width="99%" style="border-collapse:collapse;margin-top:5px">';
                     table2 += '<tr><td style="width:20%">';
+                    
+                    table2 += '</td>';
+                    table2 += '<td style="text-align:left;width:80%">'+'Date :'+data.d["5"]+'</td></tr>';
+                    table2 += '<tr><td style="width:20%">';
                     table2 += '<img src="'+driverImgUrl+'" style="height:50px;border-radius:4px;text-align:left"/>';
                     table2 += '</td>';
-                    table2 += '<td style="text-align:left;width:80%">'+'Customer :'+data.d["3"]+'</td></tr>';
-                    if(data.d["2"] === null)
+                    table2 += '<td style="text-align:left;width:80%">'+'Customer :'+data.d["4"]+'</td></tr>';
+                  
+                    
+                    if(data.d["3"] === null)
                     {                       
                         table2 += '<tr>';
                      table2 += '<td style="width:20%;border-bottom:1px solid black"><img src="img/man.png" style="height:50px;border-radius:4px;"/></td>';
@@ -439,8 +447,9 @@ function showRatingBoxLaterPresent(driverImgUrl, driverID)
                     {
                         table2 += '<tr>';
                         table2 += '<td style="width:20%;"><img src="img/man.png" style="height:50px;border-radius:4px;"/></td>';
-                        table2 += '<td style="text-align:left;width:80%;">'+'Driver: '+data.d["2"]+'</td>';                    
+                        table2 += '<td style="text-align:left;width:80%;">'+'Driver: '+data.d["3"]+'</td>';                    
                         table2 += '</tr>';
+                        
                     }
                     table2 += '</table>';
                 }

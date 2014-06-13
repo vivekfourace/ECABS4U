@@ -10,7 +10,7 @@ var timereOut;
             
              timereOut = window.setInterval(function () {
                 $("#divDealload").show();
-                $('#popup_box').hide();
+                $('#popup_box22').hide();
                 $('#divDeal').hide();
                 var jobNo = $('#hdnJobno').val();
                 
@@ -40,7 +40,7 @@ var timereOut;
                                     
                                     if (data.d[0] !== "Error" && isJobAlive === "True") {
                                         $("#divDealload").hide();
-                                        $('#popup_box').show();
+                                        $('#popup_box22').show();
                                         $('#divDeal').show();
                                         $('#lbldealjob').text(data.d[0]);
                                         $('#lbldealfrom').text(data.d[1]);
@@ -53,7 +53,7 @@ var timereOut;
                                         $('#transparent_div').show();
                                     }
                                     else if (data.d[0] === "Error") {
-                                        $('#popup_box').hide();
+                                        $('#popup_box22').hide();
                                         $('#divDeal').hide();
                                         $("#divDealload").show();
                                     }
@@ -104,7 +104,7 @@ var timereOut;
         }
 
         function showBid() {
-            $('#popup_box').show();
+            $('#popup_box22').show();
             $('#transparent_div').show();
             $('#divBid').show();
             var job = $('#lbljobno').text();
@@ -203,7 +203,7 @@ var timereOut;
                     }
                 });
 
-                $('#popup_box').hide();
+                $('#popup_box22').hide();
                 if (fare.length > 0) {
                     SubmitDeal();
                 }
@@ -244,12 +244,12 @@ var timereOut;
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                     }
                 });
-                $('#popup_box').hide();
+                $('#popup_box22').hide();
             }
         }
 
         function bidCancel() {
-            $('#popup_box').hide();
+            $('#popup_box22').hide();
             $('#divBid').hide();
             $('#transparent_div').hide();
         }
@@ -442,16 +442,16 @@ function SaveDataOfCurrentJob()
 
         function dealCancel() {
             $('#divDeal').hide();
-            $('#popup_box').hide();
+            $('#popup_box22').hide();
         }
 
         function btnAbort() {
-            $('#popup_box').show();
+            $('#popup_box22').show();
             $('#divabort').show();
         }
         
         function abortcancel() {
-            $('#popup_box').hide();
+            $('#popup_box22').hide();
             $('#divabort').hide();
         }
 

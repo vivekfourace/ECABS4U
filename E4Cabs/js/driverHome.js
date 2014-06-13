@@ -83,13 +83,13 @@ function AbortJob()
 {
     navigator.notification.confirm(
     "Do you want to abort this job?",
-    onAbortCallback,
+    onAbortCallback2,
     "Confirm",
     "Yes,No"   
     );
 }
 
-function onAbortCallback(buttonIndex)
+function onAbortCallback2(buttonIndex)
 {
     if(buttonIndex === 2)
     {
@@ -97,10 +97,11 @@ function onAbortCallback(buttonIndex)
     }
     else if(buttonIndex === 1)
     {
-        $('#btnOffline').show();
+        $('#transparent_div').show();
+        //$('#btnOffline').show();
        $('#popup_box1').show();
        $('#divAbortTask').show();
-       $('#transparent_div').show();
+       
     }
 }
 
@@ -169,6 +170,7 @@ function SubmitAbort()
     var abortMessage = $('#txtAbortmsg').val();
     if(!abortMessage)
     {
+        
         alert('Please enter a reason.');
         return false;
     }

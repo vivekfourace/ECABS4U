@@ -243,7 +243,8 @@ function SubmitReject()
     var abortMessage = $('#txtAbortmsg').val();
     if(!abortMessage)
     {
-        alert('Please enter your reason.');
+        jAlert('Please enter your reason.', 'ECabs4U-Abort Job');
+       // alert('Please enter your reason.');
         return false;
     }
     
@@ -267,6 +268,7 @@ function SubmitReject()
                               $('#popup_box1').fadeOut("fast");
                               $('#divAbortTask').fadeOut("fast");
                               $('#txtAbortmsg').val("");
+                            // jAlert('Job cancelled.', 'ECabs4U-Abort Job');
                               alert("Job cancelled.");
                               window.location='CustomerHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                          }                         
@@ -407,7 +409,8 @@ function feedBackCustomer(JobNumber )
                       //}
                 else if(isJobAlive === "True")
                {
-               alert('Feedback will be accepted after the cab ride.');
+                  jAlert('Feedback will be accepted after the cab ride.', 'ECabs4U-Feedback'); 
+              // alert('Feedback will be accepted after the cab ride.');
                 }
        },            
         error: function (XMLHttpRequest, textStatus, errorThrown) {}
@@ -440,12 +443,14 @@ function PostFeedBack()
    var getComments = document.getElementById('txtarComments').value;
     if(getRating === 0)
     {
-        alert("Please select rating.");
+        jAlert('Please select rating.', 'ECabs4U-Alert'); 
+        //alert("Please select rating.");
         return false;
     }
     if(!getComments)
     {
-        alert("Please enter comments.");
+        jAlert('Please enter comments.', 'ECabs4U-Alert'); 
+        //alert("Please enter comments.");
         return false;
     }
     
@@ -464,7 +469,8 @@ function PostFeedBack()
             contentType: "application/json; charset=utf-8",                     
             success: function(data)
             {
-                alert("Feedback has been added successfully.");
+                jAlert('Feedback has been added successfully.', 'ECabs4U-Feedback'); 
+                //alert("Feedback has been added successfully.");
                 document.getElementById('txtarComments').value ="";
                 //document.getElementById('sel').value = 0;
                 $('#divFeedBack').fadeOut("fast");

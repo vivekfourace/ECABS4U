@@ -271,7 +271,8 @@ function availabledriverLater() {
         
         if(IsReturnTrue == false)
         {
-            alert("Please check confirm box.");
+              // jAlert('This job has been aborted. You cannot give feedback.', 'ECabs4U-Feedback');
+          alert("Please check confirm box.");
             return false; 
         }  
        
@@ -282,6 +283,7 @@ function availabledriverLater() {
         
        if(IsReturnTrue2 == false)
         {
+            // jAlert('This job has been aborted. You cannot give feedback.', 'ECabs4U-Feedback');
            alert("Please check confirm box.");
             return false; 
        }  
@@ -422,11 +424,10 @@ function availabledriverLater() {
                 success:function (data) {
                     if(data.d[0] != "Error")
                     {
-                        
+                        //jAlert('Booking in progress. Please check later', 'ECabs4U-Feedback');
                         alert('Booking in progress. Please check later.','alert');
-                      //jAlert('Booking in progress. Please check later.','Confirm');
-                        //jAlert('Example of a basic alert box in jquery', 'jquery basic alert box');
-                      //window.alert('Booking in progress. Please check later.','alert');
+                     
+                       
                         window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                     }
                     else
@@ -468,6 +469,7 @@ function availabledriverLater() {
                 success: function (data) {
                     if(data.d[0] != "Error")
                     {
+                       // jAlert('Booking in progress. Please check later', 'ECabs4U-Feedback');
                         alert('Booking in progress. Please check later.');
                         window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                     }

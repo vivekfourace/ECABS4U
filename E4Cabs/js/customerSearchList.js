@@ -381,8 +381,8 @@ function showRatingBoxLaterpast(driverImgUrl, driverID)
             $('#feedback-content').empty();
             if(data.d["0"] === null && data.d["1"] === null && data.d["2"] === null && data.d["3"] === null)
             {
-                 //jAlert('No comments found.', 'ECabs4U-Comments');
-                alert('No comments found');
+                 jAlert('No comments found.', 'ECabs4U-Comments');
+               // alert('No comments found');
             }
             else
             {   
@@ -443,8 +443,8 @@ function showRatingBoxLaterPresent(driverImgUrl, driverID)
             $('#feedback-content').empty();
             if(data.d["0"] === null && data.d["1"] === null && data.d["2"] === null && data.d["3"] === null)
             {
-               // jAlert('No comments found.', 'ECabs4U-Comments');
-                alert('No comments found');
+               jAlert('No comments found.', 'ECabs4U-Comments');
+              //  alert('No comments found');
             }
             else
             {   

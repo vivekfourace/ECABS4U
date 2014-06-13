@@ -67,15 +67,19 @@ function setLocation(data)
             var geocoder = new google.maps.Geocoder();
               var address = locFrom;
               geocoder.geocode({ 'address': address }, function (results, status) {
-                  if (status === google.maps.GeocoderStatus.OK) {
+                  if (status === google.maps.GeocoderStatus.OK) 
+                  {
                       latitude = results[0].geometry.location.lat();
                       longitude = results[0].geometry.location.lng();
                   }
-                  else {
+                  else
+                  {
                       alert("No location found.")
                   }
                   directionsDisplay = new google.maps.DirectionsRenderer();
-                  myLocation = new google.maps.LatLng(latitude, longitude);           
+                  myLocation = new google.maps.LatLng(latitude, longitude);  
+                   //alert(myLocation);
+                  //console.log(myLocation);
 
                     var mapOptions = {
                         zoom: 8,
@@ -84,12 +88,17 @@ function setLocation(data)
                         //zoomControl: true,
                         //scaleControl: true,
                         //scrollwheel: true,
-                        //disableDoubleClickZoom: false,                   
-                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                        //disableDoubleClickZoom: false,  
+                         mapTypeId: google.maps.MapTypeId.ROADMAP
+                        //unitSystem: google.maps.UnitSystem.IMPERIAL
+                       
                     };
                                         
                     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
                     directionsDisplay.setMap(map);
+                  // var checkdist=document.getElementById('directions-panel').value;
+                  //alert(checkdist);
+                  //console.log(checkdist);
                     directionsDisplay.setPanel(document.getElementById('directions-panel'));
                     calcRoute();                    
                 });
@@ -99,18 +108,23 @@ function setLocation(data)
               directionsDisplay = new google.maps.DirectionsRenderer();
               var geocoder = new google.maps.Geocoder();
               var address = locFrom;
-              geocoder.geocode({ 'address': address }, function (results, status) {
+              geocoder.geocode({ 'address': address }, function (results, status)
+         		 {
                   if (status === google.maps.GeocoderStatus.OK) {
                       latitude = results[0].geometry.location.lat();
                       longitude = results[0].geometry.location.lng();
                   }
-                  else {
+                  else
+              	{
                       alert("No location found!!")
                   }
             
               directionsDisplay = new google.maps.DirectionsRenderer();
-              myLocation = new google.maps.LatLng(latitude, longitude);
-                
+              //myLocation = new google.maps.LatLng(latitude, longitude);
+                      myLocation = new google.maps.LatLng(latitude, longitude);
+                    
+                       //alert(myLocation);
+                      // console.log(myLocation);
               var mapOptions = {
                 zoom:8,
                 center: myLocation,
@@ -121,18 +135,26 @@ function setLocation(data)
                 //scaleControl: true,
                 //scrollwheel: true,
                 //disableDoubleClickZoom: false,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
+                  
+                   mapTypeId: google.maps.MapTypeId.ROADMAP
+                  //unitSystem: google.maps.UnitSystem.IMPERIAL
+                  
+               
               }
               map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
               directionsDisplay.setMap(map);
+                      //var cc=document.getElementById('directions-panel');
+                     // alert(cc);
+                     //console.log(cc);
               directionsDisplay.setPanel(document.getElementById('directions-panel'));
               calcRoute2();
             });
             }
       function toggleBounce() {
-            if (marker.getAnimation() !== null) {
+            if (marker.getAnimation() !== null) 
+          {
                 marker.setAnimation(null);
-            } else {
+           } else {
                 marker.setAnimation(google.maps.Animation.BOUNCE);
             }
         }

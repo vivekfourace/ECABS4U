@@ -77,19 +77,21 @@ function UpdateProfile()
     var regExpEmail=/^([_a-zA-Z0-9_]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+(\.[a-zA-Z0-9-]+)*([a-zA-Z]{2,4})$/;
      
     if(name.length == 0)
-    {
-        alert("Please enter your name.");
+    {  jAlert('Please enter your name.', 'ECabs4U-Alert');
+        //alert("Please enter your name.");
         return false;
     }
     
     if(phoneno.length === 0)
     {
-        alert("Please enter contact number.");
+        jAlert('Please enter contact number.', 'ECabs4U-Alert');
+        //alert("Please enter contact number.");
         return false;
     }
     else if(phoneno.length < 11)
     {
-        alert("Please enter a valid contact number.");
+        jAlert('Please enter a valid contact number.', 'ECabs4U-Alert');
+        //alert("Please enter a valid contact number.");
         return false;
     }
     
@@ -100,13 +102,15 @@ function UpdateProfile()
                            
                         }
                         else{
-                            alert("Please enter a valid email address.");
+                            jAlert('Please enter a valid email address.', 'ECabs4U-Alert');
+                            //alert("Please enter a valid email address.");
                             return false;
                         }
                     }
                 else if(email.length == 0)
                 {
-                   alert("Please enter email address.");
+                    jAlert('Please enter email address.', 'ECabs4U-Alert');
+                   //alert("Please enter email address.");
                     return false;
                 }
         $.ajax({
