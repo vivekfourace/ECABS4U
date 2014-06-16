@@ -358,7 +358,8 @@ function feedBackCustomer(JobNumber )
     			}
                    
                 
-                     if(isJobCompleted === "True" || isJobAlive === "False")
+                     //if(isJobCompleted === "True" || isJobAlive === "False")
+                      if(isJobCompleted === "True")
                      {
                         console.log(isJobCompleted);
                         if(isCustomerRatingLocked === "True") //show read only
@@ -403,10 +404,11 @@ function feedBackCustomer(JobNumber )
                             $('#txtarComments').val("");
                         }
                       }
-                      //else if(isJobAlive === "False")
-                      //{
+                      else if(isJobAlive === "False")
+                      {
+                          jAlert('This job has been cancelled. You cannot give feedback.', 'ECabs4U-Feedback'); 
                          // alert('This job has been cancelled. You cannot give feedback.');
-                      //}
+                      }
                 else if(isJobAlive === "True")
                {
                   jAlert('Feedback will be accepted after the cab ride.', 'ECabs4U-Feedback'); 
