@@ -17,91 +17,70 @@ function getCablaterBooking()
                         var count = data.d.length;
                         if(count > 0)
                         {
-                            var html = '<table id="tbhist" cellspacing="0"; width="100%"  style="border-collaspe:collaspe;">';
-                                html += '<thead class="thead-grid">';
-                                html += '<tr>';
+                           var previousjobID ="";
+                           var html = '<table id="tbhist" cellspacing="0" width="100%"  style="border:thin solid;">';
+                                html += '<tr class="thead-grid">';
                                 html += '<th>JobNo</th>';
-                                html += '<th>Fare</th>';
-                            	html += '<th>From</th>';
-                                html += '<th>To</th>';
-                                html += '<th>Status</th>';  
-                               
-                                
+                                html += '<th colspan="2">From</th>';
+                                html += '<th colspan="2">To</th>';
                                 html += '</tr>';
-                                html += '</thead>';
-                                               html +='<tbody style="background-color:#CEECF5;">';  
-                                                    for(var i=0; i<count; i++)
-                                                    {
-                                                      fare = data.d[i]["Fare"];
-                                                        $('#lbljobFeed').text(data.d[i]["CustomerRequestID"]);
-                                                       var isJobBooked = data.d[i]["IsBooked"];
-                                                       var driverID = data.d[i]["DriverID"];
-                                                         var driverImgUrl = data.d[i]["DriverPhoto"];
-                                                         var vehicleImgUrl = data.d[i]["VehicleImages"];
-                                                       html += '<tr>';
-                                                       html += "<td style='width:25%;height:35px;text-align:center;'>" +'<a href="#" onclick="ShowDetailBooking(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["DriverID"]+'\')" style="color:blue;">'+ data.d[i]["CustomerRequestID"]+'</a>' + "</td>"; 
-                                                        if(fare !== "0" )
-                                                       {
-                                                           html += "<td style='width:15%;height:35px;text-align:center;'>"+'&pound' + data.d[i]["Fare"] +"</td>";
-                                                       }
-                                                        else{
-                                                            html += "<td style='width:15%;height:35px;text-align:center;'>Waiting</td>";
-                                                        }
-                                                       html += "<td style='width:25%;height:35px;text-align:center;'>" + data.d[i]["From"] +"</td>";
-                                                       html += "<td style='width:25%;height:35px;text-align:center;'>" + data.d[i]["To"] +"</td>";
-                                                       if(fare !== "0")
-                                                       {
-                                                            if(isJobBooked == "True")
-                                                            {
-                                                             	html += "<td style='width:25%;height:35px;text-align:center;'>Cab Booked</td>";
-                                                                 html += "<td style='width:10%;height:35px;text-align:center;'>"+'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Abort" onclick="CancelBookedJob(\''+data.d[i]["CustomerRequestID"]+'\')"/>'+"</td>";
-                                                            }
-                                                            else
-                                                            {
-                                                                 html += "<td style='width:15%;height:35px;text-align:center;'>"+'<input type="button" id="check" style="-webkit-appearance:none;-moz-appearance:none;" class="accept-btn" value="Hire" onclick="HireDriver(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["DriverID"]+'\')"/>'+"</td>";
-                                                            }
-                                                        }
-                                                        else
-                                                        {
-                                                            html += "<td style='width:25%;height:35px;text-align:center;'>Awaiting Bids</td>";
-                                                        }
-                                                        
-                                                       html += '</tr>';
-                                                        
-                                         //added new 2nd row
-                                                        
-                                         html += '<tr style="background-color:white;">';           
-                                         var rating3 = data.d[i]["RatingPast"];
-                                         var rating4 = data.d[i]["RatingPresent"];
-                
-                                      html += '<td style="width:100%;text-align:left;" colspan="2"><img src="'+driverImgUrl+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImageLater(this)\"/>'
-                                     if(fare !== "0" )
-                                       {
-                                        
-                                        html += '<img src="'+vehicleImgUrl+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImageLater(this)\"/>'
-                                        }
-                         
+                                for(var i=0; i<count; i++)
+                                {
+                                    var jobID = data.d[i]["CustomerRequestID"];
+                                    var From = data.d[i]["From"];
+                                    var To = data.d[i]["To"];
+                                  
+                                    
                                    
-                         
-                                   if(rating4 !== null || rating3 !== null)
+
+                                    if(i>0){
+                                    	previousjobID = data.d[i-1]["CustomerRequestID"];}
+                                    console.log("PreviousJOBID="+previousjobID);
+                                    console.log("JobID="+jobID);
+                                   
+                                    if(jobID !== previousjobID)
                                     {
-                                        //html += '<td style="width:100%;text-align:center;" colspan=""><img src="img/1star.PNG" style="width:18%" onclick="showRatingBoxLaterPresent(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
-                                    html += '<td style="width:100%;text-align:center;" colspan=""><input type="button" class="btn-tmp" value="Rating" style="width:80%"; onclick="showRatingBoxLaterPresent(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
-                                        
+                                   	 html += '<tr style="background-color:white">';
+                                        html += '<td colspan="5"><hr style="border:2px solid darkred" ></td>';
+                                        html += '</tr>';
+                                        html += '<tr style="background-color:lightgray;">';
+                                        html += '<td style="width:20%;height:35px;text-align:center;"><a href="#" onclick="ShowDetailBooking(\''+jobID+'\')" style="color:blue;">'+ jobID +'</a></td>'; 
+                                        html += "<td style='width:40%;height:35px;text-align:center;' colspan='2'>" + From +"</td>";
+                                        html += "<td style='width:40%;height:35px;text-align:center;' colspan='2'>" + To +"</td>";
+                                        html += '</tr>';
+                                        html += '<tr class="thead-grid2">';
+                                        html += '<td>Driver</td>';
+                                		html += '<td>Vehicle</td>';
+                                        html += '<td style="text-align:center;">Fare</td>';
+                                   	 html += '<td>Rating </td>';
+                                   	 html += '<td>Action </td>';  
+                                   	 html += '</tr>';
                                     }
-                                                          
-                              else
-                               {
-                                   html += '<td style="width:100%;text-align:center;" colspan="">No Rating</td>';
-                               }
-                          html += '</tr>';
-                                                        //border-bottom:1px solid #0080FF
-                                                        html += '<tr style="background-color:white">';
-                                                         html += '<td colspan="5"><hr ></td>';
-                                                        html += '</tr>';
-                                                    }
-                                               html +='</tbody>';
-                                   html +='</table>';
+                                    DriverName = data.d[i]["DriverName"];
+                                    Fare = data.d[i]["Fare"];
+                                    IsBooked = data.d[i]["IsBooked"];
+                                    DriverPhoto = data.d[i]["DriverPhoto"];
+                                    VehicleImages = data.d[i]["VehicleImages"];
+                                    DriverSpecialReq = data.d[i]["DriverSpecialReq"];
+                                    DriverID = data.d[i]["DriverID"];
+                                    Fare = data.d[i]["Fare"];
+
+                                    html += '<tr style="border-bottom:1px solid black !important;"><td style="width: 20%;text-align:left;><span style="font-weight:bold;font-size:14px;">' + DriverName + '</span><br/><img src="'+DriverPhoto+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImageLater(this)\"/></td>';
+                                    html += '<td style="width: 20%;text-align:left;"><br/><img src="'+VehicleImages+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImageLater(this)\"/></td>';
+                                    html += "<td style='width: 15%;height:35px;text-align:center;'>"+'&pound' + Fare +"</td>";
+                                    html += '<td style="width: 25%;text-align:left;"><input type="button" class="btn-tmp" value="Rating" style="width:80%"; onclick="showRatingBoxLaterPresent(\''+DriverID+'\')"></td>';
+                                    if(Fare > 0)
+                                    {
+                                    	html += "<td style='width: 20%;text-align:center;'>"+'<input type="button" id="check" style="-webkit-appearance:none;-moz-appearance:none;"  class="accept-btn2" value="Hire" onclick="HireDriver(\''+ jobID +'\',\''+ DriverID +'\')"/>'+"</td>";
+                                    }
+                                    else
+                                    {
+                                        html += "<td style='width: 20%;text-align:center;'>Awaiting Bids</td>";
+                                    }
+                                    html += '</tr>'; 
+                                
+                                }
+                                html +='</table>'; 
                                 $('#msg').append(html);
                          }
                         else
@@ -115,6 +94,66 @@ function getCablaterBooking()
                     }
                 });
  }
+
+function GetInnertable(jobID){
+    var subhtml = "";
+    var x=0;
+    var newurl = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetDriverForJobID";
+    $.ajax(newurl, {
+       type:"POST",
+       datatype:"json",
+       data:"{'jobID':'"+jobID+"'}",
+       contentType: "application/json; charset=utf-8",
+        success: function (data) {          
+            //console.log(data);
+            var drivercount = data.d.length;
+            if(drivercount > 0)
+            { 
+                //alert("Succes");
+                x=drivercount;
+                console.log("After drivercount-> x="+x);
+                subhtml = '<table style="border:thin solid green;">';
+           	 subhtml += '<tr>';
+                subhtml += '<th>Driver Image</th>';
+        		subhtml += '<th>Vehicle Image</th>';
+           	 subhtml += '<th>Rating </th>';
+           	 subhtml += '<th>Hire </th>';  
+           	 subhtml += '</tr>';
+                for(var j = 0;j<drivercount;j++)
+                {
+                  
+                    x= j+1;
+                   Fare = data.d[j]["Fare"];
+                   IsBooked = data.d[j]["IsBooked"];
+                   DriverPhoto = data.d[j]["DriverPhoto"];
+                   VehicleImages = data.d[j]["VehicleImages"];
+                   DriverSpecialReq = data.d[j]["DriverSpecialReq"];
+                   DriverID = data.d[j]["DriverID"];
+    			
+                    subhtml += '<tr><td style="text-align:left;width:25%"><img src="'+DriverPhoto+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImageLater(this)\"/></td>';
+               	 subhtml += '<td style="text-align:left;width:30%"><img src="'+VehicleImages+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImageLater(this)\"/></td>';
+               	 subhtml += '<td style="text-align:left;width:25%"><input type="button" class="btn-tmp" value="Rating" style="width:80%"; onclick="showRatingBoxLaterPresent(\''+DriverID+'\')"></td>';
+                    if(Fare > 0)
+                    {
+    					subhtml += "<td style='width:25%;height:35px;text-align:center;'>"+'<input type="button" id="check" style="-webkit-appearance:none;-moz-appearance:none;" class="accept-btn" value="Hire" onclick="HireDriver(\''+ jobID +'\',\''+ DriverID +'\')"/>'+"</td>";
+                    }
+                    else
+                    {
+                        subhtml += "<td style='width:25%;height:35px;text-align:center;'>Awaiting Bids</td>";
+                    }
+    			    subhtml += '</tr>'; 
+                    console.log("Inside table-> x="+x);
+                } 
+                subhtml += '</table>'; 
+           	 console.log("After table-> x="+x);
+            }
+            return subhtml;
+        }
+    });
+    console.log("After success-> x="+x);
+                return subhtml;
+ 
+}
 
 function ShowDetailBooking(jobNo, driverid)
 {
@@ -135,7 +174,7 @@ function ShowDetailBooking(jobNo, driverid)
 function showDetail(data)
 {
     $('#lblJobNo').text(": "+data.d[0]);
-    if(data.d[1] !== null)
+   /* if(data.d[1] !== null)
     {
         $('#lblFare').html(": "+'&pound'+data.d[1]);
     }
@@ -143,11 +182,11 @@ function showDetail(data)
     {
          $('#lblFare').html(": "+'Waiting for response.');
     }
-    $('#lblDriverName').text(": "+data.d[2]);
-    $('#lblStartDate').text(": "+data.d[3]);
-    $('#lblStartTime').text(": "+data.d[4]);
-    $('#lblSearchTime').text(": "+data.d[5]);
-    $('#lblBidTime').text(": "+data.d[6]);
+    $('#lblDriverName').text(": "+data.d[2]);*/
+    $('#lblStartDate').text(": "+data.d[1]);
+    $('#lblStartTime').text(": "+data.d[2]);
+    $('#lblSearchTime').text(": "+data.d[3]);
+    /*$('#lblBidTime').text(": "+data.d[4]);
     if(data.d[7] !== null)
     {
         $('#lblDSR').html(": "+ data.d[7]);
@@ -162,7 +201,7 @@ function showDetail(data)
     }
     else{
     	$('#lblDriverRating').text(": Rating not available.");  
-    }
+    }*/
     $('#popup_box').show();
     $('#divCabLaterBooking').show();
     $('#transparent_div').show();
@@ -365,7 +404,7 @@ function showRatingBoxLaterpast(driverImgUrl, driverID)
     });
 }
 
-function showRatingBoxLaterPresent(driverImgUrl, driverID)
+function showRatingBoxLaterPresent(driverID)
 {    
     $.ajax({
         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetRatingFeedback",

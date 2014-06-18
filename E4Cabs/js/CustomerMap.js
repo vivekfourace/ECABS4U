@@ -12,6 +12,14 @@ var map;
 
 function showMap()
 {
+    
+  //  $( "#popup_box").live({
+                   //   popupbeforeposition: function(event, ui) {
+               //         $("body").on("touchmove", false);
+                  //    }
+//});
+    document.body.style.overflow = "hidden";
+    
     waypts = [];
     var locf;
     var isChecked = $('#chkFromLocation').attr('checked') ? true : false;
@@ -34,6 +42,8 @@ function showMap()
         return false;
     }
     $('#popup_box').show();
+  
+    
     $('#mapContainer').show();
     $('#transparent_div').show();
     
@@ -54,7 +64,10 @@ function showMap()
     {
        console.log(waypts[kk]);
     }
-    InitializeWaypoints();    
+    InitializeWaypoints();  
+    
+    
+
 }
 
  function InitializeWaypoints()
