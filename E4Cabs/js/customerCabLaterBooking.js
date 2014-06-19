@@ -95,65 +95,7 @@ function getCablaterBooking()
                 });
  }
 
-function GetInnertable(jobID){
-    var subhtml = "";
-    var x=0;
-    var newurl = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetDriverForJobID";
-    $.ajax(newurl, {
-       type:"POST",
-       datatype:"json",
-       data:"{'jobID':'"+jobID+"'}",
-       contentType: "application/json; charset=utf-8",
-        success: function (data) {          
-            //console.log(data);
-            var drivercount = data.d.length;
-            if(drivercount > 0)
-            { 
-                //alert("Succes");
-                x=drivercount;
-                console.log("After drivercount-> x="+x);
-                subhtml = '<table style="border:thin solid green;">';
-           	 subhtml += '<tr>';
-                subhtml += '<th>Driver Image</th>';
-        		subhtml += '<th>Vehicle Image</th>';
-           	 subhtml += '<th>Rating </th>';
-           	 subhtml += '<th>Hire </th>';  
-           	 subhtml += '</tr>';
-                for(var j = 0;j<drivercount;j++)
-                {
-                  
-                    x= j+1;
-                   Fare = data.d[j]["Fare"];
-                   IsBooked = data.d[j]["IsBooked"];
-                   DriverPhoto = data.d[j]["DriverPhoto"];
-                   VehicleImages = data.d[j]["VehicleImages"];
-                   DriverSpecialReq = data.d[j]["DriverSpecialReq"];
-                   DriverID = data.d[j]["DriverID"];
-    			
-                    subhtml += '<tr><td style="text-align:left;width:25%"><img src="'+DriverPhoto+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImageLater(this)\"/></td>';
-               	 subhtml += '<td style="text-align:left;width:30%"><img src="'+VehicleImages+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImageLater(this)\"/></td>';
-               	 subhtml += '<td style="text-align:left;width:25%"><input type="button" class="btn-tmp" value="Rating" style="width:80%"; onclick="showRatingBoxLaterPresent(\''+DriverID+'\')"></td>';
-                    if(Fare > 0)
-                    {
-    					subhtml += "<td style='width:25%;height:35px;text-align:center;'>"+'<input type="button" id="check" style="-webkit-appearance:none;-moz-appearance:none;" class="accept-btn" value="Hire" onclick="HireDriver(\''+ jobID +'\',\''+ DriverID +'\')"/>'+"</td>";
-                    }
-                    else
-                    {
-                        subhtml += "<td style='width:25%;height:35px;text-align:center;'>Awaiting Bids</td>";
-                    }
-    			    subhtml += '</tr>'; 
-                    console.log("Inside table-> x="+x);
-                } 
-                subhtml += '</table>'; 
-           	 console.log("After table-> x="+x);
-            }
-            return subhtml;
-        }
-    });
-    console.log("After success-> x="+x);
-                return subhtml;
- 
-}
+
 
 function ShowDetailBooking(jobNo, driverid)
 {
@@ -214,7 +156,7 @@ function Cancel()
     $('#divCabLaterBooking').hide();
     $('#transparent_div').hide();
 }
-function HireDriver(customerReqID, driverid)
+function HireDriver(jobID, driverid)
 {
     var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse";
                 $.ajax(url, {
@@ -226,7 +168,7 @@ function HireDriver(customerReqID, driverid)
                      },
                    type:"POST",
                    datatype:"json",
-                   data:"{'driverId':'" + driverid + "','requestId':'" + customerReqID + "'}",
+                   data:"{'driverId':'" + driverid + "','requestId':'" + jobID + "'}",
                    contentType: "application/json; charset=utf-8",
                     success: function(data){
                        // $('#check').hide();
@@ -414,10 +356,11 @@ function showRatingBoxLaterPresent(driverID)
         contentType: "application/json; charset=utf-8",
         success: function(data)
         {    
-          // alert(data.d);
+        //alert(data.d[i].lenght);
             $('#feedback-content').empty();
             
-                
+                //var data2=data.d[0]["StartDate"];
+           // alert(data2);
                 
                     var table2 = '<table width="99%" style="border-collapse:collapse;margin-top:0px">';
                     
@@ -433,6 +376,8 @@ function showRatingBoxLaterPresent(driverID)
                     
                     for(var i = 0; i<5; i++)
                     {
+                       
+                        
                         table2 += '<tr><td style="text-align:left;width:25%">'+data.d[i]["StartDate"]+'</td>';
                         //table2 += '<td style="text-align:left;width:25%">'+data.d[i]["DriverRating"]+'</td>';
                         var ratingdriver = data.d[i]["DriverRating"];
@@ -466,7 +411,8 @@ function showRatingBoxLaterPresent(driverID)
                          
                         
                         table2 += '<td style="text-align:left;width:25%">'+data.d[i]["CustomerFeedback"]+'</td>';
-                        table2 += '<td style="text-align:left;width:25%">'+data.d[i]["DriverFeedback"]+'</td>';                  
+                        table2 += '<td style="text-align:left;width:25%">'+data.d[i]["DriverFeedback"]+'</td>';  
+                        
                     }
                     
                     table2 += '</table>';
