@@ -65,6 +65,9 @@ function  NavigateToMap()
                 $('#btnEngage').hide();
                 $('#btnabort').show();
                 $('#btnclear').show();
+                //notEnroutebutton show
+                $('#btnnotEnroute').show();
+                
                 $('#btnnavigation').show();
                 $('#btnOffline').hide();
                 loadjscssfile("Common/UpdatePostcode.js", "js");
@@ -256,6 +259,14 @@ function ShowLaterJobOffers()
 function engageMe()
 {
     window.location='DriverCabLaterJobs.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
+
+
+//ERROR not en route button click
+function notEnroute()
+{
+    window.location='DriverCabLaterJobs.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    
 }
 
 function HomePage(){
