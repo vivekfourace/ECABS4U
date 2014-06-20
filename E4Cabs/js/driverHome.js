@@ -265,7 +265,28 @@ function engageMe()
 //ERROR not en route button click
 function notEnroute()
 {
-    window.location='DriverCabLaterJobs.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    $('#btnOffline').show();
+        $.ajax({
+                url:"http://115.115.159.126/ECabs/ECabs4U.asmx/UnEngageDriver",
+                     type:"POST",
+                     datatype:"json",
+                     data:"{'relatedId':'"+relatedId+"'}",
+                     contentType: "application/json; charset=utf-8",                     
+                     success: function(data){
+                         if(data.d === true)
+                         {                            
+                            
+                            $('#lblEngaged').show();
+                            $('#lblEngaged').text("Available");
+                           window.location='DriverCabLaterJobs.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                         }
+                     },
+            		error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert(errorThrown);
+                    }
+            });
+    
+    //window.location='DriverCabLaterJobs.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
     
 }
 

@@ -97,17 +97,6 @@
                             <input type="text" id="txtpostcode" placeholder="Post code" maxlength="12" style="display:none;text-align:left;width:95%"/>
                         </td>                     
                     </tr>  
-                    <!--<tr class="popup_content">
-                            <td style="width:30%">
-                                <b style="font-size:11px;" id="rtnto">Allocated vehicles</b>
-                            </td>
-                            <td style="width:70%">
-                                <select class="select-choice font-style" id="ddlselectedvehicle" data-shadow="false" style="width:100%;float:right;">
-                          <option value="" selected="selected"></option>
-                         
-                    </select>
-                            </td>
-                        </tr>-->
                 </table> 
             </div>
          
@@ -132,21 +121,23 @@
            <div style="padding-left:10px;background-color:#848484;color:white;" colspan="4">Registered Vehicles - <label id="vehiclecount"></label></div>
             <table id="tblvehicle" style="border-spacing: 0; text-align:left;  width: 100%;bottom:0;height:50%;">
                 <tr>
-                    <th style="width:20%;text-align:center; font-weight:bold; border-bottom:solid thin;">S. No.</th>
-                    <th style="width:30%;  font-weight:bold; border-bottom:solid thin;">Registration No.</th>
-                    <th style="width:25%; font-weight:bold; border-bottom:solid thin;">Plate No.</th>  
-                    <th style="width:25%; font-weight:bold; border-bottom:solid thin;">Max. Capacity</th>                 
+                    <th style="width:10.65%;text-align:center; font-weight:bold; border-bottom:solid thin;">S. No.</th>
+                    <th style="width:20%;text-align:center; font-weight:bold; border-bottom:solid thin;">Vehicle</th>
+                    <th style="width:20%;text-align:center;  font-weight:bold; border-bottom:solid thin;">Reg. No.</th>
+                    <th style="width:20%;text-align:center; font-weight:bold; border-bottom:solid thin;">Plate No.</th>  
+                    <th style="width:8%;text-align:center; font-weight:bold; border-bottom:solid thin;">Capacity</th>
+                    <th style="width:25%; text-align:center; border-bottom:solid thin;">Select</th> 
                 </tr>
                 
                 <tr>
-                   <td colspan="4">
+                   <td colspan="6">
                        <div style="overflow:auto;height:125px;margin-bottom: 60px; bottom:0;">
-                       <table id="trallvehicle"></table>
+                       <div id="trallvehicle"></div>
                            </div>
                    </td>             
                 </tr>
                 <tr>
-                    <td colspan="4" width="100%">
+                    <td colspan="6" width="100%">
                     </td>
                 </tr>
             </table>
@@ -178,11 +169,6 @@
                             </div>
                             
                         </td>
-                        <!--<td style="width:17%">
-                            <div style="padding-top:5px">
-                                <img src="img/feedback.png" style="height:20px;" onclick="feedBack()"/><br/>Feedback
-                            </div>
-                        </td>-->
                         <td style="width:17%">
                             <div style="padding-top:5px">
                                 <img src="img/logout.png" style="height:20px;" onclick="logout()"/><br/>Logout

@@ -29,8 +29,14 @@ function getCablaterBooking()
                                     var jobID = data.d[i]["CustomerRequestID"];
                                     var From = data.d[i]["From"];
                                     var To = data.d[i]["To"];
-                                  
+                                    var CustResponse = data.d[i]["CustomerResponse"];
                                     
+                                    var DriverName = data.d[i]["DriverName"];
+                                    var DriverPhoto = data.d[i]["DriverPhoto"];
+                                    var VehicleImages = data.d[i]["VehicleImages"];
+                                    var DriverSpecialReq = data.d[i]["DriverSpecialReq"];
+                                    var DriverID = data.d[i]["DriverID"];
+                                    var Fare = data.d[i]["Fare"];
                                    
 
                                     if(i>0){
@@ -56,29 +62,26 @@ function getCablaterBooking()
                                    	 html += '<td>Action </td>';  
                                    	 html += '</tr>';
                                     }
-                                    DriverName = data.d[i]["DriverName"];
-                                    Fare = data.d[i]["Fare"];
-                                    IsBooked = data.d[i]["IsBooked"];
-                                    DriverPhoto = data.d[i]["DriverPhoto"];
-                                    VehicleImages = data.d[i]["VehicleImages"];
-                                    DriverSpecialReq = data.d[i]["DriverSpecialReq"];
-                                    DriverID = data.d[i]["DriverID"];
-                                    Fare = data.d[i]["Fare"];
-
                                     html += '<tr style="border-bottom:1px solid black !important;"><td style="width: 20%;text-align:left;><span style="font-weight:bold;font-size:14px;">' + DriverName + '</span><br/><img src="'+DriverPhoto+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImageLater(this)\"/></td>';
                                     html += '<td style="width: 20%;text-align:left;"><br/><img src="'+VehicleImages+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImageLater(this)\"/></td>';
                                     html += "<td style='width: 15%;height:35px;text-align:center;'>"+'&pound' + Fare +"</td>";
                                     html += '<td style="width: 25%;text-align:left;"><input type="button" class="btn-tmp" value="Rating" style="width:80%"; onclick="showRatingBoxLaterPresent(\''+DriverID+'\')"></td>';
                                     if(Fare > 0)
                                     {
-                                    	html += "<td style='width: 20%;text-align:center;'>"+'<input type="button" id="check" style="-webkit-appearance:none;-moz-appearance:none;"  class="accept-btn2" value="Hire" onclick="HireDriver(\''+ jobID +'\',\''+ DriverID +'\')"/>'+"</td>";
+                                        if(CustResponse !== true)
+                                        {
+                                    		html += "<td style='width: 20%;text-align:center;'>"+'<input type="button" id="check" style="-webkit-appearance:none;-moz-appearance:none;"  class="accept-btn2" value="Hire" onclick="HireDriver(\''+ jobID +'\',\''+ DriverID +'\')"/>'+"</td>";
+                                        }
+                                        else
+                                        {
+                                         	html += "<td style='width: 20%;text-align:center;'>Awaiting driver response</td>";   
+                                        }
                                     }
                                     else
                                     {
                                         html += "<td style='width: 20%;text-align:center;'>Awaiting Bids</td>";
                                     }
                                     html += '</tr>'; 
-                                
                                 }
                                 html +='</table>'; 
                                 $('#msg').append(html);
@@ -116,34 +119,9 @@ function ShowDetailBooking(jobNo, driverid)
 function showDetail(data)
 {
     $('#lblJobNo').text(": "+data.d[0]);
-   /* if(data.d[1] !== null)
-    {
-        $('#lblFare').html(": "+'&pound'+data.d[1]);
-    }
-    else
-    {
-         $('#lblFare').html(": "+'Waiting for response.');
-    }
-    $('#lblDriverName').text(": "+data.d[2]);*/
     $('#lblStartDate').text(": "+data.d[1]);
     $('#lblStartTime').text(": "+data.d[2]);
     $('#lblSearchTime').text(": "+data.d[3]);
-    /*$('#lblBidTime').text(": "+data.d[4]);
-    if(data.d[7] !== null)
-    {
-        $('#lblDSR').html(": "+ data.d[7]);
-    }
-    else
-    {
-         $('#lblDSR').html(": "+'Waiting for response.');
-    }
-    console.log(data.d);
-    if(data.d[8] !== ""){
-        $('#lblDriverRating').text(": "+data.d[8]); 
-    }
-    else{
-    	$('#lblDriverRating').text(": Rating not available.");  
-    }*/
     $('#popup_box').show();
     $('#divCabLaterBooking').show();
     $('#transparent_div').show();
