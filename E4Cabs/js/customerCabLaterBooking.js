@@ -63,9 +63,9 @@ function getCablaterBooking()
                                    	 html += '</tr>';
                                     }
                                     html += '<tr style="border-bottom:1px solid black !important;"><td style="width: 20%;text-align:left;><span style="font-weight:bold;font-size:14px;">' + DriverName + '</span><br/><img src="'+DriverPhoto+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImageLater(this)\"/></td>';
-                                    html += '<td style="width: 20%;text-align:left;"><br/><img src="'+VehicleImages+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImageLater(this)\"/></td>';
+                                    html += '<td style="width: 20%;text-align:left;"><br/><img src="'+VehicleImages+'" style="width:50px;height:50px;border-radius:4px;" onclick="ShowLargeImageLater(this)\"/></td>';
                                     html += "<td style='width: 15%;height:35px;text-align:center;'>"+'&pound' + Fare +"</td>";
-                                    html += '<td style="width: 25%;text-align:left;"><input type="button" class="btn-tmp" value="Rating" style="width:80%"; onclick="showRatingBoxLaterPresent(\''+DriverID+'\')"></td>';
+                                    html += '<td style="width: 25%;text-align:left;"><input type="button" class="btn-tmp" value="Rating" style="width:80%"; onclick="showRatingBoxLaterPresent(\''+DriverID+'\')"/></td>';
                                     if(Fare > 0)
                                     {
                                         if(CustResponse !== true)
@@ -336,7 +336,7 @@ function showRatingBoxLaterPresent(driverID)
         {    
         //alert(data.d[i].lenght);
             $('#feedback-content').empty();
-            
+             ratingcont = data.d.length;
                 //var data2=data.d[0]["StartDate"];
            // alert(data2);
                 
@@ -352,7 +352,7 @@ function showRatingBoxLaterPresent(driverID)
                                 table2 += '</tr>';
                                 table2 += '</thead>';
                     
-                    for(var i = 0; i<5; i++)
+                    for(var i = 0; i<ratingcont; i++)
                     {
                        
                         
@@ -386,10 +386,26 @@ function showRatingBoxLaterPresent(driverID)
                                    {
                                         table2 += '<td style="width:30%;text-align:center;" colspan="">No Rating</td>'
                                    }
-                         
+                         if(data.d[i]["CustomerFeedback"] === null)
+                        {
+                          table2 += '<td style="text-align:left;width:25%">Nofeedback</td>';  
+                        }
+                        else
+                        {
+                            table2 += '<td style="text-align:left;width:25%">'+data.d[i]["CustomerFeedback"]+'</td>';
+                            
+                        }
+                        if(data.d[i]["DriverFeedback"] === null)
+                        {
+                            table2 += '<td style="text-align:left;width:25%">Nofeedback</td>';
+                        }
+                        else
+                        {
+                         table2 += '<td style="text-align:left;width:25%">'+data.d[i]["DriverFeedback"]+'</td>';    
+                        }
                         
-                        table2 += '<td style="text-align:left;width:25%">'+data.d[i]["CustomerFeedback"]+'</td>';
-                        table2 += '<td style="text-align:left;width:25%">'+data.d[i]["DriverFeedback"]+'</td>';  
+                        
+                         
                         
                     }
                     

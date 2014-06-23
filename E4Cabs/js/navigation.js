@@ -116,7 +116,7 @@ function setLocation(data)
                   }
                   else
               	{
-                      alert("No location found!!")
+                      alert("No location found!!");
                   }
             
               directionsDisplay = new google.maps.DirectionsRenderer();

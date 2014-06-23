@@ -62,10 +62,16 @@ function ShowData(data)
                myVehicles += "<td style='width:20%;text-align:center;height:20px;color:black'>" + PlateNo + "</td>";
                myVehicles += "<td style='width:8%;text-align:center;height:20px;color:black'>" + Capacity + "</td>";
                myVehicles += "<td style='width:25%;text-align:center;height:20px;color:black'> ";
-               if(isAuthorised === "false" || isAuthorised === "False"){
-                 myVehicles += "<input type='button' id='selectvehicle' value='select' style='float:right'  onclick='SelectVehicle(\'"+vehAllocatedID+"\');'";  
+               if(isAuthorised === "false" || isAuthorised === "False")
+               {
+                  
+                 myVehicles += '<input type="button"  value="Select"  style="float:right; background-color:#0E8BB3;color:white;height:25px;width:100%;font-size:17px!important;border: 1px solid #088A29;font-family:Calibri;border-radius:1px!important;outline:none!important;" onclick="SelectVehicle(\''+vehAllocatedID+'\')"/></td>';  
                } 
-               myVehicles += "</td></tr>"; 
+                else
+                {
+                    
+                }
+               myVehicles += "</tr>"; 
             }
         else
     		{
@@ -94,19 +100,20 @@ function ShowData(data)
 function SelectVehicle(vehAllocatedID)
 {
     var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/SelectVehicleABC";
-    $.ajax(url,
-    {
+    $.ajax(url,{
         type:"POST",
         dataType: "Json", 
         data:"{'vehAllocatedID':'" +vehAllocatedID+"','relatedId':'" +relatedId+"'}",
         contentType: "application/json; charset=utf-8",                     
         success: function(data)
         {
-            /*if(data.d.Length > 0){
+            if(data.d !== ""){
                 var selectedVehicleName = data.d;
-                alert("You have selected " + selectedVehicleName + " to drive.");
-            }*/
-        }
+               alert("You have selected " + selectedVehicleName + " to drive.");
+                window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+            }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {}
      });
 }
 
@@ -194,7 +201,8 @@ function UpdateProfile()
         data:"{'relatedId':'" +relatedId+"','address1':'" +address1+"','address2':'" +address2+"','contactNumber':'" +phoneno+"','postcode':'" +postcode+"'}",
         contentType: "application/json; charset=utf-8",
         success: ShowData,
-        error: function (XMLHttpRequest, textStatus, errorThrown){
+        error: function (XMLHttpRequest, textStatus, errorThrown)
+        {
         }
     });
 }
