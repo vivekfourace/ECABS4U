@@ -388,7 +388,7 @@ function showRatingBoxLaterPresent(driverID)
                                    }
                          if(data.d[i]["CustomerFeedback"] === null)
                         {
-                          table2 += '<td style="text-align:left;width:25%">Nofeedback</td>';  
+                          table2 += '<td style="text-align:left;width:25%"> -- </td>';  
                         }
                         else
                         {
@@ -397,7 +397,7 @@ function showRatingBoxLaterPresent(driverID)
                         }
                         if(data.d[i]["DriverFeedback"] === null)
                         {
-                            table2 += '<td style="text-align:left;width:25%">Nofeedback</td>';
+                            table2 += '<td style="text-align:left;width:25%"> -- </td>';
                         }
                         else
                         {
