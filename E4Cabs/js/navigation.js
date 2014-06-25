@@ -38,7 +38,8 @@ function setLocation(data)
        locTo = data.d[8];
     }
 
- window.setTimeout(function(){
+ window.setTimeout(function()
+{
         console.log(arrLoc.length);
         for (var i = 0; i < arrLoc.length; i++)
         {
@@ -164,7 +165,8 @@ function setLocation(data)
             var request = {
                 origin: locFrom,
                 destination: locTo,                
-                travelMode: google.maps.TravelMode.DRIVING
+                travelMode: google.maps.TravelMode.DRIVING,
+                unitSystem: google.maps.UnitSystem.IMPERIAL
             };
 
             directionsService.route(request, function (response, status) {
@@ -181,7 +183,8 @@ function setLocation(data)
                 destination: locTo,
                 waypoints: waypts,
                 optimizeWaypoints: true,
-                travelMode: google.maps.TravelMode.DRIVING
+                travelMode: google.maps.TravelMode.DRIVING,
+                unitSystem: google.maps.UnitSystem.IMPERIAL
             };
 
             directionsService.route(request, function (response, status) {

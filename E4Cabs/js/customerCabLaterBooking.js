@@ -345,7 +345,7 @@ function showRatingBoxLaterPresent(driverID)
                                 table2 += '<thead class="thead-grid">';
                                 table2 += '<tr>';
                                 table2 += '<th>Date</th>';
-                                table2 += '<th>Rating</th>';
+                                table2 += '<th style="text-align:center">Rating</th>';
                             	table2 += '<th>Customer Comments</th>';
                                 table2 += '<th>Driver Replay</th>';
                           
