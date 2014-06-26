@@ -121,15 +121,40 @@ function AcceptJob(jobno, jobfare)
                 dataType: "Json",
                 data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
                 contentType: "application/json; charset=utf-8",
-                success: function (data) {
-                    if(data.d === "true")
-                    {
-                        //jAlert('Job booked successfully.','Success');
-                       alert('Job booked successfully.');
-                       window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-                    }
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                success: function (data) 
+                {
+                    if(data.d !== "")
+                {
+                   console.log(data.d);
+                   var returnvalue = data.d;
+                   if (returnvalue.match(/"Error:"/g) > 0)
+                   {
+                   	alert(returnvalue);
+                   }
+                   else
+                   {
+                       console.log(data.d);
+                       // window.open(data.d);
+                       var isPayment = window.open(data.d,'_system', 'location=no');
+                       isPayment.addEventListener('exit', function(event) 
+                       { 
+                           window.href("driverHome.html");
+                       });                
+                   }
+                }        
+               else
+         	 {
+         	  alert("Unable to do payment. Please try again.");
+         	 }
+                    //if(data.d === "true")
+                   // {
+                    //    //jAlert('Job booked successfully.','Success');
+                    //   alert('Job booked successfully.');
+                    //   window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                   // }
+               },
+                error: function (XMLHttpRequest, textStatus, errorThrown) 
+                {
                     alert("Some error occurred during booking and payment. Please try again.");
                 }
             });
@@ -221,43 +246,54 @@ function RejectComission()
 
 function Confirmcomission()
 {
-            var reqID = $('#hidJobNo').val();
-            $.ajax({
-                beforeSend: function(){
-                   $('#imgLoader').show();
-                },                
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CabLaterJobBooked",
-                type: "POST",
-                dataType: "Json",
-                data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
-                   if(data.d !== "")
-                    {
-                        console.log(data.d);
-                        var returnvalue = data.d;
-                        if (returnvalue.match(/"Error:"/g) > 0) {
-                            alert(returnvalue);
-                        }
-                        else{
-                            console.log("HI");
-                            window.location.href=data.d;
-                        }
-                    }
-                   // else{
-                    //    alert("Nothing returned from service.");
-                   // }
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-                            console.log("hierror");
-                }
-            });
-    // window.location.href = "https://sandbox.gocardless.com/pay/YH0MFHY7"; //for commission 1.2pond
-     $('#divDeal').hide();
-     $('#popup_box').hide();
+    var reqID = $('#hidJobNo').val();
+    $.ajax({
+    beforeSend: function()
+    {
+		$('#imgLoader').show();
+	},                
+    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CabLaterJobBooked",
+    type: "POST",
+    dataType: "Json",
+    data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
+    contentType: "application/json; charset=utf-8",
+    success: function (data) 
+    {
+        if(data.d !== "")
+        {
+            console.log(data.d);
+            var returnvalue = data.d;
+            if (returnvalue.match(/"Error:"/g) > 0)
+            {
+            	alert(returnvalue);
+            }
+            else
+            {
+                console.log(data.d);
+                // window.open(data.d);
+                var isPayment = window.open(data.d,'_system', 'location=no');
+                isPayment.addEventListener('exit', function(event) 
+                { 
+                    window.href("driverHome.html");
+                });                
+            }
+        }
+        else
+        {
+           alert("Unable to do payment. Please try again.");
+        }
+    },
+    error: function (XMLHttpRequest, textStatus, errorThrown) 
+    {
+		console.log("hierror");
+    }
+    });
+    
+    $('#divDeal').hide();
+    $('#popup_box').hide();
     $('#transparent_div').hide();
 }
+
 
 function HomePage(){
     window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;

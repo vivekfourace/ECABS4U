@@ -352,24 +352,51 @@ function SaveDataOfCurrentJob()
                 dataType: "Json",
                 data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
                 contentType: "application/json; charset=utf-8",
-                success: function (data) {
-                   if(data.d !== "")
-                    {
-                        console.log(data.d);
-                        var returnvalue = data.d;
-                        if (returnvalue.match(/"Error:"/g) > 0) {
-                            alert(returnvalue);
-                        }
-                        else{
-                            console.log("HI");
-                            window.location.href=data.d;
-                            //alert('Job booked successfully.');
-                            //window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-                        }
-                    }
-                    //else{
-                   //     alert("Nothing returned from service.");
+                success: function (data) 
+                {
+                    
+                    if(data.d !== "")
+                     {
+                         console.log(data.d);
+                         var returnvalue = data.d;
+                         if (returnvalue.match(/"Error:"/g) > 0)
+                         {
+                         	alert(returnvalue);
+                         }
+                         else
+                         {
+                             console.log(data.d);
+                             // window.open(data.d);
+                             var isPayment = window.open(data.d,'_system', 'location=no');
+                             isPayment.addEventListener('exit', function(event) 
+                             { 
+                                 window.href("driverHome.html");
+                             });                
+                         }
+                     }
+                     else
+                     {
+                        alert("Unable to do payment. Please try again.");
+                     }
+                    
+                    
+                   //if(data.d !== "")
+                   // {
+                   //     console.log(data.d);
+                   //     var returnvalue = data.d;
+                   //     if (returnvalue.match(/"Error:"/g) > 0) {
+                   //         alert(returnvalue);
+                   //     }
+                   //     else{
+                   //         console.log("HI");
+                   //         window.location.href=data.d;
+                   //         //alert('Job booked successfully.');
+                   //         //window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                   //     }
                    // }
+                   // //else{
+                   ////     alert("Nothing returned from service.");
+                   //// }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
 
@@ -391,21 +418,48 @@ function SaveDataOfCurrentJob()
                 dataType: "Json",
                 data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
                 contentType: "application/json; charset=utf-8",
-                success: function (data) {
-                   if(data.d !== "")
-                    {
-                        console.log(data.d);
-                        var returnvalue = data.d;
-                        if (returnvalue.match(/"Error:"/g) > 0) {
-                            alert(returnvalue);
-                        }
-                        else{
-                            window.location.href=data.d;
-                        }
-                    }
-                    else{
-                        //alert("Nothing returned from service.");
-                    }
+                success: function (data)
+                 {
+                     if(data.d !== "")
+                     {
+                         console.log(data.d);
+                         var returnvalue = data.d;
+                         if (returnvalue.match(/"Error:"/g) > 0)
+                         {
+                         	alert(returnvalue);
+                         }
+                         else
+                         {
+                             console.log(data.d);
+                             // window.open(data.d);
+                             var isPayment = window.open(data.d,'_system', 'location=no');
+                             isPayment.addEventListener('exit', function(event) 
+                             { 
+                                 window.href("driverHome.html");
+                             });                
+                         }
+                     }
+                     else
+                     {
+                        alert("Unable to do payment. Please try again.");
+                     }
+                     
+                   //if(data.d !== "")
+                   // {
+                   //     console.log(data.d);
+                   //     var returnvalue = data.d;
+                   //     if (returnvalue.match(/"Error:"/g) > 0) {
+                   //         alert(returnvalue);
+                   //     }
+                   //     else{
+                   //         window.location.href=data.d;
+                   //     }
+                   // }
+                   // else{
+                   //     //alert("Nothing returned from service.");
+                   // }
+                    
+                    
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
 
