@@ -15,7 +15,7 @@ function showMapDriver()
 {
     waypts = [];
  
-    $('#popup_box').show();
+    $('#popup_box22').show();
     $('#mapContainer').show();    
     $('#transparent_div').show();
     
@@ -189,7 +189,7 @@ function showMapDriver()
         }
 function hideMap()
 {
-    $('#popup_box').hide();
+    $('#popup_box22').hide();
     $('#mapContainer').hide();    
     $('#transparent_div').hide();
 }
