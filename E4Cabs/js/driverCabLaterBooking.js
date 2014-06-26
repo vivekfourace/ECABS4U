@@ -138,7 +138,8 @@ function AcceptJob(jobno, jobfare)
                        var isPayment = window.open(data.d,'_system', 'location=no');
                        isPayment.addEventListener('exit', function(event) 
                        { 
-                           window.href("driverHome.html");
+                           window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                           //window.href("driverHome.html");
                        });                
                    }
                 }        
@@ -274,7 +275,9 @@ function Confirmcomission()
                 var isPayment = window.open(data.d,'_system', 'location=no');
                 isPayment.addEventListener('exit', function(event) 
                 { 
-                    window.href("driverHome.html");
+                   // window.href("driverHome.html");
+                    
+                    window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                 });                
             }
         }

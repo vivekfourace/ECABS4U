@@ -59,6 +59,7 @@ $(document).ready(function ()
                     {
                     if (status === google.maps.GeocoderStatus.OK) {
                         if (results[1]) {
+                           
                             $('#txtCurrentFrom').val(results[0].formatted_address);
                         }
                     }
