@@ -134,13 +134,33 @@ function AcceptJob(jobno, jobfare)
                    else
                    {
                        console.log(data.d);
-                       // window.open(data.d);
-                       var isPayment = window.open(data.d,'_system', 'location=no');
-                       isPayment.addEventListener('exit', function(event) 
-                       { 
-                           window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-                           //window.href("driverHome.html");
-                       });                
+                       document.addEventListener("deviceready", onDeviceReady, false);
+                         function iabLoadStart(event) {
+                            //alert(event.type + ' - ' + event.url);
+                        }
+
+                        function iabLoadStop(event) {
+                            //alert(event.type + ' - ' + event.url);
+                        }
+                       
+                        function iabClose(event) 
+                       {
+                            //alert(event.type);
+                            iabRef.removeEventListener('loadstart', iabLoadStart);
+                            iabRef.removeEventListener('loadstop', iabLoadStop);
+                            iabRef.removeEventListener('exit', iabClose);
+                            window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                        }
+
+                        // Cordova is ready
+                        //
+                        function onDeviceReady() 
+                       {
+                            iabRef = window.open(data.d, '_blank', 'location=yes');
+                            iabRef.addEventListener('loadstart', iabLoadStart);
+                            iabRef.addEventListener('loadstop', iabLoadStop);
+                            iabRef.addEventListener('exit', iabClose);
+                        }               
                    }
                 }        
                else
@@ -271,14 +291,33 @@ function Confirmcomission()
             else
             {
                 console.log(data.d);
-                // window.open(data.d);
-                var isPayment = window.open(data.d,'_system', 'location=no');
-                isPayment.addEventListener('exit', function(event) 
-                { 
-                   // window.href("driverHome.html");
-                    
-                    window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-                });                
+                 document.addEventListener("deviceready", onDeviceReady, false);
+                             
+                              function iabLoadStart(event) {
+                                     //alert(event.type + ' - ' + event.url);
+                                 }
+                                
+                                 function iabLoadStop(event) {
+                                     //alert(event.type + ' - ' + event.url);
+                                 }
+                                
+                                 function iabClose(event) {
+                                      //alert(event.type);
+                                      iabRef.removeEventListener('loadstart', iabLoadStart);
+                                      iabRef.removeEventListener('loadstop', iabLoadStop);
+                                      iabRef.removeEventListener('exit', iabClose);
+                                     window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                                     
+                                 }
+                                
+                                 // Cordova is ready
+                                 //
+                                 function onDeviceReady() {
+                                      iabRef = window.open(data.d, '_blank', 'location=yes');
+                                      iabRef.addEventListener('loadstart', iabLoadStart);
+                                      iabRef.addEventListener('loadstop', iabLoadStop);
+                                      iabRef.addEventListener('exit', iabClose);
+                                 }                 
             }
         }
         else
