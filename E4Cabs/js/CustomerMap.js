@@ -101,6 +101,8 @@ function showMap()
                   if (status == google.maps.GeocoderStatus.OK) {
                       latitude = results[0].geometry.location.lat();
                       longitude = results[0].geometry.location.lng();
+                     // alert(latitude);
+                     // alert(longitude);
                   }
                   else {
                       alert("No location found.")
@@ -134,6 +136,8 @@ function showMap()
                   if (status == google.maps.GeocoderStatus.OK) {
                       latitude = results[0].geometry.location.lat();
                       longitude = results[0].geometry.location.lng();
+                      //alert(latitude);
+                      //alert(longitude);
                   }
                   else {
                       alert("No location found!!")
