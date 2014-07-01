@@ -393,6 +393,10 @@ function SaveDataOfCurrentJob()
                                       iabRef.addEventListener('loadstart', iabLoadStart);
                                       iabRef.addEventListener('loadstop', iabLoadStop);
                                       iabRef.addEventListener('exit', iabClose);
+                                     // setTimeout(function()
+                                     //{
+             						//iabRef.close();
+        							 //}, 60000);
                                  }                
                          }
                      }
@@ -480,6 +484,10 @@ function SaveDataOfCurrentJob()
                                       iabRef.addEventListener('loadstart', iabLoadStart);
                                       iabRef.addEventListener('loadstop', iabLoadStop);
                                       iabRef.addEventListener('exit', iabClose);
+                                     // setTimeout(function()
+                                     //{
+             						//iabRef.close();
+        							 //}, 60000);
                                  }
                              
                                              

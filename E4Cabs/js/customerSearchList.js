@@ -282,7 +282,8 @@ function showRatingBoxLaterpast(driverImgUrl, driverID)
           // alert(data.d);
             $('#feedback-content').empty();
               ratingcont = data.d.length;
-            
+             if(ratingcont > 0)
+            {
                  var table2 = '<table width="99%" style="border-collapse:collapse;margin-top:0px">';
                     
                                 table2 += '<thead class="thead-grid">';
@@ -351,6 +352,15 @@ function showRatingBoxLaterpast(driverImgUrl, driverID)
                     }
                  
                     table2 += '</table>';
+                }
+            else
+            {
+                //var table2 = '<table width="99%" style="border-collapse:collapse;">';
+               	 table2 += '<table width="99%" style="border-collapse:collapse;">';
+                    table2 += '<tr><td style="width:80%">No Feedback available.';
+                    table2 += '</td></tr>';
+                    table2 += '</table>'; 
+            }
                 
                 //$('#feedback-content').append(table1);
                 $('#feedback-content').append(table2);

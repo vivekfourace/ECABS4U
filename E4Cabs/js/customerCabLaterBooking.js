@@ -307,7 +307,8 @@ function showRatingBoxLaterpast(driverImgUrl, driverID)
                     table1 += '</table>';
                 }
                 else{
-                    var table1 = '<table width="99%" style="border-collapse:collapse;">';
+                    //var table1 = '<table width="99%" style="border-collapse:collapse;">';
+                    table1 += '<table width="99%" style="border-collapse:collapse;">';
                     table1 += '<tr><td style="width:80%">No Feedback available.';
                     table1 += '</td></tr>';
                     table1 += '</table>';
@@ -339,7 +340,8 @@ function showRatingBoxLaterPresent(driverID)
              ratingcont = data.d.length;
                 //var data2=data.d[0]["StartDate"];
            // alert(data2);
-                
+                if(ratingcont > 0)
+            {
                     var table2 = '<table width="99%" style="border-collapse:collapse;margin-top:0px">';
                     
                                 table2 += '<thead class="thead-grid">';
@@ -410,7 +412,14 @@ function showRatingBoxLaterPresent(driverID)
                     }
                     
                     table2 += '</table>';
-               
+               }
+            else
+            {
+              var table2 = '<table width="99%" style="border-collapse:collapse;">';
+                    table2 += '<tr><td style="width:80%">No Feedback available.';
+                    table2 += '</td></tr>';
+                    table2 += '</table>';  
+            }
                 
                // $('#feedback-content').append(table1);
                $('#feedback-content').append(table2);

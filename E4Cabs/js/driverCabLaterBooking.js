@@ -123,50 +123,56 @@ function AcceptJob(jobno, jobfare)
                 contentType: "application/json; charset=utf-8",
                 success: function (data) 
                 {
-                    if(data.d !== "")
+                    if(data.d  === "true")
                 {
-                   console.log(data.d);
-                   var returnvalue = data.d;
-                   if (returnvalue.match(/"Error:"/g) > 0)
-                   {
-                   	alert(returnvalue);
-                   }
-                   else
-                   {
-                       console.log(data.d);
-                       document.addEventListener("deviceready", onDeviceReady, false);
-                         function iabLoadStart(event) {
-                            //alert(event.type + ' - ' + event.url);
-                        }
-
-                        function iabLoadStop(event) {
-                            //alert(event.type + ' - ' + event.url);
-                        }
-                       
-                        function iabClose(event) 
-                       {
-                            //alert(event.type);
-                            iabRef.removeEventListener('loadstart', iabLoadStart);
-                            iabRef.removeEventListener('loadstop', iabLoadStop);
-                            iabRef.removeEventListener('exit', iabClose);
-                            window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-                        }
-
-                        // Cordova is ready
-                        //
-                        function onDeviceReady() 
-                       {
-                            iabRef = window.open(data.d, '_blank', 'location=yes');
-                            iabRef.addEventListener('loadstart', iabLoadStart);
-                            iabRef.addEventListener('loadstop', iabLoadStop);
-                            iabRef.addEventListener('exit', iabClose);
-                        }               
-                   }
+                   alert('Job booked successfully.');
+                    window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+// console.log(data.d);
+// var returnvalue = data.d;
+// if (returnvalue.match(/"Error:"/g) > 0)
+// {
+// 	alert(returnvalue);
+// }
+// else
+// {
+//     console.log(data.d);
+//     document.addEventListener("deviceready", onDeviceReady, false);
+//       function iabLoadStart(event) {
+//          //alert(event.type + ' - ' + event.url);
+//      }
+//
+//      function iabLoadStop(event) {
+//          //alert(event.type + ' - ' + event.url);
+//      }
+//     
+//      function iabClose(event) 
+//     {
+//          //alert(event.type);
+//          iabRef.removeEventListener('loadstart', iabLoadStart);
+//          iabRef.removeEventListener('loadstop', iabLoadStop);
+//          iabRef.removeEventListener('exit', iabClose);
+//          window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+//      }
+//
+//      // Cordova is ready
+//      //
+//      function onDeviceReady() 
+//     {
+//          iabRef = window.open(data.d, '_blank', 'location=yes');
+//          iabRef.addEventListener('loadstart', iabLoadStart);
+//          iabRef.addEventListener('loadstop', iabLoadStop);
+//          iabRef.addEventListener('exit', iabClose);
+//         // setTimeout(function()
+//         //{
+//		  //iabRef.close();
+//	   //}, 60000);
+//      }               
+// }
                 }        
-               else
-         	 {
-         	  alert("Unable to do payment. Please try again.");
-         	 }
+              // else
+         	// {
+         	//  alert("Unable to do payment. Please try again.");
+         	// }
                     //if(data.d === "true")
                    // {
                     //    //jAlert('Job booked successfully.','Success');
@@ -311,12 +317,16 @@ function Confirmcomission()
                                  }
                                 
                                  // Cordova is ready
-                                 //
+                                
                                  function onDeviceReady() {
                                       iabRef = window.open(data.d, '_blank', 'location=yes');
                                       iabRef.addEventListener('loadstart', iabLoadStart);
                                       iabRef.addEventListener('loadstop', iabLoadStop);
                                       iabRef.addEventListener('exit', iabClose);
+                                     // setTimeout(function()
+                                    //{
+             						//iabRef.close();
+        							 //}, 60000);
                                  }                 
             }
         }
