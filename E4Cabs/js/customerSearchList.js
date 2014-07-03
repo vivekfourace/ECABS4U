@@ -355,8 +355,8 @@ function showRatingBoxLaterpast(driverImgUrl, driverID)
                 }
             else
             {
-                //var table2 = '<table width="99%" style="border-collapse:collapse;">';
-               	 table2 += '<table width="99%" style="border-collapse:collapse;">';
+                var table2 = '<table width="99%" style="border-collapse:collapse;">';
+               	 //table2 += '<table width="99%" style="border-collapse:collapse;">';
                     table2 += '<tr><td style="width:80%">No Feedback available.';
                     table2 += '</td></tr>';
                     table2 += '</table>'; 

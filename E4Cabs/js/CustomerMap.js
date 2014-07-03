@@ -75,7 +75,8 @@ function showMap()
         console.log("ArrayList = "+arrLoc.length);    
         for (var i = 0; i < arrLoc.length; i++)
         {
-            if (arrLoc[i] != "") {
+            if (arrLoc[i] != "") 
+            {
                 waypts.push({
                     location: arrLoc[i],
                     stopover: true
