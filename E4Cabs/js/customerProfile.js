@@ -81,7 +81,29 @@ function UpdateProfile()
         //alert("Please enter your name.");
         return false;
     }
+    var phoneno2 =/^\d{11}$/;
     
+    if(phoneno.length > 0)
+         {
+                    if(phoneno2.test(phoneno))
+                        {
+                            
+                        }
+                        else
+                    {
+                         jAlert('Please enter a valid Mobile number.', 'ECabs4U-Alert');
+                           //alert("Please enter contact number.");
+                             return false;
+        
+                           
+                    }
+         }
+        else if(phoneno.length == 0)
+         {
+                           jAlert('Please enter contact number.', 'ECabs4U-Alert');
+                           //alert("Please enter contact number.");
+                             return false;
+         }
     if(phoneno.length === 0)
     {
         jAlert('Please enter contact number.', 'ECabs4U-Alert');

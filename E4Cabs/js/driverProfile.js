@@ -165,18 +165,19 @@ function UpdateProfile()
                      $('#txtLocation2').focus();                     
                     return false;
          }
-     if(phoneno.length > 0)
+    if(phoneno.length > 0)
          {
                     if(phonenoval.test(phoneno))
                         {
-                            $('#lblMsg').text(" ");
+                            
                         }
                         else
                     {
-                        jAlert('Please enter address line2.', 'ECabs4U-Alert');
-                          // alert("Please enter a valid contact number.");
-                            $('#txtMobileno').focus();
-                            return false;
+                         jAlert('Please enter a valid Mobile number.', 'ECabs4U-Alert');
+                           //alert("Please enter contact number.");
+                             return false;
+        
+                           
                     }
          }
         else if(phoneno.length == 0)
