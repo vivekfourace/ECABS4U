@@ -50,7 +50,7 @@ $(document).ready(function ()
  {
         if (navigator.geolocation)
         {
-            //alert('geolocation');
+            alert('geolocation');
                 navigator.geolocation.getCurrentPosition(function (position) {
                 var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
                 var geocoder = new google.maps.Geocoder();

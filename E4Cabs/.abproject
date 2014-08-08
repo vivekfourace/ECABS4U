@@ -37,7 +37,7 @@
     "bluetooth-peripheral"
   ],
   "AndroidVersionCode": "1",
-  "FrameworkVersion": "3.2.0",
+  "FrameworkVersion": "3.5.0",
   "CorePlugins": [
     "org.apache.cordova.camera",
     "org.apache.cordova.contacts",
@@ -51,7 +51,7 @@
     "org.apache.cordova.dialogs",
     "com.phonegap.plugins.PushPlugin",
     "org.apache.cordova.splashscreen",
-    "com.telerik.Cordova-MobileTestingExtension",
+    "com.telerik.mobiletesting",
     "org.apache.cordova.vibration"
   ],
   "DisplayName": "",

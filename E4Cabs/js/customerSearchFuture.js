@@ -425,10 +425,19 @@ function availabledriverLater() {
                     if(data.d[0] != "Error")
                     {
                         //jAlert('Booking in progress. Please check later', 'ECabs4U-Feedback');
-                        alert('Booking in progress. Please check later.','alert');
-                     
+                        //alert('Booking in progress. Please check later.','alert');
+                     navigator.notification.alert(
+				    "Booking in progress. Please check later.",
+  				  searchFuture, // Specify a function to be called 
+ 					   'Alert',
+ 						"OK"
+						);
+				    function searchFuture()
+                        {
+    			     window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+						}
                        
-                        window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                        
                     }
                     else
                     {
@@ -469,9 +478,19 @@ function availabledriverLater() {
                 success: function (data) {
                     if(data.d[0] != "Error")
                     {
-                       // jAlert('Booking in progress. Please check later', 'ECabs4U-Feedback');
-                        alert('Booking in progress. Please check later.');
-                        window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                        // jAlert('Booking in progress. Please check later', 'ECabs4U-Feedback');
+                        //alert('Booking in progress. Please check later.');
+                        // window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                         navigator.notification.alert(
+				   	 "Booking in progress. Please check later.",
+  				 	  searchFuture, // Specify a function to be called 
+ 					   'Alert',
+ 						"OK"
+						);
+				function searchFuture()
+                        {
+    			window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+						}
                     }
                     else
                     {

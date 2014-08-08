@@ -690,11 +690,25 @@ function calOk()
                 success: function (data) {
                     if(data.d === true)
                     {*/
-                        alert("Cab booked successfully.");
+                        //alert("Cab booked successfully.");
+    ////////////////////////////////////////////////////////////////////
+                        $('#imgLoader').hide();
+                       navigator.notification.alert(
+				   	 "Cab booked successfully.",
+  				 	  cabBookedSuccess, // Specify a function to be called 
+ 					   'Alert',
+ 						"OK"
+						);
+    
+				function cabBookedSuccess()
+                        {
+    			window.location = 'CustomerHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId; 
+						}
+    /////////////////////////////////////////////////////////////////////////
                        // jAlert('Cab booked successfully.', 'jquery basic alert box');
-                         $('#imgLoader').hide();
                         
-                        window.location = 'CustomerHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;    
+                        
+                           
                         
                        // alert("Cab booked successfully.");
                         //window.alert('Cab booked successfully.','Success');
@@ -731,15 +745,34 @@ function HideDisplay()
 
 function CancelJobRequest()
 {
-         var result = confirm("Do you really want to cancel this job?");    
-         if (result===true) {
-           var cause = "Cancelled";
-           DeleteJob(cause);
-         }
-         else
-         {
-          return false;    
-         }
+     navigator.notification.confirm(
+    "Do you really want to cancel this job?",
+    onClickCancel,
+    "Confirm",
+    "Yes,No" 
+    );
+         //var result = confirm("Do you really want to cancel this job?");    
+         //if (result===true) {
+         //  var cause = "Cancelled";
+         //  DeleteJob(cause);
+         //}
+         //else
+         //{
+         // return false;    
+         //}
+}
+function onClickCancel(buttonIndex)
+{
+    if(buttonIndex === 2)
+    {
+        return false;
+    }
+    else if(buttonIndex === 1)
+    {
+         var cause = "Cancelled";
+          DeleteJob(cause);
+      
+    }
 }
 
 function ReInitiateJob()
@@ -786,8 +819,20 @@ function DeleteJob(cause)
             contentType: "application/json; charset=utf-8",
             success: function(data)
                 {
-                    alert(data.d);
-                    window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+                    //alert(data.d);
+                    //window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+                    
+                    navigator.notification.alert(
+				   	 data.d,
+  				 	  cabCancledSuccess, // Specify a function to be called 
+ 					   'Alert',
+ 						"OK"
+						);
+    
+				function cabCancledSuccess()
+                        {
+    			          window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+						}
                 },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
             }

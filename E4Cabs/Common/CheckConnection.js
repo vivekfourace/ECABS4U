@@ -6,9 +6,18 @@ function checkConnection() {
 
     if(states[networkState] === 'No network connection')
     {
-        alert("No network connection found.");
-        $('#txtPassword').val("");
+     navigator.notification.alert(
+    "No network connection found.",
+    callBackFunctionB, // Specify a function to be called 
+    'Alert',
+    "OK"
+);
+function callBackFunctionB(){
+    $('#txtPassword').val("");
         return false;
+}
+        //alert("No network connection found.");
+        
     }
     else
     {
