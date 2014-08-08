@@ -678,7 +678,9 @@ function calOk()
 {    
             $('#imgLoader').hide();
             $('#popup_box').hide();
-            $('#transparent_div').hide();             
+            $('#transparent_div').hide(); 
+    // $('#divDealConfirmed').hide(); 
+    
            /*  var requestId = $('#lblconfirmjob').text();
             var driverId = $('#lbldriverId').text();
            $.ajax({
@@ -690,20 +692,20 @@ function calOk()
                 success: function (data) {
                     if(data.d === true)
                     {*/
-                        //alert("Cab booked successfully.");
+                        alert("Cab booked successfully.");
     ////////////////////////////////////////////////////////////////////
-                        $('#imgLoader').hide();
-                       navigator.notification.alert(
-				   	 "Cab booked successfully.",
-  				 	  cabBookedSuccess, // Specify a function to be called 
- 					   'Alert',
- 						"OK"
-						);
+                       // $('#imgLoader').hide();
+                      // navigator.notification.alert(
+				   	// "Cab booked successfully.",
+  				 	//  cabBookedSuccess, // Specify a function to be called 
+ 					 //  'Alert',
+ 					//	"OK"
+					//	);
     
-				function cabBookedSuccess()
-                        {
+				//function cabBookedSuccess()
+                      //  {
     			window.location = 'CustomerHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId; 
-						}
+						//}
     /////////////////////////////////////////////////////////////////////////
                        // jAlert('Cab booked successfully.', 'jquery basic alert box');
                         

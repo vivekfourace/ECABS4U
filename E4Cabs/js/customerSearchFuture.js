@@ -429,7 +429,7 @@ function availabledriverLater() {
                      navigator.notification.alert(
 				    "Booking in progress. Please check later.",
   				  searchFuture, // Specify a function to be called 
- 					   'Alert',
+ 					   'ECABS4U',
  						"OK"
 						);
 				    function searchFuture()
@@ -441,8 +441,19 @@ function availabledriverLater() {
                     }
                     else
                     {
-                        console.log(data.d[1]);
-                        alert(data.d[1]);
+                        //console.log(data.d[1]);
+                       // alert(data.d[1]);
+                        
+                        navigator.notification.alert(
+				        data.d[1],
+  				      searchError, // Specify a function to be called 
+ 					   'ECABS4U',
+ 						"OK"
+						);
+                        function searchError()
+                        {
+    			     
+						}
                     }                    
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -484,7 +495,7 @@ function availabledriverLater() {
                          navigator.notification.alert(
 				   	 "Booking in progress. Please check later.",
   				 	  searchFuture, // Specify a function to be called 
- 					   'Alert',
+ 					   'ECABS4U',
  						"OK"
 						);
 				function searchFuture()
@@ -494,8 +505,20 @@ function availabledriverLater() {
                     }
                     else
                     {
-                        console.log(data.d[1]);
-                        alert(data.d[1]);
+                        //console.log(data.d[1]);
+                        //alert(data.d[1]);
+                        
+                        
+                        navigator.notification.alert(
+				        data.d[1],
+  				      searchError, // Specify a function to be called 
+ 					   'ECABS4U',
+ 						"OK"
+						);
+                        function searchError()
+                        {
+    			     
+						}
                     }
                     
                 },

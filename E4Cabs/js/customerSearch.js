@@ -385,8 +385,19 @@ function availabledriver() {
                     }
                     else
                     {
-                        console.log(data.d[1]);
-                        alert(data.d[1]);
+                        //console.log(data.d[1]);
+                        //alert("in");
+                       // alert(data.d[1]);
+                        navigator.notification.alert(
+				        data.d[1],
+  				    searchError, // Specify a function to be called 
+ 					   'ECABS4U',
+ 						"OK"
+						);
+                        function searchError()
+                        {
+    			     
+						}
                     }
                 },                
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -432,9 +443,19 @@ function availabledriver() {
                     }
                     else
                     {
-                        console.log(data.d[1]);
-
-                        alert(data.d[1]);
+                        //console.log(data.d[1]);
+                       //alert("in");
+                        //alert(data.d[1]);
+                        navigator.notification.alert(
+				        data.d[1],
+  				      searchError, // Specify a function to be called 
+ 					   'ECABS4U',
+ 						"OK"
+						);
+                        function searchError()
+                        {
+    			     
+						}
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown){
