@@ -150,7 +150,8 @@ function HireDriver(jobID, driverid)
                    contentType: "application/json; charset=utf-8",
                     success: function(data){
                        // $('#check').hide();
-                        alert('Booking in progress. Please check later.');
+                        //alert('Booking in progress. Please check later.');
+                        alert("Cab selected. Waiting for your driver to confirm he is en route to the pick-up point.");
                         window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) 

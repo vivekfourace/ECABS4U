@@ -13,7 +13,7 @@ function showConfirm(param) {
     //alert(param);
     //var later = 2;
     if(param === now)
-    {
+    {   
         navigator.notification.confirm(
         'You have got a new "Cab now" job request. Do you want to see it?',
          onConfirm,

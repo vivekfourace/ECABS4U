@@ -5,6 +5,7 @@ var relatedId = QString.split("=")[3].split("&")[0];
 
 var timereOut;
         function SubmitDeal() {
+            $('#divJobDetail').hide();
             $("#divDealload").show();
             $('#transparent_div').show();
             
@@ -96,7 +97,7 @@ var timereOut;
                         deleteDriver();
                     }
                 });
-            }, 10000);
+            }, 30000);
 
             function DestroyMe() {
                 window.clearInterval(timereOut);
@@ -155,6 +156,97 @@ var timereOut;
            
            
       }
+
+
+//Full Job Detail
+
+function showFullJobDetail()
+{  $("#divDeal").hide();
+     
+     
+     var data = $('#lbljobno').text();
+   
+         //var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/FullJobDetail";
+     
+                //$.ajax(url, {
+                 $.ajax({
+                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/FullJobDetail",
+                   type:"POST",
+                   datatype:"json",
+                  data: "{'JobNo':'" + data + "','driverId':'" + relatedId + "'}",
+                   contentType: "application/json; charset=utf-8",
+                    success: showDetailFull,
+                    error: function (XMLHttpRequest, textStatus, errorThrown) 
+                    {                        
+                    }
+                });    
+    
+}
+
+function showDetailFull(data)
+{
+    $('#lblJobNo').text(": "+data.d[0]);
+    $('#lblFrom').text(": "+data.d[1]);
+    $('#lblTo').text(": "+data.d[2]);
+    $('#lblDistance').text(": "+data.d[3]);
+    $('#lbltDate').text(": "+data.d[4]);
+    $('#lblTime').text(": "+data.d[5]);
+    $('#lblFare').html(": "+'&pound'+data.d[6]);
+    $('#lblCustomerName').text(": "+data.d[8]+" "+ data.d[9]);
+    $('#lblreturnfrom').text(": "+data.d[10]);
+    $('#lblreturnto').text(": "+data.d[11]);
+    $('#lblNoOfPassenger').text(": "+data.d[12]);
+    $('#lblWheelchair').text(":"+data.d[13]);
+    $('#lblLargeCase').text(":"+data.d[14]);
+    $('#lblSmallCase').text(":"+data.d[15]);
+    $('#lblSpecialReq').text(":"+data.d[16]);
+    $('#lblChildBoosters').text(":"+data.d[17]);
+    $('#lblChildSeats').text(":"+data.d[18]);
+  
+    
+    
+    // if(data.d[10]!== "No Return")
+    //{
+    //    $('#rtnfrom').show();
+    //    $('#lblreturnfrom').text(": "+data.d[10]);
+    //}
+    //else
+    //{
+    //    $('#rtnfrom').hide();
+    //   
+    //}
+    // if(data.d[11]!== "No Return")
+    //{
+    //    $('#rtnto').show();
+    //    $('#lblreturnto').text(": "+data.d[11]);
+    //}
+    //else
+    //{
+    //   //$('#rtnto').hide();
+    //    $('#rtnto').hide();
+    //}
+  
+    //$('#lblCustomerContact').text(data.d[7]);
+    //$('#lblCustomerContact').css("font-weight", 900);   
+   
+   
+     $('#popup_box22').show();
+     $('#transparent_div').show();
+     $('#divJobDetail').show();
+    
+}
+
+
+function Cancel2()
+{
+    
+    $('#popup_box22').fadeOut("fast");
+    $('#divJobDetail').hide();
+     $('#transparent_div').hide();
+SubmitDeal();
+}
+
+
 
         function bidSubmit() {
             var isCabnow = $('#hiddenIsCabnow').val();

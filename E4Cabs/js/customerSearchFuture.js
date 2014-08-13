@@ -322,8 +322,8 @@ function availabledriverLater() {
        var endD = $.datepicker.parseDate('dd/mm/yy', $('#pickDate').val());
        var retun = $.datepicker.parseDate('dd/mm/yy', $('#datepickers').val());
     if (begD > endD) {
-            alert('Please Enter correct Pick Up Date.Pick Up Date should be greater than or Equal to Current Date.');
-        
+            //alert('Please Enter correct Pick Up Date.Pick Up Date should be greater than or Equal to Current Date.');
+        alert("Please select a date/time in the future.");
            // $('#BeginDate').focus();
             return false;
     }   
@@ -368,7 +368,8 @@ function availabledriverLater() {
         
         if(pickdate2>retundate2)
         {
-        alert("Please Enter correct Return  Date.Return Date should be greater than or Equal to Pick Up Date.");
+        //alert("Please Enter correct Return  Date.Return Date should be greater than or Equal to Pick Up Date.");
+            alert("Please select a date/time in the future.");
         return false; 
          }
         else if(pickdateP == returnDate)

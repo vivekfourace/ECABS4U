@@ -329,7 +329,8 @@ function availabledriver() {
     
         if(pickdate2>retundate2)
     {
-        alert("Please Enter correct Return date,Return date should be greater than or Equal to Pick Up date.");
+       // alert("Please Enter correct Return date,Return date should be greater than or Equal to Pick Up date.");
+        alert("Please select a date/time in the future.");
         return false; 
     }
        else if(pickdate==returnDate)
