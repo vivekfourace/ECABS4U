@@ -100,7 +100,15 @@ function getData(data) {
         window.clearInterval(timer);
         window.clearInterval(reinitiateCounter);
         DisplayDriversData();
-    }    
+    } 
+    else{
+        //alert(count);
+        //SearchDriverAgain();
+        //$('#msg').empty().append("");
+         
+        //alert("No driver response found.");
+       // window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+    }
     function DisplayDriversData()
     {   
         window.clearInterval(timer);
@@ -602,12 +610,13 @@ function getResponseFromDriver(data)
             url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CheckdealResponse",
             type: "POST",
             dataType: "Json",
-            data: "{'requestID':'" + requestID + "'}",
+            data: "{'driverId':'" + dId + "','requestId':'" + requestID + "'}",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-
+				 console.log(data.d);
                 var getBooked = data.d[2];
-                if (getBooked === "True") {
+                if (getBooked === "True") 
+                {
                     DisableHiremeBtns()
                     $.ajax({
                         url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetConfirmData",
@@ -641,13 +650,22 @@ function getResponseFromDriver(data)
                            console.log("in GetConfirmData error");}
                     });
                 }
+                else if (getBooked === "False") 
+                {
+                     //  SearchDriverAgain();
+                 getResponse();
+                    $('#load').hide();                    
+                    $('#statusMessage').hide();
+                    $('#divDeal').hide();
+                    $('#loading').hide();
+                    $('#transparent_div').hide();
+                }
                 else {
                     $('#load').hide();                    
                     $('#statusMessage').hide();
                     $('#divDeal').hide();
                     $('#loading').show();
                     $('#transparent_div').show();
-                    
                 }
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
