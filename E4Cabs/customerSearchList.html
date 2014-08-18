@@ -85,7 +85,10 @@
                     </tr>
                 </table>
          </div>
-           <div id="msg" style="padding-top:70px"></div>        
+           <div id="msg" style="padding-top:70px"></div> 
+        
+        <div style="padding-top:50%; color:#0000FF;font-size:20px;text-align:center;display:none" id="bookingmsg">No more driver bid found,Please search again.<a href="#" style="color:#0019B9" onclick="backtosearch()">Click here</a> to go search page.</div>
+        
              <div style="width:100%;height:75%;" id="divDetails">
                 <div id="popup_box">
                     <div id="divselect" style="display:none;width:100%;">
@@ -188,7 +191,46 @@
                                  </td>
                              </tr>
                         </table>
-                    </div>                   
+                    </div> 
+                    
+                    <div id="divspecHireClick" style="display:none;">
+                        <table style="width:100%; border-collapse:collapse; background-color:#FFFFFF;">
+                            <tr>
+                                  <td class="popup_header" colspan="2">
+                                      <strong style="padding-left:5px">Drivers special circumstances</strong>
+                                  </td>
+                             </tr>
+                            <tr >
+                                <td style="width:100%" colspan="2">
+                                    <label id="txtSpecialReq" style="width:90%;height:60px;color:black"></label>
+                                    <br>
+                                    <br>
+                                </td>
+                            </tr>
+                             
+                            <tr>
+                            <td class="popup_headertext" style="width:100%;" colspan="2">
+                                <hr>
+                                <strong style="padding-left:5px;width:100%;text-align:left">I am happy to accept these special circumstances.</strong>
+                            </td>
+                        </tr>
+                           
+                            
+                            <tr class="popup_footer">
+                                <!--  <td  class="popup_footer" style="width:100%;text-align:center" colspan="2">
+                                    <input type="button" class="ok" value="Close" style="cursor: pointer;text-align:center;-webkit-appearance:none;-moz-appearance:none;" onclick="specClose()"/>-->
+                                     <!--<input type="button" class="ok" value="Proceed to hire" id="btnProceed" style="cursor: pointer;text-align:center;display:none" onclick="ProceedToHire();"/>-->
+                                      <td style="width:50%">
+                                <input type="button" class="ok" value="Hire Me" style="width:100%;-webkit-appearance:none;-moz-appearance:none;" onclick="HireDriver()" />
+                                
+                            </td>
+                            <td style="width:50%">
+                                <input type="button" class="ok" value="Reject Bid" style="width:100%;-webkit-appearance:none;-moz-appearance:none;" onclick="RejectDriver()" />
+                            </td>
+                                 
+                             </tr>
+                        </table>
+                    </div>
                     
                     <div id="divDealConfirmed" style="display:none">
                         <table style="width:100%; background-color:#FFFFFF; border-collapse:collapse;">

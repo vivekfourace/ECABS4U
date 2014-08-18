@@ -99,15 +99,19 @@ function getData(data) {
     {
         window.clearInterval(timer);
         window.clearInterval(reinitiateCounter);
+        $('#bookingmsg').hide();
+        $('#msg').show();
         DisplayDriversData();
     } 
     else{
-        //alert(count);
+       
         //SearchDriverAgain();
-        //$('#msg').empty().append("");
+       $('#msg').empty().append("");
+        //$('#msg').hide();
+        $('#bookingmsg').show();
          
         //alert("No driver response found.");
-       // window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+       //window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId;
     }
     function DisplayDriversData()
     {   
@@ -497,6 +501,7 @@ function showExpiry() {
     $('#lblexp').text();
     $('#divDealConfirmed').hide();
     $('#divspec').hide();
+    $('#divspecHireClick').hide();
 }
 function showBid() {
     $('#transparent_div').show();
@@ -509,6 +514,7 @@ function showBid() {
     $('#lblpick').text();
     $('#divDealConfirmed').hide();
     $('#divspec').hide();
+    $('#divspecHireClick').hide();
 }
 function closeExpiry() {
     $('#transparent_div').hide();
@@ -527,6 +533,7 @@ function SpecShow(a) {
     $('#divspec').show();
     $('#popupBoxClose').show();
     $('#divDealConfirmed').hide();
+     $('#divspecHireClick').hide();
     $('#txtothereSpecialReq').text(a);
     id = window.setInterval(getResponse, 10000);
 }
@@ -534,6 +541,58 @@ function specClose() {
     $('#transparent_div').hide();
     $('#popup_box').hide();
     $('#divspec').hide();
+}
+
+function SpecialReqShow(specreq)
+{
+    $('#transparent_div').show();
+    $('#popup_box').show();
+    $('#divspecHireClick').show();
+    $('#popupBoxClose').show();
+    $('#divspec').hide();
+    $('#divDealConfirmed').hide();
+    $('#txtSpecialReq').text(specreq);
+    id = window.setInterval(getResponse, 10000);
+    
+}
+
+function HireDriver() {
+    $('#transparent_div').hide();
+    $('#popup_box').hide();
+    $('#divspecHireClick').hide();
+     DisableHiremeBtns();
+     window.clearInterval(id);
+     HireCurrentDriver();
+    
+}
+
+function RejectDriver()
+{
+     $('#transparent_div').hide();
+    $('#popup_box').hide();
+    $('#divspecHireClick').hide();
+     var status = "Rejected";
+    var driverId = dId;
+    var requestId = reqId;
+            $.ajax({
+                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RejectResponse",
+                type: "POST",
+                dataType: "Json",
+                data: "{'userID':'" + driverId + "','reqid':'" + requestId + "','status':'" + status + "'}",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if(data.d === true)
+                    {
+                      //console.log('rej')
+                     // window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+                        getResponse();
+                    }
+                    else
+                    {
+                        console.log('Exception in RejectResponse');
+                    }
+                },
+            });
 }
 
 var dId, reqId, specS;
@@ -553,28 +612,29 @@ function Hireme(driID, reqID,spec)
     else
     {   
         window.clearInterval(id);
-        navigator.notification.confirm(
-        "Have you read special circumstance?",
-         onConfirm,
-        'Confirm',
-        'Yes,No'
-     );
+        //navigator.notification.confirm(
+        //"Have you read special circumstance?",
+        // onConfirm,
+        //'Confirm',
+        //'Yes,No'
+       //    );
+        SpecialReqShow(specS);
     }
   }
 
-function onConfirm(buttonIndex)
-{
-    if(buttonIndex === 2)
-    {        
-        SpecShow(specS);     
-    }
-    else if(buttonIndex === 1)
-    {
-       DisableHiremeBtns();
-       window.clearInterval(id);
-       HireCurrentDriver();
-    }
-}
+//function onConfirm(buttonIndex)
+//{
+//    if(buttonIndex === 2)
+//    {        
+//        SpecShow(specS);     
+//    }
+//    else if(buttonIndex === 1)
+//    {
+//       DisableHiremeBtns();
+//       window.clearInterval(id);
+//       HireCurrentDriver();
+//    }
+//}
 
 function HireCurrentDriver()
 {
@@ -653,12 +713,13 @@ function getResponseFromDriver(data)
                 else if (getBooked === "False") 
                 {
                      //  SearchDriverAgain();
-                 getResponse();
+                     getResponse();
                     $('#load').hide();                    
                     $('#statusMessage').hide();
                     $('#divDeal').hide();
                     $('#loading').hide();
                     $('#transparent_div').hide();
+                    //alert("search again")
                 }
                 else {
                     $('#load').hide();                    

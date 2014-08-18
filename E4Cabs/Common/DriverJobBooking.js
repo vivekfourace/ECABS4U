@@ -43,6 +43,7 @@ var timereOut;
                                         $("#divDealload").hide();
                                         $('#popup_box22').show();
                                         $('#divDeal').show();
+                                        $('#divJobDetail').hide();
                                         $('#lbldealjob').text(data.d[0]);
                                         $('#lbldealfrom').text(data.d[1]);
                                         $('#lbldealto').text(data.d[2]);
@@ -188,13 +189,14 @@ function showDetailFull(data)
     $('#lblJobNo').text(": "+data.d[0]);
     $('#lblFrom').text(": "+data.d[1]);
     $('#lblTo').text(": "+data.d[2]);
-    $('#lblDistance').text(": "+data.d[3]);
+    $('#lblDistancepopup').text(": "+data.d[3]);
+    
     $('#lbltDate').text(": "+data.d[4]);
     $('#lblTime').text(": "+data.d[5]);
     $('#lblFare').html(": "+'&pound'+data.d[6]);
     $('#lblCustomerName').text(": "+data.d[8]+" "+ data.d[9]);
-    $('#lblreturnfrom').text(": "+data.d[10]);
-    $('#lblreturnto').text(": "+data.d[11]);
+   // $('#lblreturnfrom2').text(": "+data.d[10]);
+    //$('#lblreturnto2').text(": "+data.d[11]);
     $('#lblNoOfPassenger').text(": "+data.d[12]);
     $('#lblWheelchair').text(":"+data.d[13]);
     $('#lblLargeCase').text(":"+data.d[14]);
@@ -203,28 +205,23 @@ function showDetailFull(data)
     $('#lblChildBoosters').text(":"+data.d[17]);
     $('#lblChildSeats').text(":"+data.d[18]);
   
+    //alert(data.d[16]);
+   // alert(data.d[10]);
+    //alert(data.d[11]);
+    if(data.d[7]=== "True")
+    {
+        $('#rtnfrom2').show();
+        $('#lblreturnfrom2').text(": "+data.d[10]);
+        $('#rtnto2').show();
+        $('#lblreturnto2').text(": "+data.d[11]);
+   }
+    else
+    {
+        $('#rtnfrom2').hide();
+       $('#rtnto2').hide();
+    }
     
     
-    // if(data.d[10]!== "No Return")
-    //{
-    //    $('#rtnfrom').show();
-    //    $('#lblreturnfrom').text(": "+data.d[10]);
-    //}
-    //else
-    //{
-    //    $('#rtnfrom').hide();
-    //   
-    //}
-    // if(data.d[11]!== "No Return")
-    //{
-    //    $('#rtnto').show();
-    //    $('#lblreturnto').text(": "+data.d[11]);
-    //}
-    //else
-    //{
-    //   //$('#rtnto').hide();
-    //    $('#rtnto').hide();
-    //}
   
     //$('#lblCustomerContact').text(data.d[7]);
     //$('#lblCustomerContact').css("font-weight", 900);   
