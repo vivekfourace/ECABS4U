@@ -20,7 +20,17 @@ $(document).ready(function ()
                         }
                     }
                     else {
-                        alert("No location found.")
+                        //alert("No location found.");
+                        navigator.notification.alert(
+				        "No location found.",
+  				      locationNotFoundLater, // Specify a function to be called 
+ 					   'ECABS4U',
+ 						"OK"
+						);
+                        function locationNotFoundLater()
+                        {
+    			     
+						}
                     }
                 });
             });

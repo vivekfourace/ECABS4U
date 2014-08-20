@@ -153,6 +153,18 @@ function HireDriver(jobID, driverid)
                         //alert('Booking in progress. Please check later.');
                         alert("Cab selected. Waiting for your driver to confirm he is en route to the pick-up point.");
                         window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                       //   navigator.notification.alert(
+				   	// "Cab selected. Waiting for your driver to confirm he is en route to the pick-up point.",
+  				 	//  HireClick, // Specify a function to be called 
+ 					  // 'ECABS4U',
+ 				      //"OK"
+					  //);
+				      //function HireClick()
+                      //  {
+    			     //window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+					//	}
+                        
+                        
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) 
                     {
@@ -191,8 +203,18 @@ function SubmitReject()
     var abortMessage = $('#txtAbortmsg').val();
     if(!abortMessage)
     {
-        alert('Please enter your reason.');
-        return false;
+        //alert('Please enter your reason.');
+        //return false;
+        navigator.notification.alert(
+				        "Please enter your reason.",
+  				    abortLaterJob, // Specify a function to be called 
+ 					   'ECABS4U',
+ 						"OK"
+						);
+                        function abortLaterJob()
+                        {
+    			     
+						}
     }
       var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/AbortCurrentJobCustomer";
     
@@ -215,8 +237,18 @@ function SubmitReject()
                               $('#txtAbortmsg').val("");
                               $('#freezBack').hide();
                               $('#transparent_div').hide();
-                              alert("Job aborted.");
-                              window.location='bookedhistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                              //alert("Job aborted.");
+                             navigator.notification.alert(
+				       	 "Job aborted.",
+  				    	 aborted, // Specify a function to be called 
+ 					     'ECABS4U',
+ 						 "OK"
+						);
+                        function aborted()
+                        {
+    			     window.location='bookedhistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+						}
+                             // window.location='bookedhistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                          }                         
                      },
                     
@@ -274,7 +306,17 @@ function showRatingBoxLaterpast(driverImgUrl, driverID)
             $('#feedback-content').empty();
             if(data.d["0"] === null && data.d["1"] === null && data.d["2"] === null && data.d["3"] === null)
             {
-                alert('No comments found');
+               // alert('No comments found');
+                 navigator.notification.alert(
+				        "No comments found.",
+  				    commentsRequired, // Specify a function to be called 
+ 					   'ECABS4U',
+ 						"OK"
+						);
+                        function commentsRequired()
+                        {
+    			     
+						}
             }
             else
             {   
