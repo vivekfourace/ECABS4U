@@ -264,14 +264,24 @@ function SubmitReject()
                      contentType: "application/json; charset=utf-8",                     
                      success: function(data){
                          if(data.d === "true")
-                         {
+                        {
                               $('#popup_box1').fadeOut("fast");
                               $('#divAbortTask').fadeOut("fast");
                               $('#txtAbortmsg').val("");
                             // jAlert('Job cancelled.', 'ECabs4U-Abort Job');
-                              alert("Job cancelled.");
-                              window.location='CustomerHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-                         }                         
+                             // alert("Job cancelled.");
+                             // window.location='CustomerHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                             navigator.notification.alert(
+				        	"Job cancelled.",
+  				       	cancelSuccess, // Specify a function to be called 
+ 					   	'ECABS4U',
+ 							"OK"
+							);
+                        	function cancelSuccess()
+                        	{
+    			     		window.location='CustomerHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+							}
+                        }                         
                      },
                     
                      error: function (XMLHttpRequest, textStatus, errorThrown) {
