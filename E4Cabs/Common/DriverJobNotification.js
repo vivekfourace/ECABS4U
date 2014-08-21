@@ -12,8 +12,12 @@ function showConfirm(param) {
     var now = 1;
     //alert(param);
     //var later = 2;
+    //alert("Hi");
+    
+    $('#transparent_div').show();
     if(param === now)
-    {   
+    { 
+       // $("#data").css("background-color","red.");
         navigator.notification.confirm(
         'You have got a new "Cab now" job request. Do you want to see it?',
          onConfirm,
@@ -36,7 +40,8 @@ function onConfirm(buttonIndex)
     if(buttonIndex === 2)
     {
         closeRequest();
-        jobCheckTime = setInterval(Check, 10000);        
+        jobCheckTime = setInterval(Check, 10000); 
+        $('#transparent_div').hide();
     }
     else if(buttonIndex === 1)
     {

@@ -174,8 +174,10 @@ function SubmitAbort()
     if(!abortMessage)
     {
         
-        alert('Please enter a reason.');
-        return false;
+      alert('Please enter a reason.');
+      return false;
+        
+         
     }
       var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/AbortCurrentJob";
     
@@ -198,8 +200,18 @@ function SubmitAbort()
                               $('#divAbortTask').hide();
                               $('#transparent_div').hide();
                               $('#txtAbortmsg').val("");
-                              alert("Job aborted successfully.");
-                              window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                              //alert("Job aborted successfully.");
+                              //window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                             navigator.notification.alert(
+				        	"Job aborted successfully.",
+  				       	abortComplete, // Specify a function to be called 
+ 					   	'ECABS4U',
+ 							"OK"
+							);
+                        	function abortComplete()
+                        	{
+    			     		window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+							}
                          }                         
                      },
              });

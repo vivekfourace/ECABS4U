@@ -771,20 +771,20 @@ function calOk()
                 success: function (data) {
                     if(data.d === true)
                     {*/
-                        alert("Cab booked successfully.");
+                      //  alert("Cab booked successfully.");
     ////////////////////////////////////////////////////////////////////
-                       // $('#imgLoader').hide();
-                      // navigator.notification.alert(
-				   	// "Cab booked successfully.",
-  				 	//  cabBookedSuccess, // Specify a function to be called 
- 					 //  'Alert',
- 					//	"OK"
-					//	);
+                        $('#imgLoader').hide();
+                       navigator.notification.alert(
+				   	 "Cab booked successfully.",
+  				       cabBookedSuccess, // Specify a function to be called 
+ 					   'ECABS4U',
+ 						"OK"
+						);
     
-				//function cabBookedSuccess()
-                      //  {
+				function cabBookedSuccess()
+                        {
     			window.location = 'CustomerHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId; 
-						//}
+						}
     /////////////////////////////////////////////////////////////////////////
                        // jAlert('Cab booked successfully.', 'jquery basic alert box');
                         
@@ -906,7 +906,7 @@ function DeleteJob(cause)
                     navigator.notification.alert(
 				   	 data.d,
   				 	  cabCancledSuccess, // Specify a function to be called 
- 					   'Alert',
+ 					   'ECABS4U',
  						"OK"
 						);
     
