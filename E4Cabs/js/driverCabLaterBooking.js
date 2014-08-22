@@ -127,6 +127,19 @@ function AcceptJob(jobno, jobfare)
                 {
                    alert('Job booked successfully.');
                     window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                    
+                    ////////////////////////
+                           //navigator.notification.alert(
+				        	//"Job booked successfully.",
+  				       	// cabBooked, // Specify a function to be called 
+ 					   	//'ECABS4U',
+ 							// "OK"
+							// );
+                        	// function cabBooked()
+                        	// {
+    			     		//window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+							// }
+                    ////////////////////////
 // console.log(data.d);
 // var returnvalue = data.d;
 // if (returnvalue.match(/"Error:"/g) > 0)
@@ -246,11 +259,20 @@ function RejectJob(data)
                 data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
-                    
-                   // jAlert('Job rejected successfully.', 'Success');
+                 
                     
                     alert("Job rejected successfully.");
                      window.location = 'DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                    // navigator.notification.alert(
+				        	 // "Job rejected successfully.",
+  				       	// rejectByDriver, // Specify a function to be called 
+ 					   	 // 'ECABS4U',
+ 							// "OK"
+							 // );
+                        	 // function rejectByDriver()
+                        	 // {
+    			     		//  window.location = 'DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId; 
+							 // }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
 

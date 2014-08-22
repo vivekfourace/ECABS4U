@@ -72,6 +72,17 @@ function CancelJob(jobno)
         {
             alert(data.d);
             window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                       // navigator.notification.alert(
+				       // data.d,
+  				     // driverFailedJob, // Specify a function to be called 
+ 					  // 'ECABS4U',
+ 					  // "OK"
+					   //);
+                       // function driverFailedJob()
+                       // {
+    			       // window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+					   //}
+            
         },
     });
 }

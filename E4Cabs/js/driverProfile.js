@@ -153,14 +153,14 @@ function UpdateProfile()
 
      if(!address1)
        {
-           		 jAlert('Please enter address line1.', 'ECabs4U-Alert');
+           		 jAlert('Please enter address line1.', 'ECABS4U');
                     // alert("Please enter address line1.");
                      $('#txtLocation').focus();                        
                      return false;
        }
        if(!address2)
         {
-            		jAlert('Please enter address line2.', 'ECabs4U-Alert');
+            		jAlert('Please enter address line2.', 'ECABS4U');
                     //alert("Please enter address line2.");
                      $('#txtLocation2').focus();                     
                     return false;
@@ -173,7 +173,7 @@ function UpdateProfile()
                         }
                         else
                     {
-                         jAlert('Please enter a valid Mobile number.', 'ECabs4U-Alert');
+                         jAlert('Please enter a valid Mobile number.', 'ECABS4U');
                            //alert("Please enter contact number.");
                              return false;
         
@@ -182,14 +182,14 @@ function UpdateProfile()
          }
         else if(phoneno.length == 0)
          {
-               		 jAlert('Please enter contact number.', 'ECabs4U-Alert');
+               		 jAlert('Please enter contact number.', 'ECABS4U');
                           // alert("Please enter contact number.");
                            $('#txtMobileno').focus();
                            return false;
          }
     if(!postcode)
     {
-        jAlert('Please enter postcode.', 'ECabs4U-Alert');
+        jAlert('Please enter postcode.', 'ECABS4U');
         //alert('Please enter postcode.');
         $('#txtpostcode').focus();
         return false;

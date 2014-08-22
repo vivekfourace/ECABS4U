@@ -86,6 +86,20 @@ var timereOut;
                                         $('#button-table').hide();
                                         $('#transparent_div').hide();
                                         window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+                                    // navigator.notification.alert(
+				        	        // "Sorry, you have not been selected for this job.",
+  				       	       // sorryToDriver, // Specify a function to be called 
+ 					   	        // 'ECABS4U',
+ 							       // "OK"
+							        // );
+                        	        // function sorryToDriver()
+                        	       // {
+                                   //  $('#tbdetails').hide();
+                                   //  $('#button-table').hide();
+                                  //  $('#transparent_div').hide();
+    			     		     //   window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+							      // }
+                                    
                                     }
                                 },
                             });
@@ -325,6 +339,16 @@ SubmitDeal();
                         if (data.d === "true") {
                             alert('In progress. Awaiting customer response.');
                             window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+                             // navigator.notification.alert(
+				        	 // "In progress. Awaiting customer response.",
+  				       	// awaitingJob, // Specify a function to be called 
+ 					   	 // 'ECABS4U',
+ 							// "OK"
+							 // );
+                        	 // function awaitingJob()
+                        	 // {
+    			     		//   window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId; 
+							 // }
                         }
                         else if (data.d === "false") {
                             alert('Unknown error. Please try again.');
@@ -403,7 +427,19 @@ function SaveDataOfCurrentJob()
                         alert('Congratulations! We recommend you contact the customer directly to confirm the pickup details.');
                         $("#divDealload").show();
                         $('#transparent_div').show();
-                        window.location = 'driverHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;               
+                        window.location = 'driverHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId; 
+                              // navigator.notification.alert(
+				        	 // "Congratulations! We recommend you contact the customer directly to confirm the pickup details.",
+  				       	// jobBookedSuccess, // Specify a function to be called 
+ 					   	 // 'ECABS4U',
+ 							// "OK"
+							 // );
+                        	 // function jobBookedSuccess()
+                        	 // {
+                        	// $("#divDealload").show();
+                        	//$('#transparent_div').show();
+    			     		//   window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId; 
+							 // }
                     },
                 });
               }                    
