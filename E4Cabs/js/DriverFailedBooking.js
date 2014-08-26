@@ -56,8 +56,8 @@ function displayResult(data)
 function InitiateJob(jobno)
 {
     $('#hdnJobno').val(jobno);
-    alert(jobno);
-    $('#lbljobno').val(jobno);
+    //alert(jobno);
+    //$('#lbljobno').val(jobno);
     //alert(jobno);
     SubmitDeal();
     

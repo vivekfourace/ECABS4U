@@ -178,9 +178,9 @@ var timereOut;
 function showFullJobDetail()
 {  $("#divDeal").hide();
      
-    var data =$('#hdnJobno').val();
-     //var data = $('#lbljobno').text();
-   alert(data);
+    //var data =$('#hdnJobno').val();
+   var data = $('#lbljobno').text();
+  // alert(data);
          //var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/FullJobDetail";
      
                 //$.ajax(url, {
