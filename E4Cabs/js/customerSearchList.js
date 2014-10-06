@@ -303,7 +303,7 @@ function showRatingBoxLaterpast(driverImgUrl, driverID)
                                 table2 += '<th>Date</th>';
                                 table2 += '<th style="text-align:center">Rating</th>';
                             	table2 += '<th>Customer Comments</th>';
-                                table2 += '<th>Driver Replay</th>';
+                                table2 += '<th>Driver Comments</th>';
                           
                                 table2 += '</tr>';
                                 table2 += '</thead>';

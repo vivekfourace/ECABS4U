@@ -151,18 +151,9 @@ function HireDriver(jobID, driverid)
                     success: function(data){
                        // $('#check').hide();
                         //alert('Booking in progress. Please check later.');
-                        alert("Cab selected. Waiting for your driver to confirm he is en route to the pick-up point.");
+                        alert("Cab selected. Waiting for your driver to confirm he will carry out this transfer");
                         window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-                       //   navigator.notification.alert(
-				   	// "Cab selected. Waiting for your driver to confirm he is en route to the pick-up point.",
-  				 	//  HireClick, // Specify a function to be called 
- 					  // 'ECABS4U',
- 				      //"OK"
-					  //);
-				      //function HireClick()
-                      //  {
-    			     //window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-					//	}
+                       
                         
                         
                     },
@@ -392,7 +383,7 @@ function showRatingBoxLaterPresent(driverID)
                                 table2 += '<th>Date</th>';
                                 table2 += '<th style="text-align:center">Rating</th>';
                             	table2 += '<th>Customer Comments</th>';
-                                table2 += '<th>Driver Replay</th>';
+                                table2 += '<th>Driver Comments</th>';
                           
                                 table2 += '</tr>';
                                 table2 += '</thead>';

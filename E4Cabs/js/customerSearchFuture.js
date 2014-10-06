@@ -333,7 +333,9 @@ function availabledriverLater() {
        var retun = $.datepicker.parseDate('dd/mm/yy', $('#datepickers').val());
     if (begD > endD) {
             //alert('Please Enter correct Pick Up Date.Pick Up Date should be greater than or Equal to Current Date.');
-        alert("Please select a date/time in the future.");
+       alert("Please enter the required pick-up date and time. This should be later than the current time.");
+        
+       //alert("Please select a date/time in the future.");
            // $('#BeginDate').focus();
             return false;
     }   
@@ -347,7 +349,8 @@ function availabledriverLater() {
         endD.setMinutes(b[1]);
         if(begD > endD)
         {
-            alert("Please Enter correct Pick Up time,Pick Up time should be greater than Current time. ");
+          //  alert("Please Enter correct Pick Up time,Pick Up time should be greater than Current time. ");
+            alert("Please enter the required pick-up date and time. This should be later than the current time.");
             return false; 
         } 
     }
@@ -379,7 +382,7 @@ function availabledriverLater() {
         if(pickdate2>retundate2)
         {
         //alert("Please Enter correct Return  Date.Return Date should be greater than or Equal to Pick Up Date.");
-            alert("Please select a date/time in the future.");
+            alert("Please select a date/time after the pickup date/time.");
         return false; 
          }
         else if(pickdateP == returnDate)
@@ -438,7 +441,8 @@ function availabledriverLater() {
                         //jAlert('Booking in progress. Please check later', 'ECabs4U-Feedback');
                         //alert('Booking in progress. Please check later.','alert');
                      navigator.notification.alert(
-				    "Booking in progress. Please check later.",
+				    //"Booking in progress. Please check later.",
+                    "Awaiting bids. Please check later.",
   				  searchFuture, // Specify a function to be called 
  					   'ECABS4U',
  						"OK"
@@ -504,7 +508,8 @@ function availabledriverLater() {
                         //alert('Booking in progress. Please check later.');
                         // window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                          navigator.notification.alert(
-				   	 "Booking in progress. Please check later.",
+				   	 //"Booking in progress. Please check later.",
+                        "Awaiting bids. Please check later.",
   				 	  searchFuture, // Specify a function to be called 
  					   'ECABS4U',
  						"OK"

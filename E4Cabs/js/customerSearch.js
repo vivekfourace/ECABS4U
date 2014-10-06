@@ -41,7 +41,35 @@ function FillAllData(data)
             $('#txt7location').val(data.d[i]["Location7"]);      
             $('#txt8location').val(data.d[i]["Location8"]);        
             $('#txtDistance').val(data.d[i]["DistanceInMile"]);
-            $('#txtothereSpecialRequirement').val(data.d[i]["OtherSpecReq"]);       
+            $('#txtothereSpecialRequirement').val(data.d[i]["OtherSpecReq"]); 
+           // $.each(data.d[i]["NumberOfPassenger"], function(key,value) {
+           // $("#ddlpassenger").append($("<option></option>").val(key).html(value));
+          //  });
+            
+            // for (var j = 0;j < data.d.length;j++) {
+            // $("#ddlpassenger").append("<option value='" + data.d[j][NumberOfPassenger] + "'>" + data.d[j][NumberOfPassenger]  + "</option>");
+          //     }
+            
+             alert(data.d[i]["NumberOfPassenger"]);
+         //    $('#ddlpassenger option:selected').removeAttr('selected');
+         //      //var ddlvalue=data.d[i]["NumberOfPassenger"];
+         //   if(data.d[i]["NumberOfPassenger"]==1)
+         //   {
+         //       $('#ddlpassenger option[value="1"]').attr("selected", true);
+         //       $("#ddlpassenger option:selected").text();
+         //   }
+         //   else if(data.d[i]["NumberOfPassenger"]==2)
+         //   {
+         //        $('#ddlpassenger option[value="2"]').attr("selected", true);
+         //      $('#ddlpassenger').val(selected);
+         //       
+         //   }
+         //       
+          //  $('#ddlpassenger').val('');
+
+           $('#ddlpassenger').val(data.d[i]["NumberOfPassenger"]);
+            
+           
         }
     }
 }

@@ -235,7 +235,23 @@ function showDetail(data)
     $('#lblJobNo').text(": "+data.d[0]);
     $('#lblFare').html(": "+'&pound'+data.d[1]);
     $('#lbltDate').text(": "+data.d[2]);
-    $('#lblTime').text(": "+data.d[3]);
+  //  $('#lblTime').text(": "+data.d[3]);
+    //Conversion of time formate.
+    var time = data.d[3];
+  alert(time);
+    var hrs = Number(time.match(/^(\d+)/)[1]);
+    var mnts = Number(time.match(/:(\d+)/)[1]);
+    var format = time.match(/\s(.*)$/)[1];
+    if (format == "PM" && hrs < 12) hrs = hrs + 12;
+    if (format == "AM" && hrs == 12) hrs = hrs - 12;
+    var hours = hrs.toString();
+    var minutes = mnts.toString();
+    if (hrs < 10) hours = "0" + hours;
+    if (mnts < 10) minutes = "0" + minutes;
+    alert(hours + ":" + minutes);
+     $('#lblTime').text(":"+ hours + ":" + minutes);  
+    
+    
     $('#lblFrom').text(": "+data.d[4]);
     $('#lblTo').text(": "+data.d[5]);
     $('#lblCustomerName').text(": "+data.d[6]);
