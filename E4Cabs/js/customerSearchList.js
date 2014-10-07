@@ -696,7 +696,7 @@ function getResponseFromDriver(data)
                     $('#lblconfirmdate').text(data.d[5]);
                     $('#lblconfirmtime').text(data.d[6]);
                     $('#lblconfirmfare').text(data.d[7]);
-                    $('#lbldriverId').text(data.d[8]);
+                    $('#lblconfirmdriverPhoneNo').text(data.d[8]);
                     $('#popup_box').show();
                     $('#divDealConfirmed').show();
                     $('#transparent_div').show();
@@ -823,6 +823,16 @@ function HideDisplay()
     $('#divRatingFeedback').hide();
     $('#popup_box').hide();    
 }
+
+
+
+function makeCalltoDriver()
+{
+    var number = $('#lblconfirmdriverPhoneNo').text();
+    console.log(number);
+    window.location.href = "tel:" + number;    
+}
+
 
 function CancelJobRequest()
 {

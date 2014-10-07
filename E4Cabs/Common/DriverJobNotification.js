@@ -19,10 +19,11 @@ function showConfirm(param) {
     { 
        // $("#data").css("background-color","red.");
         navigator.notification.confirm(
-        'You have got a new "Cab now" job request. Do you want to see it?',
+        //'You have got a new "Cab now" job request. Do you want to see it?',
+        'You have a ‘cab now’ job request.',
          onConfirm,
         'NEW JOB',
-        'Yes,No'
+        'View,Reject'
         );
     }
     //else if(param === later)

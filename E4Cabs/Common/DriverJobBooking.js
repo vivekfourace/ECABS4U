@@ -489,10 +489,10 @@ function SaveDataOfCurrentJob()
                          {
                          	alert(returnvalue);
                          }
-                         else
+                          else if(data.d === "true")
                          {
-                             console.log(data.d);
-                              document.addEventListener("deviceready", onDeviceReady, false);
+                            window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                              /*document.addEventListener("deviceready", onDeviceReady, false);
                              
                               function iabLoadStart(event) {
                                      //alert(event.type + ' - ' + event.url);
@@ -522,7 +522,7 @@ function SaveDataOfCurrentJob()
                                      //{
              						//iabRef.close();
         							 //}, 60000);
-                                 }                
+                                 } */               
                          }
                      }
                      else
@@ -580,10 +580,10 @@ function SaveDataOfCurrentJob()
                          {
                          	alert(returnvalue);
                          }
-                         else
+                          else if(data.d === "true")
                          {
-                             console.log(data.d);
-                             document.addEventListener("deviceready", onDeviceReady, false);
+                            window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                             /*document.addEventListener("deviceready", onDeviceReady, false);
                              
                               function iabLoadStart(event) {
                                      //alert(event.type + ' - ' + event.url);
@@ -613,7 +613,7 @@ function SaveDataOfCurrentJob()
                                      //{
              						//iabRef.close();
         							 //}, 60000);
-                                 }
+                                 }*/
                              
                                              
                          }
