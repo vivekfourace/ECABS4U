@@ -70,6 +70,24 @@
                                                       $('#lblDistance').text(": " + data.d[0][5]);
                                                       $('#lblpickDateDriver').text(": " + data.d[0][6]);
                                                       $('#lblpickTime').text(": " + data.d[0][7]);
+                                                       $('#hiddenIsCabnow').val(data.d[0][20]);
+                                                      var hiddin = $('#hiddenIsCabnow').val();
+            
+                                                      console.log($('#hiddenIsCabnow').val());
+                                                      if (hiddin == "True") 
+                                                      {
+                                                       $('#trselectvehicle').hide();
+                                                        $('#lblpickTime').hide();
+                                                        $('#lblpickTimetext').show();
+                                                        
+                                                      }
+                                                       else{
+                                                         $('#lblpickTime').show();
+                                                         $('#lblpickTimetext').hide();
+            
+                                                       }
+            
+                                                      
                                                       $('#lblpassengercount').text(": " + data.d[0][8]);
                                                       $('#lbllargecase').text(": " + data.d[0][9]);
                                                       $('#lblsmallcase').text(": " + data.d[0][10]);
@@ -409,6 +427,7 @@
                         <td style="width:60%;border-bottom:1px solid #848484;padding-bottom:4px">
                             <b style="font-size:13px;">
                                 <label id="lblpickTime"></label>
+                                <label id="lblpickTimetext">: ASAP</label>
                             </b>
                         </td>
                         
@@ -736,6 +755,7 @@
                             <td style="width:70%">
                                 <b>
                                     <label id="lbldealto" style="font-size:11px;"></label>
+                                    
                                 </b>
                             </td>
                         </tr>
@@ -757,7 +777,8 @@
                             </td>
                             <td style="width:70%">
                                 <b>
-                                    <label id="lbldealtime" style="font-size:11px;"></label>
+                                    <label id="lbldealtime" style="font-size:11px;display:none"></label>
+                                    <label style="font-size:11px;"> ASAP</label>
                                 </b>
                             </td>
                         </tr>
@@ -964,7 +985,9 @@
                              
                          </td>
                          <td style="width:60%;">
-                             <label id="lblTime" class="tdContentstyle"></label>
+                             <!--  <label id="lblTime" class="tdContentstyle" ></label>-->
+                           <label id="lblTime" class="tdContentstyle" style="display:none"></label>
+                             <label style="font-size:11px;">: ASAP</label>
                              
                          </td>
                      </tr>

@@ -50,7 +50,7 @@ function FillAllData(data)
             // $("#ddlpassenger").append("<option value='" + data.d[j][NumberOfPassenger] + "'>" + data.d[j][NumberOfPassenger]  + "</option>");
           //     }
             
-             alert(data.d[i]["NumberOfPassenger"]);
+           //  alert(data.d[i]["NumberOfPassenger"]);
          //    $('#ddlpassenger option:selected').removeAttr('selected');
          //      //var ddlvalue=data.d[i]["NumberOfPassenger"];
          //   if(data.d[i]["NumberOfPassenger"]==1)
@@ -303,10 +303,12 @@ function availabledriver() {
     
     if (!fromloc) {
         $('#lblMessage').text("Please enter From location.");
+        alert("Please enter From location.");
         return false;
     }
     else if (!toloc) {
         $('#lblMessage').text("Please enter Final destination.");
+        alert("Please enter Final destination.");
         return false;
     }
     else if($('#TravelTime').val() === '') {

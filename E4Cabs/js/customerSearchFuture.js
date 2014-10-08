@@ -247,12 +247,16 @@ function availabledriverLater() {
     var isCabNow = $('#RBcabNOW').attr('checked') ? true : false;
     
     var travelTime = $('#TravelTime').val();
-    if (!fromloc) {
+    if (!fromloc)
+    
+    {
         $('#lblMessage').text("Please enter From location.");
+        alert("Please enter From location.");
         return false;
     }
    else if (!toloc) {
         $('#lblMessage').text("Please enter Final destination.");
+       alert("Please enter Final destination.");
         return false;
     }
     else

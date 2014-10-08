@@ -13,7 +13,7 @@ function showConfirm(param) {
     //alert(param);
     //var later = 2;
     //alert("Hi");
-    
+    //alert(relatedId);
     $('#transparent_div').show();
     if(param === now)
     { 
@@ -95,6 +95,7 @@ function Check()
                 }
             }
         }
+        GetCancelledJobs();
     },
  });
 }
@@ -156,4 +157,45 @@ function closeRequest()
               contentType: "application/json; charset=utf-8",                     
               success: function () {}
         });
+}
+
+function GetCancelledJobs() {
+     $.ajax({
+              url:'http://115.115.159.126/ECabs/ECabs4U.asmx/GetCancelledJobs', 
+              type:"POST",
+              datatype:"json",
+              data:"{'drvId':'" +relatedId+ "'}",
+              contentType: "application/json; charset=utf-8",                     
+              success: function (data) 
+                {
+                    for(var i = 0 ; i< data.d.length; i++){
+                       jobId = data.d[i].CustomeeRequestID;
+                       CustId = data.d[i].CustomerID;
+                       expJobId = data.d[i].ID;
+                       drvId = data.d[i].DriverID;
+                       expReason = data.d[i].ExpiryReason;
+                       navigator.notification.confirm(
+                           "Cancelled JobID = "+ jobId+"\nReason = "+ expReason,
+                            onOKDeleteExpiredJob(expJobId),
+                           'Cancelled Job',
+                           'OK'
+                       );
+                    }
+                }
+           });
+}
+function onOKDeleteExpiredJob(expJobId){
+    
+     $.ajax({
+              url:'http://115.115.159.126/ECabs/ECabs4U.asmx/DeleteCancelledJob', 
+              type:"POST",
+              datatype:"json",
+              data:"{'expiredJobId':'" +expJobId+ "','driverId':'"+relatedId+"'}",
+              contentType: "application/json; charset=utf-8",                     
+              success: function () {
+                   $('#transparent_div').hide();
+                   window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+              }
+         });
+    
 }
