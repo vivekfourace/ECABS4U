@@ -238,7 +238,7 @@ function showDetail(data)
   //  $('#lblTime').text(": "+data.d[3]);
     //Conversion of time formate.
     var time = data.d[3];
-  alert(time);
+  //alert(time);
     var hrs = Number(time.match(/^(\d+)/)[1]);
     var mnts = Number(time.match(/:(\d+)/)[1]);
     var format = time.match(/\s(.*)$/)[1];
@@ -248,7 +248,7 @@ function showDetail(data)
     var minutes = mnts.toString();
     if (hrs < 10) hours = "0" + hours;
     if (mnts < 10) minutes = "0" + minutes;
-    alert(hours + ":" + minutes);
+  //  alert(hours + ":" + minutes);
      $('#lblTime').text(":"+ hours + ":" + minutes);  
     
     

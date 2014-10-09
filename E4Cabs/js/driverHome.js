@@ -275,32 +275,32 @@ function engageMe()
 
 
 //ERROR not en route button click
-function notEnroute()
-{
-    $('#btnOffline').show();
-        $.ajax({
-                url:"http://115.115.159.126/ECabs/ECabs4U.asmx/UnEngageDriver",
-                     type:"POST",
-                     datatype:"json",
-                     data:"{'relatedId':'"+relatedId+"'}",
-                     contentType: "application/json; charset=utf-8",                     
-                     success: function(data){
-                         if(data.d === true)
-                         {                            
-                            
-                            $('#lblEngaged').show();
-                            $('#lblEngaged').text("Available");
-                           window.location='DriverCabLaterJobs.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-                         }
-                     },
-            		error: function (XMLHttpRequest, textStatus, errorThrown) {
-                        alert(errorThrown);
-                    }
-            });
-    
-    //window.location='DriverCabLaterJobs.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-    
-}
+//function notEnroute()
+//{
+//    $('#btnOffline').show();
+//        $.ajax({
+//                url:"http://115.115.159.126/ECabs/ECabs4U.asmx/UnEngageDriver",
+//                     type:"POST",
+//                     datatype:"json",
+//                     data:"{'relatedId':'"+relatedId+"'}",
+//                     contentType: "application/json; charset=utf-8",                     
+//                     success: function(data){
+//                         if(data.d === true)
+//                         {                            
+//                            
+//                            $('#lblEngaged').show();
+//                            $('#lblEngaged').text("Available");
+//                           window.location='DriverCabLaterJobs.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+//                         }
+//                     },
+//            		error: function (XMLHttpRequest, textStatus, errorThrown) {
+//                        alert(errorThrown);
+//                    }
+//            });
+//    
+//    //window.location='DriverCabLaterJobs.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+//    
+//}
 
 function HomePage(){
     window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
@@ -322,4 +322,64 @@ function bookedHistory()
 function feedBack()
 {
     window.location='driverFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
+
+
+
+
+var sec = 15;
+//ERROR not en route button click
+function notEnroute()
+{
+   navigator.notification.confirm(
+        "Please confirm your choice.",
+         onErrorEnRoute,
+        "Confirm",
+        "Reject Job, Accept Job "
+        );
+}
+function onErrorEnRoute(buttonIndex) 
+{
+    if(buttonIndex === 2)
+    {
+        return false;
+    }
+    else if(buttonIndex === 1)
+    {
+       $('#divRejectJob').show();
+       countDown();
+    }
+}
+function countDown() {
+  if (sec < 10) {
+    $("#myTimer").text("0" + sec);
+  } else {
+    $("#myTimer").text(sec);
+  }
+    
+  if (sec <= 0) {
+    $("#myTimer").fadeTo(2500, 0);
+    $('#btnOffline').show();
+    $.ajax({
+    url:"http://115.115.159.126/ECabs/ECabs4U.asmx/UnEngageDriver",
+         type:"POST",
+         datatype:"json",
+         data:"{'relatedId':'"+relatedId+"'}",
+         contentType: "application/json; charset=utf-8",                     
+         success: function(data){
+             if(data.d === true) {  
+                $('#divRejectJob').hide();
+                $('#lblEngaged').show();
+                $('#lblEngaged').text("Available");
+               window.location='DriverCabLaterJobs.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+             }
+         },
+  error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert(errorThrown);
+        }
+    });
+    return;
+  }
+  sec -= 1;
+  window.setTimeout(countDown, 1000);
 }

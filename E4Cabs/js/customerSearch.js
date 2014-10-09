@@ -41,33 +41,45 @@ function FillAllData(data)
             $('#txt7location').val(data.d[i]["Location7"]);      
             $('#txt8location').val(data.d[i]["Location8"]);        
             $('#txtDistance').val(data.d[i]["DistanceInMile"]);
-            $('#txtothereSpecialRequirement').val(data.d[i]["OtherSpecReq"]); 
-           // $.each(data.d[i]["NumberOfPassenger"], function(key,value) {
-           // $("#ddlpassenger").append($("<option></option>").val(key).html(value));
-          //  });
             
-            // for (var j = 0;j < data.d.length;j++) {
-            // $("#ddlpassenger").append("<option value='" + data.d[j][NumberOfPassenger] + "'>" + data.d[j][NumberOfPassenger]  + "</option>");
-          //     }
+            var otherspecialrequirement=data.d[i]["OtherSpecReq"];
+            $('#txtothereSpecialRequirement').val(otherspecialrequirement); 
+          
+            var selectedPassenger=data.d[i]["NumberOfPassenger"];
+           // alert(selectedPassenger);
+             $('#ddlpassenger option[value="' + selectedPassenger + '"]').prop('selected', true);
+            $('#ddlpassenger').selectmenu('refresh');
+          // $('#ddlpassenger').val(data.d[i]["NumberOfPassenger"]);
             
-           //  alert(data.d[i]["NumberOfPassenger"]);
-         //    $('#ddlpassenger option:selected').removeAttr('selected');
-         //      //var ddlvalue=data.d[i]["NumberOfPassenger"];
-         //   if(data.d[i]["NumberOfPassenger"]==1)
-         //   {
-         //       $('#ddlpassenger option[value="1"]').attr("selected", true);
-         //       $("#ddlpassenger option:selected").text();
-         //   }
-         //   else if(data.d[i]["NumberOfPassenger"]==2)
-         //   {
-         //        $('#ddlpassenger option[value="2"]').attr("selected", true);
-         //      $('#ddlpassenger').val(selected);
-         //       
-         //   }
-         //       
-          //  $('#ddlpassenger').val('');
-
-           $('#ddlpassenger').val(data.d[i]["NumberOfPassenger"]);
+             var selectedLargeLuggage=data.d[i]["LargeLuggage"];
+           // alert(selectedLargeLuggage);
+             $('#ddllargecase option[value="' + selectedLargeLuggage + '"]').prop('selected', true);
+            $('#ddllargecase').selectmenu('refresh');
+            
+             var selectedSmallLuggage=data.d[i]["SmallLuggage"];
+           // alert(selectedSmallLuggage);
+             $('#ddlsmallcase option[value="' + selectedSmallLuggage + '"]').prop('selected', true);
+            $('#ddlsmallcase').selectmenu('refresh');
+            
+             var selectedWheelChairPassanger=data.d[i]["WheelChairPassenger"];
+            //alert(selectedWheelChairPassanger);
+             $('#ddlWheelchair option[value="' + selectedWheelChairPassanger + '"]').prop('selected', true);
+            $('#ddlWheelchair').selectmenu('refresh');
+            
+             var selectedChildCarSeat=data.d[i]["ChildCarSeat"];
+           // alert(selectedChildCarSeat);
+             $('#ddlChidseats option[value="' + selectedChildCarSeat + '"]').prop('selected', true);
+            $('#ddlChidseats').selectmenu('refresh');
+            
+             var selectedChildBooster=data.d[i]["ChildBooster"];
+           // alert(selectedChildBooster);
+             $('#ddlChidbooster option[value="' + selectedChildBooster + '"]').prop('selected', true);
+            $('#ddlChidbooster').selectmenu('refresh');
+            
+            if(selectedWheelChairPassanger != 0 || selectedChildCarSeat != 0 || selectedChildBooster != 0 || otherspecialrequirement)
+            {
+                showReq();
+            }
             
            
         }
