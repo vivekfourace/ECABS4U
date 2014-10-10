@@ -318,6 +318,7 @@ function Confirmcomission()
             }
              else if(data.d === "true")
                          {
+                             alert('Job booked successfully.');
                             window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                              }
          //else
@@ -392,4 +393,8 @@ function bookedHistory()
 function feedBack()
 {
     window.location='driverFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
+
+function showBidsAwaiting(){
+    window.location='DriverCabNowBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }

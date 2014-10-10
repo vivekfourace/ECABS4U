@@ -491,6 +491,7 @@ function SaveDataOfCurrentJob()
                          }
                           else if(data.d === "true")
                          {
+                             alert('Job booked successfully.');
                             window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                               /*document.addEventListener("deviceready", onDeviceReady, false);
                              
@@ -582,6 +583,7 @@ function SaveDataOfCurrentJob()
                          }
                           else if(data.d === "true")
                          {
+                             alert('Job booked successfully.');
                             window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                              /*document.addEventListener("deviceready", onDeviceReady, false);
                              

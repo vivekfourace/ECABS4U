@@ -489,3 +489,8 @@ function feedBack()
 {
     window.location='customerFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
+
+function showJobInProgress()
+{
+    window.location='CustomerCabNowBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
