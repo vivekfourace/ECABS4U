@@ -13,6 +13,7 @@ $('#load').show();
 $('#transparent_div').show();
 function backtosearch() {
     window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+    //return false;
 }
 
 var timeOut;
