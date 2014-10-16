@@ -4,10 +4,13 @@ var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 var requestID = QString.split("=")[4];
 
-console.log(requestID);
+//var RR=QString.split("=")[5];
 
+console.log(requestID);
+//alert(RR);
 if(requestID !== undefined)
 {
+    
     requestID = QString.split("=")[4].split("&")[0];
     
     $.ajax({
@@ -22,6 +25,24 @@ if(requestID !== undefined)
      });
 }
 
+
+//else if (RR && requestID !== undefined )
+//{
+//    alert(RR);
+//    requestID = QString.split("=")[4].split("&")[0];
+//    
+//    $.ajax({
+//        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/FillJobSearchDetail",
+//        type: "POST",
+//        dataType: "Json",
+//        data: "{'requestID':'" + requestID + "'}",
+//        contentType: "application/json; charset=utf-8",
+//        success: FillAllData2,
+//        error: function (XMLHttpRequest, textStatus, errorThrown) {
+//       }
+//     });
+//}
+//
 $('#imgLoader').hide();
 
 function FillAllData(data)
@@ -83,9 +104,73 @@ function FillAllData(data)
             
            
         }
+        //Duration();
     }
 }
 
+//function FillAllData2(data)
+//{
+//    var count = data.d.length;
+//    if(count > 0)
+//    {
+//        for(var i = 0; i < count; i++)
+//        {
+//            $('#txtFrom').val(data.d[i]["FromPostcode"]);            
+//            $('#txtTo').val(data.d[i]["ToPostcode"]);           
+//            $('#txt2location').val(data.d[i]["Location2"]);         
+//            $('#txt3location').val(data.d[i]["Location3"]);          
+//            $('#txt4location').val(data.d[i]["Location4"]);         
+//            $('#txt5location').val(data.d[i]["Location5"]);         
+//            $('#txt6location').val(data.d[i]["Location6"]);          
+//            $('#txt7location').val(data.d[i]["Location7"]);      
+//            $('#txt8location').val(data.d[i]["Location8"]);        
+//            $('#txtDistance').val(data.d[i]["DistanceInMile"]);
+//            
+//            var otherspecialrequirement=data.d[i]["OtherSpecReq"];
+//            $('#txtothereSpecialRequirement').val(otherspecialrequirement); 
+//          
+//            var selectedPassenger=data.d[i]["NumberOfPassenger"];
+//           // alert(selectedPassenger);
+//             $('#ddlpassenger option[value="' + selectedPassenger + '"]').prop('selected', true);
+//            $('#ddlpassenger').selectmenu('refresh');
+//          // $('#ddlpassenger').val(data.d[i]["NumberOfPassenger"]);
+//            
+//             var selectedLargeLuggage=data.d[i]["LargeLuggage"];
+//           // alert(selectedLargeLuggage);
+//             $('#ddllargecase option[value="' + selectedLargeLuggage + '"]').prop('selected', true);
+//            $('#ddllargecase').selectmenu('refresh');
+//            
+//             var selectedSmallLuggage=data.d[i]["SmallLuggage"];
+//           // alert(selectedSmallLuggage);
+//             $('#ddlsmallcase option[value="' + selectedSmallLuggage + '"]').prop('selected', true);
+//            $('#ddlsmallcase').selectmenu('refresh');
+//            
+//             var selectedWheelChairPassanger=data.d[i]["WheelChairPassenger"];
+//            //alert(selectedWheelChairPassanger);
+//             $('#ddlWheelchair option[value="' + selectedWheelChairPassanger + '"]').prop('selected', true);
+//            $('#ddlWheelchair').selectmenu('refresh');
+//            
+//             var selectedChildCarSeat=data.d[i]["ChildCarSeat"];
+//           // alert(selectedChildCarSeat);
+//             $('#ddlChidseats option[value="' + selectedChildCarSeat + '"]').prop('selected', true);
+//            $('#ddlChidseats').selectmenu('refresh');
+//            
+//             var selectedChildBooster=data.d[i]["ChildBooster"];
+//           // alert(selectedChildBooster);
+//             $('#ddlChidbooster option[value="' + selectedChildBooster + '"]').prop('selected', true);
+//            $('#ddlChidbooster').selectmenu('refresh');
+//            
+//            if(selectedWheelChairPassanger != 0 || selectedChildCarSeat != 0 || selectedChildBooster != 0 || otherspecialrequirement)
+//            {
+//                showReq();
+//            }
+//            
+//           
+//        }
+//        Duration();
+//    }
+//}
+//
 $(document).ready(function ()
  {
         if (navigator.geolocation)
@@ -324,8 +409,8 @@ function availabledriver() {
         return false;
     }
     else if($('#TravelTime').val() === '') {
-        $('#lblMessage').text("Please select proper locations so as to calculate distance between them.");
-        return false;
+        //$('#lblMessage').text("Please select proper locations so as to calculate distance between them.");
+       // return false;
     }
      else
     {
@@ -519,5 +604,6 @@ function availabledriver() {
 
  function homeSearch() {
      window.location = 'customerProfile.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+   // window.location = 'customerSearchList.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId; 
  }
 

@@ -28,7 +28,7 @@ function bindGrid(data)
     var count = data.d.length;
     if(count > 0)
     {
-        $('#msg').html("");
+        $('#msgNow').html("");
         var isCustomerAccepted ="";
         for(var i=0; i<count; i++)
         {
@@ -66,8 +66,8 @@ function bindGrid(data)
                 if(isCustomerAccepted === true)
                 {  
                     html += "<td colspan='2'>"
-                    +'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Accept" class="accept-btn" onclick="AcceptJob(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["Fare"]+'\')"/><br/><div style="height:3px"></div>'
-                    +'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Reject" class="reject-btn" onclick="RejectJob(\''+data.d[i]["CustomerRequestID"]+'\')"/>'
+                    +'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Accept" class="accept-btn" onclick="AcceptJobNow(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["Fare"]+'\')"/><br/><div style="height:3px"></div>'
+                    +'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Reject" class="reject-btn" onclick="RejectJobNow(\''+data.d[i]["CustomerRequestID"]+'\')"/>'
                     +"</td>";
                 }
                 else if(isCustomerAccepted === false)
@@ -78,17 +78,17 @@ function bindGrid(data)
              }
         html +='</tbody>';
         html +='</table>';
-        $('#msg').append(html);
+        $('#msgNow').append(html);
      }
      else
      {
-         $('#bookingmsg').show();
+         $('#bookingmsgNow').show();
      }
 }
 
-function AcceptJob(jobno, jobfare)
+function AcceptJobNow(jobno, jobfare)
 {
-    $('#hidJobNo').val(jobno);
+    $('#hidJobNoNow').val(jobno);
     var fare = jobfare;
     if(fare >= 11 && fare <=20)
     {
@@ -110,7 +110,7 @@ function AcceptJob(jobno, jobfare)
     }
     else
     {
-        var reqID = $('#hidJobNo').val();
+        var reqID = $('#hidJobNoNow').val();
         $.ajax({
             beforeSend: function(){
                $('#imgLoader').show();
@@ -177,7 +177,7 @@ function Cancel()
     $('#divCabLaterBooking').hide();
     $('#transparent_div').hide();
 }
-function RejectJob(data)
+function RejectJobNow(data)
 {
     var isTrue = confirm("Confirm you want to reject this job offer?");
     if(isTrue)
@@ -219,7 +219,7 @@ function RejectComission()
 
 function Confirmcomission()
 {
-    var reqID = $('#hidJobNo').val();
+    var reqID = $('#hidJobNoNow').val();
     $.ajax({
     beforeSend: function()
     {

@@ -722,6 +722,12 @@ function getResponseFromDriver(data)
                     $('#transparent_div').hide();
                     //alert("search again")
                 }
+                else if(getBooked === "")
+                {
+                   var jobs1;
+                  jobs1 = window.setInterval(getResponseExpire, 200000);
+                  ///RejectDriver()-----see this function for delete driver response. 
+                }
                 else {
                     $('#load').hide();                    
                     $('#statusMessage').hide();
@@ -739,6 +745,89 @@ function getResponseFromDriver(data)
         window.clearInterval(checkDealResp);
     }
 }
+
+function getResponseExpire()
+{
+    
+    $('#load').hide();                    
+                    $('#statusMessage').hide();
+                    $('#divDeal').hide();
+                    $('#loading').hide();
+                    $('#transparent_div').hide();
+    
+    
+                 navigator.notification.alert(
+				   	 "Time out",
+  				 	  cabCancledSuccess2, // Specify a function to be called 
+ 					   'ECABS4U',
+ 						"OK"
+						);
+    
+				function cabCancledSuccess2()
+                        {
+                            window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+    			         //getResponse();
+						}
+    
+    
+   // alert("Time out");
+    //getResponse();
+    //window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+    
+   //  navigator.notification.confirm(
+   // "Time out",
+   // onClickCancelJobs,
+   // "Confirm",
+   // "Yes,No" 
+   // );
+    
+}
+
+//function onClickCancelJobs(buttonIndex)
+//{
+//    if(buttonIndex === 2)
+//    {
+//        window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+//    }
+//    else if(buttonIndex === 1)
+//    {
+//         var cause = "Cancelled";
+//          DeleteJob5(cause);
+//      
+//    }
+//}
+
+//function DeleteJob5(cause)
+//{
+//         $.ajax({
+//            url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CancelCurrentJob",
+//            type: "POST",
+//            dataType: "Json",
+//            data: "{'requestID':'" + requestID + "','relatedId':'" + relatedId + "','cause':'" + cause + "'}",
+//            contentType: "application/json; charset=utf-8",
+//            success: function(data)
+//                {
+//                    //alert(data.d);
+//                    //window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+//                    
+//                    navigator.notification.alert(
+//				   	 data.d,
+//  				 	  cabCancledSuccess2, // Specify a function to be called 
+// 					   'ECABS4U',
+// 						"OK"
+//						);
+//    
+//				function cabCancledSuccess2()
+//                        {
+//    			         getResponse();
+//						}
+//                },
+//            error: function (XMLHttpRequest, textStatus, errorThrown) {
+//            }
+//        });
+//}
+//
+
 function ShowMap() 
 {
         var from = $('#lblconfirmfrom').val();
@@ -899,6 +988,15 @@ function onreinitiateCallback(buttonIndex)
         window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId+ '&rid=' + requestID;
       
     }
+}
+
+function AlterJob()
+{
+    window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId+ '&rid=' + requestID;
+}
+function AlterJob2()
+{//var search="Hi";
+    //window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId+ '&rid=' + requestID+ '&rrid=' + search;
 }
 
 function DeleteJob(cause)
