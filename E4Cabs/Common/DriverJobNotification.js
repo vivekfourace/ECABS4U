@@ -174,12 +174,12 @@ function GetCancelledJobs() {
                        expJobId = data.d[i].ID;
                        drvId = data.d[i].DriverID;
                        expReason = data.d[i].ExpiryReason;
-                       navigator.notification.confirm(
-                           "Cancelled JobID = "+ jobId+"\nReason = "+ expReason,
-                            onOKDeleteExpiredJob(expJobId),
-                           'Cancelled Job',
-                           'OK'
-                       );
+                      navigator.notification.confirm(
+                          "Cancelled JobID = "+ jobId+"\nReason = "+ expReason,
+                           onOKDeleteExpiredJob(expJobId),
+                          'Cancelled Job',
+                          'OK'
+                      );
                     }
                 }
            });

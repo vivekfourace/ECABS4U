@@ -5,6 +5,9 @@ var relatedId = QString.split("=")[3].split("&")[0];
 
 window.onload = getCablaterBooking();
 
+var ref;
+
+ ref = window.setInterval(getCablaterBooking, 10000);
 function getCablaterBooking()
 {
    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerCabLaterBooking";
@@ -13,10 +16,16 @@ function getCablaterBooking()
                    datatype:"json",
                    data:"{'relatedId':'"+relatedId+"'}",
                    contentType: "application/json; charset=utf-8",
-                    success: function (data) {                   
-                        var count = data.d.length;
+                    success: bindGridLater,
+                  error:function (XMLHttpRequest, textStatus, errorThrown) {}
+        });
+                        
+}
+    function bindGridLater(data)
+    {
+              var count = data.d.length;
                         if(count > 0)
-                        {
+                        { $('#msg').html("");
                            var previousjobID ="";
                            var html = '<table id="tbhist" cellspacing="0" width="100%"  style="border:thin solid;">';
                                 html += '<tr class="thead-grid">';
@@ -88,14 +97,11 @@ function getCablaterBooking()
                          }
                         else
                         {
+                             $('#msg').empty().append("");
                             $('#bookingmsg').show();                            
                         }
-                    },
-                    error: function (XMLHttpRequest, textStatus, errorThrown) 
-                    {
-                        
-                    }
-                });
+                    
+               
  }
 
 

@@ -30,6 +30,7 @@ function bindGrid(data)
     {
         $('#msgNow').html("");
         var isCustomerAccepted ="";
+        var Bidfare="";
         for(var i=0; i<count; i++)
         {
              if(data.d[i]["CustomerResponse"] === true)
@@ -54,6 +55,8 @@ function bindGrid(data)
              for(var i=0; i<count; i++)
              {
                 isCustomerAccepted = data.d[i]["CustomerResponse"];
+                 if(isCustomerAccepted === false)
+                 {
                 var customerID = data.d[i]["CustomerID"];
                 html += '<tr>';
                 html += "<td width='25%' height='30px' align='center'>" +'<a href="#" onclick="ShowDetailBooking(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["CustomerID"]+'\')" style="color:blue;">'+ data.d[i]["CustomerRequestID"]+'</a>' + "</td>"; 
@@ -63,20 +66,28 @@ function bindGrid(data)
                 }
                 html += "<td width='25%' height='30px' align='center'>" + data.d[i]["From"] +"</td>";
                 html += "<td width='25%' height='30px' align='center'>" + data.d[i]["To"] +"</td>";
-                if(isCustomerAccepted === true)
-                {  
-                   
+               // if(isCustomerAccepted === true)
+               // {  
+               //     html += "<td  colspan='2' width='10%' height='30px' align='center'>Awaiting customer response</td>";
+               //     //html += "<td colspan='2'>"
+               //     //+'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Accept" class="accept-btn" onclick="AcceptJobNow(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["Fare"]+'\')"/><br/><div style="height:3px"></div>'
+               //     //+'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Reject" class="reject-btn" onclick="RejectJobNow(\''+data.d[i]["CustomerRequestID"]+'\')"/>'
+               //     //+"</td>";
+               // }
+               // else 
+                 if(isCustomerAccepted === false && data.d[i]["Fare"] === null )
+                {
+                   // html += "<td  colspan='2' width='10%' height='30px' align='center'>Awaiting customer response</td>";
                     html += "<td colspan='2'>"
-                    +'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Accept" class="accept-btn" onclick="AcceptJobNow(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["Fare"]+'\')"/><br/><div style="height:3px"></div>'
-                    +'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Reject" class="reject-btn" onclick="RejectJobNow(\''+data.d[i]["CustomerRequestID"]+'\')"/>'
+                    +'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Accept" class="accept-btn" onclick="seeRequest2()"/><br/><div style="height:3px"></div>'
+                    +'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Reject" class="reject-btn" onclick="closeRequest2()"/>'
                     +"</td>";
                 }
-                else if(isCustomerAccepted === false)
-                {
-                    html += "<td  colspan='2' width='10%' height='30px' align='center'>Awaiting customer response</td>";
-                    
-                }
-                html += '</tr>';                                    
+                     else{
+                         html += "<td  colspan='2' width='10%' height='30px' align='center'>Awaiting customer response</td>";
+                     }
+                html += '</tr>';  
+                     }
              }
         html +='</tbody>';
         html +='</table>';
@@ -319,6 +330,8 @@ function closeRequest2()
               datatype:"json",
               data:"{'relatedId':'" +relatedId+ "'}",
               contentType: "application/json; charset=utf-8",                     
-              success: function () {}
+              success: function () {
+                  window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+              }
         });
 }
