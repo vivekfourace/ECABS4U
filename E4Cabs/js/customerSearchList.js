@@ -10,7 +10,7 @@ function onDeviceReady() {
 }
 
 $('#load').show();
-$('#transparent_div').show();
+$('#transparent_div2').show();
 function backtosearch() {
     window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
     //return false;
@@ -123,7 +123,7 @@ function getData(data) {
         $('#divbid').show();
         $('#divawait').hide();
         $('#load').hide();
-        $('#transparent_div').hide();
+        $('#transparent_div2').hide();
         var html = '<table width="100%" style="border-collapse:collapse;">';
         html += '<thead class="header-style">';
         html += '<tr>';
@@ -460,13 +460,13 @@ function ShowLargeImage(imgUrl)
     $('#imgDV').attr("src",imageUrl);
     $('#popup_box').fadeIn("fast");
     $('#imgDiv').fadeIn("fast");
-    $('#transparent_div').fadeIn("fast");
+    $('#transparent_div2').fadeIn("fast");
     window.clearInterval(id);
 }
 
 function hideImage()
 {
-    $('#transparent_div').hide();
+    $('#transparent_div2').hide();
     $('#popup_box').hide("fast");
     $('#imgDiv').hide("fast");
     id = window.setInterval(getResponse, 10000);
@@ -476,7 +476,7 @@ function SearchDriverAgain()
 {
     $('#msg').empty();
     $('#load').show();
-    $('#transparent_div').show();
+    $('#transparent_div2').show();
     window.clearInterval(reinitiateCounter);
     $('#statusMessage').html("Searching for more drivers...");
     $('#statusMessage').css("color","Yellow");
@@ -492,7 +492,7 @@ function SearchDriverAgain()
 }
 
 function showExpiry() {
-    $('#transparent_div').show();
+    $('#transparent_div2').show();
     $('#popup_box').show();
     $('#popupBoxClose').show();
     $('#divBiding').hide();
@@ -505,7 +505,7 @@ function showExpiry() {
     $('#divspecHireClick').hide();
 }
 function showBid() {
-    $('#transparent_div').show();
+    $('#transparent_div2').show();
     $('#popup_box').show();
     $('#popupBoxClose').show();
     $('#divBiding').show();
@@ -518,18 +518,18 @@ function showBid() {
     $('#divspecHireClick').hide();
 }
 function closeExpiry() {
-    $('#transparent_div').hide();
+    $('#transparent_div2').hide();
     $('#popup_box').hide();
     $('#divExpiry').hide();
 }
 function closeBid() {
-    $('#transparent_div').hide();
+    $('#transparent_div2').hide();
     $('#popup_box').hide();
     $('#divBiding').hide();
 }
 
 function SpecShow(a) {
-    $('#transparent_div').show();
+    $('#transparent_div2').show();
     $('#popup_box').show();
     $('#divspec').show();
     $('#popupBoxClose').show();
@@ -539,14 +539,14 @@ function SpecShow(a) {
     id = window.setInterval(getResponse, 10000);
 }
 function specClose() {
-    $('#transparent_div').hide();
+    $('#transparent_div2').hide();
     $('#popup_box').hide();
     $('#divspec').hide();
 }
 
 function SpecialReqShow(specreq)
 {
-    $('#transparent_div').show();
+    $('#transparent_div2').show();
     $('#popup_box').show();
     $('#divspecHireClick').show();
     $('#popupBoxClose').show();
@@ -558,7 +558,7 @@ function SpecialReqShow(specreq)
 }
 
 function HireDriver() {
-    $('#transparent_div').hide();
+    $('#transparent_div2').hide();
     $('#popup_box').hide();
     $('#divspecHireClick').hide();
      DisableHiremeBtns();
@@ -569,7 +569,7 @@ function HireDriver() {
 
 function RejectDriver()
 {
-     $('#transparent_div').hide();
+     $('#transparent_div2').hide();
     $('#popup_box').hide();
     $('#divspecHireClick').hide();
      var status = "Rejected";
@@ -640,7 +640,7 @@ function Hireme(driID, reqID,spec)
 function HireCurrentDriver()
 {
        $('#loading').show();
-       $('#transparent_div').show();
+       $('#transparent_div2').show();
        var driverId = dId;
        var requestId = reqId;
            $.ajax({
@@ -688,7 +688,7 @@ function getResponseFromDriver(data)
                         success: function (data) {
                            console.log("in GetConfirmData");
                            $('#loading').hide();
-                    $('#transparent_div').hide();                   
+                    $('#transparent_div2').hide();                   
                     $('#lblconfirmjob').text(data.d[0]);
                     $('#lblconfirmdrivername').text(data.d[1]);
                     $('#lblconfirmfrom').text(data.d[2]);
@@ -700,7 +700,7 @@ function getResponseFromDriver(data)
                     $('#lblconfirmdriverPhoneNo').text(data.d[8]);
                     $('#popup_box').show();
                     $('#divDealConfirmed').show();
-                    $('#transparent_div').show();
+                    $('#transparent_div2').show();
                     $('#divselect').hide();
                         },
                         complete: function () {
@@ -719,7 +719,7 @@ function getResponseFromDriver(data)
                     $('#statusMessage').hide();
                     $('#divDeal').hide();
                     $('#loading').hide();
-                    $('#transparent_div').hide();
+                    $('#transparent_div2').hide();
                     //alert("search again")
                 }
                 else if(getBooked === "")
@@ -733,7 +733,7 @@ function getResponseFromDriver(data)
                     $('#statusMessage').hide();
                     $('#divDeal').hide();
                     $('#loading').show();
-                    $('#transparent_div').show();
+                    $('#transparent_div2').show();
                 }
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -753,7 +753,7 @@ function getResponseExpire()
                     $('#statusMessage').hide();
                     $('#divDeal').hide();
                     $('#loading').hide();
-                    $('#transparent_div').hide();
+                    $('#transparent_div2').hide();
     
     
                  navigator.notification.alert(
@@ -847,7 +847,7 @@ function calOk()
 {    
             $('#imgLoader').hide();
             $('#popup_box').hide();
-            $('#transparent_div').hide(); 
+            $('#transparent_div2').hide(); 
     // $('#divDealConfirmed').hide(); 
     
            /*  var requestId = $('#lblconfirmjob').text();
@@ -905,7 +905,7 @@ function selectDriver()
 {
     $('#divselect').hide();
     $('#popup_box').hide();
-    $('#transparent_div').hide();
+    $('#transparent_div2').hide();
 }
 
 function HideDisplay()
@@ -985,6 +985,8 @@ function onreinitiateCallback(buttonIndex)
     }
     else if(buttonIndex === 1)
     {
+        //alert(requestID);
+        
         window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId+ '&rid=' + requestID;
       
     }
@@ -992,6 +994,7 @@ function onreinitiateCallback(buttonIndex)
 
 function AlterJob()
 {
+    //alert(requestID);
     window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId+ '&rid=' + requestID;
 }
 function AlterJob2()
