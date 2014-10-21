@@ -25,7 +25,8 @@ function getCablaterBooking()
     {
               var count = data.d.length;
                         if(count > 0)
-                        { $('#msg').html("");
+                        { 
+                            $('#msg').html("");
                            var previousjobID ="";
                            var html = '<table id="tbhist" cellspacing="0" width="100%"  style="border:thin solid;">';
                                 html += '<tr class="thead-grid">';

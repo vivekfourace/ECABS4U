@@ -40,7 +40,7 @@ var timer = setInterval(function () {
     console.log(timeOut);
     if (timeOut <= 0) {
         window.clearInterval(id);
-        jAlert('No driver found Please search again.', 'ECabs4U-Booking');
+       jAlert('No driver found Please search again.', 'ECabs4U-Booking');
         //alert('No driver found Please search again.');
         DeleteJob("Cancelled due to no driver found");
         Destroy();
