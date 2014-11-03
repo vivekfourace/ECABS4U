@@ -78,11 +78,12 @@ function bindGrid(data)
              }
         html +='</tbody>';
         html +='</table>';
-        $('#msg').append(html);
+        $('#msgcabnow').html('');
+        $('#msgcabnow').append(html);
      }
      else
      {
-         $('#bookingmsg').show();
+         $('#bookingmsgcabnow').show();
      }
 }
 

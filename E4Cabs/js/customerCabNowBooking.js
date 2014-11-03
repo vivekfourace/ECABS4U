@@ -11,7 +11,7 @@ window.onload = getResponse();
 function backtosearch() {
     window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
 }
-
+//CabNow Logic Start
 var id;
 id = window.setInterval(getResponse, 10000);
 
@@ -30,21 +30,23 @@ function getResponse()
 }
     
 function getData(data) {    
-    var count = data.d.length;  
+    var count = data.d.length; 
+    var isCustomerResponded = false;
+    var previousjobID = 0, jobID = 0, previousDriverID = 0 , driverID = 0;
     if(count > 0)
     {
-        $('#bookingmsg').hide();
-        $('#msg').show();
+        $('#bookingmsgnow').hide();
+        $('#cabnowmsg').show();
         DisplayDriversData();
     } 
     else{
-       $('#msg').empty().append("");
-       $('#bookingmsg').show();
+       $('#cabnowmsg').empty().append("");
+       $('#bookingmsgnow').show();
     }
     function DisplayDriversData()
     {   
-        console.log('in display driver data');
-        $('#msg').empty();
+        //console.log('in display driver data');
+        $('#cabnowmsg').empty();
         $('#divbid').show();
         $('#divawait').hide();
         $('#load').hide();
@@ -61,16 +63,47 @@ function getData(data) {
         html += '</tr>';
         html += '</thead>';
         html += '<tbody>';
+        
         for (var i = 0; i < count; i++) {
+        	
+            isCustomerResponded = false;
+            previousjobID = jobID = data.d[i]["CustomerRequestID"];
+            previousDriverID = driverID = data.d[i]["DriverID"];
+            
+            if(i>0){
+                previousjobID = data.d[i-1]["CustomerRequestID"];
+                previousDriverID = data.d[i-1]["DriverID"];
+            }
+           
+           
+            if(jobID !== previousjobID)
+            {
+               isCustomerResponded = false;
+               for (var j = 0; j < count; j++) {
+                   if(data.d[j]["CustomerResponse"] === true)
+                       isCustomerResponded = true;
+               }
+            }
+            else
+            {
+                if(previousDriverID !== driverID)
+                {
+                   isCustomerResponded = false;
+                   for (var j = 0; j < count; j++) {
+                       if(data.d[j]["CustomerResponse"] === true)
+                           isCustomerResponded = true;
+                   }
+                }
+            }
+            
+          
             var driverID = data.d[i]["DriverID"];
             var customerReqId = data.d[i]["CustomerRequestID"];
             var spec = data.d[i]["DriverSpecialReq"];
             var searchTime = data.d[i]["SearchTime"];
             var driverImgUrl = data.d[i]["DriverPicUrl"];
             var vehicleImgUrl = data.d[i]["VehicleImageUrl"];
-            var customerResponse = data.d[i]["CustomerResponse"];
-            console.log(driverImgUrl);
-            console.log(vehicleImgUrl);
+            //var customerResponse = data.d[i]["CustomerResponse"];
             var tm = searchTime.split(" ");
 
             var min = tm[1].split(":");
@@ -140,15 +173,13 @@ function getData(data) {
                 }
             }
             if (spec !== null) {
-                console.log(driverID);
-                console.log(spec);
                 html += '<tr>';
                 html += "<td width='10%' align='center'> &pound "+ data.d[i]["Comments"]+"</td>";
                 html += "<td width='25%' align='center'>"+'<a href="#" class="pulse" style="color:blue;" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
                 html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
                 html += "<td width='10%' align='center'>" + '<img src="img/sc.png" class="pulse" width="15" height="15" style="color:grey;" onclick="SpecShow(\''+spec+'\')"/>' + "</td>";
                 html += "<td width='20%' align='center'>" + bidh + ":" + bidm + "</td>";
-                if(customerResponse === false) {
+                if(isCustomerResponded === false) {
                 html += "<td width='15%' align='center' id='tdHire'>" + '<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" class="disableBtn accept-btn" value="Hire" id= "' + driverID + '" onclick = "Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'' + spec + '\');"/>' + "</td>";
             }
             else {
@@ -179,7 +210,7 @@ function getData(data) {
                 html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
                 html += "<td width='10%' align='center'>" + '<img src="img/spec.png"  width="15" height="15" style="color:grey;" onclick="SpecShow(\'Not Available\')"/>' + "</td>";
                 html += "<td width='20%' align='center'>" + bidh + ":" + bidm + "</td>";
-                if(customerResponse === false) {
+                if(isCustomerResponded === false) {
                 html += "<td width='15%' align='center' id='tdHire'>" + '<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" class="disableBtn accept-btn" value="Hire" id= "' + driverID + '" onclick = "Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'' + spec + '\');"/>' + "</td>";
             }
             else {
@@ -241,7 +272,7 @@ function getData(data) {
         html += '</td></tr>'; 
         html += '</table>';
         html += '</div>';        
-        $('#msg').append(html);
+        $('#cabnowmsg').append(html);
     }
 }
 
@@ -778,6 +809,7 @@ function DeleteJob(cause)
         });
 }
 
+//CabNow Logic End
 function searchpage()
 {
     window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;

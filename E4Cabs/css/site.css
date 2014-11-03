@@ -377,3 +377,19 @@ input[type="password"]:focus {
     50% { opacity: 0.3; }
     100% { opacity: 1.0; }
 }
+
+.rejectbtn {
+    border-radius: 1px!important;
+    outline: none!important;
+    width: 100%!important;
+    height: 35px!important;
+    text-align: center!important;
+    font-size: 14px!important;
+    margin: auto!important;
+    vertical-align: middle !important;
+    text-align: center!important;
+    font-family: Calibri;
+    color: #fff;
+    border: 1px solid #088A29;
+    background-color: #8B0000;
+}

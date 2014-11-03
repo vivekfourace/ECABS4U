@@ -7,83 +7,104 @@ function backToIndex()
 {
     window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
+var id;
+id = window.setInterval(getCabLaterJobs, 1000);
 
-$.ajax({
-   url:'http://115.115.159.126/ECabs/ECabs4U.asmx/DriverCabLaterBooking',
-   type:'post',
-   dataType:'json',
-   data:"{'relatedId':'"+relatedId+"'}",
-   contentType:"application/json; charset=utf-8",
-   success: bindGrid,
-   error:function (XMLHttpRequest, textStatus, errorThrown) {}
-});
-
-function bindGrid(data)
-{
-    var count = data.d.length;
-    if(count > 0)
-    {
-        var isCustomerAccepted ="";
-        for(var i=0; i<count; i++)
-        {
-             if(data.d[i]["CustomerResponse"] === true)
-             {
-                  isCustomerAccepted = true;
-             }
-        }
-        var html = '<table id="tbhist" cellspacing="0"; width="100%"  style="border-collaspe:collaspe;">';
-            html += '<thead class="thead-grid">';
-            html += '<tr>';
-            html += '<th>JobNo</th>';
-        if(isCustomerAccepted === true)
-        {
-            html += '<th>Fare</th>';
-        }
-		html += '<th>From</th>';
-        html += '<th>To</th>';
-        html += '<th>Status</th>';                      
-        html += '</tr>';
-        html += '</thead>';
-        html +='<tbody class="altColor">';  
-             for(var i=0; i<count; i++)
-             {
-                isCustomerAccepted = data.d[i]["CustomerResponse"];
-                var customerID = data.d[i]["CustomerID"];
-                if(isCustomerAccepted === true)
-                 { 
-                    html += '<tr>';
-                    html += "<td width='25%' height='30px' align='center'>" +'<a href="#" onclick="ShowDetailBooking(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["CustomerID"]+'\')" style="color:blue;">'+ data.d[i]["CustomerRequestID"]+'</a>' + "</td>"; 
-                    if(isCustomerAccepted === true)
-                 {   html += "<td width='15%' height='30px' align='center'>"+'&pound' + data.d[i]["Fare"] +"</td>";
-                   } html += "<td width='25%' height='30px' align='center'>" + data.d[i]["From"] +"</td>";
-                    html += "<td width='25%' height='30px' align='center'>" + data.d[i]["To"] +"</td>";
-                 
+function getCabLaterJobs() {
+    $.ajax({
+       url:'http://115.115.159.126/ECabs/ECabs4U.asmx/DriverCabLaterBooking',
+       type:'post',
+       dataType:'json',
+       data:"{'relatedId':'"+relatedId+"'}",
+       contentType:"application/json; charset=utf-8",
+       success: function (data) { 
+           var count = data.d.length;
+           if(count > 0)
+           {
+               var isCustomerAccepted ="";
+               for(var i=0; i<count; i++)
+               {
+                    if(data.d[i]["CustomerResponse"] === true)
+                    {
+                         isCustomerAccepted = true;
+                    }
+                    if(data.d[i]["Fare"] !== null){
+                        hasfare = true;
+                    }
+               }
+               if(hasfare){
+               var html = '<table id="tbhist" cellspacing="0"; width="100%"  style="border-collaspe:collaspe;">';
+                   html += '<thead class="thead-grid">';
+                   html += '<tr>';
+                   html += '<th>JobNo</th>';
+                   //if(isCustomerAccepted === true)
+                   {
+                       html += '<th>Fare</th>';
+                   }
+           		html += '<th>From</th>';
+                   html += '<th>To</th>';
+                   html += '<th>Status</th>';                      
+                   html += '</tr>';
+                   html += '</thead>';
+                   html +='<tbody class="altColor">';  
+                   for(var i=0; i<count; i++)
+                    {
+                        console.log(data.d[i]);
+                        var customerID = data.d[i]["CustomerID"];
+                        var fare = data.d[i]["Fare"];
+                        if(fare !== null)
+                        {
+                            isCustomerAccepted = data.d[i]["CustomerResponse"];
+                            html += '<tr>';
+                            html += "<td width='25%' height='30px' align='center' style='border-bottom:1px solid #0080FF;'>" +'<a href="#" onclick="ShowDetailBooking(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["CustomerID"]+'\')" style="color:blue;">'+ data.d[i]["CustomerRequestID"]+'</a>' + "</td>"; 
+                            //if(isCustomerAccepted === true)
+                            {
+                                html += "<td width='15%' height='30px' align='center' style='border-bottom:1px solid #0080FF;'>"+'&pound' + data.d[i]["Fare"] +"</td>";
+                            }
+                            html += "<td width='25%' height='30px' align='center' style='border-bottom:1px solid #0080FF;'>" + data.d[i]["From"] +"</td>";
+                            html += "<td width='25%' height='30px' align='center' style='border-bottom:1px solid #0080FF;'>" + data.d[i]["To"] +"</td>";                     
+                            if(isCustomerAccepted === false)
+                            {
+                                html += "<td colspan='2' style='width:25%;height:35px;text-align:center;border-bottom:1px solid #0080FF'>Awaiting customer response</td>";
+                            }
+                            else if(isCustomerAccepted === true)
+                            {
+                                html += "<td colspan='2' style='border-bottom:1px solid #0080FF;'>"
+                                     +'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Accept" class="accept-btn" onclick="AcceptJob(\''+data.d[i]["CustomerRequestID"]+'\',\''+fare+'\')"/><br/><div style="height:3px"></div>'
+                                     +'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Reject" class="reject-btn" onclick="RejectJob(\''+data.d[i]["CustomerRequestID"]+'\')"/>'
+                                     +"</td>";
+                            }
+                             
+                            html += '</tr>';
+                        }
+                    }
                
-                if(isCustomerAccepted === true)
-                 {  
-                     html += "<td colspan='2'>"
-                    +'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Accept" class="accept-btn" onclick="AcceptJob(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["Fare"]+'\')"/><br/><div style="height:3px"></div>'
-                    +'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Reject" class="reject-btn" onclick="RejectJob(\''+data.d[i]["CustomerRequestID"]+'\')"/>'
-                    +"</td>";
-                 }
-                 else if(isCustomerAccepted === false)
-                 {
-                     html += "<td  colspan='2' width='10%' height='30px' align='center'>Awaiting customer response</td>";
-                 }
-                
-                    html += '</tr>';
-                 }                   
-             }
-        html +='</tbody>';
-        html +='</table>';
-        $('#msg').append(html);
-     }
-     else
-     {
-         $('#bookingmsg').show();
-     }
+               html +='</tbody>';
+               html +='</table>';
+               $('#cablaterdriverbookings').html('');
+               $('#cablaterdriverbookings').append(html);
+               }
+               else
+               {
+                   $('#bookingmsg').show();
+               }
+           }
+            else
+            {
+                $('#bookingmsg').show();
+            }
+       },
+       error:function (XMLHttpRequest, textStatus, errorThrown) {}
+    });
 }
-
+//AcceptJob with 1 parameter only
+function AcceptJob(jobnumber)
+{
+   
+    $('#hdnJobno').val(jobnumber);
+    window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId+'&Jobid='+jobnumber;    
+}
+//AcceptJob with 2 parameters
 function AcceptJob(jobno, jobfare)
 {
     $('#hidJobNo').val(jobno);
