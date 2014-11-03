@@ -28,8 +28,9 @@ function bindGrid(data)
     var count = data.d.length;
     if(count > 0)
     {
-        $('#msg').html("");
+        $('#msgNow').html("");
         var isCustomerAccepted ="";
+        var Bidfare="";
         for(var i=0; i<count; i++)
         {
              if(data.d[i]["CustomerResponse"] === true)
@@ -54,6 +55,8 @@ function bindGrid(data)
              for(var i=0; i<count; i++)
              {
                 isCustomerAccepted = data.d[i]["CustomerResponse"];
+                 if(isCustomerAccepted === false)
+                 {
                 var customerID = data.d[i]["CustomerID"];
                 html += '<tr>';
                 html += "<td width='25%' height='30px' align='center'>" +'<a href="#" onclick="ShowDetailBooking(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["CustomerID"]+'\')" style="color:blue;">'+ data.d[i]["CustomerRequestID"]+'</a>' + "</td>"; 
@@ -63,32 +66,42 @@ function bindGrid(data)
                 }
                 html += "<td width='25%' height='30px' align='center'>" + data.d[i]["From"] +"</td>";
                 html += "<td width='25%' height='30px' align='center'>" + data.d[i]["To"] +"</td>";
-                if(isCustomerAccepted === true)
-                {  
+               // if(isCustomerAccepted === true)
+               // {  
+               //     html += "<td  colspan='2' width='10%' height='30px' align='center'>Awaiting customer response</td>";
+               //     //html += "<td colspan='2'>"
+               //     //+'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Accept" class="accept-btn" onclick="AcceptJobNow(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["Fare"]+'\')"/><br/><div style="height:3px"></div>'
+               //     //+'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Reject" class="reject-btn" onclick="RejectJobNow(\''+data.d[i]["CustomerRequestID"]+'\')"/>'
+               //     //+"</td>";
+               // }
+               // else 
+                 if(isCustomerAccepted === false && data.d[i]["Fare"] === null )
+                {
+                   // html += "<td  colspan='2' width='10%' height='30px' align='center'>Awaiting customer response</td>";
                     html += "<td colspan='2'>"
-                    +'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Accept" class="accept-btn" onclick="AcceptJob(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["Fare"]+'\')"/><br/><div style="height:3px"></div>'
-                    +'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Reject" class="reject-btn" onclick="RejectJob(\''+data.d[i]["CustomerRequestID"]+'\')"/>'
+                    +'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Accept" class="accept-btn" onclick="seeRequest2()"/><br/><div style="height:3px"></div>'
+                    +'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Reject" class="reject-btn" onclick="closeRequest2()"/>'
                     +"</td>";
                 }
-                else if(isCustomerAccepted === false)
-                {
-                    html += "<td  colspan='2' width='10%' height='30px' align='center'>Awaiting customer response</td>";
-                }
-                html += '</tr>';                                    
+                     else{
+                         html += "<td  colspan='2' width='10%' height='30px' align='center'>Awaiting customer response</td>";
+                     }
+                html += '</tr>';  
+                     }
              }
         html +='</tbody>';
         html +='</table>';
-        $('#msg').append(html);
+        $('#msgNow').append(html);
      }
      else
      {
-         $('#bookingmsg').show();
+         $('#bookingmsgNow').show();
      }
 }
 
-function AcceptJob(jobno, jobfare)
+function AcceptJobNow(jobno, jobfare)
 {
-    $('#hidJobNo').val(jobno);
+    $('#hidJobNoNow').val(jobno);
     var fare = jobfare;
     if(fare >= 11 && fare <=20)
     {
@@ -110,7 +123,7 @@ function AcceptJob(jobno, jobfare)
     }
     else
     {
-        var reqID = $('#hidJobNo').val();
+        var reqID = $('#hidJobNoNow').val();
         $.ajax({
             beforeSend: function(){
                $('#imgLoader').show();
@@ -171,13 +184,16 @@ function showDetail(data)
     
 }
 
+
+
+
 function Cancel()
 {
     $('#popup_box').hide();
     $('#divCabLaterBooking').hide();
     $('#transparent_div').hide();
 }
-function RejectJob(data)
+function RejectJobNow(data)
 {
     var isTrue = confirm("Confirm you want to reject this job offer?");
     if(isTrue)
@@ -219,7 +235,7 @@ function RejectComission()
 
 function Confirmcomission()
 {
-    var reqID = $('#hidJobNo').val();
+    var reqID = $('#hidJobNoNow').val();
     $.ajax({
     beforeSend: function()
     {
@@ -300,4 +316,22 @@ function bookedHistory()
 function feedBack()
 {
     window.location='driverFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
+
+function seeRequest2()
+{
+    window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
+function closeRequest2()
+{
+     $.ajax({
+              url:'http://115.115.159.126/ECabs/ECabs4U.asmx/CancelNewJobDNotification', 
+              type:"POST",
+              datatype:"json",
+              data:"{'relatedId':'" +relatedId+ "'}",
+              contentType: "application/json; charset=utf-8",                     
+              success: function () {
+                  window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+              }
+        });
 }

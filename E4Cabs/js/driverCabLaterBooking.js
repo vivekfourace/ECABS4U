@@ -331,6 +331,7 @@ function Confirmcomission()
     {
         if(data.d !== "")
         {
+           // alert("in");
             console.log(data.d);
             var returnvalue = data.d;
             if (returnvalue.match(/"Error:"/g) > 0)
@@ -341,7 +342,7 @@ function Confirmcomission()
                          {
                              alert('Job booked successfully.');
                             window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-                             }
+                         }
          //else
          //{
          //    console.log(data.d);

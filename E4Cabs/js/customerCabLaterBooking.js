@@ -3,7 +3,6 @@ var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
-//CabLater Booking Logic Start
 window.onload = getCablaterBooking();
 var id, isAnyDriverHired = false;
 //id = window.setInterval(getCablaterBooking, 1000);
@@ -20,7 +19,7 @@ function getCablaterBooking()
                         if(count > 0)
                         {
                            var previousjobID ="";
-                           var html = '<table id="tbhist" cellspacing="0" width="100%">';
+                           var html = '<table id="tbhist" cellspacing="0" width="100%"  style="border:thin solid;">';
                                 html += '<tr class="thead-grid">';
                                 html += '<th>JobNo</th>';
                                 html += '<th colspan="2">From</th>';
@@ -39,20 +38,22 @@ function getCablaterBooking()
                                     var DriverSpecialReq = data.d[i]["DriverSpecialReq"];
                                     var DriverID = data.d[i]["DriverID"];
                                     var Fare = data.d[i]["Fare"];
+                                   
 
                                     if(i>0){
                                     	previousjobID = data.d[i-1]["CustomerRequestID"];}
+                                    console.log("PreviousJOBID="+previousjobID);
+                                    console.log("JobID="+jobID);
                                    
                                     if(jobID !== previousjobID)
                                     {
                                    	 html += '<tr style="background-color:white">';
-                                        html += '<td colspan="5"><hr style="border:2px solid darkred; margin: -2px;" ></td>';
+                                        html += '<td colspan="5"><hr style="border:2px solid darkred" ></td>';
                                         html += '</tr>';
                                         html += '<tr style="background-color:lightgray;">';
                                         html += '<td style="width:20%;height:35px;text-align:center;"><a href="#" onclick="ShowDetailBooking(\''+jobID+'\')" style="color:blue;">'+ jobID +'</a></td>'; 
-                                        html += "<td style='width:40%;height:35px;text-align:center;' colspan='2' >" + From +"</td>";
-                                        html += "<td style='width:20%;height:35px;text-align:center;'>" + To +"</td>";
-                                        html += '<td style="width:20%;height:35px;text-align:center;"><input type="button" class="rejectbtn" value="Cancel Job" style="width:98%"; onclick="CancelJob(\''+jobID+'\')"/></td>';
+                                        html += "<td style='width:40%;height:35px;text-align:center;' colspan='2'>" + From +"</td>";
+                                        html += "<td style='width:40%;height:35px;text-align:center;' colspan='2'>" + To +"</td>";
                                         html += '</tr>';
                                         html += '<tr class="thead-grid2">';
                                         html += '<td>Driver</td>';
@@ -61,39 +62,20 @@ function getCablaterBooking()
                                    	 html += '<td>Rating </td>';
                                    	 html += '<td>Action </td>';  
                                    	 html += '</tr>';
-                                        isAnyDriverHired = false;
-                                        for(var j=0; j<count; j++)
-                                        {
-                                            if(data.d[j]["CustomerResponse"] === true && data.d[j]["CustomerRequestID"] === jobID)
-                                            {
-                                                console.log(isAnyDriverHired);
-                                                isAnyDriverHired = true;
-                                            }
-                                        }
                                     }
-                                    html += '<tr style="border-bottom:1px solid black !important;">';
-                                    html += '<td style="width: 20%;text-align:left;">';
-                                    html += '<a href="#" onclick="showRatingBoxLaterPresent(\''+DriverID+'\')" style="color:blue; font-size: 17px;">'+ DriverName +'</a><br/>';
-                                    html += '<img src="'+DriverPhoto+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImageLater(this)\"/>';
-                                    html += '</td>';
+                                    html += '<tr style="border-bottom:1px solid black !important;"><td style="width: 20%;text-align:left;><span style="font-weight:bold;font-size:14px;">' + DriverName + '</span><br/><img src="'+DriverPhoto+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImageLater(this)\"/></td>';
                                     html += '<td style="width: 20%;text-align:left;"><br/><img src="'+VehicleImages+'" style="width:50px;height:50px;border-radius:4px;" onclick="ShowLargeImageLater(this)\"/></td>';
                                     html += "<td style='width: 15%;height:35px;text-align:center;'>"+'&pound' + Fare +"</td>";
-                                    html += '<td style="width: 25%;text-align:left;"><input type="button" class="btn-tmp" value="Rating" style="width:98%"; onclick="showRatingBoxLaterPresent(\''+DriverID+'\')"/></td>';
+                                    html += '<td style="width: 25%;text-align:left;"><input type="button" class="btn-tmp" value="Rating" style="width:80%"; onclick="showRatingBoxLaterPresent(\''+DriverID+'\')"/></td>';
                                     if(Fare > 0)
                                     {
                                         if(CustResponse !== true)
                                         {
-                                    		if(isAnyDriverHired === false)
-                                            {
-                                                html += "<td style='width: 20%;text-align:center;'>"+'<input type="button" id="check" style="-webkit-appearance:none;-moz-appearance:none;"  class="accept-btn2" value="Hire" onclick="HireDriver(\''+ jobID +'\',\''+ DriverID +'\')"/>'+"</td>";
-                                            }
-                                            else
-                                            {
-                                            }
+                                    		html += "<td style='width: 20%;text-align:center;'>"+'<input type="button" id="check" style="-webkit-appearance:none;-moz-appearance:none;"  class="accept-btn2" value="Hire" onclick="HireDriver(\''+ jobID +'\',\''+ DriverID +'\')"/>'+"</td>";
                                         }
                                         else
                                         {
-                                         	html += "<td style='width: 20%;text-align:center;'>Awaiting driver response <span style='color:green; font-size:16px;'>Or</span><br/><input type='button' id='check' style='-webkit-appearance:none;-moz-appearance:none;' class='rejectbtn' value='Cancel Driver' onclick='CancelDriver(\'"+ jobID +'\',\''+ DriverID +'\')"/>'+"</td>";   
+                                         	html += "<td style='width: 20%;text-align:center;'>Awaiting driver response</td>";   
                                         }
                                     }
                                     else
@@ -103,8 +85,7 @@ function getCablaterBooking()
                                     html += '</tr>'; 
                                 }
                                 html +='</table>'; 
-                                $('#cablatercustomerbookings').html('');
-                                $('#cablatercustomerbookings').append(html);
+                                $('#msg').append(html);
                          }
                         else
                         {
@@ -389,31 +370,40 @@ function showRatingBoxLaterPresent(driverID)
         contentType: "application/json; charset=utf-8",
         success: function(data)
         {    
+        //alert(data.d[i].lenght);
             $('#feedback-content').empty();
-            ratingcont = data.d.length;
-            if(ratingcont > 0)
+             ratingcont = data.d.length;
+                //var data2=data.d[0]["StartDate"];
+           // alert(data2);
+                if(ratingcont > 0)
             {
-                    var table2 = '<table width="99%" style="border-collapse:collapse;margin-top:0px">';                    
-                    table2 += '<thead class="thead-grid">';
-                    table2 += '<tr>';
-                    table2 += '<th>Date</th>';
-                    table2 += '<th style="text-align:center">Rating</th>';
-                	table2 += '<th>Customer Comments</th>';
-                    table2 += '<th>Driver Comments</th>';
-                    table2 += '</tr>';
-                    table2 += '</thead>';
+                    var table2 = '<table width="99%" style="border-collapse:collapse;margin-top:0px">';
+                    
+                                table2 += '<thead class="thead-grid">';
+                                table2 += '<tr>';
+                                table2 += '<th>Date</th>';
+                                table2 += '<th style="text-align:center">Rating</th>';
+                            	table2 += '<th>Customer Comments</th>';
+                                table2 += '<th>Driver Comments</th>';
+                          
+                                table2 += '</tr>';
+                                table2 += '</thead>';
                     
                     for(var i = 0; i<ratingcont; i++)
-                    {   
+                    {
+                       
+                        
                         table2 += '<tr><td style="text-align:left;width:25%">'+data.d[i]["StartDate"]+'</td>';
                         //table2 += '<td style="text-align:left;width:25%">'+data.d[i]["DriverRating"]+'</td>';
                         var ratingdriver = data.d[i]["DriverRating"];
                         if(ratingdriver === "1")
-                                    {   
+                                    {
+                                        
                                         table2 += '<td style="width:100%;text-align:center;" colspan=""><img src="img/1star.PNG" style="width:18%" ></td>';
                                     }
                         else if(ratingdriver === "2")
                                     {
+                                     
                                         table2 += '<td style="width:100%;text-align:center;" colspan=""><img src="img/2star.PNG" style="width:33%" ></td>';
                                     }
                        else if(ratingdriver === "3")
@@ -421,7 +411,8 @@ function showRatingBoxLaterPresent(driverID)
                                         table2 += '<td style="width:100%;text-align:center;" colspan=""><img src="img/3star.PNG" style="width:45%" ></td>';
                                     }
                        else if(ratingdriver === "4")
-                                    {   
+                                    {
+                                        
                                         table2 += '<td style="width:100%;text-align:center;" colspan=""><img src="img/4star.PNG" style="width:55%" ></td>';
                                     }
                         else if(ratingdriver === "5")
@@ -449,6 +440,10 @@ function showRatingBoxLaterPresent(driverID)
                         {
                          table2 += '<td style="text-align:left;width:25%">'+data.d[i]["DriverFeedback"]+'</td>';    
                         }
+                        
+                        
+                         
+                        
                     }
                     table2 += '</table>';
                }
@@ -460,9 +455,10 @@ function showRatingBoxLaterPresent(driverID)
                     table2 += '</table>';  
             }
                 
+               // $('#feedback-content').append(table1);
                $('#feedback-content').append(table2);
-               $('#popup_box').fadeIn("fast");
-               $('#divRatingFeedback').fadeIn("fast");                
+                $('#popup_box').fadeIn("fast");
+                $('#divRatingFeedback').fadeIn("fast");                
           
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -474,9 +470,6 @@ function HideDisplay()
     $('#divRatingFeedback').hide();
     $('#popup_box').hide();    
 }
-
-//CabLater Logic End
-
 function searchpage()
 {
     window.location='customerSearch.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;

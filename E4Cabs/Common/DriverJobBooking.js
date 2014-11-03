@@ -52,6 +52,36 @@ var timereOut;
                                         $('#lbldealtime').text(data.d[5]);
                                         $('#lbldealfare').text(data.d[6]);
                                         $('#isReturnJourney').val(data.d[7]);
+                                        
+                                        var returnfromdeal=$('#lblreturnFrom').text();
+                                         var returntodeal=$('#lblreturnTo').text();
+                                        var returnDatedeal=$('#lblreturnDate').text();
+                                        var returnTimedeal=$('#lblreturnTime').text();
+                                        if(!returnfromdeal ||!returntodeal)
+                                        {
+                                            $('#rdealFrom').hide();
+                                            $('#rdealTo').hide();
+                                            $('#rdealDate').hide();
+                                            $('#rdealTime').hide();
+                                            
+                                        }
+                                        else
+                                        {
+                                            $('#rdealFrom').show();
+                                            $('#rdealTo').show();
+                                            $('#rdealDate').show();
+                                          
+                                            $('#rdealTime').show();
+                                            $('#lbldealreturnFrom').text(returnfromdeal);
+                                            $('#lbldealreturnTo').text(returntodeal);
+                                            $('#lbldealreturnDate').text(returnDatedeal);
+                                            $('#lbldealreturnTime').text(returnTimedeal);
+                                            
+                                            
+                                        }
+                                        
+                                        
+                                        
                                         $('#transparent_div').show();
                                     }
                                     else if (data.d[0] === "Error") {

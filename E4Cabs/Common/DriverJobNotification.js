@@ -83,7 +83,7 @@ function Check()
                 if (jobType === "True") 
                 {   
                     var cabnow = 1;
-                    //showConfirm(cabnow);
+                    showConfirm(cabnow);
                     playBeep();
                     clearInterval(jobCheckTime);
                 }
@@ -174,12 +174,12 @@ function GetCancelledJobs() {
                        expJobId = data.d[i].ID;
                        drvId = data.d[i].DriverID;
                        expReason = data.d[i].ExpiryReason;
-                      /* navigator.notification.confirm(
+                       navigator.notification.confirm(
                            "Cancelled JobID = "+ jobId+"\nReason = "+ expReason,
                             onOKDeleteExpiredJob(expJobId),
                            'Cancelled Job',
                            'OK'
-                       );*/
+                       );
                     }
                 }
            });

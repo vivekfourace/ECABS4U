@@ -62,6 +62,10 @@
   "WP8ProductID": "{fc30e87d-80d6-4eda-af30-ce860b7d9bef}",
   "WP8PublisherID": "{48f03496-fe01-49fd-9eb5-45ed5bbd9938}",
   "WP8Publisher": "",
-  "WP8SupportedResolutions": [],
+  "WP8SupportedResolutions": [
+    "ID_RESOLUTION_WVGA",
+    "ID_RESOLUTION_WXGA",
+    "ID_RESOLUTION_HD720P"
+  ],
   "Framework": "Cordova"
 }
