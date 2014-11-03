@@ -60,6 +60,7 @@ function  NavigateToMap()
         {
             if(data.d === true)
             {
+                $('#btnJobDetails').show();
                 $('#lblEngaged').show();
                 $('#lblEngaged').text("Engaged");
                 $('#btnEngage').hide();
@@ -74,6 +75,7 @@ function  NavigateToMap()
             }
             else if(data.d === false)
             {
+                $('#btnJobDetails').hide();
                 $('#lblEngaged').show();
                 $('#lblEngaged').text("Available");               
             }
@@ -140,6 +142,8 @@ function onAbortCallback(buttonIndex)
            $('#lblStaus').text("Unavailable");
            $('#lblStaus').css("color", "red");
            $('#lblEngaged').hide();
+           $('#btnJobDetails').hide();
+            
         },
         
         error: function (XMLHttpRequest, textStatus, errorThrown) {}
@@ -160,6 +164,7 @@ function Online()
            $('#btnOffline').show();
            $('#btnOnline').hide();
            $('#lblStaus').hide();
+           $('#btnJobDetails').hide();
            $('#lblEngaged').show();
         },
         
@@ -254,6 +259,7 @@ function onClearCallback(buttonIndex)
                          if(data.d === true)
                          {                            
                             window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                            $('#btnJobDetails').hide();
                             $('#lblEngaged').show();
                             $('#lblEngaged').text("Available");
                          }
@@ -369,6 +375,7 @@ function countDown() {
          success: function(data){
              if(data.d === true) {  
                 $('#divRejectJob').hide();
+                $('#btnJobDetails').hide();
                 $('#lblEngaged').show();
                 $('#lblEngaged').text("Available");
                window.location='DriverCabLaterJobs.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
@@ -382,4 +389,118 @@ function countDown() {
   }
   sec -= 1;
   window.setTimeout(countDown, 1000);
+}
+
+function showJobDetails(){
+    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/DriverEngagedJob";
+    $.ajax(url, {
+       type:"POST",
+       datatype:"json",
+       data:"{'driverId':'"+relatedId+"'}",
+       contentType: "application/json; charset=utf-8",
+        success: showDetail2,
+        error: function (XMLHttpRequest, textStatus, errorThrown) 
+        { }
+    });
+}
+function makeCall()
+{
+    var number = $('#lblCustomerContact').text();
+    window.location.href = "tel:" + number;    
+}
+
+function showDetail2(data)
+{
+    $('#lblJobNo').text(": "+data.d[0]);
+    $('#lblFare').html(": "+'&pound'+data.d[1]);
+    $('#lbltDate').text(": "+data.d[2]);
+    //Conversion of time formate.
+    var time = data.d[3];
+    var hrs = Number(time.match(/^(\d+)/)[1]);
+    var mnts = Number(time.match(/:(\d+)/)[1]);
+    var format = time.match(/\s(.*)$/)[1];
+    if (format === "PM" && hrs < 12) hrs = hrs + 12;
+    if (format === "AM" && hrs === 12) hrs = hrs - 12;
+    var hours = hrs.toString();
+    var minutes = mnts.toString();
+    if (hrs < 10) hours = "0" + hours;
+    if (mnts < 10) minutes = "0" + minutes;
+     $('#lblTime').text(":"+ hours + ":" + minutes);  
+    
+    
+    $('#lblFrom').text(": "+data.d[4]);
+    $('#lblTo').text(": "+data.d[5]);
+    $('#lblCustomerName').text(": "+data.d[6]);
+    
+    $('#lblCustomerContact').text(data.d[7]);
+    $('#lblCustomerContact').css("font-weight", 900);
+    
+    $('#lblNoOfPassenger').text(": "+data.d[8]);
+    
+    
+     if(data.d[13] !== "")
+    {
+        $('#driverrating').show();
+        $('#starrating').raty({ score: data.d[13], readOnly: true });
+         console.log("stars=" + $('#hiddenstar').val());
+     }
+    else
+    {
+        $('#driverrating').hide();
+    }
+    if(data.d[9]!=="No Customer Feedback")
+    {
+        $('#labelline').show();
+         $('#custFeedback').show();
+       $('#lblCustomerFeedback').text(": "+data.d[9]);
+       
+        
+    }
+    else
+    {
+        $('#custFeedback').hide();
+        $('#MyFeedback').hide();
+        $('#labelline').hide();
+    }
+   
+    
+    if(data.d[10]!== "No Return")
+    {
+        $('#rtnfrom').show();
+        $('#lblreturnfrom').text(": "+data.d[10]);
+    }
+    else
+    {
+        $('#rtnfrom').hide();
+       
+    }
+    if(data.d[11]!== "No Return")
+    {
+        $('#rtnto').show();
+        $('#lblreturnto').text(": "+data.d[11]);
+    }
+    else
+    {
+       //$('#rtnto').hide();
+        $('#rtnto').hide();
+    }
+    if(data.d[12]!=="No Driver Comments")
+    {
+         $('#MyFeedback').show();
+        $('#labelline').show();
+      $('#lblMyFeedback').text(": "+data.d[12]);  
+    }
+    else
+    {
+        $('#MyFeedback').hide();
+    }
+    $("#popup_box1").show();
+    $('#divJobDetails2').show();
+    $('#transparent_div').show();
+}
+function Cancel()
+{
+   $("#popup_box1").fadeOut("fast");
+   $('#divJobDetails2').fadeOut("fast");
+   $('#transparent_div').hide();
 }
