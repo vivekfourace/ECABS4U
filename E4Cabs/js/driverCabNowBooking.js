@@ -59,7 +59,14 @@ function bindGrid(data)
                 html += "<td width='25%' height='30px' align='center'>" +'<a href="#" onclick="ShowDetailBooking(\''+data.d[i]["CustomerRequestID"]+'\',\''+data.d[i]["CustomerID"]+'\')" style="color:blue;">'+ data.d[i]["CustomerRequestID"]+'</a>' + "</td>"; 
                 if(isCustomerAccepted === true)
                 {
-                    html += "<td width='15%' height='30px' align='center'>"+'&pound' + data.d[i]["Fare"] +"</td>";
+                    if(data.d[i]["Fare"] === "null")
+                    {
+                        html += "<td width='15%' height='30px' align='center'>--</td>";
+                    }
+                    if(data.d[i]["Fare"] > 0)
+                    {
+                        html += "<td width='15%' height='30px' align='center'>"+'&pound' + data.d[i]["Fare"] +"</td>";
+                    }
                 }
                 html += "<td width='25%' height='30px' align='center'>" + data.d[i]["From"] +"</td>";
                 html += "<td width='25%' height='30px' align='center'>" + data.d[i]["To"] +"</td>";
@@ -78,7 +85,8 @@ function bindGrid(data)
              }
         html +='</tbody>';
         html +='</table>';
-        $('#msg').append(html);
+        $('#msgcabnow').html('');
+        $('#msgcabnow').append(html);
      }
      else
      {
@@ -166,7 +174,7 @@ function showDetail(data)
     $('#lblBidTime').text(": "+data.d[6]);
     //$('#lblDSR').text(": "+data.d[7]);  
     $('#popup_box').show();
-    $('#divCabLaterBooking').show();
+    $('#divCabNowBooking').show();
     $('#transparent_div').show();
     
 }
@@ -174,7 +182,7 @@ function showDetail(data)
 function Cancel()
 {
     $('#popup_box').hide();
-    $('#divCabLaterBooking').hide();
+    $('#divCabNowBooking').hide();
     $('#transparent_div').hide();
 }
 function RejectJob(data)

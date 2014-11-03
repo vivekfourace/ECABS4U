@@ -13,7 +13,7 @@ function backtosearch() {
 }
 //CabNow Logic Start
 var id;
-id = window.setInterval(getResponse, 10000);
+//id = window.setInterval(getResponse, 10000);
 
 function getResponse()
 {
@@ -31,7 +31,7 @@ function getResponse()
     
 function getData(data) {    
     var count = data.d.length; 
-    var isCustomerResponded = false;
+    var isCustomerResponded = "false";
     var previousjobID = 0, jobID = 0, previousDriverID = 0 , driverID = 0;
     if(count > 0)
     {
@@ -66,35 +66,31 @@ function getData(data) {
         
         for (var i = 0; i < count; i++) {
         	
-            isCustomerResponded = false;
+            isCustomerResponded = "false";
             previousjobID = jobID = data.d[i]["CustomerRequestID"];
             previousDriverID = driverID = data.d[i]["DriverID"];
+           
+            for (var j = 0; j < count; j++) {
+                if(data.d[j]["CustomerResponse"] === true)
+                    {
+                        isCustomerResponded = "true"; 
+                        break;
+                    }
+            }
             
             if(i>0){
                 previousjobID = data.d[i-1]["CustomerRequestID"];
                 previousDriverID = data.d[i-1]["DriverID"];
-            }
-           
-           
-            if(jobID !== previousjobID)
-            {
-               isCustomerResponded = false;
-               for (var j = 0; j < count; j++) {
-                   if(data.d[j]["CustomerResponse"] === true)
-                       isCustomerResponded = true;
-               }
-            }
-            else
-            {
-                if(previousDriverID !== driverID)
-                {
-                   isCustomerResponded = false;
-                   for (var j = 0; j < count; j++) {
-                       if(data.d[j]["CustomerResponse"] === true)
-                           isCustomerResponded = true;
-                   }
+                if(previousDriverID !== driverID){
+                    if(isCustomerResponded === "true"){
+                        isCustomerResponded = "null";
+                    }
                 }
-            }
+            }           
+           
+            
+            
+            
             
           
             var driverID = data.d[i]["DriverID"];
@@ -179,30 +175,23 @@ function getData(data) {
                 html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
                 html += "<td width='10%' align='center'>" + '<img src="img/sc.png" class="pulse" width="15" height="15" style="color:grey;" onclick="SpecShow(\''+spec+'\')"/>' + "</td>";
                 html += "<td width='20%' align='center'>" + bidh + ":" + bidm + "</td>";
-                if(isCustomerResponded === false) {
-                html += "<td width='15%' align='center' id='tdHire'>" + '<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" class="disableBtn accept-btn" value="Hire" id= "' + driverID + '" onclick = "Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'' + spec + '\');"/>' + "</td>";
-            }
-            else {
-                html += "<td width='15%' align='center'>Awaiting Driver Response</td>";
-            }
-                html += '</tr>';
-                html += '<tr>';           
-                //var rating3 = data.d[i]["RatingPast"];
-                //var rating4 = data.d[i]["RatingPresent"];
                 
-                          html += '<td style="width:100%;text-align:left;" colspan="2"><img src="'+driverImgUrl+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImage(this)\"/>'
-                          html += '<img src="'+vehicleImgUrl+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImage(this)\"/>'
-                          
-                                   
-                                        
-                         // html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/1star.PNG" style="width:18%" onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
-                              html += '<td style="width:100%;text-align:center;" colspan="2"><input type="button" class="btn-tmp" value="Rating" style="width:80%"; onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
-                           
-                                    
-                         
-                          
-                          html += '</tr>';
+                if(isCustomerResponded === "false") {
+                    html += "<td width='15%' align='center' id='tdHire'>" + '<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" class="disableBtn accept-btn" value="Hire" id= "' + driverID + '" onclick = "Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'' + spec + '\');"/>' + "</td>";
                 }
+                else if(isCustomerResponded === "true")  {
+                    html += "<td width='15%' align='center'>Awaiting Driver Response</td>";
+                }                
+                else  {
+                    html += "<td width='15%' align='center'> </td>";
+                }
+                html += '</tr>';
+                html += '<tr>';  
+                html += '<td style="width:100%;text-align:left;" colspan="2"><img src="'+driverImgUrl+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImage(this)\"/>'
+                html += '<img src="'+vehicleImgUrl+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImage(this)\"/>'
+                html += '<td style="width:100%;text-align:center;" colspan="2"><input type="button" class="btn-tmp" value="Rating" style="width:80%"; onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
+                html += '</tr>';
+            }
             else if(spec === null) {
                 html += '<tr>';
                 html += "<td width='10%' align='center'> &pound " + data.d[i]["Comments"] + "</td>";
@@ -210,56 +199,22 @@ function getData(data) {
                 html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
                 html += "<td width='10%' align='center'>" + '<img src="img/spec.png"  width="15" height="15" style="color:grey;" onclick="SpecShow(\'Not Available\')"/>' + "</td>";
                 html += "<td width='20%' align='center'>" + bidh + ":" + bidm + "</td>";
-                if(isCustomerResponded === false) {
-                html += "<td width='15%' align='center' id='tdHire'>" + '<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" class="disableBtn accept-btn" value="Hire" id= "' + driverID + '" onclick = "Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'' + spec + '\');"/>' + "</td>";
-            }
-            else {
-                html += "<td width='15%' align='center'>Awaiting Driver Response</td>";
-            }
+                if(isCustomerResponded === "false") {
+                    html += "<td width='15%' align='center' id='tdHire'>" + '<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" class="disableBtn accept-btn" value="Hire" id= "' + driverID + '" onclick = "Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'' + spec + '\');"/>' + "</td>";
+                }
+                else if(isCustomerResponded === "true")  {
+                    html += "<td width='15%' align='center'>Awaiting Driver Response</td>";
+                }                
+                else  {
+                    html += "<td width='15%' align='center'> </td>";
+                }
                 html += '</tr>';
                 html += '<tr>';
-                //var rating33 = data.d[i]["RatingPast"];
-                //var rating44 = data.d[i]["RatingPresent"];
-                
-                                html += '<td style="width:100%;text-align:left;" colspan="2"><img src="'+driverImgUrl+'" style="width:50px;height:50px;border-radius:4px" onclick=\"ShowLargeImage(this)\"/>'
-                                html += '<img src="'+vehicleImgUrl+'" style="width:50px;height:50px;border-radius:4px" onclick=\"ShowLargeImage(this)\"/>'
-                                
-                                        
-                        //html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/1star.PNG" style="width:18%" onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
-                       html += '<td style="width:100%;text-align:center;" colspan="2"><input type="button" class="btn-tmp" value="Rating" style="width:80%"; onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
-                                   
-                         
-                         
-                          html += '</tr>';
+                html += '<td style="width:100%;text-align:left;" colspan="2"><img src="'+driverImgUrl+'" style="width:50px;height:50px;border-radius:4px" onclick=\"ShowLargeImage(this)\"/>'
+                html += '<img src="'+vehicleImgUrl+'" style="width:50px;height:50px;border-radius:4px" onclick=\"ShowLargeImage(this)\"/>'
+                html += '<td style="width:100%;text-align:center;" colspan="2"><input type="button" class="btn-tmp" value="Rating" style="width:80%"; onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
+                html += '</tr>';
             }
-            /*
-            html += '<tr>';
-            html += "<td width='10%' align='center'> &pound " + data.d[i]["Comments"] + "</td>";
-            html += "<td width='25%' align='center'>" + '<a href="#" style="color:blue;" class="pulse" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
-            html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
-            if (spec !== null) {
-                html += "<td width='10%' align='center'>" + '<img src="img/sc.png" class="pulse" width="15" height="15" style="color:grey;" onclick="SpecShow(\''+spec+'\')"/>' + "</td>";
-            }
-            else if(spec === null) {
-                html += "<td width='10%' align='center'>" + '<img src="img/spec.png"  width="15" height="15" style="color:grey;" onclick="SpecShow(\'Not Available\')"/>' + "</td>";
-            }
-            
-            html += "<td width='20%' align='center'>" + bidh + ":" + bidm + "</td>";
-            
-            if(customerResponse === false) {
-                html += "<td width='15%' align='center' id='tdHire'>" + '<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" class="disableBtn accept-btn" value="Hire" id= "' + driverID + '" onclick = "Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'' + spec + '\');"/>' + "</td>";
-            }
-            else {
-                html += "<td width='15%' align='center'>Awaiting Driver Response</td>";
-            }
-            
-            html += '</tr>';
-            html += '<tr>';
-            html += '<td style="width:100%;text-align:left;" colspan="2"><img src="'+driverImgUrl+'" style="width:50px;height:50px;border-radius:4px" onclick=\"ShowLargeImage(this)\"/>'
-            html += '<img src="'+vehicleImgUrl+'" style="width:50px;height:50px;border-radius:4px" onclick=\"ShowLargeImage(this)\"/>'
-            html += '<td style="width:100%;text-align:center;" colspan="2"><input type="button" class="btn-tmp" value="Rating" style="width:80%"; onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
-            html += '</tr>';
-            */
         }
         html += '</tbody>';
         html += '</table>';
