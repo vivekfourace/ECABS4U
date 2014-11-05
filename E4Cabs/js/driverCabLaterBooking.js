@@ -317,7 +317,7 @@ function Confirmcomission()
             {
             	alert(returnvalue);
             }
-             else if(data.d === "true")
+             else if(data.d === "true")//data.d.substring(0,4) === "Job "
                          {
                              alert('Job booked successfully.');
                             window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;

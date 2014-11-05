@@ -725,7 +725,7 @@ function getResponseFromDriver(data)
                 else if(getBooked === "")
                 {
                    var jobs1;
-                  jobs1 = window.setInterval(getResponseExpire, 300000);
+                  jobs1 = window.setInterval(getResponseExpire, 200000);
                   ///RejectDriver()-----see this function for delete driver response. 
                 }
                 else {
@@ -999,6 +999,7 @@ function AlterJob()
 }
 function AlterJob2()
 {//var search="Hi";
+     window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
     //window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId+ '&rid=' + requestID+ '&rrid=' + search;
 }
 

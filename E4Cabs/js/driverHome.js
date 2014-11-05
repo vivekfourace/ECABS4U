@@ -106,6 +106,7 @@ function onAbortCallback2(buttonIndex)
         //$('#btnOffline').show();
        $('#popup_box1').show();
        $('#divAbortTask').show();
+        $('#divJobDetails2').hide();
        
     }
 }
@@ -443,7 +444,7 @@ function showDetail2(data)
         $('#driverrating').show();
         $('#starrating').raty({ score: data.d[13], readOnly: true });
          console.log("stars=" + $('#hiddenstar').val());
-     }
+    }
     else
     {
         $('#driverrating').hide();
@@ -496,6 +497,7 @@ function showDetail2(data)
     }
     $("#popup_box1").show();
     $('#divJobDetails2').show();
+    $('#divAbortTask').hide();
     $('#transparent_div').show();
 }
 function Cancel()
