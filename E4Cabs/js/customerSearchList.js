@@ -77,7 +77,7 @@ function Destroy() {
 
 $('#load').show();
 
-var id, checkDealResp, anyMoreDriver;
+var id, checkDealResp, anyMoreDriver = true;
 id = window.setInterval(getResponse, 10000);
 
 function getResponse()
@@ -96,6 +96,7 @@ function getResponse()
 function SearchAgain(){
     $('#bookingmsg').hide();
     $('#msg').show();
+    anyMoreDriver = false;
     getResponse();  
 }
 function getData(data) {    
@@ -107,12 +108,13 @@ function getData(data) {
         window.clearInterval(reinitiateCounter);
         $('#bookingmsg').hide();
         $('#msg').show();
+        anyMoreDriver = true;
         DisplayDriversData();
     } 
     else{
        
-        //SearchDriverAgain();
-       alert("Sorry!!! No more driver available to hire. Please search again.");
+       if(anyMoreDriver ===  false)
+        alert("Sorry!!! No more driver available to hire. Please search again.");
        $('#msg').empty().append("");
        $('#msg').hide();
        $('#bookingmsg').show();
