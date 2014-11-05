@@ -12,8 +12,8 @@ function backtosearch() {
     window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
 }
 //CabNow Logic Start
-var id;
-//id = window.setInterval(getResponse, 10000);
+var id, isAnyDriverHired = false,bidh,bidm;
+id = window.setInterval(getResponse, 2000);
 
 function getResponse()
 {
@@ -31,8 +31,8 @@ function getResponse()
     
 function getData(data) {    
     var count = data.d.length; 
-    var isCustomerResponded = "false";
-    var previousjobID = 0, jobID = 0, previousDriverID = 0 , driverID = 0;
+    
+    var previousjobID = 0, jobID = 0, DriverID = 0;
     if(count > 0)
     {
         $('#bookingmsgnow').hide();
@@ -51,25 +51,113 @@ function getData(data) {
         $('#divawait').hide();
         $('#load').hide();
         $('#transparent_div').hide();
-        var html = '<table width="100%" style="border-collapse:collapse;">';
-        html += '<thead class="header-style">';
-        html += '<tr>';
-        html += '<th>Fare</th>';
-        html += '<th>Date</th>';
-        html += '<th>Job</th>';
-        html += '<th>Specs</th>';
-        html += '<th>ETA</th>';
-        html += '<th></th>';
-        html += '</tr>';
-        html += '</thead>';
-        html += '<tbody>';
+        var html = '<table id="tbhist" cellspacing="0" width="100%">';
+            html += '<tr class="thead-grid">';
+            html += '<th>JobNo</th>';
+            html += '<th colspan="2">From</th>';
+            html += '<th colspan="2">To</th>';
+            html += '</tr>';
+        
+      
         
         for (var i = 0; i < count; i++) {
-        	
-            isCustomerResponded = "false";
-            previousjobID = jobID = data.d[i]["CustomerRequestID"];
+        	jobID = data.d[i]["CustomerRequestID"];
+            var From = data.d[i]["From"];
+            var To = data.d[i]["To"];
+            var CustResponse = data.d[i]["CustomerResponse"];           
+            var DriverName = data.d[i]["DriverName"];
+            var DriverPhoto = data.d[i]["DriverPicUrl"];
+            var VehicleImages = data.d[i]["VehicleImageUrl"];
+            var spec = data.d[i]["DriverSpecialReq"];
+            DriverID = data.d[i]["DriverID"];
+            var Fare = data.d[i]["Comments"];
+            var searchTime = data.d[i]["SearchTime"];
+            var bidTime = data.d[i]["BidTime"];
+            getBidTimeData(searchTime,bidTime);
+            
+            if(i>0){ previousjobID = data.d[i-1]["CustomerRequestID"]; }
+            if(jobID !== previousjobID)
+            {
+           	
+                html += '<tr style="background-color:white">';
+                html += '<td colspan="5"><hr style="border:2px solid darkred; margin: -2px;" ></td>';
+                html += '</tr>';
+                html += '<tr style="background-color:lightgray;">';
+                html += '<td style="width:20%;height:35px;text-align:center;"><a href="#" onclick="ShowDetailBooking(\''+jobID+'\')" style="color:blue;">'+ jobID +'</a></td>'; 
+                html += "<td style='width:20%;height:35px;text-align:center;'>" + From +"</td>";
+                html += "<td style='width:20%;height:35px;text-align:center;'>" + To +"</td>";
+                html += '<td style="width:20%;height:35px;text-align:center;"><input type="button" class="rejectbtn" value="Cancel Job" style="width:98%"; onclick="CancelJob(\''+jobID+'\')"/></td>';
+                html += '</tr>';
+                html += '<tr class="thead-grid2">';
+                html += '<td style="text-align:center;">Fare</td>';
+        		html += '<td style="text-align:center;">Date</td>';
+                html += '<td style="text-align:center;">Specs</td>';
+           	 html += '<td style="text-align:center;">ETA</td>';
+           	 html += '</tr>';
+                isAnyDriverHired = false;
+                for(var j=0; j<count; j++)
+                {
+                    if(data.d[j]["CustomerResponse"] === true && data.d[j]["CustomerRequestID"] === jobID)
+                    {
+                        isAnyDriverHired = true;
+                    }
+                }
+            }
+            html += '<tr style="border-bottom:1px solid black !important;">';
+            html += "<td style='width: 15%;height:35px;text-align:center;'>"+'&pound' + Fare +"</td>";
+            html += "<td width='25%' align='center'>"+'<a href="#" class="pulse" style="color:blue;" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
+            if(spec !== "")
+                html += "<td width='10%' align='center'>" + '<img src="img/sc.png" class="pulse" width="15" height="15" style="color:grey;" onclick="SpecShow(\''+spec+'\')"/>' + "</td>";
+            else
+                html += "<td width='10%' align='center'>" + '<img src="img/spec.png"  width="15" height="15" style="color:grey;" onclick="SpecShow(\'Not Available\')"/>' + "</td>";
+            html += "<td width='20%' align='center'>" + bidh + ":" + bidm + "</td>";
+            html += "</tr>";
+            html += '<tr style="border-bottom:1px solid black !important;">';
+            html += '<td style="width: 20%;text-align:left;border-bottom:1px solid black !important;">';
+            html += '<a href="#" onclick="showRatingBoxLaterPresent(\''+DriverID+'\')" style="color:blue; font-size: 17px;">'+ DriverName +'</a><br/>';
+            html += '<img src="'+DriverPhoto+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImageLater(this)\"/>';
+            html += '</td>';
+            html += '<td style="width: 20%;text-align:left;border-bottom:1px solid black !important;"><br/><img src="'+VehicleImages+'" style="width:50px;height:50px;border-radius:4px;" onclick="ShowLargeImageLater(this)\"/></td>';
+            html += '<td style="width: 25%;text-align:left;border-bottom:1px solid black !important;"><input type="button" class="btn-tmp" value="Rating" style="width:98%"; onclick="showRatingBoxLaterPresent(\''+DriverID+'\')"/></td>';
+            if(Fare > 0)
+            {
+                if(CustResponse !== true)
+                {
+            		if(isAnyDriverHired === false)
+                    {
+                        html += "<td style='width: 20%;text-align:center;border-bottom:1px solid black !important;'>"+'<input type="button" id="check" style="-webkit-appearance:none;-moz-appearance:none;"  class="accept-btn2" value="Hire" onclick="HireDriver(\''+ jobID +'\',\''+ DriverID +'\')"/>'+"</td>";
+                    }
+                    else
+                    {
+                        html += "<td style='width: 20%;text-align:center;border-bottom:1px solid black !important;'></td";
+                    }
+                }
+                else
+                {
+                 	html += "<td style='width: 20%;text-align:center;border-bottom:1px solid black !important;'>"+'Awaiting driver response <span style="color:green; font-size:16px;">Or</span><br/><input type="button" id="check" style="-webkit-appearance:none;-moz-appearance:none;" class="rejectbtn" value="Cancel Driver" onclick="CancelDriver(\''+ jobID +'\',\''+ DriverID +'\')"/>'+"</td>";   
+                }
+            }
+            else
+            {
+                html += "<td style='width: 20%;text-align:center;border-bottom:1px solid black !important;'>Awaiting Bids</td>";
+            }
+            html += '</tr>'; 
+            
+            /*previousjobID = jobID = data.d[i]["CustomerRequestID"];
             previousDriverID = driverID = data.d[i]["DriverID"];
-           
+            var driverID = data.d[i]["DriverID"];
+            var customerReqId = data.d[i]["CustomerRequestID"];
+            var spec = data.d[i]["DriverSpecialReq"];
+            var searchTime = data.d[i]["SearchTime"];
+            var driverImgUrl = data.d[i]["DriverPicUrl"];
+            var vehicleImgUrl = data.d[i]["VehicleImageUrl"];
+            var Fare = data.d[i]["Comments"];
+            var CustResponse = data.d[i]["CustomerResponse"];
+            var bidTime = data.d[i]["BidTime"];
+            
+            getBidTimeData(searchTime,bidTime);
+            
+            
             for (var j = 0; j < count; j++) {
                 if(data.d[j]["CustomerResponse"] === true)
                     {
@@ -88,102 +176,66 @@ function getData(data) {
                 }
             }           
            
+            if(i>0){ previousjobID = data.d[i-1]["CustomerRequestID"]; }
+               
+            if(jobID !== previousjobID)
+            {
+           	 html += '<tr style="background-color:white">';
+                html += '<td colspan="5"><hr style="border:2px solid darkred; margin: -2px;" ></td>';
+                html += '</tr>';
+                html += '<tr style="background-color:lightgray;">';
+                html += '<td style="width:20%;height:35px;text-align:center;"><a href="#" onclick="ShowDetailBooking(\''+jobID+'\')" style="color:blue;">'+ jobID +'</a></td>'; 
+                html += "<td style='width:40%;height:35px;text-align:center;' colspan='2' >" + From +"</td>";
+                html += "<td style='width:20%;height:35px;text-align:center;'>" + To +"</td>";
+                html += '<td style="width:20%;height:35px;text-align:center;"><input type="button" class="rejectbtn" value="Cancel Job" style="width:98%"; onclick="CancelJob(\''+jobID+'\')"/></td>';
+                html += '</tr>';
+                html += '<tr class="thead-grid2">';
+                html += '<td>Driver</td>';
+        		html += '<td>Vehicle</td>';
+                html += '<td style="text-align:center;">Fare</td>';
+           	 html += '<td>Rating </td>';
+           	 html += '<td>Action </td>';  
+           	 html += '</tr>';
+                isAnyDriverHired = false;
+                for(var j=0; j<count; j++)
+                {
+                    if(data.d[j]["CustomerResponse"] === true && data.d[j]["CustomerRequestID"] === jobID)
+                    {
+                        isAnyDriverHired = true;
+                    }
+                }
+            }
+                      
             
-            
-            
-            
-          
-            var driverID = data.d[i]["DriverID"];
-            var customerReqId = data.d[i]["CustomerRequestID"];
-            var spec = data.d[i]["DriverSpecialReq"];
-            var searchTime = data.d[i]["SearchTime"];
-            var driverImgUrl = data.d[i]["DriverPicUrl"];
-            var vehicleImgUrl = data.d[i]["VehicleImageUrl"];
             //var customerResponse = data.d[i]["CustomerResponse"];
-            var tm = searchTime.split(" ");
-
-            var min = tm[1].split(":");
-            var sh = min[0];
-            var sm = min[1];
-            var ss = min[2];
-            if (sm > 49) {
-                sh = parseInt(sh) + 1;
-                sm = parseInt(sm) + 10;
-                sm = parseInt(sm) - 60;
-                if (ss === 00) {
-                    sm = parseInt(sm) + 1;
-                    ss = 00;
-                    $('#lblsearch').text(min[0] + ":" + min[1]);
-                    $('#lblexp').text(sh + ":" + sm );
-                }
-                else {
-                    $('#lblsearch').text(min[0] + ":" + min[1]);
-                    $('#lblexp').text(sh + ":" + sm );
-                }
-            }
-            else {
-                sm = parseInt(sm) + 10;
-                if (ss === 00) {
-                    sm = parseInt(sm) + 1;
-                    ss = 00;
-                    $('#lblsearch').text(min[0] + ":" + min[1]);
-                    $('#lblexp').text(sh + ":" + sm );
-                }
-                else {
-                    $('#lblsearch').text(min[0] + ":" + min[1]);
-                    $('#lblexp').text(sh + ":" + sm );
-                }
-            }
+           
             
-            var bidTime = data.d[i]["BidTime"];
-            var bid = bidTime.split(" ");
-            var bidmin = bid[1].split(":");
-            var bidh = bidmin[0];
-            var bidm = bidmin[1];
-            var bids = bidmin[2];
-            if (bidm > 56) {
-                bidh = parseInt(bidh) + 1;
-                bidm = 00;
-                if (bids === 00) {
-                    bidm = parseInt(bidm) + 1;
-                    bids = 00;
-                    $('#lblbid').text(bidmin[0] + ":" + bidmin[1] );
-                    $('#lblpick').text(bidh + ":" + bidm );
-                }
-                else {
-                    $('#lblbid').text(bidmin[0] + ":" + bidmin[1]);
-                    $('#lblpick').text(bidh + ":" + bidm );
-                }
-            }
-            else {
-                bidm = parseInt(bidm) + 3;
-                if (bids === 00) {
-                    sm = parseInt(sm) + 1;
-                    ss = 00;
-                    $('#lblbid').text(bidmin[0] + ":" + bidmin[1]);
-                    $('#lblpick').text(bidh + ":" + bidm );
-                }
-                else {
-                    $('#lblbid').text(bidmin[0] + ":" + bidmin[1]);
-                    $('#lblpick').text(bidh + ":" + bidm );
-                }
-            }
-            if (spec !== null) {
                 html += '<tr>';
                 html += "<td width='10%' align='center'> &pound "+ data.d[i]["Comments"]+"</td>";
                 html += "<td width='25%' align='center'>"+'<a href="#" class="pulse" style="color:blue;" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
-                html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
                 html += "<td width='10%' align='center'>" + '<img src="img/sc.png" class="pulse" width="15" height="15" style="color:grey;" onclick="SpecShow(\''+spec+'\')"/>' + "</td>";
                 html += "<td width='20%' align='center'>" + bidh + ":" + bidm + "</td>";
                 
-                if(isCustomerResponded === "false") {
-                    html += "<td width='15%' align='center' id='tdHire'>" + '<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" class="disableBtn accept-btn" value="Hire" id= "' + driverID + '" onclick = "Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'' + spec + '\');"/>' + "</td>";
+                if(Fare > 0)
+                {
+                    if(CustResponse !== true)
+                    {
+                		if(isAnyDriverHired === false)
+                        {
+                            html += "<td style='width: 20%;text-align:center;'>"+'<input type="button" id="check" style="-webkit-appearance:none;-moz-appearance:none;"  class="accept-btn2" value="Hire" onclick="HireDriver(\''+ customerReqId +'\',\''+ driverID +'\')"/>'+"</td>";
+                        }
+                        else
+                        {
+                        }
+                    }
+                    else
+                    {
+                     	html += "<td style='width: 20%;text-align:center;'>"+'Awaiting driver response <span style="color:green; font-size:16px;">Or</span><br/><input type="button" id="check" style="-webkit-appearance:none;-moz-appearance:none;" class="rejectbtn" value="Cancel Driver" onclick="CancelDriver(\''+ customerReqId +'\',\''+ driverID +'\')"/>'+"</td>";   
+                    }
                 }
-                else if(isCustomerResponded === "true")  {
-                    html += "<td width='15%' align='center'>Awaiting Driver Response</td>";
-                }                
-                else  {
-                    html += "<td width='15%' align='center'> </td>";
+                else
+                {
+                    html += "<td style='width: 20%;text-align:center;'>Awaiting Bids</td>";
                 }
                 html += '</tr>';
                 html += '<tr>';  
@@ -191,22 +243,35 @@ function getData(data) {
                 html += '<img src="'+vehicleImgUrl+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImage(this)\"/>'
                 html += '<td style="width:100%;text-align:center;" colspan="2"><input type="button" class="btn-tmp" value="Rating" style="width:80%"; onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
                 html += '</tr>';
-            }
-            else if(spec === null) {
+            
+            /*else if(spec === null) {
                 html += '<tr>';
                 html += "<td width='10%' align='center'> &pound " + data.d[i]["Comments"] + "</td>";
                 html += "<td width='25%' align='center'>" + '<a href="#" style="color:blue;" class="pulse" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
                 html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
                 html += "<td width='10%' align='center'>" + '<img src="img/spec.png"  width="15" height="15" style="color:grey;" onclick="SpecShow(\'Not Available\')"/>' + "</td>";
                 html += "<td width='20%' align='center'>" + bidh + ":" + bidm + "</td>";
-                if(isCustomerResponded === "false") {
-                    html += "<td width='15%' align='center' id='tdHire'>" + '<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" class="disableBtn accept-btn" value="Hire" id= "' + driverID + '" onclick = "Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'' + spec + '\');"/>' + "</td>";
+                
+                if(Fare > 0)
+                {
+                    if(CustResponse !== true)
+                    {
+                		if(isAnyDriverHired === false)
+                        {
+                            html += "<td style='width: 20%;text-align:center;'>"+'<input type="button" id="check" style="-webkit-appearance:none;-moz-appearance:none;"  class="accept-btn2" value="Hire" onclick="HireDriver(\''+ customerReqId +'\',\''+ driverID +'\')"/>'+"</td>";
+                        }
+                        else
+                        {
+                        }
+                    }
+                    else
+                    {
+                     	html += "<td style='width: 20%;text-align:center;'>"+'Awaiting driver response <span style="color:green; font-size:16px;">Or</span><br/><input type="button" id="check" style="-webkit-appearance:none;-moz-appearance:none;" class="rejectbtn" value="Cancel Driver" onclick="CancelDriver(\''+ customerReqId +'\',\''+ driverID +'\')"/>'+"</td>";   
+                    }
                 }
-                else if(isCustomerResponded === "true")  {
-                    html += "<td width='15%' align='center'>Awaiting Driver Response</td>";
-                }                
-                else  {
-                    html += "<td width='15%' align='center'> </td>";
+                else
+                {
+                    html += "<td style='width: 20%;text-align:center;'>Awaiting Bids</td>";
                 }
                 html += '</tr>';
                 html += '<tr>';
@@ -214,7 +279,7 @@ function getData(data) {
                 html += '<img src="'+vehicleImgUrl+'" style="width:50px;height:50px;border-radius:4px" onclick=\"ShowLargeImage(this)\"/>'
                 html += '<td style="width:100%;text-align:center;" colspan="2"><input type="button" class="btn-tmp" value="Rating" style="width:80%"; onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
                 html += '</tr>';
-            }
+            }*/
         }
         html += '</tbody>';
         html += '</table>';
@@ -226,7 +291,8 @@ function getData(data) {
         html += '<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" id="searchAgain" class="reject-btn" value="InSufficient Drivers" onclick="SearchDriverAgain()"/>';
         html += '</td></tr>'; 
         html += '</table>';
-        html += '</div>';        
+        html += '</div>'; 
+        $('#cabnowmsg').html('');        
         $('#cabnowmsg').append(html);
     }
 }
@@ -763,7 +829,75 @@ function DeleteJob(cause)
             }
         });
 }
-
+function getBidTimeData(searchTime, bidTime){
+    var tm = searchTime.split(" ");
+            
+    var min = tm[1].split(":");
+    var sh = min[0];
+    var sm = min[1];
+    var ss = min[2];
+    if (sm > 49) {
+        sh = parseInt(sh) + 1;
+        sm = parseInt(sm) + 10;
+        sm = parseInt(sm) - 60;
+        if (ss === 00) {
+            sm = parseInt(sm) + 1;
+            ss = 00;
+            $('#lblsearch').text(min[0] + ":" + min[1]);
+            $('#lblexp').text(sh + ":" + sm );
+        }
+        else {
+            $('#lblsearch').text(min[0] + ":" + min[1]);
+            $('#lblexp').text(sh + ":" + sm );
+        }
+    }
+    else {
+        sm = parseInt(sm) + 10;
+        if (ss === 00) {
+            sm = parseInt(sm) + 1;
+            ss = 00;
+            $('#lblsearch').text(min[0] + ":" + min[1]);
+            $('#lblexp').text(sh + ":" + sm );
+        }
+        else {
+            $('#lblsearch').text(min[0] + ":" + min[1]);
+            $('#lblexp').text(sh + ":" + sm );
+        }
+    }
+    
+    var bid = bidTime.split(" ");
+    var bidmin = bid[1].split(":");
+    bidh = bidmin[0];
+    bidm = bidmin[1];
+    var bids = bidmin[2];
+    if (bidm > 56) {
+        bidh = parseInt(bidh) + 1;
+        bidm = 00;
+        if (bids === 00) {
+            bidm = parseInt(bidm) + 1;
+            bids = 00;
+            $('#lblbid').text(bidmin[0] + ":" + bidmin[1] );
+            $('#lblpick').text(bidh + ":" + bidm );
+        }
+        else {
+            $('#lblbid').text(bidmin[0] + ":" + bidmin[1]);
+            $('#lblpick').text(bidh + ":" + bidm );
+        }
+    }
+    else {
+        bidm = parseInt(bidm) + 3;
+        if (bids === 00) {
+            sm = parseInt(sm) + 1;
+            ss = 00;
+            $('#lblbid').text(bidmin[0] + ":" + bidmin[1]);
+            $('#lblpick').text(bidh + ":" + bidm );
+        }
+        else {
+            $('#lblbid').text(bidmin[0] + ":" + bidmin[1]);
+            $('#lblpick').text(bidh + ":" + bidm );
+        }
+    }
+}
 //CabNow Logic End
 function searchpage()
 {

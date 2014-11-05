@@ -60,7 +60,7 @@ function playBeep() {
 }
 
 jobCheckTime = setInterval(Check, 5000);
-
+var expirycount = 0;
 
 function Check() 
 {    
@@ -174,6 +174,7 @@ function GetCancelledJobs() {
                        expJobId = data.d[i].ID;
                        drvId = data.d[i].DriverID;
                        expReason = data.d[i].ExpiryReason;
+                       expirycount += 1;
                        navigator.notification.confirm(
                            "Cancelled JobID = "+ jobId+"\nReason = "+ expReason,
                             onOKDeleteExpiredJob(expJobId),
@@ -185,8 +186,8 @@ function GetCancelledJobs() {
            });
 }
 function onOKDeleteExpiredJob(expJobId){
-    
-     $.ajax({
+    if(expirycount === 2){
+         $.ajax({
               url:'http://115.115.159.126/ECabs/ECabs4U.asmx/DeleteCancelledJob', 
               type:"POST",
               datatype:"json",
@@ -194,8 +195,10 @@ function onOKDeleteExpiredJob(expJobId){
               contentType: "application/json; charset=utf-8",                     
               success: function () {
                    $('#transparent_div').hide();
+                  expirycount = 0;
                    window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
               }
          });
-    
+    }
 }
+

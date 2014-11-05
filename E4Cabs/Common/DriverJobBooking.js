@@ -509,53 +509,99 @@ function SaveDataOfCurrentJob()
                 contentType: "application/json; charset=utf-8",
                 success: function (data) 
                 {
-                   
-                    
                     if(data.d !== "")
-                     {
-                         console.log(data.d);
-                         var returnvalue = data.d;
-                         if (returnvalue.match(/"Error:"/g) > 0)
                          {
-                         	alert(returnvalue);
+                            var returnvalue = data.d;
+                            if (returnvalue.match(/"Error:"/g) > 0)
+                            {
+                                alert(returnvalue);
+                                window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                            }
+
+                            else if(data.d.substring(0,4) === "Job "){
+                               // alert(data.d);
+                                alert('Job booked successfully.');
+                                window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                            }
+
+                            else if(data.d.substring(0,4) === "Plea"){
+                                alert(data.d);
+                                window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                            }
+
+                            else
+                            {
+                                document.addEventListener("deviceready", onDeviceReady, false);
+
+                                function iabLoadStart(event) { }
+
+                                function iabLoadStop(event) { }
+
+                                function iabClose(event) {
+                                  iabRef.removeEventListener('loadstart', iabLoadStart);
+                                  iabRef.removeEventListener('loadstop', iabLoadStop);
+                                  iabRef.removeEventListener('exit', iabClose);
+                                  window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;                                     
+                                }
+
+                                function onDeviceReady() {
+                                  iabRef = window.open(data.d, '_blank', 'location=yes');
+                                  iabRef.addEventListener('loadstart', iabLoadStart);
+                                  iabRef.addEventListener('loadstop', iabLoadStop);
+                                  iabRef.addEventListener('exit', iabClose);
+                                }                 
+                            }
                          }
-                          else if(data.d === "true")
-                         {
-                             alert('Job booked successfully.');
-                            window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-                              /*document.addEventListener("deviceready", onDeviceReady, false);
-                             
-                              function iabLoadStart(event) {
-                                     //alert(event.type + ' - ' + event.url);
-                                 }
-                                
-                                 function iabLoadStop(event) {
-                                     //alert(event.type + ' - ' + event.url);
-                                 }
-                                
-                                 function iabClose(event) {
-                                      //alert(event.type);
-                                      iabRef.removeEventListener('loadstart', iabLoadStart);
-                                      iabRef.removeEventListener('loadstop', iabLoadStop);
-                                      iabRef.removeEventListener('exit', iabClose);
-                                     window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-                                     
-                                 }
-                                
-                                 // Cordova is ready
-                                 //
-                                 function onDeviceReady() {
-                                      iabRef = window.open(data.d, '_blank', 'location=yes');
-                                      iabRef.addEventListener('loadstart', iabLoadStart);
-                                      iabRef.addEventListener('loadstop', iabLoadStop);
-                                      iabRef.addEventListener('exit', iabClose);
-                                     // setTimeout(function()
-                                     //{
-             						//iabRef.close();
-        							 //}, 60000);
-                                 } */               
-                         }
-                     }
+                   
+                   ///new 
+                   //if(data.d !== "")
+                   // {
+                   //     console.log(data.d);
+                   //     var returnvalue = data.d;
+                   //     if (returnvalue.match(/"Error:"/g) > 0)
+                   //     {
+                   //     	alert(returnvalue);
+                   //     }
+                   //      else if(data.d === "true")
+                   //     {
+                   //         alert('Job booked successfully.');
+                   //        window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                   //         
+                   //         //old
+                   //         
+                   //          /*document.addEventListener("deviceready", onDeviceReady, false);
+                   //         
+                   //          function iabLoadStart(event) {
+                   //                 //alert(event.type + ' - ' + event.url);
+                   //             }
+                   //            
+                   //             function iabLoadStop(event) {
+                   //                 //alert(event.type + ' - ' + event.url);
+                   //             }
+                   //            
+                   //             function iabClose(event) {
+                   //                  //alert(event.type);
+                   //                  iabRef.removeEventListener('loadstart', iabLoadStart);
+                   //                  iabRef.removeEventListener('loadstop', iabLoadStop);
+                   //                  iabRef.removeEventListener('exit', iabClose);
+                   //                 window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                   //                 
+                   //             }
+                   //            
+                   //             // Cordova is ready
+                   //             //
+                   //             function onDeviceReady() {
+                   //                  iabRef = window.open(data.d, '_blank', 'location=yes');
+                   //                  iabRef.addEventListener('loadstart', iabLoadStart);
+                   //                  iabRef.addEventListener('loadstop', iabLoadStop);
+                   //                  iabRef.addEventListener('exit', iabClose);
+                   //                 // setTimeout(function()
+                   //                 //{
+             		//				//iabRef.close();
+        			//				 //}, 60000);
+                   //             } */               
+                   //     }
+                     //}
                      else
                      {
                         alert("Unable to do payment. Please try again.");
@@ -602,75 +648,52 @@ function SaveDataOfCurrentJob()
                 contentType: "application/json; charset=utf-8",
                 success: function (data)
                  {
-                     
                      if(data.d !== "")
-                     {
-                         console.log(data.d);
-                         var returnvalue = data.d;
-                         if (returnvalue.match(/"Error:"/g) > 0)
-                         {
-                         	alert(returnvalue);
-                         }
-                          else if(data.d === "true")
-                         {
-                             alert('Job booked successfully.');
-                            window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-                             /*document.addEventListener("deviceready", onDeviceReady, false);
-                             
-                              function iabLoadStart(event) {
-                                     //alert(event.type + ' - ' + event.url);
-                                 }
-                                
-                                 function iabLoadStop(event) {
-                                     //alert(event.type + ' - ' + event.url);
-                                 }
-                                
-                                 function iabClose(event) {
-                                      //alert(event.type);
-                                      iabRef.removeEventListener('loadstart', iabLoadStart);
-                                      iabRef.removeEventListener('loadstop', iabLoadStop);
-                                      iabRef.removeEventListener('exit', iabClose);
-                                     window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-                                     
-                                 }
-                                
-                                 // Cordova is ready
-                                 //
-                                 function onDeviceReady() {
-                                      iabRef = window.open(data.d, '_blank', 'location=yes');
-                                      iabRef.addEventListener('loadstart', iabLoadStart);
-                                      iabRef.addEventListener('loadstop', iabLoadStop);
-                                      iabRef.addEventListener('exit', iabClose);
-                                     // setTimeout(function()
-                                     //{
-             						//iabRef.close();
-        							 //}, 60000);
-                                 }*/
-                             
-                                             
-                         }
+                      {
+                        var returnvalue = data.d;
+                        if (returnvalue.match(/"Error:"/g) > 0)
+                        {
+                            alert(returnvalue);
+                            window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                        }
+
+                        else if(data.d.substring(0,4) === "Job "){
+                           alert('Job booked successfully.');
+                           window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                        }
+
+                        else if(data.d.substring(0,4) === "Plea"){
+                           alert(data.d);                            
+                           window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                        }
+
+                        else
+                        {
+                            document.addEventListener("deviceready", onDeviceReady, false);
+
+                            function iabLoadStart(event) { }
+
+                            function iabLoadStop(event) { }
+
+                            function iabClose(event) {
+                              iabRef.removeEventListener('loadstart', iabLoadStart);
+                              iabRef.removeEventListener('loadstop', iabLoadStop);
+                              iabRef.removeEventListener('exit', iabClose);
+                              window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;                                     
+                            }
+
+                            function onDeviceReady() {
+                              iabRef = window.open(data.d, '_blank', 'location=yes');
+                              iabRef.addEventListener('loadstart', iabLoadStart);
+                              iabRef.addEventListener('loadstop', iabLoadStop);
+                              iabRef.addEventListener('exit', iabClose);
+                            }                 
+                        }
                      }
                      else
                      {
                         alert("Unable to do payment. Please try again.");
                      }
-                     
-                   //if(data.d !== "")
-                   // {
-                   //     console.log(data.d);
-                   //     var returnvalue = data.d;
-                   //     if (returnvalue.match(/"Error:"/g) > 0) {
-                   //         alert(returnvalue);
-                   //     }
-                   //     else{
-                   //         window.location.href=data.d;
-                   //     }
-                   // }
-                   // else{
-                   //     //alert("Nothing returned from service.");
-                   // }
-                    
-                    
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
 
@@ -750,7 +773,6 @@ function onRejectCallback(buttonIndex)
                 success: function (data) {
                     if(data.d === true)
                     {
-                      console.log('rej')
                       window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
                     }
                     else

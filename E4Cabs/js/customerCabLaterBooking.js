@@ -66,7 +66,6 @@ function getCablaterBooking()
                                         {
                                             if(data.d[j]["CustomerResponse"] === true && data.d[j]["CustomerRequestID"] === jobID)
                                             {
-                                                console.log(isAnyDriverHired);
                                                 isAnyDriverHired = true;
                                             }
                                         }
@@ -93,7 +92,7 @@ function getCablaterBooking()
                                         }
                                         else
                                         {
-                                         	html += "<td style='width: 20%;text-align:center;'>Awaiting driver response <span style='color:green; font-size:16px;'>Or</span><br/><input type='button' id='check' style='-webkit-appearance:none;-moz-appearance:none;' class='rejectbtn' value='Cancel Driver' onclick='CancelDriver(\'"+ jobID +'\',\''+ DriverID +'\')"/>'+"</td>";   
+                                         	html += "<td style='width: 20%;text-align:center;'>"+'Awaiting driver response <span style="color:green; font-size:16px;">Or</span><br/><input type="button" id="check" style="-webkit-appearance:none;-moz-appearance:none;" class="rejectbtn" value="Cancel Driver" onclick="CancelDriver(\''+ jobID +'\',\''+ DriverID +'\')"/>'+"</td>";   
                                         }
                                     }
                                     else
@@ -105,9 +104,10 @@ function getCablaterBooking()
                                 html +='</table>'; 
                                 $('#cablatercustomerbookings').html('');
                                 $('#cablatercustomerbookings').append(html);
-                         }
+                        }
                         else
                         {
+                            $('#cablatercustomerbookings').html('');
                             $('#bookingmsg').show();                            
                         }
                     },
@@ -211,7 +211,7 @@ function CancelJob(jobId){
                     data:"{'jobID':'" + jobid + "','customerID':'" + relatedId + "'}",
                     contentType: "application/json; charset=utf-8",                     
                     success: function(data){
-                            alert("Job cancelled successfully.");      
+                          alert("Job cancelled successfully.");
                     },
                    
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -508,24 +508,18 @@ function HideDisplay()
 }
 function CancelDriver(jobID, driverid)
 {
-    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/CancelDriverForJob";
-                $.ajax(url, {
-                   beforeSend: function(){
-                        $('#imgLoader').show();
-                     },
-                     complete: function(){
-                        $('#imgLoader').hide();
-                     },
-                   type:"POST",
-                   datatype:"json",
-                   data:"{'jobID'" + jobID + "','driverID':'" + driverid + "','customerID'" + relatedId + "'}",
-                   contentType: "application/json; charset=utf-8",
-                    success: function(){
-                        alert("Driver cancelled for this job.");
-                    },
-                    error: function (XMLHttpRequest, textStatus, errorThrown) 
-                    { }
-                });
+    $.ajax({
+       url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CancelDriverForJob",
+       type:"POST",
+       datatype:"json", 
+       data:"{'jobID':'" +jobID+ "','driverID':'"+driverid+"','customerID':'"+relatedId+"'}",
+       contentType: "application/json; charset=utf-8",
+        success: function(){
+            alert("Driver cancelled for this job.");
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) 
+        { }
+    });
 }
 //CabLater Logic End
 

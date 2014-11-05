@@ -90,40 +90,38 @@
         
        <!-- <div style="padding-top:50%; color:#0000FF;font-size:20px;text-align:center;display:none" id="bookingmsg">No more driver bid found,Please search again.<a href="#" style="color:#0019B9" onclick="backtosearch()">Click here</a> to go search page.</div>-->
        
-        <div id="bookingmsg">          
-        <div style="width:100%;">
-                        <table style="width:100%; border-collapse:collapse; background-color:#FFFFFF;">
+      <div id="bookingmsg" style="display:none;">
+       
+          
+        <div style="width:100%;float:left;">
+            
+            <table style="width:100%; border-collapse:collapse; background-color:#FFFFFF;">
                        
-                            <tr>
-                            <td style="width:100%;" colspan="2">
-                               
-                                <span style="width:100%;text-align:left;color:#0000FF;font-size:22px;">Unfortunately the chosen driver is no longer able to carry out your transfer please choose from the following options</span>
-                            </td>
-                        </tr>
-                           
-                            
-                            <tr class="footerDiv">
-                                
-                           <td style="width:50%">
-                                <input type="button" class="ok2" value="Choose another driver" style="width:100%;-webkit-appearance:none;-moz-appearance:none;" onclick="" />
-                                
-                            </td>
-                            <td style="width:50%">
-                                <input type="button" class="ok2" value="Re-initiate search" style="width:100%;-webkit-appearance:none;-moz-appearance:none;" onclick="AlterJob2()" />
-                            </td>
-                           
-                                 
-                             </tr>
-                            <tr class="footerDiv">
-                                 <td style="width:80%" colspan="2">
-                                     <center>
-                                <input type="button" class="ok2" value="Alter search parameters" style="width:80%;-webkit-appearance:none;-moz-appearance:none;" onclick="AlterJob()" />
-                                         
-                                     </center>
-                           </td>
-                            </tr>
-                        </table>
+                <tr>
+                    <td style="width:100%;" colspan="2">                               
+                        <span style="width:100%;text-align:left;color:#0000FF;font-size:22px;">Unfortunately the chosen driver is no longer able to carry out your transfer please choose from the following options</span>
+                    </td>
+                </tr>
+                   
+                    
+                <tr class="footerDiv">
+                    
+                     <td style="width:40%">
+                        <input type="button" class="ok2" value="Choose another driver" style="width:100%;-webkit-appearance:none;-moz-appearance:none;" onclick="SearchAgain()" />
+                     </td>
+                     <td style="width:40%">
+                        <input type="button" class="ok2" value="Alter search parameters" style="width:100%;-webkit-appearance:none;-moz-appearance:none;" onclick="AlterJob()" />
+                     </td>
+                </tr>
+                <tr class="footerDiv"> 
+                     <td style="width:40%">
+                        <input type="button" class="ok2" value="Re-initiate search" style="width:100%;-webkit-appearance:none;-moz-appearance:none;" onclick="AlterJob2()" />
+                     </td>
+                </tr>
+            </table>
+                
                    </div>
+              
         </div> 
              <div style="width:100%;height:75%;" id="divDetails">
                 <div id="popup_box">

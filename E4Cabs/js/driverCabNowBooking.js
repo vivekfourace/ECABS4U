@@ -174,7 +174,7 @@ function showDetail(data)
     $('#lblBidTime').text(": "+data.d[6]);
     //$('#lblDSR').text(": "+data.d[7]);  
     $('#popup_box').show();
-    $('#divCabNowBooking').show();
+    $('#divCabBooking').show();
     $('#transparent_div').show();
     
 }
@@ -182,7 +182,7 @@ function showDetail(data)
 function Cancel()
 {
     $('#popup_box').hide();
-    $('#divCabNowBooking').hide();
+    $('#divCabBooking').hide();
     $('#transparent_div').hide();
 }
 function RejectJob(data)
@@ -242,15 +242,22 @@ function Confirmcomission()
     {
         if(data.d !== "")
         {
-            console.log(data.d);
             var returnvalue = data.d;
             if (returnvalue.match(/"Error:"/g) > 0)
             {
-            	alert(returnvalue);
+                alert(returnvalue);
+                window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+            }
+            else if(data.d.substring(0,4) === "Job "){
+                alert(data.d);
+                window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+            }
+            else if(data.d.substring(0,4) === "Plea"){
+                alert(data.d);
+                window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
             }
             else
             {
-                console.log(data.d);
                 document.addEventListener("deviceready", onDeviceReady, false);
 
                 function iabLoadStart(event) { }
@@ -279,7 +286,7 @@ function Confirmcomission()
     },
     error: function (XMLHttpRequest, textStatus, errorThrown) 
     {
-		console.log("hierror");
+		console.log("error occurred.");
     }
     });
     

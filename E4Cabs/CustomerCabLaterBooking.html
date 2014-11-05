@@ -14,6 +14,7 @@
         <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>      
         <script type="text/javascript" src="js/customerCabNowBooking.js"></script>
         <script type="text/javascript" src="js/customerCabLaterBooking.js"></script>
+        <script type="text/javascript" src="Common/CustomerJobNotification.js"></script>
         <script type="text/javascript" src="Common/Logout.js"></script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
        
@@ -167,253 +168,6 @@
                     <div style="padding-top:50%; color:#0000FF;font-size:20px;text-align:center;display:none" id="bookingmsgnow">
                         No booking found for Cab Now Jobs                        
                     </div>
-        
-                    <div style="width:100%;height:75%;" id="divDetails">
-                        <div id="popup_box">
-                            <div id="divselect" style="display:none;width:100%;">
-                                <table style="width:100%; border-collapse:collapse;">
-                                    <tr>
-                                          <td class="popup_header" colspan="2" width="100%">
-                                              <strong style="padding-left:5px">Driver selection</strong>
-                                          </td>
-                                    </tr>
-                                    <tr class="popup_content">
-                                        <td >
-                                            <span style="font-size:13px;padding-left:10%; " class="test">
-                                                   Please select your driver
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                           <input type="button" class="ok" value="Ok" style="cursor: pointer;text-align:center;-webkit-appearance:none;-moz-appearance:none;" onclick="selectDriver()"/>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                            <div id="divExpiry" style="display:none;width:100%;" >
-                                <table style="width:100%;background-color:#FFFFFF; border-collapse:collapse;">
-                                    <tr>
-                                          <td class="popup_header" colspan="2" width="100%">
-                                              <strong style="padding-left:5px">Job expired time</strong>
-                                          </td>
-                                    </tr>
-                                    <tr class="popup_content">
-                                        <td style="width:50%">
-                                            <label id="">Searched Time</label>
-                                        </td>
-                                        <td style="width:50%">
-                                            <label id="lblsearch"></label>
-                                        </td>
-                                    </tr>
-                                    <tr class="popup_content">
-                                        <td style="width:50%">
-                                             <label id="Label1">Expiry  Time</label>
-                                        </td>
-                                        <td style="width:50%">
-                                             <label id="lblexp"></label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                         <td class="popup_footer" style="width:100%;" colspan="2">
-                                             <input type="button" class="ok" value="Close" style="cursor: pointer;text-align:center;-webkit-appearance:none;-moz-appearance:none;" onclick="closeExpiry()"/>
-                                         </td>
-                                    </tr>
-                                </table>
-                            </div>
-                            <div id="divBiding" style="display:none;">
-                                <table style="width:100%;  background-color:#FFFFFF; border-collapse:collapse;">
-                                    <tr>
-                                          <td class="popup_header" colspan="2">
-                                              <strong style="padding-left:5px">Job Bidded Time</strong>
-                                          </td>
-                                    </tr>
-                                    <tr class="popup_content">
-                                        <td style="width:50%">
-                                            <label >Bid Time</label>
-                                        </td>
-                                        <td style="width:50%">
-                                            <label id="lblbid"></label>
-                                        </td>
-                                    </tr>
-                                    <tr class="popup_content">
-                                        <td style="width:50%">
-                                             <label >Pick Up Time</label>
-                                        </td>
-                                        <td style="width:50%">
-                                             <label id="lblpick"></label>
-                                        </td>
-                                    </tr>
-                                    <tr style="width:100%;" class="popup_footer">
-                                         <td style="width:100%;text-align:center" colspan="2">
-                                             <input type="button" class="ok" value="Close" style="cursor: pointer;text-align:center;-webkit-appearance:none;-moz-appearance:none;" onclick="closeBid()"/>
-                                         </td>
-                                     </tr>
-                                </table>
-                            </div>
-                            <div id="divspec" style="display:none;">
-                                <table style="width:100%; border-collapse:collapse; background-color:#FFFFFF;">
-                                    <tr>
-                                          <td class="popup_header" colspan="2">
-                                              <strong style="padding-left:5px">Special Circumstance</strong>
-                                          </td>
-                                    </tr>
-                                    <tr >
-                                        <td style="width:100%" colspan="2">
-                                            <label id="txtothereSpecialReq" style="width:90%;height:60px;color:black"></label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                         <td  class="popup_footer" style="width:100%;text-align:center" colspan="2">
-                                             <input type="button" class="ok" value="Close" style="cursor: pointer;text-align:center;-webkit-appearance:none;-moz-appearance:none;" onclick="specClose()"/>/>-->
-                                         </td>
-                                    </tr>
-                                </table>
-                            </div> 
-                            
-                            <div id="divspecHireClick" style="display:none;">
-                                <table style="width:100%; border-collapse:collapse; background-color:#FFFFFF;">
-                                    <tr>
-                                          <td class="popup_header" colspan="2">
-                                              <strong style="padding-left:5px">Drivers special circumstances</strong>
-                                          </td>
-                                    </tr>
-                                    <tr >
-                                        <td style="width:100%" colspan="2">
-                                            <label id="txtSpecialReq" style="width:90%;height:60px;color:black"></label>
-                                            <br>
-                                            <br>
-                                        </td>
-                                    </tr>                                 
-                                    <tr>
-                                        <td class="popup_headertext" style="width:100%;" colspan="2">
-                                            <hr>
-                                            <strong style="padding-left:5px;width:100%;text-align:left">I am happy to accept these special circumstances.</strong>
-                                        </td>
-                                    </tr>
-                                    <tr class="popup_footer">
-                                        <td style="width:50%">
-                                            <input type="button" class="ok" value="Hire Me" style="width:100%;-webkit-appearance:none;-moz-appearance:none;" onclick="HireDriver()" />                                    
-                                        </td>
-                                        <td style="width:50%">
-                                            <input type="button" class="ok" value="Reject Bid" style="width:100%;-webkit-appearance:none;-moz-appearance:none;" onclick="RejectDriver()" />
-                                        </td>                                     
-                                    </tr>
-                                </table>
-                            </div>
-                            
-                            <div id="divDealConfirmed" style="display:none">
-                                <table style="width:100%; background-color:#FFFFFF; border-collapse:collapse;">
-                                     <tr>
-                                          <td class="popup_header" colspan="2" style="font-size:19px">
-                                              <strong style="padding-left:5px">Your cab is booked. Details below</strong>
-                                          </td>
-                                     </tr>
-                                     <tr style="display:none;">
-                                          <td colspan="2">
-                                              <b style="font-size:11px;color:red">Driver Id</b>
-                                              <label id="lbldriverId" style="font-size:13px;padding-left:10%;"></label>
-                                          </td>
-                                     </tr>
-                                     <tr class="popup_content">
-                                           <td style="width:30%">
-                                            <b style="font-size:11px;">Job Number</b>
-                                           </td>
-                                           <td style="width:70%">
-                                              <b> <label id="lblconfirmjob" style="font-size:11px;"></label></b>
-                                           </td>
-                                     </tr>
-                                     <tr class="popup_content">
-                                           <td style="width:30%">
-                                            <b style="font-size:11px;">Driver Name</b>
-                                           </td>
-                                           <td style="width:70%">
-                                             <b>  <label id="lblconfirmdrivername" style="font-size:11px;"></label></b>
-                                           </td>
-                                     </tr>
-                                     <tr class="popup_content">
-                                           <td style="width:30%">
-                                            <b style="font-size:11px;">From</b>
-                                           </td>
-                                           <td style="width:70%">
-                                             <b>  <label id="lblconfirmfrom" style="font-size:11px;"></label></b>
-                                           </td>
-                                     </tr>
-                                     <tr class="popup_content">
-                                               <td style="width:30%">
-                                                  <b style="font-size:11px;">To</b>  
-                                               </td>
-                                               <td style="width:70%">
-                                                  <b> <label id="lblconfirmto" style="font-size:11px;"></label></b>
-                                               </td>
-                                     </tr>
-                                     <tr class="popup_content">
-                                               <td style="width:30%">
-                                                  <b style="font-size:11px;">Pick Date</b>  
-                                               </td>
-                                               <td style="width:70%">
-                                                  <b> <label id="lblconfirmdate" style="font-size:11px;"></label></b>
-                                               </td>
-                                     </tr>
-                                     <tr class="popup_content">
-                                               <td style="width:30%">
-                                                  <b style="font-size:11px;">Pick Time</b>  
-                                               </td>
-                                               <td style="width:70%">
-                                                  <b> <label id="lblconfirmtime" style="font-size:11px;"></label></b>
-                                               </td>
-                                     </tr>
-                                     <tr class="popup_content">
-                                               <td style="width:30%">
-                                                  <b style="font-size:11px;">Distance In Mile</b>  
-                                               </td>
-                                               <td style="width:70%">
-                                                  <b> <label id="lblconfirmdistance" style="font-size:11px;"></label></b>
-                                               </td>
-                                     </tr>
-                                     <tr class="popup_content">
-                                               <td style="width:30%">
-                                                  <b style="font-size:11px;">Fare</b>  
-                                               </td>
-                                               <td style="width:70%">
-                                                <b><img src="img/euro.ico" width="10" height="10"/><label id="lblconfirmfare" style="font-size:11px;"></label></b>
-                                               </td>
-                                     </tr>
-                                     <tr>
-                                         <td class="popup_footer" style="width:100%" colspan="2">
-                                             <input type="button" class="ok" value="OK" style="text-align:center;-webkit-appearance:none;-moz-appearance:none;" onclick="calOk()"/>
-                                         </td>
-                                     </tr>
-                                </table>
-                            </div> 
-                            
-                            <div id="imgDiv" style="display:none;width:100%;">
-                                <img id="imgDV" style="width:100%;height:250px"/>       
-                                <input type="button" value="Close" style="width:100%;height:30px;-webkit-appearance:none;-moz-appearance:none;" class="btn-tmp" onclick="hideImage()"/>
-                            </div>
-                            
-                            <div id="divRatingFeedback" style="display:none;width:100%;">
-                                <table style="width:100%; border-collapse:collapse;">
-                                    <tr>
-                                          <td class="popup_header" colspan="2" width="100%">
-                                              <strong style="padding-left:5px">Feedback</strong>
-                                          </td>
-                                    </tr>
-                                    <tr class="popup_content">
-                                        <td id='feedback-content'>                                  
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                           <input type="button" class="ok" value="Ok" style="cursor: pointer;text-align:center;-webkit-appearance:none;-moz-appearance:none;" onclick="HideDisplay()"/>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                     
-                    </div>
-
                 </div>
                 <!--CABNOW DIV END-->
                 
@@ -502,6 +256,228 @@
                                           </tr>
                                       </table>
                          </div>
+                         <div id="divselect" style="display:none;width:100%;">
+                             <table style="width:100%; border-collapse:collapse;">
+                                 <tr>
+                                       <td class="popup_header" colspan="2" width="100%">
+                                           <strong style="padding-left:5px">Driver selection</strong>
+                                       </td>
+                                 </tr>
+                                 <tr class="popup_content">
+                                     <td >
+                                         <span style="font-size:13px;padding-left:10%; " class="test">
+                                                Please select your driver
+                                         </span>
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <td>
+                                        <input type="button" class="ok" value="Ok" style="cursor: pointer;text-align:center;-webkit-appearance:none;-moz-appearance:none;" onclick="selectDriver()"/>
+                                     </td>
+                                 </tr>
+                             </table>
+                         </div>
+                         <div id="divExpiry" style="display:none;width:100%;" >
+                             <table style="width:100%;background-color:#FFFFFF; border-collapse:collapse;">
+                                 <tr>
+                                       <td class="popup_header" colspan="2" width="100%">
+                                           <strong style="padding-left:5px">Job expired time</strong>
+                                       </td>
+                                 </tr>
+                                 <tr class="popup_content">
+                                     <td style="width:50%">
+                                         <label id="">Searched Time</label>
+                                     </td>
+                                     <td style="width:50%">
+                                         <label id="lblsearch"></label>
+                                     </td>
+                                 </tr>
+                                 <tr class="popup_content">
+                                     <td style="width:50%">
+                                          <label id="Label1">Expiry  Time</label>
+                                     </td>
+                                     <td style="width:50%">
+                                          <label id="lblexp"></label>
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                      <td class="popup_footer" style="width:100%;" colspan="2">
+                                          <input type="button" class="ok" value="Close" style="cursor: pointer;text-align:center;-webkit-appearance:none;-moz-appearance:none;" onclick="closeExpiry()"/>
+                                      </td>
+                                 </tr>
+                             </table>
+                         </div>
+                         <div id="divBiding" style="display:none;">
+                             <table style="width:100%;  background-color:#FFFFFF; border-collapse:collapse;">
+                                 <tr>
+                                       <td class="popup_header" colspan="2">
+                                           <strong style="padding-left:5px">Job Bidded Time</strong>
+                                       </td>
+                                 </tr>
+                                 <tr class="popup_content">
+                                     <td style="width:50%">
+                                         <label >Bid Time</label>
+                                     </td>
+                                     <td style="width:50%">
+                                         <label id="lblbid"></label>
+                                     </td>
+                                 </tr>
+                                 <tr class="popup_content">
+                                     <td style="width:50%">
+                                          <label >Pick Up Time</label>
+                                     </td>
+                                     <td style="width:50%">
+                                          <label id="lblpick"></label>
+                                     </td>
+                                 </tr>
+                                 <tr style="width:100%;" class="popup_footer">
+                                      <td style="width:100%;text-align:center" colspan="2">
+                                          <input type="button" class="ok" value="Close" style="cursor: pointer;text-align:center;-webkit-appearance:none;-moz-appearance:none;" onclick="closeBid()"/>
+                                      </td>
+                                  </tr>
+                             </table>
+                         </div>
+                         <div id="divspec" style="display:none;">
+                             <table style="width:100%; border-collapse:collapse; background-color:#FFFFFF;">
+                                 <tr>
+                                       <td class="popup_header" colspan="2">
+                                           <strong style="padding-left:5px">Special Circumstance</strong>
+                                       </td>
+                                 </tr>
+                                 <tr >
+                                     <td style="width:100%" colspan="2">
+                                         <label id="txtothereSpecialReq" style="width:90%;height:60px;color:black"></label>
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                      <td  class="popup_footer" style="width:100%;text-align:center" colspan="2">
+                                          <input type="button" class="ok" value="Close" style="cursor: pointer;text-align:center;-webkit-appearance:none;-moz-appearance:none;" onclick="specClose()"/>/>-->
+                                      </td>
+                                 </tr>
+                             </table>
+                         </div> 
+                         
+                         <div id="divspecHireClick" style="display:none;">
+                             <table style="width:100%; border-collapse:collapse; background-color:#FFFFFF;">
+                                 <tr>
+                                       <td class="popup_header" colspan="2">
+                                           <strong style="padding-left:5px">Drivers special circumstances</strong>
+                                       </td>
+                                 </tr>
+                                 <tr >
+                                     <td style="width:100%" colspan="2">
+                                         <label id="txtSpecialReq" style="width:90%;height:60px;color:black"></label>
+                                         <br>
+                                         <br>
+                                     </td>
+                                 </tr>                                 
+                                 <tr>
+                                     <td class="popup_headertext" style="width:100%;" colspan="2">
+                                         <hr>
+                                         <strong style="padding-left:5px;width:100%;text-align:left">I am happy to accept these special circumstances.</strong>
+                                     </td>
+                                 </tr>
+                                 <tr class="popup_footer">
+                                     <td style="width:50%">
+                                         <input type="button" class="ok" value="Hire Me" style="width:100%;-webkit-appearance:none;-moz-appearance:none;" onclick="HireDriver()" />                                    
+                                     </td>
+                                     <td style="width:50%">
+                                         <input type="button" class="ok" value="Reject Bid" style="width:100%;-webkit-appearance:none;-moz-appearance:none;" onclick="RejectDriver()" />
+                                     </td>                                     
+                                 </tr>
+                             </table>
+                         </div>
+                         
+                         <div id="divDealConfirmed" style="display:none">
+                             <table style="width:100%; background-color:#FFFFFF; border-collapse:collapse;">
+                                  <tr>
+                                       <td class="popup_header" colspan="2" style="font-size:19px">
+                                           <strong style="padding-left:5px">Your cab is booked. Details below</strong>
+                                       </td>
+                                  </tr>
+                                  <tr style="display:none;">
+                                       <td colspan="2">
+                                           <b style="font-size:11px;color:red">Driver Id</b>
+                                           <label id="lbldriverId" style="font-size:13px;padding-left:10%;"></label>
+                                       </td>
+                                  </tr>
+                                  <tr class="popup_content">
+                                        <td style="width:30%">
+                                         <b style="font-size:11px;">Job Number</b>
+                                        </td>
+                                        <td style="width:70%">
+                                           <b> <label id="lblconfirmjob" style="font-size:11px;"></label></b>
+                                        </td>
+                                  </tr>
+                                  <tr class="popup_content">
+                                        <td style="width:30%">
+                                         <b style="font-size:11px;">Driver Name</b>
+                                        </td>
+                                        <td style="width:70%">
+                                          <b>  <label id="lblconfirmdrivername" style="font-size:11px;"></label></b>
+                                        </td>
+                                  </tr>
+                                  <tr class="popup_content">
+                                        <td style="width:30%">
+                                         <b style="font-size:11px;">From</b>
+                                        </td>
+                                        <td style="width:70%">
+                                          <b>  <label id="lblconfirmfrom" style="font-size:11px;"></label></b>
+                                        </td>
+                                  </tr>
+                                  <tr class="popup_content">
+                                            <td style="width:30%">
+                                               <b style="font-size:11px;">To</b>  
+                                            </td>
+                                            <td style="width:70%">
+                                               <b> <label id="lblconfirmto" style="font-size:11px;"></label></b>
+                                            </td>
+                                  </tr>
+                                  <tr class="popup_content">
+                                            <td style="width:30%">
+                                               <b style="font-size:11px;">Pick Date</b>  
+                                            </td>
+                                            <td style="width:70%">
+                                               <b> <label id="lblconfirmdate" style="font-size:11px;"></label></b>
+                                            </td>
+                                  </tr>
+                                  <tr class="popup_content">
+                                            <td style="width:30%">
+                                               <b style="font-size:11px;">Pick Time</b>  
+                                            </td>
+                                            <td style="width:70%">
+                                               <b> <label id="lblconfirmtime" style="font-size:11px;"></label></b>
+                                            </td>
+                                  </tr>
+                                  <tr class="popup_content">
+                                            <td style="width:30%">
+                                               <b style="font-size:11px;">Distance In Mile</b>  
+                                            </td>
+                                            <td style="width:70%">
+                                               <b> <label id="lblconfirmdistance" style="font-size:11px;"></label></b>
+                                            </td>
+                                  </tr>
+                                  <tr class="popup_content">
+                                            <td style="width:30%">
+                                               <b style="font-size:11px;">Fare</b>  
+                                            </td>
+                                            <td style="width:70%">
+                                             <b><img src="img/euro.ico" width="10" height="10"/><label id="lblconfirmfare" style="font-size:11px;"></label></b>
+                                            </td>
+                                  </tr>
+                                  <tr>
+                                      <td class="popup_footer" style="width:100%" colspan="2">
+                                          <input type="button" class="ok" value="OK" style="text-align:center;-webkit-appearance:none;-moz-appearance:none;" onclick="calOk()"/>
+                                      </td>
+                                  </tr>
+                             </table>
+                         </div> 
+                         
+                         <!--<div id="imgDiv" style="display:none;width:100%;">
+                             <img id="imgDV" style="width:100%;height:250px"/>       
+                             <input type="button" value="Close" style="width:100%;height:30px;-webkit-appearance:none;-moz-appearance:none;" class="btn-tmp" onclick="hideImage()"/>
+                         </div>-->
+
                     </div>
                           
                     <div id="popup_box1">

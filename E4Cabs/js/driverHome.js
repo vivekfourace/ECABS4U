@@ -398,7 +398,7 @@ function showJobDetails(){
        datatype:"json",
        data:"{'driverId':'"+relatedId+"'}",
        contentType: "application/json; charset=utf-8",
-        success: showDetail,
+        success: showDetail2,
         error: function (XMLHttpRequest, textStatus, errorThrown) 
         { }
     });
@@ -409,7 +409,7 @@ function makeCall()
     window.location.href = "tel:" + number;    
 }
 
-function showDetail(data)
+function showDetail2(data)
 {
     $('#lblJobNo').text(": "+data.d[0]);
     $('#lblFare').html(": "+'&pound'+data.d[1]);
@@ -495,12 +495,12 @@ function showDetail(data)
         $('#MyFeedback').hide();
     }
     $("#popup_box1").show();
-    $('#divJobDetails').show();
+    $('#divJobDetails2').show();
     $('#transparent_div').show();
 }
 function Cancel()
 {
    $("#popup_box1").fadeOut("fast");
-   $('#divJobDetails').fadeOut("fast");
+   $('#divJobDetails2').fadeOut("fast");
    $('#transparent_div').hide();
 }

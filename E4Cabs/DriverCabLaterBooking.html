@@ -152,339 +152,174 @@
                 <div id="cabnowjobsdriver">
                     <div id="msgcabnow"></div>
                     <div style="padding-top:50%; color:#0000FF;font-size:20px;text-align:center;display:none" id="bookingmsgcabnow">No bidding information available.</div>
-                    <div id="popup_box" >
-                       <div id="divComission" style="display:none;" align="center">
-                          <table align="left" style="width:100%;background-color:#FFFFFF; border-collapse:collapse;">
-                                   <tr>
-                                     <td class="popup_header"  style="width:100%" colspan="2">
-                                         <strong style="padding-left:5px;width:100%" align="center" class="test">Commission Payment</strong>
-                                     </td>
-                                  </tr>
-                                   <tr class="popup_content">
-                                      <td style="width:100%" colspan="2">
-                                          <b style="font-size:13px;text-align:justify;color:blue;" class="test">On confirming, <img src="img/euro.ico"width="10" height="10" />1 commission will be withdrawn from your bank by direct debit.</b>
-                                          <hr>
-                                      </td>
-                                  </tr>
-                                  <tr class="popup_content">
-                                   <td style="width:50%">
-                                              <b style="font-size:13px; " class="test">Job Number</b>
-                                             </td>
-                                             <td style="width:50%">
-                                                <b> <label id="lblconfirmjob" style="font-size:13px;" class="test"></label></b>
-                                             </td>
-                                  </tr>
-                                  <tr class="popup_content">
-                                              <td style="width:50%">
-                                                  <b style="font-size:13px;" class="test">Fare</b>
-                                              </td>
-                                              <td style="width:50%">
-                                                 <b><label id="lblconfirmfare" style="font-size:13px; "/></b>
-                                              </td>
-                                  </tr>
-                                  <tr class="popup_footer">
-                                              <td style="width:50%">
-                                                  <input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Reject" class="ok" onclick="RejectComission()"/>
-                                              </td>
-                                              <td style="width:50%">
-                                                  <input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Confirm" class="ok" onclick="Confirmcomission()"/>
-                                              </td>
-                                  </tr>
-                          </table>
-                       </div>
-                       <div id="divComission2" style="display:none;" align="center">
-                            <table align="left" style="width:100%;background-color:#FFFFFF; border-collapse:collapse;">
-                                    <tr>
-                                       <td class="popup_header"  style="width:100%" colspan="2">
-                                           <strong style="padding-left:5px;width:100%" align="center" class="test">Commission Payment</strong>
-                                       </td>
-                                    </tr>
-                                    <tr class="popup_content">
-                                        <td style="width:100%" colspan="2">
-                                            <!--<b style="font-size:13px;text-align:justify;color:blue;" class="test">Confirming will take you to the payment page, we will charge 5% <img src="img/euro.ico"width="10" height="10" /> for this job on a commission.</b>-->
-                                            <b style="font-size:13px;text-align:justify;color:blue;" class="test">On confirming, 5% commission will be withdrawn from your bank by direct debit.</b>
-                                            <hr>
-                                        </td>
-                                    </tr>
-                                    <tr class="popup_content">
-                                     <td style="width:50%">
-                                                <b style="font-size:13px; " class="test">Job Number</b>
-                                     </td>
-                                     <td style="width:50%">
-                                        <b> <label id="lblconfirmjob2" style="font-size:13px;" class="test"></label></b>
-                                     </td>
-                                    </tr>
-                                    <tr class="popup_content">
-                                                <td style="width:50%">
-                                                    <b style="font-size:13px;" class="test">Fare</b>
-                                                </td>
-                                                <td style="width:50%">
-                                                   <b><label id="lblconfirmfare2" style="font-size:13px; "/></b>
-                                                </td>
-                                    </tr>
-                                    <tr class="popup_footer">
-                                                <td style="width:50%">
-                                                    <input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Reject" class="ok" onclick="RejectComission()"/>
-                                                </td>
-                                                <td style="width:50%">
-                                                    <input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Confirm" class="ok" onclick="Confirmcomission()"/>
-                                                </td>
-                                    </tr>
-                            </table>
-                       </div>
-                       <div id="divCabNowBooking"  style="display:none;"align="center">
-                             <table style="width:100%;background-color:#FFFFFF; border-collapse:collapse;">
-                                 <tr>
-                                     <td class="popup_header" style="width:100%;" colspan="2">
-                                         <strong style="padding-left:5px;font-size:13px;width:100%;" align="center">Job Detail</strong>
-                                     </td>
-                                 </tr>
-                                 <tr class="popup_content">
-                                     <td style="width:40%;">
-                                        <strong class="tdContentstyle">Job number</strong>
-                                     </td>
-                                     <td style="width:60%;">
-                                        <label id="lblJobNo" class="tdContentstyle"></label>
-                                     </td>
-                                     
-                                 </tr>
-                                 <tr class="popup_content">
-                                     <td style="width:40%;">
-                                         <strong class="tdContentstyle">Fare</strong>
-                                     </td>
-                                     <td style="width:60%;">
-                                         <label id="lblFare" class="tdContentstyle"></label>
-                                     </td>
-                                 </tr>
-                                 <tr class="popup_content">
-                                     <td style="width:40%;">
-                                         <strong class="tdContentstyle">Customer name</strong>
-                                         
-                                     </td>
-                                     <td style="width:60%;">
-                                         <label id="lblDriverName" class="tdContentstyle"></label>
-                                         
-                                     </td>
-                                 </tr>
-                                 <tr class="popup_content">
-                                     <td style="width:40%;">
-                                         <strong class="tdContentstyle">Start date</strong>
-                                         
-                                     </td>
-                                     <td style="width:60%;">
-                                        <label id="lblStartDate" class="tdContentstyle"></label> 
-                                         
-                                     </td>
-                                 </tr>
-                                 <tr class="popup_content">
-                                     <td style="width:40%;">
-                                         <strong class="tdContentstyle">Start time</strong>
-                                         
-                                     </td>
-                                     <td style="width:60%;">
-                                         <label id="lblStartTime" class="tdContentstyle"></label>
-                                         
-                                     </td>
-                                 </tr>
-                                 <tr class="popup_content">
-                                     <td style="width:40%;">
-                                         <strong class="tdContentstyle">Search time</strong>
-                                         
-                                     </td>
-                                     <td style="width:60%;">
-                                         <label id="lblSearchTime" class="tdContentstyle"></label>
-                                         
-                                     </td>
-                                 </tr>
-                                 <tr class="popup_content">
-                                     <td style="width:40%;">
-                                         <strong class="tdContentstyle">Bid time</strong>
-                                         
-                                     </td>
-                                     <td style="width:60%;">
-                                         <label id="lblBidTime" class="tdContentstyle"></label>
-                                         
-                                     </td>
-                                 </tr>
-                                 <tr class="popup_footer">
-                                     <td style="width:100%" colspan="2">
-                                         <input type="button"  value="OK" style="width:100%;-webkit-appearance:none;-moz-appearance:none;color:white" class="ok" onclick="Cancel();"/>
-                                     </td>
-                                 </tr>
-                           </table>
-                       </div>
-                    </div>
-
                 </div>
                 <div id="cablaterjobsdriver">
                     <input type="hidden" id="hidJobNo"/>
                     <div id="cablaterdriverbookings"></div>
-                    <!--<div style="padding-top:50%; color:#0000FF;font-size:20px;text-align:center;display:none" id="bookingmsg">No bidding information available.</div>-->
-                    <div id="popup_box" >
-                         <div id="divComission" style="display:none;" align="center">
-                            <table align="left" style="width:100%;background-color:#FFFFFF; border-collapse:collapse;">
-                                     <tr>
-                                       <td class="popup_header"  style="width:100%" colspan="2">
-                                           <strong style="padding-left:5px;width:100%" align="center" class="test">Commission Payment</strong>
-                                       </td>
-                                    </tr>
-                                     <tr class="popup_content">
-                                        <td style="width:100%" colspan="2">
-                                            <b style="font-size:13px;text-align:justify;color:blue;" class="test">On confirming, <img src="img/euro.ico"width="10" height="10" />1 commission will be withdrawn from your bank by direct debit.</b>
-                                            <hr>
-                                        </td>
-                                    </tr>
-                                    <tr class="popup_content">
-                                     <td style="width:50%">
-                                                <b style="font-size:13px; " class="test">Job Number</b>
-                                               </td>
-                                               <td style="width:50%">
-                                                  <b> <label id="lblconfirmjob" style="font-size:13px;" class="test"></label></b>
-                                               </td>
-                                    </tr>
-                                    <tr class="popup_content">
-                                                <td style="width:50%">
-                                                    <b style="font-size:13px;" class="test">Fare</b>
-                                                </td>
-                                                <td style="width:50%">
-                                                   <b><label id="lblconfirmfare" style="font-size:13px; "/></b>
-                                                </td>
-                                    </tr>
-                                    <tr class="popup_footer">
-                                                <td style="width:50%">
-                                                    <input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Reject" class="ok" onclick="RejectComission()"/>
-                                                </td>
-                                                <td style="width:50%">
-                                                    <input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Confirm" class="ok" onclick="Confirmcomission()"/>
-                                                </td>
-                                    </tr>
-                            </table>
-                         </div>
-                         <div id="divComission2" style="display:none;" align="center">
-                             <table align="left" style="width:100%;background-color:#FFFFFF; border-collapse:collapse;">
-                                      <tr>
-                                        <td class="popup_header"  style="width:100%" colspan="2">
-                                            <strong style="padding-left:5px;width:100%" align="center" class="test">Commission Payment</strong>
-                                        </td>
-                                     </tr>
-                                      <tr class="popup_content">
-                                         <td style="width:100%" colspan="2">
-                                             <!--<b style="font-size:13px;text-align:justify;color:blue;" class="test">Confirming will take you to the payment page, we will charge 5% <img src="img/euro.ico"width="10" height="10" /> for this job on a commission.</b>-->
-                                             <b style="font-size:13px;text-align:justify;color:blue;" class="test">On confirming, 5% commission will be withdrawn from your bank by direct debit.</b>
-                                             <hr>
-                                         </td>
-                                     </tr>
-                                     <tr class="popup_content">
-                                          <td style="width:50%">
-                                             <b style="font-size:13px; " class="test">Job Number</b>
-                                          </td>
-                                          <td style="width:50%">
-                                             <b> <label id="lblconfirmjob2" style="font-size:13px;" class="test"></label></b>
-                                          </td>
-                                     </tr>
-                                     <tr class="popup_content">
-                                                 <td style="width:50%">
-                                                     <b style="font-size:13px;" class="test">Fare</b>
-                                                 </td>
-                                                 <td style="width:50%">
-                                                    <b><label id="lblconfirmfare2" style="font-size:13px; "/></b>
-                                                 </td>
-                                     </tr>
-                                     <tr class="popup_footer">
-                                                 <td style="width:50%">
-                                                     <input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Reject" class="ok" onclick="RejectComission()"/>
-                                                 </td>
-                                                 <td style="width:50%">
-                                                     <input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Confirm" class="ok" onclick="Confirmcomission()"/>
-                                                 </td>
-                                     </tr>
-                             </table>
-                         </div>
-                         <div id="divCabLaterBooking"  style="display:none;"align="center">
-                           <table style="width:100%;background-color:#FFFFFF; border-collapse:collapse;">
-                                 <tr>
-                                     <td class="popup_header" style="width:100%;" colspan="2">
-                                         <strong style="padding-left:5px;font-size:13px;width:100%;" align="center">Job Detail</strong>
-                                     </td>
-                                 </tr>
-                                 <tr class="popup_content">
-                                     <td style="width:40%;">
-                                        <strong class="tdContentstyle">Job number</strong>
-                                     </td>
-                                     <td style="width:60%;">
-                                        <label id="lblJobNo" class="tdContentstyle"></label>
-                                     </td>
-                                     
-                                 </tr>
-                                 <tr class="popup_content">
-                                     <td style="width:40%;">
-                                         <strong class="tdContentstyle">Fare</strong>
-                                     </td>
-                                     <td style="width:60%;">
-                                         <label id="lblFare" class="tdContentstyle"></label>
-                                     </td>
-                                 </tr>
-                                 <tr class="popup_content">
-                                     <td style="width:40%;">
-                                         <strong class="tdContentstyle">Customer name</strong>
-                                         
-                                     </td>
-                                     <td style="width:60%;">
-                                         <label id="lblDriverName" class="tdContentstyle"></label>
-                                         
-                                     </td>
-                                 </tr>
-                                 <tr class="popup_content">
-                                     <td style="width:40%;">
-                                         <strong class="tdContentstyle">Start date</strong>
-                                         
-                                     </td>
-                                     <td style="width:60%;">
-                                        <label id="lblStartDate" class="tdContentstyle"></label> 
-                                         
-                                     </td>
-                                 </tr>
-                                 <tr class="popup_content">
-                                     <td style="width:40%;">
-                                         <strong class="tdContentstyle">Start time</strong>
-                                         
-                                     </td>
-                                     <td style="width:60%;">
-                                         <label id="lblStartTime" class="tdContentstyle"></label>
-                                         
-                                     </td>
-                                 </tr>
-                                 <tr class="popup_content">
-                                     <td style="width:40%;">
-                                         <strong class="tdContentstyle">Search time</strong>
-                                         
-                                     </td>
-                                     <td style="width:60%;">
-                                         <label id="lblSearchTime" class="tdContentstyle"></label>
-                                         
-                                     </td>
-                                 </tr>
-                                 <tr class="popup_content">
-                                     <td style="width:40%;">
-                                         <strong class="tdContentstyle">Bid time</strong>
-                                         
-                                     </td>
-                                     <td style="width:60%;">
-                                         <label id="lblBidTime" class="tdContentstyle"></label>
-                                         
-                                     </td>
-                                 </tr>
-                                 <tr class="popup_footer">
-                                     <td style="width:100%" colspan="2">
-                                         <input type="button"  value="OK" style="width:100%;-webkit-appearance:none;-moz-appearance:none;color:white" class="ok" onclick="Cancel();"/>
-                                     </td>
-                                 </tr>
-                           </table>
-                         </div>        
-                    </div>            
+                               
                 </div>
            </div>   
-
+           <div id="popup_box" >
+                 <div id="divComission" style="display:none;" align="center">
+                    <table align="left" style="width:100%;background-color:#FFFFFF; border-collapse:collapse;">
+                             <tr>
+                               <td class="popup_header"  style="width:100%" colspan="2">
+                                   <strong style="padding-left:5px;width:100%" align="center" class="test">Commission Payment</strong>
+                               </td>
+                            </tr>
+                             <tr class="popup_content">
+                                <td style="width:100%" colspan="2">
+                                    <b style="font-size:13px;text-align:justify;color:blue;" class="test">On confirming, <img src="img/euro.ico"width="10" height="10" />1 commission will be withdrawn from your bank by direct debit.</b>
+                                    <hr>
+                                </td>
+                            </tr>
+                            <tr class="popup_content">
+                             <td style="width:50%">
+                                        <b style="font-size:13px; " class="test">Job Number</b>
+                                       </td>
+                                       <td style="width:50%">
+                                          <b> <label id="lblconfirmjob" style="font-size:13px;" class="test"></label></b>
+                                       </td>
+                            </tr>
+                            <tr class="popup_content">
+                                        <td style="width:50%">
+                                            <b style="font-size:13px;" class="test">Fare</b>
+                                        </td>
+                                        <td style="width:50%">
+                                           <b><label id="lblconfirmfare" style="font-size:13px; "/></b>
+                                        </td>
+                            </tr>
+                            <tr class="popup_footer">
+                                        <td style="width:50%">
+                                            <input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Reject" class="ok" onclick="RejectComission()"/>
+                                        </td>
+                                        <td style="width:50%">
+                                            <input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Confirm" class="ok" onclick="Confirmcomission()"/>
+                                        </td>
+                            </tr>
+                    </table>
+                 </div>
+                 <div id="divComission2" style="display:none;" align="center">
+                     <table align="left" style="width:100%;background-color:#FFFFFF; border-collapse:collapse;">
+                              <tr>
+                                <td class="popup_header"  style="width:100%" colspan="2">
+                                    <strong style="padding-left:5px;width:100%" align="center" class="test">Commission Payment</strong>
+                                </td>
+                             </tr>
+                              <tr class="popup_content">
+                                 <td style="width:100%" colspan="2">
+                                     <b style="font-size:13px;text-align:justify;color:blue;" class="test">On confirming, 5% commission will be withdrawn from your bank by direct debit.</b>
+                                     <hr>
+                                 </td>
+                             </tr>
+                             <tr class="popup_content">
+                                  <td style="width:50%">
+                                     <b style="font-size:13px; " class="test">Job Number</b>
+                                  </td>
+                                  <td style="width:50%">
+                                     <b> <label id="lblconfirmjob2" style="font-size:13px;" class="test"></label></b>
+                                  </td>
+                             </tr>
+                             <tr class="popup_content">
+                                         <td style="width:50%">
+                                             <b style="font-size:13px;" class="test">Fare</b>
+                                         </td>
+                                         <td style="width:50%">
+                                            <b><label id="lblconfirmfare2" style="font-size:13px; "/></b>
+                                         </td>
+                             </tr>
+                             <tr class="popup_footer">
+                                         <td style="width:50%">
+                                             <input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Reject" class="ok" onclick="RejectComission()"/>
+                                         </td>
+                                         <td style="width:50%">
+                                             <input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Confirm" class="ok" onclick="Confirmcomission()"/>
+                                         </td>
+                             </tr>
+                     </table>
+                 </div>
+                 <div id="divCabBooking"  style="display:none;"align="center">
+                   <table style="width:100%;background-color:#FFFFFF; border-collapse:collapse;">
+                         <tr>
+                             <td class="popup_header" style="width:100%;" colspan="2">
+                                 <strong style="padding-left:5px;font-size:13px;width:100%;" align="center">Job Detail</strong>
+                             </td>
+                         </tr>
+                         <tr class="popup_content">
+                             <td style="width:40%;">
+                                <strong class="tdContentstyle">Job number</strong>
+                             </td>
+                             <td style="width:60%;">
+                                <label id="lblJobNo" class="tdContentstyle"></label>
+                             </td>
+                             
+                         </tr>
+                         <tr class="popup_content">
+                             <td style="width:40%;">
+                                 <strong class="tdContentstyle">Fare</strong>
+                             </td>
+                             <td style="width:60%;">
+                                 <label id="lblFare" class="tdContentstyle"></label>
+                             </td>
+                         </tr>
+                         <tr class="popup_content">
+                             <td style="width:40%;">
+                                 <strong class="tdContentstyle">Customer name</strong>
+                                 
+                             </td>
+                             <td style="width:60%;">
+                                 <label id="lblDriverName" class="tdContentstyle"></label>
+                                 
+                             </td>
+                         </tr>
+                         <tr class="popup_content">
+                             <td style="width:40%;">
+                                 <strong class="tdContentstyle">Start date</strong>
+                                 
+                             </td>
+                             <td style="width:60%;">
+                                <label id="lblStartDate" class="tdContentstyle"></label> 
+                                 
+                             </td>
+                         </tr>
+                         <tr class="popup_content">
+                             <td style="width:40%;">
+                                 <strong class="tdContentstyle">Start time</strong>
+                                 
+                             </td>
+                             <td style="width:60%;">
+                                 <label id="lblStartTime" class="tdContentstyle"></label>
+                                 
+                             </td>
+                         </tr>
+                         <tr class="popup_content">
+                             <td style="width:40%;">
+                                 <strong class="tdContentstyle">Search time</strong>
+                                 
+                             </td>
+                             <td style="width:60%;">
+                                 <label id="lblSearchTime" class="tdContentstyle"></label>
+                                 
+                             </td>
+                         </tr>
+                         <tr class="popup_content">
+                             <td style="width:40%;">
+                                 <strong class="tdContentstyle">Bid time</strong>
+                                 
+                             </td>
+                             <td style="width:60%;">
+                                 <label id="lblBidTime" class="tdContentstyle"></label>
+                                 
+                             </td>
+                         </tr>
+                         <tr class="popup_footer">
+                             <td style="width:100%" colspan="2">
+                                 <input type="button"  value="OK" style="width:100%;-webkit-appearance:none;-moz-appearance:none;color:white" class="ok" onclick="Cancel();"/>
+                             </td>
+                         </tr>
+                   </table>
+                 </div>        
+           </div> 
             <div class="btn-tmpFooter">                
                    <table style="width:100%;border-collapse:collapse" >
                         <tr>

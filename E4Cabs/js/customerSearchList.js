@@ -40,8 +40,8 @@ var timer = setInterval(function () {
     console.log(timeOut);
     if (timeOut <= 0) {
         window.clearInterval(id);
-       jAlert('No driver found Please search again.', 'ECabs4U-Booking');
-        //alert('No driver found Please search again.');
+      // jAlert('No driver found Please search again.', 'ECabs4U-Booking');
+        alert('No driver found Please search again.');
         DeleteJob("Cancelled due to no driver found");
         Destroy();
     }
@@ -77,7 +77,7 @@ function Destroy() {
 
 $('#load').show();
 
-var id;
+var id, checkDealResp, anyMoreDriver;
 id = window.setInterval(getResponse, 10000);
 
 function getResponse()
@@ -93,9 +93,14 @@ function getResponse()
         }
     });
 }
-    
+function SearchAgain(){
+    $('#bookingmsg').hide();
+    $('#msg').show();
+    getResponse();  
+}
 function getData(data) {    
-    var count = data.d.length;  
+    var count = data.d.length; 
+    console.log(count);
     if(count > 0)
     {
         window.clearInterval(timer);
@@ -107,9 +112,10 @@ function getData(data) {
     else{
        
         //SearchDriverAgain();
+       alert("Sorry!!! No more driver available to hire. Please search again.");
        $('#msg').empty().append("");
-        //$('#msg').hide();
-        $('#bookingmsg').show();
+       $('#msg').hide();
+       $('#bookingmsg').show();
          
         //alert("No driver response found.");
        //window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId;
@@ -224,22 +230,11 @@ function getData(data) {
                 html += "<td width='20%' align='center'>" + bidh + ":" + bidm + "</td>";
                 html += "<td width='15%' align='center'>" + '<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" class="disableBtn accept-btn" value="Hire" id= "' + driverID + '" onclick = "Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'' + spec + '\');"/>' + "</td>";
                 html += '</tr>';
-                html += '<tr>';           
-                //var rating3 = data.d[i]["RatingPast"];
-                //var rating4 = data.d[i]["RatingPresent"];
-                
-                          html += '<td style="width:100%;text-align:left;" colspan="2"><img src="'+driverImgUrl+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImage(this)\"/>'
-                          html += '<img src="'+vehicleImgUrl+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImage(this)\"/>'
-                          
-                                   
-                                        
-                         // html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/1star.PNG" style="width:18%" onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
-                              html += '<td style="width:100%;text-align:center;" colspan="2"><input type="button" class="btn-tmp" value="Rating" style="width:80%"; onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
-                           
-                                    
-                         
-                          
-                          html += '</tr>';
+                html += '<tr>';                 
+                html += '<td style="width:100%;text-align:left;" colspan="2"><img src="'+driverImgUrl+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImage(this)\"/>'
+                html += '<img src="'+vehicleImgUrl+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImage(this)\"/>'
+                html += '<td style="width:100%;text-align:center;" colspan="2"><input type="button" class="btn-tmp" value="Rating" style="width:80%"; onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
+                html += '</tr>';
                 }
             else if(spec === null) {
                 html += '<tr>';
@@ -251,19 +246,10 @@ function getData(data) {
                 html += "<td width='15%' align='center'>" + '<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" class="disableBtn accept-btn"  value="Hire" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'Not Available\');"/>' + "</td>";
                 html += '</tr>';
                 html += '<tr>';
-                //var rating33 = data.d[i]["RatingPast"];
-                //var rating44 = data.d[i]["RatingPresent"];
-                
-                                html += '<td style="width:100%;text-align:left;" colspan="2"><img src="'+driverImgUrl+'" style="width:50px;height:50px;border-radius:4px" onclick=\"ShowLargeImage(this)\"/>'
-                                html += '<img src="'+vehicleImgUrl+'" style="width:50px;height:50px;border-radius:4px" onclick=\"ShowLargeImage(this)\"/>'
-                                
-                                        
-                        //html += '<td style="width:100%;text-align:center;border-bottom:1px solid #848484;" colspan="2"><img src="img/1star.PNG" style="width:18%" onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
-                       html += '<td style="width:100%;text-align:center;" colspan="2"><input type="button" class="btn-tmp" value="Rating" style="width:80%"; onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
-                                   
-                         
-                         
-                          html += '</tr>';
+                html += '<td style="width:100%;text-align:left;" colspan="2"><img src="'+driverImgUrl+'" style="width:50px;height:50px;border-radius:4px" onclick=\"ShowLargeImage(this)\"/>'
+                html += '<img src="'+vehicleImgUrl+'" style="width:50px;height:50px;border-radius:4px" onclick=\"ShowLargeImage(this)\"/>'
+                html += '<td style="width:100%;text-align:center;" colspan="2"><input type="button" class="btn-tmp" value="Rating" style="width:80%"; onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
+                html += '</tr>';
             }
         }
         html += '</tbody>';
@@ -276,7 +262,9 @@ function getData(data) {
         html += '<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" id="searchAgain" class="reject-btn" value="InSufficient Drivers" onclick="SearchDriverAgain()"/>';
         html += '</td></tr>'; 
         html += '</table>';
-        html += '</div>';        
+        html += '</div>';   
+        $('#msg').show();
+        $('#bookingmsg').hide();
         $('#msg').append(html);
     }
 }
@@ -584,8 +572,6 @@ function RejectDriver()
                 success: function (data) {
                     if(data.d === true)
                     {
-                      //console.log('rej')
-                     // window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
                         getResponse();
                     }
                     else
@@ -613,29 +599,9 @@ function Hireme(driID, reqID,spec)
     else
     {   
         window.clearInterval(id);
-        //navigator.notification.confirm(
-        //"Have you read special circumstance?",
-        // onConfirm,
-        //'Confirm',
-        //'Yes,No'
-       //    );
         SpecialReqShow(specS);
     }
   }
-
-//function onConfirm(buttonIndex)
-//{
-//    if(buttonIndex === 2)
-//    {        
-//        SpecShow(specS);     
-//    }
-//    else if(buttonIndex === 1)
-//    {
-//       DisableHiremeBtns();
-//       window.clearInterval(id);
-//       HireCurrentDriver();
-//    }
-//}
 
 function HireCurrentDriver()
 {
@@ -666,7 +632,12 @@ function DisableHiremeBtns()
 
 function getResponseFromDriver(data)
  {
-        var checkDealResp = window.setInterval(function () {
+    checkDealResp = window.setInterval(checkDeal, 1000);
+    function destroySetInterval() {
+        window.clearInterval(checkDealResp);
+    }
+}
+function checkDeal() {
         $.ajax({
             url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CheckdealResponse",
             type: "POST",
@@ -686,22 +657,22 @@ function getResponseFromDriver(data)
                         data: "{'requestID':'" + requestID + "'}",
                         contentType: "application/json; charset=utf-8",
                         success: function (data) {
-                           console.log("in GetConfirmData");
-                           $('#loading').hide();
-                    $('#transparent_div2').hide();                   
-                    $('#lblconfirmjob').text(data.d[0]);
-                    $('#lblconfirmdrivername').text(data.d[1]);
-                    $('#lblconfirmfrom').text(data.d[2]);
-                    $('#lblconfirmto').text(data.d[3]);
-                    $('#lblconfirmdistance').text(data.d[4]);
-                    $('#lblconfirmdate').text(data.d[5]);
-                    $('#lblconfirmtime').text(data.d[6]);
-                    $('#lblconfirmfare').text(data.d[7]);
-                    $('#lblconfirmdriverPhoneNo').text(data.d[8]);
-                    $('#popup_box').show();
-                    $('#divDealConfirmed').show();
-                    $('#transparent_div2').show();
-                    $('#divselect').hide();
+                            console.log("in GetConfirmData");
+                            $('#loading').hide();
+                            $('#transparent_div2').hide();                   
+                            $('#lblconfirmjob').text(data.d[0]);
+                            $('#lblconfirmdrivername').text(data.d[1]);
+                            $('#lblconfirmfrom').text(data.d[2]);
+                            $('#lblconfirmto').text(data.d[3]);
+                            $('#lblconfirmdistance').text(data.d[4]);
+                            $('#lblconfirmdate').text(data.d[5]);
+                            $('#lblconfirmtime').text(data.d[6]);
+                            $('#lblconfirmfare').text(data.d[7]);
+                            $('#lblconfirmdriverPhoneNo').text(data.d[8]);
+                            $('#popup_box').show();
+                            $('#divDealConfirmed').show();
+                            $('#transparent_div2').show();
+                            $('#divselect').hide();
                         },
                         complete: function () {
                             destroySetInterval();                          
@@ -714,7 +685,7 @@ function getResponseFromDriver(data)
                 else if (getBooked === "False") 
                 {
                      //  SearchDriverAgain();
-                     getResponse();
+                    getResponseFalse();
                     $('#load').hide();                    
                     $('#statusMessage').hide();
                     $('#divDeal').hide();
@@ -740,93 +711,35 @@ function getResponseFromDriver(data)
             }
         });
 
-    }, 1000);
-    function destroySetInterval() {
-        window.clearInterval(checkDealResp);
     }
+function getResponseFalse(){
+    window.clearInterval(checkDealResp);
+    $('#msg').hide();
+    $("#bookingmsg").show();
 }
 
 function getResponseExpire()
-{
-    
+{    
     $('#load').hide();                    
-                    $('#statusMessage').hide();
-                    $('#divDeal').hide();
-                    $('#loading').hide();
-                    $('#transparent_div2').hide();
-    
-    
-                 navigator.notification.alert(
-				   	 "Time out",
-  				 	  cabCancledSuccess2, // Specify a function to be called 
- 					   'ECABS4U',
- 						"OK"
-						);
-    
-				function cabCancledSuccess2()
-                        {
-                            window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-    			         //getResponse();
-						}
-    
-    
-   // alert("Time out");
-    //getResponse();
-    //window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-    
-   //  navigator.notification.confirm(
-   // "Time out",
-   // onClickCancelJobs,
-   // "Confirm",
-   // "Yes,No" 
-   // );
-    
+    $('#statusMessage').hide();
+    $('#divDeal').hide();
+    $('#loading').hide();
+    $('#transparent_div2').hide();
+
+
+     navigator.notification.alert(
+       	 "Time out",
+    	 	  cabCancledSuccess2, // Specify a function to be called 
+    		   'ECABS4U',
+    			"OK"
+    		);
+
+    function cabCancledSuccess2()
+    {
+        window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+    }    
+        
 }
-
-//function onClickCancelJobs(buttonIndex)
-//{
-//    if(buttonIndex === 2)
-//    {
-//        window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-//    }
-//    else if(buttonIndex === 1)
-//    {
-//         var cause = "Cancelled";
-//          DeleteJob5(cause);
-//      
-//    }
-//}
-
-//function DeleteJob5(cause)
-//{
-//         $.ajax({
-//            url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CancelCurrentJob",
-//            type: "POST",
-//            dataType: "Json",
-//            data: "{'requestID':'" + requestID + "','relatedId':'" + relatedId + "','cause':'" + cause + "'}",
-//            contentType: "application/json; charset=utf-8",
-//            success: function(data)
-//                {
-//                    //alert(data.d);
-//                    //window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-//                    
-//                    navigator.notification.alert(
-//				   	 data.d,
-//  				 	  cabCancledSuccess2, // Specify a function to be called 
-// 					   'ECABS4U',
-// 						"OK"
-//						);
-//    
-//				function cabCancledSuccess2()
-//                        {
-//    			         getResponse();
-//						}
-//                },
-//            error: function (XMLHttpRequest, textStatus, errorThrown) {
-//            }
-//        });
-//}
-//
 
 function ShowMap() 
 {
@@ -848,58 +761,18 @@ function calOk()
             $('#imgLoader').hide();
             $('#popup_box').hide();
             $('#transparent_div2').hide(); 
-    // $('#divDealConfirmed').hide(); 
+            $('#imgLoader').hide();
+           navigator.notification.alert(
+	   	 "Cab booked successfully.",
+		       cabBookedSuccess, // Specify a function to be called 
+			   'ECABS4U',
+				"OK"
+			);
     
-           /*  var requestId = $('#lblconfirmjob').text();
-            var driverId = $('#lbldriverId').text();
-           $.ajax({
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RemoveCurrentRequest",
-                type: "POST",
-                dataType: "Json",
-                data: "{'driverId':'" + driverId + "','requestId':'" + requestId + "'}",
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
-                    if(data.d === true)
-                    {*/
-                      //  alert("Cab booked successfully.");
-    ////////////////////////////////////////////////////////////////////
-                        $('#imgLoader').hide();
-                       navigator.notification.alert(
-				   	 "Cab booked successfully.",
-  				       cabBookedSuccess, // Specify a function to be called 
- 					   'ECABS4U',
- 						"OK"
-						);
-    
-				function cabBookedSuccess()
-                        {
-    			window.location = 'CustomerHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId; 
-						}
-    /////////////////////////////////////////////////////////////////////////
-                       // jAlert('Cab booked successfully.', 'jquery basic alert box');
-                        
-                        
-                           
-                        
-                       // alert("Cab booked successfully.");
-                        //window.alert('Cab booked successfully.','Success');
-                       // var timeOut = 5;
-               //  setInterval(function() {  
-              //   jAlert('Cab booked successfully.', 'jquery basic alert box');
-              // if(timeOut <= 0)
-             //  {
-             //  $('#imgLoader').hide();
-             //           
-              //          window.location = 'CustomerHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;  
-              //  }
-              // }, 1000);
-                      
-                                          
-                   // }               
-                //},
-                //error: function (XMLHttpRequest, textStatus, errorThrown) {
-                //}
-            //});
+			function cabBookedSuccess()
+            {
+			    window.location = 'CustomerHistory.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId; 
+			}
 }
 function selectDriver()
 {
@@ -999,6 +872,7 @@ function AlterJob()
 }
 function AlterJob2()
 {//var search="Hi";
+     window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
     //window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId+ '&rid=' + requestID+ '&rrid=' + search;
 }
 
