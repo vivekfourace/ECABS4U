@@ -215,6 +215,7 @@ function SubmitAbort()
 							);
                         	function abortComplete()
                         	{
+                               
     			     		window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 							}
                          }                         
