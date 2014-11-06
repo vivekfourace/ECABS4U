@@ -34,54 +34,55 @@ function gethistory()
                         var count = data.d.length;
                         if(count > 0)
                         {
-                                var html = '<table id="tbhist" cellspacing="0"; width="100%"  style="border-collaspe:collaspe;">';
-                                html += '<thead class="thead-grid">';
+                            var html = '<table id="tbhist" cellspacing="0"; width="100%"  style="border-collaspe:collaspe;">';
+                            html += '<thead class="thead-grid">';
+                            html += '<tr>';
+                            html += '<th>JobNo</th>';
+                            html += '<th>Feedback</th>';
+                            html += '<th>Status</th>';                      
+                            html += '</tr>';
+                            html += '</thead>';
+                            html +='<tbody class="tbody-grid altColor">';  
+                            var isRecentJob, isCabNow, isJobAlive;    
+                            for(var i=0; i<count; i++)
+                            {
+                                $('#lbljobFeed').text(data.d[i]["JobNo"]);
+                                isCabNow = data.d[i]["isCabNow"];
+                                isJobAlive = data.d[i]["isJobAlive"];
+                                isRecentJob = data.d[i]["isRecentJob"];
+                                    
                                 html += '<tr>';
-                                html += '<th>JobNo</th>';
-                                html += '<th>Feedback</th>';
-                                html += '<th>Status</th>';                      
+                                html += "<td width='20%' height='30px' align='center'>" +'<a href="#" onclick="JobDetail(\''+data.d[i]["JobNo"]+'\')" style="color:blue; float: left;padding-left: 21%;">'+ data.d[i]["JobNo"]+'</a>';
+                                if(isRecentJob)
+                                    html += "<img src='img/StarBlinking.gif' style='height: 15px;float:right;'</img>";
+                                html += "</td>"; 
+                                html += "<td width='5%' height='30px' align='center'>"+'<img src="img/feedbackicon.png" onclick="feedBackCustomer(\''+data.d[i]["JobNo"]+'\')"</img>'+"</td>"
+                                       
+                                if(data.d[i]["isJobCompleted"] === true)
+                                   {
+                                       html += "<td width='25%' height='30px' align='center'>"+'<label style="color:green">Completed</label>'+"</td>";
+                                   }                                            
+                                else if(isCabNow || !isCabNow)
+                                {
+                                    if(isJobAlive === true)
+                                    {
+                                        html += "<td width='25%' height='30px' align='center'>"+'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" class="reject-btn" value="Cancel Job" onclick="AbortJob(\''+data.d[i]["JobNo"]+'\')"/>'+"</td>";   
+                                    }
+                                    else if(isJobAlive === false)
+                                    {
+                                         html += "<td width='25%' height='30px' align='center'>"+'<label style="color:red">Cancelled</label>'+"</td>";
+                                    }
+                                }
+                                
                                 html += '</tr>';
-                                html += '</thead>';
-                                   html +='<tbody class="tbody-grid altColor">';  
-                                        for(var i=0; i<count; i++)
-                                        {
-                                           $('#lbljobFeed').text(data.d[i]["JobNo"]);
-                                           var isCabNow = data.d[i]["isCabNow"];
-                                           var isJobAlive = data.d[i]["isJobAlive"];
-                                           html += '<tr>';
-                                           html += "<td width='20%' height='30px' align='center'>" +'<a href="#" onclick="JobDetail(\''+data.d[i]["JobNo"]+'\')" style="color:blue;">'+ data.d[i]["JobNo"]+'</a>'+"</td>"; 
-                                           html += "<td width='5%' height='30px' align='center'>"+'<img src="img/feedbackicon.png" onclick="feedBackCustomer(\''+data.d[i]["JobNo"]+'\')"</img>'+"</td>"
-                                           
-                                             if(data.d[i]["isJobCompleted"] === true)
-                                                {
-                                                    html += "<td width='25%' height='30px' align='center'>"+'<label style="color:green">Completed</label>'+"</td>";
-                                                }
-                                            
-                                            else if(isCabNow || !isCabNow)
-                                             {
-                                                if(isJobAlive === true)
-                                                {
-                                                    html += "<td width='25%' height='30px' align='center'>"+'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" class="reject-btn" value="Cancel Job" onclick="AbortJob(\''+data.d[i]["JobNo"]+'\')"/>'+"</td>";   
-                                                }
-                                                else if(isJobAlive === false)
-                                                {
-                                                     html += "<td width='25%' height='30px' align='center'>"+'<label style="color:red">Cancelled</label>'+"</td>";
-                                                }
-                                            }
-                                            
-                                           html += '</tr>';
-                                        }
-                                   html +='</tbody>';
-                                   html +='</table>';
-                                $('#msg').append(html);
-                            
-                            
-                         }
+                            }
+                            html +='</tbody>';
+                            html +='</table>';
+                            $('#msg').append(html);
+                        }
                         else
                         {
                             $('#bookingmsg').show();
-                            
-                            
                         }
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) 

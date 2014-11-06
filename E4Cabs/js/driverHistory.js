@@ -30,9 +30,9 @@ function gethistory()
            data:"{'relatedId':'"+relatedId+"'}",
            contentType: "application/json; charset=utf-8",
             success: function (data) {
-                var count = data.d.length;
-                if(count > 0)
-                {
+                    var count = data.d.length;
+                    if(count > 0)
+                   {
                         var html ='<table cellspacing="0"; width="100%"  style="border-collaspe:collaspe;">';
                         html += '<thead class="thead-grid">';
                         html += '<tr>';
@@ -52,33 +52,33 @@ function gethistory()
                                 html += '<tr>';
                                 html += "<td width='20%' height='30px' align='center'>" +'<a href="#" onclick="JobDetail(\''+data.d[i]["JobNo"]+'\')" style="color:blue;">'+ data.d[i]["JobNo"]+'</a>'+"</td>"; 
                                 html += "<td width='30%' height='30px' align='center'>" + data.d[i]["StartDate"] + "</td>"; 
-                               html += "<td width='5%' height='30px' align='center'>"+'<img src="img/feedbackicon.png" onclick="feedBackDriver(\''+data.d[i]["JobNo"]+'\')"</img>'+"</td>"
+                                html += "<td width='5%' height='30px' align='center'>"+'<img src="img/feedbackicon.png" onclick="feedBackDriver(\''+data.d[i]["JobNo"]+'\')"</img>'+"</td>"
                                 
-                             if(data.d[i]["isJobCompleted"] == true)
+                                if(data.d[i]["isJobCompleted"] == true)
+                                   {
+                                       html += "<td width='25%' height='30px' align='center'>"+'<label style="color:green">Completed</label>'+"</td>";
+                                   }
+                                else if(!isCabNow || isCabNow)
                                 {
-                                    html += "<td width='25%' height='30px' align='center'>"+'<label style="color:green">Completed</label>'+"</td>";
+                                   if(isJobAlive == true)
+                                   {
+                                       html += "<td width='25%' height='30px' align='center'>"+'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" class="reject-btn" value="Abort" onclick="AbortJob(\''+data.d[i]["JobNo"]+'\')"/>'+"</td>";   
+                                   }
+                                   else if(isJobAlive == false)
+                                   {
+                                        html += "<td width='25%' height='30px' align='center'>"+'<label style="color:red">Aborted</label>'+"</td>";
+                                   }
                                 }
-                             else if(!isCabNow || isCabNow)
-                             {
-                                 if(isJobAlive == true)
-                                 {
-                                     html += "<td width='25%' height='30px' align='center'>"+'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" class="reject-btn" value="Abort" onclick="AbortJob(\''+data.d[i]["JobNo"]+'\')"/>'+"</td>";   
-                                 }
-                                 else if(isJobAlive == false)
-                                 {
-                                      html += "<td width='25%' height='30px' align='center'>"+'<label style="color:red">Aborted</label>'+"</td>";
-                                 }
-                             }
-                             html += '</tr>';    
+                                 html += '</tr>';    
                              }
                         html +='</tbody>';
-                           html +='</table>';
+                        html +='</table>';
                         $('#msg').append(html);
-                 }
-                else
-                {
-                    $('#bookingmsg').show();
-                }
+                    }
+                    else
+                    {
+                        $('#bookingmsg').show();
+                    }
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) 
             {

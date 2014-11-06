@@ -96,6 +96,8 @@ function getResponse()
 function SearchAgain(){
     $('#bookingmsg').hide();
     $('#msg').show();
+    window.clearInterval(id);
+    id = window.setInterval(getResponse, 10000);
     anyMoreDriver = false;
     getResponse();  
 }
@@ -108,13 +110,15 @@ function getData(data) {
         window.clearInterval(reinitiateCounter);
         $('#bookingmsg').hide();
         $('#msg').show();
-        anyMoreDriver = true;
         DisplayDriversData();
     } 
     else{
        
        if(anyMoreDriver ===  false)
-        alert("Sorry!!! No more driver available to hire. Please search again.");
+        {
+            anyMoreDriver = true;
+            alert("Sorry!!! No more driver available to hire. Please search again.");
+        }
        $('#msg').empty().append("");
        $('#msg').hide();
        $('#bookingmsg').show();
