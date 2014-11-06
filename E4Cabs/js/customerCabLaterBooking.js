@@ -19,6 +19,8 @@ function getCablaterBooking()
                         var count = data.d.length;
                         if(count > 0)
                         {
+                            $('#bookingmsg').hide();
+                            
                            var previousjobID ="";
                            var html = '<table id="tbhist" cellspacing="0" width="100%">';
                                 html += '<tr class="thead-grid">';
@@ -107,6 +109,7 @@ function getCablaterBooking()
                         }
                         else
                         {
+                            $('#cablatercustomerbookings').empty().append("");
                             $('#cablatercustomerbookings').html('');
                             $('#bookingmsg').show();                            
                         }
@@ -156,7 +159,24 @@ function Cancel()
 }
 function HireDriver(jobID, driverid)
 {
-    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse";
+    navigator.notification.confirm(
+		        "Are you sure .",
+			    hireDriverJob, // Specify a function to be called 
+				   'ECABS4U',
+					"OK,Cancel"
+				);
+    
+   // function hireDriverJob(buttonIndex)
+     {
+            if(buttonIndex === 2)
+            {
+               
+                return false;
+            }
+            else if(buttonIndex === 1)
+            {
+                alert("in");
+                    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse";
                 $.ajax(url, {
                    beforeSend: function(){
                         $('#imgLoader').show();
@@ -182,43 +202,115 @@ function HireDriver(jobID, driverid)
                         
                     }
                 });
+                
+            }
+     }
+ //var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse";
+ //            $.ajax(url, {
+ //               beforeSend: function(){
+ //                    $('#imgLoader').show();
+ //                 },
+ //                 complete: function(){
+ //                    $('#imgLoader').hide();
+ //                 },
+ //               type:"POST",
+ //               datatype:"json",
+ //               data:"{'driverId':'" + driverid + "','requestId':'" + jobID + "'}",
+ //               contentType: "application/json; charset=utf-8",
+ //                success: function(data){
+ //                   // $('#check').hide();
+ //                    //alert('Booking in progress. Please check later.');
+ //                    alert("Cab selected. Waiting for your driver to confirm he will carry out this transfer");
+ //                    window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+ //                   
+ //                    
+ //                    
+ //                },
+ //                error: function (XMLHttpRequest, textStatus, errorThrown) 
+ //                {
+ //                    
+ //                }
+ //            });
 }
 function backtostart()
 {
     window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
-function CancelJob(jobId){
-    alert(jobId);
-    navigator.notification.alert(
-			        "Are you sure to cancel this job?.",
-				    canceljob(jobId), // Specify a function to be called 
-					   'ECABS4U',
-						"OK","Cancel"
-					);
-    function canceljob(jobid)
-       {  var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/CancelJob";
+function CancelJob(jobId)
+{
+    //alert(jobId);
+ //navigator.notification.alert(
+//		        "Are you sure to cancel this job?.",
+//			    canceljob(jobId), // Specify a function to be called 
+//				   'ECABS4U',
+//					"OK","Cancel"
+//				);
+ //function canceljob(jobid)
+ //   {  var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/CancelJob";
+ //
+ //       $.ajax(url,{
+ //                beforeSend: function(){
+ //                   $('#imgLoader').show();
+ //                },
+ //                complete: function(){
+ //                   $('#imgLoader').hide();
+ //                },
+ //                type:"POST",
+ //                datatype:"json",
+ //                data:"{'jobID':'" + jobid + "','customerID':'" + relatedId + "'}",
+ //                contentType: "application/json; charset=utf-8",                     
+ //                success: function(data){
+ //                      alert("Job cancelled successfully.");
+ //                },
+ //               
+ //                error: function (XMLHttpRequest, textStatus, errorThrown) {
+ //               // alert(errorThrown);
+ //           }
+ //        });
+ //   }
+              navigator.notification.confirm(
+		       "Are you sure to cancel this job?.",
+			    canceljob, // Specify a function to be called 
+				'ECABS4U',
+			   "OK,Cancel"
+				);
     
-           $.ajax(url,{
-                    beforeSend: function(){
-                       $('#imgLoader').show();
-                    },
-                    complete: function(){
-                       $('#imgLoader').hide();
-                    },
-                    type:"POST",
-                    datatype:"json",
-                    data:"{'jobID':'" + jobid + "','customerID':'" + relatedId + "'}",
-                    contentType: "application/json; charset=utf-8",                     
-                    success: function(data){
-                          alert("Job cancelled successfully.");
-                    },
-                   
-                    error: function (XMLHttpRequest, textStatus, errorThrown) {
-                   // alert(errorThrown);
+    function canceljob(buttonIndex)
+     {
+            if(buttonIndex === 2)
+            {
+               
+                return false;
+            }
+            else if(buttonIndex === 1)
+            {
+                alert("in");
+                alert(jobId);
+                 var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/CancelJob";
+ 
+        $.ajax(url,{
+                 beforeSend: function(){
+                    $('#imgLoader').show();
+                 },
+                 complete: function(){
+                    $('#imgLoader').hide();
+                 },
+                 type:"POST",
+                 datatype:"json",
+                 data:"{'jobID':'" + jobId + "','customerID':'" + relatedId + "'}",
+                 contentType: "application/json; charset=utf-8",                     
+                 success: function(data){
+                       alert("Job cancelled successfully.");
+                 },
+                
+                 error: function (XMLHttpRequest, textStatus, errorThrown) {
+                // alert(errorThrown);
                }
-            });
-       }
+                 });
+                
+            }
+     }
 }
 
 function CancelBookedJob(data)

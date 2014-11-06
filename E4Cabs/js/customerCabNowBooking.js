@@ -54,8 +54,9 @@ function getData(data) {
         var html = '<table id="tbhist" cellspacing="0" width="100%">';
             html += '<tr class="thead-grid">';
             html += '<th>JobNo</th>';
-            html += '<th colspan="2">From</th>';
-            html += '<th colspan="2">To</th>';
+            html += '<th >From</th>';
+            html += '<th>To</th>';
+            html += '<th></th>';
             html += '</tr>';
         
       
@@ -86,7 +87,7 @@ function getData(data) {
                 html += '<td style="width:20%;height:35px;text-align:center;"><a href="#" onclick="ShowDetailBooking(\''+jobID+'\')" style="color:blue;">'+ jobID +'</a></td>'; 
                 html += "<td style='width:20%;height:35px;text-align:center;'>" + From +"</td>";
                 html += "<td style='width:20%;height:35px;text-align:center;'>" + To +"</td>";
-                html += '<td style="width:20%;height:35px;text-align:center;"><input type="button" class="rejectbtn" value="Cancel Job" style="width:98%"; onclick="CancelJob(\''+jobID+'\')"/></td>';
+                html += '<td style="width:20%;height:35px;text-align:center;"><input type="button" class="rejectbtn" value="Cancel Job" style="-webkit-appearance:none;-moz-appearance:none;width:98%"; onclick="CancelJob(\''+jobID+'\')"/></td>';
                 html += '</tr>';
                 html += '<tr class="thead-grid2">';
                 html += '<td style="text-align:center;">Fare</td>';
@@ -118,7 +119,7 @@ function getData(data) {
             html += '<img src="'+DriverPhoto+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImageLater(this)\"/>';
             html += '</td>';
             html += '<td style="width: 20%;text-align:left;border-bottom:1px solid black !important;"><br/><img src="'+VehicleImages+'" style="width:50px;height:50px;border-radius:4px;" onclick="ShowLargeImageLater(this)\"/></td>';
-            html += '<td style="width: 25%;text-align:left;border-bottom:1px solid black !important;"><input type="button" class="btn-tmp" value="Rating" style="width:98%"; onclick="showRatingBoxLaterPresent(\''+DriverID+'\')"/></td>';
+            html += '<td style="width: 25%;text-align:left;border-bottom:1px solid black !important;"><input type="button" class="btn-tmp" value="Rating" style="-webkit-appearance:none;-moz-appearance:none;width:98%"; onclick="showRatingBoxLaterPresent(\''+DriverID+'\')"/></td>';
             if(Fare > 0)
             {
                 if(CustResponse !== true)
