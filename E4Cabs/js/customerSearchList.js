@@ -643,6 +643,7 @@ function getResponseFromDriver(data)
         window.clearInterval(checkDealResp);
     }
 }
+var jobs1;
 function checkDeal() {
         $.ajax({
             url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CheckdealResponse",
@@ -701,7 +702,7 @@ function checkDeal() {
                 }
                 else if(getBooked === "")
                 {
-                   var jobs1;
+                   
                   jobs1 = window.setInterval(getResponseExpire, 200000);
                   ///RejectDriver()-----see this function for delete driver response. 
                 }
@@ -742,7 +743,8 @@ function getResponseExpire()
 
     function cabCancledSuccess2()
     {
-        window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+       window.clearInterval(jobs1);
+       window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
     }    
         
 }

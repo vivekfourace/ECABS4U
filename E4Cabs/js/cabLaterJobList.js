@@ -12,7 +12,7 @@ var relatedId = QString.split("=")[3].split("&")[0];
 window.onload = getCablaterBooking2();
 var ref;
 
- ref = window.setInterval(getCablaterBooking2, 10000);
+ ref = window.setInterval(getCablaterBooking2, 1000);
 function getCablaterBooking2()
 {
    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetCabLaterJobOffered";

@@ -8,7 +8,7 @@ function onDeviceReady() {
    console.log('device ready');
 }
 
-jobCheckTime = setInterval(GetCancelledJobsForCustomer, 5000);
+jobCheckTime = setInterval(GetCancelledJobsForCustomer, 2000);
 
 
 function GetCancelledJobsForCustomer() {
