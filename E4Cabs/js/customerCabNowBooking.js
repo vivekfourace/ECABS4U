@@ -50,7 +50,7 @@ function getData(data) {
         $('#divbid').show();
         $('#divawait').hide();
         $('#load').hide();
-        $('#transparent_div').hide();
+        //$('#transparent_div').hide();
         var html = '<table id="tbhist" cellspacing="0" width="100%">';
             html += '<tr class="thead-grid">';
             html += '<th>JobNo</th>';
