@@ -179,7 +179,7 @@ function showDetail(data)
     $('#lblBidTime').text(": "+data.d[6]);
     //$('#lblDSR').text(": "+data.d[7]);  
     $('#popup_box').show();
-    $('#divCabLaterBooking').show();
+    $('#divCabLaterBooking22').show();
     $('#transparent_div').show();
     
 }
@@ -190,7 +190,7 @@ function showDetail(data)
 function Cancel()
 {
     $('#popup_box').hide();
-    $('#divCabLaterBooking').hide();
+    $('#divCabLaterBooking22').hide();
     $('#transparent_div').hide();
 }
 function RejectJobNow(data)
