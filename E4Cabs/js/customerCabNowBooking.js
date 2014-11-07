@@ -284,15 +284,15 @@ function getData(data) {
         }
         html += '</tbody>';
         html += '</table>';
-        html += '<br/>';    
-        html += '<div>';
-        html += '<table>';
-        html += '<tr>';
-        html += '<td>';
-        html += '<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" id="searchAgain" class="reject-btn" value="InSufficient Drivers" onclick="SearchDriverAgain()"/>';
-        html += '</td></tr>'; 
-        html += '</table>';
-        html += '</div>'; 
+       // html += '<br/>';    
+       // html += '<div>';
+       // html += '<table>';
+       // html += '<tr>';
+       // html += '<td>';
+       // html += '<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" id="searchAgain" class="reject-btn" value="InSufficient Drivers" onclick="SearchDriverAgain()"/>';
+       // html += '</td></tr>'; 
+       // html += '</table>';
+       // html += '</div>'; 
         $('#cabnowmsg').html('');        
         $('#cabnowmsg').append(html);
     }

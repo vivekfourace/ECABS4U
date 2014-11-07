@@ -599,18 +599,41 @@ function HideDisplay()
 }
 function CancelDriver(jobID, driverid)
 {
-    $.ajax({
-       url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CancelDriverForJob",
-       type:"POST",
-       datatype:"json", 
-       data:"{'jobID':'" +jobID+ "','driverID':'"+driverid+"','customerID':'"+relatedId+"'}",
-       contentType: "application/json; charset=utf-8",
-        success: function(){
-            alert("Driver cancelled for this job.");
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrown) 
-        { }
-    });
+  navigator.notification.confirm(
+		       "Are you sure to cancel this driver?.",
+			    canceldriver33, // Specify a function to be called 
+				'ECABS4U',
+			   "OK,Cancel"
+				);
+    
+    function canceldriver33(buttonIndex)
+     {
+            if(buttonIndex === 2)
+            {
+               
+                return false;
+            }
+            else if(buttonIndex === 1)
+            {
+                    $.ajax({
+                   url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CancelDriverForJob",
+                   type:"POST",
+                   datatype:"json", 
+                   data:"{'jobID':'" +jobID+ "','driverID':'"+driverid+"','customerID':'"+relatedId+"'}",
+                   contentType: "application/json; charset=utf-8",
+                    success: function(){
+                        alert("Driver cancelled for this job.");
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) 
+                    { }
+                });
+               
+            }
+     }
+    
+    
+    
+   
 }
 //CabLater Logic End
 

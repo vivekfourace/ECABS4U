@@ -112,15 +112,17 @@ function getData(data) {
         $('#msg').show();
         DisplayDriversData();
     } 
-    else{
+    else
+    {
        
+       $('#msg').empty().append("");
+       $('#msg').hide();
        if(anyMoreDriver ===  false)
         {
             anyMoreDriver = true;
             alert("Sorry!!! No more driver available to hire. Please search again.");
         }
-       $('#msg').empty().append("");
-       $('#msg').hide();
+       
        $('#bookingmsg').show();
          
         //alert("No driver response found.");

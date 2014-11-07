@@ -15,6 +15,8 @@ function backToIndex()
 }
 
 window.onload = gethistory();
+var id;
+id = window.setInterval(gethistory, 20000);
 
 $(function() {
       $.fn.raty.defaults.path = 'lib/img';  
@@ -73,6 +75,7 @@ function gethistory()
                              }
                         html +='</tbody>';
                         html +='</table>';
+                        $('#msg').html('');
                         $('#msg').append(html);
                     }
                     else
