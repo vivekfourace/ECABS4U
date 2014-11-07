@@ -106,6 +106,7 @@ function onAbortCallback2(buttonIndex)
         //$('#btnOffline').show();
        $('#popup_box1').show();
        $('#divAbortTask').show();
+        $('#divJobDetails2').hide();
        
     }
 }
@@ -498,6 +499,7 @@ function showDetail2(data)
     $("#popup_box1").show();
     $('#divJobDetails2').show();
     $('#transparent_div').show();
+    $('#divAbortTask').hide();
 }
 function Cancel()
 {

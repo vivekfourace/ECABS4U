@@ -160,13 +160,13 @@ function Cancel()
 function HireDriver(jobID, driverid)
 {
     navigator.notification.confirm(
-		        "Are you sure .",
+		        "Confirm.",
 			    hireDriverJob, // Specify a function to be called 
 				   'ECABS4U',
 					"OK,Cancel"
 				);
     
-   // function hireDriverJob(buttonIndex)
+   function hireDriverJob(buttonIndex)
      {
             if(buttonIndex === 2)
             {
@@ -175,7 +175,7 @@ function HireDriver(jobID, driverid)
             }
             else if(buttonIndex === 1)
             {
-                alert("in");
+               
                     var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse";
                 $.ajax(url, {
                    beforeSend: function(){
@@ -285,8 +285,7 @@ function CancelJob(jobId)
             }
             else if(buttonIndex === 1)
             {
-                alert("in");
-                alert(jobId);
+               
                  var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/CancelJob";
  
         $.ajax(url,{
