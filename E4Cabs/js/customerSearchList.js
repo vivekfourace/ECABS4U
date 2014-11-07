@@ -138,7 +138,23 @@ function getData(data) {
         $('#divawait').hide();
         $('#load').hide();
         $('#transparent_div2').hide();
+        
+        
         var html = '<table width="100%" style="border-collapse:collapse;">';
+        
+         
+                 for (var k = 0; k < count; k++)
+                     {
+                    
+                       customerReqIdJOB = data.d[k]["CustomerRequestID"];
+                     }
+         
+                                        html += '<tr style="background-color:lightgray;">';
+                                        html += '<td style="width:20%;height:35px;text-align:center;" colspan="4">Job No - '+ customerReqIdJOB +'</td>'; 
+                                       
+                                        html += '<td style="width:20%;height:35px;text-align:center;" colspan="2"><input type="button" class="rejectbtn" value="Cancel Job" style="width:98%"; onclick="CancelJobRequest(\''+customerReqIdJOB+'\')"/></td>';
+                                        html += '</tr>';
+        
         html += '<thead class="header-style">';
         html += '<tr>';
         html += '<th>Fare</th>';
@@ -153,6 +169,7 @@ function getData(data) {
         for (var i = 0; i < count; i++) {
             var driverID = data.d[i]["DriverID"];
             var customerReqId = data.d[i]["CustomerRequestID"];
+           //customerReqJobno= data.d[i]["CustomerRequestID"];
             var spec = data.d[i]["DriverSpecialReq"];
             var searchTime = data.d[i]["SearchTime"];
             var driverImgUrl = data.d[i]["DriverPicUrl"];
