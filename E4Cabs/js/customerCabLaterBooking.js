@@ -160,7 +160,7 @@ function Cancel()
 function HireDriver(jobID, driverid)
 {
     navigator.notification.confirm(
-		        "Confirm.",
+		        "Are you sure to hire this driver?",
 			    hireDriverJob, // Specify a function to be called 
 				   'ECABS4U',
 					"OK,Cancel"
