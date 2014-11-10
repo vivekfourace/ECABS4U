@@ -138,15 +138,24 @@ function getData(data) {
         $('#divawait').hide();
         $('#load').hide();
         $('#transparent_div2').hide();
-        customerReqIdJOB = data.d[0]["CustomerRequestID"]; 
         
         
-        var html = '<table width="100%" style="border-collapse:collapse;">'; 
+        var html = '<table width="100%" style="border-collapse:collapse;">';
+        
+         
+                 for (var k = 0; k < count; k++)
+                     {
+                    
+                       customerReqIdJOB = data.d[k]["CustomerRequestID"];
+                     }
+         
+                                        html += '<tr style="background-color:lightgray;">';
+                                        html += '<td style="width:20%;height:35px;text-align:center;" colspan="4">Job No - '+ customerReqIdJOB +'</td>'; 
+                                       
+                                        html += '<td style="width:20%;height:35px;text-align:center;" colspan="2"><input type="button" class="rejectbtn" value="Cancel Job" style="width:98%"; onclick="CancelJobRequest(\''+customerReqIdJOB+'\')"/></td>';
+                                        html += '</tr>';
+        
         html += '<thead class="header-style">';
-        html += '<tr style="background-color:lightgray; color:black;">';
-        html += '<td style="width:20%;height:35px;padding-left:5px;" colspan="4">Job No - '+ customerReqIdJOB +'</td>';        
-        html += '<td style="width:20%;height:35px;text-align:center;" colspan="2"><input type="button" class="rejectbtn" value="Cancel Job" style="width:98%"; onclick="CancelJobRequest(\''+customerReqIdJOB+'\')"/></td>';
-        html += '</tr>';        
         html += '<tr>';
         html += '<th>Fare</th>';
         html += '<th>Date</th>';
@@ -841,7 +850,7 @@ function onClickCancel(buttonIndex)
     }
     else if(buttonIndex === 1)
     {
-         var cause = "Cancelled by customer";
+         var cause = "Cancelled";
           DeleteJob(cause);
       
     }

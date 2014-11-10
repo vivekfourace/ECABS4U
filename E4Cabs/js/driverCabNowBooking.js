@@ -9,7 +9,7 @@ function backToIndex()
 }
 window.onload = DriverCabNowBookingInfo();
 var id;
-id = window.setInterval(DriverCabNowBookingInfo, 1000);
+id = window.setInterval(DriverCabNowBookingInfo, 10000);
 
 function DriverCabNowBookingInfo(){
     $.ajax({

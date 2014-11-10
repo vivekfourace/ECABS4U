@@ -78,9 +78,7 @@ function onOKDeleteExpiredJob(expJobId){
               contentType: "application/json; charset=utf-8",                     
               success: function () {
                    $('#transparent_div').hide();
-                   console.log("1");
                    window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-                   console.log("2");
               }
          });
     

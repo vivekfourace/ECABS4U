@@ -27,8 +27,7 @@
                 JobId = QString.split("=")[4].split("&")[0];
             }
         
-            $(function () 
-            {
+            $(function () {
                 $('#txtbidFare').bind('keypress', function (e) {
                     if ((e.keyCode < 48 || e.keyCode > 57) && e.keyCode !== 46) {
                         e.stopPropagation();
@@ -41,199 +40,188 @@
                     }
                 });
                 $.ajax({
-                   url: 'http://115.115.159.126/ECabs/ECabs4U.asmx/CheckResponse',
-                   type: "POST",
-                   datatype: "json",
-                   data: "{'userID':'" + relatedId + "'}",
-                   contentType: "application/json; charset=utf-8",
-                   success: function (data) {
-                            if(data.d[0] !== "Error"){
-                                var getID = data.d[0];
-                                $('#hdnJobno').val(getID);
-                                if (JobId !== "") { getID = JobId; }
-                                var getValue = data.d[1];
-                                
-                                if (getValue === "False") {
-                                    $.ajax({
-                                    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetData",
-                                    type: "POST",
-                                    dataType: "Json",
-                                    data: "{'userID':'" + getID + "', 'driverID':'" + relatedId + "'}",
-                                    contentType: "application/json; charset=utf-8",
-                                    success: function (data) {
-                                    if (data.d[0][0] !== null) {
-                                        $('#tbdetails').show();
-                                        $('#button-table').show();
-
-                                        $('#lbljobno').text(data.d[0][0]);
-                                        $('#lblFromLoc').text(data.d[0][1]);                                    
-                                        $('#lblToLoc').text(data.d[0][2]);
-                                        $('#lblDistance').text(": " + data.d[0][5]);
-                                        $('#lblpickDateDriver').text(": " + data.d[0][6]);
-                                        $('#lblpickTime').text(": " + data.d[0][7]);
-                                        $('#hiddenIsCabnow').val(data.d[0][20]);
-                                        var hiddin = $('#hiddenIsCabnow').val();
-
-                                        console.log($('#hiddenIsCabnow').val());
-                                        if (hiddin == "True") 
-                                        {
-                                            $('#trselectvehicle').hide();
-                                            $('#lblpickTime').hide();
-                                            $('#lblpickTimetext').show();
-                                        }
-                                        else{
-                                            $('#lblpickTime').show();
-                                            $('#lblpickTimetext').hide();
-                                        }
-
-                                        $('#lblpassengercount').text(": " + data.d[0][8]);
-                                        $('#lbllargecase').text(": " + data.d[0][9]);
-                                        $('#lblsmallcase').text(": " + data.d[0][10]);
-                                        $('#lblwheelchair').text(": " + data.d[0][11]);
-                                        $('#lblchildseat').text(": " + data.d[0][12]);
-                                        $('#lblchildbooster').text(": " + data.d[0][13]);
-
-                                        console.log(data.d[0][25]);
-                                        if (data.d[0][3] !== null) {
-                                            $('#loc1').show();
-                                            $('#lblLoc1').text(data.d[0][3]);
-                                        } 
-                                        else {
-                                            $('#lblLoc7').text(null);
-                                        }
-                                        if (data.d[0][4] !== null) {
-                                            $('#loc2').show();
-                                            $('#lblLoc2').text(data.d[0][4]);
-                                        } 
-                                        else {
-                                            $('#lblLoc7').text(null);
-                                        }
-                                        if (data.d[0][21] !== null) {
-                                            $('#loc3').show();
-                                            $('#lblLoc3').text(data.d[0][21]);
-                                        } 
-                                        else {
-                                            $('#lblLoc7').text(null);
-                                        }
-                                        if (data.d[0][22] !== null) {
-                                            $('#loc4').show();
-                                            $('#lblLoc4').text(data.d[0][22]);
-                                        } else {
-                                            $('#lblLoc7').text(null);
-                                        }
-                                        if (data.d[0][23] !== null) {
-                                            $('#loc5').show();
-                                            $('#lblLoc5').text(data.d[0][23]);
-                                        } 
-                                        else {
-                                        $('#lblLoc7').text(null);
-                                        }
-                                        if (data.d[0][24] !== null) {
-                                            $('#loc6').show();
-                                            $('#lblLoc6').text(data.d[0][24]);
-                                        } else {
-                                            $('#lblLoc7').text(null);
-                                        }
-                                        if (data.d[0][25] !== null) {
-                                            $('#loc7').show();
-                                            $('#lblLoc7').text(data.d[0][25]);
-                                        } else {
-                                           $('#lblLoc7').text(null);
-                                        }
-
-                                        for (var i = 0;i < data.d.length;i++) {
-                                            $("#ddlselectedvehicle").append("<option value='" + data.d[i][26] + "'>" + data.d[i][27] + " - " + data.d[i][28] + "</option>");
-                                        }
-
-                                        if (data.d[0][14] === "True") {                                        
-                                            $('#lblisReturnJourney').text(": " + "Yes");
-                                        if (data.d[0][15] !== null) {
-                                            $('#returnTo').show();
-                                            $('#lblreturnTo').text(": " + data.d[0][16]);
-                                        } else {
-                                            $('#returnTo').hide();
-                                        }
-                                        if (data.d[0][16] !== null) {
-                                            $('#returnFrom').show();
-                                            $('#lblreturnFrom').text(": " + data.d[0][15]);
-                                        } else {
-                                            $('#returnFrom').hide();
-                                        }
-                                        if (data.d[0][17] !== null) {
-                                            $('#returnDate').show();
-                                            $('#lblreturnDate').text(": " + data.d[0][17]);    
-                                        } else {
-                                            $('#returnDate').hide();
-                                        }
-                                        if (data.d[0][18] !== null) {
-                                            $('#returnTime').show();                                                
-                                            $('#lblreturnTime').text(": " + data.d[0][18]);
-                                        } else {
-                                            $('#returnTime').hide();                                                
-                                        }
-                                        } else if (data.d[0][14] === "False") {
-                                            $('#lblisReturnJourney').text(": " + "No");
-                                        }
-
-                                        if (data.d[0][19] !== null) {
-                                            $('#trSpecialtxt').show();
-                                            $('#trOtherspec').show();
-                                            $('#otherReq').text(data.d[0][19]);
-                                        } else {
-                                            $('#trOtherspec').hide();
-                                            $('#trSpecialtxt').hide();
-                                        }
-
-                                        $('#hiddenIsCabnow').val(data.d[0][20]);
-                                        var hiddin = $('#hiddenIsCabnow').val();
-
-                                        console.log($('#hiddenIsCabnow').val());
-                                        if (hiddin == "True") {
-                                            $('#trselectvehicle').hide();
-                                        }
-
-                                        if (data.d[0][3] !== null) {
-                                            var sec = data.d[0][3];
-                                            $('#lblpopthird').text(sec);
-                                            $('#otherLoc').show();
-                                            if (data.d[0][4] !== null) {
-                                                var third = data.d[0][4];
-                                                $('#lblpopfour').text(third);
-                                                $('#otherLoc').show();
-                                            }
-                                        } else {
-                                            $('#otherLoc').hide();
-                                        }
-                                    } else {
-                                        $('#tbdetails').hide();
-                                        alert("Sorry, this job has been passed out some time before.");
-                                        window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-                                    }
-                                },
-                                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                                    $('#tbdetails').hide();
-                                    alert("We are extremely sorry for your inconvenience due to some error occurred in the system.");
-                                    window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-                                }});
-                            } else if (data.d[0][0] === "Error") {
-                                $('#tbdetails').hide();
-                                alert("Sorry this job has been passed out.");
-                                window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-                            }
-                        }
-                        else{
-                            $('#tbdetails').hide();
-                            alert("Sorry this job has been passed out.");
-                            window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-                        }
-                    },
-                    error: function (XMLHttpRequest, textStatus, errorThrown) {
-                        $('#tbdetails').hide();
-                        alert("Sorry this job has been passed out.");
-                        window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-                    }});
+                           url: 'http://115.115.159.126/ECabs/ECabs4U.asmx/CheckResponse',
+                           type: "POST",
+                           datatype: "json",
+                           data: "{'userID':'" + relatedId + "'}",
+                           contentType: "application/json; charset=utf-8",
+                           success: function (data) {
+                               var getID = data.d[0];
+                               $('#hdnJobno').val(getID);
+                               if (JobId !== "") {
+                                   getID = JobId;
+                               }
+                               var getValue = data.d[1];
+                               if (getValue === "False") {
+                                   $.ajax({
+                                              url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetData",
+                                              type: "POST",
+                                              dataType: "Json",
+                                              data: "{'userID':'" + getID + "', 'driverID':'" + relatedId + "'}",
+                                              contentType: "application/json; charset=utf-8",
+                                              success: function (data) {
+                                                  if (data.d[0][0] !== null) {
+                                                      $('#tbdetails').show();
+                                                      $('#button-table').show();
+            
+                                                      $('#lbljobno').text(data.d[0][0]);
+                                                      $('#lblFromLoc').text(data.d[0][1]);                                    
+                                                      $('#lblToLoc').text(data.d[0][2]);
+                                                      $('#lblDistance').text(": " + data.d[0][5]);
+                                                      $('#lblpickDateDriver').text(": " + data.d[0][6]);
+                                                      $('#lblpickTime').text(": " + data.d[0][7]);
+                                                       $('#hiddenIsCabnow').val(data.d[0][20]);
+                                                      var hiddin = $('#hiddenIsCabnow').val();
+            
+                                                      console.log($('#hiddenIsCabnow').val());
+                                                      if (hiddin == "True") 
+                                                      {
+                                                       $('#trselectvehicle').hide();
+                                                        $('#lblpickTime').hide();
+                                                        $('#lblpickTimetext').show();
+                                                        
+                                                      }
+                                                       else{
+                                                         $('#lblpickTime').show();
+                                                         $('#lblpickTimetext').hide();
+            
+                                                       }
+            
+                                                      
+                                                      $('#lblpassengercount').text(": " + data.d[0][8]);
+                                                      $('#lbllargecase').text(": " + data.d[0][9]);
+                                                      $('#lblsmallcase').text(": " + data.d[0][10]);
+                                                      $('#lblwheelchair').text(": " + data.d[0][11]);
+                                                      $('#lblchildseat').text(": " + data.d[0][12]);
+                                                      $('#lblchildbooster').text(": " + data.d[0][13]);
+            
+                                                      console.log(data.d[0][25]);
+                                                      if (data.d[0][3] !== null) {
+                                                          $('#loc1').show();
+                                                          $('#lblLoc1').text(data.d[0][3]);
+                                                      } else {
+                                                          $('#lblLoc7').text(null);
+                                                      }
+                                                      if (data.d[0][4] !== null) {
+                                                          $('#loc2').show();
+                                                          $('#lblLoc2').text(data.d[0][4]);
+                                                      } else {
+                                                          $('#lblLoc7').text(null);
+                                                      }
+                                                      if (data.d[0][21] !== null) {
+                                                          $('#loc3').show();
+                                                          $('#lblLoc3').text(data.d[0][21]);
+                                                      } else {
+                                                          $('#lblLoc7').text(null);
+                                                      }
+                                                      if (data.d[0][22] !== null) {
+                                                          $('#loc4').show();
+                                                          $('#lblLoc4').text(data.d[0][22]);
+                                                      } else {
+                                                          $('#lblLoc7').text(null);
+                                                      }
+                                                      if (data.d[0][23] !== null) {
+                                                          $('#loc5').show();
+                                                          $('#lblLoc5').text(data.d[0][23]);
+                                                      } else {
+                                                          $('#lblLoc7').text(null);
+                                                      }
+                                                      if (data.d[0][24] !== null) {
+                                                          $('#loc6').show();
+                                                          $('#lblLoc6').text(data.d[0][24]);
+                                                      } else {
+                                                          $('#lblLoc7').text(null);
+                                                      }
+                                                      if (data.d[0][25] !== null) {
+                                                          $('#loc7').show();
+                                                          $('#lblLoc7').text(data.d[0][25]);
+                                                      } else {
+                                                          $('#lblLoc7').text(null);
+                                                      }
+            
+                                                      for (var i = 0;i < data.d.length;i++) {
+                                                          $("#ddlselectedvehicle").append("<option value='" + data.d[i][26] + "'>" + data.d[i][27] + " - " + data.d[i][28] + "</option>");
+                                                      }
+            
+                                                      if (data.d[0][14] === "True") {                                        
+                                                          $('#lblisReturnJourney').text(": " + "Yes");
+                                                          if (data.d[0][15] !== null) {
+                                                              $('#returnTo').show();
+                                                              $('#lblreturnTo').text(": " + data.d[0][16]);
+                                                          } else {
+                                                              $('#returnTo').hide();
+                                                          }
+                                                          if (data.d[0][16] !== null) {
+                                                              $('#returnFrom').show();
+                                                              $('#lblreturnFrom').text(": " + data.d[0][15]);
+                                                          } else {
+                                                              $('#returnFrom').hide();
+                                                          }
+                                                          if (data.d[0][17] !== null) {
+                                                              $('#returnDate').show();
+                                                              $('#lblreturnDate').text(": " + data.d[0][17]);    
+                                                          } else {
+                                                              $('#returnDate').hide();
+                                                          }
+                                                          if (data.d[0][18] !== null) {
+                                                              $('#returnTime').show();                                                
+                                                              $('#lblreturnTime').text(": " + data.d[0][18]);
+                                                          } else {
+                                                              $('#returnTime').hide();                                                
+                                                          }
+                                                      } else if (data.d[0][14] === "False") {
+                                                          $('#lblisReturnJourney').text(": " + "No");
+                                                      }
+            
+                                                      if (data.d[0][19] !== null) {
+                                                          $('#trSpecialtxt').show();
+                                                          $('#trOtherspec').show();
+                                                          $('#otherReq').text(data.d[0][19]);
+                                                      } else {
+                                                          $('#trOtherspec').hide();
+                                                          $('#trSpecialtxt').hide();
+                                                      }
+            
+                                                      $('#hiddenIsCabnow').val(data.d[0][20]);
+                                                      var hiddin = $('#hiddenIsCabnow').val();
+            
+                                                      console.log($('#hiddenIsCabnow').val());
+                                                      if (hiddin == "True") {
+                                                          $('#trselectvehicle').hide();
+                                                      }
+            
+                                                      if (data.d[0][3] !== null) {
+                                                          var sec = data.d[0][3];
+                                                          $('#lblpopthird').text(sec);
+                                                          $('#otherLoc').show();
+                                                          if (data.d[0][4] !== null) {
+                                                              var third = data.d[0][4];
+                                                              $('#lblpopfour').text(third);
+                                                              $('#otherLoc').show();
+                                                          }
+                                                      } else {
+                                                          $('#otherLoc').hide();
+                                                      }
+                                                  } else {
+                                                      $('#tbdetails').hide();
+                                                  }
+                                              },
+                                              error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                                  $('#tbdetails').hide();
+                                              }
+                                          });
+                               } else if (data.d[0][0] === "Error") {
+                                   $('#tbdetails').hide();
+                                   alert("Sorry this job has been passed out.");
+                                   window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+                               }
+                           },
+                           error: function (XMLHttpRequest, textStatus, errorThrown) {
+                               $('#tbdetails').hide();
+                           }
+                       });
             });       
-
+            
         </script>
         <style type="text/css">
             #mapCanvas
@@ -241,8 +229,8 @@
                 height: 300px;
                 border: none;
             }
-        </style>
-    </head>
+            </style>
+        </head>
     <body >
         <center>
             <div style="width:100%;height:70px;"  class="header">
@@ -418,7 +406,6 @@
                                 <label id="lblDistance"></label>
                             </b>
                         </td>
-                    </tr>
                     <tr>
                         <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
                             <b style="font-size:13px;">
@@ -431,7 +418,6 @@
                                 <label id="lblpickDateDriver"></label>
                             </b>
                         </td>
-                    </tr>
                     <tr>
                         <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
                             <b style="font-size:13px;">
@@ -444,7 +430,7 @@
                                 <label id="lblpickTimetext">: ASAP</label>
                             </b>
                         </td>
-                    </tr>   
+                        
                     <tr>
                         <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
                             <b style="font-size:13px;">
@@ -457,7 +443,6 @@
                                 <label id="lblpassengercount"></label>
                             </b>
                         </td>
-                    </tr>
                     <tr>
                         <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
                             <b style="font-size:13px;">
@@ -470,7 +455,7 @@
                             </b>
                             
                         </td>
-                    </tr>   
+                        
                     <tr>
                         <td style="width:40%;border-bottom:1px solid #848484;padding-bottom:4px">
                             <b style="font-size:13px">
@@ -1203,6 +1188,8 @@
                              
                          </td>
                      </tr>-->
+                    
+                      
                       
                      <tr class="popup_footer">
                          <td style="width:100%" colspan="2">
@@ -1211,6 +1198,10 @@
                      </tr>
                  </table>
                 </div>
+
+                
+                
+                
                 <div id="mapContainer" style="display:none;height:100%;width:100%;border:none;border-collapse:collapse">
                     <div id="mapCanvas"></div>
                     <input type="button" value="Close" style="width:100%;height:30px;-webkit-appearance:none;-moz-appearance:none;" class="btn-tmp" onclick="hideMap()"/>

@@ -162,33 +162,33 @@ var timereOut;
            $('#lblbiddistance').text(distance);
            $('#lblbidfrom').text(from);
            $('#lblbidto').text(to);
-           var fare = $('#txtbidFare').val()
+            var fare = $('#txtbidFare').val()
            $('#lblfare').text(fare);
              
            
             
             //Return data 
             //Bid popup
-           var returnfrom=$('#lblreturnFrom').text();
+            var returnfrom=$('#lblreturnFrom').text();
            var returnto=$('#lblreturnTo').text();
             
             if(!returnfrom)
            {
               $('#rtnfrom').hide();  
-           }
+            }
             else
            {
                $('#lblbidreturnfrom').text(returnfrom);
-           }
+            }
            if(!returnto)
            {
              $('#rtnto').hide();   
           
-           }
+        }
             else
            {
                 $('#lblbidreturnto').text(returnto);
-           }
+            }
             
             
             $('#lblbidjob').text(job);
@@ -197,23 +197,34 @@ var timereOut;
             $('#lblbidto').text(to);
             var fare = $('#txtbidFare').val()
             $('#lblfare').text(fare);
+            
+           
+           
       }
 
 
 //Full Job Detail
 
 function showFullJobDetail()
-{   $("#divDeal").hide(); 
-    var data = $('#lbljobno').text();
-    $.ajax({
-    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/FullJobDetail",
-    type:"POST",
-    datatype:"json",
-    data: "{'JobNo':'" + data + "','driverId':'" + relatedId + "'}",
-    contentType: "application/json; charset=utf-8",
-    success: showDetailFull,
-    error: function (XMLHttpRequest, textStatus, errorThrown) { }
-    });    
+{  $("#divDeal").hide();
+     
+    
+   var data = $('#lbljobno').text();
+  // alert(data);
+         //var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/FullJobDetail";
+     
+                //$.ajax(url, {
+                 $.ajax({
+                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/FullJobDetail",
+                   type:"POST",
+                   datatype:"json",
+                  data: "{'JobNo':'" + data + "','driverId':'" + relatedId + "'}",
+                   contentType: "application/json; charset=utf-8",
+                    success: showDetailFull,
+                    error: function (XMLHttpRequest, textStatus, errorThrown) 
+                    {                        
+                    }
+                });    
     
 }
 

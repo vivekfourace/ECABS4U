@@ -16,7 +16,6 @@
         <script type="text/javascript" src="js/DriverFailedBooking.js"></script>  
         <script type="text/javascript" src="Common/DriverJobBooking.js"></script>  
         <script type="text/javascript" src="Common/Logout.js"></script>
-        <script type="text/javascript" src="Common/DriverJobNotification.js"></script>
         
         <title></title>
     </head>
@@ -53,6 +52,7 @@
          </div>          
         <div id="transparent_div" style="display: none"></div>
         <div id="msg" style="width:100%;padding-top:70px;overflow:auto;padding-bottom:15%;"></div>
+        <div style="padding-top:50%; color:#0000FF;font-size:20px;text-align:center;display:none" id="msgFailed">No data found.</div>
             
      <div id="divDealload" class="loadForall" style="background-color:#9B9B9B;opacity:0.9">
          <span style="font-weight:bold;font-size:17px">Waiting for customer response...</span><br/>
@@ -64,7 +64,7 @@
         <input type="hidden" id="hdnJobno" />
           <input type="hidden" id="lbljobno" /> 
             
-            <div id="popup_box">
+            <div id="popup_box22">
                 <div id="divDeal" style="display:none;" align="center">
                     <input type="hidden" id="isReturnJourney" />
                     <table align="left" style="width:100%;background-color:#FFFFFF;">
@@ -80,14 +80,26 @@
                             </td>
 
                         </tr>
-                        <tr class="popup_content">
+                        <!--<tr class="popup_content">
                             <td style="width:30%">
                                 <b style="font-size:11px;">Job number</b>
                             </td>
                             <td style="width:70%">
                                 <b>
                                     <label id="lbldealjob" style="font-size:11px;" ></label>
-                                  <!--  <a href="#" style="font-size:11px;color:blue" onclick="showFullJobDetail()" id="lbldealjob"></a>-->
+                                   <a href="#" style="font-size:11px;color:blue" onclick="showFullJobDetail()" id="lbldealjob"></a>
+                                    
+                                </b>
+                            </td>
+                        </tr>-->
+                        <tr class="popup_content">
+                            <td style="width:30%">
+                                <b style="font-size:11px;">Job number</b>
+                            </td>
+                            <td style="width:70%">
+                                <b>
+                                    
+                                   <a href="#" style="font-size:11px;color:blue" onclick="showFullJobDetail()" id="lbldealjob"></a>
                                     
                                 </b>
                             </td>
@@ -120,7 +132,7 @@
                             </td>
                         </tr>
 
-                        <tr class="popup_content" >
+                        <tr class="popup_content">
                             <td style="width:30%">
                                 <b style="font-size:11px;">Pick time</b>
                             </td>
@@ -146,7 +158,7 @@
                                 <b><label id="lbldealfare" style="font-size:11px;" ></label></b>
                             </td>
                         </tr>
-                       <tr class="popup_footer" style="display:none">
+                       <!-- <tr class="popup_footer">
                             <td style="width:50%">
                                 <input type="button" class="ok" value="Accept this job" style="width:100%;-webkit-appearance:none;-moz-appearance:none;"  />
                             </td>
@@ -154,17 +166,17 @@
                             <td style="width:50%">
                                 <input type="button" class="ok" value="Reject this job" style="width:100%;-webkit-appearance:none;-moz-appearance:none;"  />
                             </td>
-                        </tr>
+                        </tr>-->
 
-                        <!-- <tr class="popup_footer">
+                        <tr class="popup_footer">
                             <td style="width:50%">
-                                <input type="button" class="ok" value="Accept this job" style="width:100%;-webkit-appearance:none;-moz-appearance:none;" onclick="dealSubmit2()" />
+                                <input type="button" class="ok" value="Accept this job" style="width:100%;-webkit-appearance:none;-moz-appearance:none;" onclick="dealSubmit()" />
                             </td>
                             
                             <td style="width:50%">
-                                <input type="button" class="ok" value="Reject this job" style="width:100%;-webkit-appearance:none;-moz-appearance:none;" onclick="reqReject2()" />
+                                <input type="button" class="ok" value="Reject this job" style="width:100%;-webkit-appearance:none;-moz-appearance:none;" onclick="reqReject()" />
                             </td>
-                        </tr>-->
+                        </tr>
                     </table>
                 </div>
 
@@ -254,7 +266,227 @@
                 </div>
                 
                 <!--new pop up-->
-               
+                <div id="divJobDetail"  style="display:none;"align="center">
+                   <table style="width:100%;background-color:#FFFFFF; border-collapse:collapse;">
+                     <tr>
+                         <td class="popup_header" style="width:100%;" colspan="2">
+                             <strong style="padding-left:5px;font-size:13px;width:100%;" align="center">Job Detail</strong>
+                         </td>
+                     </tr>
+                     <tr class="popup_content">
+                         <td style="width:40%;">
+                            <strong class="tdContentstyle">Job number</strong>
+                         </td>
+                         <td style="width:60%;">
+                            <label id="lblJobNo" class="tdContentstyle"></label>
+                         </td>
+                         
+                     </tr>
+                        <tr class="popup_content">
+                         <td style="width:40%;">
+                             <strong class="tdContentstyle">From</strong>
+                             
+                         </td>
+                         <td style="width:60%;">
+                             <label id="lblFrom" class="tdContentstyle"></label>
+                             
+                         </td>
+                     </tr>
+                     <tr class="popup_content">
+                         <td style="width:40%;">
+                             <strong class="tdContentstyle">To</strong>
+                             
+                         </td>
+                         <td style="width:60%;">
+                             <label id="lblTo" class="tdContentstyle"></label>
+                             
+                         </td>
+                     </tr>
+                                         
+                     <tr class="popup_content">
+                         <td style="width:40%;">
+                             <strong class="tdContentstyle">Start date</strong>
+                             
+                         </td>
+                         <td style="width:60%;">
+                            <label id="lbltDate" class="tdContentstyle"></label> 
+                             
+                         </td>
+                     </tr>
+                     <tr class="popup_content">
+                         <td style="width:40%;">
+                             <strong class="tdContentstyle">Start time</strong>
+                             
+                         </td>
+                         <td style="width:60%;">
+                             <label id="lblTime" class="tdContentstyle"></label>
+                             
+                         </td>
+                     </tr>
+                    
+                        <tr class="popup_content">
+                         <td style="width:40%;">
+                             <strong class="tdContentstyle">Distance</strong>
+                             
+                         </td>
+                         <td style="width:60%;">
+                             <label id="lblDistancepopup" class="tdContentstyle"></label>
+                             
+                         </td>
+                     </tr>
+                        <tr class="popup_content">
+                         <td style="width:40%;">
+                             <strong class="tdContentstyle">Fare</strong>
+                         </td>
+                         <td style="width:60%;">
+                             <label id="lblFare" class="tdContentstyle"></label>
+                         </td>
+                     </tr>
+                     <tr class="popup_content">
+                         <td style="width:40%;">
+                             <strong class="tdContentstyle">Customer Name</strong>
+                             
+                         </td>
+                         <td style="width:60%;">
+                             <label id="lblCustomerName" class="tdContentstyle"></label>
+                             
+                         </td>
+                     </tr>
+                     
+                     
+                   <!-- <tr class="popup_content">
+                         <td style="width:40%;">
+                             <strong class="tdContentstyle">Customer Contact</strong>
+                             
+                         </td>
+                         <td style="width:60%;">
+                             <img src="img/phone_call.png"/>
+                             <a href="#" onclick="makeCall()">
+                                 <label id="lblCustomerContact" class="tdContentstyle"></label>
+                             </a>                             
+                         </td>
+                     </tr>-->
+                     <tr class="popup_content">
+                         <td style="width:40%;">
+                             <strong class="tdContentstyle">No of Passengers</strong>
+                             
+                         </td>
+                         <td style="width:60%;">
+                             <label id="lblNoOfPassenger" class="tdContentstyle"></label>
+                             
+                         </td>
+                     </tr>
+                     <tr class="popup_content">
+                         <td style="width:40%;">
+                             <strong class="tdContentstyle">Large case</strong>
+                             
+                         </td>
+                         <td style="width:60%;">
+                             <label id="lblLargeCase" class="tdContentstyle"></label>
+                             
+                         </td>
+                     </tr>
+                     <tr class="popup_content">
+                         <td style="width:40%;">
+                             <strong class="tdContentstyle">Small case</strong>
+                             
+                         </td>
+                         <td style="width:60%;">
+                             <label id="lblSmallCase" class="tdContentstyle"></label>
+                             
+                         </td>
+                     </tr>
+                     <tr class="popup_content">
+                         <td style="width:40%;">
+                             <strong class="tdContentstyle">Wheelchair passengers</strong>
+                             
+                         </td>
+                         <td style="width:60%;">
+                             <label id="lblWheelchair" class="tdContentstyle"></label>
+                             
+                         </td>
+                     </tr>
+                     <tr class="popup_content">
+                         <td style="width:40%;">
+                             <strong class="tdContentstyle">Child seats</strong>
+                             
+                         </td>
+                         <td style="width:60%;">
+                             <label id="lblChildSeats" class="tdContentstyle"></label>
+                             
+                         </td>
+                     </tr>
+                     <tr class="popup_content">
+                         <td style="width:40%;">
+                             <strong class="tdContentstyle">Child boosters</strong>
+                             
+                         </td>
+                         <td style="width:60%;">
+                             <label id="lblChildBoosters" class="tdContentstyle"></label>
+                             
+                         </td>
+                     </tr>
+                     <tr class="popup_content">
+                         <td style="width:40%;">
+                             <strong class="tdContentstyle">Special requirements:</strong>
+                             
+                         </td>
+                         <td style="width:60%;">
+                             <label id="lblSpecialReq" class="tdContentstyle"></label>
+                             
+                         </td>
+                     </tr>
+                      <tr class="popup_content" id="rtnfrom2" style="display:none;">
+                         <td style="width:40%;">
+                             <strong class="tdContentstyle" >Return from</strong>
+                             
+                         </td>
+                         <td style="width:60%;">
+                             <label id="lblreturnfrom2" class="tdContentstyle"></label>
+                             
+                         </td>
+                     </tr>
+                      <tr class="popup_content" id="rtnto2" style="display:none;">
+                         <td style="width:40%;">
+                             <strong class="tdContentstyle" >Return to</strong>
+                             
+                         </td>
+                         <td style="width:60%;">
+                             <label id="lblreturnto2" class="tdContentstyle"></label>
+                             
+                         </td>
+                     </tr>
+                      <!--<tr class="popup_content" id="rtnto" style="display:none;">
+                         <td style="width:40%;">
+                             <strong class="tdContentstyle" >Return date</strong>
+                             
+                         </td>
+                         <td style="width:60%;">
+                             <label id="lblreturnDate" class="tdContentstyle"></label>
+                             
+                         </td>
+                     </tr>
+                     <tr class="popup_content" id="rtnto" style="display:none;">
+                         <td style="width:40%;">
+                             <strong class="tdContentstyle" >Return time</strong>
+                             
+                         </td>
+                         <td style="width:60%;">
+                             <label id="lblreturnTime" class="tdContentstyle"></label>
+                             
+                         </td>
+                     </tr>-->
+                    
+                      
+                      
+                     <tr class="popup_footer">
+                         <td style="width:100%" colspan="2">
+                             <input type="button"  value="OK" style="width:100%;-webkit-appearance:none;-moz-appearance:none;color:white" class="ok" onclick="Cancel2();"/>
+                         </td>
+                     </tr>
+                 </table>
+                </div>
+
             </div>       
         <div class="btn-tmpFooter">                
                <table style="width:100%;border-collapse:collapse" >
