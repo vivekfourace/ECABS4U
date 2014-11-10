@@ -23,8 +23,6 @@ function displayResult(data)
     var count = data.d.length;
     if(count > 0)
     {
-        $('#msgFailed').hide();
-        
        var html = '<table id="tbhist" cellspacing="0"; width="100%"  style="border-collaspe:collaspe;">';
        html += '<thead class="thead-grid">';
        html += '<tr>';
@@ -53,11 +51,6 @@ function displayResult(data)
           html +='</table>';
        $('#msg').append(html);
      }
-    else
-    {
-        $('#msg').empty().append("");
-        $('#msgFailed').show(); 
-    }
 }
 
 function InitiateJob(jobno)

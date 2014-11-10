@@ -58,12 +58,16 @@ function GetCancelledJobs() {
                        expJobId = data.d[i].ID;
                        drvId = data.d[i].DriverID;
                        expReason = data.d[i].ExpiryReason;
-                       navigator.notification.confirm(
-                           "Cancelled JobID = "+ jobId+"\nReason = "+ expReason,
-                            onOKDeleteExpiredJob(expJobId),
-                           'Cancelled Job',
-                           'OK'
-                       );
+                        cancelledBy =  data.d[i].CancelledByID;
+                        
+                        if(parseInt(relatedId) === cancelledBy){
+                           navigator.notification.confirm(
+                               "Cancelled JobID = "+ jobId+"\nReason = "+ expReason,
+                                onOKDeleteExpiredJob(expJobId),
+                               'Cancelled Job',
+                               'OK'
+                           );
+                        }
                     }
                 }
            });
@@ -78,7 +82,9 @@ function onOKDeleteExpiredJob(expJobId){
               contentType: "application/json; charset=utf-8",                     
               success: function () {
                    $('#transparent_div').hide();
+                   console.log("1");
                    window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                   console.log("2");
               }
          });
     

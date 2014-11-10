@@ -21,18 +21,21 @@ function GetCancelledJobsForCustomer() {
               success: function (data) 
                 {
                     for(var i = 0 ; i< data.d.length; i++){
-                       jobId = data.d[i].CustomeeRequestID;
-                       CustId = data.d[i].CustomerID;
-                       expJobId = data.d[i].ID;
-                       drvId = data.d[i].DriverID;
-                       expReason = data.d[i].ExpiryReason;
-                       
-                       navigator.notification.confirm(
-                           "Cancelled JobID = "+ jobId+"\nReason = "+ expReason,
-                            onOKDeleteExpiredJobForCustomer(expJobId),
-                           'Cancelled Job',
-                           'OK'
-                       );
+                        jobId = data.d[i].CustomeeRequestID;
+                        CustId = data.d[i].CustomerID;
+                        expJobId = data.d[i].ID;
+                        drvId = data.d[i].DriverID;
+                        expReason = data.d[i].ExpiryReason;
+                        cancelledBy =  data.d[i].CancelledByID;
+                        
+                        if(parseInt(relatedId) === cancelledBy){
+                           navigator.notification.confirm(
+                               "Cancelled JobID = "+ jobId+"\nReason = "+ expReason,
+                                onOKDeleteExpiredJobForCustomer(expJobId),
+                               'Cancelled Job',
+                               'OK'
+                           );
+                        }
                     }
                 }
            });

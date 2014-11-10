@@ -99,46 +99,6 @@ function Check()
     },
  });
 }
-//function Check() {    
-//          $.ajax({
-//              url: 'http://115.115.159.126/ECabs/ECabs4U.asmx/CheckNewJob',
-//              type: "POST",
-//              datatype: "json",
-//              data: "{'userID':'" + relatedId + "'}",
-//              contentType: "application/json; charset=utf-8",
-//              success: function (data)
-//              {
-//                  var isTrue = data.d[0];
-//                   console.log(data.d[0]+","+data.d[1]+","+data.d[2]);
-//                  if (isTrue === "True")
-//                  {
-//                      var jobType = data.d[1];
-//                      if (jobType === "True") 
-//                      {                        
-//                         
-//                          var cabnow = 1;
-//                          showConfirm(cabnow);
-//                          playBeep();
-//                          clearInterval(jobCheckTime);
-//                      }
-//                        else if (jobType === "False") 
-//                      {
-//                          var isnotvisited = data.d[2];                          
-//                          console.log(isnotvisited);
-//                          if(isnotvisited === "True")
-//                          {
-//                              $('#btnPulsating').show();
-//                              $('#btnNormal').hide();
-//                              //var cablater = 2;
-//                              //showConfirm(cablater);
-//                              //playBeep();
-//                              clearInterval(jobCheckTime);
-//                          }
-//                      }
-//                  }
-//           },
-//     });
-//}
 
 
 
@@ -168,25 +128,29 @@ function GetCancelledJobs() {
               contentType: "application/json; charset=utf-8",                     
               success: function (data) 
                 {
-                    for(var i = 0 ; i< data.d.length; i++){
-                       jobId = data.d[i].CustomeeRequestID;
-                       CustId = data.d[i].CustomerID;
-                       expJobId = data.d[i].ID;
-                       drvId = data.d[i].DriverID;
-                       expReason = data.d[i].ExpiryReason;
-                       expirycount += 1;
-                       navigator.notification.confirm(
-                           "Cancelled JobID = "+ jobId+"\nReason = "+ expReason,
-                            onOKDeleteExpiredJob(expJobId),
-                           'Cancelled Job',
-                           'OK'
-                       );
+                    for(var i = 0 ; i< data.d.length; i++) {
+                        jobId = data.d[i].CustomeeRequestID;
+                        CustId = data.d[i].CustomerID;
+                        expJobId = data.d[i].ID;
+                        drvId = data.d[i].DriverID;
+                        expReason = data.d[i].ExpiryReason;
+                        expirycount += 1;
+                        cancelledBy =  data.d[i].CancelledByID;
+                        
+                        if(parseInt(relatedId) === cancelledBy){
+                            navigator.notification.confirm(
+                               "Cancelled JobID = "+ jobId+"\nReason = "+ expReason,
+                                onOKDeleteExpiredJob(expJobId),
+                               'Cancelled Job',
+                               'OK'
+                           );
+                        }
                     }
                 }
            });
 }
 function onOKDeleteExpiredJob(expJobId){
-    if(expirycount === 2){
+    if(expirycount >= 2){
          $.ajax({
               url:'http://115.115.159.126/ECabs/ECabs4U.asmx/DeleteCancelledJob', 
               type:"POST",
