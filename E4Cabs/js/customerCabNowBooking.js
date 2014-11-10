@@ -776,7 +776,7 @@ function onClickCancel(buttonIndex)
     }
     else if(buttonIndex === 1)
     {
-         var cause = "Cancelled";
+         var cause = "Cancelled by customer";
           DeleteJob(cause);
       
     }
