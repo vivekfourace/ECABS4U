@@ -90,4 +90,4 @@ function onOKDeleteExpiredJob(expJobId){
     
 }
 
-getCancelledJobs = setInterval(GetCancelledJobs, 5000);
+getCancelledJobs = setInterval(GetCancelledJobs, 10000);

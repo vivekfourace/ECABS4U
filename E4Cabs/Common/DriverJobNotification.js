@@ -59,7 +59,7 @@ function playBeep() {
     
 }
 
-jobCheckTime = setInterval(Check, 5000);
+jobCheckTime = setInterval(Check, 10000);
 var expirycount = 0;
 
 function Check() 

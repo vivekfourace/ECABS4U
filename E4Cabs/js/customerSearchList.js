@@ -38,12 +38,28 @@ function JobExpiryTime(data)
 var timer = setInterval(function () {
     --timeOut;
     console.log(timeOut);
-    if (timeOut <= 0) {
-        window.clearInterval(id);
-      // jAlert('No driver found Please search again.', 'ECabs4U-Booking');
-        alert('No driver found Please search again.');
-        DeleteJob("Cancelled due to no driver found");
-        Destroy();
+    if (timeOut <= 0)
+    {
+         window.clearInterval(timer);
+    window.clearInterval(id);
+    window.clearInterval(reinitiateCounter);
+       // window.clearInterval(id);
+       //jAlert('No driver found Please search again.', 'ECabs4U-Booking');
+        // DeleteJob("Cancelled due to no driver found");
+        // Destroy();
+       //alert('No driver found Please search again.');
+       navigator.notification.alert(
+			        "No driver found Please search again.",
+  	      abortLaterJob223, // Specify a function to be called 
+ 				   'ECABS4U',
+ 					"OK"
+					);
+                 function abortLaterJob223()
+                 {
+    		      DeleteJob("Cancelled due to no driver found");
+                  Destroy();
+				}
+       
     }
 }, 1000);
 
@@ -120,7 +136,17 @@ function getData(data) {
        if(anyMoreDriver ===  false)
         {
             anyMoreDriver = true;
-            alert("Sorry!!! No more driver available to hire. Please search again.");
+            //alert("Sorry!!! No more driver available to hire. Please search again.");
+            navigator.notification.alert(
+			        "Sorry!!! No more driver available to hire. Please search again.",
+  	               abortLaterJob224, // Specify a function to be called 
+ 				   'ECABS4U',
+ 					"OK"
+					);
+                 function abortLaterJob224()
+                 {
+    		      
+				 }
         }
        
        $('#bookingmsg').show();

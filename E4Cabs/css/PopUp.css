@@ -116,7 +116,8 @@
     z-index: 1000;
     top: 0px;
     left: 0px;
-    opacity: .8;
+   /* opacity: .8;*/
+    opacity: 1.8;
     filter: alpha(opacity=80);
     background-color: #838383;
     width: 100%;

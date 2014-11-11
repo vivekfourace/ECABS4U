@@ -192,6 +192,7 @@ function HireDriver(jobID, driverid)
                        // $('#check').hide();
                         //alert('Booking in progress. Please check later.');
                         alert("Cab selected. Waiting for your driver to confirm he will carry out this transfer");
+                        //jAlert('Hivghkghkjgfhjfghkg', 'Alert Dialog');
                         window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                        
                         
