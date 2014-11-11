@@ -109,12 +109,12 @@ function feedBackDriver(JobNumber )
                 var isJobCompleted = data.d.IsJobCompleted;                
                 var driverFeedback = data.d.DriverFeedback;                
 
-                if(driverFeedback !== null)
+                if(custFeed  !== null)
                 {                 
                     $('#horizontalline').show();
                     $('#commenttext').show();
                     $('#driverFeedback2').show();    
-                    $('#lblDriverFeedback2').text(": "+ driverFeedback);
+                    $('#lblDriverFeedback2').text(": "+ custFeed);
                 }
                 else
                 {
@@ -122,12 +122,12 @@ function feedBackDriver(JobNumber )
                     $('#horizontalline').hide();
                     $('#commenttext').hide();
                 }
-                if(custFeed!== null)
+                if(driverFeedback!== null)
                 {
                     $('#horizontalline').show();
                     $('#commenttext').show();
                     $('#customerFeedback2').show();    
-                    $('#lblmyFeedback2').text(": "+ custFeed);
+                    $('#lblmyFeedback2').text(": "+driverFeedback );
                 }
                 else
                     $('#customerFeedback2').hide();
