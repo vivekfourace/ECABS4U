@@ -322,13 +322,14 @@ var finalrating ="";
 //feedback
 function feedBackCustomer(JobNumber )
 {
+    //alert("aa");
      $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/GetCabNowDataForCustomer",
             type:"POST",
             dataType: "Json",
             data:"{'JobNumber':'" +JobNumber+"'}",
             contentType: "application/json; charset=utf-8",                     
             success: function(data)
-            {
+            {//alert("in");
 
                     var isCustomerRatingLocked = data.d[1];
                     var isJobCompleted = data.d[2];

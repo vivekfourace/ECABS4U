@@ -56,17 +56,17 @@ function gethistory()
                                 html += "<td width='30%' height='30px' align='center'>" + data.d[i]["StartDate"] + "</td>"; 
                                 html += "<td width='5%' height='30px' align='center'>"+'<img src="img/feedbackicon.png" onclick="feedBackDriver(\''+data.d[i]["JobNo"]+'\')"</img>'+"</td>"
                                 
-                                if(data.d[i]["isJobCompleted"] == true)
+                                if(data.d[i]["isJobCompleted"] === true)
                                    {
                                        html += "<td width='25%' height='30px' align='center'>"+'<label style="color:green">Completed</label>'+"</td>";
                                    }
                                 else if(!isCabNow || isCabNow)
                                 {
-                                   if(isJobAlive == true)
+                                   if(isJobAlive === true)
                                    {
                                        html += "<td width='25%' height='30px' align='center'>"+'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" class="reject-btn" value="Abort" onclick="AbortJob(\''+data.d[i]["JobNo"]+'\')"/>'+"</td>";   
                                    }
-                                   else if(isJobAlive == false)
+                                   else if(isJobAlive=== false)
                                    {
                                         html += "<td width='25%' height='30px' align='center'>"+'<label style="color:red">Aborted</label>'+"</td>";
                                    }
@@ -92,112 +92,90 @@ function gethistory()
 
 function feedBackDriver(JobNumber )
 {
-    //alert('IN');
-     $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/GetCabNowDataForDriver",
+     $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/GetCabNowData",
             type:"POST",
             dataType: "Json",
             data:"{'JobNumber':'" +JobNumber+"'}",
             contentType: "application/json; charset=utf-8",                     
             success: function(data)
-            {
-                    var isDriverRatingLocked = data.d[1];
-                    var isJobAlive = data.d[2];
-                   // var rating = data.d[3];
-                    var custFeed = data.d[4];
-                    var startDate = data.d[5]; 
-                    var startTime = data.d[6];
-                    var fromLoc = data.d[7];
-                    var toLoc = data.d[8];
-                    var isJobCompleted = data.d[9];
-                
-                
-                if(data.d[10]!== null)
-                  {
-                 
-                      $('#horizontalline').show();
-                      $('#commenttext').show();
+            {                
+                var isDriverRatingLocked = data.d.IsDriverRatingLocked;
+                var isJobAlive = data.d.IsJobAlive;
+                var custFeed = data.d.CustomerFeedback;
+                var startDate = data.d.StartDate; 
+                var startTime = data.d.StartTime;
+                var fromLoc = data.d.FromLocation;
+                var toLoc = data.d.ToLocation;
+                var isJobCompleted = data.d.IsJobCompleted;                
+                var driverFeedback = data.d.DriverFeedback;                
+
+                if(driverFeedback !== null)
+                {                 
+                    $('#horizontalline').show();
+                    $('#commenttext').show();
                     $('#driverFeedback2').show();    
-                    $('#lblDriverFeedback2').text(": "+data.d[10]);
-     			 }
-    			else
-   			 {
-        
-   		         $('#driverFeedback2').hide();
-                     $('#horizontalline').hide();
-                      $('#commenttext').hide();
-        
-    			}
-                 if(custFeed!== null)
-                  {
+                    $('#lblDriverFeedback2').text(": "+ driverFeedback);
+                }
+                else
+                {
+                    $('#driverFeedback2').hide();
+                    $('#horizontalline').hide();
+                    $('#commenttext').hide();
+                }
+                if(custFeed!== null)
+                {
                     $('#horizontalline').show();
                     $('#commenttext').show();
                     $('#customerFeedback2').show();    
-                    $('#lblmyFeedback2').text(": "+data.d[4]);
-     			 }
-    			else
-   			 {
-        
-   		         $('#customerFeedback2').hide();
-                   // $('#horizontalline').hide();
-                    //  $('#commenttext').hide();
-        
-    			}
-                
-                   if(isJobCompleted == "True")
+                    $('#lblmyFeedback2').text(": "+ custFeed);
+                }
+                else
+                    $('#customerFeedback2').hide();
+
+                if(isJobCompleted === "True")
+                {
+                    if(isDriverRatingLocked === "True")
                     {
-                        if(isDriverRatingLocked == "True")
-                        {
-                             //  document.getElementById('sel').value = rating;
-                            if(custFeed!== null)
-                  {
-                               document.getElementById('txtarComments').value = custFeed;
-                              // $('#sel').attr('disabled',true);
-                               $('#txtarComments').attr("readOnly",true);
-                               $('#txtarComments').hide();
-                      }
-                               $('#lbljobNo').text(JobNumber);
-                               $('#lblFeeddate').text(startDate);
-                               $('#lblFeedTime').text(startTime);
-                               $('#lblFeedFrom').text(fromLoc);
-                               $('#lblFeedTo').text(toLoc);
-                               $('#popup_box').fadeIn("fast");
-                               $('#divFeedBack').fadeIn("fast");
-                               $('#trbtnPopup').hide();
-                               $('#trbtnOK').show();
-                               $('#transparent_div').show();               
-                            
+                        if(custFeed!== null)
+                        {        
+                            document.getElementById('txtarComments').value = custFeed;
+                            $('#txtarComments').attr("readOnly",true);
+                            $('#txtarComments').hide();
                         }
-                        else if(isDriverRatingLocked == "False")
-                        {                           
-                               $('#lbljobNo').text(JobNumber);
-                               $('#lblFeeddate').text(startDate);
-                               $('#lblFeedTime').text(startTime);
-                               $('#lblFeedFrom').text(fromLoc);
-                               $('#lblFeedTo').text(toLoc);  
-                              // $('#sel').attr('disabled',false);
-                               $('#txtarComments').attr("readOnly",false);
-                               $('#txtarComments').show();
-                               $('#popup_box').fadeIn("fast");
-                               $('#divFeedBack').fadeIn("fast");
-                               $('#trbtnPopup').show();
-                               $('#transparent_div').show();
-                               $('#trbtnOK').hide();
-                            $('#txtarComments').val("");
-                        }
+                        $('#lbljobNo').text(JobNumber);
+                        $('#lblFeeddate').text(startDate);
+                        $('#lblFeedTime').text(startTime);
+                        $('#lblFeedFrom').text(fromLoc);
+                        $('#lblFeedTo').text(toLoc);
+                        $('#popup_box').fadeIn("fast");
+                        $('#divFeedBack').fadeIn("fast");
+                        $('#trbtnPopup').hide();
+                        $('#trbtnOK').show();
+                        $('#transparent_div').show();
                     }
-                    else if(isJobAlive == "False")
-                      {
-                          jAlert('This job has been aborted. You cannot give feedback.', 'ECABS4U');
-                          //alert('This job has been aborted. You cannot give feedback.');
-                      }
-                     else if(isJobAlive == "True")
-                     {
-                       jAlert('Feedback will be accepted after the cab ride.', 'ECABS4U');
-                     //  alert('Feedback will be accepted after the cab ride.');
-                        
-                     }
-       },            
-        error: function (XMLHttpRequest, textStatus, errorThrown) {}
+                    else if(isDriverRatingLocked === "False")
+                    {                           
+                        $('#lbljobNo').text(JobNumber);
+                        $('#lblFeeddate').text(startDate);
+                        $('#lblFeedTime').text(startTime);
+                        $('#lblFeedFrom').text(fromLoc);
+                        $('#lblFeedTo').text(toLoc);  
+                        $('#txtarComments').attr("readOnly",false);
+                        $('#txtarComments').show();
+                        $('#popup_box').fadeIn("fast");
+                        $('#divFeedBack').fadeIn("fast");
+                        $('#trbtnPopup').show();
+                        $('#transparent_div').show();
+                        $('#trbtnOK').hide();
+                        $('#txtarComments').val("");
+                    }
+                }
+                else if(isJobAlive === "False")
+                    jAlert('This job has been aborted. You cannot give feedback.', 'ECABS4U');
+                else if(isJobAlive === "True")
+                    jAlert('Feedback will be accepted after the cab ride.', 'ECABS4U');
+            },            
+            error: function (XMLHttpRequest, textStatus, errorThrown) {}
   });  
 }
 
