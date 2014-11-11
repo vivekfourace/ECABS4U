@@ -125,6 +125,7 @@ function onAbortCallback(btnIndex)
 
 function JobDetail(data)
 {
+   $('body').css('overflow:hidden');
     var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/JobDetailCustomer";
                 $.ajax(url, {
                    type:"POST",
@@ -148,6 +149,7 @@ function makeCall()
 
 function showDetail(data)
 {
+   
     $('#lblJobNo').text(": "+data.d[0]);
     $('#lblFare').html(": "+'&pound'+data.d[1]);
     $('#lbltDate').text(": "+data.d[2]);
@@ -322,24 +324,23 @@ var finalrating ="";
 //feedback
 function feedBackCustomer(JobNumber )
 {
-    //alert("aa");
-     $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/GetCabNowDataForCustomer",
+     $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/GetCabNowData",
             type:"POST",
             dataType: "Json",
             data:"{'JobNumber':'" +JobNumber+"'}",
             contentType: "application/json; charset=utf-8",                     
             success: function(data)
-            {//alert("in");
-
-                    var isCustomerRatingLocked = data.d[1];
-                    var isJobCompleted = data.d[2];
-                    var custrating = data.d[3];
-                    var custFeed = data.d[4];
-                    var startDate = data.d[5]; 
-                    var startTime = data.d[6];
-                    var fromLoc = data.d[7];
-                    var toLoc = data.d[8];
-                    var isJobAlive = data.d[9];
+            {
+                var isCustomerRatingLocked = data.d.IsCustomerRatingLocked;
+                var isJobCompleted = data.d.IsJobCompleted;
+                var custrating = data.d.DriverRating;
+                var custFeed = data.d.CustomerFeedback;
+                var startDate = data.d.StartDate; 
+                var startTime = data.d.StartTime;
+                var fromLoc = data.d.FromLocation;
+                var toLoc = data.d.ToLocation;
+                var isJobAlive = data.d.IsJobAlive;
+                var driverFeedback = data.d.DriverFeedback;
                 if(custrating !== ""){
                     $('#starrating').raty({ score: custrating, readOnly: true });
                 }
@@ -350,101 +351,83 @@ function feedBackCustomer(JobNumber )
                         score: 0,
                       click: function(score, evt) {
                           finalrating = score;
-                          //alert(finalrating);
                       }});
-                }
-                console.log("stars=" + $('#hiddenstar').val());
-                
-                if(data.d[10]!== null)
+                }                
+                if(driverFeedback !== null)
                   {
-                 
-                      $('#horizontalline').show();
-                      $('#commenttext').show();
-                    $('#driverFeedback2').show();    
-                    $('#lblDriverFeedback2').text(": "+data.d[10]);
+                     $('#horizontalline').show();
+                     $('#commenttext').show();
+                     $('#driverFeedback2').show();    
+                     $('#lblDriverFeedback2').text(": "+ driverFeedback);
      			 }
     			else
-   			 {
-        
+   			 {        
    		         $('#driverFeedback2').hide();
-                     $('#horizontalline').hide();
-                      $('#commenttext').hide();
-        
+                    $('#horizontalline').hide();
+                    $('#commenttext').hide();
     			}
                 if(custFeed!== null)
                   {
                     $('#horizontalline').show();
                     $('#commenttext').show();
                     $('#customerFeedback2').show();    
-                    $('#lblmyFeedback2').text(": "+data.d[4]);
+                    $('#lblmyFeedback2').text(": "+ custFeed);
      			 }
     			else
    			 {
-        
    		         $('#customerFeedback2').hide();
                     $('#horizontalline').hide();
-                      $('#commenttext').hide();
-        
+                    $('#commenttext').hide();        
     			}
                    
-                
-                     //if(isJobCompleted === "True" || isJobAlive === "False")
-                      if(isJobCompleted === "True")
-                     {
-                        console.log(isJobCompleted);
-                        if(isCustomerRatingLocked === "True") //show read only
-                        {
-                               //document.getElementById('sel').value = custrating;
-                            if(custFeed!== null)
-                               document.getElementById('txtarComments').value = custFeed;
-                               $('#sel').attr('disabled',true);
-                               $('#txtarComments').attr("readOnly",true);
-                            	$('#txtarComments').hide();
-                            
-                               $('#popup_box').fadeIn("fast");
-                               $('#divFeedBack').fadeIn("fast");
-                               $('#trbtnPopup').hide();
-                               $('#trbtnOK').show();
-                               $('#transparent_div').show();
-                            
-                               $('#lbljobNo').text(JobNumber);
-                               $('#lblFeeddate').text(startDate);
-                               $('#lblFeedTime').text(startTime);
-                               $('#lblFeedFrom').text(fromLoc);
-                               $('#lblFeedTo').text(toLoc); 
-                           
-                            
-                        }
-                        else if(isCustomerRatingLocked === "False")
-                        {
-                               $('#lbljobNo').text(JobNumber);
-                               $('#lblFeeddate').text(startDate);
-                               $('#lblFeedTime').text(startTime);
-                               $('#lblFeedFrom').text(fromLoc);
-                               $('#lblFeedTo').text(toLoc);    
-                         
-                               $('#sel').attr('disabled',false);
-                               $('#txtarComments').attr("readOnly",false);
-                            	$('#txtarComments').show();
-                               $('#popup_box').fadeIn("fast");
-                               $('#divFeedBack').fadeIn("fast");
-                               $('#trbtnPopup').show();                            
-                               $('#trbtnOK').hide();
-                               $('#transparent_div').show();
-                            $('#txtarComments').val("");
-                        }
-                      }
-                      else if(isJobAlive === "False")
-                      {
-                          jAlert('This job has been cancelled. You cannot give feedback.', 'ECabs4U-Feedback'); 
-                         // alert('This job has been cancelled. You cannot give feedback.');
-                      }
-                else if(isJobAlive === "True")
-               {
-                  jAlert('Feedback will be accepted after the cab ride.', 'ECabs4U-Feedback'); 
-              // alert('Feedback will be accepted after the cab ride.');
+                if(isJobCompleted === "True")
+                {
+                   console.log(isJobCompleted);
+                   if(isCustomerRatingLocked === "True") //show read only
+                   {
+                      if(custFeed!== null)
+                          document.getElementById('txtarComments').value = custFeed;
+                      $('#sel').attr('disabled',true);
+                      $('#txtarComments').attr("readOnly",true);
+                      $('#txtarComments').hide();                     
+                      $('#popup_box').fadeIn("fast");
+                      $('#divFeedBack').fadeIn("fast");
+                      $('#trbtnPopup').hide();
+                      $('#trbtnOK').show();
+                      $('#transparent_div').show();                     
+                      $('#lbljobNo').text(JobNumber);
+                      $('#lblFeeddate').text(startDate);
+                      $('#lblFeedTime').text(startTime);
+                      $('#lblFeedFrom').text(fromLoc);
+                      $('#lblFeedTo').text(toLoc);                      
+                   }
+                   else if(isCustomerRatingLocked === "False")
+                   {
+                       $('#lbljobNo').text(JobNumber);
+                       $('#lblFeeddate').text(startDate);
+                       $('#lblFeedTime').text(startTime);
+                       $('#lblFeedFrom').text(fromLoc);
+                       $('#lblFeedTo').text(toLoc);                      
+                       $('#sel').attr('disabled',false);
+                       $('#txtarComments').attr("readOnly",false);
+                       $('#txtarComments').show();
+                       $('#popup_box').fadeIn("fast");
+                       $('#divFeedBack').fadeIn("fast");
+                       $('#trbtnPopup').show();                            
+                       $('#trbtnOK').hide();
+                       $('#transparent_div').show();
+                       $('#txtarComments').val("");
+                   }
                 }
-       },            
+                else if(isJobAlive === "False")
+                {
+                    jAlert('This job has been cancelled. You cannot give feedback.', 'ECabs4U-Feedback'); 
+                }
+              else if(isJobAlive === "True")
+             {
+                  jAlert('Feedback will be accepted after the cab ride.', 'ECabs4U-Feedback'); 
+             }
+           },            
         error: function (XMLHttpRequest, textStatus, errorThrown) {}
   });  
 }
@@ -463,8 +446,6 @@ function CancelFeedBack()
 //feedback post
 function PostFeedBack()
 {
-    
-    
    var requestID= $('#lbljobNo').text();
     if(finalrating === "")
     {finalrating = 0;}
