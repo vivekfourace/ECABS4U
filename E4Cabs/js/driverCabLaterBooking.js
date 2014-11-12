@@ -149,13 +149,34 @@ function AcceptJob(jobno, jobfare)
                 $('body').css('overflow','auto');
                 if(data.d  === "true")
                 {
-                   alert('Job booked successfully.');
-                    window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;                    
+                    // alert('Job booked successfully.');
+                    //window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId; 
+                        navigator.notification.alert(
+    			        "Job booked successfully.",
+      	             jobBookedsuccess221, // Specify a function to be called 
+     				   'ECABS4U',
+     					"OK"
+    					);
+                         function jobBookedsuccess221()
+                         {
+            		       window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+        				 }
                 }  
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) 
             {
-                alert("Some error occurred during booking and payment. Please try again.");
+                //alert("Some error occurred during booking and payment. Please try again.");
+                    navigator.notification.alert(
+    			    "No driver found Please search again.",
+      	         jobBookedError221, // Specify a function to be called 
+     				   'ECABS4U',
+     					"OK"
+    					);
+                     function jobBookedError221()
+                     {
+        		      
+    				}
+                
             }
         });
     }
@@ -221,8 +242,18 @@ function RejectJob(data)
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
                     $('body').css('overflow','auto');
-                    alert("Job rejected successfully.");
-                    window.location = 'DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                  //  alert("Job rejected successfully.");
+                  //  window.location = 'DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                        navigator.notification.alert(
+    			        "Job rejected successfully.",
+      	              Jobreject221, // Specify a function to be called 
+     				   'ECABS4U',
+     					"OK"
+    					);
+                     function Jobreject221()
+                     {
+        		      window.location = 'DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    				 }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) { }
             });
@@ -265,17 +296,48 @@ function Confirmcomission()
             var returnvalue = data.d;
             if (returnvalue.match(/"Error:"/g) > 0)
             {
-            	alert(returnvalue);
+            	//alert(returnvalue);
+                navigator.notification.alert(
+			    returnvalue,
+  	          joberror221, // Specify a function to be called 
+ 				'ECABS4U',
+ 					"OK"
+					);
+                 function joberror221()
+                 {
+    		      
+				}
+                
             }
              else if(data.d === "true")//data.d.substring(0,4) === "Job "
                          {
-                             alert('Job booked successfully.');
-                            window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                            // alert('Job booked successfully.');
+                            //window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                              navigator.notification.alert(
+        			        "Job booked successfully.",
+          	             jobBookedsuccess222, // Specify a function to be called 
+         				   'ECABS4U',
+         					"OK"
+        					);
+                             function jobBookedsuccess222()
+                             {
+                		       window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+            				 }
                          }
         }
         else
         {
-           alert("Unable to do payment. Please try again.");
+          // alert("Unable to do payment. Please try again.");
+                         navigator.notification.alert(
+        			        "Job booked successfully.",
+          	             paymentError221, // Specify a function to be called 
+         				   'ECABS4U',
+         					"OK"
+        					);
+                             function paymentError221()
+                             {
+                		      
+            				 }
         }
     },
     error: function (XMLHttpRequest, textStatus, errorThrown) 
