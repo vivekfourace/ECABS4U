@@ -21,91 +21,91 @@ function getCablaterBooking()
                         {
                             $('#bookingmsg').hide();
                             
-                           var previousjobID ="";
-                           var html = '<table id="tbhist" cellspacing="0" width="100%">';
-                                html += '<tr class="thead-grid">';
-                                html += '<th>JobNo</th>';
-                                html += '<th colspan="2">From</th>';
-                                html += '<th colspan="2">To</th>';
-                                html += '</tr>';
-                                for(var i=0; i<count; i++)
-                                {
-                                    var jobID = data.d[i]["CustomerRequestID"];
-                                    var From = data.d[i]["From"];
-                                    var To = data.d[i]["To"];
-                                    var CustResponse = data.d[i]["CustomerResponse"];
-                                    
-                                    var DriverName = data.d[i]["DriverName"];
-                                    var DriverPhoto = data.d[i]["DriverPhoto"];
-                                    var VehicleImages = data.d[i]["VehicleImages"];
-                                    var DriverSpecialReq = data.d[i]["DriverSpecialReq"];
-                                    var DriverID = data.d[i]["DriverID"];
-                                    var Fare = data.d[i]["Fare"];
+                            var previousjobID ="";
+                            var html = '<table id="tbhist" cellspacing="0" width="100%">';
+                            html += '<tr class="thead-grid">';
+                            html += '<th>JobNo</th>';
+                            html += '<th colspan="2">From</th>';
+                            html += '<th colspan="2">To</th>';
+                            html += '</tr>';
+                            for(var i=0; i<count; i++)
+                            {
+                                var jobID = data.d[i]["CustomerRequestID"];
+                                var From = data.d[i]["From"];
+                                var To = data.d[i]["To"];
+                                var CustResponse = data.d[i]["CustomerResponse"];
+                                
+                                var DriverName = data.d[i]["DriverName"];
+                                var DriverPhoto = data.d[i]["DriverPhoto"];
+                                var VehicleImages = data.d[i]["VehicleImages"];
+                                var DriverSpecialReq = data.d[i]["DriverSpecialReq"];
+                                var DriverID = data.d[i]["DriverID"];
+                                var Fare = data.d[i]["Fare"];
 
-                                    if(i>0){
-                                    	previousjobID = data.d[i-1]["CustomerRequestID"];}
-                                   
-                                    if(jobID !== previousjobID)
+                                if(i>0){
+                                	previousjobID = data.d[i-1]["CustomerRequestID"];}
+                               
+                                if(jobID !== previousjobID)
+                                {
+                               	 html += '<tr style="background-color:white">';
+                                    html += '<td colspan="5"><hr style="border:2px solid darkred; margin: -2px;" ></td>';
+                                    html += '</tr>';
+                                    html += '<tr style="background-color:lightgray;">';
+                                    html += '<td style="width:20%;height:35px;text-align:center;"><a href="#" onclick="ShowDetailBooking(\''+jobID+'\')" style="color:blue;">'+ jobID +'</a></td>'; 
+                                    html += "<td style='width:40%;height:35px;text-align:center;' colspan='2' >" + From +"</td>";
+                                    html += "<td style='width:20%;height:35px;text-align:center;'>" + To +"</td>";
+                                    html += '<td style="width:20%;height:35px;text-align:center;"><input type="button" class="rejectbtn" value="Cancel Job" style="width:98%"; onclick="CancelJob(\''+jobID+'\')"/></td>';
+                                    html += '</tr>';
+                                    html += '<tr class="thead-grid2">';
+                                    html += '<td>Driver</td>';
+                            		html += '<td>Vehicle</td>';
+                                    html += '<td style="text-align:center;">Fare</td>';
+                               	 html += '<td>Rating </td>';
+                               	 html += '<td>Action </td>';  
+                               	 html += '</tr>';
+                                    isAnyDriverHired = false;
+                                    for(var j=0; j<count; j++)
                                     {
-                                   	 html += '<tr style="background-color:white">';
-                                        html += '<td colspan="5"><hr style="border:2px solid darkred; margin: -2px;" ></td>';
-                                        html += '</tr>';
-                                        html += '<tr style="background-color:lightgray;">';
-                                        html += '<td style="width:20%;height:35px;text-align:center;"><a href="#" onclick="ShowDetailBooking(\''+jobID+'\')" style="color:blue;">'+ jobID +'</a></td>'; 
-                                        html += "<td style='width:40%;height:35px;text-align:center;' colspan='2' >" + From +"</td>";
-                                        html += "<td style='width:20%;height:35px;text-align:center;'>" + To +"</td>";
-                                        html += '<td style="width:20%;height:35px;text-align:center;"><input type="button" class="rejectbtn" value="Cancel Job" style="width:98%"; onclick="CancelJob(\''+jobID+'\')"/></td>';
-                                        html += '</tr>';
-                                        html += '<tr class="thead-grid2">';
-                                        html += '<td>Driver</td>';
-                                		html += '<td>Vehicle</td>';
-                                        html += '<td style="text-align:center;">Fare</td>';
-                                   	 html += '<td>Rating </td>';
-                                   	 html += '<td>Action </td>';  
-                                   	 html += '</tr>';
-                                        isAnyDriverHired = false;
-                                        for(var j=0; j<count; j++)
+                                        if(data.d[j]["CustomerResponse"] === true && data.d[j]["CustomerRequestID"] === jobID)
                                         {
-                                            if(data.d[j]["CustomerResponse"] === true && data.d[j]["CustomerRequestID"] === jobID)
-                                            {
-                                                isAnyDriverHired = true;
-                                            }
+                                            isAnyDriverHired = true;
                                         }
                                     }
-                                    html += '<tr style="border-bottom:1px solid black !important;">';
-                                    html += '<td style="width: 20%;text-align:left;">';
-                                    html += '<a href="#" onclick="showRatingBoxLaterPresent(\''+DriverID+'\')" style="color:blue; font-size: 17px;">'+ DriverName +'</a><br/>';
-                                    html += '<img src="'+DriverPhoto+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImageLater(this)\"/>';
-                                    html += '</td>';
-                                    html += '<td style="width: 20%;text-align:left;"><br/><img src="'+VehicleImages+'" style="width:50px;height:50px;border-radius:4px;" onclick="ShowLargeImageLater(this)\"/></td>';
-                                    html += "<td style='width: 15%;height:35px;text-align:center;'>"+'&pound' + Fare +"</td>";
-                                    html += '<td style="width: 25%;text-align:left;"><input type="button" class="btn-tmp" value="Rating" style="width:98%"; onclick="showRatingBoxLaterPresent(\''+DriverID+'\')"/></td>';
-                                    if(Fare > 0)
+                                }
+                                html += '<tr style="border-bottom:1px solid black !important;">';
+                                html += '<td style="width: 20%;text-align:left;">';
+                                html += '<a href="#" onclick="showRatingBoxLaterPresent(\''+DriverID+'\')" style="color:blue; font-size: 17px;">'+ DriverName +'</a><br/>';
+                                html += '<img src="'+DriverPhoto+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImageLater(this)\"/>';
+                                html += '</td>';
+                                html += '<td style="width: 20%;text-align:left;"><br/><img src="'+VehicleImages+'" style="width:50px;height:50px;border-radius:4px;" onclick="ShowLargeImageLater(this)\"/></td>';
+                                html += "<td style='width: 15%;height:35px;text-align:center;'>"+'&pound' + Fare +"</td>";
+                                html += '<td style="width: 25%;text-align:left;"><input type="button" class="btn-tmp" value="Rating" style="width:98%"; onclick="showRatingBoxLaterPresent(\''+DriverID+'\')"/></td>';
+                                if(Fare > 0)
+                                {
+                                    if(CustResponse !== true)
                                     {
-                                        if(CustResponse !== true)
+                                		if(isAnyDriverHired === false)
                                         {
-                                    		if(isAnyDriverHired === false)
-                                            {
-                                                html += "<td style='width: 20%;text-align:center;'>"+'<input type="button" id="check" style="-webkit-appearance:none;-moz-appearance:none;"  class="accept-btn2" value="Hire" onclick="HireDriver(\''+ jobID +'\',\''+ DriverID +'\')"/>'+"</td>";
-                                            }
-                                            else
-                                            {
-                                            }
+                                            html += "<td style='width: 20%;text-align:center;'>"+'<input type="button" id="check" style="-webkit-appearance:none;-moz-appearance:none;"  class="accept-btn2" value="Hire" onclick="HireDriver(\''+ jobID +'\',\''+ DriverID +'\')"/>'+"</td>";
                                         }
                                         else
                                         {
-                                         	html += "<td style='width: 20%;text-align:center;'>"+'Awaiting driver response <span style="color:green; font-size:16px;">Or</span><br/><input type="button" id="check" style="-webkit-appearance:none;-moz-appearance:none;" class="rejectbtn" value="Cancel Driver" onclick="CancelDriver(\''+ jobID +'\',\''+ DriverID +'\')"/>'+"</td>";   
                                         }
                                     }
                                     else
                                     {
-                                        html += "<td style='width: 20%;text-align:center;'>Awaiting Bids</td>";
+                                     	html += "<td style='width: 20%;text-align:center;'>"+'Awaiting driver response <span style="color:green; font-size:16px;">Or</span><br/><input type="button" id="check" style="-webkit-appearance:none;-moz-appearance:none;" class="rejectbtn" value="Cancel Driver" onclick="CancelDriver(\''+ jobID +'\',\''+ DriverID +'\')"/>'+"</td>";   
                                     }
-                                    html += '</tr>'; 
                                 }
-                                html +='</table>'; 
-                                $('#cablatercustomerbookings').html('');
-                                $('#cablatercustomerbookings').append(html);
+                                else
+                                {
+                                    html += "<td style='width: 20%;text-align:center;'>Awaiting Bids</td>";
+                                }
+                                html += '</tr>'; 
+                            }
+                            html +='</table>'; 
+                            $('#cablatercustomerbookings').html('');
+                            $('#cablatercustomerbookings').append(html);
                         }
                         else
                         {
@@ -125,6 +125,7 @@ function getCablaterBooking()
 
 function ShowDetailBooking(jobNo, driverid)
 {
+    $('body').css('overflow','hidden');
     var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetCCabLaterBooking";
                 $.ajax(url, {
                    type:"POST",
@@ -153,6 +154,7 @@ function showDetail(data)
 
 function Cancel()
 {
+    $('body').css('overflow','auto');
     $('#popup_box').hide();
     $('#divCabLaterBooking').hide();
     $('#transparent_div').hide();
@@ -176,7 +178,7 @@ function HireDriver(jobID, driverid)
             else if(buttonIndex === 1)
             {
                
-                    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse";
+                var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse";
                 $.ajax(url, {
                    beforeSend: function(){
                         $('#imgLoader').show();
@@ -189,58 +191,26 @@ function HireDriver(jobID, driverid)
                    data:"{'driverId':'" + driverid + "','requestId':'" + jobID + "'}",
                    contentType: "application/json; charset=utf-8",
                     success: function(data){
-                        // $('#check').hide();
-                        // alert('Booking in progress. Please check later.');
-                        // alert("Cab selected. Waiting for your driver to confirm he will carry out this transfer");
-                        // jAlert('Hivghkghkjgfhjfghkg', 'Alert Dialog');
-                        //window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                        
                         navigator.notification.alert(
-				        "Cab selected. Waiting for your driver to confirm he will carry out this transfer.",
-  				      hireDriver221, // Specify a function to be called 
- 					   'ECABS4U',
- 						"OK"
-						);
-                        function hireDriver221()
-                        {
-    			         window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-						}
+			            "Cab selected. Waiting for your driver to confirm he will carry out this transfer.",
+  	                  abortLaterJob221, // Specify a function to be called 
+ 				      'ECABS4U',
+ 					   "OK"
+					    );
+                       function abortLaterJob221()
+                       {
+    		            window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+				       }
                         
-                        
+                        //alert("Cab selected. Waiting for your driver to confirm he will carry out this transfer");
+                        //window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                     },
-                    error: function (XMLHttpRequest, textStatus, errorThrown) 
-                    {
-                        
-                    }
+                    error: function (XMLHttpRequest, textStatus, errorThrown) { }
                 });
                 
             }
      }
- //var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse";
- //            $.ajax(url, {
- //               beforeSend: function(){
- //                    $('#imgLoader').show();
- //                 },
- //                 complete: function(){
- //                    $('#imgLoader').hide();
- //                 },
- //               type:"POST",
- //               datatype:"json",
- //               data:"{'driverId':'" + driverid + "','requestId':'" + jobID + "'}",
- //               contentType: "application/json; charset=utf-8",
- //                success: function(data){
- //                   // $('#check').hide();
- //                    //alert('Booking in progress. Please check later.');
- //                    alert("Cab selected. Waiting for your driver to confirm he will carry out this transfer");
- //                    window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
- //                   
- //                    
- //                    
- //                },
- //                error: function (XMLHttpRequest, textStatus, errorThrown) 
- //                {
- //                    
- //                }
- //            });
 }
 function backtostart()
 {
@@ -249,42 +219,12 @@ function backtostart()
 
 function CancelJob(jobId)
 {
-    //alert(jobId);
- //navigator.notification.alert(
-//		        "Are you sure to cancel this job?.",
-//			    canceljob(jobId), // Specify a function to be called 
-//				   'ECABS4U',
-//					"OK","Cancel"
-//				);
- //function canceljob(jobid)
- //   {  var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/CancelJob";
- //
- //       $.ajax(url,{
- //                beforeSend: function(){
- //                   $('#imgLoader').show();
- //                },
- //                complete: function(){
- //                   $('#imgLoader').hide();
- //                },
- //                type:"POST",
- //                datatype:"json",
- //                data:"{'jobID':'" + jobid + "','customerID':'" + relatedId + "'}",
- //                contentType: "application/json; charset=utf-8",                     
- //                success: function(data){
- //                      alert("Job cancelled successfully.");
- //                },
- //               
- //                error: function (XMLHttpRequest, textStatus, errorThrown) {
- //               // alert(errorThrown);
- //           }
- //        });
- //   }
-              navigator.notification.confirm(
-		       "Are you sure to cancel this job?.",
-			    canceljob, // Specify a function to be called 
-				'ECABS4U',
-			   "OK,Cancel"
-				);
+    navigator.notification.confirm(
+    "Are you sure to cancel this job?.",
+    canceljob, // Specify a function to be called 
+    'ECABS4U',
+    "OK,Cancel"
+    );
     
     function canceljob(buttonIndex)
      {
@@ -310,12 +250,21 @@ function CancelJob(jobId)
                  data:"{'jobID':'" + jobId + "','customerID':'" + relatedId + "'}",
                  contentType: "application/json; charset=utf-8",                     
                  success: function(data){
-                       alert("Job cancelled successfully.");
+                      // alert("Job cancelled successfully.");
+                     
+                     navigator.notification.alert(
+			        "Job cancelled successfully.",
+  	                abortLaterJob225, // Specify a function to be called 
+ 				   'ECABS4U',
+ 					"OK"
+					);
+                 function abortLaterJob225()
+                 {
+    		      
+				 }
+                     
                  },
-                
-                 error: function (XMLHttpRequest, textStatus, errorThrown) {
-                // alert(errorThrown);
-               }
+                 error: function (XMLHttpRequest, textStatus, errorThrown) { }
                  });
                 
             }
@@ -347,64 +296,57 @@ function SubmitReject()
     var abortMessage = $('#txtAbortmsg').val();
     if(!abortMessage)
     {
-        //alert('Please enter your reason.');
-        //return false;
         navigator.notification.alert(
-				        "Please enter your reason.",
-  				    abortLaterJob, // Specify a function to be called 
- 					   'ECABS4U',
- 						"OK"
-						);
-                        function abortLaterJob()
-                        {
-    			     
-						}
+        "Please enter your reason.",
+        abortLaterJob, 
+        'ECABS4U',
+        "OK"
+        );
+        function abortLaterJob()
+        { }
     }
-      var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/AbortCurrentJobCustomer";
+    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/AbortCurrentJobCustomer";
     
-            $.ajax(url,{
-                     beforeSend: function(){
-                        $('#imgLoader').show();
-                     },
-                     complete: function(){
-                        $('#imgLoader').hide();
-                     },
-                     type:"POST",
-                     datatype:"json",
-                     data:"{'relatedId':'" +relatedId+ "','abortMessage':'"+abortMessage+"','jobNumber':'"+jobNumber+"'}",
-                     contentType: "application/json; charset=utf-8",                     
-                     success: function(data){
-                         if(data.d === "true")
-                         {
-                              $('#popup_box1').hide();
-                              $('#divAbortTask').hide();
-                              $('#txtAbortmsg').val("");
-                              $('#freezBack').hide();
-                              $('#transparent_div').hide();
-                              //alert("Job aborted.");
-                             navigator.notification.alert(
-				       	 "Job aborted.",
-  				    	 aborted, // Specify a function to be called 
- 					     'ECABS4U',
- 						 "OK"
-						);
-                        function aborted()
-                        {
-    			     window.location='bookedhistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-						}
-                             // window.location='bookedhistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-                         }                         
-                     },
-                    
-                     error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    // alert(errorThrown);
-                }
-             });
-    
+    $('body').css('overflow','hidden');
+    $.ajax(url,{
+         beforeSend: function(){
+            $('#imgLoader').show();
+         },
+         complete: function(){
+            $('#imgLoader').hide();
+         },
+         type:"POST",
+         datatype:"json",
+         data:"{'relatedId':'" +relatedId+ "','abortMessage':'"+abortMessage+"','jobNumber':'"+jobNumber+"'}",
+         contentType: "application/json; charset=utf-8",                     
+         success: function(data){
+             if(data.d === "true")
+             {
+                  $('#popup_box1').hide();
+                  $('#divAbortTask').hide();
+                  $('#txtAbortmsg').val("");
+                  $('#freezBack').hide();
+                  $('#transparent_div').hide();
+                  //alert("Job aborted.");
+                navigator.notification.alert(
+                "Job aborted.",
+                aborted, // Specify a function to be called 
+                'ECABS4U',
+                "OK"
+                );
+                function aborted()
+                {
+		             window.location='bookedhistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+				}
+             }                         
+         },
+         error: function (XMLHttpRequest, textStatus, errorThrown) { }
+     });    
 }
 
 function CancelReject()
 {
+    $('body').css('overflow','auto');
     $('#popup_box1').hide();
     $('#divAbortTask').hide();
     $('#freezBack').hide();
@@ -446,21 +388,16 @@ function showRatingBoxLaterpast(driverImgUrl, driverID)
         contentType: "application/json; charset=utf-8",
         success: function(data)
         {    
-          // alert(data.d);
             $('#feedback-content').empty();
             if(data.d["0"] === null && data.d["1"] === null && data.d["2"] === null && data.d["3"] === null)
             {
-               // alert('No comments found');
-                 navigator.notification.alert(
-				        "No comments found.",
-  				    commentsRequired, // Specify a function to be called 
- 					   'ECABS4U',
- 						"OK"
-						);
-                        function commentsRequired()
-                        {
-    			     
-						}
+                navigator.notification.alert(
+                "No comments found.",
+                commentsRequired,
+                'ECABS4U',
+                "OK"
+                );
+                function commentsRequired() { }
             }
             else
             {   
@@ -494,15 +431,12 @@ function showRatingBoxLaterpast(driverImgUrl, driverID)
                     table1 += '</table>';
                 }
                 else{
-                    //var table1 = '<table width="99%" style="border-collapse:collapse;">';
                     table1 += '<table width="99%" style="border-collapse:collapse;">';
                     table1 += '<tr><td style="width:80%">No Feedback available.';
                     table1 += '</td></tr>';
                     table1 += '</table>';
-                }
-                
+                }                
                 $('#feedback-content').append(table1);
-              //  $('#feedback-content').append(table2);
                 $('#popup_box').fadeIn("fast");
                 $('#divRatingFeedback').fadeIn("fast");                
            }
@@ -539,7 +473,6 @@ function showRatingBoxLaterPresent(driverID)
                     for(var i = 0; i<ratingcont; i++)
                     {   
                         table2 += '<tr><td style="text-align:left;width:25%">'+data.d[i]["StartDate"]+'</td>';
-                        //table2 += '<td style="text-align:left;width:25%">'+data.d[i]["DriverRating"]+'</td>';
                         var ratingdriver = data.d[i]["DriverRating"];
                         if(ratingdriver === "1")
                                     {   
@@ -584,7 +517,7 @@ function showRatingBoxLaterPresent(driverID)
                         }
                     }
                     table2 += '</table>';
-               }
+            }
             else
             {
                     var table2 = '<table width="99%" style="border-collapse:collapse;">';
@@ -593,9 +526,9 @@ function showRatingBoxLaterPresent(driverID)
                     table2 += '</table>';  
             }
                 
-               $('#feedback-content').append(table2);
-               $('#popup_box').fadeIn("fast");
-               $('#divRatingFeedback').fadeIn("fast");                
+           $('#feedback-content').append(table2);
+           $('#popup_box').fadeIn("fast");
+           $('#divRatingFeedback').fadeIn("fast");                
           
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -632,7 +565,17 @@ function CancelDriver(jobID, driverid)
                    data:"{'jobID':'" +jobID+ "','driverID':'"+driverid+"','customerID':'"+relatedId+"'}",
                    contentType: "application/json; charset=utf-8",
                     success: function(){
-                        alert("Driver cancelled for this job.");
+                      navigator.notification.alert(
+			        "Driver cancelled for this job.",
+  	              abortLaterJob226, // Specify a function to be called 
+ 				   'ECABS4U',
+ 					"OK"
+					);
+                  function abortLaterJob226()
+                   {
+    		      
+				   }
+                      // alert("Driver cancelled for this job.");
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) 
                     { }
@@ -640,10 +583,6 @@ function CancelDriver(jobID, driverid)
                
             }
      }
-    
-    
-    
-   
 }
 //CabLater Logic End
 

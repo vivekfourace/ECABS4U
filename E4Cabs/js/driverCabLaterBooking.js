@@ -108,6 +108,7 @@ function AcceptJob(jobnumber)
 //AcceptJob with 2 parameters
 function AcceptJob(jobno, jobfare)
 {
+    $('body').css('overflow','hidden');
     $('#hidJobNo').val(jobno);
     var fare = jobfare;
     if(fare >= 11 && fare <=20)
@@ -130,50 +131,50 @@ function AcceptJob(jobno, jobfare)
     }
     else
     {
-            var reqID = $('#hidJobNo').val();
-            $.ajax({
-                beforeSend: function(){
-                   $('#imgLoader').show();
-                },
-                complete: function(){
-                   $('#imgLoader').hide();
-                },
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CabLaterJobBooked",
-                type: "POST",
-                dataType: "Json",
-                data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
-                contentType: "application/json; charset=utf-8",
-                success: function (data) 
+        var reqID = $('#hidJobNo').val();
+        $.ajax({
+            beforeSend: function(){
+               $('#imgLoader').show();
+            },
+            complete: function(){
+               $('#imgLoader').hide();
+            },
+            url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CabLaterJobBooked",
+            type: "POST",
+            dataType: "Json",
+            data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) 
+            {
+                $('body').css('overflow','auto');
+                if(data.d  === "true")
                 {
-                    if(data.d  === "true")
-                    {
-                       alert('Job booked successfully.');
-                        window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;                    
-                    }  
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) 
-                {
-                    alert("Some error occurred during booking and payment. Please try again.");
-                }
-            });
+                   alert('Job booked successfully.');
+                    window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;                    
+                }  
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) 
+            {
+                alert("Some error occurred during booking and payment. Please try again.");
+            }
+        });
     }
 }
 
 function ShowDetailBooking(data, customerid)
 {
+    $('body').css('overflow','hidden');
     var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetDCabLaterBooking";
-       $.ajax(url, {
-          type:"POST",
-          datatype:"json",
-          data:"{'customerReqID':'"+data+"', 'customerid':'"+customerid+"', 'relatedId':'"+relatedId+"'}",
-          contentType: "application/json; charset=utf-8",
-           success: showDetail,
-           error: function (XMLHttpRequest, textStatus, errorThrown) 
-           {
-               
-           }
-       });
-    }
+    $.ajax(url, {
+      type:"POST",
+      datatype:"json",
+      data:"{'customerReqID':'"+data+"', 'customerid':'"+customerid+"', 'relatedId':'"+relatedId+"'}",
+      contentType: "application/json; charset=utf-8",
+       success: showDetail,
+       error: function (XMLHttpRequest, textStatus, errorThrown) 
+       { }
+    });
+}
 
 function showDetail(data)
 {
@@ -193,12 +194,14 @@ function showDetail(data)
 
 function Cancel()
 {
+    $('body').css('overflow','auto');
     $('#popup_box').hide();
     $('#divCabBooking').hide();
     $('#transparent_div').hide();
 }
 function RejectJob(data)
 {
+    $('body').css('overflow','hidden');
     var isTrue = confirm("Confirm you want to reject this job offer?");
     if(isTrue)
     {
@@ -217,24 +220,11 @@ function RejectJob(data)
                 data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
-                 
-                    
+                    $('body').css('overflow','auto');
                     alert("Job rejected successfully.");
-                     window.location = 'DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-                    // navigator.notification.alert(
-				        	 // "Job rejected successfully.",
-  				       	// rejectByDriver, // Specify a function to be called 
- 					   	 // 'ECABS4U',
- 							// "OK"
-							 // );
-                        	 // function rejectByDriver()
-                        	 // {
-    			     		//  window.location = 'DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId; 
-							 // }
+                    window.location = 'DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                 },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-                }
+                error: function (XMLHttpRequest, textStatus, errorThrown) { }
             });
     }
     else
@@ -246,6 +236,7 @@ function RejectJob(data)
 
 function RejectComission()
 {
+    $('body').css('overflow','auto');
      $('#divDeal').hide();
      $('#popup_box').hide();
      $('#transparent_div').hide();
@@ -257,6 +248,7 @@ function Confirmcomission()
     $.ajax({
     beforeSend: function()
     {
+        $('body').css('overflow','hidden');
 		$('#imgLoader').show();
 	},                
     url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CabLaterJobBooked",
@@ -266,6 +258,7 @@ function Confirmcomission()
     contentType: "application/json; charset=utf-8",
     success: function (data) 
     {
+        $('body').css('overflow','auto');
         if(data.d !== "")
         {
             console.log(data.d);

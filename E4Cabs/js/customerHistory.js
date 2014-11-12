@@ -125,7 +125,7 @@ function onAbortCallback(btnIndex)
 
 function JobDetail(data)
 {
-   $('body').css('overflow:hidden');
+   $('body').css('overflow','hidden');
     var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/JobDetailCustomer";
                 $.ajax(url, {
                    type:"POST",
@@ -143,7 +143,6 @@ function JobDetail(data)
 function makeCall()
 {
     var number = $('#lblDriverContact').text();
-    console.log(number);
     window.location.href = "tel:" + number;    
 }
 
@@ -231,19 +230,16 @@ function showDetail(data)
                 
         
     
-     if(data.d[12]!=="No Customer Feedback")
+    if(data.d[12]!=="No Customer Feedback")
     {
-    $('#customerFeedback').show();
-   // $('#customerFeedback2').show();
-    $('#labelline').show();
-    $('#lblmyFeedback').text(": "+data.d[12]);
-    //$('#lblmyFeedback2').text(": "+data.d[12]);
+        $('#customerFeedback').show();
+        $('#labelline').show();
+        $('#lblmyFeedback').text(": "+data.d[12]);
     }
     else
     {
         $('#customerFeedback').hide();
-        //$('#customerFeedback2').hide();
-         $('#labelline').hide();
+        $('#labelline').hide();
     }
     
     $('#transparent_div').show();
@@ -253,6 +249,7 @@ function showDetail(data)
 
 function Cancel()
 {
+    $('body').css('overflow','auto');
     $('#popup_box').fadeOut("fast");
     $('#divCabLaterBooking').fadeOut("fast");
     $('#transparent_div').hide();
@@ -265,7 +262,6 @@ function SubmitReject()
     if(!abortMessage)
     {
         jAlert('Please enter your reason.', 'ECabs4U-Abort Job');
-       // alert('Please enter your reason.');
         return false;
     }
     
@@ -331,6 +327,7 @@ function feedBackCustomer(JobNumber )
             contentType: "application/json; charset=utf-8",                     
             success: function(data)
             {
+                $('body').css('overflow','hidden');
                 var isCustomerRatingLocked = data.d.IsCustomerRatingLocked;
                 var isJobCompleted = data.d.IsJobCompleted;
                 var custrating = data.d.DriverRating;
@@ -435,6 +432,7 @@ function feedBackCustomer(JobNumber )
 //cancel feedback
 function CancelFeedBack()
 {
+    $('body').css('overflow','auto');
     $('#divFeedBack').hide("fast");
     $('#popup_box').hide("fast");
     $('#transparent_div').hide();
@@ -446,27 +444,21 @@ function CancelFeedBack()
 //feedback post
 function PostFeedBack()
 {
-   var requestID= $('#lbljobNo').text();
-    if(finalrating === "")
-    {finalrating = 0;}
-    //alert(finalrating);
-   var getRating = finalrating;//document.getElementById('sel').value;
-    console.log(getRating);
-    //alert(getRating);
-   var getComments = document.getElementById('txtarComments').value;
+    $('body').css('overflow','auto');
+    var requestID= $('#lbljobNo').text();
+    if(finalrating === "") { finalrating = 0; }
+    var getRating = finalrating;
+    var getComments = document.getElementById('txtarComments').value;
     if(getRating === 0)
     {
         jAlert('Please select rating.', 'ECabs4U-Alert'); 
-        //alert("Please select rating.");
         return false;
     }
     if(!getComments)
     {
         jAlert('Please enter comments.', 'ECabs4U-Alert'); 
-        //alert("Please enter comments.");
         return false;
     }
-    
     
    $.ajax({
              url:"http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerFeedbackForDriver",
@@ -483,18 +475,13 @@ function PostFeedBack()
             success: function(data)
             {
                 jAlert('Feedback has been added successfully.', 'ECabs4U-Feedback'); 
-                //alert("Feedback has been added successfully.");
                 document.getElementById('txtarComments').value ="";
-                //document.getElementById('sel').value = 0;
                 $('#divFeedBack').fadeOut("fast");
                 $('#popup_box').fadeOut("fast");
                 $('#transparent_div').hide();
-                },
-            
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-            //alert(errorThrown);
-                }
-         });  
+            },            
+            error: function (XMLHttpRequest, textStatus, errorThrown) { }
+    });  
 }
 function backtostart()
 {

@@ -97,7 +97,6 @@ var timereOut;
                         }
                         else
                         {
-                            console.log(jobNo)
                              $.ajax({
                                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/JobStatus",
                                 type: "POST",
@@ -116,20 +115,6 @@ var timereOut;
                                         $('#button-table').hide();
                                         $('#transparent_div').hide();
                                         window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-                                    // navigator.notification.alert(
-				        	        // "Sorry, you have not been selected for this job.",
-  				       	       // sorryToDriver, // Specify a function to be called 
- 					   	        // 'ECABS4U',
- 							       // "OK"
-							        // );
-                        	        // function sorryToDriver()
-                        	       // {
-                                   //  $('#tbdetails').hide();
-                                   //  $('#button-table').hide();
-                                  //  $('#transparent_div').hide();
-    			     		     //   window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-							      // }
-                                    
                                     }
                                 },
                             });
@@ -150,6 +135,7 @@ var timereOut;
         }
 
         function showBid() {
+            $('body').css('overflow','hidden');
             $('#popup_box22').show();
             $('#transparent_div').show();
             $('#divBid').show();
@@ -278,7 +264,7 @@ SubmitDeal();
 
 
 
-        function bidSubmit() {
+function bidSubmit() {
             var isCabnow = $('#hiddenIsCabnow').val();
              var selectedvehicle = document.getElementById("ddlselectedvehicle");
                  var selectedcab = selectedvehicle.options[selectedvehicle.selectedIndex].value;
@@ -293,6 +279,7 @@ SubmitDeal();
                  
                 
                 
+                $('body').css('overflow','auto');
                 $("#divDealload").show();
                 //$("#other").hide();
                 //$("#fare").hide();
@@ -381,6 +368,7 @@ SubmitDeal();
         }
 
         function bidCancel() {
+            $('body').css('overflow','auto');
             $('#popup_box22').hide();
             $('#divBid').hide();
             $('#transparent_div').hide();

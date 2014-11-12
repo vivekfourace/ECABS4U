@@ -3,18 +3,6 @@ var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
-//document.addEventListener("deviceready", onDeviceReady, false);
-//function onDeviceReady()
-//{
-//    document.addEventListener("backbutton", goToHome, false);
-//}
-//
-//function goToHome() {
-//    navigator.app.backHistory();
-//    console.log('Going to home page');
-//    //window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-//}
-
 function backToIndex()
 {
     window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
@@ -90,4 +78,4 @@ function onOKDeleteExpiredJob(expJobId){
     
 }
 
-getCancelledJobs = setInterval(GetCancelledJobs, 10000);
+getCancelledJobs = setInterval(GetCancelledJobs, 5000);

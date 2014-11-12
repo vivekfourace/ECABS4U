@@ -96,6 +96,7 @@ function bindGrid(data)
 
 function AcceptJob(jobno, jobfare)
 {
+    $('body').css('overflow','hidden');
     $('#hidJobNo').val(jobno);
     var fare = jobfare;
     if(fare >= 11 && fare <=20)
@@ -133,10 +134,11 @@ function AcceptJob(jobno, jobfare)
             contentType: "application/json; charset=utf-8",
             success: function (data) 
             {
+                $('body').css('overflow','auto');
                 if(data.d  === "true")
                 {
                    alert('Job booked successfully.');
-                    window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                   window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                 }  
            },
            error: function (XMLHttpRequest, textStatus, errorThrown) 
@@ -149,6 +151,7 @@ function AcceptJob(jobno, jobfare)
 
 function ShowDetailBooking(data, customerid)
 {
+    $('body').css('overflow','hidden');
     var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetDCabNowBooking";
        $.ajax(url, {
           type:"POST",
@@ -181,12 +184,14 @@ function showDetail(data)
 
 function Cancel()
 {
+    $('body').css('overflow','auto');
     $('#popup_box').hide();
     $('#divCabBooking').hide();
     $('#transparent_div').hide();
 }
 function RejectJob(data)
 {
+    $('body').css('overflow','hidden');
     var isTrue = confirm("Confirm you want to reject this job offer?");
     if(isTrue)
     {
@@ -205,6 +210,7 @@ function RejectJob(data)
                 data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
+                    $('body').css('overflow','auto');
                     alert("Job rejected successfully.");
                      window.location = 'DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                 },
@@ -220,6 +226,7 @@ function RejectJob(data)
 
 function RejectComission()
 {
+    $('body').css('overflow','auto');
      $('#divDeal').hide();
      $('#popup_box').hide();
      $('#transparent_div').hide();
@@ -242,6 +249,7 @@ function Confirmcomission()
     {
         if(data.d !== "")
         {
+            $('body').css('overflow','auto');
             var returnvalue = data.d;
             if (returnvalue.match(/"Error:"/g) > 0)
             {
