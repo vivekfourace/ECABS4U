@@ -85,7 +85,8 @@ function gethistory()
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) 
             {
-                alert(errorThrown);
+                //alert(errorThrown);
+                jAlert(errorThrown , 'ECABS4U');
             }
         });                
 }
@@ -350,18 +351,18 @@ function SubmitReject()
                               $('#txtAbortmsg').val("");
                               $('#transparent_div').hide();
                              //jAlert('Job aborted successfully.', 'ECABS4U');
-                             alert("Job aborted successfully.");
-                             window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId; 
-                             // navigator.notification.alert(
-				        	 // "Job aborted successfully.",
-  				       	// abortByDriver, // Specify a function to be called 
- 					   	 // 'ECABS4U',
- 							// "OK"
-							 // );
-                        	 // function abortByDriver()
-                        	 // {
-    			     		//  window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId; 
-							 // }
+                             //alert("Job aborted successfully.");
+                             //window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId; 
+                              navigator.notification.alert(
+				        	  "Job aborted successfully.",
+  				       	 abortByDriver221, // Specify a function to be called 
+ 					   	  'ECABS4U',
+ 							 "OK"
+							  );
+                        	  function abortByDriver221()
+                        	  {
+    			     		  window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId; 
+							  }
                          } 
                          
                      },                    

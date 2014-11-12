@@ -74,18 +74,18 @@ function CancelJob(jobno)
         contentType:"application/json;charset=utf-8",
         success:function(data)
         {
-            alert(data.d);
-            window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-                       // navigator.notification.alert(
-				       // data.d,
-  				     // driverFailedJob, // Specify a function to be called 
- 					  // 'ECABS4U',
- 					  // "OK"
-					   //);
-                       // function driverFailedJob()
-                       // {
-    			       // window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-					   //}
+           // alert(data.d);
+           // window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                        navigator.notification.alert(
+				       data.d,
+  				      driverFailedJob221, // Specify a function to be called 
+ 					   'ECABS4U',
+ 					  "OK"
+					   );
+                        function driverFailedJob221()
+                        {
+    			       window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+					   }
             
         },
     });

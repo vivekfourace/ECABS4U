@@ -180,8 +180,18 @@ function SubmitAbort()
     if(!abortMessage)
     {
         
-      alert('Please enter a reason.');
-      return false;
+      //alert('Please enter a reason.');
+      //return false;
+        navigator.notification.alert(
+		"Please enter a reason.",
+  	   validation221, // Specify a function to be called 
+ 				   'ECABS4U',
+ 					"OK"
+					);
+                 function validation221()
+                 {
+    		      
+				}
         
          
     }
