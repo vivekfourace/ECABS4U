@@ -167,7 +167,7 @@ function AcceptJob(jobno, jobfare)
             {
                 //alert("Some error occurred during booking and payment. Please try again.");
                     navigator.notification.alert(
-    			    "No driver found Please search again.",
+    			    "Some error occurred during booking and payment. Please try again.",
       	         jobBookedError221, // Specify a function to be called 
      				   'ECABS4U',
      					"OK"
@@ -306,7 +306,7 @@ function Confirmcomission()
                  function joberror221()
                  {
     		      
-				}
+				 }
                 
             }
              else if(data.d === "true")//data.d.substring(0,4) === "Job "
@@ -329,7 +329,7 @@ function Confirmcomission()
         {
           // alert("Unable to do payment. Please try again.");
                          navigator.notification.alert(
-        			        "Job booked successfully.",
+        			        "Unable to do payment. Please try again.",
           	             paymentError221, // Specify a function to be called 
          				   'ECABS4U',
          					"OK"

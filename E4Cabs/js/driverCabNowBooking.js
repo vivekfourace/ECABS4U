@@ -137,13 +137,33 @@ function AcceptJob(jobno, jobfare)
                 $('body').css('overflow','auto');
                 if(data.d  === "true")
                 {
-                   alert('Job booked successfully.');
-                   window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                   //alert('Job booked successfully.');
+                  // window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                     navigator.notification.alert(
+    			        "Job booked successfully.",
+      	             jobBookedsuccess223, // Specify a function to be called 
+     				   'ECABS4U',
+     					"OK"
+    					);
+                         function jobBookedsuccess223()
+                         {
+            		       window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+        				 }
                 }  
            },
            error: function (XMLHttpRequest, textStatus, errorThrown) 
            {
-               alert("Some error occurred during booking and payment. Please try again.");
+              // alert("Some error occurred during booking and payment. Please try again.");
+                navigator.notification.alert(
+    			    "Some error occurred during booking and payment. Please try again.",
+      	         jobBookedError222, // Specify a function to be called 
+     				   'ECABS4U',
+     					"OK"
+    					);
+                     function jobBookedError222()
+                     {
+        		      
+    				 }
            }
         });
     }
@@ -211,8 +231,18 @@ function RejectJob(data)
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
                     $('body').css('overflow','auto');
-                    alert("Job rejected successfully.");
-                     window.location = 'DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                   // alert("Job rejected successfully.");
+                   //  window.location = 'DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                    navigator.notification.alert(
+    			        "Job rejected successfully.",
+      	              Jobreject222, // Specify a function to be called 
+     				   'ECABS4U',
+     					"OK"
+    					);
+                     function Jobreject222()
+                     {
+        		      window.location = 'DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    				 }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) { }
             });
@@ -253,16 +283,46 @@ function Confirmcomission()
             var returnvalue = data.d;
             if (returnvalue.match(/"Error:"/g) > 0)
             {
-                alert(returnvalue);
-                window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+               // alert(returnvalue);
+               // window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                navigator.notification.alert(
+			    returnvalue,
+  	          joberror222, // Specify a function to be called 
+ 				'ECABS4U',
+ 					"OK"
+					);
+                 function joberror222()
+                 {
+    		      window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+				 }
             }
             else if(data.d.substring(0,4) === "Job "){
-                alert(data.d);
-                window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                //alert(data.d);
+               // window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                navigator.notification.alert(
+			    data.d,
+  	          joberror223, // Specify a function to be called 
+ 				'ECABS4U',
+ 					"OK"
+					);
+                 function joberror223()
+                 {
+    		      window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+				 }
             }
             else if(data.d.substring(0,4) === "Plea"){
-                alert(data.d);
-                window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+               // alert(data.d);
+               // window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                 navigator.notification.alert(
+			    data.d,
+  	          joberror224, // Specify a function to be called 
+ 				'ECABS4U',
+ 					"OK"
+					);
+                 function joberror224()
+                 {
+    		      window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+				 }
             }
             else
             {
@@ -289,7 +349,17 @@ function Confirmcomission()
         }
         else
         {
-           alert("Unable to do payment. Please try again.");
+           //alert("Unable to do payment. Please try again.");
+             navigator.notification.alert(
+        			        "Unable to do payment. Please try again.",
+          	             paymentError222, // Specify a function to be called 
+         				   'ECABS4U',
+         					"OK"
+        					);
+                             function paymentError222()
+                             {
+                		      
+            				 }
         }
     },
     error: function (XMLHttpRequest, textStatus, errorThrown) 

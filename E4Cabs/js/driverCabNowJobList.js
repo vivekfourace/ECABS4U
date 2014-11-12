@@ -140,13 +140,33 @@ function AcceptJobNow(jobno, jobfare)
             {
                 if(data.d  === "true")
                 {
-                   alert('Job booked successfully.');
-                    window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                   //alert('Job booked successfully.');
+                   // window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                    navigator.notification.alert(
+    			        "Job booked successfully.",
+      	             jobBookedsuccess225, // Specify a function to be called 
+     				   'ECABS4U',
+     					"OK"
+    					);
+                         function jobBookedsuccess225()
+                         {
+            		       window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+        				 }
                 }  
            },
            error: function (XMLHttpRequest, textStatus, errorThrown) 
            {
-               alert("Some error occurred during booking and payment. Please try again.");
+               //alert("Some error occurred during booking and payment. Please try again.");
+                navigator.notification.alert(
+    			    "Some error occurred during booking and payment. Please try again.",
+      	         jobBookedError223, // Specify a function to be called 
+     				   'ECABS4U',
+     					"OK"
+    					);
+                     function jobBookedError223()
+                     {
+        		      
+    				 }
            }
         });
     }
@@ -213,8 +233,19 @@ function RejectJobNow(data)
                 data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
-                    alert("Job rejected successfully.");
-                     window.location = 'DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                    //alert("Job rejected successfully.");
+                     //window.location = 'DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                    navigator.notification.alert(
+    			        "Job rejected successfully.",
+      	              Jobreject223, // Specify a function to be called 
+     				   'ECABS4U',
+     					"OK"
+    					);
+                     function Jobreject223()
+                     {
+        		      window.location = 'DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    				 }
+                    
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) { }
             });
@@ -254,7 +285,17 @@ function Confirmcomission()
             var returnvalue = data.d;
             if (returnvalue.match(/"Error:"/g) > 0)
             {
-            	alert(returnvalue);
+            	//alert(returnvalue);
+                 navigator.notification.alert(
+			    returnvalue,
+  	          joberror225, // Specify a function to be called 
+ 				'ECABS4U',
+ 					"OK"
+					);
+                 function joberror225()
+                 {
+    		      //window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+				 }
             }
             else
             {
@@ -282,7 +323,17 @@ function Confirmcomission()
         }
         else
         {
-           alert("Unable to do payment. Please try again.");
+          // alert("Unable to do payment. Please try again.");
+            navigator.notification.alert(
+        			        "Unable to do payment. Please try again.",
+          	             paymentError223, // Specify a function to be called 
+         				   'ECABS4U',
+         					"OK"
+        					);
+                             function paymentError223()
+                             {
+                		      
+            				 }
         }
     },
     error: function (XMLHttpRequest, textStatus, errorThrown) 
