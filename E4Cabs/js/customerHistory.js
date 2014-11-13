@@ -286,18 +286,18 @@ function SubmitReject()
                               $('#divAbortTask').fadeOut("fast");
                               $('#txtAbortmsg').val("");
                             // jAlert('Job cancelled.', 'ECabs4U-Abort Job');
-                             alert("Job cancelled.");
+                            // alert("Job cancelled.");
                              // window.location='CustomerHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-                            // navigator.notification.alert(
-				        	//"Job cancelled.",
-  				       	//cancelSuccess, // Specify a function to be called 
- 					   	//'ECABS4U',
- 							//"OK"
-							//);
-                        	//function cancelSuccess()
-                        	//{
+                             navigator.notification.alert(
+				        	"Job cancelled.",
+  				       	cancelSuccess224, // Specify a function to be called 
+ 					   	'ECABS4U',
+ 							"OK"
+						    );
+                        	function cancelSuccess224()
+                        	{
     			     		window.location='CustomerHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-							//}
+							}
                         }                         
                      },
                     

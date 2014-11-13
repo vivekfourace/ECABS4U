@@ -220,11 +220,11 @@ function SubmitAbort()
                               //window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                              navigator.notification.alert(
 				        	"Job aborted successfully.",
-  				       	abortComplete, // Specify a function to be called 
+  				       	abortComplete22, // Specify a function to be called 
  					   	'ECABS4U',
  							"OK"
 							);
-                        	function abortComplete()
+                        	function abortComplete22()
                         	{
                                
     			     		window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;

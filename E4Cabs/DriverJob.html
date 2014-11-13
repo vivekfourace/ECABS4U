@@ -206,31 +206,86 @@
                                         }
                                     } else {
                                         $('#tbdetails').hide();
-                                        alert("Sorry, this job has been passed out some time before.");
-                                        window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+                                       // alert("Sorry, this job has been passed out some time before.");
+                                       // window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+                                   
+                                        navigator.notification.alert(
+                                        "Sorry, this job has been passed out some time before.",
+                                        jobPassedout22, // Specify a function to be called 
+                                        'ECABS4U',
+                                        "OK"
+                                        );
+                                        function jobPassedout22()
+                                        {
+                                          window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;  		      
+                                        }
+                                    
                                     }
                                 },
                                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                                     $('#tbdetails').hide();
-                                    alert("We are extremely sorry for your inconvenience due to some error occurred in the system.");
-                                    window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+                                   // alert("We are extremely sorry for your inconvenience due to some error occurred in the system.");
+                                   // window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+                                    
+                                    navigator.notification.alert(
+                                        "We are extremely sorry for your inconvenience due to some error occurred in the system.",
+                                        jobPassedout224, // Specify a function to be called 
+                                        'ECABS4U',
+                                        "OK"
+                                        );
+                                        function jobPassedout224()
+                                        {
+                                          window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;  		      
+                                        }
                                 }});
                             } else if (data.d[0][0] === "Error") {
                                 $('#tbdetails').hide();
-                                alert("Sorry this job has been passed out.");
-                                window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+                                //alert("Sorry this job has been passed out.");
+                               // window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+                                
+                                navigator.notification.alert(
+                                        "Sorry this job has been passed out.",
+                                        jobPassedout221, // Specify a function to be called 
+                                        'ECABS4U',
+                                        "OK"
+                                        );
+                                        function jobPassedout221()
+                                        {
+                                          window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;  		      
+                                        }
                             }
                         }
                         else{
                             $('#tbdetails').hide();
-                            alert("Sorry this job has been passed out.");
-                            window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+                            //alert("Sorry this job has been passed out.");
+                           // window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+                            navigator.notification.alert(
+                                        "Sorry this job has been passed out.",
+                                        jobPassedout429, // Specify a function to be called 
+                                        'ECABS4U',
+                                        "OK"
+                                        );
+                                        function jobPassedout429()
+                                        {
+                                          window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;  		      
+                                        }
                         }
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         $('#tbdetails').hide();
-                        alert("Sorry this job has been passed out.");
-                        window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+                       // alert("Sorry this job has been passed out.");
+                        //window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+                        
+                         navigator.notification.alert(
+                                        "Sorry this job has been passed out.",
+                                        jobPassedout421, // Specify a function to be called 
+                                        'ECABS4U',
+                                        "OK"
+                                        );
+                                        function jobPassedout421()
+                                        {
+                                          window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;  		      
+                                        }
                     }});
             });       
 

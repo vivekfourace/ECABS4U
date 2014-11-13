@@ -165,8 +165,19 @@ function CancelJob(jobnumber)
               contentType: "application/json; charset=utf-8",                     
               success: function (data) {
                   //jAlert('Job cancelled successfully.', 'Alert');
-                  alert('Job cancelled successfully.');
-                  window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                 // alert('Job cancelled successfully.');
+                  //window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                  navigator.notification.alert(
+                   'Job cancelled successfully.',
+                    jobCancelled22, // Specify a function to be called 
+                    'ECABS4U',
+                    "OK"
+                    );
+                    function jobCancelled22()
+                    {
+                        window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;		      
+                    }
+                  
             }
      });
 }

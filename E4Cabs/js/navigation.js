@@ -77,8 +77,8 @@ function setLocation(data)
                   {
                     //  alert("No location found.")
                        navigator.notification.alert(
-    			          "No location found5.",
-      	               locationNotFound, // Specify a function to be called 
+    			          "No location found.",
+      	               locationNotFound5, // Specify a function to be called 
      				    'ECABS4U',
      					"OK"
     					 );

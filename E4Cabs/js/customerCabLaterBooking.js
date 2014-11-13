@@ -191,20 +191,19 @@ function HireDriver(jobID, driverid)
                    data:"{'driverId':'" + driverid + "','requestId':'" + jobID + "'}",
                    contentType: "application/json; charset=utf-8",
                     success: function(data){
-                        
+                      //  alert("Cab selected. Waiting for your driver to confirm he will carry out this transfer");
+                       // window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                         navigator.notification.alert(
-			            "Cab selected. Waiting for your driver to confirm he will carry out this transfer.",
-  	                  abortLaterJob221, // Specify a function to be called 
- 				      'ECABS4U',
- 					   "OK"
-					    );
-                       function abortLaterJob221()
-                       {
-    		            window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-				       }
+                        "Cab selected. Waiting for your driver to confirm he will carry out this transfer.",
+                        cabLaterbook224, // Specify a function to be called 
+                        'ECABS4U',
+                        "OK"
+                        );
+                        function cabLaterbook224()
+                        {
+                          window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;  		      
+                        }
                         
-                        //alert("Cab selected. Waiting for your driver to confirm he will carry out this transfer");
-                        //window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) { }
                 });
@@ -253,16 +252,15 @@ function CancelJob(jobId)
                       // alert("Job cancelled successfully.");
                      
                      navigator.notification.alert(
-			        "Job cancelled successfully.",
-  	                abortLaterJob225, // Specify a function to be called 
- 				   'ECABS4U',
- 					"OK"
-					);
-                 function abortLaterJob225()
-                 {
-    		      
-				 }
-                     
+                    "Job cancelled successfully.",
+                    jobcancel221, // Specify a function to be called 
+                    'ECABS4U',
+                    "OK"
+                    );
+                    function jobcancel221()
+                    {
+                        		      
+                    }
                  },
                  error: function (XMLHttpRequest, textStatus, errorThrown) { }
                  });
@@ -565,17 +563,18 @@ function CancelDriver(jobID, driverid)
                    data:"{'jobID':'" +jobID+ "','driverID':'"+driverid+"','customerID':'"+relatedId+"'}",
                    contentType: "application/json; charset=utf-8",
                     success: function(){
-                      navigator.notification.alert(
-			        "Driver cancelled for this job.",
-  	              abortLaterJob226, // Specify a function to be called 
- 				   'ECABS4U',
- 					"OK"
-					);
-                  function abortLaterJob226()
-                   {
-    		      
-				   }
-                      // alert("Driver cancelled for this job.");
+                       // alert("Driver cancelled for this job.");
+                        navigator.notification.alert(
+                        "Driver cancelled for this job.",
+                        driverCancel221, // Specify a function to be called 
+                        'ECABS4U',
+                        "OK"
+                        );
+                        function driverCancel221()
+                        {
+                            		      
+                        }
+                        
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) 
                     { }
