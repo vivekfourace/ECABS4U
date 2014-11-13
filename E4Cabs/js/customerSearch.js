@@ -96,7 +96,7 @@ $(document).ready(function ()
                 var geocoder = new google.maps.Geocoder();
                 var latLng = pos;
                 geocoder.geocode({ 'latLng': latLng }, function (results, status) 
-                    {
+                {
                     if (status === google.maps.GeocoderStatus.OK) {
                         if (results[1]) {
                            
@@ -104,23 +104,20 @@ $(document).ready(function ()
                         }
                     }
                     else {
-                        //alert("No location found.");
                         navigator.notification.alert(
 				        "No location found.",
-  				      locationNotFound, // Specify a function to be called 
+  				      noLocationNotFound, 
  					   'ECABS4U',
  						"OK"
 						);
-                        function locationNotFound()
-                        {
-    			     
-						}
+                        function noLocationNotFound()
+                        { }
                     }
                 });
             });
         }
      
-       $('#chkNo').click(function ()
+     $('#chkNo').click(function ()
      {
            document.getElementById("chkyes").checked = false;
          
@@ -131,37 +128,35 @@ $(document).ready(function ()
            $('#termCond').fadeIn("fast");
           $('#returnJ2').fadeOut("slow");
 
-       });
+     });
      
      //confirm click fuction
       $('#chkReturnYes').click(function ()
      {
-          navigator.notification.confirm(
-         "Do you want to confirm this job?",
-           onAbortCallback1,
-             "Confirm",
-            "Confirm,Cancel"   
-    );
-     });    
-         
- function onAbortCallback1(buttonIndex)
-{
-    if(buttonIndex === 1)
-    {
-        return false;
-    }
-    else if(buttonIndex === 2)
-    {
-       document.getElementById("chkyes").checked = false;
-        document.getElementById("chkReturnYes").checked = false;
-         //document.getElementById("chkReturnYes2").checked = false;
-        document.getElementById("chkNo").checked = false;
-         $('#returnJ').fadeOut("slow");
-           $('#termCond').fadeOut("slow");
-    }
-}
-         
-         
+        navigator.notification.confirm(
+        "Do you want to confirm this job?",
+        onAbortCallback1,
+        "Confirm",
+        "Confirm,Cancel"   
+        );
+        function onAbortCallback1(buttonIndex)
+        {
+            if(buttonIndex === 1)
+            {
+                return false;
+            }
+            else if(buttonIndex === 2)
+            {
+               document.getElementById("chkyes").checked = false;
+                document.getElementById("chkReturnYes").checked = false;
+                 //document.getElementById("chkReturnYes2").checked = false;
+                document.getElementById("chkNo").checked = false;
+                 $('#returnJ').fadeOut("slow");
+                   $('#termCond').fadeOut("slow");
+            }
+        }
+     });   
+
      
        $('#chkyes').click(function () {
            document.getElementById("chkNo").checked = false;
@@ -315,12 +310,26 @@ function availabledriver() {
     
     if (!fromloc) {
         $('#lblMessage').text("Please enter From location.");
-        alert("Please enter From location.");
+        navigator.notification.alert(
+       'Please enter From location.',
+        noFromLoc,
+        'ECABS4U',
+        "OK"
+        );
+        function noFromLoc()
+        { }
         return false;
     }
     else if (!toloc) {
         $('#lblMessage').text("Please enter Final destination.");
-        alert("Please enter Final destination.");
+        navigator.notification.alert(
+       'Please enter Final destination.',
+        noToLoc,
+        'ECABS4U',
+        "OK"
+        );
+        function noToLoc()
+        { }
         return false;
     }
     else if($('#TravelTime').val() === '') {
@@ -354,7 +363,14 @@ function availabledriver() {
         
         if(IsReturnTrue == false)
         {
-            alert("Please check confirm box.");
+            navigator.notification.alert(
+           'Please check confirm box.',
+            noCheckConfirm,
+            'ECABS4U',
+            "OK"
+            );
+            function noCheckConfirm()
+            { }
             return false; 
         }  
        
@@ -365,7 +381,14 @@ function availabledriver() {
         
        if(IsReturnTrue2 == false)
         {
-           alert("Please check confirm box.");
+            navigator.notification.alert(
+           'Please check confirm box.',
+            noCheckConfirmOnReturn,
+            'ECABS4U',
+            "OK"
+            );
+            function noCheckConfirmOnReturn()
+            { }
             return false; 
        }  
        
@@ -380,22 +403,34 @@ function availabledriver() {
        var retundate2 = $.datepicker.parseDate('dd/mm/yy', $('#datepickers').val());
     
         if(pickdate2>retundate2)
-    {
-       // alert("Please Enter correct Return date,Return date should be greater than or Equal to Pick Up date.");
-        alert("Please select a date/time in the future.");
-        return false; 
-    }
-       else if(pickdate==returnDate)
+        {
+            navigator.notification.alert(
+            'Please select a date/time in the future.',
+            futureDate,
+            'ECABS4U',
+            "OK"
+            );
+            function futureDate()
+            { }
+            return false; 
+        }
+        else if(pickdate==returnDate)
         {
             if(picktime>=returnTime)
             {
-                alert("Please Enter correct Return time,Return time should be greater than Pick Up time.");
+                navigator.notification.alert(
+                'Please Enter correct Return time. It should be greater than Pick Up time.',
+                inCorrectReturnTime,
+                'ECABS4U',
+                "OK"
+                );
+                function inCorrectReturnTime()
+                { }
                 return false;  
             }
         }
      }
     
-    //alert(fromloc+toloc+returnfromloc+returntoloc);
     
     //With same driver and want to return
     if (isCheckedNo == true)
@@ -403,7 +438,6 @@ function availabledriver() {
         
         if (IsReturnTrue == true) 
         {
-           //alert("No");
            // alert('samedriver Cabnow');
             
             var pickD = pickdate;
@@ -438,19 +472,15 @@ function availabledriver() {
                     }
                     else
                     {
-                        //console.log(data.d[1]);
-                        //alert("in");
                        // alert(data.d[1]);
                         navigator.notification.alert(
 				        data.d[1],
-  				    searchError, // Specify a function to be called 
+  				      searchError, 
  					   'ECABS4U',
  						"OK"
 						);
                         function searchError()
-                        {
-    			     
-						}
+                        { }
                     }
                 },                
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -471,9 +501,6 @@ function availabledriver() {
           
             IsReturnTrue = isRetJourAllOperator;
            
-            
-           // alert('differentdriver Cabnow');
-          // alert('Yes');
             $.ajax({
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerSearchRequest",
                 cache: false,
@@ -496,19 +523,15 @@ function availabledriver() {
                     }
                     else
                     {
-                        //console.log(data.d[1]);
-                       //alert("in");
                         //alert(data.d[1]);
                         navigator.notification.alert(
 				        data.d[1],
-  				      searchError, // Specify a function to be called 
+  				      searchError, 
  					   'ECABS4U',
  						"OK"
 						);
                         function searchError()
-                        {
-    			     
-						}
+                        { }
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown){
@@ -519,6 +542,5 @@ function availabledriver() {
 
  function homeSearch() {
     window.location = 'customerProfile.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-    // window.location = 'customerSearchList.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
  }
 

@@ -68,18 +68,17 @@ function CancelJob(jobno)
         contentType:"application/json;charset=utf-8",
         success:function(data)
         {
-           // alert(data.d);
            // window.location = 'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
              navigator.notification.alert(
-				        data.d,
-  				    FailedJob, // Specify a function to be called 
- 					   'ECABS4U',
- 						"OK"
-						);
-                        function FailedJob()
-                        {
-    			     window.location = 'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-						}
+		     data.d,
+			 FailedJob, // Specify a function to be called 
+		     'ECABS4U',
+		     "OK"
+		     );
+             function FailedJob()
+             {
+	              window.location = 'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+	         }
         },
     });
 }

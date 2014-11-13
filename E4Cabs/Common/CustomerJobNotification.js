@@ -32,7 +32,7 @@ function GetCancelledJobsForCustomer() {
                         cancelledBy =  data.d[i].CancelledByID;
                         
                         if(parseInt(relatedId) === cancelledBy){
-                            //alert('hi');
+                           
                            navigator.notification.confirm(
                                "Cancelled JobID = "+ jobId+"\nReason = "+ expReason,
                                 onOKDeleteExpiredJobForCustomer(expJobId),

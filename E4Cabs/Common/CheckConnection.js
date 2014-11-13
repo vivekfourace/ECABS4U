@@ -8,15 +8,14 @@ function checkConnection() {
     {
      navigator.notification.alert(
     "No network connection found.",
-    callBackFunctionB, // Specify a function to be called 
+    callBackFunctionB, 
     'Alert',
     "OK"
-);
-function callBackFunctionB(){
-    $('#txtPassword').val("");
-        return false;
-}
-        //alert("No network connection found.");
+    );
+    function callBackFunctionB(){
+        $('#txtPassword').val("");
+            return false;
+    }
         
     }
     else

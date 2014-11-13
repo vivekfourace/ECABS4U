@@ -89,9 +89,7 @@ function gethistory()
                         }
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) 
-                    {
-                        //alert(errorThrown);
-                    }
+                    { }
                 });
                 
             }
@@ -155,7 +153,6 @@ function showDetail(data)
     // $('#lblTime').text(": "+data.d[3]);
     //Conversion of time formate.
     var time = data.d[3];
-    // alert(time);
     var hrs = Number(time.match(/^(\d+)/)[1]);
     var mnts = Number(time.match(/:(\d+)/)[1]);
     var format = time.match(/\s(.*)$/)[1];
@@ -165,7 +162,6 @@ function showDetail(data)
     var minutes = mnts.toString();
     if (hrs < 10) hours = "0" + hours;
     if (mnts < 10) minutes = "0" + minutes;
-    //alert(hours + ":" + minutes);
      $('#lblTime').text(":"+ hours + ":" + minutes);  
     
     $('#lblFrom').text(": "+data.d[4]);
@@ -268,43 +264,37 @@ function SubmitReject()
     //TODO: write service to abort the job and send email to the customer
       var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/AbortCurrentJobCustomer";
     
-            $.ajax(url,{
-                     beforeSend: function(){
-                        $('#imgLoader').show();
-                     },
-                     complete: function(){
-                        $('#imgLoader').hide();
-                     },
-                     type:"POST",
-                     datatype:"json",
-                     data:"{'relatedId':'" +relatedId+ "','abortMessage':'"+abortMessage+"','jobNumber':'"+jobNumber+"'}",
-                     contentType: "application/json; charset=utf-8",                     
-                     success: function(data){
-                         if(data.d === "true")
-                        {
-                              $('#popup_box1').fadeOut("fast");
-                              $('#divAbortTask').fadeOut("fast");
-                              $('#txtAbortmsg').val("");
-                            // jAlert('Job cancelled.', 'ECabs4U-Abort Job');
-                             alert("Job cancelled.");
-                             // window.location='CustomerHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-                            // navigator.notification.alert(
-				        	//"Job cancelled.",
-  				       	//cancelSuccess, // Specify a function to be called 
- 					   	//'ECABS4U',
- 							//"OK"
-							//);
-                        	//function cancelSuccess()
-                        	//{
-    			     		window.location='CustomerHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-							//}
-                        }                         
-                     },
-                    
-                     error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    // alert(errorThrown);
-                }
-             });
+    $.ajax(url,{
+     beforeSend: function(){
+        $('#imgLoader').show();
+     },
+     complete: function(){
+        $('#imgLoader').hide();
+     },
+     type:"POST",
+     datatype:"json",
+     data:"{'relatedId':'" +relatedId+ "','abortMessage':'"+abortMessage+"','jobNumber':'"+jobNumber+"'}",
+     contentType: "application/json; charset=utf-8",                     
+     success: function(data){
+         if(data.d === "true")
+        {
+              $('#popup_box1').fadeOut("fast");
+              $('#divAbortTask').fadeOut("fast");
+              $('#txtAbortmsg').val("");
+             navigator.notification.alert(
+        	 "Job cancelled.",
+	       	jobCancelDone, // Specify a function to be called 
+		   	 'ECABS4U',
+				"OK"
+			 );
+        	function jobCancelDone()
+        	{
+     		window.location='CustomerHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+			}
+        }                         
+     },
+     error: function (XMLHttpRequest, textStatus, errorThrown) { }
+     });
     
 }
 

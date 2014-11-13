@@ -15,9 +15,7 @@ function getProfile()
             data:"{'userID':'" +relatedId+"'}",
             contentType: "application/json; charset=utf-8",                     
             success: ShowData,            
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-           //alert(errorThrown.message);
-                }
+            error: function (XMLHttpRequest, textStatus, errorThrown) { }
          });
 }
 
@@ -67,7 +65,7 @@ function EditProfile()
           $('#lblEmailID').hide(); 
 }
 
-//upadate customer Profile
+//update customer Profile
 function UpdateProfile()
 {
     var name = $('#txtname').val();    
@@ -78,74 +76,62 @@ function UpdateProfile()
      
     if(name.length == 0)
     {  jAlert('Please enter your name.', 'ECabs4U-Alert');
-        //alert("Please enter your name.");
         return false;
     }
     var phoneno2 =/^\d{11}$/;
     
     if(phoneno.length > 0)
-         {
-                    if(phoneno2.test(phoneno))
-                        {
-                            
-                        }
-                        else
-                    {
-                         jAlert('Please enter a valid Mobile number.', 'ECabs4U-Alert');
-                           //alert("Please enter contact number.");
-                             return false;
-        
-                           
-                    }
-         }
-        else if(phoneno.length == 0)
-         {
-                           jAlert('Please enter contact number.', 'ECabs4U-Alert');
-                           //alert("Please enter contact number.");
-                             return false;
-         }
+    {
+        if(phoneno2.test(phoneno))
+        { }
+        else
+        {
+        jAlert('Please enter a valid Mobile number.', 'ECabs4U-Alert');
+         return false;
+        }
+    }
+    else if(phoneno.length === 0)
+    {
+        jAlert('Please enter contact number.', 'ECabs4U-Alert');
+        return false;
+    }
     if(phoneno.length === 0)
     {
         jAlert('Please enter contact number.', 'ECabs4U-Alert');
-        //alert("Please enter contact number.");
         return false;
     }
     else if(phoneno.length < 11)
     {
         jAlert('Please enter a valid contact number.', 'ECabs4U-Alert');
-        //alert("Please enter a valid contact number.");
         return false;
     }
     
-     if(email.length > 0)
-                    {
-                        if(email.match(regExpEmail))
-                        {
-                           
-                        }
-                        else{
-                            jAlert('Please enter a valid email address.', 'ECabs4U-Alert');
-                            //alert("Please enter a valid email address.");
-                            return false;
-                        }
-                    }
-                else if(email.length == 0)
-                {
-                    jAlert('Please enter email address.', 'ECabs4U-Alert');
-                   //alert("Please enter email address.");
-                    return false;
-                }
-        $.ajax({
-            url:"http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateCustomerDetails",
-            type:"post",
-            dataType:"Json",
-            data:"{'relatedId':'" +relatedId+"','name':'"+name+"','lastname':'"+lastname+"','email':'" +email+"','phoneno':'" +phoneno+"'}",
-            contentType: "application/json; charset=utf-8",                     
-            success: ShowData,            
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
+    if(email.length > 0)
+    {
+        if(email.match(regExpEmail))
+        {
            
         }
-     });
+        else
+        {
+            jAlert('Please enter a valid email address.', 'ECabs4U-Alert');
+            return false;
+        }
+    }
+    else if(email.length == 0)
+    {
+        jAlert('Please enter email address.', 'ECabs4U-Alert');
+        return false;
+    }
+    $.ajax({
+        url:"http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateCustomerDetails",
+        type:"post",
+        dataType:"Json",
+        data:"{'relatedId':'" +relatedId+"','name':'"+name+"','lastname':'"+lastname+"','email':'" +email+"','phoneno':'" +phoneno+"'}",
+        contentType: "application/json; charset=utf-8",                     
+        success: ShowData,            
+        error: function (XMLHttpRequest, textStatus, errorThrown) { }
+   });
 }
 
 function CancelProfile()

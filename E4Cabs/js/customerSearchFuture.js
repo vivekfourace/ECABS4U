@@ -12,7 +12,7 @@ $(document).ready(function ()
                 var geocoder = new google.maps.Geocoder();
                 var latLng = pos;
                 geocoder.geocode({ 'latLng': latLng }, function (results, status) 
-                    {
+                {
                     if (status === google.maps.GeocoderStatus.OK) {
                         if (results[1]) {
                             //alert(results[1].formatted_address);
@@ -20,17 +20,14 @@ $(document).ready(function ()
                         }
                     }
                     else {
-                        //alert("No location found.");
                         navigator.notification.alert(
 				        "No location found.",
-  				      locationNotFoundLater, // Specify a function to be called 
+  				      noLocationNotFoundLater,
  					   'ECABS4U',
  						"OK"
 						);
-                        function locationNotFoundLater()
-                        {
-    			     
-						}
+                        function noLocationNotFoundLater()
+                        { }
                     }
                 });
             });
@@ -44,62 +41,56 @@ $(document).ready(function ()
             },
         });
 
-        $('#chkNo').click(function ()
+     $('#chkNo').click(function ()
      {
-           document.getElementById("chkyes").checked = false;
-         document.getElementById("chkReturnYes2").checked = false;
-           document.getElementById("chkReturnYes").checked = false;
-           $('#returnJ').fadeIn("fast");
-           $('#termCond').fadeIn("fast");
-         $('#returnJ2').fadeOut("slow");
-
-       });
-     
-     
-      //confirm click fuction
-      $('#chkReturnYes').click(function ()
-     {
-         
-          navigator.notification.confirm(
-          "Do you want to confirm this job?",
-           onconfirm2,
-           "Confirm",
-           "Confirm,Cancel" 
-    );
-   });      
-         
- function onconfirm2(buttonIndex)
-{
-    if(buttonIndex === 1)
-    {
-        return false;
-    }
-    else if(buttonIndex === 2)
-    {
-       document.getElementById("chkyes").checked = false;
+        document.getElementById("chkyes").checked = false;
+        document.getElementById("chkReturnYes2").checked = false;
         document.getElementById("chkReturnYes").checked = false;
-        document.getElementById("chkNo").checked = false;
-         $('#returnJ').fadeOut("slow");
-           $('#termCond').fadeOut("slow");
-    }
-}
-         
-         
+        $('#returnJ').fadeIn("fast");
+        $('#termCond').fadeIn("fast");
+        $('#returnJ2').fadeOut("slow");
+     });
      
-       $('#chkyes').click(function () {
-           document.getElementById("chkNo").checked = false;
+     
+     //confirm click fuction
+     $('#chkReturnYes').click(function ()
+     {             
+        navigator.notification.confirm(
+        "Do you want to confirm this job?",
+        onconfirm2,
+        "Confirm",
+        "Confirm,Cancel" 
+        );
+     });      
+         
+    function onconfirm2(buttonIndex)
+    {
+        if(buttonIndex === 1)
+        {
+            return false;
+        }
+        else if(buttonIndex === 2)
+        {
+            document.getElementById("chkyes").checked = false;
             document.getElementById("chkReturnYes").checked = false;
-           $('#returnJ').fadeOut("slow");
-           $('#termCond').fadeOut("slow");
-           $('#returnJ2').fadeIn("fast");
+            document.getElementById("chkNo").checked = false;
+            $('#returnJ').fadeOut("slow");
+            $('#termCond').fadeOut("slow");
+        }
+    }  
+     
+    $('#chkyes').click(function () {
+       document.getElementById("chkNo").checked = false;
+       document.getElementById("chkReturnYes").checked = false;
+       $('#returnJ').fadeOut("slow");
+       $('#termCond').fadeOut("slow");
+       $('#returnJ2').fadeIn("fast");
+    });
 
-       });
-
-       $('#popupBoxClose').click(function () {
-           $('#popup_box').fadeOut("slow");
-           $('#transparent_div').fadeOut("slow");
-           
-       });
+    $('#popupBoxClose').click(function () {
+       $('#popup_box').fadeOut("slow");
+       $('#transparent_div').fadeOut("slow");       
+    });
        
     
     });
@@ -122,44 +113,43 @@ function Duration()
 
 function CalculateDuration(fromLocation, toLocation)
 {
-        var rendererOptions = {
-            draggable: true
-        };
-        var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
-        var directionsService = new google.maps.DirectionsService();
-
-        
-            google.maps.event.addListener(directionsDisplay, 'directions_changed', function () {
-               var time =   computeTotalDistance(directionsDisplay.directions);
-                $('#TravelTime').val(time);
-            });
+    var rendererOptions = {
+        draggable: true
+    };
+    var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
+    var directionsService = new google.maps.DirectionsService();
     
-            calcRoute();
-      
-        function calcRoute() {
-            var start = fromLocation;
-            var end = toLocation;
-            var request = {
-                origin: start,
-                destination: end,
-                travelMode: google.maps.DirectionsTravelMode.DRIVING
-            };
-            directionsService.route(request, function (response, status) {
-                if (status == google.maps.DirectionsStatus.OK) {
-                   directionsDisplay.setDirections(response);
-                }
-            });
-        }
+    google.maps.event.addListener(directionsDisplay, 'directions_changed', function () {
+       var time =   computeTotalDistance(directionsDisplay.directions);
+        $('#TravelTime').val(time);
+    });
 
-        function computeTotalDistance(result) {
-            var time = 0;
-            var myroute = result.routes[0];
-            for (var i = 0; i < myroute.legs.length; i++) {
-                time += myroute.legs[i].duration.value;
+    calcRoute();
+  
+    function calcRoute() {
+        var start = fromLocation;
+        var end = toLocation;
+        var request = {
+            origin: start,
+            destination: end,
+            travelMode: google.maps.DirectionsTravelMode.DRIVING
+        };
+        directionsService.route(request, function (response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+               directionsDisplay.setDirections(response);
             }
-            var total = parseInt(time / 60); //time in min
-            return total;
+        });
+    }
+
+    function computeTotalDistance(result) {
+        var time = 0;
+        var myroute = result.routes[0];
+        for (var i = 0; i < myroute.legs.length; i++) {
+            time += myroute.legs[i].duration.value;
         }
+        var total = parseInt(time / 60); //time in min
+        return total;
+    }
 }
 //getting location basis of postcode
 function loc() {
@@ -179,7 +169,8 @@ function currentlocation() {
 }
 
 //Search Available
-function availabledriverLater() {
+function availabledriverLater() 
+{
     var fromloc;
     var isChecked = $('#chkFromLocation').attr('checked') ? true : false;
     if (isChecked == false) {
@@ -205,10 +196,6 @@ function availabledriverLater() {
 
     var returnDate = document.getElementById("datepickers").value;
     var returnTime = document.getElementById("timepickers").value;
-    
-    
-    
-   
 
     var isCreditCard = null;
     if($('#radCrditcard:checked').val() == 1)
@@ -247,22 +234,35 @@ function availabledriverLater() {
     var isCabNow = $('#RBcabNOW').attr('checked') ? true : false;
     
     var travelTime = $('#TravelTime').val();
-    if (!fromloc)
-    
+    if (!fromloc)    
     {
         $('#lblMessage').text("Please enter From location.");
-        alert("Please enter From location.");
+        navigator.notification.alert(
+       'Please enter From location.',
+        noFromLoc,
+        'ECABS4U',
+        "OK"
+        );
+        function noFromLoc()
+        { }
         return false;
     }
-   else if (!toloc) {
+   else if (!toloc) 
+    {
         $('#lblMessage').text("Please enter Final destination.");
-       alert("Please enter Final destination.");
+        navigator.notification.alert(
+       'Please enter Final destination.',
+        noToLoc,
+        'ECABS4U',
+        "OK"
+        );
+        function noToLoc()
+        { }
         return false;
     }
     else
     {
-        $('#lblMessage').text("");
-        
+        $('#lblMessage').text("");        
     }
    // var IsReturnTrue = $('#chkReturnYes').attr('checked') ? true : false;
    // var isCheckedNo = $('#chkNo').attr('checked') ? true : false;
@@ -270,7 +270,7 @@ function availabledriverLater() {
    // var latertopostcode = $('#locto_postcode').val();
     //alert(latertopostcode);
     
-     var IsReturnTrue = $('#chkReturnYes').attr('checked') ? true : false;
+    var IsReturnTrue = $('#chkReturnYes').attr('checked') ? true : false;
     var isCheckedNo = $('#chkNo').attr('checked') ? true : false;
     var isRetJourAllOperator = $('#chkyes').attr('checked') ? true : false; 
     var IsReturnTrue2 = $('#chkReturnYes2').attr('checked') ? true : false;
@@ -285,67 +285,82 @@ function availabledriverLater() {
         
         if(IsReturnTrue == false)
         {
-              // jAlert('This job has been aborted. You cannot give feedback.', 'ECabs4U-Feedback');
-          alert("Please check confirm box.");
+            navigator.notification.alert(
+            'Please check confirm box.',
+            noCheckConfirm,
+            'ECABS4U',
+            "OK"
+            );
+            function noCheckConfirm()
+            { }
             return false; 
         }  
        
     }
-    if(isRetJourAllOperator == true)
-    {
-     //confirm checkbox validation
-        
-       if(IsReturnTrue2 == false)
+   if(isRetJourAllOperator == true)
+   {
+        //confirm checkbox validation        
+        if(IsReturnTrue2 == false)
         {
-            // jAlert('This job has been aborted. You cannot give feedback.', 'ECabs4U-Feedback');
-           alert("Please check confirm box.");
+            navigator.notification.alert(
+            'Please check confirm box.',
+            noCheckConfirmOnReturn,
+            'ECABS4U',
+            "OK"
+            );
+            function noCheckConfirmOnReturn()
+            { }
             return false; 
-       }  
+        }  
        
    }
     
     //compare present datetime  
     
-     var currentTime = new Date()
-        var hours = currentTime.getHours()
-        var minutes = currentTime.getMinutes()
-        if (minutes < 10)
-            minutes = "0" + minutes
-        if (hours >= 24) {
-            hours = hours - 24;
-        }
-        if (hours == 0) {
-            hours = 0;
-        }
-        $('#pickcurrenttime').val(hours + ":" + minutes);
+    var currentTime = new Date()
+    var hours = currentTime.getHours()
+    var minutes = currentTime.getMinutes()
+    if (minutes < 10)
+        minutes = "0" + minutes
+    if (hours >= 24) {
+        hours = hours - 24;
+    }
+    if (hours == 0) {
+        hours = 0;
+    }
+    $('#pickcurrenttime').val(hours + ":" + minutes);
     
     
     var currentDate = new Date()
-        var day = currentDate.getDate()
-        var month = currentDate.getMonth() + 1
-        var year = currentDate.getFullYear()
-   
-        $('#pickcurrentdate').val(day + "/" + month + "/" + year);
-    
-        var picktimecurrentTIME = document.getElementById('pickcurrenttime').value;
-       // var picktimecurrentDate = document.getElementById('pickcurrentdate').value;
-    
-    
-    
-       var begD = $.datepicker.parseDate('dd/mm/yy', $('#pickcurrentdate').val());
-       var endD = $.datepicker.parseDate('dd/mm/yy', $('#pickDate').val());
-       var retun = $.datepicker.parseDate('dd/mm/yy', $('#datepickers').val());
-    if (begD > endD) {
-            //alert('Please Enter correct Pick Up Date.Pick Up Date should be greater than or Equal to Current Date.');
-       alert("Please enter the required pick-up date and time. This should be later than the current time.");
-        
-       //alert("Please select a date/time in the future.");
-           // $('#BeginDate').focus();
-            return false;
+    var day = currentDate.getDate()
+    var month = currentDate.getMonth() + 1
+    var year = currentDate.getFullYear()
+
+    $('#pickcurrentdate').val(day + "/" + month + "/" + year);
+
+    var picktimecurrentTIME = document.getElementById('pickcurrenttime').value;
+   // var picktimecurrentDate = document.getElementById('pickcurrentdate').value;
+
+
+
+   var begD = $.datepicker.parseDate('dd/mm/yy', $('#pickcurrentdate').val());
+   var endD = $.datepicker.parseDate('dd/mm/yy', $('#pickDate').val());
+   var retun = $.datepicker.parseDate('dd/mm/yy', $('#datepickers').val());
+    if (begD > endD) 
+    {
+        navigator.notification.alert(
+        'Please enter the required pick-up date and time. This should be later than the current time.',
+        inCorrectPickDate,
+        'ECABS4U',
+        "OK"
+        );
+        function inCorrectPickDate()
+        { }
+        return false;
     }   
     else
     {
-         var a = picktimecurrentTIME.split(":");
+        var a = picktimecurrentTIME.split(":");
         var b = picktime.split(":");
         begD.setHours(a[0]);
         endD.setHours(b[0]);
@@ -353,58 +368,51 @@ function availabledriverLater() {
         endD.setMinutes(b[1]);
         if(begD > endD)
         {
-          //  alert("Please Enter correct Pick Up time,Pick Up time should be greater than Current time. ");
-            alert("Please enter the required pick-up date and time. This should be later than the current time.");
+            navigator.notification.alert(
+            'Please enter the required pick-up date and time. This should be later than the current time.',
+            inCorrectPickDate1,
+            'ECABS4U',
+            "OK"
+            );
+            function inCorrectPickDate1()
+            { }
             return false; 
         } 
     }
-     // alert(picktimecurrentDate);
-      //alert(pickdateP);
-    //var pickdatePday=pickdateP.getDate()
-   // alert(pickdatePday);
-    
-     // if( picktimecurrentDate > pickdateP)
-     // {
-     // alert("Please Enter correct Pick Up Date1.");
-      //    return false;
-     // }
-    
-    
-    //old
-    //if(picktime < picktimecurrentTIME)
-     // {
-     //   alert("Please Enter correct Pick Up time,Pick Up time should be greater than Current time. ");
-     //     return false;
-     // }
-    
-     //compare datetime 
-    
+   
     if(isCheckedNo == true || isRetJourAllOperator == true)
-    { var pickdate2 = $.datepicker.parseDate('dd/mm/yy', $('#pickDate').val());
-       var retundate2 = $.datepicker.parseDate('dd/mm/yy', $('#datepickers').val());
+    { 
+        var pickdate2 = $.datepicker.parseDate('dd/mm/yy', $('#pickDate').val());
+        var retundate2 = $.datepicker.parseDate('dd/mm/yy', $('#datepickers').val());
         
         if(pickdate2>retundate2)
         {
-        //alert("Please Enter correct Return  Date.Return Date should be greater than or Equal to Pick Up Date.");
-            alert("Please select a date/time after the pickup date/time.");
-        return false; 
-         }
+            navigator.notification.alert(
+            'Please select a date/time after the pickup date/time.',
+            inCorrectReturnDate,
+            'ECABS4U',
+            "OK"
+            );
+            function inCorrectReturnDate()
+            { }
+            return false; 
+        }
         else if(pickdateP == returnDate)
-        {
-             
+        {   
          if(picktime>=returnTime)
           {
-        alert("Please Enter correct Return time,Return time should be greater than Pick Up time.");
-        return false;  
+            navigator.notification.alert(
+            'Please Enter correct Return time. It should be greater than Pick Up time.',
+            inCorrectReturnDate1,
+            'ECABS4U',
+            "OK"
+            );
+            function inCorrectReturnDate1()
+            { }
+            return false;  
           }
-       }
+        }
    
-     }
-    else
-    {
-      
-        
-    
     }
     
     var laterpostcode = $('#locfrom_postcode').val();
@@ -415,8 +423,6 @@ function availabledriverLater() {
         
         if (IsReturnTrue == true) 
         {
-           // alert(IsReturnTrue);
-           // alert('samedriver Cabnow');
             var pickD = pickdateP;
             var pickT = picktime;
             var fromL = fromloc;
@@ -440,39 +446,31 @@ function availabledriverLater() {
                 data: "{'userID':'" + relatedId + "','frompost':'" + fromL + "','topost':'" + toL + "','pickDate':'" + pickD + "','pickTime':'" + pickT + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnFL + "','returntoloc':'" + returnTL + "','returnDate':'" + retunD + "','returnTime':'" + retunT + "','travelTime':'" + travelTime + "','isCabNow':'" + isCabNow + "','fourthLoc':'" + fourthLoc + "','fifthLoc':'" + fifthLoc + "','sixthLoc':'" + sixthLoc + "','seventhLoc':'" + seventhLoc + "','eightLoc':'" + eightLoc + "', 'laterpostcode':'"+laterpostcode+"', 'isCreditCard':'"+isCreditCard+"', 'latertopostcode':'"+latertopostcode+"', 'samedriver':' "+isCheckedNo+"'}",
                 contentType: "application/json; charset=utf-8",
                 success:function (data) {
-                    if(data.d[0] != "Error")
+                    if(data.d[0] !== "Error")
                     {
-                        //jAlert('Booking in progress. Please check later', 'ECabs4U-Feedback');
-                        //alert('Booking in progress. Please check later.','alert');
-                     navigator.notification.alert(
-				    //"Booking in progress. Please check later.",
-                    "Awaiting bids. Please check later.",
-  				  searchFuture, // Specify a function to be called 
- 					   'ECABS4U',
- 						"OK"
-						);
-				    function searchFuture()
+                        navigator.notification.alert(
+                        "Awaiting bids. Please check later.",
+                        searchFuture, 
+                        'ECABS4U',
+                        "OK"
+                        );
+                        function searchFuture()
                         {
-    			     window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-						}
+                            window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                        }
                        
                         
                     }
                     else
-                    {
-                        //console.log(data.d[1]);
-                       // alert(data.d[1]);
-                        
+                    {                        
                         navigator.notification.alert(
 				        data.d[1],
-  				      searchError, // Specify a function to be called 
+  				      searchError, 
  					   'ECABS4U',
  						"OK"
 						);
                         function searchError()
-                        {
-    			     
-						}
+                        { }
                     }                    
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -488,65 +486,55 @@ function availabledriverLater() {
     {
         moveSearch();
     }
-        function moveSearch()
-        {
-           IsReturnTrue = isRetJourAllOperator;
-           console.log( "{'userID':'" + relatedId + "','frompost':'" + fromloc + "','topost':'" + toloc + "','pickDate':'" + pickdateP + "','pickTime':'" + picktime + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnfromloc + "','returntoloc':'" + returntoloc + "','returnDate':'" + returnDate + "','returnTime':'" + returnTime + "','travelTime':'" + travelTime + "','isCabNow':'" + isCabNow + "','fourthLoc':'" + fourthLoc + "','fifthLoc':'" + fifthLoc + "','sixthLoc':'" + sixthLoc + "','seventhLoc':'" + seventhLoc + "','eightLoc':'" + eightLoc + "', 'laterpostcode':'"+laterpostcode+"', 'isCreditCard':'"+isCreditCard+"', 'latertopostcode':'"+latertopostcode+"', 'samedriver':'"+isCheckedNo+"'}");
-            $.ajax({
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerSearchRequest",
-                cache: false,
-                beforeSend: function(){
-                     $('#imgLoader').show();
-                 },
-                 complete: function(){
-                     $('#imgLoader').hide();
-                 },
-                type: "POST",
-                dataType: "Json",
-                data: "{'userID':'" + relatedId + "','frompost':'" + fromloc + "','topost':'" + toloc + "','pickDate':'" + pickdateP + "','pickTime':'" + picktime + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnfromloc + "','returntoloc':'" + returntoloc + "','returnDate':'" + returnDate + "','returnTime':'" + returnTime + "','travelTime':'" + travelTime + "','isCabNow':'" + isCabNow + "','fourthLoc':'" + fourthLoc + "','fifthLoc':'" + fifthLoc + "','sixthLoc':'" + sixthLoc + "','seventhLoc':'" + seventhLoc + "','eightLoc':'" + eightLoc + "', 'laterpostcode':'"+laterpostcode+"', 'isCreditCard':'"+isCreditCard+"', 'latertopostcode':'"+latertopostcode+"', 'samedriver':'"+isCheckedNo+"'}",
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
-                    if(data.d[0] != "Error")
+    function moveSearch()
+    {
+       IsReturnTrue = isRetJourAllOperator;
+       console.log( "{'userID':'" + relatedId + "','frompost':'" + fromloc + "','topost':'" + toloc + "','pickDate':'" + pickdateP + "','pickTime':'" + picktime + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnfromloc + "','returntoloc':'" + returntoloc + "','returnDate':'" + returnDate + "','returnTime':'" + returnTime + "','travelTime':'" + travelTime + "','isCabNow':'" + isCabNow + "','fourthLoc':'" + fourthLoc + "','fifthLoc':'" + fifthLoc + "','sixthLoc':'" + sixthLoc + "','seventhLoc':'" + seventhLoc + "','eightLoc':'" + eightLoc + "', 'laterpostcode':'"+laterpostcode+"', 'isCreditCard':'"+isCreditCard+"', 'latertopostcode':'"+latertopostcode+"', 'samedriver':'"+isCheckedNo+"'}");
+        $.ajax({
+            url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerSearchRequest",
+            cache: false,
+            beforeSend: function(){
+                 $('#imgLoader').show();
+             },
+             complete: function(){
+                 $('#imgLoader').hide();
+             },
+            type: "POST",
+            dataType: "Json",
+            data: "{'userID':'" + relatedId + "','frompost':'" + fromloc + "','topost':'" + toloc + "','pickDate':'" + pickdateP + "','pickTime':'" + picktime + "','passenger':'" + totalpassenger + "','lcase':'" + largecase + "','scase':'" + smallcase + "','distance':'" + distance + "','secondL':'" + secondLoc + "','thirdLoc':'" + thirdLoc + "','WchairPassengers':'" + WchairPassengers + "','childSeats':'" + childSeats + "','childBooster':'" + childBooster + "','otherSpeRequirement':'" + otherSpeRequirement + "','IsReturnTrue':'" + IsReturnTrue + "','returnfromloc':'" + returnfromloc + "','returntoloc':'" + returntoloc + "','returnDate':'" + returnDate + "','returnTime':'" + returnTime + "','travelTime':'" + travelTime + "','isCabNow':'" + isCabNow + "','fourthLoc':'" + fourthLoc + "','fifthLoc':'" + fifthLoc + "','sixthLoc':'" + sixthLoc + "','seventhLoc':'" + seventhLoc + "','eightLoc':'" + eightLoc + "', 'laterpostcode':'"+laterpostcode+"', 'isCreditCard':'"+isCreditCard+"', 'latertopostcode':'"+latertopostcode+"', 'samedriver':'"+isCheckedNo+"'}",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                if(data.d[0] !== "Error")
+                {
+                     navigator.notification.alert(
+                    "Awaiting bids. Please check later.",
+				 	  searchFuture, 
+					   'ECABS4U',
+						"OK"
+					);
+                    function searchFuture()
                     {
-                        // jAlert('Booking in progress. Please check later', 'ECabs4U-Feedback');
-                        //alert('Booking in progress. Please check later.');
-                        // window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-                         navigator.notification.alert(
-				   	 //"Booking in progress. Please check later.",
-                        "Awaiting bids. Please check later.",
-  				 	  searchFuture, // Specify a function to be called 
- 					   'ECABS4U',
- 						"OK"
-						);
-				function searchFuture()
-                        {
-    			window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-						}
+                        window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                     }
-                    else
-                    {
-                        //console.log(data.d[1]);
-                        //alert(data.d[1]);
-                        
-                        
-                        navigator.notification.alert(
-				        data.d[1],
-  				      searchError, // Specify a function to be called 
- 					   'ECABS4U',
- 						"OK"
-						);
-                        function searchError()
-                        {
-    			     
-						}
-                    }
-                    
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
                 }
-            });
-        }
+                else
+                {
+                    navigator.notification.alert(
+			        data.d[1],
+				      searchError,
+					   'ECABS4U',
+						"OK"
+					);
+                    function searchError()
+                    { }
+                }
+                
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            }
+        });
     }
+}
 
     function homeSearch() {
         window.location = 'customerProfile.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;

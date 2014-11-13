@@ -12,12 +12,6 @@ var map;
 
 function showMap()
 {
-    
-  //  $( "#popup_box").live({
-                   //   popupbeforeposition: function(event, ui) {
-               //         $("body").on("touchmove", false);
-                  //    }
-//});
     document.body.style.overflow = "hidden";
     
     waypts = [];
@@ -102,22 +96,16 @@ function showMap()
                   if (status == google.maps.GeocoderStatus.OK) {
                       latitude = results[0].geometry.location.lat();
                       longitude = results[0].geometry.location.lng();
-                     // alert(latitude);
-                     // alert(longitude);
                   }
                   else {
-                      //alert("No location found.")
                         navigator.notification.alert(
-    			          "No location found.",
-      	               locationNotFound1, // Specify a function to be called 
+    			         "No location found.",
+      	               noLocation1,
      				    'ECABS4U',
      					"OK"
     					 );
-                         function locationNotFound1()
-                         {
-            		     
-        				 }
-                      
+                         function noLocation1()
+                         { }                      
                   }
                   directionsDisplay = new google.maps.DirectionsRenderer();
                   myLocation = new google.maps.LatLng(latitude, longitude);           
@@ -148,23 +136,16 @@ function showMap()
                   if (status == google.maps.GeocoderStatus.OK) {
                       latitude = results[0].geometry.location.lat();
                       longitude = results[0].geometry.location.lng();
-                      //alert(latitude);
-                      //alert(longitude);
                   }
                   else {
-                     // alert("No location found!!")
-                      
-                      navigator.notification.alert(
-    			          "No location found.",
-      	               locationNotFound2, // Specify a function to be called 
+                        navigator.notification.alert(
+    			         "No location found.",
+      	               noLocation2,
      				    'ECABS4U',
      					"OK"
     					 );
-                         function locationNotFound2()
-                         {
-            		     
-        				 }
-                      
+                         function noLocation2()
+                         { }
                   }
             
               directionsDisplay = new google.maps.DirectionsRenderer();

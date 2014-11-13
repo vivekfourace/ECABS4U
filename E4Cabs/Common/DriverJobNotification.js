@@ -10,10 +10,9 @@ function onDeviceReady() {
 
 function showConfirm(param) {
     var now = 1;
-    //alert(param);
+    
     //var later = 2;
-    //alert("Hi");
-    //alert(relatedId);
+    
     $('#transparent_div').show();
     if(param === now)
     { 

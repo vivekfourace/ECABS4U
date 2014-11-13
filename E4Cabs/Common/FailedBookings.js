@@ -25,10 +25,10 @@ $.ajax({
                 for(var i=0; i<count; i++)
                 {
                     requestID = data.d[i]["JobNumber"];
-                  // alert(requestID);
+                 
                 }
                
-              //alert(roleId);
+              
                 if(roleId == 4)//customer
                 {
                      navigator.notification.confirm(

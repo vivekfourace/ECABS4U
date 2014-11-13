@@ -109,8 +109,16 @@ function SelectVehicle(vehAllocatedID)
         {
             if(data.d !== ""){
                 var selectedVehicleName = data.d;
-               alert("You have selected " + selectedVehicleName + " to drive.");
-                window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                navigator.notification.alert(
+                "You have selected " + selectedVehicleName + " to drive.",
+                confirmVehicle,
+                'ECABS4U',
+                "OK"
+                );
+                function confirmVehicle()
+                {
+                   window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;	      
+                }                
             }
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {}
@@ -154,14 +162,12 @@ function UpdateProfile()
      if(!address1)
        {
            		 jAlert('Please enter address line1.', 'ECABS4U');
-                    // alert("Please enter address line1.");
                      $('#txtLocation').focus();                        
                      return false;
        }
        if(!address2)
         {
             		jAlert('Please enter address line2.', 'ECABS4U');
-                    //alert("Please enter address line2.");
                      $('#txtLocation2').focus();                     
                     return false;
          }
@@ -174,7 +180,6 @@ function UpdateProfile()
                         else
                     {
                          jAlert('Please enter a valid Mobile number.', 'ECABS4U');
-                           //alert("Please enter contact number.");
                              return false;
         
                            
@@ -183,14 +188,12 @@ function UpdateProfile()
         else if(phoneno.length == 0)
          {
                		 jAlert('Please enter contact number.', 'ECABS4U');
-                          // alert("Please enter contact number.");
                            $('#txtMobileno').focus();
                            return false;
          }
     if(!postcode)
     {
         jAlert('Please enter postcode.', 'ECABS4U');
-        //alert('Please enter postcode.');
         $('#txtpostcode').focus();
         return false;
     }

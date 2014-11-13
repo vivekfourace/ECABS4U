@@ -51,7 +51,6 @@ function loginUsingCookie() {
     var password= window.localStorage.getItem('userPassword');
     var remMe = window.localStorage.getItem('remember');
     
-    //alert(name+password+remMe);
     
     if (remMe === "true") {
         console.log('in true');

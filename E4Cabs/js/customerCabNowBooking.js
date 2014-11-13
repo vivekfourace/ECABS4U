@@ -309,7 +309,6 @@ function showRatingBoxLaterpast(driverImgUrl, driverID)
         contentType: "application/json; charset=utf-8",
         success: function(data)
         {    
-          // alert(data.d);
             $('#feedback-content').empty();
               ratingcont = data.d.length;
              if(ratingcont > 0)
@@ -413,13 +412,11 @@ function showRatingBoxLaterPresent(driverImgUrl, driverID)
         data: "{'driverID':'" + driverID + "'}",
         contentType: "application/json; charset=utf-8",
         success: function(data)
-        {    
-          // alert(data.d);
+        {   
             $('#feedback-content').empty();
             if(data.d["0"] === null && data.d["1"] === null && data.d["2"] === null && data.d["3"] === null)
             {
-               jAlert('No comments found.', 'ECabs4U-Comments');
-              //  alert('No comments found');
+               jAlert('Sorry!!! No comments found for this driver.', 'ECabs4U-Comments');
             }
             else
             {   
@@ -696,7 +693,6 @@ function getResponseFromDriver(data)
                     $('#load').hide();                    
                     $('#statusMessage').hide();
                     $('#divDeal').hide();
-                    //alert("search again")
                 }
                 else {
                     $('#load').hide();                    
@@ -816,15 +812,15 @@ function DeleteJob(cause)
                 {
                     navigator.notification.alert(
 				   	 data.d,
-  				 	  cabCancledSuccess, // Specify a function to be called 
+  				 	  cabCancledSuccess, 
  					   'ECABS4U',
  						"OK"
 						);
     
-				function cabCancledSuccess()
-                        {
-    			          window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-						}
+				    function cabCancledSuccess()
+                    {
+			          window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+					}
                 },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
             }

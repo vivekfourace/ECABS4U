@@ -75,23 +75,17 @@ function setLocation(data)
                   }
                   else
                   {
-                    //  alert("No location found.")
                        navigator.notification.alert(
     			          "No location found.",
-      	               locationNotFound5, // Specify a function to be called 
+      	               locationNotFound5, 
      				    'ECABS4U',
      					"OK"
     					 );
                          function locationNotFound5()
-                         {
-            		     
-        				 }
+                         { }
                   }
                   directionsDisplay = new google.maps.DirectionsRenderer();
                   myLocation = new google.maps.LatLng(latitude, longitude);  
-                   //alert(myLocation);
-                  //console.log(myLocation);
-
                     var mapOptions = {
                         zoom: 8,
                         //navigationControl: true,
@@ -127,10 +121,9 @@ function setLocation(data)
                   }
                   else
               	{
-                     // alert("No location found!!");
                        navigator.notification.alert(
     			          "No location found.",
-      	               locationNotFound6, // Specify a function to be called 
+      	               locationNotFound6, 
      				    'ECABS4U',
      					"OK"
     					 );
@@ -142,10 +135,7 @@ function setLocation(data)
             
               directionsDisplay = new google.maps.DirectionsRenderer();
               //myLocation = new google.maps.LatLng(latitude, longitude);
-                      myLocation = new google.maps.LatLng(latitude, longitude);
-                    
-                       //alert(myLocation);
-                      // console.log(myLocation);
+              myLocation = new google.maps.LatLng(latitude, longitude);
               var mapOptions = {
                 zoom:8,
                 center: myLocation,

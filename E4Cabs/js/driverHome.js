@@ -179,59 +179,51 @@ function SubmitAbort()
     var abortMessage = $('#txtAbortmsg').val();
     if(!abortMessage)
     {
-        
-      //alert('Please enter a reason.');
-      //return false;
         navigator.notification.alert(
-		"Please enter a reason.",
-  	   validation221, // Specify a function to be called 
- 				   'ECABS4U',
- 					"OK"
-					);
-                 function validation221()
-                 {
-    		      
-				}
-        
+        "Please enter a reason.",
+        abortValidation, 
+        'ECABS4U',
+        "OK"
+        );
+        function abortValidation()
+        { }
+        return false;
          
     }
-      var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/AbortCurrentJob";
+    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/AbortCurrentJob";
     
-            $.ajax(url,{
-                     beforeSend: function(){
-                        $('#imgLoader').show();
-                     },
-                     complete: function(){
-                        $('#imgLoader').hide();
-                         
-                     },
-                     type:"POST",
-                     datatype:"json",
-                     data:"{'relatedId':'" +relatedId+ "','abortMessage':'"+abortMessage+"'}",
-                     contentType: "application/json; charset=utf-8",                     
-                     success: function(data){
-                         if(data.d === "true")
-                         {                            
-                              $('#popup_box1').hide();
-                              $('#divAbortTask').hide();
-                              $('#transparent_div').hide();
-                              $('#txtAbortmsg').val("");
-                              //alert("Job aborted successfully.");
-                              //window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-                             navigator.notification.alert(
-				        	"Job aborted successfully.",
-  				       	abortComplete22, // Specify a function to be called 
- 					   	'ECABS4U',
- 							"OK"
-							);
-                        	function abortComplete22()
-                        	{
-                               
-    			     		window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-							}
-                         }                         
-                     },
-             });
+    $.ajax(url,{
+         beforeSend: function(){
+            $('#imgLoader').show();
+         },
+         complete: function(){
+            $('#imgLoader').hide();                 
+         },
+         type:"POST",
+         datatype:"json",
+         data:"{'relatedId':'" +relatedId+ "','abortMessage':'"+abortMessage+"'}",
+         contentType: "application/json; charset=utf-8",                     
+         success: function(data){
+             if(data.d === "true")
+             {                            
+                  $('#popup_box1').hide();
+                  $('#divAbortTask').hide();
+                  $('#transparent_div').hide();
+                  $('#txtAbortmsg').val("");
+
+                navigator.notification.alert(
+                "Job aborted successfully.",
+                abortJobDone, 
+                'ECABS4U',
+                "OK"
+                );
+            	function abortJobDone()
+            	{                       
+	     		    window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+				}
+             }                         
+         },
+     });
 }
 
 function cancelAbort()
@@ -262,21 +254,21 @@ function onClearCallback(buttonIndex)
     {
         $('#btnOffline').show();
         $.ajax({
-                url:"http://115.115.159.126/ECabs/ECabs4U.asmx/ClearDriverStatus",
-                     type:"POST",
-                     datatype:"json",
-                     data:"{'relatedId':'"+relatedId+"'}",
-                     contentType: "application/json; charset=utf-8",                     
-                     success: function(data){
-                         if(data.d === true)
-                         {                            
-                            window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-                            $('#btnJobDetails').hide();
-                            $('#lblEngaged').show();
-                            $('#lblEngaged').text("Available");
-                         }
-                     },
-            });
+         url:"http://115.115.159.126/ECabs/ECabs4U.asmx/ClearDriverStatus",
+         type:"POST",
+         datatype:"json",
+         data:"{'relatedId':'"+relatedId+"'}",
+         contentType: "application/json; charset=utf-8",                     
+         success: function(data){
+             if(data.d === true)
+             {                            
+                window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                $('#btnJobDetails').hide();
+                $('#lblEngaged').show();
+                $('#lblEngaged').text("Available");
+             }
+         },
+        });
     }
 }
 
@@ -350,11 +342,11 @@ var sec = 15;
 function notEnroute()
 {
    navigator.notification.confirm(
-        "Please confirm your choice.",
-         onErrorEnRoute,
-        "Confirm",
-        "Reject Job, Accept Job "
-        );
+    "Please confirm your choice.",
+     onErrorEnRoute,
+    "Confirm",
+    "Reject Job, Accept Job "
+    );
 }
 function onErrorEnRoute(buttonIndex) 
 {
@@ -369,6 +361,7 @@ function onErrorEnRoute(buttonIndex)
     }
 }
 function countDown() {
+  $("#transparent_div").show(); 
   if (sec < 10) {
     $("#myTimer").text("0" + sec);
   } else {
@@ -390,10 +383,11 @@ function countDown() {
                 $('#btnJobDetails').hide();
                 $('#lblEngaged').show();
                 $('#lblEngaged').text("Available");
-               window.location='DriverCabLaterJobs.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                $("#transparent_div").hide(); 
+                window.location='DriverCabLaterJobs.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
              }
          },
-  error: function (XMLHttpRequest, textStatus, errorThrown) {
+      error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert(errorThrown);
         }
     });
@@ -493,14 +487,13 @@ function showDetail2(data)
     }
     else
     {
-       //$('#rtnto').hide();
         $('#rtnto').hide();
     }
     if(data.d[12]!=="No Driver Comments")
     {
-         $('#MyFeedback').show();
+        $('#MyFeedback').show();
         $('#labelline').show();
-      $('#lblMyFeedback').text(": "+data.d[12]);  
+        $('#lblMyFeedback').text(": "+data.d[12]);  
     }
     else
     {

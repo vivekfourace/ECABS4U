@@ -219,7 +219,6 @@ function showDetail(data)
   //  $('#lblTime').text(": "+data.d[3]);
     //Conversion of time formate.
     var time = data.d[3];
-  //alert(time);
     var hrs = Number(time.match(/^(\d+)/)[1]);
     var mnts = Number(time.match(/:(\d+)/)[1]);
     var format = time.match(/\s(.*)$/)[1];
@@ -229,7 +228,6 @@ function showDetail(data)
     var minutes = mnts.toString();
     if (hrs < 10) hours = "0" + hours;
     if (mnts < 10) minutes = "0" + minutes;
-  //  alert(hours + ":" + minutes);
      $('#lblTime').text(":"+ hours + ":" + minutes);  
     
     
@@ -327,7 +325,6 @@ function SubmitReject()
     if(!abortMessage)
     {
         jAlert('Please enter a reason.', 'ECABS4U');
-        //alert('Please enter a reason.');
         return false;
     }
       var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/AbortCurrentJobDriver";    
@@ -343,31 +340,26 @@ function SubmitReject()
                      data:"{'relatedId':'" +relatedId+ "','abortMessage':'"+abortMessage+"','jobNumber':'"+jobNumber+"'}",
                      contentType: "application/json; charset=utf-8",                     
                      success: function(data){
-                         if(data.d == "true")
+                         if(data.d === "true")
                          {
-                              $('#popup_box1').fadeOut("fast");
-                              $('#divAbortTask').fadeOut("fast");
-                              $('#txtAbortmsg').val("");
-                              $('#transparent_div').hide();
-                             //jAlert('Job aborted successfully.', 'ECABS4U');
-                             alert("Job aborted successfully.");
-                             window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId; 
-                             // navigator.notification.alert(
-				        	 // "Job aborted successfully.",
-  				       	// abortByDriver, // Specify a function to be called 
- 					   	 // 'ECABS4U',
- 							// "OK"
-							 // );
-                        	 // function abortByDriver()
-                        	 // {
-    			     		//  window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId; 
-							 // }
-                         } 
-                         
+                            $('#popup_box1').fadeOut("fast");
+                            $('#divAbortTask').fadeOut("fast");
+                            $('#txtAbortmsg').val("");
+                            $('#transparent_div').hide();
+                            
+                            navigator.notification.alert(
+                            "Job aborted successfully.",
+                            abortedByDriver,
+                            'ECABS4U',
+                            "OK"
+                            );
+                            function abortedByDriver()
+                            {
+                               window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId; 
+                            }
+                         }                          
                      },                    
-                     error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    // alert(errorThrown);
-                }
+                     error: function (XMLHttpRequest, textStatus, errorThrown) { }
              });
     
 }

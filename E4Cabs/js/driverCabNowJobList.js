@@ -140,33 +140,28 @@ function AcceptJobNow(jobno, jobfare)
             {
                 if(data.d  === "true")
                 {
-                   //alert('Job booked successfully.');
-                   // window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                     navigator.notification.alert(
-    			        "Job booked successfully.",
-      	             jobBookedsuccess225, // Specify a function to be called 
-     				   'ECABS4U',
-     					"OK"
-    					);
-                         function jobBookedsuccess225()
-                         {
-            		       window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-        				 }
+                    "Job booked successfully.",
+                    jobBooked, // Specify a function to be called 
+                    'ECABS4U',
+                    "OK"
+                    );
+                    function jobBooked()
+                    {
+                        window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                    }
                 }  
            },
            error: function (XMLHttpRequest, textStatus, errorThrown) 
            {
-               //alert("Some error occurred during booking and payment. Please try again.");
                 navigator.notification.alert(
-    			    "Some error occurred during booking and payment. Please try again.",
-      	         jobBookedError223, // Specify a function to be called 
-     				   'ECABS4U',
-     					"OK"
-    					);
-                     function jobBookedError223()
-                     {
-        		      
-    				 }
+                "We are extremely sorry your inconvinience. Some error occurred during booking. Please try again.",
+                jobBookError, 
+                'ECABS4U',
+                "OK"
+                );
+                function jobBookError()
+                { }
            }
         });
     }
@@ -204,9 +199,6 @@ function showDetail(data)
     
 }
 
-
-
-
 function Cancel()
 {
     $('#popup_box').hide();
@@ -233,19 +225,16 @@ function RejectJobNow(data)
                 data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "'}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
-                    //alert("Job rejected successfully.");
-                     //window.location = 'DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                     navigator.notification.alert(
-    			        "Job rejected successfully.",
-      	              Jobreject223, // Specify a function to be called 
-     				   'ECABS4U',
-     					"OK"
-    					);
-                     function Jobreject223()
+                    "Job rejected successfully.",
+                    driverJobRejectNow,
+                    'ECABS4U',
+                    "OK"
+                    );
+                     function driverJobRejectNow()
                      {
-        		      window.location = 'DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-    				 }
-                    
+        		         window.location = 'DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    				 }                    
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) { }
             });
@@ -268,78 +257,69 @@ function Confirmcomission()
 {
     var reqID = $('#hidJobNoNow').val();
     $.ajax({
-    beforeSend: function()
-    {
-		$('#imgLoader').show();
-	},                
-    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CabNowJobBooked",
-    type: "POST",
-    dataType: "Json",
-    data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
-    contentType: "application/json; charset=utf-8",
-    success: function (data) 
-    {
-        if(data.d !== "")
+        beforeSend: function()
         {
-            console.log(data.d);
-            var returnvalue = data.d;
-            if (returnvalue.match(/"Error:"/g) > 0)
+    		$('#imgLoader').show();
+    	},                
+        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CabNowJobBooked",
+        type: "POST",
+        dataType: "Json",
+        data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) 
+        {
+            if(data.d !== "")
             {
-            	//alert(returnvalue);
-                 navigator.notification.alert(
-			    returnvalue,
-  	          joberror225, // Specify a function to be called 
- 				'ECABS4U',
- 					"OK"
-					);
-                 function joberror225()
-                 {
-    		      //window.location = 'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-				 }
+                console.log(data.d);
+                var returnvalue = data.d;
+                if (returnvalue.match(/"Error:"/g) > 0)
+                {
+                    navigator.notification.alert(
+                    returnvalue,
+                    jobErrorCabNowBook,
+                    'ECABS4U',
+                    "OK"
+                    );
+                    function jobErrorCabNowBook()
+                    { }
+                }
+                else
+                {
+                    document.addEventListener("deviceready", onDeviceReady, false);
+
+                    function iabLoadStart(event) { }
+
+                    function iabLoadStop(event) { }
+
+                    function iabClose(event) {
+                      iabRef.removeEventListener('loadstart', iabLoadStart);
+                      iabRef.removeEventListener('loadstop', iabLoadStop);
+                      iabRef.removeEventListener('exit', iabClose);
+                      window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;                                     
+                    }
+
+                    function onDeviceReady() {
+                      iabRef = window.open(data.d, '_blank', 'location=yes');
+                      iabRef.addEventListener('loadstart', iabLoadStart);
+                      iabRef.addEventListener('loadstop', iabLoadStop);
+                      iabRef.addEventListener('exit', iabClose);
+                    }                 
+                }
             }
             else
             {
-                console.log(data.d);
-                document.addEventListener("deviceready", onDeviceReady, false);
-
-                function iabLoadStart(event) { }
-
-                function iabLoadStop(event) { }
-
-                function iabClose(event) {
-                  iabRef.removeEventListener('loadstart', iabLoadStart);
-                  iabRef.removeEventListener('loadstop', iabLoadStop);
-                  iabRef.removeEventListener('exit', iabClose);
-                  window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;                                     
-                }
-
-                function onDeviceReady() {
-                  iabRef = window.open(data.d, '_blank', 'location=yes');
-                  iabRef.addEventListener('loadstart', iabLoadStart);
-                  iabRef.addEventListener('loadstop', iabLoadStop);
-                  iabRef.addEventListener('exit', iabClose);
-                }                 
+                navigator.notification.alert(
+                "We are sorry for your inconvinience. Unable to do payment for this job. Please try after some time.",
+                paymentError,
+                'ECABS4U',
+                "OK"
+                );
+                function paymentError()
+                { }
             }
-        }
-        else
-        {
-          // alert("Unable to do payment. Please try again.");
-            navigator.notification.alert(
-        			        "Unable to do payment. Please try again.",
-          	             paymentError223, // Specify a function to be called 
-         				   'ECABS4U',
-         					"OK"
-        					);
-                             function paymentError223()
-                             {
-                		      
-            				 }
-        }
-    },
-    error: function (XMLHttpRequest, textStatus, errorThrown) 
-    {
-		console.log("hierror");
-    }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) 
+        { }
     });
     
     $('#divDeal').hide();
