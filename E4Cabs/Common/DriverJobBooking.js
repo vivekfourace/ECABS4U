@@ -852,7 +852,7 @@ function onRejectCallback(buttonIndex)
            
             var rid = $('#hdnJobno').val();
             console.log(rid);
-            var status = "Rejected";
+            var status = "Bid rejected by driver for JobNo "+ rid +".";
             $.ajax({
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RejectResponse",
                 type: "POST",

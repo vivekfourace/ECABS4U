@@ -3,30 +3,23 @@ var userId =  QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 
-document.addEventListener("deviceready", onDeviceReady, false);
-function onDeviceReady()
-{
-    console.log("ready");
-}
-
 function backToIndex()
 {
      window.location =  'driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
-window.onload = gethistory();
-var id;
-id = window.setInterval(gethistory, 20000);
+window.onload = getDriverhistory();
+var id, url, isCabNow, isJobAlive;
+id = window.setInterval(getDriverhistory, 20000);
 
 $(function() {
       $.fn.raty.defaults.path = 'lib/img';  
   });
 
-function gethistory()
-{
-        var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/DriverHistoryDetails";
-        $.ajax(url, 
-        {
+function getDriverhistory()
+{     
+    $.ajax({
+           url : "http://115.115.159.126/ECabs/ECabs4U.asmx/DriverHistoryDetails",
            type:"POST",
            datatype:"json",
            data:"{'relatedId':'"+relatedId+"'}",
@@ -49,8 +42,8 @@ function gethistory()
                              for(var i=0; i<count; i++)
                              {
                                 $('#lbljobFeed').text(data.d[i]["JobNo"]);
-                                var isCabNow = data.d[i]["isCabNow"];
-                                var isJobAlive = data.d[i]["isJobAlive"];
+                                isCabNow = data.d[i]["isCabNow"];
+                                isJobAlive = data.d[i]["isJobAlive"];
                                 html += '<tr>';
                                 html += "<td width='20%' height='30px' align='center'>" +'<a href="#" onclick="JobDetail(\''+data.d[i]["JobNo"]+'\')" style="color:blue;">'+ data.d[i]["JobNo"]+'</a>'+"</td>"; 
                                 html += "<td width='30%' height='30px' align='center'>" + data.d[i]["StartDate"] + "</td>"; 
@@ -192,16 +185,16 @@ function CancelFeedBack()
 function JobDetail(data)
 {
     var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/JobDetailDriver";
-                $.ajax(url, {
-                   type:"POST",
-                   datatype:"json",
-                   data:"{'customerReqID':'"+data+"'}",
-                   contentType: "application/json; charset=utf-8",
-                    success: showDetail,
-                    error: function (XMLHttpRequest, textStatus, errorThrown) 
-                    {                        
-                    }
-                });
+    $.ajax(url, {
+       type:"POST",
+       datatype:"json",
+       data:"{'customerReqID':'"+data+"'}",
+       contentType: "application/json; charset=utf-8",
+        success: showDetail,
+        error: function (XMLHttpRequest, textStatus, errorThrown) 
+        {                        
+        }
+    });
 }
 
 function makeCall()
@@ -216,7 +209,7 @@ function showDetail(data)
     $('#lblJobNo').text(": "+data.d[0]);
     $('#lblFare').html(": "+'&pound'+data.d[1]);
     $('#lbltDate').text(": "+data.d[2]);
-  //  $('#lblTime').text(": "+data.d[3]);
+    //$('#lblTime').text(": "+data.d[3]);
     //Conversion of time formate.
     var time = data.d[3];
     var hrs = Number(time.match(/^(\d+)/)[1]);
@@ -246,22 +239,18 @@ function showDetail(data)
         $('#driverrating').show();
         $('#starrating').raty({ score: data.d[13], readOnly: true });
          console.log("stars=" + $('#hiddenstar').val());
-     }
+    }
     else
     {
-        $('#driverrating').hide();
-        
+        $('#driverrating').hide();        
     }
-                
-     
-    
     
     if(data.d[9]!=="No Customer Feedback")
     {
-        $('#labelline').show();
-        //$('#idName').show();
-         $('#custFeedback').show();
-    // $('#lblCustomerFeedback').text(": "+data.d[9] + " (Rating- "+data.d[13]+")"); 
+       $('#labelline').show();
+       //$('#idName').show();
+       $('#custFeedback').show();
+       // $('#lblCustomerFeedback').text(": "+data.d[9] + " (Rating- "+data.d[13]+")"); 
        $('#lblCustomerFeedback').text(": "+data.d[9]);
        
         
@@ -328,39 +317,39 @@ function SubmitReject()
         return false;
     }
       var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/AbortCurrentJobDriver";    
-            $.ajax(url,{
-                     beforeSend: function(){
-                        $('#imgLoader').show();
-                     },
-                     complete: function(){
-                        $('#imgLoader').hide();
-                     },
-                     type:"POST",
-                     datatype:"json",
-                     data:"{'relatedId':'" +relatedId+ "','abortMessage':'"+abortMessage+"','jobNumber':'"+jobNumber+"'}",
-                     contentType: "application/json; charset=utf-8",                     
-                     success: function(data){
-                         if(data.d === "true")
-                         {
-                            $('#popup_box1').fadeOut("fast");
-                            $('#divAbortTask').fadeOut("fast");
-                            $('#txtAbortmsg').val("");
-                            $('#transparent_div').hide();
-                            
-                            navigator.notification.alert(
-                            "Job aborted successfully.",
-                            abortedByDriver,
-                            'ECABS4U',
-                            "OK"
-                            );
-                            function abortedByDriver()
-                            {
-                               window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId; 
-                            }
-                         }                          
-                     },                    
-                     error: function (XMLHttpRequest, textStatus, errorThrown) { }
-             });
+      $.ajax(url,{
+         beforeSend: function(){
+            $('#imgLoader').show();
+         },
+         complete: function(){
+            $('#imgLoader').hide();
+         },
+         type:"POST",
+         datatype:"json",
+         data:"{'relatedId':'" +relatedId+ "','abortMessage':'"+abortMessage+"','jobNumber':'"+jobNumber+"'}",
+         contentType: "application/json; charset=utf-8",                     
+         success: function(data){
+             if(data.d === "true")
+             {
+                $('#popup_box1').fadeOut("fast");
+                $('#divAbortTask').fadeOut("fast");
+                $('#txtAbortmsg').val("");
+                $('#transparent_div').hide();
+                
+                navigator.notification.alert(
+                "Job aborted successfully.",
+                abortedByDriver,
+                'ECABS4U',
+                "OK"
+                );
+                function abortedByDriver()
+                {
+                   window.location='driverHistory.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId; 
+                }
+             }                          
+         },                    
+         error: function (XMLHttpRequest, textStatus, errorThrown) { }
+      });
     
 }
 function CancelReject()

@@ -54,7 +54,7 @@ function getCablaterBooking()
                                     html += '<td style="width:20%;height:35px;text-align:center;"><a href="#" onclick="ShowDetailBooking(\''+jobID+'\')" style="color:blue;">'+ jobID +'</a></td>'; 
                                     html += "<td style='width:40%;height:35px;text-align:center;' colspan='2' >" + From +"</td>";
                                     html += "<td style='width:20%;height:35px;text-align:center;'>" + To +"</td>";
-                                    html += '<td style="width:20%;height:35px;text-align:center;"><input type="button" class="rejectbtn" value="Cancel Job" style="width:98%"; onclick="CancelJob(\''+jobID+'\')"/></td>';
+                                    html += '<td style="width:20%;height:35px;text-align:center;"><input type="button" class="rejectbtn" value="Cancel Job" style="width:98%;-webkit-appearance:none;-moz-appearance:none;" onclick="CancelJob(\''+jobID+'\')"/></td>';
                                     html += '</tr>';
                                     html += '<tr class="thead-grid2">';
                                     html += '<td>Driver</td>';
@@ -79,7 +79,7 @@ function getCablaterBooking()
                                 html += '</td>';
                                 html += '<td style="width: 20%;text-align:left;"><br/><img src="'+VehicleImages+'" style="width:50px;height:50px;border-radius:4px;" onclick="ShowLargeImageLater(this)\"/></td>';
                                 html += "<td style='width: 15%;height:35px;text-align:center;'>"+'&pound' + Fare +"</td>";
-                                html += '<td style="width: 25%;text-align:left;"><input type="button" class="btn-tmp" value="Rating" style="width:98%"; onclick="showRatingBoxLaterPresent(\''+DriverID+'\')"/></td>';
+                                html += '<td style="width: 25%;text-align:left;"><input type="button" class="btn-tmp" value="Rating" style="width:98%;-webkit-appearance:none;-moz-appearance:none;" onclick="showRatingBoxLaterPresent(\''+DriverID+'\')"/></td>';
                                 if(Fare > 0)
                                 {
                                     if(CustResponse !== true)

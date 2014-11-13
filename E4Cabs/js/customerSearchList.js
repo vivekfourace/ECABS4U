@@ -50,7 +50,7 @@ var timer = setInterval(function () {
         );
         function noDriver()
         {
-            DeleteJob("Cancelled due to no driver found");
+            DeleteJob("Cancelled by customer");
             Destroy();	      
         }        
     }
@@ -161,12 +161,12 @@ function getData(data) {
         html += '<thead class="header-style">';
         html += '<tr style="background-color:lightgray; color:black;">';
         html += '<td style="width:20%;height:35px;padding-left:5px;" colspan="4">Job No - '+ customerReqIdJOB +'</td>';        
-        html += '<td style="width:20%;height:35px;text-align:center;" colspan="2"><input type="button" class="rejectbtn" value="Cancel Job" style="width:98%"; onclick="CancelJobRequest(\''+customerReqIdJOB+'\')"/></td>';
+        html += '<td style="width:20%;height:35px;text-align:center;" colspan="3"><input type="button" class="rejectbtn" value="Cancel Job" style="width:98%;-webkit-appearance:none;-moz-appearance:none;" onclick="CancelJobRequest(\''+customerReqIdJOB+'\')"/></td>';
         html += '</tr>';        
         html += '<tr>';
         html += '<th>Fare</th>';
         html += '<th>Date</th>';
-        html += '<th>Job</th>';
+        //html += '<th>Job</th>';
         html += '<th>Specs</th>';
         html += '<th>ETA</th>';
         html += '<th></th>';
@@ -256,7 +256,7 @@ function getData(data) {
                 html += '<tr>';
                 html += "<td width='10%' align='center'> &pound "+ data.d[i]["Comments"]+"</td>";
                 html += "<td width='25%' align='center'>"+'<a href="#" class="pulse" style="color:blue;" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
-                html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
+                //html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
                 html += "<td width='10%' align='center'>" + '<img src="img/sc.png" class="pulse" width="15" height="15" style="color:grey;" onclick="SpecShow(\''+spec+'\')"/>' + "</td>";
                 html += "<td width='20%' align='center'>" + bidh + ":" + bidm + "</td>";
                 html += "<td width='15%' align='center'>" + '<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" class="disableBtn accept-btn" value="Hire" id= "' + driverID + '" onclick = "Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'' + spec + '\');"/>' + "</td>";
@@ -264,14 +264,14 @@ function getData(data) {
                 html += '<tr>';                 
                 html += '<td style="width:100%;text-align:left;" colspan="2"><img src="'+driverImgUrl+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImage(this)\"/>'
                 html += '<img src="'+vehicleImgUrl+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImage(this)\"/>'
-                html += '<td style="width:100%;text-align:center;" colspan="2"><input type="button" class="btn-tmp" value="Rating" style="width:80%"; onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
+                html += '<td style="width:100%;text-align:center;" colspan="2"><input type="button" class="btn-tmp" value="Rating" style="width:80%;-webkit-appearance:none;-moz-appearance:none;" onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
                 html += '</tr>';
             }
             else if(spec === null) {
                 html += '<tr>';
                 html += "<td width='10%' align='center'> &pound " + data.d[i]["Comments"] + "</td>";
                 html += "<td width='25%' align='center'>" + '<a href="#" style="color:blue;" class="pulse" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
-                html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
+                //html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
                 html += "<td width='10%' align='center'>" + '<img src="img/spec.png"  width="15" height="15" style="color:grey;" onclick="SpecShow(\'Not Available\')"/>' + "</td>";
                 html += "<td width='20%' align='center'>" + bidh + ":" + bidm + "</td>";
                 html += "<td width='15%' align='center'>" + '<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" class="disableBtn accept-btn"  value="Hire" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'Not Available\');"/>' + "</td>";
@@ -279,7 +279,7 @@ function getData(data) {
                 html += '<tr>';
                 html += '<td style="width:100%;text-align:left;" colspan="2"><img src="'+driverImgUrl+'" style="width:50px;height:50px;border-radius:4px" onclick=\"ShowLargeImage(this)\"/>'
                 html += '<img src="'+vehicleImgUrl+'" style="width:50px;height:50px;border-radius:4px" onclick=\"ShowLargeImage(this)\"/>'
-                html += '<td style="width:100%;text-align:center;" colspan="2"><input type="button" class="btn-tmp" value="Rating" style="width:80%"; onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
+                html += '<td style="width:100%;text-align:center;" colspan="2"><input type="button" class="btn-tmp" value="Rating" style="width:80%;-webkit-appearance:none;-moz-appearance:none;" onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
                 html += '</tr>';
             }
         }
@@ -580,7 +580,7 @@ function RejectDriver()
      $('#transparent_div2').hide();
     $('#popup_box').hide();
     $('#divspecHireClick').hide();
-     var status = "Rejected";
+    /* var status = "Rejected";
     var driverId = dId;
     var requestId = reqId;
             $.ajax({
@@ -599,7 +599,7 @@ function RejectDriver()
                         console.log('Exception in RejectResponse');
                     }
                 },
-            });
+            });*/
 }
 
 var dId, reqId, specS;
@@ -680,7 +680,7 @@ function checkDeal() {
                         success: function (data) {
                             console.log("in GetConfirmData");
                             $('#loading').hide();
-                            $('#transparent_div2').hide();                   
+                            //$('#transparent_div2').hide();                   
                             $('#lblconfirmjob').text(data.d[0]);
                             $('#lblconfirmdrivername').text(data.d[1]);
                             $('#lblconfirmfrom').text(data.d[2]);
@@ -746,7 +746,7 @@ function getResponseExpire()
     $('#divDeal').hide();
     $('#loading').hide();
     $('#transparent_div2').hide();
-
+    window.clearInterval(jobs1);
     navigator.notification.alert(
     "Sorry!!! Timed out. Please search again.",
     responseExpired,

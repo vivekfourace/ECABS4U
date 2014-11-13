@@ -100,7 +100,7 @@ function AbortJob(data)
     jobNo = data;
     document.getElementById("lblJobNumber").value = jobNo;
     navigator.notification.confirm(
-    "Do you want to cancel the current cab order.",
+    "Are you sure to cancel the current cab order?",
     onAbortCallback,
     "Confirm",
     btnarray
