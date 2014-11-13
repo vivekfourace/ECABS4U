@@ -12,6 +12,7 @@ jobCheckTime = setInterval(GetCancelledJobsForCustomer, 2000);
 
 
 function GetCancelledJobsForCustomer() {
+    
      $.ajax({
               url:'http://115.115.159.126/ECabs/ECabs4U.asmx/GetCancelledJobsForCustomer', 
               type:"POST",
@@ -20,6 +21,8 @@ function GetCancelledJobsForCustomer() {
               contentType: "application/json; charset=utf-8",                     
               success: function (data) 
                 {
+                    
+                    
                     for(var i = 0 ; i< data.d.length; i++){
                         jobId = data.d[i].CustomeeRequestID;
                         CustId = data.d[i].CustomerID;
@@ -29,6 +32,7 @@ function GetCancelledJobsForCustomer() {
                         cancelledBy =  data.d[i].CancelledByID;
                         
                         if(parseInt(relatedId) === cancelledBy){
+                            //alert('hi');
                            navigator.notification.confirm(
                                "Cancelled JobID = "+ jobId+"\nReason = "+ expReason,
                                 onOKDeleteExpiredJobForCustomer(expJobId),

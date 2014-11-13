@@ -191,19 +191,8 @@ function HireDriver(jobID, driverid)
                    data:"{'driverId':'" + driverid + "','requestId':'" + jobID + "'}",
                    contentType: "application/json; charset=utf-8",
                     success: function(data){
-                      //  alert("Cab selected. Waiting for your driver to confirm he will carry out this transfer");
-                       // window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-                        navigator.notification.alert(
-                        "Cab selected. Waiting for your driver to confirm he will carry out this transfer.",
-                        cabLaterbook224, // Specify a function to be called 
-                        'ECABS4U',
-                        "OK"
-                        );
-                        function cabLaterbook224()
-                        {
-                          window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;  		      
-                        }
-                        
+                        alert("Cab selected. Waiting for your driver to confirm he will carry out this transfer");
+                        window.location =  'customerProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) { }
                 });
@@ -249,18 +238,7 @@ function CancelJob(jobId)
                  data:"{'jobID':'" + jobId + "','customerID':'" + relatedId + "'}",
                  contentType: "application/json; charset=utf-8",                     
                  success: function(data){
-                      // alert("Job cancelled successfully.");
-                     
-                     navigator.notification.alert(
-                    "Job cancelled successfully.",
-                    jobcancel221, // Specify a function to be called 
-                    'ECABS4U',
-                    "OK"
-                    );
-                    function jobcancel221()
-                    {
-                        		      
-                    }
+                       alert("Job cancelled successfully.");
                  },
                  error: function (XMLHttpRequest, textStatus, errorThrown) { }
                  });
@@ -563,18 +541,7 @@ function CancelDriver(jobID, driverid)
                    data:"{'jobID':'" +jobID+ "','driverID':'"+driverid+"','customerID':'"+relatedId+"'}",
                    contentType: "application/json; charset=utf-8",
                     success: function(){
-                       // alert("Driver cancelled for this job.");
-                        navigator.notification.alert(
-                        "Driver cancelled for this job.",
-                        driverCancel221, // Specify a function to be called 
-                        'ECABS4U',
-                        "OK"
-                        );
-                        function driverCancel221()
-                        {
-                            		      
-                        }
-                        
+                        alert("Driver cancelled for this job.");
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) 
                     { }
