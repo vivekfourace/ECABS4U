@@ -42,6 +42,8 @@ var timer = setInterval(function () {
         window.clearInterval(timer);
         window.clearInterval(id);
         window.clearInterval(reinitiateCounter);
+        $('#bookingmsg').hide();
+        $('#bookingmsg244').hide();
         navigator.notification.alert(
        'No driver found Please search again.',
         noDriver,
@@ -50,7 +52,7 @@ var timer = setInterval(function () {
         );
         function noDriver()
         {
-            DeleteJob("Cancelled by customer");
+            //DeleteJob("Cancelled by customer");
             Destroy();	      
         }        
     }
@@ -78,10 +80,18 @@ function CheckJobCount()
 }
 
 function Destroy() {
+    $('#divNoDriver').show(); 
     window.clearInterval(timer);
     window.clearInterval(id);
     window.clearInterval(reinitiateCounter);
-    window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+    $('#load').hide();                    
+    $('#statusMessage').hide();
+    $('#divDeal').hide();
+    $('#loading').hide();
+    $('#transparent_div2').hide();
+
+    $('#msg').hide();
+    //window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
 }
 
 $('#load').show();
@@ -717,7 +727,7 @@ function checkDeal() {
                 else if(getBooked === "")
                 {
                    
-                  jobs1 = window.setInterval(getResponseExpire, 20000);
+                  jobs1 = window.setInterval(getResponseExpire, 200000);
                   ///RejectDriver()-----see this function for delete driver response. 
                 }
                 else {
@@ -747,8 +757,8 @@ function getResponseExpire()
     $('#loading').hide();
     $('#transparent_div2').hide();
     window.clearInterval(jobs1);
-    //$('#msg').hide();
-   // $("#bookingmsg").show();
+    $('#msg').hide();
+    $("#bookingmsg244").show();
     //getResponseFalse();
 // navigator.notification.alert(
 // "Sorry!!! Timed out. Please search again.",
