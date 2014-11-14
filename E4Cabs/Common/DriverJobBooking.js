@@ -832,27 +832,27 @@ function SaveDataOfCurrentJob()
             $('#divabort').hide();
         }
 
-function reqReject() {            
+function reqReject(sendToCustomer) { 
     navigator.notification.confirm(
     "Do you want to reject the job?",
     onRejectCallback,
     "Confirm",
     "Yes,No"  
     );
-}
-
-function onRejectCallback(buttonIndex)
-{
-    if(buttonIndex === 2)
+    
+    function onRejectCallback(buttonIndex)
     {
-        return false;
-    }
-    else if(buttonIndex === 1)
-    {
-           
+        if(buttonIndex === 2)
+        {
+            return false;
+        }
+        else if(buttonIndex === 1)
+        {   
             var rid = $('#hdnJobno').val();
-            console.log(rid);
+           
             var status = "Bid rejected by driver for JobNo "+ rid +".";
+            if(sendToCustomer === 1)
+                status = "";
             $.ajax({
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RejectResponse",
                 type: "POST",
@@ -870,6 +870,7 @@ function onRejectCallback(buttonIndex)
                     }
                 },
             });
+        }
     }
-}
 
+}

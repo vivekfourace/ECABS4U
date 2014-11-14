@@ -93,7 +93,6 @@
                                         $('#lblchildseat').text(": " + data.d[0][12]);
                                         $('#lblchildbooster').text(": " + data.d[0][13]);
 
-                                        console.log(data.d[0][25]);
                                         if (data.d[0][3] !== null) {
                                             $('#loc1').show();
                                             $('#lblLoc1').text(data.d[0][3]);
@@ -1281,7 +1280,7 @@
                         <input type="button" id="btnmap" class="specialBtn" onclick="showMapDriver()" style="width: 100%;-webkit-appearance:none;-moz-appearance:none;" value="Map" />
                     </td>
                     <td style="width:25%">
-                        <input type="button" id="btnreject" class="specialBtn" onclick="reqReject()" style="width: 100%;-webkit-appearance:none;-moz-appearance:none;" value="Reject" />
+                        <input type="button" id="btnreject" class="specialBtn" onclick="reqReject(1)" style="width: 100%;-webkit-appearance:none;-moz-appearance:none;" value="Reject" />
                     </td>
                 </tr>
             </table>

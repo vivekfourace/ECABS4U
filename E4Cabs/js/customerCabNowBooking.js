@@ -32,7 +32,7 @@ function getResponse()
 function getData(data) {    
     var count = data.d.length; 
     
-    var previousjobID = 0, jobID = 0, DriverID = 0;
+    var previousjobID = "", jobID = "";
     if(count > 0)
     {
         $('#bookingmsgnow').hide();
@@ -58,22 +58,22 @@ function getData(data) {
             html += '<th>To</th>';
             html += '<th></th>';
             html += '</tr>';
-        
+        var From, To, CustResponse, DriverName, DriverPhoto, VehicleImages, spec, DriverID, Fare, searchTime, bidTime;
       
         
         for (var i = 0; i < count; i++) {
         	jobID = data.d[i]["CustomerRequestID"];
-            var From = data.d[i]["From"];
-            var To = data.d[i]["To"];
-            var CustResponse = data.d[i]["CustomerResponse"];           
-            var DriverName = data.d[i]["DriverName"];
-            var DriverPhoto = data.d[i]["DriverPicUrl"];
-            var VehicleImages = data.d[i]["VehicleImageUrl"];
-            var spec = data.d[i]["DriverSpecialReq"];
+            From = data.d[i]["From"];
+            To = data.d[i]["To"];
+            CustResponse = data.d[i]["CustomerResponse"];           
+            DriverName = data.d[i]["DriverName"];
+            DriverPhoto = data.d[i]["DriverPicUrl"];
+            VehicleImages = data.d[i]["VehicleImageUrl"];
+            spec = data.d[i]["DriverSpecialReq"];
             DriverID = data.d[i]["DriverID"];
-            var Fare = data.d[i]["Comments"];
-            var searchTime = data.d[i]["SearchTime"];
-            var bidTime = data.d[i]["BidTime"];
+            Fare = data.d[i]["Fare"];
+            searchTime = data.d[i]["SearchTime"];
+            bidTime = data.d[i]["BidTime"];
             getBidTimeData(searchTime,bidTime);
             
             if(i>0){ previousjobID = data.d[i-1]["CustomerRequestID"]; }
@@ -83,8 +83,8 @@ function getData(data) {
                 html += '<tr style="background-color:white">';
                 html += '<td colspan="5"><hr style="border:2px solid darkred; margin: -2px;" ></td>';
                 html += '</tr>';
-                html += '<tr style="background-color:lightgray;">';
-                html += '<td style="width:20%;height:35px;text-align:center;"><a href="#" onclick="ShowDetailBooking(\''+jobID+'\')" style="color:blue;">'+ jobID +'</a></td>'; 
+                html += '<tr style="background-color:#F8DC94;">';
+                html += '<td style="width:20%;height:35px;text-align:center; font-size:15px;"><a href="#" onclick="ShowDetailBooking(\''+jobID+'\')" style="color:blue;">'+ jobID +'</a></td>'; 
                 html += "<td style='width:20%;height:35px;text-align:center;'>" + From +"</td>";
                 html += "<td style='width:20%;height:35px;text-align:center;'>" + To +"</td>";
                 html += '<td style="width:20%;height:35px;text-align:center;"><input type="button" class="rejectbtn" value="Cancel Job" style="-webkit-appearance:none;-moz-appearance:none;width:98%"; onclick="CancelJob(\''+jobID+'\')"/></td>';

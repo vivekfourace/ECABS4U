@@ -717,7 +717,7 @@ function checkDeal() {
                 else if(getBooked === "")
                 {
                    
-                  jobs1 = window.setInterval(getResponseExpire, 200000);
+                  jobs1 = window.setInterval(getResponseExpire, 20000);
                   ///RejectDriver()-----see this function for delete driver response. 
                 }
                 else {
@@ -747,18 +747,21 @@ function getResponseExpire()
     $('#loading').hide();
     $('#transparent_div2').hide();
     window.clearInterval(jobs1);
-    navigator.notification.alert(
-    "Sorry!!! Timed out. Please search again.",
-    responseExpired,
-    'ECABS4U',
-    "OK"
-    );
-
-    function responseExpired()
-    {
-       window.clearInterval(jobs1);
-       window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-    }    
+    //$('#msg').hide();
+   // $("#bookingmsg").show();
+    //getResponseFalse();
+// navigator.notification.alert(
+// "Sorry!!! Timed out. Please search again.",
+// responseExpired,
+// 'ECABS4U',
+// "OK"
+// );
+//
+// function responseExpired()
+// {
+//    window.clearInterval(jobs1);
+//    window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+// }    
         
 }
 
