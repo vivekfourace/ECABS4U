@@ -55,34 +55,93 @@ function  NavigateToMap()
         type:"POST",
         dataType: "Json",
         data:"{'relatedId':'"+relatedId+"'}",
-        contentType: "application/json; charset=utf-8",                     
-        success: function(data)
-        {
-            if(data.d === true)
-            {
-                $('#btnJobDetails').show();
-                $('#lblEngaged').show();
-                $('#lblEngaged').text("Engaged");
-                $('#btnEngage').hide();
-                $('#btnabort').show();
-                $('#btnclear').show();
-                //notEnroutebutton show
-                $('#btnnotEnroute').show();
-                
-                $('#btnnavigation').show();
-                $('#btnOffline').hide();
-                loadjscssfile("Common/UpdatePostcode.js", "js");
-            }
-            else if(data.d === false)
-            {
-                $('#btnJobDetails').hide();
-                $('#lblEngaged').show();
-                $('#lblEngaged').text("Available");               
-            }
-        },
-        
+        contentType: "application/json; charset=utf-8",  
+        success: ShowDataDriverStatus,
+       // success: function(data)
+       // {
+       //     if(data.d === True)
+       //     {
+       //         $('#btnJobDetails').show();
+       //         $('#lblEngaged').show();
+       //         $('#lblEngaged').text("Engaged");
+       //         $('#btnEngage').hide();
+       //         $('#btnabort').show();
+       //         $('#btnclear').show();
+       //         //notEnroutebutton show
+       //         $('#btnnotEnroute').show();
+       //         
+       //         $('#btnnavigation').show();
+       //         $('#btnOffline').hide();
+       //         loadjscssfile("Common/UpdatePostcode.js", "js");
+       //     }
+       //     else if(data.d === false)
+       //     {
+       //         $('#btnJobDetails').hide();
+       //         $('#lblEngaged').show();
+       //         $('#lblEngaged').text("Available");               
+       //     }
+       // },
+       // 
         error: function (XMLHttpRequest, textStatus, errorThrown) {}
      });
+
+//Driver Status check(Engaged/Available)
+function ShowDataDriverStatus(data)
+{
+    for ( var i = 0; i < data.d.length; i++ ) 
+    {
+        
+        if(data.d[0] === "True")
+           {
+             // alert("in1");
+              // alert(data.d[1])
+               
+               if(data.d[1] === "True")
+               {
+                   $('#btnJobDetails').show();
+                   $('#lblEngaged').show();
+                   $('#lblEngaged').text("Engaged");
+                   $('#btnEngage').hide();
+                   $('#btnabort').show();
+                   $('#btnclear').show();
+                   //notEnroutebutton show
+                   $('#btnnotEnroute').hide();
+                   
+                   $('#btnnavigation').show();
+                   $('#btnOffline').hide();
+                   loadjscssfile("Common/UpdatePostcode.js", "js");  
+               }
+               else if(data.d[1] === "False")
+               {
+                    $('#btnJobDetails').show();
+                   $('#lblEngaged').show();
+                   $('#lblEngaged').text("Engaged");
+                   $('#btnEngage').hide();
+                   $('#btnabort').show();
+                   $('#btnclear').show();
+                   //notEnroutebutton show
+                   $('#btnnotEnroute').show();
+                   
+                   $('#btnnavigation').show();
+                   $('#btnOffline').hide();
+                   loadjscssfile("Common/UpdatePostcode.js", "js");  
+               }
+               
+           }
+        else
+          {
+               // alert("in2");
+                $('#btnJobDetails').hide();
+                $('#lblEngaged').show();
+                $('#lblEngaged').text("Available");
+          }
+        
+        
+    }
+}
+
+
+
 
 function AbortJob()
 {

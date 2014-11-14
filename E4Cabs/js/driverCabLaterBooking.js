@@ -223,45 +223,98 @@ function Cancel()
 function RejectJob(data)
 {
     $('body').css('overflow','hidden');
-    var isTrue = confirm("Confirm you want to reject this job offer?");
-    if(isTrue)
-    {
-            var rid = data;   
-            var status = "Reject";
-            $.ajax({
-                beforeSend: function(){
-                   $('#imgLoader').show();
-                },
-                complete: function(){
-                   $('#imgLoader').hide();
-                },
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RejectResponse",
-                type: "POST",
-                dataType: "Json",
-                data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "'}",
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
-                    $('body').css('overflow','auto');
-                  //  alert("Job rejected successfully.");
-                  //  window.location = 'DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-                        navigator.notification.alert(
-    			        "Job rejected successfully.",
-      	              Jobreject221, // Specify a function to be called 
-     				   'ECABS4U',
-     					"OK"
-    					);
-                     function Jobreject221()
-                     {
-        		      window.location = 'DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-    				 }
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) { }
-            });
-    }
-    else
-    {
-        return false;
-    }
+   // var isTrue = confirm("Confirm you want to reject this job offer?");
+   // if(isTrue)
+   // {
+   //         var rid = data;   
+   //         var status = "Reject";
+   //         $.ajax({
+   //             beforeSend: function(){
+   //                $('#imgLoader').show();
+   //             },
+   //             complete: function(){
+   //                $('#imgLoader').hide();
+   //             },
+   //             url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RejectResponse",
+   //             type: "POST",
+   //             dataType: "Json",
+   //             data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "'}",
+   //             contentType: "application/json; charset=utf-8",
+   //             success: function (data) {
+   //                 $('body').css('overflow','auto');
+   //               //  alert("Job rejected successfully.");
+   //               //  window.location = 'DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+   //                     navigator.notification.alert(
+   // 			        "Job rejected successfully.",
+   //   	              Jobreject221, // Specify a function to be called 
+   //  				   'ECABS4U',
+   //  					"OK"
+   // 					);
+   //                  function Jobreject221()
+   //                  {
+   //     		      window.location = 'DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+   // 				 }
+   //             },
+   //             error: function (XMLHttpRequest, textStatus, errorThrown) { }
+   //         });
+   // }
+   // else
+   // {
+   //     return false;
+   // }
+    
+    navigator.notification.confirm(
+    "Confirm you want to reject this job offer?.",
+    canceljobLater, 
+    'ECABS4U',
+    "OK,Cancel"
+    );
+    
+    function canceljobLater(buttonIndex)
+     {
+            if(buttonIndex === 2)
+            {
+               
+                return false;
+            }
+            else if(buttonIndex === 1)
+            {
+                
+                
+                var rid = data;   
+                var status = "Bid rejected by driver for JobNo " + rid;
+                $.ajax({
+                    beforeSend: function(){
+                       $('#imgLoader').show();
+                    },
+                    complete: function(){
+                       $('#imgLoader').hide();
+                    },
+                    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RejectResponse",
+                    type: "POST",
+                    dataType: "Json",
+                    data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "'}",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        $('body').css('overflow','auto');
+                      //  alert("Job rejected successfully.");
+                      //  window.location = 'DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                            navigator.notification.alert(
+        			        "Job rejected successfully.",
+          	              Jobreject221, 
+         				   'ECABS4U',
+         					"OK"
+        					);
+                         function Jobreject221()
+                         {
+            		      window.location = 'DriverCabLaterBooking.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+        				 }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) { }
+                });
+                
+            }
+     }
             
 }
 

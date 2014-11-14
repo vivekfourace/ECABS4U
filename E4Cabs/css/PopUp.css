@@ -192,7 +192,7 @@
     
 }
 .footerDiv {
-    height: 41px;
+    height: 50px;
   
     background-color: white;
     color:#FFF200;
@@ -204,7 +204,7 @@
     width: 80%;
     height: 41px;
     text-align: center;
-    font-size: 116%;
+    font-size: 145%;
     color: #FFF200;
     border:#2A81CF;
     background-color: #2A81CF;

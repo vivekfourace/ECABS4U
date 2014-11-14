@@ -95,10 +95,10 @@
           
         <div style="width:100%;float:left;">
             
-            <table style="width:100%; border-collapse:collapse; background-color:#FFFFFF;">
+            <table style="width:95%; border-collapse:collapse; background-color:#FFFFFF;">
                        
                 <tr>
-                    <td style="width:100%;" colspan="2">                               
+                    <td style="width:100%;" >                               
                         <span style="width:90%;text-align:justify;color:#0000FF;font-size:22px;">Unfortunately the chosen driver is no longer able to carry out your transfer please choose from the following options</span>
                     </td>
                 </tr>
@@ -106,23 +106,95 @@
                     
                 <tr class="footerDiv">
                     
-                     <td style="width:30%">
+                     <td style="width:60%">
                         <input type="button" class="ok2" value="Choose another driver" style="width:100%;-webkit-appearance:none;-moz-appearance:none;" onclick="SearchAgain()" />
                      </td>
-                     <td style="width:30%">
-                        <input type="button" class="ok2" value="Alter search parameters" style="width:100%;-webkit-appearance:none;-moz-appearance:none;" onclick="AlterJob()" />
-                     </td>
+                     
                 </tr>
                 <tr class="footerDiv"> 
-                     <td style="width:40%">
+                     <td style="width:60%">
+                         
+                         <input type="button" class="ok2" value="Alter search parameters" style="width:100%;-webkit-appearance:none;-moz-appearance:none;" onclick="AlterJob()" />
+                         </td>
+                    </tr>
+                <tr class="footerDiv"> 
+                     <td style="width:60%">
                         <input type="button" class="ok2" value="Re-initiate search" style="width:100%;-webkit-appearance:none;-moz-appearance:none;" onclick="AlterJob2()" />
                      </td>
                 </tr>
+                
             </table>
                 
                    </div>
               
         </div> 
+        
+        <!--New msg Div-->
+        
+        <div id="bookingmsg244" style="display:none;">
+       
+          
+            <div style="width:100%;float:left;padding-top:100px;">
+                
+                <table style="width:95%; border-collapse:collapse; background-color:#FFFFFF;">
+                           
+                    <tr>
+                        <td style="width:100%;" >                               
+                            <span style="width:90%;text-align:justify;color:#0000FF;font-size:22px;">Unfortunately we are not getting any response from selected Driver. We request you to please choose from following options-</span>
+                        </td>
+                    </tr>
+                       
+                        
+                    <tr class="footerDiv">
+                        
+                         <td style="width:60%">
+                            <input type="button" class="ok2" value="Alter search parameters" style="width:100%;-webkit-appearance:none;-moz-appearance:none;" onclick="AlterJob()" />
+                         </td>
+                    </tr>
+                    <tr class="footerDiv"> 
+                         <td style="width:60%">
+                            <input type="button" class="ok2" value="Re-initiate search" style="width:100%;-webkit-appearance:none;-moz-appearance:none;" onclick="AlterJob2()" />
+                         </td>
+                    </tr>
+                </table>
+                    
+                       </div>
+              
+        </div>
+        
+        
+        <div id="divNoDriver" style="display:none;">
+       
+          
+            <div style="width:100%;float:left;padding-top:100px;">
+                
+                <table style="width:95%; border-collapse:collapse; background-color:#FFFFFF;">
+                           
+                    <tr>
+                        <td style="width:100%;" >                               
+                            <span style="width:90%;text-align:justify;color:#0000FF;font-size:22px;">Unfortunately "NO Driver" found based on your search criteria. We request you to please choose from following options-</span>
+                        </td>
+                    </tr>
+                       
+                        
+                    <tr class="footerDiv">
+                        
+                         <td style="width:60%">
+                            <input type="button" class="ok2" value="Alter search parameters" style="width:100%;-webkit-appearance:none;-moz-appearance:none;" onclick="AlterJob()" />
+                         </td>
+                    </tr>
+                    <tr class="footerDiv"> 
+                         <td style="width:60%">
+                            <input type="button" class="ok2" value="Re-initiate search" style="width:100%;-webkit-appearance:none;-moz-appearance:none;" onclick="AlterJob2()" />
+                         </td>
+                    </tr>
+                </table>
+                    
+                       </div>
+              
+        </div>
+        
+        
              <div style="width:100%;height:75%;" id="divDetails">
                 <div id="popup_box">
                     <div id="divselect" style="display:none;width:100%;">

@@ -4,7 +4,6 @@ var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 var requestID = QString.split("=")[4];
 
-console.log(requestID);
 
 if(requestID !== undefined)
 {
@@ -541,6 +540,7 @@ function availabledriver() {
     }
 
  function homeSearch() {
-    window.location = 'customerProfile.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+    //window.location = 'customerProfile.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+     window.location = 'customerSearchList.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
  }
 
