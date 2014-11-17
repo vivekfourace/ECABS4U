@@ -170,7 +170,7 @@ function getData(data) {
         var html = '<table width="100%" style="border-collapse:collapse;">'; 
         html += '<thead class="header-style">';
         html += '<tr style="background-color:lightgray; color:black;">';
-        html += '<td style="width:20%;height:35px;padding-left:5px;" colspan="4">Job No - '+ customerReqIdJOB +'</td>';        
+        html += '<td style="width:20%;height:35px;padding-left:5px;font-size:18px" colspan="4">Job No - '+ customerReqIdJOB +'</td>';        
         html += '<td style="width:20%;height:35px;text-align:center;" colspan="3"><input type="button" class="rejectbtn" value="Cancel Job" style="width:98%;-webkit-appearance:none;-moz-appearance:none;" onclick="CancelJobRequest(\''+customerReqIdJOB+'\')"/></td>';
         html += '</tr>';        
         html += '<tr>';
@@ -264,7 +264,7 @@ function getData(data) {
                 console.log(driverID);
                 console.log(spec);
                 html += '<tr>';
-                html += "<td width='10%' align='center'> &pound "+ data.d[i]["Comments"]+"</td>";
+                html += "<td width='10%' align='center'> &pound "+ data.d[i]["Fare"]+"</td>";
                 html += "<td width='25%' align='center'>"+'<a href="#" class="pulse" style="color:blue;" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
                 //html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
                 html += "<td width='10%' align='center'>" + '<img src="img/sc.png" class="pulse" width="15" height="15" style="color:grey;" onclick="SpecShow(\''+spec+'\')"/>' + "</td>";
@@ -279,7 +279,7 @@ function getData(data) {
             }
             else if(spec === null) {
                 html += '<tr>';
-                html += "<td width='10%' align='center'> &pound " + data.d[i]["Comments"] + "</td>";
+                html += "<td width='10%' align='center'> &pound " + data.d[i]["Fare"] + "</td>";
                 html += "<td width='25%' align='center'>" + '<a href="#" style="color:blue;" class="pulse" onclick="showExpiry()">(Exp)</a>' + '<a href="#" style="color:blue;" class="pulse" onclick="showBid()">(Bid)</a>' + "</td>";
                 //html += "<td width='20%' align='center'>" + data.d[i]["CustomerRequestID"] + "</td>";
                 html += "<td width='10%' align='center'>" + '<img src="img/spec.png"  width="15" height="15" style="color:grey;" onclick="SpecShow(\'Not Available\')"/>' + "</td>";
@@ -590,11 +590,13 @@ function RejectDriver()
      $('#transparent_div2').hide();
     $('#popup_box').hide();
     $('#divspecHireClick').hide();
-    /* var status = "Rejected";
+    // var status = "Rejected";
+    
     var driverId = dId;
     var requestId = reqId;
+    var status="Bid rejected by customer.";
             $.ajax({
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RejectResponse",
+                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RejectResponseByCustomer",
                 type: "POST",
                 dataType: "Json",
                 data: "{'userID':'" + driverId + "','reqid':'" + requestId + "','status':'" + status + "'}",
@@ -609,7 +611,7 @@ function RejectDriver()
                         console.log('Exception in RejectResponse');
                     }
                 },
-            });*/
+            });
 }
 
 var dId, reqId, specS;

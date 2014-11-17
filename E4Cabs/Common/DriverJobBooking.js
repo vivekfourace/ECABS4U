@@ -278,9 +278,9 @@ SubmitDeal();
 }
 
 
-
+var isCabnow;
 function bidSubmit() {
-            var isCabnow = $('#hiddenIsCabnow').val();
+            isCabnow = $('#hiddenIsCabnow').val();
              var selectedvehicle = document.getElementById("ddlselectedvehicle");
                  var selectedcab = selectedvehicle.options[selectedvehicle.selectedIndex].value;
         // alert(selectedcab);
@@ -794,8 +794,8 @@ function SaveDataOfCurrentJob()
         function RejectComission() {
             $('#divComission').hide();
             $('#divComission2').hide();
-            var rid = $('#hdnJobno').val();
-            var status = "Rejected at commission time";
+            var rid = $('#hdnJobno').val();           
+            var status = rid+" Rejected at commission time.";
             $.ajax({
                 url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RejectResponse",
                 type: "POST",
@@ -849,8 +849,10 @@ function reqReject(sendToCustomer) {
         else if(buttonIndex === 1)
         {   
             var rid = $('#hdnJobno').val();
-           
-            var status = "Bid rejected by driver for JobNo "+ rid +".";
+            var status = "";
+            if(isCabnow === "False")
+              status = "Bid rejected by driver for JobNo "+ rid +".";
+            
             if(sendToCustomer === 1)
                 status = "";
             $.ajax({

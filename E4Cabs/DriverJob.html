@@ -203,7 +203,8 @@
                                         } else {
                                             $('#otherLoc').hide();
                                         }
-                                    } else {
+                                    }
+                                     else {
                                         $('#tbdetails').hide();
                                        // alert("Sorry, this job has been passed out some time before.");
                                        // window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
@@ -256,18 +257,23 @@
                         }
                         else{
                             $('#tbdetails').hide();
+                            $('#jobPassed').show();
+                           
                             //alert("Sorry this job has been passed out.");
-                           // window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
-                            navigator.notification.alert(
-                                        "Sorry this job has been passed out.",
-                                        jobPassedout429, // Specify a function to be called 
-                                        'ECABS4U',
-                                        "OK"
-                                        );
-                                        function jobPassedout429()
-                                        {
-                                          window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;  		      
-                                        }
+                            //window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;
+                                       
+                          
+                            //navigator.notification.alert(
+                            //            "Sorry this job has been passed out.",
+                            //            jobpassed, // Specify a function to be called 
+                            //            'ECABS4U',
+                            //            "OK"
+                            //            );
+                            //            function jobPassedout429()
+                            //            {
+                            //              alert("52525252."); 
+                            //                window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;  		      
+                            //            }
                         }
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -288,6 +294,11 @@
                     }});
             });       
 
+            function jobPassed(){
+                $('#jobPassed').hide();
+                HomePage();
+                //window.location = 'driverHome.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId;  		      
+            }
         </script>
         <style type="text/css">
             #mapCanvas
@@ -657,7 +668,20 @@
                     </tr>
                 </table>
             </div>
-            
+            <div id="jobPassed" style="width:100%;padding-top:25%;display:none;overflow:auto;padding-bottom:40%;">
+                 <table style="border-collapse:collapse;width:100%;">
+                    <tr>
+                        <td style="width:80%;border-bottom:1px solid #848484;padding:30px">
+                            <p style="font-size:20px;text-align:justify;color:blue;">
+                                Sorry This Job has passed out some time before.                                
+                            </p>
+                            <p>
+                               <input type="button" class="specialBtn" style="width: 40%;-webkit-appearance:none;-moz-appearance:none;" value="OK" onclick="jobPassed()"/>
+                            </p>
+                        </td>
+                    </tr>
+                 </table>
+            </div>
             <div id="popup_box22">
                 <div id="divBid" style="display:none;">
                     <table style="width:100%;background-color:#FFFFFF; border-collapse:collapse;">

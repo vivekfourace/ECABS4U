@@ -138,7 +138,7 @@ function GetCancelledJobs() {
                         
                         if(parseInt(relatedId) === cancelledBy){
                             navigator.notification.confirm(
-                               "Sorry the job " + jobId + " has been cancelled.\nReason- " + expReason,
+                               "Sorry the job " + jobId + " has been cancelled by customer.\nReason- " + expReason,
                                 onOKDeleteExpiredJob(expJobId),
                                'Cancelled Job',
                                'OK'
