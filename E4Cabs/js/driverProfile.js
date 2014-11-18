@@ -77,7 +77,7 @@ function ShowData(data)
     		{
     			myVehicles += "<tr><td><br/>No Vehicle Allocated.</td></tr>";
     		}
-   
+       
 	}
     myVehicles += "</table>";
     $('#trallvehicle').append(myVehicles) ;
@@ -204,12 +204,20 @@ function UpdateProfile()
         dataType: "Json",
         data:"{'relatedId':'" +relatedId+"','address1':'" +address1+"','address2':'" +address2+"','contactNumber':'" +phoneno+"','postcode':'" +postcode+"'}",
         contentType: "application/json; charset=utf-8",
-        success: ShowData,
+        success: ShowData2,
         error: function (XMLHttpRequest, textStatus, errorThrown)
         {
         }
     });
 }
+
+
+function ShowData2(data)
+{
+    getProfile();
+    window.location='driverProfile.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+}
+
 
 function CancelProfile()
 {
