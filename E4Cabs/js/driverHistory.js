@@ -121,6 +121,7 @@ function feedBackDriver(JobNumber )
                     $('#commenttext').show();
                     $('#customerFeedback2').show();    
                     $('#lblmyFeedback2').text(": "+driverFeedback );
+                    $('#txtarComments').hide();
                 }
                 else
                     $('#customerFeedback2').hide();

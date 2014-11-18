@@ -402,12 +402,12 @@ function notEnroute()
 {
    navigator.notification.confirm(
     "Please confirm your choice.",
-     onErrorEnRoute,
+     onErrorEnRoute22,
     "Confirm",
     "Reject Job, Accept Job "
     );
 }
-function onErrorEnRoute(buttonIndex) 
+function onErrorEnRoute22(buttonIndex) 
 {
     if(buttonIndex === 2)
     {
@@ -415,6 +415,7 @@ function onErrorEnRoute(buttonIndex)
     }
     else if(buttonIndex === 1)
     {
+        //alert("in");
        $('#divRejectJob').show();
        countDown();
     }
