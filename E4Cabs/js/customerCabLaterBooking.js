@@ -41,6 +41,7 @@ function getCablaterBooking()
                                 var DriverSpecialReq = data.d[i]["DriverSpecialReq"];
                                 var DriverID = data.d[i]["DriverID"];
                                 var Fare = data.d[i]["NewFare"];
+                               // var Fare = data.d[i]["NewFare"];
 
                                 if(i>0){
                                 	previousjobID = data.d[i-1]["CustomerRequestID"];}
