@@ -286,7 +286,7 @@ function bidSubmit() {
             console.log(selectedcab);
             if (isCabnow === "True") {
                 var fare = $('#txtbidFare').val();
-                if (fare.length <= 0 ||  parseInt(fare.trim()) === 0) {
+                if (fare.length <= 0 ||  parseInt(fare.trim()) === 0 || fare.charAt(0) === "0") {
                    // alert('Please enter correct fare amount.');
                     
                     navigator.notification.alert(
@@ -347,7 +347,7 @@ function bidSubmit() {
 
             else if (isCabnow === "False") {
                 var fare2 = $('#txtbidFare').val();
-                if (fare2.length <= 0 ||  parseInt(fare2) === 0) {
+                if (fare2.length <= 0 ||  parseInt(fare2) === 0 ||fare.charAt(0) === "0") {
                     //alert('Please enter correct fare amount.');
                     //jAlert('Please enter fare.', 'ECabs4U');
                     navigator.notification.alert(
