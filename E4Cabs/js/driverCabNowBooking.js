@@ -199,6 +199,8 @@ function showDetail(data)
     $('#popup_box').show();
     $('#divCabBooking').show();
     $('#transparent_div').show();
+     $('#divComission').hide();
+    $('#divComission2').hide();
     
 }
 
@@ -318,6 +320,8 @@ function RejectComission()
      $('#divDeal').hide();
      $('#popup_box').hide();
      $('#transparent_div').hide();
+     $('#divComission').hide();
+    $('#divComission2').hide();
 }
 
 function Confirmcomission()
