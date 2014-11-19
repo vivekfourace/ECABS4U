@@ -156,30 +156,77 @@ function AcceptJob(jobnumber)
 }
 
 function CancelJob(jobnumber)
+
 {
-     $.ajax({
-              url:'http://115.115.159.126/ECabs/ECabs4U.asmx/CancelNewJob', 
-              type:"POST",
-              datatype:"json",
-              data:"{'relatedId':'" +relatedId+ "', 'jobnumber':'" +jobnumber+ "'}",
-              contentType: "application/json; charset=utf-8",                     
-              success: function (data) {
-                  //jAlert('Job cancelled successfully.', 'Alert');
-                 // alert('Job cancelled successfully.');
-                  //window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-                  navigator.notification.alert(
-                   'Job cancelled successfully.',
-                    jobCancelled22, // Specify a function to be called 
-                    'ECABS4U',
-                    "OK"
-                    );
-                    function jobCancelled22()
-                    {
-                        window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;		      
-                    }
-                  
+     navigator.notification.confirm(
+    "Do you really want to reject this job?",
+     onClickReject22,
+    "Confirm",
+    "Yes,No" 
+    );
+    
+    function onClickReject22(buttonIndex)
+    {
+            if(buttonIndex === 2)
+            {
+                return false;
             }
-     });
+            else if(buttonIndex === 1)
+            {
+               
+            $.ajax({
+                     url:'http://115.115.159.126/ECabs/ECabs4U.asmx/CancelNewJob', 
+                     type:"POST",
+                     datatype:"json",
+                     data:"{'relatedId':'" +relatedId+ "', 'jobnumber':'" +jobnumber+ "'}",
+                     contentType: "application/json; charset=utf-8",                     
+                     success: function (data) {
+                         //jAlert('Job cancelled successfully.', 'Alert');
+                        // alert('Job cancelled successfully.');
+                         //window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                         navigator.notification.alert(
+                          'Job rejected successfully.',
+                           jobCancelled22, // Specify a function to be called 
+                           'ECABS4U',
+                           "OK"
+                           );
+                           function jobCancelled22()
+                           {
+                               window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;		      
+                           }
+                         
+                   }
+                });
+                
+                
+            }
+        
+    }
+    
+    
+    // $.ajax({
+    //          url:'http://115.115.159.126/ECabs/ECabs4U.asmx/CancelNewJob', 
+    //          type:"POST",
+    //          datatype:"json",
+    //          data:"{'relatedId':'" +relatedId+ "', 'jobnumber':'" +jobnumber+ "'}",
+    //          contentType: "application/json; charset=utf-8",                     
+    //          success: function (data) {
+    //              //jAlert('Job cancelled successfully.', 'Alert');
+    //             // alert('Job cancelled successfully.');
+    //              //window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    //              navigator.notification.alert(
+    //               'Job cancelled successfully.',
+    //                jobCancelled22, // Specify a function to be called 
+    //                'ECABS4U',
+    //                "OK"
+    //                );
+    //                function jobCancelled22()
+    //                {
+    //                    window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;		      
+    //                }
+    //              
+    //        }
+    // });
 }
 
 

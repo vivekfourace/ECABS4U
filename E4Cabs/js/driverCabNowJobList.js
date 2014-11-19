@@ -355,14 +355,55 @@ function seeRequest2()
 }
 function closeRequest2()
 {
-     $.ajax({
-              url:'http://115.115.159.126/ECabs/ECabs4U.asmx/CancelNewJobDNotification', 
-              type:"POST",
-              datatype:"json",
-              data:"{'relatedId':'" +relatedId+ "'}",
-              contentType: "application/json; charset=utf-8",                     
-              success: function () {
-                  window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
-              }
-        });
+    
+     navigator.notification.confirm(
+    "Do you really want to reject this job?",
+     onClickRejectNow,
+    "Confirm",
+    "Yes,No" 
+    );
+    
+    function onClickRejectNow(buttonIndex)
+    {
+            if(buttonIndex === 2)
+            {
+                return false;
+            }
+            else if(buttonIndex === 1)
+            {
+               $.ajax({
+                  url:'http://115.115.159.126/ECabs/ECabs4U.asmx/CancelNewJobDNotification', 
+                  type:"POST",
+                  datatype:"json",
+                  data:"{'relatedId':'" +relatedId+ "'}",
+                  contentType: "application/json; charset=utf-8",                     
+                  success: function () {
+                       navigator.notification.alert(
+                          'Job rejected successfully.',
+                           jobCancelledNow22, // Specify a function to be called 
+                           'ECABS4U',
+                           "OK"
+                           );
+                           function jobCancelledNow22()
+                           {
+                               window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;		      
+                           }
+                     // window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+                  }
+             }); 
+                
+            }
+    }
+    
+   //// alert("in");
+   //  $.ajax({
+   //           url:'http://115.115.159.126/ECabs/ECabs4U.asmx/CancelNewJobDNotification', 
+   //           type:"POST",
+   //           datatype:"json",
+   //           data:"{'relatedId':'" +relatedId+ "'}",
+   //           contentType: "application/json; charset=utf-8",                     
+   //           success: function () {
+   //               window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+   //           }
+   //     });
 }

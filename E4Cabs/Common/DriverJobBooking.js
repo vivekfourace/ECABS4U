@@ -277,7 +277,6 @@ function Cancel2()
 SubmitDeal();
 }
 
-
 var isCabnow;
 function bidSubmit() {
             isCabnow = $('#hiddenIsCabnow').val();
@@ -287,9 +286,21 @@ function bidSubmit() {
             console.log(selectedcab);
             if (isCabnow === "True") {
                 var fare = $('#txtbidFare').val();
-                if (fare.length <= 0) {
-                    //alert('Please enter fare.');
-                    jAlert('Please enter fare.', 'ECabs4U');
+                if (fare.length <= 0 ||  parseInt(fare.trim()) === 0) {
+                   // alert('Please enter correct fare amount.');
+                    
+                    navigator.notification.alert(
+                          'Please enter correct fare amount.',
+                           nowJobFarevalidation, 
+                           'ECABS4U',
+                           "OK"
+                           );
+                           function nowJobFarevalidation()
+                           {
+                               //alert("in");
+                              // window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;		      
+                           }
+                   
                     return false;
                 }
                  
@@ -336,9 +347,20 @@ function bidSubmit() {
 
             else if (isCabnow === "False") {
                 var fare2 = $('#txtbidFare').val();
-                if (fare2.length <= 0) {
-                   // alert('Please enter fare.');
-                    jAlert('Please enter fare.', 'ECabs4U');
+                if (fare2.length <= 0 ||  parseInt(fare2) === 0) {
+                    //alert('Please enter correct fare amount.');
+                    //jAlert('Please enter fare.', 'ECabs4U');
+                    navigator.notification.alert(
+                          'Please enter correct fare amount.',
+                           laterJobFarevalidation, 
+                           'ECABS4U',
+                           "OK"
+                           );
+                           function laterJobFarevalidation()
+                           {
+                               //alert("in");
+                              // window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;		      
+                           }
                     
                     return false;
                 }
