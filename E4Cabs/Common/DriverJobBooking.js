@@ -347,7 +347,7 @@ function bidSubmit() {
 
             else if (isCabnow === "False") {
                 var fare2 = $('#txtbidFare').val();
-                if (fare2.length <= 0 ||  parseInt(fare2) === 0 ||fare.charAt(0) === "0") {
+                if (fare2.length <= 0 ||  parseInt(fare2) === 0 ||fare2.charAt(0) === "0") {
                     //alert('Please enter correct fare amount.');
                     //jAlert('Please enter fare.', 'ECabs4U');
                     navigator.notification.alert(
