@@ -14,7 +14,7 @@ jobCheckTime = setInterval(GetCancelledJobsForCustomer, 2000);
 function GetCancelledJobsForCustomer() {
     
      $.ajax({
-              url:'http://115.115.159.126/ECabs/ECabs4U.asmx/GetCancelledJobsForCustomer', 
+              url:'http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetCancelledJobsForCustomer', 
               type:"POST",
               datatype:"json",
               data:"{'custId':'" +relatedId+ "'}",
@@ -47,7 +47,7 @@ function GetCancelledJobsForCustomer() {
 function onOKDeleteExpiredJobForCustomer(expJobId){
     
          $.ajax({
-              url:'http://115.115.159.126/ECabs/ECabs4U.asmx/DeleteCancelledJob', 
+              url:'http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/DeleteCancelledJob', 
               type:"POST",
               datatype:"json",
               data:"{'expiredJobId':'" +expJobId+ "','driverId':'"+relatedId+"'}",

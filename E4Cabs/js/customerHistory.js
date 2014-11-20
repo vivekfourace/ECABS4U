@@ -26,7 +26,7 @@ id = window.setInterval(gethistory, 20000);
 
 function gethistory()
 {
-   var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerHistoryDetails";
+   var url = "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/CustomerHistoryDetails";
                 $.ajax(url, {
                     type:"POST",
                     datatype:"json",
@@ -124,7 +124,7 @@ function onAbortCallback(btnIndex)
 function JobDetail(data)
 {
    $('body').css('overflow','hidden');
-    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/JobDetailCustomer";
+    var url = "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/JobDetailCustomer";
                 $.ajax(url, {
                    type:"POST",
                    datatype:"json",
@@ -262,7 +262,7 @@ function SubmitReject()
     }
     
     //TODO: write service to abort the job and send email to the customer
-      var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/AbortCurrentJobCustomer";
+      var url = "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/AbortCurrentJobCustomer";
     
     $.ajax(url,{
      beforeSend: function(){
@@ -310,7 +310,7 @@ var finalrating ="";
 //feedback
 function feedBackCustomer(JobNumber )
 {
-     $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/GetCabNowData",
+     $.ajax({url:"http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetCabNowData",
             type:"POST",
             dataType: "Json",
             data:"{'JobNumber':'" +JobNumber+"'}",
@@ -451,7 +451,7 @@ function PostFeedBack()
     }
     
    $.ajax({
-             url:"http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerFeedbackForDriver",
+             url:"http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/CustomerFeedbackForDriver",
              beforeSend: function(){
                 $('#imgLoader').show();
              },

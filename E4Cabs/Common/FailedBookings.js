@@ -13,7 +13,7 @@ function onDeviceReady() {
 window.setTimeout(function(){
     console.log('in ajax');
 $.ajax({    
-    url:"http://115.115.159.126/ECabs/ECabs4U.asmx/GetFailedJobs",
+    url:"http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetFailedJobs",
     datatype:"JSON",
     type:"POST",
     data:"{'relatedId':'"+relatedId+"','role':'"+roleId+"'}",

@@ -10,7 +10,7 @@ if(requestID !== undefined)
     requestID = QString.split("=")[4].split("&")[0];
     
     $.ajax({
-        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/FillJobSearchDetail",
+        url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/FillJobSearchDetail",
         type: "POST",
         dataType: "Json",
         data: "{'requestID':'" + requestID + "'}",
@@ -450,7 +450,7 @@ function availabledriver() {
             var returnTL =returntoloc;
             
             $.ajax({
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerSearchRequest",
+                url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/CustomerSearchRequest",
                 cache: false,
                 beforeSend: function(){
                      $('#imgLoader').show();
@@ -501,7 +501,7 @@ function availabledriver() {
             IsReturnTrue = isRetJourAllOperator;
            
             $.ajax({
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerSearchRequest",
+                url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/CustomerSearchRequest",
                 cache: false,
                 beforeSend: function(){
                      $('#imgLoader').show();

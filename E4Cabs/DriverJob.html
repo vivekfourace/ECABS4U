@@ -43,7 +43,7 @@
                     }
                 });
                 $.ajax({
-                   url: 'http://115.115.159.126/ECabs/ECabs4U.asmx/CheckResponse',
+                   url: 'http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/CheckResponse',
                    type: "POST",
                    datatype: "json",
                    data: "{'userID':'" + relatedId + "'}",
@@ -57,7 +57,7 @@
                                 
                                 if (getValue === "False") {
                                     $.ajax({
-                                    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetData",
+                                    url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetData",
                                     type: "POST",
                                     dataType: "Json",
                                     data: "{'userID':'" + getID + "', 'driverID':'" + relatedId + "'}",

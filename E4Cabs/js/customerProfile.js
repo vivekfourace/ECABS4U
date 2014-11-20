@@ -8,7 +8,7 @@ window.onload = getProfile();
 //get customer profile
 function getProfile()
 {
-        var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetCustomerrDetails";
+        var url = "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetCustomerrDetails";
         $.ajax(url,{
             type:"POST",
             dataType: "Json",
@@ -124,7 +124,7 @@ function UpdateProfile()
         return false;
     }
     $.ajax({
-        url:"http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateCustomerDetails",
+        url:"http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/UpdateCustomerDetails",
         type:"post",
         dataType:"Json",
         data:"{'relatedId':'" +relatedId+"','name':'"+name+"','lastname':'"+lastname+"','email':'" +email+"','phoneno':'" +phoneno+"'}",

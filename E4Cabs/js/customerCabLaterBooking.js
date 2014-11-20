@@ -9,7 +9,7 @@ var id, isAnyDriverHired = false;
 id = window.setInterval(getCablaterBooking, 1000);
 function getCablaterBooking()
 {   
-    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerCabLaterBooking";
+    var url = "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/CustomerCabLaterBooking";
                 $.ajax(url, {
                    type:"POST",
                    datatype:"json",
@@ -127,7 +127,7 @@ function getCablaterBooking()
 function ShowDetailBooking(jobNo, driverid)
 {
     $('body').css('overflow','hidden');
-    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetCCabLaterBooking";
+    var url = "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetCCabLaterBooking";
                 $.ajax(url, {
                    type:"POST",
                    datatype:"json",
@@ -179,7 +179,7 @@ function HireDriver(jobID, driverid)
             else if(buttonIndex === 1)
             {
                
-                var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse";
+                var url = "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/HireDriverResponse";
                 $.ajax(url, {
                    beforeSend: function(){
                         $('#imgLoader').show();
@@ -235,7 +235,7 @@ function CancelJob(jobId)
             else if(buttonIndex === 1)
             {
                
-                 var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/CancelJob";
+                 var url = "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/CancelJob";
  
         $.ajax(url,{
                  beforeSend: function(){
@@ -299,7 +299,7 @@ function SubmitReject()
         function abortLaterJob()
         { }
     }
-    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/AbortCurrentJobCustomer";
+    var url = "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/AbortCurrentJobCustomer";
     
     $('body').css('overflow','hidden');
     $.ajax(url,{
@@ -375,7 +375,7 @@ function hideImageLater()
 function showRatingBoxLaterpast(driverImgUrl, driverID)
 {    
     $.ajax({
-        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetRatingFeedback",
+        url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetRatingFeedback",
         type: "POST",
         dataType: "Json",
         data: "{'driverID':'" + driverID + "'}",
@@ -443,7 +443,7 @@ function showRatingBoxLaterpast(driverImgUrl, driverID)
 function showRatingBoxLaterPresent(driverID)
 {    
     $.ajax({
-        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetRatingFeedback",
+        url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetRatingFeedback",
         type: "POST",
         dataType: "Json",
         data: "{'driverID':'" + driverID + "'}",
@@ -553,7 +553,7 @@ function CancelDriver(jobID, driverid)
             else if(buttonIndex === 1)
             {
                     $.ajax({
-                   url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CancelDriverForJob",
+                   url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/CancelDriverForJob",
                    type:"POST",
                    datatype:"json", 
                    data:"{'jobID':'" +jobID+ "','driverID':'"+driverid+"','customerID':'"+relatedId+"'}",

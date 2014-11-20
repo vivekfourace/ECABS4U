@@ -16,7 +16,7 @@ var timereOut;
                 var jobNo = $('#hdnJobno').val();
                 
                 $.ajax({
-                    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/DealResponse",
+                    url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/DealResponse",
                     type: "POST",
                     dataType: "Json",
                     data: "{'userID':'" + relatedId + "', 'jobNo':'" + jobNo + "'}",
@@ -31,7 +31,7 @@ var timereOut;
                          
                         if ( popUpDisplay === "False") {
                             $.ajax({
-                                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetDealData",
+                                url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetDealData",
                                 type: "POST",
                                 dataType: "Json",
                                 data: "{'JobNo':'" + getResID + "','driverId':'" + relatedId + "'}",
@@ -98,7 +98,7 @@ var timereOut;
                         else
                         {
                              $.ajax({
-                                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/JobStatus",
+                                url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/JobStatus",
                                 type: "POST",
                                 dataType: "Json",
                                 data: "{'JobNo':'" + jobNo + "','driverId':'" + relatedId + "'}",
@@ -207,7 +207,7 @@ function showFullJobDetail()
 {   $("#divDeal").hide(); 
     var data = $('#lbljobno').text();
     $.ajax({
-    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/FullJobDetail",
+    url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/FullJobDetail",
     type:"POST",
     datatype:"json",
     data: "{'JobNo':'" + data + "','driverId':'" + relatedId + "'}",
@@ -328,7 +328,7 @@ function bidSubmit() {
                 var status = true;
                 var price = fare;
                 $.ajax({
-                    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/setDriverResponse",
+                    url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/setDriverResponse",
                     type: "POST",
                     dataType: "Json",
                     data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "','price':'" + price + "','specialReq':'" + specialReq + "'}",
@@ -377,7 +377,7 @@ function bidSubmit() {
                  //alert(selectedcab);
 
                 $.ajax({
-                    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/SetDriverResponseCabLater",
+                    url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/SetDriverResponseCabLater",
                     type: "POST",
                     dataType: "Json",
                     data: "{'userID':'" + relatedId + "','reqid':'" + reqid + "','status':'" + statuS + "','price':'" + pricE + "','specialReq':'" + specialreq + "','selectedVehicle':'" + selectedcab + "'}",
@@ -467,7 +467,7 @@ function SaveDataOfCurrentJob()
     console.log("saving current job data");
     var requestId = $('#hdnJobno').val();
     $.ajax({
-            url: "http://115.115.159.126/ECabs/ECabs4U.asmx/SaveData",
+            url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/SaveData",
             type: "POST",
             dataType: "Json",
             data: "{'driverId':'" + relatedId + "','requestId':'" + requestId + "'}",
@@ -476,7 +476,7 @@ function SaveDataOfCurrentJob()
                 if(data.d === true)
                 {
                     $.ajax({
-                    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/JobBooked",
+                    url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/JobBooked",
                     type: "POST",
                     dataType: "Json",
                     data: "{'userID':'" + relatedId + "','reqid':'" + requestId + "'}",
@@ -508,7 +508,7 @@ function SaveDataOfCurrentJob()
 
         function RemoveDriverData() {
             $.ajax({
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RemoveDriverResponse",
+                url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/RemoveDriverResponse",
                 type: "POST",
                 dataType: "Json",
                 data: "{'driverID':'" + relatedId + "'}",
@@ -531,7 +531,7 @@ function SaveDataOfCurrentJob()
                 beforeSend: function(){
                    $('#imgLoader').show();
                 },
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CabLaterJobBooked",
+                url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/CabLaterJobBooked",
                 type: "POST",
                 dataType: "Json",
                 data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
@@ -712,7 +712,7 @@ function SaveDataOfCurrentJob()
                 beforeSend: function(){
                    $('#imgLoader').show();
                 },               
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CabLaterJobBooked",
+                url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/CabLaterJobBooked",
                 type: "POST",
                 dataType: "Json",
                 data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
@@ -820,7 +820,7 @@ function SaveDataOfCurrentJob()
             var rid = $('#hdnJobno').val();           
             var status = rid+" Rejected at commission time.";
             $.ajax({
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RejectResponse",
+                url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/RejectResponse",
                 type: "POST",
                 dataType: "Json",
                 data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "'}",
@@ -879,7 +879,7 @@ function reqReject(sendToCustomer) {
             if(sendToCustomer === 1)
                 status = "";
             $.ajax({
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RejectResponse",
+                url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/RejectResponse",
                 type: "POST",
                 dataType: "Json",
                 data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "'}",

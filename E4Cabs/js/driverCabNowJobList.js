@@ -13,7 +13,7 @@ id = window.setInterval(DriverCabNowBookingInfo, 10000);
 
 function DriverCabNowBookingInfo(){
     $.ajax({
-       url:'http://115.115.159.126/ECabs/ECabs4U.asmx/DriverCabNowBooking',
+       url:'http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/DriverCabNowBooking',
        type:'post',
        dataType:'json',
        data:"{'relatedId':'"+relatedId+"'}",
@@ -131,7 +131,7 @@ function AcceptJobNow(jobno, jobfare)
             complete: function(){
                $('#imgLoader').hide();
             },
-            url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CabNowJobBooked",
+            url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/CabNowJobBooked",
             type: "POST",
             dataType: "Json",
             data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
@@ -169,7 +169,7 @@ function AcceptJobNow(jobno, jobfare)
 
 function ShowDetailBooking(data, customerid)
 {
-    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetDCabNowBooking";
+    var url = "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetDCabNowBooking";
        $.ajax(url, {
           type:"POST",
           datatype:"json",
@@ -219,7 +219,7 @@ function RejectJobNow(data)
                 complete: function(){
                    $('#imgLoader').hide();
                 },
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RejectResponse",
+                url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/RejectResponse",
                 type: "POST",
                 dataType: "Json",
                 data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "'}",
@@ -261,7 +261,7 @@ function Confirmcomission()
         {
     		$('#imgLoader').show();
     	},                
-        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CabNowJobBooked",
+        url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/CabNowJobBooked",
         type: "POST",
         dataType: "Json",
         data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
@@ -372,7 +372,7 @@ function closeRequest2()
             else if(buttonIndex === 1)
             {
                $.ajax({
-                  url:'http://115.115.159.126/ECabs/ECabs4U.asmx/CancelNewJobDNotification', 
+                  url:'http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/CancelNewJobDNotification', 
                   type:"POST",
                   datatype:"json",
                   data:"{'relatedId':'" +relatedId+ "'}",
@@ -397,7 +397,7 @@ function closeRequest2()
     
    //// alert("in");
    //  $.ajax({
-   //           url:'http://115.115.159.126/ECabs/ECabs4U.asmx/CancelNewJobDNotification', 
+   //           url:'http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/CancelNewJobDNotification', 
    //           type:"POST",
    //           datatype:"json",
    //           data:"{'relatedId':'" +relatedId+ "'}",

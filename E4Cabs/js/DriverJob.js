@@ -33,7 +33,7 @@ function feedBack()
 
 function GetCancelledJobs() {
      $.ajax({
-              url:'http://115.115.159.126/ECabs/ECabs4U.asmx/GetCancelledJobs', 
+              url:'http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetCancelledJobs', 
               type:"POST",
               datatype:"json",
               data:"{'drvId':'" +relatedId+ "'}",
@@ -63,7 +63,7 @@ function GetCancelledJobs() {
 function onOKDeleteExpiredJob(expJobId){
     
      $.ajax({
-              url:'http://115.115.159.126/ECabs/ECabs4U.asmx/DeleteCancelledJob', 
+              url:'http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/DeleteCancelledJob', 
               type:"POST",
               datatype:"json",
               data:"{'expiredJobId':'" +expJobId+ "','driverId':'"+relatedId+"'}",

@@ -48,7 +48,7 @@ function forgotPassword()
                      complete: function(){
                          $('#imgLoader').hide();
                      },
-                    url:"http://115.115.159.126/ECabs/ECabs4U.asmx/ForgotUsername",
+                    url:"http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/ForgotUsername",
                     datatype:"json",
                     type:"POST",
                     data:"{'emailid':'"+email+"', 'usertype':'"+usertype+"'}",

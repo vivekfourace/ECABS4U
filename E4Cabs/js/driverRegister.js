@@ -173,7 +173,7 @@ function RegisterDriver()
                          $('#imgLoader').hide();
                      },
 
-                     url:"http://115.115.159.126/ECabs/ECabs4U.asmx/RegisterDriver",
+                     url:"http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/RegisterDriver",
                       type:"POST",
                      datatype:"json",
                      data:"{'fname':'"+name+"','lname':'"+name2+"','email':'"+email+"','userID':'"+User+"','password':'"+password+"','contactNumber':'"+mobNo+"','address1':'"+Add1+"','address2':'"+Add2+"','postcode':'"+post+"'}",

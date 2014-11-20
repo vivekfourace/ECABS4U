@@ -59,7 +59,7 @@ function ChangePaswords()
                         return false;
                     }
               
-                var  url = "http://115.115.159.126/ECabs/ECabs4U.asmx/ChangePassword";
+                var  url = "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/ChangePassword";
                  $.ajax(url,{
                      beforeSend: function(){
                         $('#imgLoader').show();

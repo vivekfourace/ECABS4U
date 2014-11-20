@@ -6,7 +6,7 @@ window.onload = UploadCustomerFeedBack();
 
 function UploadCustomerFeedBack()
 {
-     var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/DriverFeedBackDetail";
+     var url = "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/DriverFeedBackDetail";
                 $.ajax(url, {
                     type:"POST",
                     datatype:"json",

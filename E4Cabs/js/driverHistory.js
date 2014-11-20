@@ -19,7 +19,7 @@ $(function() {
 function getDriverhistory()
 {     
     $.ajax({
-           url : "http://115.115.159.126/ECabs/ECabs4U.asmx/DriverHistoryDetails",
+           url : "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/DriverHistoryDetails",
            type:"POST",
            datatype:"json",
            data:"{'relatedId':'"+relatedId+"'}",
@@ -85,7 +85,7 @@ function getDriverhistory()
 
 function feedBackDriver(JobNumber )
 {
-     $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/GetCabNowData",
+     $.ajax({url:"http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetCabNowData",
             type:"POST",
             dataType: "Json",
             data:"{'JobNumber':'" +JobNumber+"'}",
@@ -185,7 +185,7 @@ function CancelFeedBack()
 
 function JobDetail(data)
 {
-    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/JobDetailDriver";
+    var url = "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/JobDetailDriver";
     $.ajax(url, {
        type:"POST",
        datatype:"json",
@@ -317,7 +317,7 @@ function SubmitReject()
         jAlert('Please enter a reason.', 'ECABS4U');
         return false;
     }
-      var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/AbortCurrentJobDriver";    
+      var url = "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/AbortCurrentJobDriver";    
       $.ajax(url,{
          beforeSend: function(){
             $('#imgLoader').show();
@@ -404,7 +404,7 @@ function PostFeedBack()
         return false;
     }
     
-     $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/DriverFeedbackForCustomer",
+     $.ajax({url:"http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/DriverFeedbackForCustomer",
              beforeSend: function(){
                 $('#imgLoader').show();
              },

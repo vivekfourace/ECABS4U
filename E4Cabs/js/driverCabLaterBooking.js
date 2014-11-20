@@ -12,7 +12,7 @@ id = window.setInterval(getCabLaterJobs, 1000);
 
 function getCabLaterJobs() {
     $.ajax({
-       url:'http://115.115.159.126/ECabs/ECabs4U.asmx/DriverCabLaterBooking',
+       url:'http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/DriverCabLaterBooking',
        type:'post',
        dataType:'json',
        data:"{'relatedId':'"+relatedId+"'}",
@@ -139,7 +139,7 @@ function AcceptJob(jobno, jobfare)
             complete: function(){
                $('#imgLoader').hide();
             },
-            url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CabLaterJobBooked",
+            url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/CabLaterJobBooked",
             type: "POST",
             dataType: "Json",
             data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",
@@ -185,7 +185,7 @@ function AcceptJob(jobno, jobfare)
 function ShowDetailBooking(data, customerid)
 {
     $('body').css('overflow','hidden');
-    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetDCabLaterBooking";
+    var url = "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetDCabLaterBooking";
     $.ajax(url, {
       type:"POST",
       datatype:"json",
@@ -237,7 +237,7 @@ function RejectJob(data)
    //             complete: function(){
    //                $('#imgLoader').hide();
    //             },
-   //             url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RejectResponse",
+   //             url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/RejectResponse",
    //             type: "POST",
    //             dataType: "Json",
    //             data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "'}",
@@ -292,7 +292,7 @@ function RejectJob(data)
                     complete: function(){
                        $('#imgLoader').hide();
                     },
-                    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RejectResponse",
+                    url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/RejectResponse",
                     type: "POST",
                     dataType: "Json",
                     data: "{'userID':'" + relatedId + "','reqid':'" + rid + "','status':'" + status + "'}",
@@ -339,7 +339,7 @@ function Confirmcomission()
         $('body').css('overflow','hidden');
 		$('#imgLoader').show();
 	},                
-    url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CabLaterJobBooked",
+    url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/CabLaterJobBooked",
     type: "POST",
     dataType: "Json",
     data: "{'userID':'" + relatedId + "','reqid':'" + reqID + "'}",

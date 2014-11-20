@@ -15,7 +15,7 @@ function getLocation()
 {
  console.log('getloc');
  $.ajax({
-        url:"http://115.115.159.126/ECabs/ECabs4U.asmx/GetLocations",
+        url:"http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetLocations",
         type:"POST",
         dataType: "Json",
         data:"{'relatedId':'"+relatedId+"'}",

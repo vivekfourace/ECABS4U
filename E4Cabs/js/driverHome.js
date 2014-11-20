@@ -51,7 +51,7 @@ function  NavigateToMap()
 }
 
  $.ajax({
-        url:"http://115.115.159.126/ECabs/ECabs4U.asmx/DriverAvaibalility",
+        url:"http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/DriverAvaibalility",
         type:"POST",
         dataType: "Json",
         data:"{'relatedId':'"+relatedId+"'}",
@@ -189,7 +189,7 @@ function onAbortCallback(buttonIndex)
     else if(buttonIndex === 1)
     {
        $.ajax({
-        url:"http://115.115.159.126/ECabs/ECabs4U.asmx/MakeOffline",
+        url:"http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/MakeOffline",
         type:"POST",
         dataType: "Json",
         data:"{'relatedId':'"+relatedId+"'}",
@@ -214,7 +214,7 @@ function onAbortCallback(buttonIndex)
 function Online()
 {
     $.ajax({
-     url:"http://115.115.159.126/ECabs/ECabs4U.asmx/MakeOnline",
+     url:"http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/MakeOnline",
         type:"POST",
         dataType: "Json",
         data:"{'relatedId':'"+relatedId+"'}",
@@ -249,7 +249,7 @@ function SubmitAbort()
         return false;
          
     }
-    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/AbortCurrentJob";
+    var url = "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/AbortCurrentJob";
     
     $.ajax(url,{
          beforeSend: function(){
@@ -313,7 +313,7 @@ function onClearCallback(buttonIndex)
     {
         $('#btnOffline').show();
         $.ajax({
-         url:"http://115.115.159.126/ECabs/ECabs4U.asmx/ClearDriverStatus",
+         url:"http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/ClearDriverStatus",
          type:"POST",
          datatype:"json",
          data:"{'relatedId':'"+relatedId+"'}",
@@ -348,7 +348,7 @@ function engageMe()
 //{
 //    $('#btnOffline').show();
 //        $.ajax({
-//                url:"http://115.115.159.126/ECabs/ECabs4U.asmx/UnEngageDriver",
+//                url:"http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/UnEngageDriver",
 //                     type:"POST",
 //                     datatype:"json",
 //                     data:"{'relatedId':'"+relatedId+"'}",
@@ -432,7 +432,7 @@ function countDown() {
     $("#myTimer").fadeTo(2500, 0);
     $('#btnOffline').show();
     $.ajax({
-    url:"http://115.115.159.126/ECabs/ECabs4U.asmx/UnEngageDriver",
+    url:"http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/UnEngageDriver",
          type:"POST",
          datatype:"json",
          data:"{'relatedId':'"+relatedId+"'}",
@@ -458,7 +458,7 @@ function countDown() {
 }
 
 function showJobDetails(){
-    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/DriverEngagedJob";
+    var url = "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/DriverEngagedJob";
     $.ajax(url, {
        type:"POST",
        datatype:"json",

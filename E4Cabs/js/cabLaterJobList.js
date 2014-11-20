@@ -15,7 +15,7 @@ var ref;
  ref = window.setInterval(getCablaterBooking2, 1000);
 function getCablaterBooking2()
 {
-   var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetCabLaterJobOffered";
+   var url = "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetCabLaterJobOffered";
                 $.ajax(url, {
                    type:"POST",
                    datatype:"json",
@@ -86,7 +86,7 @@ function bindGridLater2(data)
     }
 
 //$.ajax({
-//        url:"http://115.115.159.126/ECabs/ECabs4U.asmx/GetCabLaterJobOffered",
+//        url:"http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetCabLaterJobOffered",
 //        type:"POST",
 //        dataType: "Json",
 //        data:"{'relatedId':'"+relatedId+"'}",
@@ -175,7 +175,7 @@ function CancelJob(jobnumber)
             {
                
             $.ajax({
-                     url:'http://115.115.159.126/ECabs/ECabs4U.asmx/CancelNewJob', 
+                     url:'http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/CancelNewJob', 
                      type:"POST",
                      datatype:"json",
                      data:"{'relatedId':'" +relatedId+ "', 'jobnumber':'" +jobnumber+ "'}",
@@ -205,7 +205,7 @@ function CancelJob(jobnumber)
     
     
     // $.ajax({
-    //          url:'http://115.115.159.126/ECabs/ECabs4U.asmx/CancelNewJob', 
+    //          url:'http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/CancelNewJob', 
     //          type:"POST",
     //          datatype:"json",
     //          data:"{'relatedId':'" +relatedId+ "', 'jobnumber':'" +jobnumber+ "'}",

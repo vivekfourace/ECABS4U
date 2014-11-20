@@ -10,7 +10,7 @@ function onDeviceReady() {
 }
 
 $.ajax({
-    url:"http://115.115.159.126/ECabs/ECabs4U.asmx/GetFailedJobs",
+    url:"http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetFailedJobs",
     datatype:"JSON",
     type:"POST",
     data:"{'relatedId':'"+relatedId+"','role':'"+roleId+"'}",
@@ -63,7 +63,7 @@ function CancelJob(jobno)
 {
     var cause = "Not opted for re-initiate";
     $.ajax({
-       url:"http://115.115.159.126/ECabs/ECabs4U.asmx/CancelCurrentJob",
+       url:"http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/CancelCurrentJob",
        type:"POST",
         datatype:"json",
         data:"{'requestID':'" +jobno+"', 'relatedId':'" +relatedId+"', 'cause':'" +cause+"'}",

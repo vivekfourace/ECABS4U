@@ -11,7 +11,7 @@ function onDeviceReady() {
     var version = device.version 
     
        $.ajax({
-           url:"http://115.115.159.126/ECabs/ECabs4U.asmx/RegisterDevice",
+           url:"http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/RegisterDevice",
            type:"post",
            datatype: "json",
            data:"{'devicename':'"+devicename+"', 'platform':'"+platform+"', 'deviceuuid':'"+deviceuuid+"', 'model':'"+model+"', 'version':'"+version+"'}",
@@ -93,7 +93,7 @@ function login() {
     var isTrue = checkConnection();
     if(isTrue)
     {        
-        var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UserLogin";
+        var url = "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/UserLogin";
         $.ajax(url, {
             beforeSend: function() 
             {
@@ -196,7 +196,7 @@ function resendEmailVerification(){
     var intsOnly = /^\d+$/;    
     if(intsOnly.test(userid)) {
         if(userid != "" || userid != " "){    
-            var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/lnkbtnresendVerificationLink";
+            var url = "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/lnkbtnresendVerificationLink";
             $.ajax(url, {
                 beforeSend: function() 
                 {
@@ -241,7 +241,7 @@ function resetpwdlnk(){
     var username = $('#myInputhidden').val();
     if(username !="" || username != " ")
     {
-        var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/lnkbtnResendpwdlink";
+        var url = "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/lnkbtnResendpwdlink";
         $.ajax(url, {
             beforeSend: function() {
                 $('#imgLoader').show();

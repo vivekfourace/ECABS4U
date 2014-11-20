@@ -119,7 +119,7 @@ function Registercustomer()
               complete: function(){
                   $('#imgLoader').hide();
               },
-             url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RegisterCustomer",
+             url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/RegisterCustomer",
              type: "POST",
              dataType: "json",
              data: "{ 'fname': '" + txt1 + "','lname': '" + txt2 + "','email': '" + txt4 + "','userID': '" + txt6 + "','password': '" + txt7 + "','contactNumber': '" + txt3 + "'}",

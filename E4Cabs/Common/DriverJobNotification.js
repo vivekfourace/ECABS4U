@@ -64,7 +64,7 @@ var expirycount = 0;
 function Check() 
 {    
   $.ajax({
-    url: 'http://115.115.159.126/ECabs/ECabs4U.asmx/CheckNewJob',
+    url: 'http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/CheckNewJob',
     type: "POST",
     datatype: "json",
     data: "{'userID':'" + relatedId + "'}",
@@ -109,7 +109,7 @@ function seeRequest()
 function closeRequest()
 {
      $.ajax({
-              url:'http://115.115.159.126/ECabs/ECabs4U.asmx/CancelNewJobDNotification', 
+              url:'http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/CancelNewJobDNotification', 
               type:"POST",
               datatype:"json",
               data:"{'relatedId':'" +relatedId+ "'}",
@@ -120,7 +120,7 @@ function closeRequest()
 
 function GetCancelledJobs() {
      $.ajax({
-              url:'http://115.115.159.126/ECabs/ECabs4U.asmx/GetCancelledJobs', 
+              url:'http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetCancelledJobs', 
               type:"POST",
               datatype:"json",
               data:"{'drvId':'" +relatedId+ "'}",
@@ -151,7 +151,7 @@ function GetCancelledJobs() {
 function onOKDeleteExpiredJob(expJobId){
     if(expirycount >= 2){
          $.ajax({
-              url:'http://115.115.159.126/ECabs/ECabs4U.asmx/DeleteCancelledJob', 
+              url:'http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/DeleteCancelledJob', 
               type:"POST",
               datatype:"json",
               data:"{'expiredJobId':'" +expJobId+ "','driverId':'"+relatedId+"'}",

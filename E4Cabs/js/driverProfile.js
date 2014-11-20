@@ -17,7 +17,7 @@ function changepassword()
 }
 function getProfile()
 {
-    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/GetDriverDetails";
+    var url = "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetDriverDetails";
     $.ajax(url,{
         type:"POST",
         dataType: "Json", 
@@ -99,7 +99,7 @@ function ShowData(data)
 
 function SelectVehicle(vehAllocatedID)
 {
-    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/SelectVehicleABC";
+    var url = "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/SelectVehicleABC";
     $.ajax(url,{
         type:"POST",
         dataType: "Json", 
@@ -198,7 +198,7 @@ function UpdateProfile()
         return false;
     }
     
-    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateDriverDetails";
+    var url = "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/UpdateDriverDetails";
     $.ajax(url,{
         type:"POST",
         dataType: "Json",

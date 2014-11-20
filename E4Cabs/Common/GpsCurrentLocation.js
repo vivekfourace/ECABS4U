@@ -7,7 +7,7 @@ window.onload = UpdateLocation();
 
 var postCodeFetchTime;
     $.ajax({
-            url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetGPSTime",    //Get Response from driver
+            url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetGPSTime",    //Get Response from driver
             type: "POST",
             dataType: "Json",
             data: "",
@@ -60,7 +60,7 @@ function UpdatePostCode(data)
 function updatePostCode(postalCode, address) {
      console.log('Updating location..updated');
      $.ajax({
-             url: 'http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateLocationMapping',
+             url: 'http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/UpdateLocationMapping',
              type: "post",
              dataType: "json",
              data: "{'postalCode':'" + postalCode + "','Id':'" + relatedId + "', 'address':'"+address+"'}",

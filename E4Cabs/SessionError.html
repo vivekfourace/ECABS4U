@@ -15,7 +15,7 @@
                 $('#btnClearsession').on('click',function(){
                     
                     $.ajax({
-                        url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
+                        url:"http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/logout",
                         type:"POST",
                         dataType:"json",
                         data:"{'userID':'"+userID+"'}",

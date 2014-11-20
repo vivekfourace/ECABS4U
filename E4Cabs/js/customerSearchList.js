@@ -19,7 +19,7 @@ function backtosearch() {
 var timeOut;
 
     $.ajax({
-        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetJobTimeOutTime",
+        url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetJobTimeOutTime",
         type: "POST",
         dataType: "Json",
         data: "{'requestID':'" + requestID + "'}",
@@ -102,7 +102,7 @@ id = window.setInterval(getResponse, 10000);
 function getResponse()
 {
     $.ajax({
-        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetResponseData",
+        url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetResponseData",
         type: "POST",
         dataType: "Json",
         data: "{'requestID':'" + requestID + "'}",
@@ -314,7 +314,7 @@ function getData(data) {
 function showRatingBoxLaterpast(driverImgUrl, driverID)
 {    
     $.ajax({
-        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetRatingFeedback",
+        url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetRatingFeedback",
         type: "POST",
         dataType: "Json",
         data: "{'driverID':'" + driverID + "'}",
@@ -413,7 +413,7 @@ function showRatingBoxLaterpast(driverImgUrl, driverID)
 function showRatingBoxLaterPresent(driverImgUrl, driverID)
 {    
     $.ajax({
-        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetRatingFeedback",
+        url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetRatingFeedback",
         type: "POST",
         dataType: "Json",
         data: "{'driverID':'" + driverID + "'}",
@@ -499,7 +499,7 @@ function SearchDriverAgain()
     $('#statusMessage').html("Searching for more drivers...");
     $('#statusMessage').css("color","Yellow");
     $.ajax({
-        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetNewResponseData",
+        url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetNewResponseData",
         type: "POST",
         dataType: "Json",
         data: "{'requestID':'" + requestID + "'}",
@@ -596,7 +596,7 @@ function RejectDriver()
     var requestId = reqId;
     var status="Bid rejected by customer.";
             $.ajax({
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RejectResponseByCustomer",
+                url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/RejectResponseByCustomer",
                 type: "POST",
                 dataType: "Json",
                 data: "{'userID':'" + driverId + "','reqid':'" + requestId + "','status':'" + status + "'}",
@@ -642,7 +642,7 @@ function HireCurrentDriver()
        var driverId = dId;
        var requestId = reqId;
            $.ajax({
-           url: "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse",
+           url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/HireDriverResponse",
            type: "POST",
            dataType: "Json",
            data: "{'driverId':'" + driverId + "','requestId':'" + requestId + "'}",
@@ -672,7 +672,7 @@ function getResponseFromDriver(data)
 var jobs1;
 function checkDeal() {
         $.ajax({
-            url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CheckdealResponse",
+            url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/CheckdealResponse",
             type: "POST",
             dataType: "Json",
             data: "{'driverId':'" + dId + "','requestId':'" + requestID + "'}",
@@ -684,7 +684,7 @@ function checkDeal() {
                 {
                     DisableHiremeBtns()
                     $.ajax({
-                        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetConfirmData",
+                        url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetConfirmData",
                         type: "POST",
                         dataType: "Json",
                         data: "{'requestID':'" + requestID + "'}",
@@ -886,7 +886,7 @@ function AlterJob2()
 function DeleteJob(cause)
 {
      $.ajax({
-        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CancelCurrentJob",
+        url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/CancelCurrentJob",
         type: "POST",
         dataType: "Json",
         data: "{'requestID':'" + requestID + "','relatedId':'" + relatedId + "','cause':'" + cause + "'}",

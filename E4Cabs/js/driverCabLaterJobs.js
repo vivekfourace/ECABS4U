@@ -8,7 +8,7 @@ window.onload = showCabLaterJobs();
 function showCabLaterJobs()
 {
     $.ajax({
-          url:"http://115.115.159.126/ECabs/ECabs4U.asmx/GetCabLaterJobs",
+          url:"http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetCabLaterJobs",
           type:"POST",
           datatype:"json",
           data:"{'relatedId':'"+relatedId+"'}",
@@ -73,7 +73,7 @@ function EngageDriver(buttonIndex, data)
     else if(buttonIndex === 1)
     {
     $.ajax({
-          url:"http://115.115.159.126/ECabs/ECabs4U.asmx/EngageDriver",
+          url:"http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/EngageDriver",
           type:"POST",
           datatype:"json",
           data:"{'relatedId':'"+relatedId+"','jobNo':'"+jobNo+"'}",
@@ -90,7 +90,7 @@ function EngageDriver(buttonIndex, data)
 
 function JobDetail2(data)
 {
-    var url = "http://115.115.159.126/ECabs/ECabs4U.asmx/JobDetailDriver";
+    var url = "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/JobDetailDriver";
                 $.ajax(url, {
                    type:"POST",
                    datatype:"json",

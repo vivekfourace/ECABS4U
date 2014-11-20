@@ -20,7 +20,7 @@ function onLogoutCallback(buttonIndex)
     }
     else if(buttonIndex === 1)
     {
-        $.ajax({url:"http://115.115.159.126/ECabs/ECabs4U.asmx/logout",
+        $.ajax({url:"http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/logout",
             type:"POST",
             dataType: "Json",
             data:"{'userID':'" +userId+"'}",

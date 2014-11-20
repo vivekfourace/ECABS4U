@@ -4,7 +4,7 @@ var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0]; 
 
 $.ajax({
-   url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetPostcodeFetchTime",
+   url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetPostcodeFetchTime",
    type: "POST",
    dataType: "Json",
    data: "",
@@ -50,7 +50,7 @@ function UpdateCurrentDistrictCode()
 function UpdateThis(postalCode) {
      console.log('Updating district post');
      $.ajax({
-             url: 'http://115.115.159.126/ECabs/ECabs4U.asmx/UpdateDistrictCode',
+             url: 'http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/UpdateDistrictCode',
              type: "post",
              dataType: "json",
              data: "{'postalCode':'" + postalCode + "','relatedId':'"+relatedId+"'}",

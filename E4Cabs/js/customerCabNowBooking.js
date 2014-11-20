@@ -18,7 +18,7 @@ id = window.setInterval(getResponse, 2000);
 function getResponse()
 {
     $.ajax({
-        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CustomerCabNowBooking",
+        url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/CustomerCabNowBooking",
         type: "POST",
         dataType: "Json",
         data: "{'relatedId':'" + relatedId + "'}",
@@ -302,7 +302,7 @@ function getData(data) {
 function showRatingBoxLaterpast(driverImgUrl, driverID)
 {    
     $.ajax({
-        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetRatingFeedback",
+        url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetRatingFeedback",
         type: "POST",
         dataType: "Json",
         data: "{'driverID':'" + driverID + "'}",
@@ -406,7 +406,7 @@ function showRatingBoxLaterpast(driverImgUrl, driverID)
 function showRatingBoxLaterPresent(driverImgUrl, driverID)
 {    
     $.ajax({
-        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetRatingFeedback",
+        url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetRatingFeedback",
         type: "POST",
         dataType: "Json",
         data: "{'driverID':'" + driverID + "'}",
@@ -571,7 +571,7 @@ function RejectDriver()
     var driverId = dId;
     var requestId = reqId;
             $.ajax({
-                url: "http://115.115.159.126/ECabs/ECabs4U.asmx/RejectResponse",
+                url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/RejectResponse",
                 type: "POST",
                 dataType: "Json",
                 data: "{'userID':'" + driverId + "','reqid':'" + requestId + "','status':'" + status + "'}",
@@ -615,7 +615,7 @@ function HireCurrentDriver()
        var driverId = dId;
        var requestId = reqId;
            $.ajax({
-           url: "http://115.115.159.126/ECabs/ECabs4U.asmx/HireDriverResponse",
+           url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/HireDriverResponse",
            type: "POST",
            dataType: "Json",
            data: "{'driverId':'" + driverId + "','requestId':'" + requestId + "'}",
@@ -645,7 +645,7 @@ function getResponseFromDriver(data)
 {
         var checkDealResp = window.setInterval(function () {
         $.ajax({
-            url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CheckdealResponse",
+            url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/CheckdealResponse",
             type: "POST",
             dataType: "Json",
             data: "{'driverId':'" + dId + "','requestId':'" + reqId + "'}",
@@ -657,7 +657,7 @@ function getResponseFromDriver(data)
                 {
                     DisableHiremeBtns()
                     $.ajax({
-                        url: "http://115.115.159.126/ECabs/ECabs4U.asmx/GetConfirmData",
+                        url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/GetConfirmData",
                         type: "POST",
                         dataType: "Json",
                         data: "{'requestID':'" + requestID + "'}",
@@ -803,7 +803,7 @@ function onreinitiateCallback(buttonIndex)
 function DeleteJob(cause)
 {
          $.ajax({
-            url: "http://115.115.159.126/ECabs/ECabs4U.asmx/CancelCurrentJob",
+            url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/CancelCurrentJob",
             type: "POST",
             dataType: "Json",
             data: "{'requestID':'" + requestID + "','relatedId':'" + relatedId + "','cause':'" + cause + "'}",
