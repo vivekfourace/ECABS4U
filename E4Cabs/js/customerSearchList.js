@@ -46,11 +46,11 @@ var timer = setInterval(function () {
         $('#bookingmsg244').hide();
         navigator.notification.alert(
        'No driver found Please search again.',
-        noDriver,
+        noDriver1,
         'ECABS4U',
         "OK"
         );
-        function noDriver()
+        function noDriver1()
         {
             //DeleteJob("Cancelled by customer");
             Destroy();	      
@@ -81,6 +81,8 @@ function CheckJobCount()
 
 function Destroy() {
     $('#divNoDriver').show(); 
+    $('#bookingmsg').hide();
+    $('#bookingmsg244').hide();
     window.clearInterval(timer);
     window.clearInterval(id);
     window.clearInterval(reinitiateCounter);

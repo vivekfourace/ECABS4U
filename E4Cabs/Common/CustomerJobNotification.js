@@ -37,7 +37,7 @@ function GetCancelledJobsForCustomer() {
                                "Sorry, JobNo "+jobId+" cancelled by driver. \nReason- " + expReason,
                                 onOKDeleteExpiredJobForCustomer(expJobId),
                                'Cancelled Job',
-                               'OK'
+                               "Ok" 
                            );
                         }
                     }

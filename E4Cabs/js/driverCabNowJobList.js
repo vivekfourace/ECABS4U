@@ -79,8 +79,8 @@ function bindGrid(data)
                 {
                    // html += "<td  colspan='2' width='10%' height='30px' align='center'>Awaiting customer response</td>";
                     html += "<td colspan='2'>"
-                    +'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Accept" class="accept-btn" onclick="seeRequest2()"/><br/><div style="height:3px"></div>'
-                    +'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Reject" class="reject-btn" onclick="closeRequest2()"/>'
+                    +'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Accept" class="accept-btn" onclick="seeRequest2(\''+data.d[i]["CustomerRequestID"]+'\')"/><br/><div style="height:3px"></div>'
+                    +'<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" value="Reject" class="reject-btn" onclick="closeRequest2(\''+data.d[i]["CustomerRequestID"]+'\')"/>'
                     +"</td>";
                 }
                      else{
@@ -349,11 +349,12 @@ function feedBack()
     window.location='driverFeedback.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
-function seeRequest2()
+function seeRequest2(jobnumber)
 {
-    window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+    window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId+'&Jobid='+jobnumber;
+    //window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
-function closeRequest2()
+function closeRequest2(jobId)
 {
     
      navigator.notification.confirm(
@@ -375,7 +376,7 @@ function closeRequest2()
                   url:'http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/CancelNewJobDNotification', 
                   type:"POST",
                   datatype:"json",
-                  data:"{'relatedId':'" +relatedId+ "'}",
+                  data:"{'relatedId':'" +relatedId+ "','jobId':'" +jobId+ "'}",
                   contentType: "application/json; charset=utf-8",                     
                   success: function () {
                        navigator.notification.alert(

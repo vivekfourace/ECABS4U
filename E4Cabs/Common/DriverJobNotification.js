@@ -8,7 +8,7 @@ function onDeviceReady() {
    console.log('device ready');
 }
 
-function showConfirm(param) {
+function showConfirm(param, jobId) {
     var now = 1;
     
     //var later = 2;
@@ -24,6 +24,20 @@ function showConfirm(param) {
         'NEW JOB',
         'View,Reject'
         );
+        function onConfirm(buttonIndex)
+{
+        if(buttonIndex === 2)
+        {
+           // alert(jobId);
+            closeRequest(jobId);
+            jobCheckTime = setInterval(Check, 10000); 
+            $('#transparent_div').hide();
+        }
+        else if(buttonIndex === 1)
+        {
+            seeRequest(jobId);
+        }
+}
     }
     //else if(param === later)
     //{
@@ -35,19 +49,7 @@ function showConfirm(param) {
     //    );
     //}
 }
-function onConfirm(buttonIndex)
-{
-    if(buttonIndex === 2)
-    {
-        closeRequest();
-        jobCheckTime = setInterval(Check, 10000); 
-        $('#transparent_div').hide();
-    }
-    else if(buttonIndex === 1)
-    {
-        seeRequest();
-    }
-}
+
 
 function playBeep() {
  
@@ -76,13 +78,13 @@ function Check()
         if (isTrue === "True") 
         {
             var jobType = data.d[1];
-            var isvisited = data.d[2];  
+            var isvisited = data.d[2]; 
+            var jobId  = data.d[3];
             if(isvisited === "False")
             {
                 if (jobType === "True") 
-                {   
-                    var cabnow = 1;
-                    showConfirm(cabnow);
+                {  
+                    showConfirm(1, jobId);
                     playBeep();
                     clearInterval(jobCheckTime);
                 }
@@ -90,7 +92,7 @@ function Check()
                 {
                     $('#btnPulsating').show();
                     $('#btnNormal').hide();
-                    clearInterval(jobCheckTime);
+                  //  clearInterval(jobCheckTime);
                 }
             }
         }
@@ -101,18 +103,22 @@ function Check()
 
 
 
-function seeRequest()
+function seeRequest(jobId)
 {
-    window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
+     $('#hdnJobno').val(jobId);
+    window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId+'&Jobid='+jobId; 
+    //window.location='DriverJob.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 }
 
-function closeRequest()
+function closeRequest(jobId)
 {
+    //alert(jobId);
+    //alert('in');
      $.ajax({
               url:'http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/CancelNewJobDNotification', 
               type:"POST",
               datatype:"json",
-              data:"{'relatedId':'" +relatedId+ "'}",
+              data:"{'relatedId':'" +relatedId+ "','jobId':'" +jobId+ "'}",
               contentType: "application/json; charset=utf-8",                     
               success: function () {}
         });
