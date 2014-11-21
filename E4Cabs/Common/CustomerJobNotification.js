@@ -30,15 +30,44 @@ function GetCancelledJobsForCustomer() {
                         drvId = data.d[i].DriverID;
                         expReason = data.d[i].ExpiryReason;
                         cancelledBy =  data.d[i].CancelledByID;
-                        
+                        CabNow=data.d[i].isCabNow;
                         if(parseInt(relatedId) === cancelledBy){
-                           
-                           navigator.notification.confirm(
+                          // console.log("in");
+                           // alert(CabNow);
+                            if(CabNow == null)
+                            {
+                              navigator.notification.confirm(
+                            
                                "Sorry, JobNo "+jobId+" cancelled by driver. \nReason- " + expReason,
                                 onOKDeleteExpiredJobForCustomer(expJobId),
                                'Cancelled Job',
-                               "Ok" 
-                           );
+                               "OK" 
+                              );
+                                
+                            }
+                            else
+                            {
+                                navigator.notification.confirm(
+                                    "Sorry, JobNo "+jobId+" cancelled by driver. \nReason- " + expReason,
+                                    onClickSearchagain,
+                                    "Confirm",
+                                    "Re-Search,OK"
+                                    ); 
+                                
+                                function onClickSearchagain(buttonIndex)
+                                {
+                                    if(buttonIndex == 2)
+                                    {
+                                        onOKDeleteExpiredJobForCustomer(expJobId);
+                                    }
+                                    else if(buttonIndex == 1)
+                                    {
+                                        
+                                    }
+                                }
+                                
+                            }
+                          
                         }
                     }
                 }

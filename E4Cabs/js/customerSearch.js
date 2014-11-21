@@ -83,6 +83,18 @@ function FillAllData(data)
            
         }
     }
+    else{
+        $.ajax({
+        url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/JobDetail",
+        type: "POST",
+        dataType: "Json",
+        data: "{'requestID':'" + requestID + "'}",
+        contentType: "application/json; charset=utf-8",
+        success: FillJobData,
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+       }
+     });
+    }
 }
 
 $(document).ready(function ()

@@ -262,9 +262,9 @@ function SubmitAbort()
          datatype:"json",
          data:"{'relatedId':'" +relatedId+ "','abortMessage':'"+abortMessage+"'}",
          contentType: "application/json; charset=utf-8",                     
-         success: function(data){
-             if(data.d === "true")
-             {                            
+         success: function(){
+             //if(data.d === "true")
+             //{                            
                   $('#popup_box1').hide();
                   $('#divAbortTask').hide();
                   $('#transparent_div').hide();
@@ -280,7 +280,7 @@ function SubmitAbort()
             	{                       
 	     		    window.location='driverHome.html?id='+userId+'&rid='+roleId+'&rrid='+relatedId;
 				}
-             }                         
+             //}                         
          },
      });
 }
