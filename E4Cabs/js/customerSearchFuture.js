@@ -3,6 +3,104 @@ var QString = window.location.search.substring(1);
 var userId = QString.split("=")[1].split("&")[0];
 var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
+
+
+//reinitiate Job OR Re-Search
+
+var requestID = QString.split("=")[4];
+var cancelledJObFuture = QString.split("=")[5];
+
+if(requestID !== undefined && cancelledJObFuture !== undefined)
+{
+
+        requestID = QString.split("=")[4].split("&")[0];
+
+        $.ajax({
+        url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/JobDetail",
+        type: "POST",
+        dataType: "Json",
+        data: "{'jobId':'" + requestID + "'}",
+        contentType: "application/json; charset=utf-8",
+        success: cancelledJobFillAllData,
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+       }
+     });
+    
+    
+}
+
+
+$('#imgLoader').hide();
+
+function cancelledJobFillAllData(data)
+{   
+            
+            $('#txtFrom').val(data.d["FromLocation"]);            
+            $('#txtTo').val(data.d["ToLocation"]);           
+            $('#txt2location').val(data.d["Location2"]);         
+            $('#txt3location').val(data.d["Location3"]);          
+            $('#txt4location').val(data.d["Location4"]);         
+            $('#txt5location').val(data.d["Location5"]);         
+            $('#txt6location').val(data.d["Location6"]);          
+            $('#txt7location').val(data.d["Location7"]);      
+            $('#txt8location').val(data.d["Location8"]);        
+            $('#txtDistance').val(data.d["TravelDistance"]);
+            
+           //  var otherspecialrequirement=data.d[i].OtherSpecReq;
+           //$('#txtothereSpecialRequirement').val(otherspecialrequirement); 
+          
+            var selectedPassenger=data.d["NumberOfPassenger"];
+           // alert(selectedPassenger);
+             $('#ddlpassenger option[value="' + selectedPassenger + '"]').prop('selected', true);
+            $('#ddlpassenger').selectmenu('refresh');
+          // $('#ddlpassenger').val(data.d[i]["NumberOfPassenger"]);
+            
+             var selectedLargeLuggage=data.d["LargeLuggage"];
+           // alert(selectedLargeLuggage);
+             $('#ddllargecase option[value="' + selectedLargeLuggage + '"]').prop('selected', true);
+            $('#ddllargecase').selectmenu('refresh');
+            
+             var selectedSmallLuggage=data.d["SmallLuggage"];
+           // alert(selectedSmallLuggage);
+             $('#ddlsmallcase option[value="' + selectedSmallLuggage + '"]').prop('selected', true);
+            $('#ddlsmallcase').selectmenu('refresh');
+            
+             var selectedWheelChairPassanger=data.d["WheelChairPassenger"];
+            //alert(selectedWheelChairPassanger);
+             $('#ddlWheelchair option[value="' + selectedWheelChairPassanger + '"]').prop('selected', true);
+            $('#ddlWheelchair').selectmenu('refresh');
+            
+             var selectedChildCarSeat=data.d["ChildCarSesats"];
+           // alert(selectedChildCarSeat);
+             $('#ddlChidseats option[value="' + selectedChildCarSeat + '"]').prop('selected', true);
+            $('#ddlChidseats').selectmenu('refresh');
+            
+             var selectedChildBooster=data.d["ChildBoosterSeats"];
+           // alert(selectedChildBooster);
+             $('#ddlChidbooster option[value="' + selectedChildBooster + '"]').prop('selected', true);
+            $('#ddlChidbooster').selectmenu('refresh');
+            
+            if(selectedWheelChairPassanger != 0 || selectedChildCarSeat != 0 || selectedChildBooster != 0)
+            {
+                showReq();
+            }
+  
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $(document).ready(function ()
  {
         if (navigator.geolocation)

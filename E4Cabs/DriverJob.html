@@ -52,7 +52,13 @@
                             if(data.d[0] !== "Error"){
                                 var getID = data.d[0];
                                 $('#hdnJobno').val(getID);
-                                if (JobId !== "") { getID = JobId; }
+                              //  if (JobId !== "") { getID = JobId; }
+                                if(JobId !== "")
+                                    {
+                                      getID = JobId;
+                                      $('#hdnJobno').val(getID);
+                                    }
+                                    
                                 var getValue = data.d[1];
                                 
                                 if (getValue === "False") {

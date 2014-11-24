@@ -8,7 +8,7 @@ function onDeviceReady() {
    console.log('device ready');
 }
 
-jobCheckTime = setInterval(GetCancelledJobsForCustomer, 2000);
+jobCheckTime = setInterval(GetCancelledJobsForCustomer, 10000);
 
 
 function GetCancelledJobsForCustomer() {
@@ -24,13 +24,13 @@ function GetCancelledJobsForCustomer() {
                     
                     
                     for(var i = 0 ; i< data.d.length; i++){
-                        jobId = data.d[i].CustomeeRequestID;
+                        var jobId = data.d[i].CustomeeRequestID;
                         CustId = data.d[i].CustomerID;
                         expJobId = data.d[i].ID;
                         drvId = data.d[i].DriverID;
                         expReason = data.d[i].ExpiryReason;
                         cancelledBy =  data.d[i].CancelledByID;
-                        CabNow=data.d[i].isCabNow;
+                         var CabNow=data.d[i].isCabNow;
                         if(parseInt(relatedId) === cancelledBy){
                           // console.log("in");
                            // alert(CabNow);
@@ -62,7 +62,20 @@ function GetCancelledJobsForCustomer() {
                                     }
                                     else if(buttonIndex == 1)
                                     {
-                                        
+                                       // alert(CabNow);
+                                        if(CabNow === "True")
+                                        {
+                                          var cancelledJobData;
+                                          window.location = 'customerSearch.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId+ '&rid=' + jobId+ '&rrid=' + cancelledJobData;
+                                          onOKDeleteExpiredJobForCustomer(expJobId);   
+                                        }
+                                        else if(CabNow === "False")
+                                        {
+                                          var cancelledJobDataFuture;
+                                          window.location = 'customerSearchFuture.html?id=' + userId + '&rid=' + roleId + '&rrid=' + relatedId+ '&rid=' + jobId+ '&rrid=' + cancelledJobDataFuture;
+                                          onOKDeleteExpiredJobForCustomer(expJobId);  
+                                        }
+                                       
                                     }
                                 }
                                 

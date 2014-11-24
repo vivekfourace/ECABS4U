@@ -4,12 +4,34 @@ var roleId = QString.split("=")[2].split("&")[0];
 var relatedId = QString.split("=")[3].split("&")[0];
 var requestID = QString.split("=")[4];
 
+var cancelledJOb = QString.split("=")[5];
 
+//alert(cancelledJOb);
 if(requestID !== undefined)
 {
-    requestID = QString.split("=")[4].split("&")[0];
-    //alert("in");
-    $.ajax({
+    
+    if(cancelledJOb !== undefined)
+    {
+        
+        requestID = QString.split("=")[4].split("&")[0];
+
+        $.ajax({
+        url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/JobDetail",
+        type: "POST",
+        dataType: "Json",
+        data: "{'jobId':'" + requestID + "'}",
+        contentType: "application/json; charset=utf-8",
+        success: cancelldJobFillAllData,
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+       }
+     });
+    
+    }
+    else
+    {
+      requestID = QString.split("=")[4].split("&")[0];
+      
+      $.ajax({
         url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/FillJobSearchDetail",
         type: "POST",
         dataType: "Json",
@@ -19,12 +41,18 @@ if(requestID !== undefined)
         error: function (XMLHttpRequest, textStatus, errorThrown) {
        }
      });
+    }
+    
+  
 }
 
 $('#imgLoader').hide();
 
+
+
 function FillAllData(data)
 {
+    
     var count = data.d.length;
     if(count > 0)
     {
@@ -83,18 +111,79 @@ function FillAllData(data)
            
         }
     }
-    else{
-        $.ajax({
-        url: "http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/JobDetail",
-        type: "POST",
-        dataType: "Json",
-        data: "{'requestID':'" + requestID + "'}",
-        contentType: "application/json; charset=utf-8",
-        success: FillJobData,
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-       }
-     });
-    }
+    
+}
+
+//For cancelled job binding
+function cancelldJobFillAllData(data)
+{   //console.log(data.d);
+    //console.log(data.d.length);
+    // alert("in canceled");
+    //var count = data.d.length;
+    // alert(data.d.length);
+    // if(count > 0)
+    //{
+    //for(var i = 0; i < count; i++)
+    // {
+    //alert(data.d["FromLocation"]);
+            
+            $('#txtFrom').val(data.d["FromLocation"]);            
+            $('#txtTo').val(data.d["ToLocation"]);           
+            $('#txt2location').val(data.d["Location2"]);         
+            $('#txt3location').val(data.d["Location3"]);          
+            $('#txt4location').val(data.d["Location4"]);         
+            $('#txt5location').val(data.d["Location5"]);         
+            $('#txt6location').val(data.d["Location6"]);          
+            $('#txt7location').val(data.d["Location7"]);      
+            $('#txt8location').val(data.d["Location8"]);        
+            $('#txtDistance').val(data.d["TravelDistance"]);
+            
+           //  var otherspecialrequirement=data.d[i].OtherSpecReq;
+           //$('#txtothereSpecialRequirement').val(otherspecialrequirement); 
+          
+            var selectedPassenger=data.d["NumberOfPassenger"];
+           // alert(selectedPassenger);
+             $('#ddlpassenger option[value="' + selectedPassenger + '"]').prop('selected', true);
+            $('#ddlpassenger').selectmenu('refresh');
+          // $('#ddlpassenger').val(data.d[i]["NumberOfPassenger"]);
+            
+             var selectedLargeLuggage=data.d["LargeLuggage"];
+           // alert(selectedLargeLuggage);
+             $('#ddllargecase option[value="' + selectedLargeLuggage + '"]').prop('selected', true);
+            $('#ddllargecase').selectmenu('refresh');
+            
+             var selectedSmallLuggage=data.d["SmallLuggage"];
+           // alert(selectedSmallLuggage);
+             $('#ddlsmallcase option[value="' + selectedSmallLuggage + '"]').prop('selected', true);
+            $('#ddlsmallcase').selectmenu('refresh');
+            
+             var selectedWheelChairPassanger=data.d["WheelChairPassenger"];
+            //alert(selectedWheelChairPassanger);
+             $('#ddlWheelchair option[value="' + selectedWheelChairPassanger + '"]').prop('selected', true);
+            $('#ddlWheelchair').selectmenu('refresh');
+            
+             var selectedChildCarSeat=data.d["ChildCarSesats"];
+           // alert(selectedChildCarSeat);
+             $('#ddlChidseats option[value="' + selectedChildCarSeat + '"]').prop('selected', true);
+            $('#ddlChidseats').selectmenu('refresh');
+            
+             var selectedChildBooster=data.d["ChildBoosterSeats"];
+           // alert(selectedChildBooster);
+             $('#ddlChidbooster option[value="' + selectedChildBooster + '"]').prop('selected', true);
+            $('#ddlChidbooster').selectmenu('refresh');
+            
+            if(selectedWheelChairPassanger != 0 || selectedChildCarSeat != 0 || selectedChildBooster != 0)
+            {
+                showReq();
+            }
+            
+            
+           
+       // }
+   // }  
+    
+    
+    
 }
 
 $(document).ready(function ()
