@@ -13,6 +13,10 @@
     <link rel="stylesheet" type="text/css" href="css/PopUp.css" />
     <link rel="stylesheet" type="text/css" href="css/jquery.mobile.css" />
     <link type="text/css" href="css/jqm-datebox.min.css" rel="stylesheet" />
+    <link type="text/css" href="css/jquery.ui.timepicker.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/jquery-ui.css">
+
+    <!--<link type="text/css" href="css/ui.theme.css" rel="stylesheet" />-->
 
     <script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
    
@@ -30,7 +34,7 @@
     <script type="text/javascript" src="Common/FailedBookings.js"></script>
         <script type="text/javascript" src="Common/CustomerJobNotification.js"></script>
     <script type="text/javascript" src="js/FindPostcode.js"></script>
-    
+     <script type="text/javascript" src="Scripts/jquery.ui.timepicker.js"></script>
 </head>
     <script type="text/javascript">
     function initialize()
@@ -181,8 +185,8 @@
         $('#returnJ2').fadeIn("fast");
         document.getElementById("chkyes").checked = true;
         
-        var currentTime = new Date()
-        var hours = currentTime.getHours()+2
+         var currentTime = new Date()
+        var hours = currentTime.getHours()+2;
         var minutes = currentTime.getMinutes()
         if (minutes < 10)
             minutes = "0" + minutes
@@ -193,6 +197,7 @@
             hours = 0;
         }
         
+       
         $('#timepickers').val(hours + ":" + minutes);
 
         var currentDate = new Date()
@@ -200,11 +205,18 @@
         var month = currentDate.getMonth() + 1
         var year = currentDate.getFullYear()
         
-       // $( "#datepickers" ).datepicker({ minDate: 0});
+       $( "#datepickers" ).datepicker({ minDate: 0,dateFormat: 'dd/mm/yy'});
         $('#datepickers').val(day + "/" + month + "/" + year);
         
+       $('#timepickers').timepicker({
+    minutes: {
+        interval: 5,
+    },
+   
+});
  
- 
+        
+        
     }
   
     function cancelBookReturn() {
@@ -852,13 +864,15 @@
                 <tr id="trDate" style="display: none;">
                     <td>
                         <label for="datepickers"  class="font-style"><b style="font-size:12px">Return date</b></label>
-                        <input name="mydate" id="datepickers" type="date" data-role="datebox"   data-options='{"mode": "datebox"}'>
+                        <!--<input name="mydate" id="datepickers" type="date" data-role="datebox"   data-options='{"mode": "datebox"}'>-->
+                        <input type="text" id="datepickers" style="background:url('images/DateIcon.png') no-repeat right; " readonly>
                     </td>
             </tr>
                <tr id="trTime" style="display: none;">
                 <td>
                      <label for="timepickers" class="font-style"><b style="font-size:12px">Return time</b></label>
-                    <input name="linked2" type="text" data-role="datebox" id="timepickers" data-options='{"mode": "timebox", "overrideTimeFormat":24}' />
+                    <!--<input name="linked2" type="text" data-role="datebox" id="timepickers" data-options='{"mode": "timebox", "overrideTimeFormat":24}' />-->
+                    <input type="text" id="timepickers" style="background:url('images/TimeIcon.png') no-repeat right;" readonly  />
                     </td>
             </tr>
                 <tr>
@@ -869,7 +883,7 @@
                     </center>
            </table>
            <div style="padding-bottom:40px;">
-                    <input type="button" value="Search" style="width:80%;-webkit-appearance:none;-moz-appearance:none;" class="btn-tmp" onclick="Duration();" />
+                    <input type="button" value="Search" style="width:80%;-webkit-appearance:none;-moz-appearance:none;" class="specialBtn" onclick="Duration();" />
            </div>          
        </div>
        
