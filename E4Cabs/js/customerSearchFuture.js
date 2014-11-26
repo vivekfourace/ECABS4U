@@ -46,9 +46,12 @@ function cancelledJobFillAllData(data)
             $('#txt8location').val(data.d["Location8"]);        
             $('#txtDistance').val(data.d["TravelDistance"]);
             
-           //  var otherspecialrequirement=data.d[i].OtherSpecReq;
-           //$('#txtothereSpecialRequirement').val(otherspecialrequirement); 
-          
+            //     var PickupDate=data.d["StartDate"];
+            //      $('#pickDate').val(PickupDate); 
+            //
+            //   var PickupTime=data.d["StartTime"];
+            //      $('#pickTime').val(PickupTime); 
+            //   
             var selectedPassenger=data.d["NumberOfPassenger"];
            // alert(selectedPassenger);
              $('#ddlpassenger option[value="' + selectedPassenger + '"]').prop('selected', true);
@@ -85,6 +88,46 @@ function cancelledJobFillAllData(data)
                 showReq();
             }
   
+    
+    //For Return Journey
+    
+          var ReturnFrom=data.d["ReturnFrom"];
+            // $('#txtReturFrom').val(ReturnFrom);
+        
+    
+             var ReturnTo=data.d["ReturnTo"];
+            // $('#txtReturTo').val(ReturnTo); 
+    
+    
+            // var ReturnDate=data.d["ReturnDate"];
+            // $('#datepickers').val(ReturnDate); 
+            // var ReturnTime=data.d["ReturnTime"];
+            // $('#timepickers').val(ReturnTime); 
+            
+            if(ReturnFrom && ReturnTo)
+                {
+                   //$('#txtReturFrom').show();
+                   // $('#txtReturTo').show();
+                   // $('#cancelreturn').show();
+                   // $('#bookreturn').hide();
+                   // document.getElementById("chkNo").checked = false;
+                   // document.getElementById("chkyes").checked = false;
+                   // document.getElementById("trfrom").style.display = 'table-row';
+                   // document.getElementById("trto").style.display = 'table-row';
+                   //  document.getElementById("trDate").style.display = 'table-row';
+                   //  document.getElementById("trTime").style.display = 'table-row';
+                   //  document.getElementById("trRequrementReturn").style.display = 'table-row';
+                   //  $('#returnJ').fadeIn("fast");
+                   //  $('#termCond').show();
+                   //  document.getElementById("chkNo").checked = true;
+                
+                    bookReturn();
+                    $('#returnJ').fadeIn("fast");
+                    $('#termCond').show();
+                    document.getElementById("chkNo").checked = true;
+                    document.getElementById("chkyes").checked = false;
+                    $('#returnJ2').hide();
+                }
     
 }
 

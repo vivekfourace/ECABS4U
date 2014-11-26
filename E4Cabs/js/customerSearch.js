@@ -176,8 +176,49 @@ function cancelldJobFillAllData(data)
             {
                 showReq();
             }
+    
+         //For Return journey
+    
+             var ReturnFrom=data.d["ReturnFrom"];
+            // $('#txtReturFrom').val(ReturnFrom);
+        
+    
+             var ReturnTo=data.d["ReturnTo"];
+            // $('#txtReturTo').val(ReturnTo); 
+    
+    
+            // var ReturnDate=data.d["ReturnDate"];
+            // $('#datepickers').val(ReturnDate); 
             
+            // var ReturnTime=data.d["ReturnTime"];
+            // $('#timepickers').val(ReturnTime); 
             
+            if(ReturnFrom && ReturnTo)
+                {
+                   //$('#txtReturFrom').show();
+                   // $('#txtReturTo').show();
+                   // $('#cancelreturn').show();
+                   // $('#bookreturn').hide();
+                   // document.getElementById("chkNo").checked = false;
+                   // document.getElementById("chkyes").checked = false;
+
+                   // document.getElementById("trfrom").style.display = 'table-row';
+                   // document.getElementById("trto").style.display = 'table-row';
+
+                  //  document.getElementById("trDate").style.display = 'table-row';
+                  //  document.getElementById("trTime").style.display = 'table-row';
+                  //  document.getElementById("trRequrementReturn").style.display = 'table-row';
+                  //  $('#returnJ').fadeIn("fast");
+                  //  $('#termCond').show();
+                  //  document.getElementById("chkNo").checked = true;
+                
+                    bookReturn();
+                    $('#returnJ').fadeIn("fast");
+                    $('#termCond').show();
+                    document.getElementById("chkNo").checked = true;
+                    document.getElementById("chkyes").checked = false;
+                    $('#returnJ2').hide();
+                }
            
        // }
    // }  

@@ -80,9 +80,10 @@ function Check()
             var jobType = data.d[1];
             var isvisited = data.d[2]; 
             var jobId  = data.d[3];
+            var isEngaged = data.d[4];
             if(isvisited === "False")
             {
-                if (jobType === "True") 
+                if (jobType === "True" && isEngaged === "False") 
                 {  
                     showConfirm(1, jobId);
                     playBeep();

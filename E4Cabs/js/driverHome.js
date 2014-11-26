@@ -404,7 +404,7 @@ function notEnroute()
     "Please confirm your choice.",
      onErrorEnRoute22,
     "Confirm",
-    "Not-EnRoute,  EnRoute"
+    " Not-EnRoute , Keep EnRoute  "
     );
 }
 function onErrorEnRoute22(buttonIndex) 

@@ -122,9 +122,9 @@ center {
     vertical-align: middle;
     font-style: normal;
     font-family: Calibri;
-    color: white;
-    border: 1px solid #2D82D0;
-    background-color: #2D82D0;
+    color: white !important;
+    border: 1px solid #2D82D0 !important;
+    background-color: #2D82D0 !important;
 }
 
     .specialBtn:active {
