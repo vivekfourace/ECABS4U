@@ -9,6 +9,7 @@ function onDeviceReady() {
     var deviceuuid = device.uuid    
     var model = device.model   
     var version = device.version 
+
     
        $.ajax({
            url:"http://ecabs4uservice.azurewebsites.net/ECabs4U.asmx/RegisterDevice",
