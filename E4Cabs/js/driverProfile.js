@@ -57,7 +57,7 @@ function ShowData(data)
                 
                myVehicles += "<tr>";
                myVehicles += "<td style='text-align:center;width:7%;'>" + (i+1) + "</td>";
-               myVehicles += "<td style='width:20%;text-align:center;height:20px;color:black'><img style='height:45px;width:40px;border-radius:4px' alt='vehImage' src='" + vehImgUrl + "' /></td>";
+               myVehicles += "<td style='width:20%;text-align:center;height:20px;color:black'><img style='max-height:45px;max-width:40px;border-radius:4px' alt='vehImage' src='" + vehImgUrl + "' /></td>";
                myVehicles += "<td style='width:20%;text-align:left;height:20px;color:black'>" + RegistrationNo + "</td>";
                myVehicles += "<td style='width:20%;text-align:center;height:20px;color:black'>" + PlateNo + "</td>";
                myVehicles += "<td style='width:8%;text-align:center;height:20px;color:black'>" + Capacity + "</td>";

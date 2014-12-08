@@ -274,8 +274,8 @@ function getData(data) {
                 html += "<td width='15%' align='center'>" + '<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" class="disableBtn accept-btn" value="Hire" id= "' + driverID + '" onclick = "Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'' + spec + '\');"/>' + "</td>";
                 html += '</tr>';
                 html += '<tr>';                 
-                html += '<td style="width:100%;text-align:left;" colspan="2"><img src="'+driverImgUrl+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImage(this)\"/>'
-                html += '<img src="'+vehicleImgUrl+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImage(this)\"/>'
+                html += '<td style="width:100%;text-align:left;" colspan="2" ><img src="'+driverImgUrl+'" style="max-width:50px;max-height:50px;border-radius:4px;" onclick=\"ShowLargeImage(this)\"/>'
+                html += '<img src="'+vehicleImgUrl+'" style="max-width:50px;max-height:50px;border-radius:4px!important;padding-left:20px;padding-bottom:10px" onclick=\"ShowLargeImage(this)\"/>'
                 html += '<td style="width:100%;text-align:center;" colspan="2"><input type="button" class="btn-tmp" value="Rating" style="width:80%;-webkit-appearance:none;-moz-appearance:none;" onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
                 html += '</tr>';
             }
@@ -289,8 +289,8 @@ function getData(data) {
                 html += "<td width='15%' align='center'>" + '<input type="button" style="-webkit-appearance:none;-moz-appearance:none;" class="disableBtn accept-btn"  value="Hire" id= "' + driverID + '" onclick = "this.disabled=true;Hireme(\'' + driverID + '\',\'' + customerReqId + '\',\'Not Available\');"/>' + "</td>";
                 html += '</tr>';
                 html += '<tr>';
-                html += '<td style="width:100%;text-align:left;" colspan="2"><img src="'+driverImgUrl+'" style="width:50px;height:50px;border-radius:4px" onclick=\"ShowLargeImage(this)\"/>'
-                html += '<img src="'+vehicleImgUrl+'" style="width:50px;height:50px;border-radius:4px" onclick=\"ShowLargeImage(this)\"/>'
+                html += '<td style="width:100%;text-align:left;"  colspan="2" ><img src="'+driverImgUrl+'" style="max-width:50px;max-height:50px;border-radius:4px" onclick=\"ShowLargeImage(this)\"/>'
+                html += '<img src="'+vehicleImgUrl+'" style="max-width:50px;max-height:50px;border-radius:4px!important;padding-left:20px;padding-bottom:10px" onclick=\"ShowLargeImage(this)\"/>'
                 html += '<td style="width:100%;text-align:center;" colspan="2"><input type="button" class="btn-tmp" value="Rating" style="width:80%;-webkit-appearance:none;-moz-appearance:none;" onclick="showRatingBoxLaterpast(\''+driverImgUrl+'\', \''+driverID+'\')"></td>';
                 html += '</tr>';
             }

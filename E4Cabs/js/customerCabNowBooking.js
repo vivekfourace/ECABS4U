@@ -116,9 +116,9 @@ function getData(data) {
             html += '<tr style="border-bottom:1px solid black !important;">';
             html += '<td style="width: 20%;text-align:left;border-bottom:1px solid black !important;">';
             html += '<a href="#" onclick="showRatingBoxLaterPresent(\''+DriverID+'\')" style="color:blue; font-size: 17px;">'+ DriverName +'</a><br/>';
-            html += '<img src="'+DriverPhoto+'" style="width:50px;height:50px;border-radius:4px;" onclick=\"ShowLargeImageLater(this)\"/>';
+            html += '<img src="'+DriverPhoto+'" style="max-width:50px;max-height:50px;border-radius:4px;" onclick=\"ShowLargeImageLater(this)\"/>';
             html += '</td>';
-            html += '<td style="width: 20%;text-align:left;border-bottom:1px solid black !important;"><br/><img src="'+VehicleImages+'" style="width:50px;height:50px;border-radius:4px;" onclick="ShowLargeImageLater(this)\"/></td>';
+            html += '<td style="width: 20%;text-align:left;border-bottom:1px solid black !important;"><br/><img src="'+VehicleImages+'" style="max-width:50px;max-height:50px;border-radius:4px;" onclick="ShowLargeImageLater(this)\"/></td>';
             html += '<td style="width: 25%;text-align:left;border-bottom:1px solid black !important;"><input type="button" class="btn-tmp" value="Rating" style="-webkit-appearance:none;-moz-appearance:none;width:98%"; onclick="showRatingBoxLaterPresent(\''+DriverID+'\')"/></td>';
             if(Fare > 0)
             {
